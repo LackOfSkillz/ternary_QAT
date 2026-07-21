@@ -40,6 +40,10 @@ def swap_linear(model, cfg=None):
     Mutates model in place; call before building the optimizer / Trainer.
     """
     gs = getattr(cfg, "group_size", GROUP_SIZE) if cfg else GROUP_SIZE
+    embed_node = getattr(getattr(model, "model", model), "embed_tokens", None)
+    head_node = getattr(model, "lm_head", None)
+    tied = (embed_node is not None and head_node is not None
+            and embed_node.weight.data_ptr() == head_node.weight.data_ptr())
     for name, mod in list(model.named_modules()):
         for child_name, child in list(mod.named_children()):
             full = f"{name}.{child_name}" if name else child_name
@@ -48,6 +52,16 @@ def swap_linear(model, cfg=None):
                 setattr(mod, child_name, TernaryEmbedding(child.weight, gs))
             elif _should_swap(full, child):
                 setattr(mod, child_name, TernaryLinear(child.weight, getattr(child, "bias", None), gs))
+    # tied weights — re-share the Parameter object that .clone()
+    # in TernaryEmbedding/TernaryLinear just broke. Without this, save_pretrained
+    # writes two divergent tensors with tie_word_embeddings=True and from_pretrained
+    # refuses to retie (printed warning, silent untie). Point lm_head.weight at the
+    # embed Parameter; embed is the canonical owner in HF's tie_weights.
+    if tied:
+        new_embed = getattr(getattr(model, "model", model), "embed_tokens", None)
+        new_head = getattr(model, "lm_head", None)
+        if new_embed is not None and new_head is not None:
+            new_head.weight = new_embed.weight
     return None
 
 
