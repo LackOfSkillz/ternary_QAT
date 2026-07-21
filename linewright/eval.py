@@ -81,38 +81,53 @@ def evaluate(harness_path, target, out_path, backend_name="stub"):
     gen = harness.get("generation", {})
     rows = [json.loads(l) for l in open(eval_file, encoding="utf-8") if l.strip()]
 
-    backend = get_backend(backend_name).from_config(
-        {"reproducibility": {"seed": gen.get("seed", 0)}}, target=target)
+    if backend_name == "hf":
+        # deterministic single-example generation (batch size 1)
+        import torch
+        if gen.get("seed") is not None:
+            torch.manual_seed(int(gen["seed"]))
+        model_cfg = dict(harness.get("model", {}))
+        cfg = {"model": model_cfg,
+               "paths": {"cache_dir": model_cfg.get("cache_dir")},
+               "reproducibility": {"seed": gen.get("seed", 0)},
+               "sequence": {"max_sequence_length": harness.get("max_sequence_length", 2048)}}
+        backend = get_backend("hf").from_config(cfg, target=target, for_training=False)
+        env_meta = dict(backend.diagnostics)
+    else:
+        backend = get_backend(backend_name).from_config(
+            {"reproducibility": {"seed": gen.get("seed", 0)}}, target=target)
+        env_meta = {}
 
     records = []
     for row in sorted(rows, key=lambda r: r["id"]):
         msgs = {m["role"]: m["content"] for m in row["messages"]}
-        prompt = msgs.get("system", "") + "\n\n" + msgs.get("user", "")
+        prompt_messages = [{"role": "system", "content": msgs.get("system", "")},
+                           {"role": "user", "content": msgs.get("user", "")}]
         gold = msgs.get("assistant", "")
-        output = backend.generate(prompt, gen)
+        output = backend.generate(prompt_messages, gen)
         checks, parsed = structural_check(row["task_type"], gold, output)
+        gm = {"temperature": gen.get("temperature"), "top_p": gen.get("top_p"),
+              "seed": gen.get("seed"), "max_new_tokens": gen.get("max_new_tokens"),
+              "backend": backend_name, "target": target}
+        gm.update(getattr(backend, "last_gen_meta", {}) or {})
         records.append({
-            "record_id": row["id"],
-            "task_type": row["task_type"],
-            "input_hash": _sha(prompt),
-            "raw_output": output,
-            "parsed_output": parsed,
+            "record_id": row["id"], "task_type": row["task_type"],
+            "input_hash": _sha(msgs.get("system", "") + "\n\n" + msgs.get("user", "")),
+            "raw_output": output, "parsed_output": parsed,
             "format_valid": checks.get("format_valid"),
-            "deterministic_checks": checks,
-            "generation_metadata": {
-                "temperature": gen.get("temperature"), "top_p": gen.get("top_p"),
-                "seed": gen.get("seed"), "max_new_tokens": gen.get("max_new_tokens"),
-                "backend": backend_name, "target": target,
-            },
+            "deterministic_checks": checks, "generation_metadata": gm,
         })
+
+    if backend_name == "hf" and hasattr(backend, "unload"):
+        backend.unload()
 
     report = {
         "eval_id": harness.get("eval_id"),
-        "target": target,
-        "backend": backend_name,
+        "target": target, "backend": backend_name,
         "evaluation_checksum": ds.get("evaluation_checksum"),
         "record_count": len(records),
         "format_valid_count": sum(1 for r in records if r["format_valid"]),
+        "environment": env_meta,
         "records": records,
     }
     writer = runtime.AuthorizedWriter(harness_authorized_roots())

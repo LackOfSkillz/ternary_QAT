@@ -7,6 +7,15 @@ eval_id: dataset-a-smoke-eval-v1
 freeze_id: dataset-a-experimental-v1
 production_approved: false
 
+# Pinned base model for backend: hf (real GX10 evaluation). Ignored by backend: stub.
+model:
+  base_model: prism-ml/Ternary-Bonsai-4B-unpacked
+  base_model_path: /workspace/hf-cache/prism-ml/Ternary-Bonsai-4B-unpacked
+  base_model_revision: 4485fae7a00129467b9329b738110d88b2942a1a
+  tokenizer_revision: 4485fae7a00129467b9329b738110d88b2942a1a
+  cache_dir: /workspace/hf-cache
+max_sequence_length: 2048
+
 targets:
   - name: base
     kind: base_model
