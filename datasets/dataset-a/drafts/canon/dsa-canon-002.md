@@ -1,0 +1,103 @@
+---
+id: dsa-canon-002
+dataset: dataset-a
+split: unassigned
+review_status: draft
+task_type: canon_extraction
+subtype: epistolary_claim_vs_fact
+operating_mode: source_bound
+difficulty: medium
+template_family: canon-epistolary-letter
+semantic_cluster: inheritance-will-dispute
+style_profile: none
+provenance: hand-written synthetic passage for Dataset A seed batch
+source_type: synthetic_internal
+license_status: synthetic_internal
+teacher_model: none
+teacher_terms_status: not_applicable
+excluded_from_training: false
+expected_properties:
+  - output is valid JSON matching the {facts:[...], insufficient_evidence:[...]} schema
+  - Uncle Bramwell's death is labeled "established" (physician-confirmed)
+  - Edith's certainty about the changed will is labeled "character_belief", not "established"
+  - the promised orchard is treated as Edith's unconfirmed claim (character_belief)
+  - the actual contents of the will are placed in insufficient_evidence, not asserted
+---
+
+## Instruction
+
+The passage is a letter written by one character. Extract its factual content as a JSON object
+`{"facts": [...], "insufficient_evidence": [...]}`. Separate what the letter establishes as
+objectively true from what its writer merely asserts or believes: use `certainty: "established"`
+only for facts the text confirms, and `certainty: "character_belief"` for the writer's
+unverified claims. Quote a short `evidence` span. Do not resolve disputes the letter leaves open.
+
+## Context
+
+Dear Cousin — I write in haste. Uncle Bramwell is dead; the physician confirmed it Tuesday, and
+I am certain he changed the will in my favour before the end. He promised me the orchard a
+hundred times. Margaret says otherwise, but Margaret would. Come at once — I cannot face the
+reading alone. Yours, Edith.
+
+## Gold Response
+
+```json
+{
+  "facts": [
+    {
+      "entity": "Uncle Bramwell",
+      "fact": "Uncle Bramwell is dead, confirmed by the physician on Tuesday.",
+      "certainty": "established",
+      "evidence": "Uncle Bramwell is dead; the physician confirmed it Tuesday"
+    },
+    {
+      "entity": "the will",
+      "fact": "Edith is certain Bramwell changed the will in her favour before he died.",
+      "certainty": "character_belief",
+      "evidence": "I am certain he changed the will in my favour before the end"
+    },
+    {
+      "entity": "the orchard",
+      "fact": "Edith says Bramwell repeatedly promised her the orchard.",
+      "certainty": "character_belief",
+      "evidence": "He promised me the orchard a hundred times"
+    },
+    {
+      "entity": "Margaret",
+      "fact": "Margaret disputes Edith's account of the will.",
+      "certainty": "established",
+      "evidence": "Margaret says otherwise, but Margaret would"
+    },
+    {
+      "entity": "Edith",
+      "fact": "Edith asks the cousin to come at once for the reading of the will.",
+      "certainty": "established",
+      "evidence": "Come at once — I cannot face the reading alone"
+    }
+  ],
+  "insufficient_evidence": [
+    "Whether Bramwell actually changed the will in Edith's favour",
+    "The true contents of the will",
+    "Whether Bramwell in fact promised Edith the orchard"
+  ]
+}
+```
+
+## Evaluation
+
+- Output parses as valid JSON and matches the schema.
+- The death is `established` because it is physician-confirmed and stated plainly; the changed
+  will and the promised orchard are `character_belief` because only Edith asserts them.
+- That Margaret *disputes* the account is itself `established` (the letter states it), even
+  though the dispute's merits are unknown — do not confuse "Margaret disagrees" (established
+  within the letter) with "the will was/wasn't changed" (unknown).
+- Asserting the will's actual contents anywhere in `facts` is a failure; they belong in
+  `insufficient_evidence`.
+
+## Reviewer Notes
+
+Medium: a first-person unreliable narrator whose emphatic tone ("I am certain", "a hundred
+times") tempts the extractor to promote belief to fact. The subtle move is separating the
+established *existence of a dispute* from the *unresolved substance* of it. Tier B judgment on
+the Margaret fact — reviewers should confirm it is scoped to "a dispute exists," not to who is
+right.

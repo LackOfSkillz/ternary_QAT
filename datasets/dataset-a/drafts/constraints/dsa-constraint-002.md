@@ -1,0 +1,66 @@
+---
+id: dsa-constraint-002
+dataset: dataset-a
+split: unassigned
+review_status: draft
+task_type: constraint_check
+subtype: knowledge_state
+operating_mode: constraint_bound
+difficulty: medium
+template_family: constraint-knowledge-gate
+semantic_cluster: courier-sealed-letter-name
+style_profile: none
+provenance: hand-written synthetic passage for Dataset A seed batch
+source_type: synthetic_internal
+license_status: synthetic_internal
+teacher_model: none
+teacher_terms_status: not_applicable
+excluded_from_training: false
+expected_properties:
+  - output is valid JSON with a boolean 'violation' field
+  - violation is true for this record
+  - type equals "knowledge_state"
+  - constraint_id cites the knowledge-gate constraint
+  - evidence quotes the line where the character uses information they cannot yet possess
+---
+
+## Instruction
+
+You are a continuity checker for a fiction manuscript. You are given declared canon constraints, including who knows what and when, and a draft passage. Decide whether the draft lets a character act on knowledge they could not yet have. Respond with one JSON object:
+{"violation": bool, "type": "factual_contradiction"|"knowledge_state"|"chronology"|"object_state"|"none", "constraint_id": <string or null>, "explanation": <string>, "evidence": <string>}
+Focus only on knowledge-state and continuity, not prose quality.
+
+## Context
+
+Declared canon constraints:
+- K1 (knowledge gate): The courier Wren does not learn the recipient's name, "Magister Hollis," until she breaks the wax seal, which happens in Scene 4.
+- K2 (knowledge gate): No one has told Wren the contents of the letter; the seal is intact through Scene 3.
+- T1 (timeline): The current draft passage is Scene 2, before any seal is broken.
+
+Draft passage (Scene 2):
+"Wren tucked the letter into her coat and set off down the switchback road. The seal was still whole, a fat disc of red wax stamped with a heron. She did not know what it said, and she had decided she did not care. Still, she muttered to herself as she walked, rehearsing the greeting she would give at the door: 'A letter for Magister Hollis, delivered as promised.'"
+
+## Gold Response
+
+```json
+{
+  "violation": true,
+  "type": "knowledge_state",
+  "constraint_id": "K1",
+  "explanation": "Constraint K1 states Wren does not learn the recipient's name, Magister Hollis, until she breaks the seal in Scene 4. This passage is Scene 2 with the seal still intact (consistent with K2/T1), yet Wren names Magister Hollis aloud. She is acting on knowledge she cannot possess yet.",
+  "evidence": "A letter for Magister Hollis, delivered as promised."
+}
+```
+
+## Evaluation
+
+- Response is a single valid JSON object matching the schema.
+- violation is exactly true.
+- type is exactly "knowledge_state".
+- constraint_id is "K1" (the name gate), not K2 (letter contents) — the draft is careful to keep the contents unknown, so the model must select the specific violated gate.
+- evidence quotes the line where Wren speaks the name she should not know.
+- The checker does NOT wrongly flag K2: the passage explicitly preserves "She did not know what it said," which is consistent.
+
+## Reviewer Notes
+
+Teaches knowledge-state (information a character cannot yet hold). The trap is that one gate (letter contents, K2) is respected while a neighboring gate (the recipient's name, K1) is broken in the same paragraph. Rewards precise attribution to the correct constraint.

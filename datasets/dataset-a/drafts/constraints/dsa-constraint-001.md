@@ -1,0 +1,66 @@
+---
+id: dsa-constraint-001
+dataset: dataset-a
+split: unassigned
+review_status: draft
+task_type: constraint_check
+subtype: factual_contradiction
+operating_mode: constraint_bound
+difficulty: easy
+template_family: constraint-fact-ledger
+semantic_cluster: lighthouse-keeper-eye-color
+style_profile: none
+provenance: hand-written synthetic passage for Dataset A seed batch
+source_type: synthetic_internal
+license_status: synthetic_internal
+teacher_model: none
+teacher_terms_status: not_applicable
+excluded_from_training: false
+expected_properties:
+  - output is valid JSON with a boolean 'violation' field
+  - violation is true for this record
+  - type equals "factual_contradiction"
+  - constraint_id cites the established-fact constraint that was broken
+  - evidence quotes the contradicting phrase from the draft
+---
+
+## Instruction
+
+You are a continuity checker for a fiction manuscript. You are given a set of declared canon constraints and a draft passage. Determine whether the draft violates any constraint. Respond with a single JSON object using the schema:
+{"violation": bool, "type": "factual_contradiction"|"knowledge_state"|"chronology"|"object_state"|"none", "constraint_id": <string or null>, "explanation": <string>, "evidence": <string>}
+Report at most one violation, the most direct one. Do not flag stylistic choices — only hard continuity constraints.
+
+## Context
+
+Declared canon constraints:
+- C1 (established fact): Elias Rourke, the lighthouse keeper, has grey eyes. This is stated in Chapter 2 and is fixed canon.
+- C2 (established fact): The lighthouse stands on Marrow Point.
+- C3 (established fact): Elias is left-handed.
+
+Draft passage (Chapter 9):
+"Elias climbed the spiral stair two steps at a time, the lamp oil sloshing in the can he balanced against his left hip. At the top he pressed his forehead to the cold glass and watched the fog swallow the water. When the beam swung back across his face, his brown eyes caught the light for an instant, bright as wet stone, before the dark took them again."
+
+## Gold Response
+
+```json
+{
+  "violation": true,
+  "type": "factual_contradiction",
+  "constraint_id": "C1",
+  "explanation": "Constraint C1 fixes Elias Rourke's eye color as grey, but the draft describes his eyes as brown. A character's eye color is a stable physical fact; the draft directly contradicts established canon.",
+  "evidence": "his brown eyes caught the light for an instant"
+}
+```
+
+## Evaluation
+
+- Response parses as a single valid JSON object matching the declared schema.
+- violation is exactly true.
+- type is exactly "factual_contradiction".
+- constraint_id is "C1" (the eye-color constraint), not C2 or C3.
+- evidence quotes the literal contradicting phrase ("brown eyes") drawn from the draft, not paraphrased.
+- The checker does NOT flag the left-hip detail (consistent with C3 left-handedness) or the Marrow Point / setting details.
+
+## Reviewer Notes
+
+Teaches the simplest violation class: a stable physical fact (eye color) restated in conflict with fixed canon. Includes two decoy facts (handedness, location) that are consistent, so the model must locate the one real contradiction rather than pattern-matching on "physical description present."

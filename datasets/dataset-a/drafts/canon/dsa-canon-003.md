@@ -1,0 +1,96 @@
+---
+id: dsa-canon-003
+dataset: dataset-a
+split: unassigned
+review_status: draft
+task_type: canon_extraction
+subtype: contradictory_rumor_scene
+operating_mode: source_bound
+difficulty: hard
+template_family: canon-overheard-market
+semantic_cluster: harbor-ship-rumor-conflict
+style_profile: none
+provenance: hand-written synthetic passage for Dataset A seed batch
+source_type: synthetic_internal
+license_status: synthetic_internal
+teacher_model: none
+teacher_terms_status: not_applicable
+excluded_from_training: false
+expected_properties:
+  - output is valid JSON matching the {facts:[...], insufficient_evidence:[...]} schema
+  - two contradictory claims about the ship are recorded as separate "character_belief" facts, each attributed to its speaker
+  - the doubled salt price is the only ship-adjacent fact labeled "established"
+  - neither rumor is promoted to established truth
+  - the ship's real fate is placed in insufficient_evidence
+---
+
+## Instruction
+
+Extract the passage's factual content as JSON `{"facts": [...], "insufficient_evidence": [...]}`.
+The scene contains conflicting hearsay. Record each speaker's claim as a separate fact with
+`certainty: "character_belief"`, attributed to that speaker in the `entity` or `fact` text. Use
+`certainty: "established"` only for what the narration presents as agreed or observed. Quote a
+short `evidence` span. Do not decide which rumor is correct.
+
+## Context
+
+By the fish stalls the talk was all of the governor's ship. "Sank off the Reach, all hands,"
+said the eel-woman, though she'd had it from her nephew, who'd had it from a drunk. A cooper
+spat and said the ship had never sailed at all — he'd seen it careened in the west dock that
+very morning. The gulls screamed. Nobody agreed on anything except that the price of salt had
+doubled since dawn.
+
+## Gold Response
+
+```json
+{
+  "facts": [
+    {
+      "entity": "the governor's ship (eel-woman's claim)",
+      "fact": "The eel-woman claims the ship sank off the Reach with all hands; she heard it thirdhand.",
+      "certainty": "character_belief",
+      "evidence": "\"Sank off the Reach, all hands,\" said the eel-woman, though she'd had it from her nephew"
+    },
+    {
+      "entity": "the governor's ship (cooper's claim)",
+      "fact": "The cooper claims the ship never sailed and that he saw it careened in the west dock that morning.",
+      "certainty": "character_belief",
+      "evidence": "the ship had never sailed at all — he'd seen it careened in the west dock"
+    },
+    {
+      "entity": "price of salt",
+      "fact": "The price of salt has doubled since dawn.",
+      "certainty": "established",
+      "evidence": "the price of salt had doubled since dawn"
+    },
+    {
+      "entity": "the crowd at the fish stalls",
+      "fact": "The people gathered agree on nothing except the salt price.",
+      "certainty": "established",
+      "evidence": "Nobody agreed on anything except that the price of salt had doubled"
+    }
+  ],
+  "insufficient_evidence": [
+    "What actually happened to the governor's ship",
+    "Whether the ship sailed at all",
+    "Which speaker, if either, is correct"
+  ]
+}
+```
+
+## Evaluation
+
+- Output parses as valid JSON and matches the schema.
+- The two ship claims are stored as distinct `character_belief` facts, each attributed to its
+  speaker; merging them or picking a winner is a failure.
+- The doubled salt price is the only ship-adjacent detail the narration asserts, so it is the
+  only nearby `established` fact.
+- The ship's real fate appears in `insufficient_evidence`. Any `facts` entry that states the
+  ship did or did not sink as objective truth is `invented_fact` / `unsupported_inference`.
+
+## Reviewer Notes
+
+Hard: two mutually exclusive rumors plus a thirdhand attribution chain ("nephew … a drunk") that
+signals low reliability. The trap is a plausible-sounding synthesis or a majority vote. Tier B
+judgment: reviewers should check that attribution is preserved in each fact so the contradiction
+remains legible rather than collapsed.

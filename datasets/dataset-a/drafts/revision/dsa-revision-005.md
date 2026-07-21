@@ -1,0 +1,96 @@
+---
+id: dsa-revision-005
+dataset: dataset-a
+split: unassigned
+review_status: draft
+task_type: focused_revision
+subtype: generic_atmosphere_to_specific_evidence
+operating_mode: source_bound
+difficulty: medium
+template_family: revision-atmosphere-to-evidence-suspense
+semantic_cluster: motel-room-planted-clue
+style_profile: suspense-mystery-v1
+craft_targets:
+  - significant_detail
+  - concrete_evidence
+protected_craft:
+  - lean_forward_momentum
+  - the_open_scene_question
+authorized_changes:
+  - replace the generic mood sentence with one concrete, checkable piece of evidence
+unauthorized_changes:
+  - turning the moment tender or romantic
+  - resolving the scene question
+  - adding interior emotion language
+anti_slop_targets:
+  - generic_atmosphere
+anti_slop_risks:
+  - cliche_substitution
+  - filter_word_overcorrection
+expected_properties:
+  - the generic "atmosphere" sentence is replaced by one concrete observable detail
+  - the replacement functions as evidence or misdirection, not mood
+matched_pair_with: dsa-revision-004
+failure_modes:
+  - generic_atmosphere
+  - cliche_substitution
+provenance: hand-written synthetic passage for Dataset A seed batch
+source_type: synthetic_internal
+license_status: synthetic_internal
+teacher_model: none
+teacher_terms_status: not_applicable
+excluded_from_training: false
+---
+
+## Instruction
+
+Replace the generic-atmosphere sentence with one concrete, observable detail that
+functions as evidence. Keep the lean momentum and the open scene question.
+(Concept-paired with dsa-revision-004 — same defect, different correct repair.)
+
+## Context
+
+Vance stepped into the motel room and stopped. The whole place radiated an
+ominous, foreboding atmosphere, a sense that something was terribly wrong. The
+bed was made. The chain lock hung cut, two bright ends where the bolt cutters had
+bitten. She hadn't touched the door.
+
+## Gold Response
+
+Vance stepped into the motel room and stopped. The television was still warm, its
+standby light steady, though the remote sat squared on top of the switched-off
+set. The bed was made. The chain lock hung cut, two bright ends where the bolt
+cutters had bitten. She hadn't touched the door.
+
+## Protected Elements
+
+- The cut chain lock (the scene's central evidence) — kept verbatim.
+- The lean, forward-driving rhythm.
+- The unanswered scene question (who cut the chain, and where are they).
+
+## Rejected Response
+
+Vance stepped into the motel room and stopped. A wave of dread washed over her,
+and every instinct screamed that danger was near, the air itself heavy with
+menace. The bed was made.
+
+## Rejection Reasons
+
+- `generic_atmosphere` / `cliche_substitution`: replaced one mood cliché with
+  louder ones ("dread washed over her," "instinct screamed").
+- Introduced interior emotion the profile keeps low, and deleted the protected
+  cut-chain evidence.
+- Adds no observable fact — the reader learns nothing checkable.
+
+## Evaluation
+
+- PASS iff the "radiated an ominous… atmosphere" sentence is replaced by a
+  concrete observable detail (warm TV, squared remote, etc.) and the cut-chain
+  sentence is retained.
+- The replacement must be evidence/misdirection, not named emotion.
+
+## Reviewer Notes
+
+Suspense half of the matched pair with dsa-revision-004. Same defect (generic
+atmosphere); the correct repair is a physical clue, not a tender detail —
+demonstrating profile-dependent repair. Reviewer: confirm distinctness from 004.

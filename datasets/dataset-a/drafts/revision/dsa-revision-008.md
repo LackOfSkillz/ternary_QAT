@@ -1,0 +1,97 @@
+---
+id: dsa-revision-008
+dataset: dataset-a
+split: unassigned
+review_status: draft
+task_type: focused_revision
+subtype: cut_fake_profundity_keep_anaphora
+operating_mode: source_bound
+difficulty: hard
+template_family: revision-repetition-preserve-lyrical
+semantic_cluster: migration-litany-anaphora
+style_profile: lyrical-mythic-v1
+craft_targets:
+  - earn_the_abstraction
+protected_craft:
+  - deliberate_anaphora
+  - the_litany_rhythm
+authorized_changes:
+  - delete the one hollow, profound-sounding sentence that says nothing
+unauthorized_changes:
+  - removing or de-duplicating the intentional anaphora
+  - collapsing the litany into a single sentence
+  - adding a new grand statement
+anti_slop_targets:
+  - fake_profundity
+anti_slop_risks:
+  - redundant_interpretation
+  - imposed_minimalism
+  - protected_element_removed
+expected_properties:
+  - the empty aphorism is removed
+  - the repeated "They came" openings are all retained
+  - the litany structure is intact
+failure_modes:
+  - fake_profundity
+  - protected_element_removed
+  - mechanical_fragmentation
+provenance: hand-written synthetic passage for Dataset A seed batch
+source_type: synthetic_internal
+license_status: synthetic_internal
+teacher_model: none
+teacher_terms_status: not_applicable
+excluded_from_training: false
+---
+
+## Instruction
+
+The passage uses deliberate anaphora (repeated openings) — that repetition is
+craft and must stay. It also contains one hollow, profound-sounding sentence that
+means nothing. Remove only that sentence. Keep the litany.
+
+## Context
+
+They came from the drowned villages, carrying salt in their hair. They came from
+the high pastures, driving the last of the goats. They came from the burned mill
+with nothing but the memory of bread. For in the end, all things are one thing,
+and that one thing is everything. They came, and the road took them the way a
+throat takes water.
+
+## Gold Response
+
+They came from the drowned villages, carrying salt in their hair. They came from
+the high pastures, driving the last of the goats. They came from the burned mill
+with nothing but the memory of bread. They came, and the road took them the way a
+throat takes water.
+
+## Protected Elements
+
+- All four "They came…" openings (the deliberate anaphora / litany).
+- The closing image "the way a throat takes water."
+- The incantatory rhythm.
+
+## Rejected Response
+
+People arrived from many different places, each carrying what little they had
+left. For in the end, all things are one thing, and that one thing is everything.
+The road took them onward.
+
+## Rejection Reasons
+
+- `protected_element_removed`: collapsed the intentional anaphora into one generic
+  summary sentence — treated craft repetition as redundancy.
+- `fake_profundity`: kept the empty aphorism (the actual target) and deleted the
+  litany instead.
+- `imposed_minimalism`: flattened a deliberately incantatory passage.
+
+## Evaluation
+
+- PASS iff the sentence "For in the end, all things are one thing…" is removed AND
+  all "They came" openings remain.
+- FAIL if any "They came" line is merged/removed, or the aphorism survives.
+
+## Reviewer Notes
+
+Preservation trap for intentional repetition. The tempting error is
+"de-duplication." Tier A: the anaphora count is checkable. Tier B (what reads as
+fake profundity vs. earned) — reviewer confirms the cut line is genuinely hollow.

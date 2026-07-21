@@ -1,0 +1,97 @@
+---
+id: dsa-revision-007
+dataset: dataset-a
+split: unassigned
+review_status: draft
+task_type: focused_revision
+subtype: fix_one_mixed_metaphor_keep_ornate
+operating_mode: source_bound
+difficulty: hard
+template_family: revision-mixed-metaphor-lyrical
+semantic_cluster: river-goddess-invocation-ornate
+style_profile: lyrical-mythic-v1
+craft_targets:
+  - metaphor_coherence
+protected_craft:
+  - ornate_earned_syntax
+  - the_sustained_river_image
+  - deliberate_cadence
+authorized_changes:
+  - repair only the one incoherent (mixed) metaphor so the central image stays coherent
+unauthorized_changes:
+  - flattening the ornate register into plain minimalism
+  - deleting the long cadenced sentences
+  - removing adjectives or imagery that are coherent and earned
+anti_slop_targets:
+  - mixed_metaphor
+anti_slop_risks:
+  - imposed_minimalism
+  - voice_flattening
+expected_properties:
+  - only the mixed-metaphor clause is changed
+  - the passage remains ornate and cadenced
+  - the central river image is left coherent
+failure_modes:
+  - mixed_metaphor
+  - imposed_minimalism
+  - voice_flattening
+provenance: hand-written synthetic passage for Dataset A seed batch
+source_type: synthetic_internal
+license_status: synthetic_internal
+teacher_model: none
+teacher_terms_status: not_applicable
+excluded_from_training: false
+---
+
+## Instruction
+
+This passage is ornate by intent, and it should stay ornate. It contains exactly
+one mixed metaphor. Repair only that, so the central image is coherent. Do not
+minimalize the prose or cut the earned lyricism.
+
+## Context
+
+She came down to the river the way the year comes down to winter — slowly, and
+then all at once — and the water took her name and carried it, syllable by
+syllable, toward the sea that forgets nothing. And her grief was a fire that
+flooded the low fields and drowned the seed before it could take root.
+
+## Gold Response
+
+She came down to the river the way the year comes down to winter — slowly, and
+then all at once — and the water took her name and carried it, syllable by
+syllable, toward the sea that forgets nothing. And her grief was a flood that
+rose over the low fields and drowned the seed before it could take root.
+
+## Protected Elements
+
+- The long cadenced opening and the "slowly, and then all at once" turn.
+- The sustained river/water image (name carried to the sea).
+- The ornate register and earned imagery throughout.
+
+## Rejected Response
+
+She went down to the river. The water took her name. She was sad. The fields
+flooded and the seeds died.
+
+## Rejection Reasons
+
+- `imposed_minimalism` / `voice_flattening`: gutted an intentionally ornate,
+  cadenced passage into flat declaratives — a house style, not this voice.
+- Destroyed the protected river image and cadence.
+- Did not actually perform the requested repair; it deleted the passage instead
+  of fixing the one mixed metaphor.
+
+## Evaluation
+
+- PASS iff only the "grief was a fire that flooded / drowned" clause is changed to
+  make the water metaphor coherent (fire cannot flood/drown), AND the rest remains
+  ornate and cadenced with its imagery intact.
+- FAIL if the passage is shortened, plainer, or stripped of adjectives/imagery.
+
+## Reviewer Notes
+
+The central anti-minimalism exemplar: ornate is legitimate here; only incoherence
+(a fire that floods and drowns) is the defect. Preservation trap + the "ornate
+must remain ornate" requirement. Tier B (earned lyricism) — reviewer confirms the
+imagery is coherent, not merely decorative.

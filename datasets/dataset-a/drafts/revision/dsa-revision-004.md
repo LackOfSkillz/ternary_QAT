@@ -1,0 +1,96 @@
+---
+id: dsa-revision-004
+dataset: dataset-a
+split: unassigned
+review_status: draft
+task_type: focused_revision
+subtype: generic_atmosphere_to_specific_evidence
+operating_mode: source_bound
+difficulty: medium
+template_family: revision-atmosphere-to-evidence-romantic
+semantic_cluster: kitchen-reunion-shared-detail
+style_profile: romantic-emotional-v1
+craft_targets:
+  - significant_detail
+  - concrete_diction
+protected_craft:
+  - warm_close_distance
+  - the_couples_specific_history
+authorized_changes:
+  - replace the generic mood sentence with one concrete detail specific to these two people
+unauthorized_changes:
+  - turning the moment into suspense or danger
+  - adding a plot clue foreign to the scene
+  - flattening the warmth
+anti_slop_targets:
+  - generic_atmosphere
+anti_slop_risks:
+  - cliche_substitution
+  - generic_sensory_filler
+expected_properties:
+  - the generic "atmosphere" sentence is replaced by one concrete, relationship-specific detail
+  - the replacement expresses intimacy, not threat
+matched_pair_with: dsa-revision-005
+failure_modes:
+  - generic_atmosphere
+  - cliche_substitution
+  - generic_sensory_filler
+provenance: hand-written synthetic passage for Dataset A seed batch
+source_type: synthetic_internal
+license_status: synthetic_internal
+teacher_model: none
+teacher_terms_status: not_applicable
+excluded_from_training: false
+---
+
+## Instruction
+
+Replace the generic-atmosphere sentence with one concrete detail specific to this
+couple. Keep the warm, close register. (Concept-paired with dsa-revision-005,
+which repairs the same defect under a Suspense profile — the correct repairs must
+differ.)
+
+## Context
+
+He was already in the kitchen when she got home. The air between them was thick
+with a palpable, romantic tension, charged with everything unspoken. He'd made
+tea. Two cups, and the chipped one turned handle-out, toward her, the way he'd
+done since the first winter.
+
+## Gold Response
+
+He was already in the kitchen when she got home. He'd set her slippers by the
+radiator so they'd be warm — a small apology he never said out loud. He'd made
+tea. Two cups, and the chipped one turned handle-out, toward her, the way he'd
+done since the first winter.
+
+## Protected Elements
+
+- The chipped-cup ritual (their specific history) — kept verbatim.
+- The warm, close narrative distance.
+- The unspoken-apology register (no on-the-nose emotion).
+
+## Rejected Response
+
+He was already in the kitchen when she got home. A tense, electric silence hung
+in the air, heavy with unspoken emotion and simmering desire. He'd made tea.
+
+## Rejection Reasons
+
+- `generic_atmosphere` / `cliche_substitution`: swapped one mood cliché for
+  another ("tense, electric silence," "simmering desire").
+- Deleted the protected chipped-cup detail.
+- `generic_sensory_filler`: "heavy with unspoken emotion" names nothing specific
+  to these two people.
+
+## Evaluation
+
+- PASS iff the "air between them was thick…" sentence is replaced by a concrete
+  detail unique to this couple, and the chipped-cup sentence is retained.
+- The replacement must read as intimacy, not danger.
+
+## Reviewer Notes
+
+Romantic half of the matched pair. Compare with dsa-revision-005: same defect
+(generic atmosphere), but the correct repair here is a tender shared detail, not
+a suspense clue. Confirm the two golds are not mere noun-swaps.

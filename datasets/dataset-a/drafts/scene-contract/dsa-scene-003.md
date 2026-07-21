@@ -1,0 +1,68 @@
+---
+id: dsa-scene-003
+dataset: dataset-a
+split: unassigned
+review_status: draft
+task_type: scene_contract
+subtype: incomplete_or_contradictory_request
+operating_mode: constraint_bound
+difficulty: hard
+template_family: scene-underspecified-flag
+semantic_cluster: mountain-radio-station-blizzard-decision
+style_profile: none
+provenance: hand-written synthetic scenario for Dataset A seed batch
+source_type: synthetic_internal
+license_status: synthetic_internal
+teacher_model: none
+teacher_terms_status: not_applicable
+excluded_from_training: false
+expected_properties:
+  - output is valid YAML with fields viewpoint, location, scene_objective, required_outcome, prohibited_outcome, knowledge_boundary, protected_craft_or_tone
+  - a 'problems' field is present listing the missing and contradictory instructions
+  - fields that the writer did not specify are left null and named in 'problems', not invented
+  - the contradiction between required_outcome and prohibited_outcome is flagged rather than silently resolved
+  - no missing constraint is fabricated
+---
+
+## Instruction
+
+You are a scene-contract builder for a fiction writer. Given the writer's scene request in the Context, produce a STRUCTURED scene contract as a single YAML object with exactly these fields: viewpoint, location, scene_objective, required_outcome, prohibited_outcome, knowledge_boundary, protected_craft_or_tone. Fill each field only from what the writer stated or clearly implied. If the request is INCOMPLETE or CONTRADICTORY, do not guess or silently resolve it: set the affected fields to null and add a 'problems' field listing exactly what is missing or in conflict. Never fabricate a constraint the writer did not give.
+
+## Context
+
+Writer's request:
+"Give me the scene contract for the storm chapter. It's set in the old mountain radio station during the blizzard. Sena is trapped there with the injured stranger. The point of the scene is that Sena has to decide whether to send the distress signal that will bring the rescue team — and the search party — up the mountain. She absolutely HAS to send the signal by the end so the rescuers are already climbing when the chapter closes. But it's also essential that no signal ever goes out in this scene, because the whole isolation of Part Two depends on them staying cut off. Keep it in the same voice as the rest of the book."
+
+## Gold Response
+
+```yaml
+viewpoint: null
+location: The old mountain radio station, during a blizzard.
+scene_objective: Sena must decide whether to send the distress signal that would bring the rescue team and search party up the mountain.
+required_outcome: null
+prohibited_outcome: null
+knowledge_boundary: null
+protected_craft_or_tone: null
+problems:
+  - Contradictory outcome: the request demands BOTH that Sena has sent the distress signal by the end of the scene (rescuers already climbing) AND that no signal ever goes out (so Part Two's isolation holds). These cannot both be true; required_outcome and prohibited_outcome are left null pending the writer's decision on which one governs this scene.
+  - Missing viewpoint: the request names Sena as the focal character but never states the narrative person or distance (first person, third limited, etc.). viewpoint left null.
+  - Missing knowledge_boundary: nothing is said about what Sena can or cannot know here (e.g., whether she knows the search party's status, the stranger's identity or condition, or the state of the equipment). knowledge_boundary left null.
+  - Underspecified protected_craft_or_tone: the writer says 'the same voice as the rest of the book' but supplies no description of that voice and no style profile is attached, so the tone cannot be encoded. protected_craft_or_tone left null.
+```
+
+## Protected Elements
+
+The writer asked to preserve "the same voice as the rest of the book," but did not describe that voice and attached no style profile. The intended craft target is therefore acknowledged but cannot be captured as a concrete constraint; it is surfaced under problems rather than filled with an invented tone.
+
+## Evaluation
+
+- Response parses as a single valid YAML object.
+- All seven required fields are present; only the two fields the writer actually specified (location, scene_objective) are filled, and both trace to the request.
+- A 'problems' field is present and lists the defects.
+- The central contradiction — required_outcome (signal sent, rescuers climbing) versus prohibited_outcome (no signal ever goes out) — is explicitly flagged, and both fields are left null rather than one being silently chosen.
+- Missing viewpoint, missing knowledge_boundary, and the undescribed "same voice" are each named as problems.
+- Nothing is fabricated: no invented POV, no invented tone, no invented resolution of the contradiction.
+
+## Reviewer Notes
+
+The required negative case. Teaches the model to refuse silent repair: it must fill only what is given, null out what is missing or contradictory, and enumerate the problems. The outcome pair is a direct logical contradiction (send vs never send), and three separate underspecifications (viewpoint, knowledge boundary, an unnamed 'same voice') are layered on top so the model must catch more than the obvious conflict without inventing to cover the gaps.

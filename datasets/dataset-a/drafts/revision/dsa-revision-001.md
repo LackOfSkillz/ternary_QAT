@@ -1,0 +1,98 @@
+---
+id: dsa-revision-001
+dataset: dataset-a
+split: unassigned
+review_status: draft
+task_type: focused_revision
+subtype: replace_generic_atmosphere
+operating_mode: source_bound
+difficulty: easy
+template_family: revision-generic-atmosphere-dark
+semantic_cluster: empty-house-wrong-sound
+style_profile: dark-speculative-v1
+craft_targets:
+  - significant_detail
+  - concrete_diction
+protected_craft:
+  - flat_affect
+  - single_sustained_image
+authorized_changes:
+  - replace the one generic-atmosphere sentence with a specific, slightly-wrong sensory detail
+unauthorized_changes:
+  - rewriting sentences that are already concrete
+  - adding gore or raised emotional volume
+  - changing the viewpoint's flat register
+anti_slop_targets:
+  - generic_atmosphere
+anti_slop_risks:
+  - unauthorized_rewrite
+  - imposed_lyricism
+expected_properties:
+  - exactly one sentence is changed
+  - the replacement names a specific sound or object-state, not a mood word
+  - the final flat sentence is retained verbatim
+failure_modes:
+  - generic_atmosphere
+  - unauthorized_rewrite
+  - imposed_lyricism
+provenance: hand-written synthetic passage for Dataset A seed batch
+source_type: synthetic_internal
+license_status: synthetic_internal
+teacher_model: none
+teacher_terms_status: not_applicable
+excluded_from_training: false
+---
+
+## Instruction
+
+Revise only the generic-atmosphere sentence so it gives a specific, concrete
+(slightly wrong) detail. Preserve the passage's flat affect and its final image.
+Change one sentence; leave the rest untouched.
+
+## Context
+
+Ellison let herself in with the spare key. An eerie, unsettling silence filled
+the whole house, thick with dread. The kettle on the stove was still warm. Her
+sister's coat hung by the door, both sleeves turned neatly inside out, the way no
+one takes a coat off.
+
+## Gold Response
+
+Ellison let herself in with the spare key. Somewhere upstairs a tap was running,
+steady, into a basin that had stopped filling long ago. The kettle on the stove
+was still warm. Her sister's coat hung by the door, both sleeves turned neatly
+inside out, the way no one takes a coat off.
+
+## Protected Elements
+
+- The final flat sentence about the coat (the sustained wrong image) — kept verbatim.
+- The plain, low-affect register; no heightened fear language.
+- The warm kettle detail.
+
+## Rejected Response
+
+Ellison crept inside, her heart hammering against her ribs as a terrible,
+suffocating dread pressed down on her. The house was a tomb of silence, every
+shadow alive with menace, the very air screaming that something unspeakable had
+happened here. Her sister's coat hung by the door like a shroud.
+
+## Rejection Reasons
+
+- `unauthorized_rewrite`: rewrote concrete sentences that were not the target.
+- `generic_atmosphere`: swapped one mood cliché ("eerie silence") for more of the
+  same ("tomb of silence", "air screaming").
+- `imposed_lyricism`: raised the emotional volume and added simile ("like a
+  shroud"), destroying the protected flat affect and the specific coat image.
+
+## Evaluation
+
+- PASS iff exactly one sentence differs from the source.
+- The changed sentence must contain a concrete sound/object-state, not an
+  abstract mood noun (silence, dread, menace).
+- The final coat sentence must appear unchanged.
+
+## Reviewer Notes
+
+Easy exemplar of the target defect. Tier A checks (single-sentence edit,
+concreteness) are decisive; the flat-affect protection is a Tier B judgment but
+low-ambiguity here.

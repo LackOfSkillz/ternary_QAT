@@ -1,0 +1,98 @@
+---
+id: dsa-revision-002
+dataset: dataset-a
+split: unassigned
+review_status: draft
+task_type: focused_revision
+subtype: no_change_needed_restraint
+operating_mode: source_bound
+difficulty: medium
+template_family: revision-restraint-no-change
+semantic_cluster: clean-dark-passage-leave-alone
+style_profile: dark-speculative-v1
+craft_targets:
+  - editorial_restraint
+protected_craft:
+  - existing_sentence_rhythm
+  - existing_concrete_detail
+authorized_changes:
+  - only fix a genuine error if one exists
+unauthorized_changes:
+  - rewriting clean prose to sound different
+  - substituting synonyms for already-precise words
+  - normalizing the voice toward a default style
+anti_slop_targets:
+  - none (restraint test — no anti-slop is present to remove)
+anti_slop_risks:
+  - unauthorized_rewrite
+  - voice_flattening
+expected_properties:
+  - output is identical to the source, or differs by at most a genuine error fix
+  - no synonym substitutions in already-precise sentences
+failure_modes:
+  - unauthorized_rewrite
+  - voice_flattening
+  - converted_voice_to_house_style
+provenance: hand-written synthetic passage for Dataset A seed batch
+source_type: synthetic_internal
+license_status: synthetic_internal
+teacher_model: none
+teacher_terms_status: not_applicable
+excluded_from_training: false
+---
+
+## Instruction
+
+Perform a focused anti-slop pass. If the passage has no genuine slop or error,
+return it unchanged and say so. Do not rewrite clean prose.
+
+## Context
+
+The generator ran all night in the yard, coughing twice an hour like something
+that had learned the trick of breathing. By dawn the fuel was gone. Petra counted
+the jars on the shelf, then counted them again, and did not write the number down.
+
+## Gold Response
+
+No change needed. The passage is concrete, its rhythm is controlled, and the
+withheld number does real work. Returning it unchanged:
+
+The generator ran all night in the yard, coughing twice an hour like something
+that had learned the trick of breathing. By dawn the fuel was gone. Petra counted
+the jars on the shelf, then counted them again, and did not write the number down.
+
+## Protected Elements
+
+- The simile "like something that had learned the trick of breathing" (earned, specific).
+- The deliberate repetition "counted… counted again" and the withheld number.
+- Sentence rhythm and word choices throughout.
+
+## Rejected Response
+
+The old generator rumbled and sputtered through the long, dark night in the
+yard, wheezing periodically like some ancient, dying beast struggling for air.
+When morning finally came, the last of the precious fuel had been completely
+exhausted. Petra carefully tallied the numerous jars upon the shelf, recounting
+them with meticulous care, yet she chose not to record the figure.
+
+## Rejection Reasons
+
+- `unauthorized_rewrite`: rewrote a clean passage that needed no revision.
+- `voice_flattening` / `converted_voice_to_house_style`: replaced the terse voice
+  with padded, adjective-heavy default prose ("long, dark night", "precious fuel",
+  "meticulous care").
+- The earned simile and the pointed withheld number were dissolved into generic
+  phrasing.
+
+## Evaluation
+
+- PASS iff the output is the source unchanged (a genuine-error fix would also
+  pass, but there is no error here).
+- FAIL on any synonym substitution or added modifier in a sentence that was
+  already precise.
+
+## Reviewer Notes
+
+Restraint exemplar (the ~10% no-change quota). The whole point is to punish
+compulsive rewriting. Decision is near-deterministic: diff the output against the
+source.

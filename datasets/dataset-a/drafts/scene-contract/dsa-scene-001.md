@@ -1,0 +1,63 @@
+---
+id: dsa-scene-001
+dataset: dataset-a
+split: unassigned
+review_status: draft
+task_type: scene_contract
+subtype: complete_request
+operating_mode: constraint_bound
+difficulty: easy
+template_family: scene-firstperson-confrontation
+semantic_cluster: greenhouse-inheritance-confession
+style_profile: none
+provenance: hand-written synthetic scenario for Dataset A seed batch
+source_type: synthetic_internal
+license_status: synthetic_internal
+teacher_model: none
+teacher_terms_status: not_applicable
+excluded_from_training: false
+expected_properties:
+  - output is valid YAML with fields viewpoint, location, scene_objective, required_outcome, prohibited_outcome, knowledge_boundary, protected_craft_or_tone
+  - every field is filled from the writer's request; nothing is invented
+  - prohibited_outcome names a scene outcome the writer explicitly barred
+  - knowledge_boundary states what the POV character can and cannot know
+  - no 'problems' field is present because the request is complete
+---
+
+## Instruction
+
+You are a scene-contract builder for a fiction writer. Given the writer's scene request in the Context, produce a STRUCTURED scene contract as a single YAML object with exactly these fields: viewpoint, location, scene_objective, required_outcome, prohibited_outcome, knowledge_boundary, protected_craft_or_tone. Fill each field only from what the writer stated or clearly implied. Do not invent constraints. If the request is complete, do not include a 'problems' field.
+
+## Context
+
+Writer's request:
+"I need a scene contract for chapter 14. It's first person, told by Della. The whole thing happens in her late aunt's greenhouse on a wet November afternoon. The scene has to get Della to finally admit out loud, to her cousin Rhys, that she was the one who let the frost in the winter the prize orchids died — this is the confession the whole book has been circling. By the end Rhys must know the truth; that's non-negotiable. But whatever you do, do NOT have them reconcile in this scene — no forgiveness, no hug, I want the wound left open. Della can only know what she saw and did herself; she has no idea that Rhys already suspected her, so she can't reference that. Keep it plain and close and a little airless — dry, understated first person, no purple grief."
+
+## Gold Response
+
+```yaml
+viewpoint: First person, narrated by Della.
+location: Her late aunt's greenhouse, on a wet November afternoon.
+scene_objective: Bring Della to confess aloud to her cousin Rhys that she was the one who let the frost in the winter the prize orchids died.
+required_outcome: By the end of the scene, Rhys knows the truth of what Della did. The confession lands and is heard.
+prohibited_outcome: Della and Rhys must NOT reconcile in this scene. No forgiveness, no embrace, no softening; the wound is left open.
+knowledge_boundary: Della knows only what she herself saw and did. She does not know that Rhys already suspected her, and cannot narrate or reference that suspicion.
+protected_craft_or_tone: Plain, close, slightly airless first person. Dry and understated. No purple or overwrought grief.
+```
+
+## Protected Elements
+
+The dry, understated, close first-person voice; the deliberately airless emotional register; restraint over sentimentality (no "purple grief"). These are the craft qualities the writer wants the eventual scene to preserve.
+
+## Evaluation
+
+- Response parses as a single valid YAML object.
+- All seven required fields are present: viewpoint, location, scene_objective, required_outcome, prohibited_outcome, knowledge_boundary, protected_craft_or_tone.
+- required_outcome is the confession being heard by Rhys; prohibited_outcome is the reconciliation the writer barred.
+- knowledge_boundary correctly limits Della to her own experience and excludes Rhys's prior suspicion.
+- No field is invented: every value traces to a statement in the request.
+- No 'problems' field appears, since the request is complete and non-contradictory.
+
+## Reviewer Notes
+
+The clean baseline case: a fully specified request that maps one-to-one onto the contract schema, including an explicit prohibited outcome (no reconciliation) and a clear POV knowledge limit. Teaches faithful extraction with zero invention.

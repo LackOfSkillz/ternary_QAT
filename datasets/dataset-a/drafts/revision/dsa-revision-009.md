@@ -1,0 +1,104 @@
+---
+id: dsa-revision-009
+dataset: dataset-a
+split: unassigned
+review_status: draft
+task_type: focused_revision
+subtype: dialogue_on_the_nose_to_subtext
+operating_mode: source_bound
+difficulty: medium
+template_family: revision-dialogue-subtext-commercial
+semantic_cluster: driveway-anniversary-argument
+style_profile: contemporary-commercial-v1
+craft_targets:
+  - subtext
+  - naturalistic_dialogue
+protected_craft:
+  - the_scene_outcome
+  - each_character_position
+authorized_changes:
+  - rewrite the on-the-nose lines so the feeling is implied through indirection or action
+unauthorized_changes:
+  - changing who wins the argument or the scene outcome
+  - making the dialogue so oblique the reader loses the thread
+  - adding narration that explains the subtext
+anti_slop_targets:
+  - dialogue_states_subtext
+anti_slop_risks:
+  - exposition_disguised_as_dialogue
+  - redundant_interpretation
+expected_properties:
+  - no character directly names their own emotion or its cause
+  - the reader can still infer both positions
+  - the same person still concedes at the end
+failure_modes:
+  - dialogue_states_subtext
+  - exposition_disguised_as_dialogue
+  - redundant_interpretation
+provenance: hand-written synthetic passage for Dataset A seed batch
+source_type: synthetic_internal
+license_status: synthetic_internal
+teacher_model: none
+teacher_terms_status: not_applicable
+excluded_from_training: false
+---
+
+## Instruction
+
+The dialogue is on the nose — the characters announce their feelings. Rewrite the
+lines so the subtext is carried by indirection and small action. Keep the scene
+outcome (Dana lets it go at the end) and both positions clear. Don't add narration
+that explains the feeling.
+
+## Context
+
+"I'm really hurt that you forgot our anniversary," Dana said. "It makes me feel
+like I'm not a priority to you."
+
+"I feel guilty, but I've been so stressed at work that I genuinely forgot," Mark
+said. "I still love you and you are important to me."
+
+"Okay. I forgive you because I know you're under pressure," Dana said.
+
+## Gold Response
+
+"There's cake in the fridge," Dana said. "I got the good one. From Marchetti's."
+
+Mark looked at the calendar magnet, then at her. "Dana." He set his keys down
+slowly, like they'd gotten heavier. "It's been one of those weeks. That's not —"
+
+"I know what kind of week it's been." She got two forks. Handed him one. "Sit
+down before you fall down."
+
+## Protected Elements
+
+- The scene outcome: Dana lets it go (now shown by the cake and the fork).
+- Both positions: her hurt, his overwhelm — inferable, not stated.
+- Mark's concession/guilt — shown by the keys and the unfinished sentence.
+
+## Rejected Response
+
+"I'm hurt you forgot our anniversary, but I understand you're stressed," Dana
+said, feeling both angry and forgiving at the same time. "I feel terrible about
+it," Mark replied guiltily, aware that he had made her feel unimportant.
+
+## Rejection Reasons
+
+- `dialogue_states_subtext`: characters still announce their emotions ("I'm
+  hurt," "I feel terrible").
+- `redundant_interpretation`: narration re-explains the feelings the dialogue
+  already states ("feeling both angry and forgiving," "aware that he had made her
+  feel unimportant").
+- No subtext was created; the lines were only lightly reworded.
+
+## Evaluation
+
+- PASS iff no character names their own emotion or its cause, the reader can still
+  infer both positions, and Dana still concedes at the end.
+- FAIL if emotions are stated in dialogue, or if added narration explains them, or
+  if the outcome changes.
+
+## Reviewer Notes
+
+Tier B (subtext) is the core judgment — reviewer confirms both positions remain
+inferable and the scene didn't become opaque. Outcome-preservation is checkable.

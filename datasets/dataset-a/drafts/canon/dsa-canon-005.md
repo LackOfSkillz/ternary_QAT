@@ -1,0 +1,109 @@
+---
+id: dsa-canon-005
+dataset: dataset-a
+split: unassigned
+review_status: draft
+task_type: canon_extraction
+subtype: memory_map_mixed_certainty
+operating_mode: source_bound
+difficulty: hard
+template_family: canon-map-memory
+semantic_cluster: cartographer-recollection-coast
+style_profile: none
+provenance: hand-written synthetic passage for Dataset A seed batch
+source_type: synthetic_internal
+license_status: synthetic_internal
+teacher_model: none
+teacher_terms_status: not_applicable
+excluded_from_training: false
+expected_properties:
+  - output is valid JSON matching the {facts:[...], insufficient_evidence:[...]} schema
+  - the record contains at least one "established", one "character_belief", and one "inferred" fact
+  - the cartographer's distrust of the copied coastline is "character_belief", not established inaccuracy
+  - the coastline being copied from a sailor's account is "established"
+  - the copied coast's actual accuracy and how Sela died are placed in insufficient_evidence
+---
+
+## Instruction
+
+Extract the passage's factual content as JSON `{"facts": [...], "insufficient_evidence": [...]}`.
+The scene braids remembered events with the character's own judgments. Label narration-stated
+memories `"established"`, the character's opinions or suspicions `"character_belief"`, and any
+conclusion you draw from stated cues `"inferred"`. Quote a short `evidence` span. Do not convert
+a suspicion into a proven defect.
+
+## Context
+
+The cartographer unrolled the old chart and the years came back with it. Here was the ford where
+the mule had drowned; here the ridge they had named for Sela, who had not lived to see it drawn.
+The ink had faded most along the eastern march, where his hand had shaken worst. He remembered
+surveying none of the coast — that stretch he had copied, trusting a sailor's word, and it had
+never sat right with him since.
+
+## Gold Response
+
+```json
+{
+  "facts": [
+    {
+      "entity": "the chart",
+      "fact": "The chart is old and its ink has faded most along the eastern march.",
+      "certainty": "established",
+      "evidence": "The ink had faded most along the eastern march"
+    },
+    {
+      "entity": "the ford",
+      "fact": "A mule drowned at the ford.",
+      "certainty": "established",
+      "evidence": "the ford where the mule had drowned"
+    },
+    {
+      "entity": "Sela",
+      "fact": "A ridge was named for Sela, who died before the chart was drawn.",
+      "certainty": "established",
+      "evidence": "the ridge they had named for Sela, who had not lived to see it drawn"
+    },
+    {
+      "entity": "the coastline",
+      "fact": "The cartographer did not survey the coast; he copied it, trusting a sailor's account.",
+      "certainty": "established",
+      "evidence": "that stretch he had copied, trusting a sailor's word"
+    },
+    {
+      "entity": "the copied coastline",
+      "fact": "The cartographer distrusts the copied coastline and has felt uneasy about it since.",
+      "certainty": "character_belief",
+      "evidence": "it had never sat right with him since"
+    },
+    {
+      "entity": "the eastern march of the chart",
+      "fact": "The eastern march may be less reliably drawn, since his hand shook worst there.",
+      "certainty": "inferred",
+      "evidence": "the eastern march, where his hand had shaken worst"
+    }
+  ],
+  "insufficient_evidence": [
+    "Whether the copied coastline is actually inaccurate",
+    "How Sela died",
+    "Whether the sailor's account was correct"
+  ]
+}
+```
+
+## Evaluation
+
+- Output parses as valid JSON and matches the schema.
+- The response includes all three certainty types: `established` (chart/mule/Sela/copied-coast),
+  `character_belief` (the cartographer's distrust), and `inferred` (reliability of the eastern
+  march from the shaking-hand cue).
+- The distrust is `character_belief`; asserting the coastline *is* wrong is `unsupported_inference`.
+  That the coast was copied from a sailor is `established` because the text states it directly.
+- The coast's true accuracy and the manner of Sela's death go to `insufficient_evidence`.
+
+## Reviewer Notes
+
+Hard: the passage mixes established remembered fact, a first-person suspicion, and a licensed
+inference within four sentences, and the emotional weight (Sela, the shaking hand) invites
+over-reading. The `inferred` fact is deliberately modest ("may be less reliably drawn") — Tier B
+judgment: reviewers should confirm it stays hedged and is not upgraded to an asserted error, and
+that the manner of Sela's death is never invented.

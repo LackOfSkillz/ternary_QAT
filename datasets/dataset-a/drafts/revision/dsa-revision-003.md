@@ -1,0 +1,96 @@
+---
+id: dsa-revision-003
+dataset: dataset-a
+split: unassigned
+review_status: draft
+task_type: focused_revision
+subtype: remove_redundant_interpretation_keep_named_emotion
+operating_mode: source_bound
+difficulty: hard
+template_family: revision-redundant-interpretation-romantic
+semantic_cluster: platform-goodbye-named-grief
+style_profile: romantic-emotional-v1
+craft_targets:
+  - trust_the_reader
+  - psychic_distance
+protected_craft:
+  - one_earned_named_emotion
+  - close_free_indirect_distance
+authorized_changes:
+  - delete the sentence that re-explains a feeling already shown
+unauthorized_changes:
+  - removing the single earned emotion word
+  - flattening the warmth into clipped minimalism
+  - adding new imagery
+anti_slop_targets:
+  - redundant_interpretation
+anti_slop_risks:
+  - emotional_overexplanation
+  - imposed_minimalism
+  - protected_element_removed
+expected_properties:
+  - the redundant explanatory sentence is removed
+  - the named emotion ("grief" / the intended feeling word) is retained
+  - no new content is added
+failure_modes:
+  - redundant_interpretation
+  - protected_element_removed
+  - imposed_minimalism
+provenance: hand-written synthetic passage for Dataset A seed batch
+source_type: synthetic_internal
+license_status: synthetic_internal
+teacher_model: none
+teacher_terms_status: not_applicable
+excluded_from_training: false
+---
+
+## Instruction
+
+The passage shows a feeling, then explains it again in the next sentence. Remove
+the redundant explanation. Keep the one named emotion — it is earned. Do not
+minimalize the voice or add anything.
+
+## Context
+
+She watched the train take him the way you watch weather. When it was gone she
+stood a while on the empty platform, holding the grief carefully, like a full cup
+she did not want to spill. It was grief because she loved him and he was leaving,
+and that combination always produces sorrow in the human heart.
+
+## Gold Response
+
+She watched the train take him the way you watch weather. When it was gone she
+stood a while on the empty platform, holding the grief carefully, like a full cup
+she did not want to spill.
+
+## Protected Elements
+
+- The named emotion "grief" — kept; it lands and the image depends on it.
+- The simile "like a full cup she did not want to spill."
+- The warm, close narrative distance (no clipping into terse fragments).
+
+## Rejected Response
+
+She watched the train take him. When it was gone she stood a while on the empty
+platform. She did not spill.
+
+## Rejection Reasons
+
+- `protected_element_removed`: deleted the earned emotion word "grief," which the
+  cup image needs to mean anything.
+- `imposed_minimalism`: stripped the warmth to bare clipped sentences — a house
+  style, not this passage's voice.
+- (The actual target — the redundant final sentence "It was grief because…" —
+  should be removed, but the rest kept; the rejection over-cut instead.)
+
+## Evaluation
+
+- PASS iff the sentence beginning "It was grief because…" is removed AND the word
+  "grief" still appears in the retained cup sentence.
+- FAIL if "grief" is deleted, or if remaining sentences are shortened/clipped.
+
+## Reviewer Notes
+
+Preservation trap: the tempting failure is to treat all emotion-naming as slop.
+Here naming is protected; only the *re-explanation* is slop. Tier B (psychic
+distance / earned naming) — reviewer should confirm the naming reads as earned.

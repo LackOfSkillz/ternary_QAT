@@ -1,0 +1,97 @@
+---
+id: dsa-revision-006
+dataset: dataset-a
+split: unassigned
+review_status: draft
+task_type: focused_revision
+subtype: fix_monotonous_rhythm_without_overcorrecting
+operating_mode: source_bound
+difficulty: hard
+template_family: revision-rhythm-monotony-suspense
+semantic_cluster: stairwell-pursuit-choppy-rhythm
+style_profile: suspense-mystery-v1
+craft_targets:
+  - sentence_length_variance
+  - turn_length_variance
+protected_craft:
+  - forward_momentum
+  - the_short_punch_at_the_beat
+authorized_changes:
+  - vary sentence length so the rhythm is not uniformly choppy
+  - combine two or three clipped sentences where it does not blunt tension
+unauthorized_changes:
+  - making every sentence long and languid
+  - adding lyrical description that slows the chase
+  - inventing new events
+anti_slop_targets:
+  - uniform_sentence_rhythm
+  - mechanical_fragmentation
+anti_slop_risks:
+  - imposed_lyricism
+  - uniform_sentence_rhythm
+expected_properties:
+  - the revised passage contains a mix of short and medium sentences (measurable variance up)
+  - at least one deliberately short sentence remains at a tension beat
+  - no new events are added
+failure_modes:
+  - mechanical_fragmentation
+  - uniform_sentence_rhythm
+  - imposed_lyricism
+provenance: hand-written synthetic passage for Dataset A seed batch
+source_type: synthetic_internal
+license_status: synthetic_internal
+teacher_model: none
+teacher_terms_status: not_applicable
+excluded_from_training: false
+---
+
+## Instruction
+
+The passage is uniformly choppy — every sentence the same short length. Restore
+variance so the rhythm breathes, but keep the momentum and keep a short punch at
+the key beat. Do not overcorrect into long, languid prose.
+
+## Context
+
+He took the stairs two at a time. The door was ahead. He reached it. It was
+locked. He turned. The footsteps were closer. He had no key. He had no time. He
+looked down. The gap under the door showed light. The light moved.
+
+## Gold Response
+
+He took the stairs two at a time, and the door was ahead of him before he was
+ready for it — locked. He turned. The footsteps were closer now, and he had no
+key and no time. Then he looked down: under the door, a line of light. It moved.
+
+## Protected Elements
+
+- The short beat "It moved." at the end (kept as a punch).
+- Forward momentum and cause-and-effect; no new events.
+- The concrete stakes (locked door, footsteps, no key).
+
+## Rejected Response
+
+He ascended the stairwell at a considerable pace, taking the steps two at a time
+as he went, and when he arrived at the door that stood ahead of him he discovered,
+to his mounting dismay, that it had been locked from the other side, and so he
+turned around slowly, listening as the footsteps drew ever nearer through the
+gloom.
+
+## Rejection Reasons
+
+- `imposed_lyricism`: overcorrected the choppiness into one long, languid
+  sentence that drains the tension.
+- `uniform_sentence_rhythm`: replaced one monotony (all short) with another (all
+  long) — variance is still absent.
+- The protected short punch and the moving-light beat are gone.
+
+## Evaluation
+
+- PASS iff sentence lengths vary (short + medium mixed) AND at least one very
+  short sentence remains at a tension beat AND no events are added.
+- FAIL if the output is uniformly long, or still uniformly choppy.
+
+## Reviewer Notes
+
+Overcorrection exemplar. Tier A: sentence-length variance is measurable; reviewer
+can count. The trap is treating "short = tense" as a universal rule.
