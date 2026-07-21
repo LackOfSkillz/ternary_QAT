@@ -1,16 +1,14 @@
-# Craft Taxonomy — Reference for Dataset A
+# Craft Taxonomy — Dataset A working subset (NON-AUTHORITATIVE)
 
-> **Status / provenance note.** The authoritative **LineWright Craft Taxonomy**
-> document was **not** supplied to this repository. This file records the
-> three-tier structure and the specific technique lists **as given in the Dataset A
-> dispatch**, so records have a stable labeling framework. It is a *reference for
-> labeling*, not a replacement taxonomy. When the authoritative taxonomy document
-> is provided, it should be added here verbatim and this file reconciled to it
-> (technique wording must not be silently rewritten). **This is an open item for
-> Gary's review** (see the dataset README, Open questions).
+> **Not authoritative.** The authoritative source is
+> [`linewright-craft-taxonomy.md`](linewright-craft-taxonomy.md) (installed in
+> Dispatch 13). This file is only a **short working subset** of the tiers/examples
+> most used by the Dataset A seed batch; it does not add, remove, or reinterpret
+> any technique. On any discrepancy, the authoritative file governs.
 
 Dataset A uses the taxonomy as a labeling and evaluation framework and does **not**
-attempt to train the complete taxonomy. The three-tier distinction is preserved.
+attempt to train the complete taxonomy. The three-tier distinction is preserved
+exactly as in the authoritative source.
 
 ## Tier A — Measurable
 
