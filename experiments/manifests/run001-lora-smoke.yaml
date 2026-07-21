@@ -4,10 +4,10 @@
 experiment_id: run001-lora-smoke
 
 timestamps:
-  start: pending
-  end: pending
+  start: 2026-07-21T14:23:14Z
+  end: 2026-07-21T14:26:30Z              # approx (adapter files stamped 14:26); train loop 184.8s
 
-git_commit: pending                     # launch commit (feat: add Run 1 pipeline), filled at launch
+git_commit: 252bb06f4f3175ddb4eab00548584bee747a6184   # launch commit
 
 model:
   base_model_repo: prism-ml/Ternary-Bonsai-4B-unpacked
@@ -23,7 +23,7 @@ dataset:
   eval_count: 24
 
 config:
-  checksum: pending                     # sha256 of run001-lora-smoke.yaml, recorded at launch
+  checksum: f4b0f51ecf388bb2f4760daeaa1d7b9efa3b1f8e4f1a222c25c08ec45814b876   # sha256 of run001-lora-smoke.yaml at launch
 
 environment:
   hostname: gx10-9141
@@ -43,9 +43,11 @@ reproducibility:
   random_seed: 20260721
 
 checkpoints:
-  paths: []                             # expected: checkpoint-50, checkpoint-100 under output_dir
-  expected_output_dir: /workspace/checkpoints/run001-lora-smoke
-  resume_history: []
+  paths:
+    - /workspace/checkpoints/run001-lora-smoke/checkpoint-50
+    - /workspace/checkpoints/run001-lora-smoke/checkpoint-100
+    - /workspace/checkpoints/run001-lora-smoke   # final adapter (save_model)
+  resume_history: []                    # single continuous run, no resume
 
 pipeline_commands:
   merge_command: n/a                    # Run 1 stops before merge
@@ -54,13 +56,37 @@ pipeline_commands:
 
 artifact:
   final_artifact_path: /workspace/checkpoints/run001-lora-smoke   # LoRA adapter (not merged)
-  final_artifact_checksum: pending
+  final_artifact: adapter_model.safetensors (132 MB), adapter_config.json
+  final_artifact_checksum: n/a          # not merged/exported; adapter files only (Run 1 stops here)
+
+training_stats:
+  train_runtime_s: 184.8
+  train_samples_per_second: 4.328
+  train_steps_per_second: 0.541
+  train_loss_mean: 0.2632
+  final_step_loss: 0.001447
+  loss_progression: [1.265, 0.7977, 0.3858, 0.1449, 0.02567, 0.005719, 0.002402, 0.00182, 0.001527, 0.001447]
+  eval_loss_step50: 1.22
+  eval_loss_step100: 1.314
+  peak_unified_mem_gb_train: 8.851
+  peak_unified_mem_gb_verify: 8.308
+  trainable_params: 33030144
+  trainable_percent: 0.8146
 
 evaluation:
   benchmark_version: run001-eval-v1
-  result_summary: pending
+  result_summary: |
+    Pipeline PASS. Loss fell 1.265 -> 0.0014 over 10 epochs (heavy overfit on 80
+    examples, expected for a smoke test). eval_loss 1.22 -> 1.314 (mild overfit).
+    Adapter verified: generates the trained target on a held prompt. No quality
+    claim is made.
 
-deviations: pending                     # note: assistant-only loss masking IS implemented
+deviations: |
+  1. Assistant-only loss masking IS implemented (prompt masked to -100).
+  2. Editable install fixed via [tool.setuptools.packages.find] include=["ternary*"].
+  3. torchao (NGC 0.14) removed from image; peft 0.19.1 raised on it though unused.
+  4. Chat template tokenized via tokenize=False then tokenizer() (transformers 5.x).
+  5. verify_lora_adapter.py generation fixed post-run to use return_dict input.
 notes: |
   Conventional LoRA only (no ternary swap_linear, no Unsloth/TRL/bitsandbytes/
   FlashAttention). One GX10. Attention: SDPA. Stops before merge/export/quantize.
