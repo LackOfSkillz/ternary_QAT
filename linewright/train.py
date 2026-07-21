@@ -114,6 +114,7 @@ def run(cfg_path, validate_only=False, dry_run=False, max_steps_override=None,
     stall = runtime.StallMonitor()
     status, stop_reason = "completed", "max_steps_reached"
     completed = 0
+    step_metrics = []
     try:
         for step in range(1, max_steps + 1):
             loss, grad_norm = backend.train_step(step, inject=inject)
@@ -122,6 +123,10 @@ def run(cfg_path, validate_only=False, dry_run=False, max_steps_override=None,
                                       batch_ids=batch_ids)
             grad_mon.observe(grad_norm, step=step)
             stall.observe(step, loss_available=True)
+            step_metrics.append({"step": step, "loss": round(float(loss), 6),
+                                 "grad_norm": round(float(grad_norm), 6),
+                                 "batch_ids": batch_ids})
+            manifest["step_metrics"] = step_metrics
             completed = step
             if step % ckpt_int == 0 or step == max_steps:
                 ck = writer.resolve(os.path.join(out_dir, "checkpoints", f"step-{step}"))

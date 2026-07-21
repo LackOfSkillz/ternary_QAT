@@ -131,9 +131,12 @@ def main():
 def _phase_summary(manifest, code):
     d = manifest.get("backend_diagnostics", {})
     reloads = manifest.get("checkpoint_reload_results", [])
+    sm = (manifest.get("step_metrics") or [{}])[0]
     return {
         "status": manifest.get("status"), "stop_reason": manifest.get("stop_reason"),
         "completed_steps": manifest.get("completed_steps"), "exit_code": code,
+        "step1_loss": sm.get("loss"), "step1_grad_norm": sm.get("grad_norm"),
+        "step1_batch_ids": sm.get("batch_ids"),
         "diagnostics": d,
         "checkpoint_reload": reloads[0] if reloads else None,
         "repository_verification_ok": (manifest.get("repository_verification") or {}).get("ok"),
