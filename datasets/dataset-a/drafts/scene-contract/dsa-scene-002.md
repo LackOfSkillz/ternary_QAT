@@ -1,8 +1,8 @@
 ---
 id: dsa-scene-002
 dataset: dataset-a
-split: unassigned
-review_status: draft
+split: evaluation
+review_status: approved
 task_type: scene_contract
 subtype: complete_request
 operating_mode: constraint_bound
@@ -17,6 +17,11 @@ license_status: unverified
 teacher_model: claude-opus-4-8
 teacher_terms_status: pending_review
 excluded_from_training: true
+gate_2_status: passed
+gate_3_status: passed
+freeze_id: dataset-a-experimental-v1
+production_approved: false
+experimental_use_only: true
 expected_properties:
   - output is valid YAML with fields viewpoint, location, scene_objective, required_outcome, prohibited_outcome, knowledge_boundary, protected_craft_or_tone
   - every field is filled from the writer's request; nothing is invented

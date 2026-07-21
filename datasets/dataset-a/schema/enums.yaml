@@ -5,7 +5,8 @@
 split:
   - unassigned          # all seed records; final assignment is a later, deliberate step
   - train
-  - eval
+  - evaluation          # held-out; excluded from gradient training
+  - eval                # legacy alias for evaluation
 
 review_status:
   - draft
@@ -13,8 +14,16 @@ review_status:
   - needs_revision
   - substantively_approved
   - author_approved
+  - approved            # Gary Gate 3 approval (see promotion sequence in specification.md)
   - rejected
   - frozen
+
+# Gate disposition values (Gate 2 independent-model review, Gate 3 Gary review).
+gate_status:
+  - pending
+  - passed
+  - conditional_pass
+  - failed
 
 task_type:
   - canon_extraction

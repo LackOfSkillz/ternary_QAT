@@ -1,8 +1,8 @@
 ---
 id: dsa-revision-017
 dataset: dataset-a
-split: unassigned
-review_status: draft
+split: train
+review_status: approved
 task_type: focused_revision
 subtype: pressure_metaphor_monoculture
 operating_mode: source_bound
@@ -36,11 +36,13 @@ expected_properties:
 invention_budget:
   level: bounded
   allowed:
-    - concrete observable details using the deck's existing setting (cold coffee, a cycling fan, a flinch)
+    - unnamed functional crew roles already implied by the command-deck setting
+    - concrete observable details using existing deck objects and machinery
   prohibited:
-    - new characters or plot facts
+    - new named characters
+    - new relationships, motives, or plot facts
     - a changed outcome
-    - a second pressure/weight metaphor
+    - a second pressure or weight metaphor
 failure_modes:
   - generic_atmosphere
   - cliche_substitution
@@ -50,7 +52,12 @@ source_type: synthetic_internal
 license_status: unverified
 teacher_model: claude-opus-4-8
 teacher_terms_status: pending_review
-excluded_from_training: true
+excluded_from_training: false
+gate_2_status: passed
+gate_3_status: passed
+freeze_id: dataset-a-experimental-v1
+production_approved: false
+experimental_use_only: true
 ---
 
 ## Instruction
@@ -101,5 +108,7 @@ pressure mounted toward something nameless.
 
 Pressure-metaphor exemplar (concept D). The gold keeps ONE "weight" at the payload
 (the number said aloud) and earns it with concrete evidence (no one reaching, cold
-coffee, the fan, the flinch). Bounded invention: observable details from the
-existing deck; no new characters (roles only).
+coffee, the fan, the flinch). Bounded invention (clarified at Gate 3): observable
+details from the existing deck, plus **unnamed functional crew roles already
+implied by the command-deck setting** (e.g. "the exec") — but no new *named*
+characters, relationships, motives, or plot facts, and no second pressure metaphor.

@@ -1,8 +1,8 @@
 ---
 id: dsa-revision-007
 dataset: dataset-a
-split: unassigned
-review_status: draft
+split: evaluation
+review_status: approved
 task_type: focused_revision
 subtype: fix_one_mixed_metaphor_keep_ornate
 operating_mode: source_bound
@@ -48,6 +48,11 @@ license_status: unverified
 teacher_model: claude-opus-4-8
 teacher_terms_status: pending_review
 excluded_from_training: true
+gate_2_status: passed
+gate_3_status: passed
+freeze_id: dataset-a-experimental-v1
+production_approved: false
+experimental_use_only: true
 ---
 
 ## Instruction

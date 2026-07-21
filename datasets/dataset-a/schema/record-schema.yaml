@@ -40,6 +40,12 @@ fields:
   causal_constraint_ids: {type: list, desc: "constraint_check only: the constraint IDs that JOINTLY make the passage a violation ([] for a non-violation). The gold constraint_ids must equal this set."}
   invention_budget:      {type: map, desc: "focused_revision only: {level: none|bounded|open, allowed: [...], prohibited: [...]}. Governs how much new material the revision may introduce."}
   public_domain_source:  {type: map, optional: true, desc: "REQUIRED when source_type == public_domain: {title, author, publication_year, edition_or_archive, source_url_or_identifier, verification_note}"}
+  # ---- experimental-freeze fields (Dispatch 17) ----
+  gate_2_status:         {type: enum, optional: true, enum: gate_status, desc: "Gate 2 (independent model review) disposition"}
+  gate_3_status:         {type: enum, optional: true, enum: gate_status, desc: "Gate 3 (Gary author review) disposition"}
+  freeze_id:             {type: string, optional: true, desc: "id of the freeze manifest this record belongs to, e.g. dataset-a-experimental-v1"}
+  production_approved:   {type: bool, optional: true, desc: "always false in this workflow; experimental freeze is NOT production approval"}
+  experimental_use_only: {type: bool, optional: true, desc: "true for records frozen for experimental training only; permits approved status while still under drafts/"}
 
 # Provenance vs review discipline:
 #   Provenance records ORIGIN (who/what authored the content). Review status
@@ -146,3 +152,20 @@ sections_optional:
   - Protected Elements
   - Rejected Response
   - Rejection Reasons
+
+# ---- experimental-freeze rules (Dispatch 17, enforced by the validator) ----
+# The normal placement rule keeps approved/frozen records OUT of drafts/. The
+# experimental freeze is an explicit exception: a record may hold review_status
+# 'approved' while still under drafts/ IFF experimental_use_only == true and
+# production_approved == false (the compiler reads drafts/**). Production approval
+# still requires leaving drafts/.
+#   - split == evaluation  => excluded_from_training MUST be true (never gradient-trained)
+#   - split == train       => excluded_from_training MUST be false (it enters SFT)
+#   - review_status 'approved' REQUIRES experimental_use_only: true, production_approved: false,
+#     freeze_id set, gate_2_status: passed, gate_3_status: passed
+experimental_freeze:
+  approved_requires:
+    experimental_use_only: true
+    production_approved: false
+  eval_must_be_excluded: true
+  train_must_be_included: true

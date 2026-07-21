@@ -15,7 +15,7 @@ import sys
 
 import yaml
 
-APPROVED_STATUSES = {"substantively_approved", "author_approved", "frozen"}
+APPROVED_STATUSES = {"substantively_approved", "author_approved", "approved", "frozen"}
 
 # a declared constraint line in a ## Context block, e.g. "- C1 (established fact): ..."
 _CONSTRAINT_DECL_RE = re.compile(r"^\s*-\s*([A-Z][A-Za-z]*\d+)\b")
@@ -147,6 +147,8 @@ def validate(root):
         check_enum("license_status", "license_status")
         check_enum("teacher_terms_status", "teacher_terms_status")
         check_enum("origin", "origin")
+        check_enum("gate_2_status", "gate_status")
+        check_enum("gate_3_status", "gate_status")
         if "dataset" in fm and fm["dataset"] != "dataset-a":
             err(f, f"dataset must be 'dataset-a', got '{fm.get('dataset')}'")
 
@@ -260,9 +262,32 @@ def validate(root):
                     if pf not in pds or pds[pf] in (None, ""):
                         err(f, f"public_domain_source missing '{pf}'")
 
-        # placement: approved-status must not live under drafts/
-        if area == "drafts" and fm.get("review_status") in APPROVED_STATUSES:
-            err(f, f"approved-status '{fm.get('review_status')}' in drafts/ directory")
+        # placement: approved-status must not live under drafts/, EXCEPT the
+        # explicit experimental-freeze exception (Dispatch 17): review_status
+        # 'approved' may stay under drafts/ iff experimental_use_only is true and
+        # production_approved is false. The compiler reads drafts/**.
+        rs = fm.get("review_status")
+        experimental = (fm.get("experimental_use_only") is True and
+                        fm.get("production_approved") is False)
+        if area == "drafts" and rs in APPROVED_STATUSES:
+            if not (rs == "approved" and experimental):
+                err(f, f"approved-status '{rs}' in drafts/ directory")
+
+        # experimental-freeze integrity
+        if rs == "approved":
+            if fm.get("experimental_use_only") is not True:
+                err(f, "review_status 'approved' requires experimental_use_only: true")
+            if fm.get("production_approved") is not False:
+                err(f, "review_status 'approved' requires production_approved: false")
+            if not fm.get("freeze_id"):
+                err(f, "review_status 'approved' requires a freeze_id")
+            if fm.get("gate_2_status") != "passed" or fm.get("gate_3_status") != "passed":
+                err(f, "review_status 'approved' requires gate_2_status and gate_3_status 'passed'")
+        # split vs gradient-training exclusion
+        if fm.get("split") == "evaluation" and fm.get("excluded_from_training") is not True:
+            err(f, "split 'evaluation' must have excluded_from_training: true (never gradient-trained)")
+        if fm.get("split") == "train" and fm.get("excluded_from_training") is not False:
+            err(f, "split 'train' must have excluded_from_training: false (it enters SFT)")
 
         # (template_family, semantic_cluster) uniqueness
         key = (fm.get("template_family"), fm.get("semantic_cluster"))

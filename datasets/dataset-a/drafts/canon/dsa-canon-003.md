@@ -1,8 +1,8 @@
 ---
 id: dsa-canon-003
 dataset: dataset-a
-split: unassigned
-review_status: draft
+split: evaluation
+review_status: approved
 task_type: canon_extraction
 subtype: contradictory_rumor_scene
 operating_mode: source_bound
@@ -17,6 +17,11 @@ license_status: unverified
 teacher_model: claude-opus-4-8
 teacher_terms_status: pending_review
 excluded_from_training: true
+gate_2_status: passed
+gate_3_status: passed
+freeze_id: dataset-a-experimental-v1
+production_approved: false
+experimental_use_only: true
 expected_properties:
   - output is valid JSON matching the {facts:[...], insufficient_evidence:[...]} schema
   - two contradictory claims about the ship are recorded as separate "character_belief" facts, each attributed to its speaker

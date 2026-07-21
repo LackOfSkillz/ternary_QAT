@@ -1,8 +1,8 @@
 ---
 id: dsa-revision-020
 dataset: dataset-a
-split: unassigned
-review_status: draft
+split: train
+review_status: approved
 task_type: focused_revision
 subtype: author_voice_override
 operating_mode: source_bound
@@ -47,7 +47,12 @@ source_type: synthetic_internal
 license_status: unverified
 teacher_model: claude-opus-4-8
 teacher_terms_status: pending_review
-excluded_from_training: true
+excluded_from_training: false
+gate_2_status: passed
+gate_3_status: passed
+freeze_id: dataset-a-experimental-v1
+production_approved: false
+experimental_use_only: true
 ---
 
 ## Instruction

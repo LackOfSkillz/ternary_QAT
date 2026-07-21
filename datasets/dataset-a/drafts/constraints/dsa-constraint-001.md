@@ -1,8 +1,8 @@
 ---
 id: dsa-constraint-001
 dataset: dataset-a
-split: unassigned
-review_status: draft
+split: train
+review_status: approved
 task_type: constraint_check
 subtype: factual_contradiction
 operating_mode: constraint_bound
@@ -16,7 +16,12 @@ source_type: synthetic_internal
 license_status: unverified
 teacher_model: claude-opus-4-8
 teacher_terms_status: pending_review
-excluded_from_training: true
+excluded_from_training: false
+gate_2_status: passed
+gate_3_status: passed
+freeze_id: dataset-a-experimental-v1
+production_approved: false
+experimental_use_only: true
 causal_constraint_ids:
   - C1
 expected_properties:
