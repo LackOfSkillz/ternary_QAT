@@ -54,3 +54,9 @@ training/runs/**/*.ckpt
 !training/runs/**/*.json
 !training/runs/**/*.md
 !training/runs/**/*.yaml
+
+# Machine-specific run artifacts (absolute paths, mtimes, temp refs). Regenerable;
+# their RESULTS are summarized in training/reports/. Keep only deterministic
+# baseline evidence (base/eval-*.json) trackable.
+training/runs/**/integrity/**
+training/runs/**/rehearsal/**
