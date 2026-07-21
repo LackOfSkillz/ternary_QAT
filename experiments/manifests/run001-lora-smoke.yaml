@@ -50,14 +50,62 @@ checkpoints:
   resume_history: []                    # single continuous run, no resume
 
 pipeline_commands:
-  merge_command: n/a                    # Run 1 stops before merge
-  export_command: n/a                   # Run 1 stops before GGUF conversion
-  quantization_command: n/a             # Run 1 stops before Q2_0 quantization
+  merge_command: >-
+    python experiments/scripts/merge_lora_adapter.py
+    --base-model /workspace/hf-cache/prism-ml/Ternary-Bonsai-4B-unpacked
+    --adapter /workspace/checkpoints/run001-lora-smoke
+    --output /workspace/exports/run001-merged-bf16
+  export_command: >-
+    PYTHONPATH=/llama.cpp/gguf-py python /llama.cpp/convert_hf_to_gguf.py
+    /workspace/exports/run001-merged-bf16
+    --outfile /workspace/exports/run001-gguf/run001-merged-bf16-f16.gguf --outtype f16
+  quantization_command: >-
+    ~/llama.cpp/build-gpu/bin/llama-quantize
+    run001-merged-bf16-f16.gguf run001-merged-q2_0.gguf TQ2_0
+
+export:
+  llama_cpp: ggerganov/llama.cpp master @ 7c158fbb4 (build b9518, arm64, TQ2_0 native)
+  merged_checkpoint_path: /home/gary/linewright-model-training/exports/run001-merged-bf16
+  merged_checkpoint_size_bytes: 8043615040   # model.safetensors
+  merged_sha256_model: 0e31b016829dadb9082ac09b7ea5ff184e8550463730c4c2d0aa7ec4dd7e0327
+  merged_sha256_config: dfe38d308f937316999562ca142b5ac0e7377d3b6d05f01ad66c9d12acfb7499
+  merge_elapsed_s: 69.5
+  merge_peak_mem_gb: 8.384
+  tied_before: true
+  tied_after: true
+  unquantized_gguf_path: /home/gary/linewright-model-training/exports/run001-gguf/run001-merged-bf16-f16.gguf
+  unquantized_gguf_size_bytes: 8049911648
+  unquantized_gguf_sha256: cef15f8ebaf54fd450078c03af8dcbd96cc6ae375a96785e577e1a463294248f
+  q2_0_path: /home/gary/linewright-model-training/exports/run001-gguf/run001-merged-q2_0.gguf
+  q2_0_size_bytes: 1261953856
+  q2_0_sha256: bda4af280a5ff20f47517924c08197a716dfe284b8ffa7a30d4b1f8db847ca2b
+  q2_0_quant_elapsed_s: 4.2
+  baseline_official_repo: prism-ml/Ternary-Bonsai-4B-gguf (Ternary-Bonsai-4B-Q2_0.gguf)
+  baseline_official_size_bytes: 1074969344
+  baseline_official_sha256: 4e0bf8b737b0431552f8c2c97695ab7c0cb214c94bcdeb4f5f267e67ddf28b8b
+  baseline_official_loadable: false   # ggml type 42 unsupported by llama.cpp b9518 (Prism packed format)
+  baseline_matched_path: /home/gary/linewright-model-training/exports/run001-gguf/base-untouched-q2_0.gguf
+  baseline_matched_size_bytes: 1261954048
+  baseline_matched_sha256: a0b9865111fce912ed03fb166f1d1285e6b2343de28d79c8b6388133bd67e509
+  verification_paths:
+    - logs/run001-export/merged-verification.json
+    - logs/run001-export/q2_0-verification.json
+    - logs/run001-export/base-matched-q2_0-verification.json
+  conversion_deviations: >-
+    llama-cli dropped -no-cnv (used llama-completion + EOF stdin); F16 GPU load
+    impractical on GB10 (used CPU); official Q2_0 unloadable (ggml type 42) so a
+    matched-tooling baseline was quantized via the identical pipeline.
+  result_summary: >-
+    Mechanical pipeline PASSES (merge -> F16 GGUF -> TQ2_0 -> reload -> generate
+    -> compare). Merged BF16 reproduced the trained target; after TQ2_0 the
+    trained and matched-untouched artifacts behave nearly identically -- the
+    conventional-LoRA change did NOT survive ternary reprojection. No
+    literary-quality conclusion.
 
 artifact:
-  final_artifact_path: /workspace/checkpoints/run001-lora-smoke   # LoRA adapter (not merged)
-  final_artifact: adapter_model.safetensors (132 MB), adapter_config.json
-  final_artifact_checksum: n/a          # not merged/exported; adapter files only (Run 1 stops here)
+  adapter_path: /workspace/checkpoints/run001-lora-smoke   # LoRA adapter (132 MB)
+  final_artifact_path: /home/gary/linewright-model-training/exports/run001-gguf/run001-merged-q2_0.gguf
+  final_artifact_checksum: bda4af280a5ff20f47517924c08197a716dfe284b8ffa7a30d4b1f8db847ca2b
 
 training_stats:
   train_runtime_s: 184.8
