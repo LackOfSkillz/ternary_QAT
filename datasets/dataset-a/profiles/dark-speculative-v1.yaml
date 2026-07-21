@@ -1,0 +1,27 @@
+# Generic starter craft profile — broad, editable, NON-prescriptive.
+# A conditioning/preservation aid, NOT a genre law and NEVER an override of an
+# established author voice (see enums.yaml precedence).
+id: dark-speculative-v1
+name: Dark Speculative
+version: 1
+summary: >
+  Unsettling speculative/horror-adjacent fiction. Dread built from concrete,
+  slightly-wrong detail rather than gore or adjectives.
+tendencies:
+  sentence_architecture: "varied; controlled longer builds that snap to a short line at the turn"
+  diction: "plain and exact, with occasional cold clinical precision; avoids purple"
+  narrative_distance: "close but wary; the viewpoint notices too much"
+  emotional_explicitness: "restrained; dread implied through attention, not named"
+  metaphor_density: "low-to-moderate; one earned, unsettling image beats three decorative ones"
+  sensory_emphasis: "sound, temperature, and wrongness of ordinary objects"
+  dialogue_behavior: "sparse, flat, subtext-heavy; people under-react"
+  pacing: "slow accumulation then sudden compression"
+  detail_economy: "specific over atmospheric; the wrong detail, not more detail"
+anti_slop_risks:
+  - generic_atmosphere        # "an eerie silence fell" instead of a specific wrong sound
+  - strained_metaphor
+  - fake_profundity
+  - body_language_stacking
+preserve_when_present:
+  - deliberate flat affect
+  - a single sustained unsettling image

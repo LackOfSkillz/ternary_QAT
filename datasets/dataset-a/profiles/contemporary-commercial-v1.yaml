@@ -1,0 +1,25 @@
+# Generic starter craft profile — broad, editable, NON-prescriptive.
+id: contemporary-commercial-v1
+name: Contemporary Commercial
+version: 1
+summary: >
+  Clean, propulsive, accessible contemporary fiction. Transparent prose that
+  stays out of the way of character and momentum.
+tendencies:
+  sentence_architecture: "clear, mostly medium-length; readable rhythm, not showy"
+  diction: "current, natural, unpretentious; concrete and specific"
+  narrative_distance: "close and companionable; wry interiority allowed"
+  emotional_explicitness: "moderate; direct but not overwrought"
+  metaphor_density: "low-to-moderate; fresh but unobtrusive"
+  sensory_emphasis: "everyday specifics — brands avoided, textures kept"
+  dialogue_behavior: "naturalistic, quick, character-revealing; contractions normal"
+  pacing: "brisk; scenes turn and move on"
+  detail_economy: "efficient; the telling ordinary detail"
+anti_slop_risks:
+  - cliche_substitution
+  - generic_sensory_filler
+  - dialogue_states_subtext   # on-the-nose dialogue
+  - redundant_interpretation
+preserve_when_present:
+  - a natural contraction-rich voice
+  - wry, character-specific interiority

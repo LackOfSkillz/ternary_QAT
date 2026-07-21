@@ -1,0 +1,83 @@
+# Dataset A — record schema (v1)
+#
+# Each source record is ONE Markdown file with YAML front matter + human sections.
+# This file documents the front-matter fields and which are required per task
+# family, and the required human-readable sections. It is the contract enforced
+# by scripts/validate_dataset_a.py. Controlled values live in enums.yaml.
+
+schema_version: 1
+
+# ---- front-matter fields ----
+# type notes: enum = value must appear in enums.yaml; list = YAML sequence.
+fields:
+  id:                    {type: string, desc: "unique, kebab id e.g. dsa-revision-001"}
+  dataset:               {type: string, const: "dataset-a"}
+  split:                 {type: enum, enum: split, desc: "unassigned for all seed records"}
+  review_status:        {type: enum, enum: review_status}
+  task_type:             {type: enum, enum: task_type}
+  subtype:               {type: string, desc: "free but stable label within a task_type"}
+  operating_mode:        {type: enum, enum: operating_mode}
+  difficulty:            {type: enum, enum: difficulty}
+  template_family:       {type: string, desc: "structural family; (family,cluster) must be unique"}
+  semantic_cluster:      {type: string, desc: "content cluster; (family,cluster) must be unique"}
+  style_profile:         {type: string, enum_optional: profiles, desc: "profile id or 'none'"}
+  craft_targets:         {type: list}
+  protected_craft:       {type: list}
+  authorized_changes:    {type: list}
+  unauthorized_changes:  {type: list}
+  anti_slop_targets:     {type: list}
+  anti_slop_risks:       {type: list}
+  expected_properties:   {type: list, desc: "checkable properties of the gold output"}
+  failure_modes:         {type: list, enum_items: failure_label}
+  provenance:            {type: string}
+  source_type:           {type: enum, enum: source_type}
+  license_status:        {type: enum, enum: license_status}
+  teacher_model:         {type: string, desc: "'none' if hand-written"}
+  teacher_terms_status:  {type: enum, enum: teacher_terms_status}
+  excluded_from_training:{type: bool}
+
+# fields required for EVERY record
+required_all:
+  - id
+  - dataset
+  - split
+  - review_status
+  - task_type
+  - operating_mode
+  - difficulty
+  - template_family
+  - semantic_cluster
+  - provenance
+  - source_type
+  - license_status
+  - teacher_terms_status
+  - excluded_from_training
+
+# additional required fields by task family
+required_by_task_type:
+  canon_extraction:      [expected_properties]
+  constraint_check:      [expected_properties]
+  focused_revision:      [craft_targets, protected_craft, authorized_changes, unauthorized_changes, anti_slop_targets, anti_slop_risks, style_profile, failure_modes]
+  scene_contract:        [expected_properties]
+  fiction_boundary:      [expected_properties]
+
+# ---- required human-readable sections (## headings) by task family ----
+# 'Rejected Response' + 'Rejection Reasons' are required for focused_revision and
+# fiction_boundary; optional elsewhere (omit explicitly, do not pad with filler).
+sections_required_all:
+  - Instruction
+  - Context
+  - Gold Response
+  - Evaluation
+  - Reviewer Notes
+
+sections_required_by_task_type:
+  focused_revision:  [Protected Elements, Rejected Response, Rejection Reasons]
+  fiction_boundary:  [Rejected Response, Rejection Reasons]
+  scene_contract:    [Protected Elements]
+
+# sections allowed to be absent without penalty (per task family)
+sections_optional:
+  - Protected Elements
+  - Rejected Response
+  - Rejection Reasons

@@ -1,0 +1,112 @@
+# Dataset A — controlled enumerations (v1)
+# Record authors MUST use these exact spellings. The schema can be extended by
+# adding values here (with review); records may not invent variants.
+
+split:
+  - unassigned          # all seed records; final assignment is a later, deliberate step
+  - train
+  - eval
+
+review_status:
+  - draft
+  - mechanically_validated
+  - needs_revision
+  - substantively_approved
+  - author_approved
+  - rejected
+  - frozen
+
+task_type:
+  - canon_extraction
+  - constraint_check
+  - focused_revision
+  - scene_contract
+  - fiction_boundary
+
+# Dataset A primary modes. Extensible later; do NOT add non-fiction modes now.
+operating_mode:
+  - inventive           # model may invent within constraints
+  - source_bound        # output must be grounded in supplied text
+  - constraint_bound    # output governed by declared hard constraints
+
+difficulty:
+  - easy
+  - medium
+  - hard
+
+source_type:
+  - synthetic_internal  # newly generated internal synthetic passage
+  - author_supplied     # prose Gary explicitly supplied for the record
+  - public_domain
+  - licensed
+
+license_status:
+  - synthetic_internal
+  - cc0
+  - public_domain
+  - licensed
+  - unverified
+
+teacher_terms_status:
+  - not_applicable      # hand-written, no teacher model
+  - pending_review
+  - cleared
+
+# Core failure labels — precise, distinguishable defects. Vague labels
+# (bad_style, weak_writing, not_engaging, needs_improvement) are forbidden.
+failure_label:
+  - unauthorized_rewrite
+  - voice_flattening
+  - converted_voice_to_house_style
+  - imposed_minimalism
+  - imposed_lyricism
+  - imposed_formality
+  - invented_fact
+  - invented_imagery
+  - invented_motive
+  - unsupported_inference
+  - chronology_error
+  - knowledge_state_error
+  - constraint_ignored
+  - protected_element_removed
+  - emotional_overexplanation
+  - generic_atmosphere
+  - fake_profundity
+  - redundant_interpretation
+  - body_language_stacking
+  - participial_opener_overuse
+  - generic_sensory_filler
+  - strained_metaphor
+  - mixed_metaphor
+  - adjective_stacking
+  - adverb_dependency
+  - filter_word_overcorrection
+  - dialogue_states_subtext
+  - exposition_disguised_as_dialogue
+  - uniform_sentence_rhythm
+  - mechanical_fragmentation
+  - em_dash_dependency
+  - cliche_substitution
+  - candidate_insufficiently_distinct
+  - moralizing
+  - invalid_refusal
+  - unsafe_actionable_instruction
+
+# Valid style profile ids (see ../profiles/). 'none' is allowed for tasks that
+# are not voice-conditioned (extraction, constraint, boundary).
+profiles:
+  - none
+  - dark-speculative-v1
+  - romantic-emotional-v1
+  - suspense-mystery-v1
+  - lyrical-mythic-v1
+  - contemporary-commercial-v1
+
+# Precedence order when guidance conflicts (highest first). The generic starter
+# profile MUST never override an established author voice.
+precedence:
+  - hard_canon_and_scene_constraints
+  - author_established_craft_constitution
+  - project_specific_genre_profile
+  - generic_starter_craft_profile
+  - model_defaults

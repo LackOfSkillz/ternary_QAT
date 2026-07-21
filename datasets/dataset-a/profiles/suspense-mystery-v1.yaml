@@ -1,0 +1,25 @@
+# Generic starter craft profile — broad, editable, NON-prescriptive.
+id: suspense-mystery-v1
+name: Suspense and Mystery
+version: 1
+summary: >
+  Tension-forward fiction driven by withheld information and specific evidence.
+  Clarity and momentum over mood.
+tendencies:
+  sentence_architecture: "lean, forward-driving; shorter under pressure, but not mechanically choppy"
+  diction: "concrete and observational; nouns and verbs carry the weight"
+  narrative_distance: "close third or first; the reader knows exactly what the POV notices and doubts"
+  emotional_explicitness: "low; fear shown through altered attention and decision"
+  metaphor_density: "low; a figure of speech must not slow the line"
+  sensory_emphasis: "specific evidence — marks, sounds, positions, timing"
+  dialogue_behavior: "clipped, probing; people conceal and test"
+  pacing: "tight cause-and-effect; scene questions kept open"
+  detail_economy: "every detail is potential evidence or misdirection"
+anti_slop_risks:
+  - generic_atmosphere        # mood words instead of specific evidence
+  - filter_word_overcorrection
+  - uniform_sentence_rhythm   # all-short-sentences monotony
+  - cliche_substitution
+preserve_when_present:
+  - a planted concrete clue
+  - a deliberately unanswered scene question

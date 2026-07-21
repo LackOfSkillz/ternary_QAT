@@ -1,0 +1,28 @@
+# Generic starter craft profile — broad, editable, NON-prescriptive.
+# NOTE: ornate is legitimate here. Anti-slop must NOT flatten earned lyricism
+# into minimalism (see specification.md: anti-slop is not minimalism).
+id: lyrical-mythic-v1
+name: Lyrical and Mythic
+version: 1
+summary: >
+  Elevated, cadenced fiction with a mythic or fabular register. Ornate by intent;
+  the music is part of the meaning.
+tendencies:
+  sentence_architecture: "long, cadenced, often paratactic; deliberate anaphora and repetition"
+  diction: "elevated, concrete-mythic; archaic touch permitted when consistent"
+  narrative_distance: "wider, oracular; sometimes choral or communal 'we'"
+  emotional_explicitness: "transmuted into image and cadence rather than named"
+  metaphor_density: "high — but each image must be coherent and load-bearing"
+  sensory_emphasis: "light, water, stone, season, ritual objects"
+  dialogue_behavior: "formal, weighted; speech as pronouncement"
+  pacing: "incantatory; time dilates and compresses by rhythm"
+  detail_economy: "rich but ordered; abundance is intentional, not padding"
+anti_slop_risks:
+  - imposed_minimalism        # flattening earned ornateness is the failure here
+  - mixed_metaphor
+  - strained_metaphor
+  - fake_profundity           # cadence without meaning
+preserve_when_present:
+  - deliberate repetition and anaphora
+  - a sustained, coherent central image
+  - ornate but earned syntax

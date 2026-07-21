@@ -1,0 +1,25 @@
+# Generic starter craft profile — broad, editable, NON-prescriptive.
+id: romantic-emotional-v1
+name: Romantic and Emotional
+version: 1
+summary: >
+  Interior, feeling-forward fiction where emotional stakes are the plot. Warmth
+  and yearning without sentimentality.
+tendencies:
+  sentence_architecture: "flowing, rhythm-aware; longer emotional sentences balanced by short beats"
+  diction: "warm, sensory, specific to the body and the near past"
+  narrative_distance: "very close; free indirect discourse common"
+  emotional_explicitness: "moderate-to-high, but earned; naming a feeling is allowed when it lands"
+  metaphor_density: "moderate; images drawn from the relationship's own world"
+  sensory_emphasis: "touch, gaze, small shared objects, temperature"
+  dialogue_behavior: "layered; what is said guards what is meant"
+  pacing: "lingers on turns of feeling; compresses logistics"
+  detail_economy: "the one detail that carries the feeling"
+anti_slop_risks:
+  - emotional_overexplanation
+  - sentimentality               # (Tier B): unearned emotional payout
+  - cliche_substitution
+  - redundant_interpretation     # naming the feeling AND explaining it
+preserve_when_present:
+  - a deliberately named emotion that is earned
+  - tender repetition used as rhythm
