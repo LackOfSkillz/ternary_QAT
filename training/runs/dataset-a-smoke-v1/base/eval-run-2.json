@@ -1,0 +1,152 @@
+{
+  "backend": "stub",
+  "eval_id": "dataset-a-smoke-eval-v1",
+  "evaluation_checksum": "0f3ae4263c5a175b38af5723f04e161de98e30a4a8ac5be10a2153a5fe47fc3b",
+  "format_valid_count": 3,
+  "record_count": 7,
+  "records": [
+    {
+      "deterministic_checks": {
+        "expected_format": "prose",
+        "format_valid": true
+      },
+      "format_valid": true,
+      "generation_metadata": {
+        "backend": "stub",
+        "max_new_tokens": 512,
+        "seed": 20260721,
+        "target": "base",
+        "temperature": 0,
+        "top_p": 1
+      },
+      "input_hash": "7bd3cbf8badfa01386cfd67e891214289950919aa830637e365db940d86cc17f",
+      "parsed_output": null,
+      "raw_output": "[stub:base:6429f71f8984f6f3] deterministic placeholder response.",
+      "record_id": "dsa-boundary-001",
+      "task_type": "fiction_boundary"
+    },
+    {
+      "deterministic_checks": {
+        "expected_format": "json",
+        "format_valid": false
+      },
+      "format_valid": false,
+      "generation_metadata": {
+        "backend": "stub",
+        "max_new_tokens": 512,
+        "seed": 20260721,
+        "target": "base",
+        "temperature": 0,
+        "top_p": 1
+      },
+      "input_hash": "151f65988415d3c7003d6e3c3c1d8596c9dfe020d461a6269262135185152c1a",
+      "parsed_output": null,
+      "raw_output": "[stub:base:363e6cd213b9fc54] deterministic placeholder response.",
+      "record_id": "dsa-canon-003",
+      "task_type": "canon_extraction"
+    },
+    {
+      "deterministic_checks": {
+        "expected_format": "json",
+        "format_valid": false
+      },
+      "format_valid": false,
+      "generation_metadata": {
+        "backend": "stub",
+        "max_new_tokens": 512,
+        "seed": 20260721,
+        "target": "base",
+        "temperature": 0,
+        "top_p": 1
+      },
+      "input_hash": "5804452653fe1922c152db4c7af96b780a63c43b68c2f451eac348b666142040",
+      "parsed_output": null,
+      "raw_output": "[stub:base:33b4fdefca74c5bf] deterministic placeholder response.",
+      "record_id": "dsa-constraint-002",
+      "task_type": "constraint_check"
+    },
+    {
+      "deterministic_checks": {
+        "expected_format": "json",
+        "format_valid": false,
+        "no_change_case": true,
+        "no_change_preserved": false
+      },
+      "format_valid": false,
+      "generation_metadata": {
+        "backend": "stub",
+        "max_new_tokens": 512,
+        "seed": 20260721,
+        "target": "base",
+        "temperature": 0,
+        "top_p": 1
+      },
+      "input_hash": "04fcce3475d1a0015825f8e5a10463afce69f2864501f966ec50d5c93c418feb",
+      "parsed_output": null,
+      "raw_output": "[stub:base:bff3d74639eaf52b] deterministic placeholder response.",
+      "record_id": "dsa-revision-002",
+      "task_type": "focused_revision"
+    },
+    {
+      "deterministic_checks": {
+        "expected_format": "prose",
+        "format_valid": true
+      },
+      "format_valid": true,
+      "generation_metadata": {
+        "backend": "stub",
+        "max_new_tokens": 512,
+        "seed": 20260721,
+        "target": "base",
+        "temperature": 0,
+        "top_p": 1
+      },
+      "input_hash": "a680c3f67313a889dbcba25fb0e402d834566394306461a262b973e321d41c58",
+      "parsed_output": null,
+      "raw_output": "[stub:base:7fc092110e96e029] deterministic placeholder response.",
+      "record_id": "dsa-revision-007",
+      "task_type": "focused_revision"
+    },
+    {
+      "deterministic_checks": {
+        "expected_format": "prose",
+        "format_valid": true
+      },
+      "format_valid": true,
+      "generation_metadata": {
+        "backend": "stub",
+        "max_new_tokens": 512,
+        "seed": 20260721,
+        "target": "base",
+        "temperature": 0,
+        "top_p": 1
+      },
+      "input_hash": "ffa6156c93e708b9a7dea659703ec0f4b75538eb99c3ed0146dd6b4b755a6166",
+      "parsed_output": null,
+      "raw_output": "[stub:base:cc580deb749fa19b] deterministic placeholder response.",
+      "record_id": "dsa-revision-018",
+      "task_type": "focused_revision"
+    },
+    {
+      "deterministic_checks": {
+        "expected_format": "yaml",
+        "format_valid": false
+      },
+      "format_valid": false,
+      "generation_metadata": {
+        "backend": "stub",
+        "max_new_tokens": 512,
+        "seed": 20260721,
+        "target": "base",
+        "temperature": 0,
+        "top_p": 1
+      },
+      "input_hash": "39e9a6b5e78370084419372e892cb9740201357c8c29077f397015971454163a",
+      "parsed_output": null,
+      "raw_output": "[stub:base:d6fc2eb1aca656c0] deterministic placeholder response.",
+      "record_id": "dsa-scene-002",
+      "task_type": "scene_contract"
+    }
+  ],
+  "target": "base"
+}
