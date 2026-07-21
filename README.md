@@ -1,6 +1,6 @@
 # ternary_QAT
 
-Lightweight ternary QAT for [Ternary-Bonsai](https://huggingface.co/models?search=unpacked%20ternary) unpacked models.
+Lightweight ternary QAT for [Ternary-Bonsai](https://huggingface.co/models?search=unpacked%20ternary) unpacked text models.
 
 This is designed from the start to be Unsloth compatible.
 
