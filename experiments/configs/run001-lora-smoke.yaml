@@ -56,11 +56,18 @@ resume:
   resume_from_checkpoint: false         # provisional; set to a path to resume
 
 compatibility_evidence:
-  torch_version: TODO                   # record verified CUDA-enabled torch build
-  cuda_runtime: TODO                    # record runtime CUDA (driver reports 13.0)
-  transformers_version: TODO
-  peft_version: TODO
-  accelerate_version: TODO
-  unsloth_supported: unknown            # verify GB10/arm64 support before enabling
-  verified_on_host: TODO                # e.g. gx10-9141
-  verified_smoke_forward_backward: false
+  # Verified 2026-07-21 inside linewright-ternary-train:run001 on gx10-9141.
+  torch_version: 2.10.0a0+b558c986e8.nv25.11   # NGC build; CUDA-enabled, untouched by pip installs
+  cuda_runtime: "13.0"                  # driver 580.159.03 reports CUDA 13.0
+  transformers_version: 5.14.1
+  peft_version: 0.19.1
+  accelerate_version: 1.14.0
+  unsloth_supported: unknown            # not installed; GB10/sm_121 needs transformers patches + FA3 unsupported
+  verified_on_host: gx10-9141
+  bf16_verified: true                   # torch.cuda.is_bf16_supported() == True; model loads/generates in bf16
+  verified_smoke_forward_backward: true # ternarize fwd/bwd + tied-weight swap_linear pass on CUDA
+  attn_implementation: sdpa             # FlashAttention NOT used (sm_121 unsupported by FA3)
+  base_image: nvcr.io/nvidia/pytorch:25.11-py3
+  derived_image: linewright-ternary-train:run001
+  derived_image_id: sha256:e2d9ed828c2e39411689e1f0fd197810f7d870139a8e43bc7a21d3efdf030991
+  editable_install: blocked             # setuptools flat-layout discovery (docker/,ternary/,experiments/); used PYTHONPATH

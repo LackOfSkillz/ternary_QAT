@@ -1,0 +1,33 @@
+# Run 1 training container for the LineWright starter-model pilot.
+# Base: NVIDIA NGC PyTorch for GB10 (Grace-Blackwell, sm_121), aarch64.
+#   Python 3.12.3, torch 2.10.0a0+nv25.11, CUDA 13.0, bf16 supported.
+# Package pins below were RESOLVED and verified importable against this exact
+# base image (they did not disturb the NGC torch build). See
+# experiments/results/run001-environment-verification.md for the evidence.
+#
+# NOT installed on purpose: unsloth, bitsandbytes, flash-attn, vllm, trl,
+# deepspeed. Attention uses SDPA (FlashAttention 3 does not support sm_121).
+#
+# The ternary_QAT repo is mounted at runtime and installed editable there
+# (pip install -e ".[peft,transformers]"), not copied into the image.
+FROM nvcr.io/nvidia/pytorch:25.11-py3
+
+WORKDIR /workspace/ternary_QAT
+
+RUN python -m pip install --upgrade pip && \
+    python -m pip install --root-user-action=ignore \
+      "transformers==5.14.1" \
+      "peft==0.19.1" \
+      "accelerate==1.14.0" \
+      "datasets==4.4.1" \
+      "safetensors==0.8.0" \
+      "huggingface_hub==1.24.0" \
+      "pyyaml==6.0.3" \
+      "pytest==8.1.1" \
+      "sentencepiece==0.2.2"
+
+# HF_HOME is the single modern cache root (covers the deprecated
+# TRANSFORMERS_CACHE in transformers 5.x). Mounted to a host dir at runtime.
+ENV HF_HOME=/workspace/hf-cache
+ENV HF_DATASETS_CACHE=/workspace/hf-cache/datasets
+ENV TOKENIZERS_PARALLELISM=false
