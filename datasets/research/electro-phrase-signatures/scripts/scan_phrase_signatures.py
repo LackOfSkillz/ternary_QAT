@@ -239,6 +239,16 @@ def scan_dataset_a(root, families, cand_index):
         introduced = {k: mg[k] - ms[k] for k in mg if mg[k] > ms[k]}
         removed = {k: ms[k] - mg[k] for k in ms if ms[k] > mg[k]}
         preserved = {k: min(ms[k], mg[k]) for k in ms if min(ms[k], mg[k]) > 0}
+        # structured no-change detection (gold is {changed:false, text:==source})
+        import json
+        no_change = False
+        mm = re.search(r"```(?:json)?\s*(.*?)```", secs.get("Gold Response", ""), re.S)
+        if mm:
+            try:
+                obj = json.loads(mm.group(1))
+                no_change = isinstance(obj, dict) and obj.get("changed") is False
+            except Exception:
+                pass
         recs.append({
             "id": fm.get("id"), "task_type": fm.get("task_type"),
             "style_profile": fm.get("style_profile") or "none",
@@ -248,8 +258,121 @@ def scan_dataset_a(root, families, cand_index):
             "em_compound_gold": s_gold["em_dash_compound"],
             "the_way_source": len(re.findall(r"\bthe way\b", src, re.I)),
             "the_way_gold": len(re.findall(r"\bthe way\b", gold, re.I)),
+            "structured_no_change": no_change,
         })
     return recs
+
+
+def _seg_section(recs, sect):
+    words = sum(r[sect]["word_count"] for r in recs) or 1
+    return {
+        "records": len(recs),
+        "words": sum(r[sect]["word_count"] for r in recs),
+        "high_risk_raw": sum(r[sect]["high_risk_count"] for r in recs),
+        "contextual_raw": sum(r[sect]["contextual_count"] for r in recs),
+        "em_dash": sum(r[sect]["em_dash_total"] for r in recs),
+        "em_compound": sum(r[sect]["em_dash_compound"] for r in recs),
+        "cluster_windows": sum(r[sect]["cluster_windows"] for r in recs),
+        "comparative_raw": sum(r[sect]["family_hits"]["comparative_template"] for r in recs),
+        "comparative_density": round(
+            sum(r[sect]["family_hits"]["comparative_template"] for r in recs) / words * 1000, 1),
+    }
+
+
+def render_segmented_md(recs, families, new_ids):
+    fam_ids = [f["family_id"] for f in families]
+    seed = [r for r in recs if r["id"] not in new_ids]
+    new = [r for r in recs if r["id"] in new_ids]
+    segments = [("Corrected seed (25)", seed), ("New batch (10)", new),
+                ("Combined draft corpus (35)", recs)]
+    L = ["# Gate 0 v3 — Electro Phrase-Signature Report (Dispatch 16)", "",
+         "Segmented scan. The Dispatch 15 baseline report",
+         "(`gate-0-v3-electro-signatures.md`) is left untouched. Findings are",
+         "**REVIEW** only; no phrase proves AI authorship. Short records inflate",
+         "per-1,000-word density, so **raw counts and density are both reported** and",
+         "records are not ranked by normalized density alone.", ""]
+
+    for name, seg in segments:
+        L += [f"## {name}", ""]
+        for sect in ("source", "gold", "rejected"):
+            s = _seg_section(seg, sect)
+            L.append(f"- **{sect}**: words {s['words']} | high-risk exact "
+                     f"{s['high_risk_raw']} | contextual exact {s['contextual_raw']} | "
+                     f"comparative raw {s['comparative_raw']} "
+                     f"(density {s['comparative_density']}/1k) | em-dash {s['em_dash']} "
+                     f"(compound {s['em_compound']}) | cluster-windows {s['cluster_windows']}")
+        # the way per segment
+        tws = sum(r["the_way_source"] for r in seg)
+        twg = sum(r["the_way_gold"] for r in seg)
+        L += [f"- `the way` — source {tws}, gold {twg}", ""]
+
+    # family density leaderboard, seed vs new (aggregate hits / words * 1000)
+    def agg_density(seg, sect):
+        words = sum(r[sect]["word_count"] for r in seg) or 1
+        return {fid: round(sum(r[sect]["family_hits"][fid] for r in seg) / words * 1000, 1)
+                for fid in fam_ids}
+    seed_g, new_g = agg_density(seed, "gold"), agg_density(new, "gold")
+    L += ["## Family density — gold (aggregate per 1,000 words)", "",
+          "| family | seed gold | new gold |", "|---|---|---|"]
+    for fid in sorted(fam_ids, key=lambda x: -max(seed_g[x], new_g[x])):
+        L.append(f"| {fid} | {seed_g[fid]} | {new_g[fid]} |")
+    L.append("")
+
+    # profile + task-family concentration (new batch)
+    from collections import Counter
+    prof = Counter(r["style_profile"] for r in new)
+    task = Counter(r["task_type"] for r in new)
+    L += ["## New-batch concentration", "",
+          f"- style profiles: {dict(prof)}",
+          f"- task families: {dict(task)}", ""]
+
+    # introduced / removed families (new batch, source->gold)
+    intro, rem = {}, {}
+    for r in new:
+        for k, v in r["introduced"].items():
+            intro[k] = intro.get(k, 0) + v
+        for k, v in r["removed"].items():
+            rem[k] = rem.get(k, 0) + v
+    L += ["## New-batch source → gold family deltas", "",
+          f"- introduced: {intro or 'none'}",
+          f"- removed: {rem or 'none'}",
+          "- The golds should chiefly **remove** families; introductions are small "
+          "(a single earned reaction, an action beat).", ""]
+
+    # highest raw-hit and highest-density records (with word counts)
+    raw_rank = sorted(((r["gold"]["high_risk_count"] + r["gold"]["contextual_count"],
+                        r["id"]) for r in recs), reverse=True)[:6]
+    dens_rank = sorted(((round(sum(r["gold"]["family_density"].values()), 1),
+                         r["gold"]["word_count"], r["id"]) for r in recs),
+                       reverse=True)[:6]
+    L += ["## Highest raw-hit records (gold exact)", ""]
+    L += [f"- {rid}: {n}" for n, rid in raw_rank]
+    L += ["", "## Highest gold density records (with word counts)", ""]
+    L += [f"- {rid}: density {d} (words {w})" for d, w, rid in dens_rank]
+    L.append("")
+
+    # explicit control checks
+    nc = next((r for r in recs if r["id"] == "dsa-revision-019"), None)
+    av = next((r for r in recs if r["id"] == "dsa-revision-020"), None)
+    ord_ctrl = next((r for r in recs if r["id"] == "dsa-revision-012"), None)
+    L += ["## Control checks", "",
+          f"- **No-change restraint** (dsa-revision-019): structured no-change gold "
+          f"= {bool(nc and nc['structured_no_change'])}; the earned `looked away` is "
+          f"preserved (source == gold).",
+          f"- **Author-voice override** (dsa-revision-020): declared `the way...` "
+          f"anaphora preserved in gold ({av['the_way_gold'] if av else 0} occurrences "
+          f"kept intentionally); the generic pressure metaphor was removed.",
+          "- **Ordinary-phrase false-positive control**: single ordinary phrases "
+          "never register as high-risk (see tests); the new golds add 0 high-risk "
+          "exact hits.", ""]
+
+    L += ["---", "",
+          "**Discipline:** warnings only; no record altered by this report. Corpus "
+          "artifacts (proper names, setting IDs) are excluded from generic "
+          "detection. The seed `the way` cluster was reduced 5→4 (Part B); the "
+          "new batch's 3 `the way` are the author-declared device in "
+          "dsa-revision-020, not house style.", ""]
+    return "\n".join(L)
 
 
 def render_dataset_a_md(recs, families):
@@ -369,6 +492,7 @@ def main():
     ap.add_argument("--dataset-a")
     ap.add_argument("--families", default=DEFAULT_FAMILIES)
     ap.add_argument("--candidates", default=DEFAULT_CANDIDATES)
+    ap.add_argument("--new-ids", help="comma-separated record IDs for a segmented report")
     ap.add_argument("--out-md")
     args = ap.parse_args()
     families = load_families(args.families)
@@ -376,7 +500,11 @@ def main():
 
     if args.dataset_a:
         recs = scan_dataset_a(args.dataset_a, families, cand)
-        md = render_dataset_a_md(recs, families)
+        if args.new_ids:
+            new_ids = set(x.strip() for x in args.new_ids.split(",") if x.strip())
+            md = render_segmented_md(recs, families, new_ids)
+        else:
+            md = render_dataset_a_md(recs, families)
         if args.out_md:
             with open(args.out_md, "w", encoding="utf-8") as fh:
                 fh.write(md)

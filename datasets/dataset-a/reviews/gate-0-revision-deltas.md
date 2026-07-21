@@ -92,10 +92,10 @@ words under a `none` invention budget). It does not judge prose quality.
 
 | metric | source | gold | delta | kind |
 |---|---|---|---|---|
-| word_count | 58 | 37 | -21 | deterministic |
-| sentence_count | 3 | 2 | -1 | heuristic |
-| avg_sentence_len | 19.3 | 18.5 | -0.8000000000000007 | heuristic |
-| sentence_len_variance | 6.24 | 7.5 | 1.2599999999999998 | heuristic |
+| word_count | 59 | 38 | -21 | deterministic |
+| sentence_count | 4 | 3 | -1 | heuristic |
+| avg_sentence_len | 14.8 | 12.7 | -2.1000000000000014 | heuristic |
+| sentence_len_variance | 8.93 | 9.43 | 0.5 | heuristic |
 | em_dash | 0 | 0 | 0 | deterministic |
 | semicolon | 0 | 0 | 0 | deterministic |
 | colon | 0 | 0 | 0 | deterministic |
@@ -103,10 +103,10 @@ words under a `none` invention budget). It does not judge prose quality.
 | filter_words | 1 | 1 | 0 | deterministic |
 | adverbs_ly | 1 | 1 | 0 | heuristic |
 | named_emotion_words | 3 | 1 | -2 | heuristic |
-| max_repeated_opening | 1 | 1 | 0 | heuristic |
+| max_repeated_opening | 2 | 2 | 0 | heuristic |
 | quote_chars | 0 | 0 | 0 | heuristic |
 
-- similarity ratio (heuristic): 0.8; changed sentence blocks: 1
+- similarity ratio (heuristic): 0.857; changed sentence blocks: 1
 - adjective_estimate: unavailable (no POS tagger)
 
 **Potential off-axis flags:**
@@ -367,6 +367,377 @@ words under a `none` invention budget). It does not judge prose quality.
 **Teacher-style signatures (heuristic):** none
 
 **Machine note:** No off-axis flags. Target: adjective_economy. Edit similarity 0.75.
+
+**Reviewer decision (Gate 1):** _pending_
+
+---
+
+## dsa-revision-011  (dark-speculative-v1)
+
+- **Intended craft target:** significant_detail, show_dont_tell
+- **Protected craft:** flat_low_affect, the_failing_hatch_stakes
+- **Authorized changes:** replace the generic embodied/sensory fear shorthand with concrete, character-specific behavior or consequence
+- **Invention budget:** bounded
+
+| metric | source | gold | delta | kind |
+|---|---|---|---|---|
+| word_count | 36 | 60 | 24 | deterministic |
+| sentence_count | 2 | 3 | 1 | heuristic |
+| avg_sentence_len | 18.0 | 20.0 | 2.0 | heuristic |
+| sentence_len_variance | 7.0 | 8.29 | 1.2899999999999991 | heuristic |
+| em_dash | 0 | 0 | 0 | deterministic |
+| semicolon | 0 | 0 | 0 | deterministic |
+| colon | 0 | 0 | 0 | deterministic |
+| ellipsis | 0 | 0 | 0 | deterministic |
+| filter_words | 0 | 2 | 2 | deterministic |
+| adverbs_ly | 0 | 0 | 0 | heuristic |
+| named_emotion_words | 1 | 0 | -1 | heuristic |
+| max_repeated_opening | 1 | 1 | 0 | heuristic |
+| quote_chars | 0 | 0 | 0 | heuristic |
+
+- similarity ratio (heuristic): 0.4; changed sentence blocks: 1
+- adjective_estimate: unavailable (no POS tagger)
+
+**Potential off-axis flags:**
+- ⚠ large edit distance (similarity 0.4) on a focused/minimal task
+
+**Teacher-style signatures (heuristic):** none
+
+**Machine note:** 1 off-axis flag(s). Target: significant_detail, show_dont_tell.
+
+**Reviewer decision (Gate 1):** _pending_
+
+---
+
+## dsa-revision-012  (contemporary-commercial-v1)
+
+- **Intended craft target:** concrete_evidence, naturalistic_understatement
+- **Protected craft:** the_dry_wry_register, the_scene_outcome_forced_reassurance
+- **Authorized changes:** replace the generic abstraction ("oppressive silence," "voice barely audible") with concrete observable evidence and action
+- **Invention budget:** bounded
+
+| metric | source | gold | delta | kind |
+|---|---|---|---|---|
+| word_count | 25 | 28 | 3 | deterministic |
+| sentence_count | 2 | 3 | 1 | heuristic |
+| avg_sentence_len | 12.5 | 9.3 | -3.1999999999999993 | heuristic |
+| sentence_len_variance | 1.5 | 2.05 | 0.5499999999999998 | heuristic |
+| em_dash | 0 | 0 | 0 | deterministic |
+| semicolon | 0 | 0 | 0 | deterministic |
+| colon | 0 | 0 | 0 | deterministic |
+| ellipsis | 0 | 0 | 0 | deterministic |
+| filter_words | 0 | 0 | 0 | deterministic |
+| adverbs_ly | 1 | 1 | 0 | heuristic |
+| named_emotion_words | 0 | 0 | 0 | heuristic |
+| max_repeated_opening | 1 | 1 | 0 | heuristic |
+| quote_chars | 2 | 2 | 0 | heuristic |
+
+- similarity ratio (heuristic): 0.0; changed sentence blocks: 1
+- adjective_estimate: unavailable (no POS tagger)
+
+**Potential off-axis flags:**
+- ⚠ large edit distance (similarity 0.0) on a focused/minimal task
+
+**Teacher-style signatures (heuristic):** none
+
+**Machine note:** 1 off-axis flag(s). Target: concrete_evidence, naturalistic_understatement.
+
+**Reviewer decision (Gate 1):** _pending_
+
+---
+
+## dsa-revision-013  (suspense-mystery-v1)
+
+- **Intended craft target:** earn_one_physical_reaction, show_through_action
+- **Protected craft:** first_person_close_distance, the_discovery_beat
+- **Authorized changes:** keep one earned physical reaction and convert the rest of the cluster into action or observation
+- **Invention budget:** none
+
+| metric | source | gold | delta | kind |
+|---|---|---|---|---|
+| word_count | 28 | 44 | 16 | deterministic |
+| sentence_count | 3 | 2 | -1 | heuristic |
+| avg_sentence_len | 9.3 | 22.0 | 12.7 | heuristic |
+| sentence_len_variance | 5.79 | 13.0 | 7.21 | heuristic |
+| em_dash | 0 | 0 | 0 | deterministic |
+| semicolon | 0 | 0 | 0 | deterministic |
+| colon | 0 | 0 | 0 | deterministic |
+| ellipsis | 0 | 0 | 0 | deterministic |
+| filter_words | 1 | 0 | -1 | deterministic |
+| adverbs_ly | 0 | 0 | 0 | heuristic |
+| named_emotion_words | 0 | 0 | 0 | heuristic |
+| max_repeated_opening | 2 | 1 | -1 | heuristic |
+| quote_chars | 0 | 0 | 0 | heuristic |
+
+- similarity ratio (heuristic): 0.0; changed sentence blocks: 1
+- adjective_estimate: unavailable (no POS tagger)
+
+**Potential off-axis flags:**
+- ⚠ large edit distance (similarity 0.0) on a focused/minimal task
+- ⚠ word count grew by 16 under a 'none' invention budget (possible added material)
+- ⚠ sentence-length variance shifted notably though not the named target
+
+**Teacher-style signatures (heuristic):** none
+
+**Machine note:** 3 off-axis flag(s). Target: earn_one_physical_reaction, show_through_action.
+
+**Reviewer decision (Gate 1):** _pending_
+
+---
+
+## dsa-revision-014  (romantic-emotional-v1)
+
+- **Intended craft target:** earn_one_physical_reaction, carry_emotion_in_subtext
+- **Protected craft:** warm_close_distance, the_withheld_answer_outcome
+- **Authorized changes:** keep one earned physical reaction and move the rest of the cluster into action, dialogue, or subtext
+- **Invention budget:** bounded
+
+| metric | source | gold | delta | kind |
+|---|---|---|---|---|
+| word_count | 34 | 52 | 18 | deterministic |
+| sentence_count | 3 | 3 | 0 | heuristic |
+| avg_sentence_len | 11.3 | 17.3 | 6.0 | heuristic |
+| sentence_len_variance | 4.78 | 3.3 | -1.4800000000000004 | heuristic |
+| em_dash | 0 | 0 | 0 | deterministic |
+| semicolon | 0 | 0 | 0 | deterministic |
+| colon | 0 | 0 | 0 | deterministic |
+| ellipsis | 0 | 0 | 0 | deterministic |
+| filter_words | 0 | 0 | 0 | deterministic |
+| adverbs_ly | 0 | 1 | 1 | heuristic |
+| named_emotion_words | 0 | 0 | 0 | heuristic |
+| max_repeated_opening | 1 | 1 | 0 | heuristic |
+| quote_chars | 0 | 2 | 2 | heuristic |
+
+- similarity ratio (heuristic): 0.0; changed sentence blocks: 1
+- adjective_estimate: unavailable (no POS tagger)
+
+**Potential off-axis flags:** none
+
+**Teacher-style signatures (heuristic):** none
+
+**Machine note:** No off-axis flags. Target: earn_one_physical_reaction, carry_emotion_in_subtext. Edit similarity 0.0.
+
+**Reviewer decision (Gate 1):** _pending_
+
+---
+
+## dsa-revision-015  (contemporary-commercial-v1)
+
+- **Intended craft target:** let_content_and_action_carry_tone, keep_speaker_clarity
+- **Protected craft:** three_speaker_attribution, the_scene_outcome_draw_straws
+- **Authorized changes:** remove the "voice + modifier" delivery tags and let dialogue and action carry tone, keep enough attribution that three speakers stay clear
+- **Invention budget:** bounded
+
+| metric | source | gold | delta | kind |
+|---|---|---|---|---|
+| word_count | 36 | 55 | 19 | deterministic |
+| sentence_count | 5 | 6 | 1 | heuristic |
+| avg_sentence_len | 7.2 | 9.2 | 1.9999999999999991 | heuristic |
+| sentence_len_variance | 2.48 | 8.01 | 5.529999999999999 | heuristic |
+| em_dash | 0 | 0 | 0 | deterministic |
+| semicolon | 0 | 0 | 0 | deterministic |
+| colon | 0 | 0 | 0 | deterministic |
+| ellipsis | 0 | 0 | 0 | deterministic |
+| filter_words | 0 | 0 | 0 | deterministic |
+| adverbs_ly | 1 | 0 | -1 | heuristic |
+| named_emotion_words | 0 | 0 | 0 | heuristic |
+| max_repeated_opening | 1 | 1 | 0 | heuristic |
+| quote_chars | 10 | 8 | -2 | heuristic |
+
+- similarity ratio (heuristic): 0.0; changed sentence blocks: 1
+- adjective_estimate: unavailable (no POS tagger)
+
+**Potential off-axis flags:**
+- ⚠ large edit distance (similarity 0.0) on a focused/minimal task
+- ⚠ sentence-length variance shifted notably though not the named target
+
+**Teacher-style signatures (heuristic):** short aphoristic-style ending changed/added (review)
+
+**Machine note:** 2 off-axis flag(s). Target: let_content_and_action_carry_tone, keep_speaker_clarity.
+
+**Reviewer decision (Gate 1):** _pending_
+
+---
+
+## dsa-revision-016  (suspense-mystery-v1)
+
+- **Intended craft target:** carry_menace_in_action, keep_speaker_clarity
+- **Protected craft:** the_power_dynamic, the_terse_tension
+- **Authorized changes:** remove the "voice + modifier" tags and let action and content carry the menace, keep enough attribution/anchoring that the two speakers stay clear
+- **Invention budget:** bounded
+
+| metric | source | gold | delta | kind |
+|---|---|---|---|---|
+| word_count | 39 | 46 | 7 | deterministic |
+| sentence_count | 5 | 4 | -1 | heuristic |
+| avg_sentence_len | 7.8 | 11.5 | 3.7 | heuristic |
+| sentence_len_variance | 2.04 | 4.61 | 2.5700000000000003 | heuristic |
+| em_dash | 0 | 0 | 0 | deterministic |
+| semicolon | 0 | 0 | 0 | deterministic |
+| colon | 0 | 0 | 0 | deterministic |
+| ellipsis | 0 | 0 | 0 | deterministic |
+| filter_words | 0 | 0 | 0 | deterministic |
+| adverbs_ly | 1 | 0 | -1 | heuristic |
+| named_emotion_words | 0 | 0 | 0 | heuristic |
+| max_repeated_opening | 1 | 1 | 0 | heuristic |
+| quote_chars | 8 | 8 | 0 | heuristic |
+
+- similarity ratio (heuristic): 0.222; changed sentence blocks: 2
+- adjective_estimate: unavailable (no POS tagger)
+
+**Potential off-axis flags:**
+- ⚠ large edit distance (similarity 0.222) on a focused/minimal task
+
+**Teacher-style signatures (heuristic):** three-part (tricolon) construction added
+
+**Machine note:** 1 off-axis flag(s). Target: carry_menace_in_action, keep_speaker_clarity.
+
+**Reviewer decision (Gate 1):** _pending_
+
+---
+
+## dsa-revision-017  (dark-speculative-v1)
+
+- **Intended craft target:** concrete_evidence, earn_one_metaphor
+- **Protected craft:** the_decisions_gravity, the_flat_controlled_register
+- **Authorized changes:** replace the generic weight/pressure abstractions with concrete scene evidence, keep at most one earned metaphor
+- **Invention budget:** bounded
+
+| metric | source | gold | delta | kind |
+|---|---|---|---|---|
+| word_count | 40 | 52 | 12 | deterministic |
+| sentence_count | 3 | 4 | 1 | heuristic |
+| avg_sentence_len | 13.3 | 13.0 | -0.3000000000000007 | heuristic |
+| sentence_len_variance | 1.25 | 5.79 | 4.54 | heuristic |
+| em_dash | 0 | 0 | 0 | deterministic |
+| semicolon | 0 | 0 | 0 | deterministic |
+| colon | 0 | 0 | 0 | deterministic |
+| ellipsis | 0 | 0 | 0 | deterministic |
+| filter_words | 0 | 0 | 0 | deterministic |
+| adverbs_ly | 0 | 1 | 1 | heuristic |
+| named_emotion_words | 0 | 0 | 0 | heuristic |
+| max_repeated_opening | 2 | 1 | -1 | heuristic |
+| quote_chars | 0 | 0 | 0 | heuristic |
+
+- similarity ratio (heuristic): 0.0; changed sentence blocks: 1
+- adjective_estimate: unavailable (no POS tagger)
+
+**Potential off-axis flags:**
+- ⚠ large edit distance (similarity 0.0) on a focused/minimal task
+- ⚠ sentence-length variance shifted notably though not the named target
+
+**Teacher-style signatures (heuristic):** none
+
+**Machine note:** 2 off-axis flag(s). Target: concrete_evidence, earn_one_metaphor.
+
+**Reviewer decision (Gate 1):** _pending_
+
+---
+
+## dsa-revision-018  (romantic-emotional-v1)
+
+- **Intended craft target:** motivated_action_over_gaze, significant_object_interaction
+- **Protected craft:** the_power_dynamic_he_approaches_she_holds, the_scene_outcome_a_thaw
+- **Authorized changes:** keep at most one meaningful look and replace the rest of the gaze choreography with motivated action or object interaction
+- **Invention budget:** bounded
+
+| metric | source | gold | delta | kind |
+|---|---|---|---|---|
+| word_count | 38 | 45 | 7 | deterministic |
+| sentence_count | 5 | 2 | -3 | heuristic |
+| avg_sentence_len | 7.6 | 22.5 | 14.9 | heuristic |
+| sentence_len_variance | 4.13 | 0.5 | -3.63 | heuristic |
+| em_dash | 0 | 0 | 0 | deterministic |
+| semicolon | 0 | 0 | 0 | deterministic |
+| colon | 0 | 0 | 0 | deterministic |
+| ellipsis | 0 | 0 | 0 | deterministic |
+| filter_words | 0 | 0 | 0 | deterministic |
+| adverbs_ly | 0 | 0 | 0 | heuristic |
+| named_emotion_words | 0 | 0 | 0 | heuristic |
+| max_repeated_opening | 2 | 1 | -1 | heuristic |
+| quote_chars | 0 | 0 | 0 | heuristic |
+
+- similarity ratio (heuristic): 0.0; changed sentence blocks: 1
+- adjective_estimate: unavailable (no POS tagger)
+
+**Potential off-axis flags:**
+- ⚠ large edit distance (similarity 0.0) on a focused/minimal task
+
+**Teacher-style signatures (heuristic):** none
+
+**Machine note:** 1 off-axis flag(s). Target: motivated_action_over_gaze, significant_object_interaction.
+
+**Reviewer decision (Gate 1):** _pending_
+
+---
+
+## dsa-revision-019  (lyrical-mythic-v1)
+
+- **Intended craft target:** editorial_restraint, respect_earned_phrase
+- **Protected craft:** the_single_earned_looked_away, the_incantatory_cadence
+- **Authorized changes:** only change something if there is a genuine defect; there is none here
+- **Invention budget:** none
+
+| metric | source | gold | delta | kind |
+|---|---|---|---|---|
+| word_count | 49 | 49 | 0 | deterministic |
+| sentence_count | 3 | 3 | 0 | heuristic |
+| avg_sentence_len | 16.3 | 16.3 | 0.0 | heuristic |
+| sentence_len_variance | 7.93 | 7.93 | 0.0 | heuristic |
+| em_dash | 0 | 0 | 0 | deterministic |
+| semicolon | 0 | 0 | 0 | deterministic |
+| colon | 0 | 0 | 0 | deterministic |
+| ellipsis | 0 | 0 | 0 | deterministic |
+| filter_words | 1 | 1 | 0 | deterministic |
+| adverbs_ly | 0 | 0 | 0 | heuristic |
+| named_emotion_words | 0 | 0 | 0 | heuristic |
+| max_repeated_opening | 1 | 1 | 0 | heuristic |
+| quote_chars | 0 | 0 | 0 | heuristic |
+
+- similarity ratio (heuristic): 1.0; changed sentence blocks: 0
+- adjective_estimate: unavailable (no POS tagger)
+
+**Potential off-axis flags:** none
+
+**Teacher-style signatures (heuristic):** none
+
+**Machine note:** No off-axis flags. Target: editorial_restraint, respect_earned_phrase. Edit similarity 1.0.
+
+**Reviewer decision (Gate 1):** _pending_
+
+---
+
+## dsa-revision-020  (lyrical-mythic-v1)
+
+- **Intended craft target:** apply_voice_precedence, remove_only_genuine_generic_slop
+- **Protected craft:** the_declared_anaphoric_the_way_device, the_second_person_incantatory_voice
+- **Authorized changes:** remove only the genuinely generic phrase that is NOT the author's declared device
+- **Invention budget:** none
+
+| metric | source | gold | delta | kind |
+|---|---|---|---|---|
+| word_count | 53 | 45 | -8 | deterministic |
+| sentence_count | 4 | 3 | -1 | heuristic |
+| avg_sentence_len | 13.2 | 15.0 | 1.8000000000000007 | heuristic |
+| sentence_len_variance | 3.34 | 1.63 | -1.71 | heuristic |
+| em_dash | 0 | 0 | 0 | deterministic |
+| semicolon | 0 | 0 | 0 | deterministic |
+| colon | 0 | 0 | 0 | deterministic |
+| ellipsis | 0 | 0 | 0 | deterministic |
+| filter_words | 0 | 0 | 0 | deterministic |
+| adverbs_ly | 0 | 0 | 0 | heuristic |
+| named_emotion_words | 0 | 0 | 0 | heuristic |
+| max_repeated_opening | 3 | 3 | 0 | heuristic |
+| quote_chars | 0 | 0 | 0 | heuristic |
+
+- similarity ratio (heuristic): 0.857; changed sentence blocks: 1
+- adjective_estimate: unavailable (no POS tagger)
+
+**Potential off-axis flags:** none
+
+**Teacher-style signatures (heuristic):** none
+
+**Machine note:** No off-axis flags. Target: apply_voice_precedence, remove_only_genuine_generic_slop. Edit similarity 0.857.
 
 **Reviewer decision (Gate 1):** _pending_
 

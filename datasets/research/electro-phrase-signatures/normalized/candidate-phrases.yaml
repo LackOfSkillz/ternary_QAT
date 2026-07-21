@@ -2462,8 +2462,9 @@ phrases:
   n: 3
   source_files:
   - trigrams-electro-a.txt
-  family_ids: []
-  tier: ordinary_phrase
+  family_ids:
+  - dialogue_delivery_template
+  tier: contextual_risk
   status: candidate
 - phrase: countered his voice
   n: 3
@@ -3225,8 +3226,9 @@ phrases:
   n: 3
   source_files:
   - trigrams-electro-a.txt
-  family_ids: []
-  tier: ordinary_phrase
+  family_ids:
+  - dialogue_delivery_template
+  tier: contextual_risk
   status: candidate
 - phrase: devoid of warmth
   n: 3
@@ -6721,8 +6723,9 @@ phrases:
   n: 3
   source_files:
   - trigrams-electro-a.txt
-  family_ids: []
-  tier: ordinary_phrase
+  family_ids:
+  - dialogue_delivery_template
+  tier: contextual_risk
   status: candidate
 - phrase: her voice barely
   n: 3
@@ -7122,8 +7125,9 @@ phrases:
   n: 3
   source_files:
   - trigrams-electro-a.txt
-  family_ids: []
-  tier: ordinary_phrase
+  family_ids:
+  - dialogue_delivery_template
+  tier: contextual_risk
   status: candidate
 - phrase: his voice barely
   n: 3
@@ -11502,8 +11506,9 @@ phrases:
   n: 3
   source_files:
   - trigrams-electro-a.txt
-  family_ids: []
-  tier: ordinary_phrase
+  family_ids:
+  - dialogue_delivery_template
+  tier: contextual_risk
   status: candidate
 - phrase: replied his voice
   n: 3
@@ -16316,36 +16321,41 @@ phrases:
   n: 2
   source_files:
   - bigrams-electro-b.txt
-  family_ids: []
-  tier: ordinary_phrase
+  family_ids:
+  - dialogue_delivery_template
+  tier: contextual_risk
   status: candidate
 - phrase: tone hardening
   n: 2
   source_files:
   - bigrams-electro-a.txt
   - bigrams-electro-b.txt
-  family_ids: []
-  tier: ordinary_phrase
+  family_ids:
+  - dialogue_delivery_template
+  tier: contextual_risk
   status: candidate
 - phrase: tone shifting
   n: 2
   source_files:
   - bigrams-electro-a.txt
-  family_ids: []
-  tier: ordinary_phrase
+  family_ids:
+  - dialogue_delivery_template
+  tier: contextual_risk
   status: candidate
 - phrase: tone shifting from
   n: 3
   source_files:
   - trigrams-electro-a.txt
-  family_ids: []
-  tier: ordinary_phrase
+  family_ids:
+  - dialogue_delivery_template
+  tier: contextual_risk
   status: candidate
 - phrase: tone utterly
   n: 2
   source_files:
   - bigrams-electro-a.txt
   family_ids:
+  - dialogue_delivery_template
   - generic_intensifier
   tier: contextual_risk
   status: candidate
@@ -16354,6 +16364,7 @@ phrases:
   source_files:
   - trigrams-electro-a.txt
   family_ids:
+  - dialogue_delivery_template
   - generic_intensifier
   tier: contextual_risk
   status: candidate

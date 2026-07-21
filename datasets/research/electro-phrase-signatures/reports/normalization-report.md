@@ -26,8 +26,8 @@ Deterministic. Nothing is silently discarded; every excluded entry is in
 ## Retained candidates by tier
 
 - high_risk_signature: **27**
-- contextual_risk: **852**
-- ordinary_phrase: **1470**
+- contextual_risk: **861**
+- ordinary_phrase: **1461**
 - **total retained candidates:** 2349
 
 All thresholds downstream are REVIEW, never FAIL. No phrase is labeled "AI-only"; tiers are repetition-risk priors only.

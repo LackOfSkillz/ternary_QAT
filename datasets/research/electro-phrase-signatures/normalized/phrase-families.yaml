@@ -34,7 +34,7 @@ families:
     acceptable_when: Occasional attribution clarifies who speaks or a genuine tonal shift.
     do_not_flag_when: A single natural tag in a long exchange.
     severity: high
-    match_tokens: [voice, murmured, whispered, rasped, muttered, scoffed]
+    match_tokens: [voice, murmured, whispered, rasped, muttered, scoffed, tone, cadence, inflection]
     high_risk: [voice dropping, voice dropping to, his voice dropping, voice barely audible]
 
   - family_id: pressure_metaphor
