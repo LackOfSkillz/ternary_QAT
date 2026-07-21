@@ -36,15 +36,28 @@ def render_prompt_text(tokenizer, messages, add_generation_prompt=True):
     return _fallback_prompt(messages, add_generation_prompt), False
 
 
+def _template_ids(tokenizer, messages, add_generation_prompt):
+    """Token ids from the chat template, robust to the transformers return type
+    (list[int], tensor, dict, or rendered-string)."""
+    out = tokenizer.apply_chat_template(
+        messages, tokenize=True, add_generation_prompt=add_generation_prompt)
+    if isinstance(out, str):                       # some versions return text
+        out = tokenizer(out, add_special_tokens=False)["input_ids"]
+    elif isinstance(out, dict):
+        out = out["input_ids"]
+    if hasattr(out, "tolist"):
+        out = out.tolist()
+    if out and isinstance(out[0], (list, tuple)):
+        out = out[0]
+    return [int(x) for x in out]
+
+
 def build_generation_ids(tokenizer, messages):
     """Token ids for a generation prompt (system+user, assistant to be produced)."""
     if has_chat_template(tokenizer):
-        ids = tokenizer.apply_chat_template(
-            messages, tokenize=True, add_generation_prompt=True)
-    else:
-        text, _ = render_prompt_text(tokenizer, messages, add_generation_prompt=True)
-        ids = tokenizer(text, add_special_tokens=True)["input_ids"]
-    return list(ids)
+        return _template_ids(tokenizer, messages, add_generation_prompt=True)
+    text, _ = render_prompt_text(tokenizer, messages, add_generation_prompt=True)
+    return list(tokenizer(text, add_special_tokens=True)["input_ids"])
 
 
 def build_training_example(tokenizer, messages, max_length, truncation="right"):
@@ -59,8 +72,7 @@ def build_training_example(tokenizer, messages, max_length, truncation="right"):
     prompt_ids = build_generation_ids(tokenizer, prompt_msgs)
 
     if has_chat_template(tokenizer):
-        full_ids = tokenizer.apply_chat_template(
-            messages, tokenize=True, add_generation_prompt=False)
+        full_ids = _template_ids(tokenizer, messages, add_generation_prompt=False)
     else:
         prompt_text, _ = render_prompt_text(tokenizer, prompt_msgs, add_generation_prompt=True)
         full_text = prompt_text + " " + messages[-1]["content"]

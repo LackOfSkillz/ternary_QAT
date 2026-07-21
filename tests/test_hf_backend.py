@@ -69,6 +69,25 @@ def test_excessive_truncation_fails():
         collate.build_training_example(FakeTokenizer(), MSGS, max_length=2)
 
 
+class FakeChatTokenizer(FakeTokenizer):
+    chat_template = "{{ some template }}"
+
+    def apply_chat_template(self, messages, tokenize=True, add_generation_prompt=False):
+        text = " ".join(m["content"] for m in messages)
+        if add_generation_prompt:
+            text += " gen"
+        return text if tokenize else text          # returns a STRING even when tokenize=True
+
+
+def test_template_ids_robust_to_string_return():
+    t = FakeChatTokenizer()
+    ids = collate.build_generation_ids(t, MSGS[:2])
+    assert ids and all(isinstance(i, int) for i in ids)
+    ex = collate.build_training_example(t, MSGS, max_length=512)
+    assert all(isinstance(i, int) for i in ex["input_ids"])
+    assert ex["target_token_count"] >= 1
+
+
 # 6 shared formatter is deterministic
 def test_formatter_deterministic():
     t = FakeTokenizer()
