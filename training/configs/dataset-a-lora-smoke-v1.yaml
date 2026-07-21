@@ -1,0 +1,87 @@
+# Dataset A — LoRA smoke test (Run 1 style, conventional LoRA)
+# STATUS: PROVISIONAL — DO NOT EXECUTE from this dispatch. This dispatch prepares
+# the config only. The goal is PIPELINE VALIDATION, not quality. See
+# training/docs/dataset-a-smoke-runbook-v1.md, TRAINING_PILOT.md, ROADMAP.md.
+# Smoke-test results must NEVER be represented as production quality.
+
+experiment_id: dataset-a-lora-smoke-v1
+status: smoke-ready
+freeze_id: dataset-a-experimental-v1
+production_approved: false
+experimental_use_only: true
+
+model:
+  base_model: prism-ml/Ternary-Bonsai-4B-unpacked           # repository default (TRAINING_PILOT.md)
+  base_model_path: /workspace/hf-cache/prism-ml/Ternary-Bonsai-4B-unpacked
+  base_model_revision: 4485fae7a00129467b9329b738110d88b2942a1a
+  tokenizer_revision: 4485fae7a00129467b9329b738110d88b2942a1a
+
+paths:
+  output_dir: training/runs/dataset-a-smoke-v1/lora            # small metrics/config only; weights git-ignored
+  logging_dir: training/runs/dataset-a-smoke-v1/lora/logs
+  cache_dir: /workspace/hf-cache
+
+dataset:
+  train_file: datasets/dataset-a/compiled/experimental-v1/train.jsonl
+  evaluation_file: datasets/dataset-a/compiled/experimental-v1/evaluation.jsonl
+  system_prompt_file: datasets/dataset-a/prompts/linewright-training-system-v1.txt
+  train_checksum: 97778f2a334649c8a67376b09c42d297ebdf031e2123e6dcce378310cfbf8f38
+  evaluation_checksum: 0f3ae4263c5a175b38af5723f04e161de98e30a4a8ac5be10a2153a5fe47fc3b
+  system_prompt_checksum: 038d9ab8aac2aee9504aa7c81f8870cbad66338436aad3c4063b97b1fd205c3c
+  format: sft_messages
+
+reproducibility:
+  seed: 20260721                        # fixed; shared with the ternary-QAT config
+  deterministic: true                   # torch deterministic algorithms where practical
+
+sequence:
+  max_sequence_length: 2048             # provisional; longest compiled example is well under this
+
+lora:
+  lora_rank: 16
+  lora_alpha: 32
+  lora_dropout: 0.05
+  target_modules:
+    - q_proj
+    - k_proj
+    - v_proj
+    - o_proj
+    - gate_proj
+    - up_proj
+    - down_proj
+
+optimization:
+  learning_rate: 2.0e-4                 # conventional-range for LoRA (contrast: ternary QAT wants higher)
+  num_train_epochs: 1                   # informational; max_steps governs this tiny run
+  max_steps: 20                         # 28 train rows / eff. batch 8 ~= 4 steps/epoch, so ~5 epochs;
+                                        # diagnostic only, overfitting is EXPECTED and irrelevant here
+  micro_batch_size: 1
+  gradient_accumulation_steps: 8        # effective batch size 8
+  gradient_checkpointing: true
+  precision: bf16
+  optimizer: adamw_torch
+  lr_scheduler: cosine
+  warmup_ratio: 0.03
+  completion_only_loss: true            # loss on the assistant target only (mask prompt)
+  packing: false                        # no packing for the first diagnostic run
+
+intervals:
+  checkpoint_interval_steps: 10         # ~2 checkpoints
+  eval_interval_steps: 10               # eval before (step 0), mid, and after
+  logging_interval_steps: 2             # frequent logging
+  eval_before_training: true
+
+stop_conditions:                        # see runbook; abort the run if any trip
+  - train_eval_leakage_detected
+  - loss_nan_or_inf
+  - gradient_explosion
+  - checkpoint_reload_failure
+  - invalid_assistant_output_format
+  - corrupted_structured_no_change_output
+
+notes: >
+  Repository-default base model and LoRA targets from experiments/configs/
+  run001-lora-smoke.yaml. Compatibility evidence (torch/CUDA/transformers/peft on
+  the GX10 run001 image) is recorded there and applies here unchanged. This config
+  is intentionally minimal: it proves load -> train -> save -> reload -> evaluate,
+  not quality, on a 35-record experimental corpus.

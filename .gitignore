@@ -40,3 +40,17 @@ experiments/logs/**
 
 # Note: YAML configs, schema docs, manifests, approved benchmark definitions,
 # small summary results, and scripts are intentionally NOT ignored.
+
+# --- Dataset A smoke-training run outputs (keep dir structure + small text) ---
+# Model binaries are already covered by *.safetensors/*.bin/*.pt/*.gguf above.
+training/runs/**/checkpoints/**
+training/runs/**/logs/**
+training/runs/**/tensorboard/**
+training/runs/**/cache/**
+training/runs/**/optimizer*
+training/runs/**/*.ckpt
+!training/runs/**/.gitkeep
+# Keep small trackable metrics/configs/reports:
+!training/runs/**/*.json
+!training/runs/**/*.md
+!training/runs/**/*.yaml

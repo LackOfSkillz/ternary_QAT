@@ -1,0 +1,75 @@
+# Dataset A — smoke evaluation harness
+# Evaluates base / LoRA / ternary-QAT on the SAME held-out evaluation records with
+# the SAME generation settings so the three are directly comparable. Prepared, not
+# run, in this dispatch. Not a production-quality benchmark.
+
+eval_id: dataset-a-smoke-eval-v1
+freeze_id: dataset-a-experimental-v1
+production_approved: false
+
+targets:
+  - name: base
+    kind: base_model
+    ref: prism-ml/Ternary-Bonsai-4B-unpacked
+    output_dir: training/runs/dataset-a-smoke-v1/base
+  - name: lora
+    kind: lora_adapter
+    adapter_dir: training/runs/dataset-a-smoke-v1/lora
+    output_dir: training/runs/dataset-a-smoke-v1/lora
+  - name: ternary-qat
+    kind: ternary_qat_checkpoint
+    checkpoint_dir: training/runs/dataset-a-smoke-v1/ternary-qat
+    output_dir: training/runs/dataset-a-smoke-v1/ternary-qat
+
+dataset:
+  evaluation_file: datasets/dataset-a/compiled/experimental-v1/evaluation.jsonl
+  system_prompt_file: datasets/dataset-a/prompts/linewright-training-system-v1.txt
+  evaluation_checksum: 0f3ae4263c5a175b38af5723f04e161de98e30a4a8ac5be10a2153a5fe47fc3b
+
+generation:
+  temperature: 0
+  top_p: 1
+  seed: 20260721
+  max_new_tokens: 512
+  # NOTE: with temperature 0 the sampler is greedy, but the serving stack may not
+  # guarantee bit-exact determinism (kernel/batching nondeterminism). Record the
+  # serving stack + versions with the results; treat near-identical, not identical,
+  # regeneration as acceptable and flag any material drift.
+  determinism_caveat: serving_stack_may_not_be_bit_exact
+
+# Behavioral checks applied per evaluation record (by task_type). These are
+# graders/rubrics, not gradient signals. Deterministic checks run automatically;
+# rubric checks are recorded for human/model Gate review.
+behavioral_checks:
+  canon_extraction:
+    - valid_json_matching_schema
+    - certainty_labels_correct           # established vs character_belief
+    - no_belief_promoted_to_fact
+  constraint_check:
+    - valid_json
+    - violation_flag_correct
+    - constraint_ids_equal_causal_set    # set equality, order-ignored
+  focused_revision:
+    - invention_budget_compliance
+    - protected_elements_preserved
+    - authorized_change_only
+    - anti_slop_structural_correction    # not lexical substitution
+    - no_change_restraint                # structured changed:false, text == source (revision-002)
+    - author_voice_preserved
+    - dialogue_attribution_clarity       # where applicable
+  scene_contract:
+    - contract_fields_present
+    - required_outcome_and_prohibited_outcome_respected
+    - knowledge_boundary_respected
+  fiction_boundary:
+    - correct_disposition                # depiction fulfilled in-scene / actionable-harm declined
+    - no_moralizing_on_lawful_fiction
+    - no_operational_harm_content
+
+# Per-record expectations are read from each source record's `expected_properties`
+# and `## Evaluation` section; the harness does not re-derive them.
+report_paths:
+  base: training/runs/dataset-a-smoke-v1/base/eval.json
+  lora: training/runs/dataset-a-smoke-v1/lora/eval.json
+  ternary_qat: training/runs/dataset-a-smoke-v1/ternary-qat/eval.json
+  comparison: training/runs/dataset-a-smoke-v1/comparison/comparison.md
