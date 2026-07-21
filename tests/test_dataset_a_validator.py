@@ -165,3 +165,227 @@ def test_matched_pair_reciprocal_ok(tmp_path):
     b = _pair_record("dsa-rev-b", "dsa-rev-a", "c-b")
     problems, _ = val.validate(_build_root_multi(tmp_path, [a, b]))
     assert not any("reciprocal" in p or "does not exist" in p for p in problems), problems
+
+
+# ---- constraint_check causal-set grading ----
+
+CONSTRAINT_GOOD = """---
+id: dsa-constraint-999
+dataset: dataset-a
+split: unassigned
+review_status: draft
+task_type: constraint_check
+operating_mode: constraint_bound
+difficulty: medium
+template_family: constraint-fixture
+semantic_cluster: constraint-fixture-cluster
+provenance: model-authored fixture by claude-opus-4-8
+origin: model_authored
+source_type: synthetic_internal
+license_status: unverified
+teacher_model: claude-opus-4-8
+teacher_terms_status: pending_review
+excluded_from_training: true
+causal_constraint_ids:
+  - C1
+  - C2
+expected_properties:
+  - valid JSON
+---
+
+## Instruction
+Check continuity.
+
+## Context
+Declared canon constraints:
+- C1 (established fact): first fact.
+- C2 (established fact): second fact.
+- C3 (established fact): third fact.
+
+Draft passage: it breaks C1 and C2 at once.
+
+## Gold Response
+```json
+{"violation": true, "type": "factual_contradiction", "constraint_ids": ["C1", "C2"], "explanation": "x", "evidence": "y"}
+```
+
+## Evaluation
+ok.
+
+## Reviewer Notes
+Fixture.
+"""
+
+
+def test_constraint_causal_set_ok(tmp_path):
+    problems, _ = val.validate(_build_root(tmp_path, CONSTRAINT_GOOD))
+    assert problems == [], problems
+
+
+def test_constraint_partial_set_rejected(tmp_path):
+    bad = CONSTRAINT_GOOD.replace('"constraint_ids": ["C1", "C2"]',
+                                  '"constraint_ids": ["C1"]')
+    problems, _ = val.validate(_build_root(tmp_path, bad))
+    assert any("!= causal set" in p for p in problems), problems
+
+
+def test_constraint_extra_id_rejected(tmp_path):
+    bad = CONSTRAINT_GOOD.replace('"constraint_ids": ["C1", "C2"]',
+                                  '"constraint_ids": ["C1", "C2", "C3"]')
+    problems, _ = val.validate(_build_root(tmp_path, bad))
+    assert any("extra ['C3']" in p for p in problems), problems
+
+
+def test_constraint_undeclared_id_rejected(tmp_path):
+    bad = CONSTRAINT_GOOD.replace('"constraint_ids": ["C1", "C2"]',
+                                  '"constraint_ids": ["C1", "Z9"]')
+    problems, _ = val.validate(_build_root(tmp_path, bad))
+    assert any("undeclared constraint 'Z9'" in p for p in problems), problems
+
+
+def test_constraint_duplicate_id_rejected(tmp_path):
+    bad = CONSTRAINT_GOOD.replace('"constraint_ids": ["C1", "C2"]',
+                                  '"constraint_ids": ["C1", "C1"]')
+    problems, _ = val.validate(_build_root(tmp_path, bad))
+    assert any("duplicate" in p for p in problems), problems
+
+
+def test_constraint_nonviolation_nonempty_set_rejected(tmp_path):
+    bad = CONSTRAINT_GOOD.replace('"violation": true', '"violation": false')
+    problems, _ = val.validate(_build_root(tmp_path, bad))
+    assert any("non-violation must have empty" in p for p in problems), problems
+
+
+# ---- invention_budget + no-change protocol (focused_revision) ----
+
+REV_GOOD = """---
+id: dsa-revision-999
+dataset: dataset-a
+split: unassigned
+review_status: draft
+task_type: focused_revision
+operating_mode: source_bound
+difficulty: easy
+template_family: rev-fixture
+semantic_cluster: rev-fixture-cluster
+style_profile: none
+craft_targets:
+  - significant_detail
+protected_craft:
+  - flat_affect
+authorized_changes:
+  - change one sentence
+unauthorized_changes:
+  - rewriting everything
+anti_slop_targets:
+  - generic_atmosphere
+anti_slop_risks:
+  - unauthorized_rewrite
+failure_modes:
+  - generic_atmosphere
+invention_budget:
+  level: bounded
+  allowed:
+    - one concrete detail
+  prohibited:
+    - new backstory
+provenance: model-authored fixture by claude-opus-4-8
+origin: model_authored
+source_type: synthetic_internal
+license_status: unverified
+teacher_model: claude-opus-4-8
+teacher_terms_status: pending_review
+excluded_from_training: true
+expected_properties:
+  - one sentence changed
+---
+
+## Instruction
+Revise one sentence.
+
+## Context
+The source passage that is unique to this revision fixture record.
+
+## Gold Response
+The revised passage that is unique to this revision fixture record.
+
+## Protected Elements
+- something
+
+## Rejected Response
+A bad rewrite unique to this fixture.
+
+## Rejection Reasons
+- unauthorized_rewrite: bad.
+
+## Evaluation
+Diff it.
+
+## Reviewer Notes
+Fixture.
+"""
+
+_IB_BLOCK = ("invention_budget:\n  level: bounded\n  allowed:\n"
+             "    - one concrete detail\n  prohibited:\n    - new backstory\n")
+
+
+def test_invention_budget_valid_ok(tmp_path):
+    problems, _ = val.validate(_build_root(tmp_path, REV_GOOD))
+    assert problems == [], problems
+
+
+def test_invention_budget_missing_rejected(tmp_path):
+    bad = REV_GOOD.replace(_IB_BLOCK, "")
+    problems, _ = val.validate(_build_root(tmp_path, bad))
+    assert any("invention_budget" in p for p in problems), problems
+
+
+def test_invention_budget_none_with_allowance_rejected(tmp_path):
+    bad = REV_GOOD.replace("level: bounded", "level: none")
+    problems, _ = val.validate(_build_root(tmp_path, bad))
+    assert any("must not declare affirmative allowances" in p for p in problems), problems
+
+
+def test_invention_budget_bounded_without_allowance_rejected(tmp_path):
+    bad = REV_GOOD.replace("  allowed:\n    - one concrete detail\n", "  allowed: []\n")
+    problems, _ = val.validate(_build_root(tmp_path, bad))
+    assert any("must list at least one allowance" in p for p in problems), problems
+
+
+def test_invention_budget_open_without_prohibition_rejected(tmp_path):
+    bad = (REV_GOOD.replace("level: bounded", "level: open")
+                   .replace("  prohibited:\n    - new backstory\n", "  prohibited: []\n"))
+    problems, _ = val.validate(_build_root(tmp_path, bad))
+    assert any("must still state prohibitions" in p for p in problems), problems
+
+
+def test_no_change_text_match_ok(tmp_path):
+    gold = ("## Gold Response\n```json\n"
+            '{"changed": false, "reason": "No genuine defect found.", '
+            '"text": "The source passage that is unique to this revision fixture record."}\n'
+            "```\n")
+    ok = REV_GOOD.replace(
+        "## Gold Response\nThe revised passage that is unique to this revision fixture record.\n",
+        gold)
+    problems, _ = val.validate(_build_root(tmp_path, ok))
+    assert not any("no-change" in p for p in problems), problems
+
+
+def test_no_change_text_mismatch_rejected(tmp_path):
+    gold = ("## Gold Response\n```json\n"
+            '{"changed": false, "reason": "No genuine defect found.", '
+            '"text": "completely different text that does not match the source"}\n'
+            "```\n")
+    bad = REV_GOOD.replace(
+        "## Gold Response\nThe revised passage that is unique to this revision fixture record.\n",
+        gold)
+    problems, _ = val.validate(_build_root(tmp_path, bad))
+    assert any("no-change gold" in p for p in problems), problems
+
+
+# ---- public-domain provenance ----
+
+def test_public_domain_requires_block_rejected(tmp_path):
+    bad = GOOD.replace("source_type: synthetic_internal", "source_type: public_domain")
+    problems, _ = val.validate(_build_root(tmp_path, bad))
+    assert any("public_domain_source" in p for p in problems), problems

@@ -17,18 +17,23 @@ license_status: unverified
 teacher_model: claude-opus-4-8
 teacher_terms_status: pending_review
 excluded_from_training: true
+causal_constraint_ids:
+  - O1
+  - O2
+  - O3
 expected_properties:
   - output is valid JSON with a boolean 'violation' field
   - violation is true for this record
   - type equals "object_state"
-  - constraint_id cites the object-state constraint
+  - constraint_ids equals ["O1", "O2", "O3"]; O1 sets the locked state and O2/O3 jointly rule out an unlocking event
   - evidence quotes the action that contradicts the object's declared state
 ---
 
 ## Instruction
 
 You are a continuity checker for a fiction manuscript. You are given declared constraints about the state of physical objects (locked/unlocked, open/closed, broken/whole) and a draft passage. Decide whether the passage places an object in two contradictory states without an event that changes it. Respond with one JSON object:
-{"violation": bool, "type": "factual_contradiction"|"knowledge_state"|"chronology"|"object_state"|"none", "constraint_id": <string or null>, "explanation": <string>, "evidence": <string>}
+{"violation": bool, "type": "factual_contradiction"|"knowledge_state"|"chronology"|"object_state"|"none", "constraint_ids": <array of the constraint id strings that jointly make this a violation; [] if none>, "explanation": <string>, "evidence": <string>}
+List every load-bearing constraint in constraint_ids, including any that rule out an off-page state change.
 
 ## Context
 
@@ -46,8 +51,8 @@ Draft passage:
 {
   "violation": true,
   "type": "object_state",
-  "constraint_id": "O1",
-  "explanation": "Constraint O1 sets the cellar door as bolted from the inside, and the draft confirms the bolt 'hold firm' and 'locked.' With no key retrieved (O2) and no bolt-drawing narrated (O3), the door must remain locked. Yet Neave pushes it open and steps through in the next sentence. The door is both locked and passable in the same moment, with no state-changing event.",
+  "constraint_ids": ["O1", "O2", "O3"],
+  "explanation": "Constraint O1 sets the cellar door as bolted from the inside, and the draft confirms the bolt 'hold firm' and 'locked.' With no key retrieved (O2) and no bolt-drawing narrated (O3), the door must remain locked. Yet Neave pushes it open and steps through in the next sentence. The door is both locked and passable in the same moment, with no state-changing event. All three are load-bearing: O1 fixes the locked state, and O2 and O3 jointly foreclose any unlocking (no key, and any bolt-draw would have been narrated).",
   "evidence": "Then she pushed the door open, stepped down onto the packed earth of the cellar floor"
 }
 ```
@@ -57,7 +62,7 @@ Draft passage:
 - Response is a single valid JSON object matching the schema.
 - violation is exactly true.
 - type is exactly "object_state".
-- constraint_id is "O1" (the locked-door state); explanation shows O2 and O3 both fail to supply an unlocking event.
+- constraint_ids equals the causal set `["O1", "O2", "O3"]`: O1 (the locked state) plus O2 and O3, which jointly rule out an unlocking event. Dropping O2 or O3 (a partial set) fails, since without them an off-page unlock could be argued; the grader names the omitted constraint. Order is ignored.
 - evidence quotes the action (pushing the door open and entering) that contradicts the locked state.
 - The checker requires a narrated state change and correctly notes its absence, rather than assuming an off-page unlock.
 

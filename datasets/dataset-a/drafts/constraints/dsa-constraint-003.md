@@ -17,18 +17,23 @@ license_status: unverified
 teacher_model: claude-opus-4-8
 teacher_terms_status: pending_review
 excluded_from_training: true
+causal_constraint_ids:
+  - D1
+  - D2
+  - D3
 expected_properties:
   - output is valid JSON with a boolean 'violation' field
   - violation is true for this record
   - type equals "chronology"
-  - constraint_id cites the travel-time or timeline constraint
+  - constraint_ids equals the full causal set ["D1", "D2", "D3"]; all three are load-bearing
   - evidence quotes the timing detail that cannot be reconciled
 ---
 
 ## Instruction
 
 You are a continuity checker for a fiction manuscript. You are given declared canon constraints about distances, travel times, and clock times, plus a draft passage. Decide whether the sequence and timing of events is physically possible under the constraints. Respond with one JSON object:
-{"violation": bool, "type": "factual_contradiction"|"knowledge_state"|"chronology"|"object_state"|"none", "constraint_id": <string or null>, "explanation": <string>, "evidence": <string>}
+{"violation": bool, "type": "factual_contradiction"|"knowledge_state"|"chronology"|"object_state"|"none", "constraint_ids": <array of the constraint id strings that jointly make this a violation; [] if none>, "explanation": <string>, "evidence": <string>}
+List every load-bearing constraint in constraint_ids. When a violation emerges only from composing several constraints, all of them belong in the set.
 
 ## Context
 
@@ -46,8 +51,8 @@ Draft passage:
 {
   "violation": true,
   "type": "chronology",
-  "constraint_id": "D1",
-  "explanation": "The ferry departs at dawn (D2) and the crossing takes four hours (D1), so Tomas cannot reach the mainland before roughly mid-morning. But the market opens at dawn and closes at noon (D3), and the draft has him arriving 'while the first stalls were still being unfolded, well before the morning crowd' — i.e., at market opening, which is dawn. Arriving at the dawn market after a four-hour post-dawn crossing is impossible.",
+  "constraint_ids": ["D1", "D2", "D3"],
+  "explanation": "The ferry departs at dawn (D2) and the crossing takes four hours (D1), so Tomas cannot reach the mainland before roughly mid-morning. But the market opens at dawn and closes at noon (D3), and the draft has him arriving 'while the first stalls were still being unfolded, well before the morning crowd' — i.e., at market opening, which is dawn. Arriving at the dawn market after a four-hour post-dawn crossing is impossible. All three constraints are load-bearing: D2 fixes departure, D1 fixes elapsed time, D3 fixes the arrival window. Drop any one and the impossibility dissolves.",
   "evidence": "arriving while the first stalls were still being unfolded, well before the morning crowd"
 }
 ```
@@ -57,10 +62,10 @@ Draft passage:
 - Response is a single valid JSON object matching the schema.
 - violation is exactly true.
 - type is exactly "chronology".
-- constraint_id cites D1 (the four-hour crossing) as the binding constraint; explanation correctly combines D1+D2+D3 to show the impossibility.
+- constraint_ids equals the full causal set `["D1", "D2", "D3"]`. A partial set such as `["D1", "D2"]` FAILS the exact causal-set check because D3 (the market window) is also load-bearing; the grader names the omitted constraint (D3) so the failure is understandable. Order is ignored.
 - evidence quotes the arrival-timing phrase that cannot be reconciled, not the departure.
 - The checker reasons about elapsed time, not merely keyword overlap; it does not accept "the sun had barely climbed" as sufficient cover for a four-hour gap.
 
 ## Reviewer Notes
 
-Hard chronology case: no single sentence is wrong in isolation; the violation emerges only from composing three constraints (crossing duration, departure time, market hours). Teaches multi-constraint temporal reasoning and rewards citing the load-bearing distance/time constraint.
+Hard chronology case: no single sentence is wrong in isolation; the violation emerges only from composing three constraints (crossing duration, departure time, market hours). Teaches multi-constraint temporal reasoning and is the corpus's clearest **multi-constraint causal set** — the gold `constraint_ids` lists all three, and a partial answer is a real (nameable) failure.

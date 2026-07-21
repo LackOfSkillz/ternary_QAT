@@ -8,6 +8,7 @@ Usage:
 """
 import argparse
 import glob
+import json
 import os
 import re
 import sys
@@ -15,6 +16,35 @@ import sys
 import yaml
 
 APPROVED_STATUSES = {"substantively_approved", "author_approved", "frozen"}
+
+# a declared constraint line in a ## Context block, e.g. "- C1 (established fact): ..."
+_CONSTRAINT_DECL_RE = re.compile(r"^\s*-\s*([A-Z][A-Za-z]*\d+)\b")
+
+PUBLIC_DOMAIN_FIELDS = ["title", "author", "publication_year",
+                        "edition_or_archive", "source_url_or_identifier",
+                        "verification_note"]
+
+
+def declared_constraint_ids(context_text):
+    """IDs declared in a constraint_check ## Context (C1, K1, D2, O3, S1, ...)."""
+    return [m.group(1) for m in
+            (_CONSTRAINT_DECL_RE.match(ln) for ln in context_text.splitlines())
+            if m]
+
+
+def extract_gold_json(gold_text):
+    """Return the parsed JSON object in a gold response (from a fenced ```json
+    block if present, else the whole section), or None if it is not JSON."""
+    m = re.search(r"```(?:json)?\s*(.*?)```", gold_text, re.S)
+    candidate = (m.group(1) if m else gold_text).strip()
+    try:
+        return json.loads(candidate)
+    except Exception:
+        return None
+
+
+def _norm_ws(t):
+    return re.sub(r"\s+", " ", t or "").strip()
 
 
 def parse_record(path):
@@ -134,9 +164,12 @@ def validate(root):
         if not isinstance(fm.get("excluded_from_training"), bool):
             err(f, "excluded_from_training must be a boolean")
 
-        # required fields by task type
+        # required fields by task type. causal_constraint_ids may legitimately be
+        # an empty list (a non-violation), so only its presence is required here;
+        # its contents are checked by the causal-set grading below.
         for field in req_by_type.get(tt, []):
-            if field not in fm or fm[field] in (None, "", []):
+            empty = fm.get(field) in (None, "", []) and field != "causal_constraint_ids"
+            if field not in fm or empty:
                 err(f, f"[{tt}] missing required field '{field}'")
 
         # required sections
@@ -144,6 +177,88 @@ def validate(root):
         for s in need:
             if s not in sections or not sections[s]:
                 err(f, f"[{tt}] missing required section '## {s}'")
+
+        # ---- constraint_check causal-set grading ----
+        if tt == "constraint_check":
+            declared = set(declared_constraint_ids(sections.get("Context", "")))
+            causal = fm.get("causal_constraint_ids")
+            if not isinstance(causal, list):
+                err(f, "causal_constraint_ids must be a list")
+                causal = []
+            if len(causal) != len(set(causal)):
+                err(f, f"causal_constraint_ids has duplicate IDs: {causal}")
+            for cid in causal:
+                if cid not in declared:
+                    err(f, f"causal_constraint_ids references undeclared "
+                           f"constraint '{cid}' (declared: {sorted(declared)})")
+            gold = extract_gold_json(sections.get("Gold Response", ""))
+            if gold is None or "constraint_ids" not in gold:
+                err(f, "[constraint_check] gold response must be JSON with a "
+                       "'constraint_ids' array")
+            else:
+                gold_ids = gold.get("constraint_ids")
+                if not isinstance(gold_ids, list):
+                    err(f, "gold constraint_ids must be an array")
+                    gold_ids = []
+                if len(gold_ids) != len(set(gold_ids)):
+                    err(f, f"gold constraint_ids has duplicate IDs: {gold_ids}")
+                for cid in gold_ids:
+                    if cid not in declared:
+                        err(f, f"gold constraint_ids references undeclared "
+                               f"constraint '{cid}'")
+                if set(gold_ids) != set(causal):
+                    missing = sorted(set(causal) - set(gold_ids))
+                    extra = sorted(set(gold_ids) - set(causal))
+                    err(f, f"gold constraint_ids {sorted(gold_ids)} != causal set "
+                           f"{sorted(causal)} (missing {missing}, extra {extra})")
+                if gold.get("violation") is False and (gold_ids or causal):
+                    err(f, "non-violation must have empty constraint_ids AND "
+                           "causal_constraint_ids")
+
+        # ---- invention_budget (focused_revision) ----
+        if tt == "focused_revision":
+            ib = fm.get("invention_budget")
+            if not isinstance(ib, dict):
+                err(f, "invention_budget must be a mapping {level, allowed, prohibited}")
+            else:
+                level = ib.get("level")
+                allowed = ib.get("allowed")
+                prohibited = ib.get("prohibited")
+                if level not in ("none", "bounded", "open"):
+                    err(f, f"invention_budget.level '{level}' not in none|bounded|open")
+                if not isinstance(allowed, list):
+                    err(f, "invention_budget.allowed must be a list")
+                    allowed = []
+                if not isinstance(prohibited, list):
+                    err(f, "invention_budget.prohibited must be a list")
+                    prohibited = []
+                if level == "none" and allowed:
+                    err(f, "invention_budget.level 'none' must not declare "
+                           "affirmative allowances")
+                if level == "bounded" and not allowed:
+                    err(f, "invention_budget.level 'bounded' must list at least "
+                           "one allowance")
+                if level == "open" and not prohibited:
+                    err(f, "invention_budget.level 'open' must still state prohibitions")
+
+            # no-change protocol: structured gold with changed==false must echo source
+            gold = extract_gold_json(sections.get("Gold Response", ""))
+            if isinstance(gold, dict) and gold.get("changed") is False:
+                src = _norm_ws(re.sub(r"^(Sentence|Passage):\s*", "",
+                                      sections.get("Context", "")))
+                if _norm_ws(gold.get("text", "")) != src:
+                    err(f, "no-change gold (changed:false) 'text' must exactly "
+                           "match the ## Context source")
+
+        # ---- public-domain provenance ----
+        if fm.get("source_type") == "public_domain":
+            pds = fm.get("public_domain_source")
+            if not isinstance(pds, dict):
+                err(f, "source_type 'public_domain' requires a public_domain_source block")
+            else:
+                for pf in PUBLIC_DOMAIN_FIELDS:
+                    if pf not in pds or pds[pf] in (None, ""):
+                        err(f, f"public_domain_source missing '{pf}'")
 
         # placement: approved-status must not live under drafts/
         if area == "drafts" and fm.get("review_status") in APPROVED_STATUSES:

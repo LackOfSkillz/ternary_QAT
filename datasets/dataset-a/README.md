@@ -28,7 +28,7 @@ datasets/dataset-a/
   rejected/            # records rejected in review
   compiled/            # JSONL compiled ONLY after freeze
   reviews/             # one review file per reviewed record
-  scripts/             # validate_dataset_a.py
+  scripts/             # validate_dataset_a.py + Gate 0 analyzers
 ```
 
 ## Record format
@@ -53,9 +53,26 @@ and licensing; **no generated record automatically enters training.**
 python datasets/dataset-a/scripts/validate_dataset_a.py --root datasets/dataset-a
 ```
 
-Checks IDs, required fields/sections by family, enum validity, draft-vs-approved
-placement, duplicate (template_family, semantic_cluster) pairs, duplicate source
-context / gold response, provenance/exclusion fields, and prints counts by family.
+Checks IDs, required fields/sections by family, enum validity, unknown-field
+rejection, draft-vs-approved placement, duplicate (template_family,
+semantic_cluster) pairs, duplicate source context / gold response,
+provenance/exclusion fields, matched-pair reciprocity, **constraint causal-set
+equality** (`constraint_ids` == `causal_constraint_ids`), **`invention_budget`**
+well-formedness, the **no-change protocol** (structured `changed:false` text must
+match source), and **public-domain provenance**. Prints counts by family.
+
+### Gate 0 review evidence (does not approve anything)
+
+```bash
+python datasets/dataset-a/scripts/analyze_revision_deltas.py --root datasets/dataset-a \
+    --out-json <tmp>.json --out-md datasets/dataset-a/reviews/gate-0-revision-deltas.md
+python datasets/dataset-a/scripts/analyze_corpus_signatures.py --root datasets/dataset-a \
+    --out-json <tmp>.json --out-md datasets/dataset-a/reviews/gate-0-corpus-signatures.md
+```
+
+Per-record revision deltas (authorized-axis aware) and corpus-level signature
+scans (recurring frames, em-dash frequency, poised-final-image concentration,
+cross-record overlap). All thresholds emit **REVIEW**, never FAIL.
 
 ## Governing + anti-collapse principles
 
@@ -70,6 +87,10 @@ context / gold response, provenance/exclusion fields, and prints counts by famil
 - **25 draft records** live under `drafts/` (5 canon, 5 constraint, 10 revision,
   3 scene-contract, 2 boundary). All are `review_status: draft`, `split:
   unassigned`, and **ready for inspection only — not approved**.
+- Gate 1/Gate 2 corrections have been applied (Dispatch 14): nine records
+  corrected, constraint family migrated to causal `constraint_ids`, every revision
+  record carries an `invention_budget`, and the no-change protocol is in force.
+  This is a **review baseline**, not an approval.
 - `approved/`, `rejected/`, `compiled/` are empty (placeholder `.gitkeep`).
 
 ## Provenance discipline

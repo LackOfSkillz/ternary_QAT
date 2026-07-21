@@ -37,6 +37,9 @@ fields:
   teacher_terms_status:  {type: enum, enum: teacher_terms_status}
   excluded_from_training: {type: bool}
   matched_pair_with:     {type: string, optional: true, enum_optional: record_id, desc: "id of a reciprocally-paired record, or absent"}
+  causal_constraint_ids: {type: list, desc: "constraint_check only: the constraint IDs that JOINTLY make the passage a violation ([] for a non-violation). The gold constraint_ids must equal this set."}
+  invention_budget:      {type: map, desc: "focused_revision only: {level: none|bounded|open, allowed: [...], prohibited: [...]}. Governs how much new material the revision may introduce."}
+  public_domain_source:  {type: map, optional: true, desc: "REQUIRED when source_type == public_domain: {title, author, publication_year, edition_or_archive, source_url_or_identifier, verification_note}"}
 
 # Provenance vs review discipline:
 #   Provenance records ORIGIN (who/what authored the content). Review status
@@ -69,10 +72,50 @@ allow_unknown_fields: false
 # additional required fields by task family
 required_by_task_type:
   canon_extraction:      [expected_properties]
-  constraint_check:      [expected_properties]
-  focused_revision:      [craft_targets, protected_craft, authorized_changes, unauthorized_changes, anti_slop_targets, anti_slop_risks, style_profile, failure_modes]
+  constraint_check:      [expected_properties, causal_constraint_ids]
+  focused_revision:      [craft_targets, protected_craft, authorized_changes, unauthorized_changes, anti_slop_targets, anti_slop_risks, style_profile, failure_modes, invention_budget]
   scene_contract:        [expected_properties]
   fiction_boundary:      [expected_properties]
+
+# ---- constraint_check causal-set grading (enforced by the validator) ----
+# The gold response is JSON: {"violation": bool, "constraint_ids": [...], ...}.
+# - gold constraint_ids MUST equal the front-matter causal_constraint_ids AS A SET
+#   (order ignored; a missing or extra ID fails; the grader names the omitted ID).
+# - every ID in either set must be declared in that record's ## Context (e.g. "- C1 (...)").
+# - a non-violation (violation:false) must have constraint_ids == [] and causal_constraint_ids == [].
+# - no duplicate IDs.
+constraint_check_grading:
+  gold_field: constraint_ids
+  causal_field: causal_constraint_ids
+  set_equality: true
+  order_ignored: true
+
+# ---- invention_budget rules (enforced by the validator) ----
+# level: none | bounded | open
+#   none    -> allowed MUST be empty (no new facts/images/actions/objects/backstory/motive)
+#   bounded -> allowed MUST list >=1 specific permitted invention
+#   open    -> broader invention permitted, but prohibited MUST still be stated
+# allowed and prohibited are always lists.
+invention_budget_levels: [none, bounded, open]
+
+# ---- structured revision output (no-change protocol) ----
+# A focused_revision gold MAY be the structured object
+#   {"changed": false, "reason": "<brief>", "text": "<source unchanged>"}
+# or {"changed": true,  "reason": "<brief>", "text": "<revised>"}.
+# When changed==false the validator requires text to equal the ## Context source
+# (whitespace-normalized). See specification.md "No-change protocol".
+
+# ---- public-domain provenance (enforced by the validator) ----
+# When source_type == public_domain, public_domain_source is REQUIRED and must
+# carry: title, author, publication_year, edition_or_archive,
+# source_url_or_identifier, verification_note.
+public_domain_source_fields:
+  - title
+  - author
+  - publication_year
+  - edition_or_archive
+  - source_url_or_identifier
+  - verification_note
 
 # ---- meaning of the `## Context` section, by task family ----
 # Context is family-specific; do not overload it.

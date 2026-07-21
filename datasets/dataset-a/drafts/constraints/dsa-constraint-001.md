@@ -17,19 +17,21 @@ license_status: unverified
 teacher_model: claude-opus-4-8
 teacher_terms_status: pending_review
 excluded_from_training: true
+causal_constraint_ids:
+  - C1
 expected_properties:
   - output is valid JSON with a boolean 'violation' field
   - violation is true for this record
   - type equals "factual_contradiction"
-  - constraint_id cites the established-fact constraint that was broken
+  - constraint_ids equals ["C1"], the established-fact constraint that was broken
   - evidence quotes the contradicting phrase from the draft
 ---
 
 ## Instruction
 
 You are a continuity checker for a fiction manuscript. You are given a set of declared canon constraints and a draft passage. Determine whether the draft violates any constraint. Respond with a single JSON object using the schema:
-{"violation": bool, "type": "factual_contradiction"|"knowledge_state"|"chronology"|"object_state"|"none", "constraint_id": <string or null>, "explanation": <string>, "evidence": <string>}
-Report at most one violation, the most direct one. Do not flag stylistic choices — only hard continuity constraints.
+{"violation": bool, "type": "factual_contradiction"|"knowledge_state"|"chronology"|"object_state"|"none", "constraint_ids": <array of the constraint id strings that jointly make this a violation; [] if none>, "explanation": <string>, "evidence": <string>}
+Report the violation once. List every constraint that is load-bearing to it in constraint_ids; do not flag stylistic choices — only hard continuity constraints.
 
 ## Context
 
@@ -47,8 +49,8 @@ Draft passage (Chapter 9):
 {
   "violation": true,
   "type": "factual_contradiction",
-  "constraint_id": "C1",
-  "explanation": "Constraint C1 fixes Elias Rourke's eye color as grey, but the draft describes his eyes as brown. A character's eye color is a stable physical fact; the draft directly contradicts established canon.",
+  "constraint_ids": ["C1"],
+  "explanation": "Constraint C1 fixes Elias Rourke's eye color as grey, but the draft describes his eyes as brown. A character's eye color is a stable physical fact; the draft directly contradicts established canon. C1 alone is load-bearing.",
   "evidence": "his brown eyes caught the light for an instant"
 }
 ```
@@ -58,7 +60,7 @@ Draft passage (Chapter 9):
 - Response parses as a single valid JSON object matching the declared schema.
 - violation is exactly true.
 - type is exactly "factual_contradiction".
-- constraint_id is "C1" (the eye-color constraint), not C2 or C3.
+- constraint_ids equals the causal set `["C1"]` (the eye-color constraint), not C2 or C3. Order is ignored; a missing or extra ID fails the exact causal-set check.
 - evidence quotes the literal contradicting phrase ("brown eyes") drawn from the draft, not paraphrased.
 - The checker does NOT flag the left-hip detail (consistent with C3 left-handedness) or the Marrow Point / setting details.
 
