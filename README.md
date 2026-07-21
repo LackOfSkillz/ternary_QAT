@@ -4,6 +4,90 @@ Lightweight ternary QAT for [Ternary-Bonsai](https://huggingface.co/models?searc
 
 This is designed from the start to be Unsloth compatible.
 
+## LineWright research fork
+
+This repository is an **experimental research branch** forked from
+[ElectroGlyph's `ternary_QAT`](https://github.com/electroglyph/ternary_QAT). The
+upstream project remains the source of the ternary-QAT work; this fork does not
+replace it, and ElectroGlyph has not endorsed the LineWright project. Generally
+useful changes may be proposed upstream.
+
+- Active research branch: **`linewright-experiments`**.
+- **Goal:** evaluate a zero-configuration local *starter model* for LineWright
+  users — no API key, no model-server knowledge, running on broadly available
+  consumer hardware.
+- **Ternary-Bonsai 4B is only an initial candidate**, subject to feasibility
+  gates. The initial official base candidate is
+  `prism-ml/Ternary-Bonsai-4B-unpacked`, and its official Q2_0 GGUF
+  (`prism-ml/Ternary-Bonsai-4B-gguf`) is the untouched deployment baseline. 1.7B
+  (Lite fallback), 8B (optional higher tier),
+  and conventional GGUF models remain valid comparison candidates.
+- **Required initial capabilities:** canon extraction, hard-constraint checking,
+  focused anti-slop revision, and fiction-permissive compliance. (Optional
+  capabilities are enumerated in the roadmap and ship only if they pass their own
+  gates.)
+- **Author content is never used as gradient input** — see the policy below.
+- The project is **benchmark-gated**: nothing is treated as proven until it
+  passes precommitted quality and runtime gates.
+- **Conventional LoRA and ternary QAT will be compared** on the same base, data,
+  splits, and benchmark; QAT is retained only for a meaningful, repeatable gain.
+- The **final packed artifact** (the deployed GGUF) must be evaluated — not
+  merely training loss.
+
+Full details, phase order, and decision rules are in [`ROADMAP.md`](ROADMAP.md).
+
+### Author-content policy
+
+Author manuscripts, project content, voice samples, and private writing may be
+used **only as temporary inference-time context**, carrying provenance tags that
+mechanically exclude them from training datasets. Selection history and voice
+measurements may inform context compilation, but nothing derived from author
+content may become gradient input. Any benchmark distributed publicly or shipped
+with LineWright must use synthetic, licensed, public-domain, or otherwise
+distributable material.
+
+### Fiction-permission policy
+
+> The starter model must not falsely refuse lawful fictional writing merely
+> because it includes violence, sexuality, crime, trauma, horror, abuse,
+> addiction, controversial beliefs, or morally compromised characters. The
+> project may evaluate naturally permissive models, compatible
+> community-abliterated models, local abliteration, or fiction-compliance
+> fine-tuning. Every intervention must be tested for writing-quality,
+> instruction-following, structured-output, and post-quantization regressions.
+
+- **No abliteration method has yet been selected.**
+- Fiction permissiveness is evaluated on the **final packed artifact**, not just
+  the base model.
+- The target is fiction-safe behavior, **not** a universal unrestricted
+  assistant. Real-world operational requests are outside the starter model's
+  writing scope. An existing abliterated or permissive model may serve as a
+  behavioral comparison but is not automatically the training base, since
+  modifications may not survive reprojection to the ternary Q2_0 grid.
+
+### Export path (training vs. deployment)
+
+`swap_linear()` inserts **fake quantization during training** — it does not
+itself produce the packed deployment model. The packed artifact is produced by a
+separate export path:
+
+```text
+Unpacked checkpoint
+    ↓
+Fake-quantized training
+    ↓
+Merged or full fine-tuned checkpoint
+    ↓
+GGUF conversion
+    ↓
+Compatible Prism-ML llama-quantize
+    ↓
+Final Q2_0 GGUF
+```
+
+LineWright training work is currently at the **environment-setup and planning**
+stage only; no training, dataset generation, or benchmarking has begun.
+
 Weights are ternarized to `{-1, 0, 1}` per group of (128/64/user-defined) consecutive weights along the last dim, matching the Bonsai on-disk format (verified bit-exact). Embeddings + all `nn.Linear` modules (attn, MLP, lm_head) are ternarized; norms stay FP.
 
 Based on Prism-ML's whitepaper: https://github.com/PrismML-Eng/Bonsai-demo/blob/main/ternary-bonsai-8b-whitepaper.pdf
