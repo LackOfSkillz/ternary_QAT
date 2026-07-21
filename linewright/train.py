@@ -48,9 +48,14 @@ def run(cfg_path, validate_only=False, dry_run=False, max_steps_override=None,
     if inject and backend_name == "hf":
         raise ValueError("failure injection is not permitted in an hf run")
 
-    target = {"dataset-a-lora-smoke-v1": "lora",
-              "dataset-a-ternary-qat-smoke-v1": "ternary-qat"}.get(
-                  cfg.get("experiment_id"), "lora")
+    # target is inferred from the config's own blocks so it is correct for the
+    # smoke configs AND the one-step rehearsal configs (experiment_id varies).
+    if "ternary_qat" in cfg:
+        target = "ternary-qat"
+    elif "lora" in cfg:
+        target = "lora"
+    else:
+        target = "lora"
     out_dir = C.abs_repo(cfg["paths"]["output_dir"])
     writer = runtime.AuthorizedWriter([C.abs_repo(RUN_ROOT)])
     integ_dir = C.abs_repo(os.path.join(RUN_ROOT, "integrity"))
