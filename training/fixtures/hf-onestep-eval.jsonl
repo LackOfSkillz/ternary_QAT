@@ -1,0 +1,1 @@
+{"id": "hf-syn-eval-001", "messages": [{"content": "You are a terse assistant.", "role": "system"}, {"content": "Reply with the single word go.", "role": "user"}, {"content": "go", "role": "assistant"}], "metadata": {"source_hash": "synthetic", "split": "evaluation"}, "style_profile": "none", "task_type": "focused_revision"}

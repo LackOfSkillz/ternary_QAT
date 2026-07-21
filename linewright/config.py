@@ -146,6 +146,13 @@ def validate_config(cfg, cfg_path, require_hashes=True, check_overrides=None):
         if not out_ok:
             r.fail(f"output_dir '{out}' is outside authorized roots {AUTHORIZED_OUTPUT_ROOTS}")
 
+    # a one-step rehearsal config must never train on the real Dataset A file
+    if "onestep" in str(cfg.get("experiment_id", "")):
+        tf = (d.get("train_file") or "").replace("\\", "/")
+        if tf.endswith("compiled/experimental-v1/train.jsonl"):
+            r.fail("one-step rehearsal config must not reference the production "
+                   "Dataset A train file for gradients")
+
     # train/evaluation splits disjoint
     disjoint = True
     try:

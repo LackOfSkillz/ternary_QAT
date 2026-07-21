@@ -45,6 +45,8 @@ def run(cfg_path, validate_only=False, dry_run=False, max_steps_override=None,
     if not result.ok:
         return {"ok": False, "stop_reason": "config_invalid",
                 "problems": result.problems}, 1
+    if inject and backend_name == "hf":
+        raise ValueError("failure injection is not permitted in an hf run")
 
     target = {"dataset-a-lora-smoke-v1": "lora",
               "dataset-a-ternary-qat-smoke-v1": "ternary-qat"}.get(
@@ -67,7 +69,12 @@ def run(cfg_path, validate_only=False, dry_run=False, max_steps_override=None,
     max_steps = overrides.get("max_steps", cfg["optimization"]["max_steps"])
     ckpt_int = cfg.get("intervals", {}).get("checkpoint_interval_steps", 10)
     seed = cfg.get("reproducibility", {}).get("seed", 0)
-    backend = get_backend(backend_name).from_config(cfg, target=target)
+    # A backend that trains is created only for a real run (not dry-run) so the 4B
+    # model is not loaded during a dry-run. inject is a stub-only test facility.
+    backend = None
+    if not dry_run:
+        backend = get_backend(backend_name).from_config(
+            cfg, target=target, for_training=True, inject=inject)
 
     manifest = {
         "run_id": f"{cfg['experiment_id']}-{target}",
@@ -87,6 +94,7 @@ def run(cfg_path, validate_only=False, dry_run=False, max_steps_override=None,
         "git_head": repo_before["head"], "git_branch": repo_before["branch"],
         "requested_steps": max_steps, "completed_steps": 0,
         "checkpoint_reload_results": [], "output_files": [],
+        "backend_diagnostics": getattr(backend, "diagnostics", {}) if backend else {},
     }
 
     if dry_run:
@@ -104,8 +112,9 @@ def run(cfg_path, validate_only=False, dry_run=False, max_steps_override=None,
     try:
         for step in range(1, max_steps + 1):
             loss, grad_norm = backend.train_step(step, inject=inject)
+            batch_ids = getattr(backend, "last_batch_ids", None) or ["<stub-batch>"]
             runtime.check_loss_finite(loss, step=step, lr=cfg["optimization"].get("learning_rate"),
-                                      batch_ids=["<stub-batch>"])
+                                      batch_ids=batch_ids)
             grad_mon.observe(grad_norm, step=step)
             stall.observe(step, loss_available=True)
             completed = step
