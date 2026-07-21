@@ -100,6 +100,8 @@ def capture_repository(repo_root, protected_globs=None):
         for f in glob.glob(os.path.join(repo_root, pattern), recursive=True):
             if os.path.isfile(f):
                 rel = os.path.relpath(f, repo_root).replace("\\", "/")
+                if "__pycache__" in rel or rel.endswith(".pyc"):
+                    continue                       # bytecode caches are not source
                 protected[rel] = hash_file(f)
     return {"head": head, "branch": branch, "modified_tracked": tracked,
             "untracked": untracked, "protected_hashes": protected}

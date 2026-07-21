@@ -79,11 +79,25 @@ class FakeChatTokenizer(FakeTokenizer):
         return text if tokenize else text          # returns a STRING even when tokenize=True
 
 
-def test_template_ids_robust_to_string_return():
-    t = FakeChatTokenizer()
-    ids = collate.build_generation_ids(t, MSGS[:2])
+class _BatchEnc:
+    def __init__(self, ids):
+        self.input_ids = ids
+
+
+class FakeBatchTokenizer(FakeTokenizer):
+    chat_template = "{{ tmpl }}"
+
+    def apply_chat_template(self, messages, tokenize=True, add_generation_prompt=False):
+        text = " ".join(m["content"] for m in messages) + (" gen" if add_generation_prompt else " end")
+        ids = self(text)["input_ids"]
+        return _BatchEnc(ids) if tokenize else text   # BatchEncoding-like (has .input_ids)
+
+
+@pytest.mark.parametrize("tok", [FakeChatTokenizer(), FakeBatchTokenizer()])
+def test_template_ids_robust_to_return_type(tok):
+    ids = collate.build_generation_ids(tok, MSGS[:2])
     assert ids and all(isinstance(i, int) for i in ids)
-    ex = collate.build_training_example(t, MSGS, max_length=512)
+    ex = collate.build_training_example(tok, MSGS, max_length=512)
     assert all(isinstance(i, int) for i in ex["input_ids"])
     assert ex["target_token_count"] >= 1
 

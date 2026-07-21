@@ -41,8 +41,10 @@ def _template_ids(tokenizer, messages, add_generation_prompt):
     (list[int], tensor, dict, or rendered-string)."""
     out = tokenizer.apply_chat_template(
         messages, tokenize=True, add_generation_prompt=add_generation_prompt)
-    if isinstance(out, str):                       # some versions return text
+    if isinstance(out, str):                       # some versions return rendered text
         out = tokenizer(out, add_special_tokens=False)["input_ids"]
+    elif hasattr(out, "input_ids"):                # BatchEncoding (UserDict, not dict)
+        out = out.input_ids
     elif isinstance(out, dict):
         out = out["input_ids"]
     if hasattr(out, "tolist"):
