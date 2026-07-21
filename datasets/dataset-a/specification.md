@@ -127,6 +127,119 @@ materially generated the record; never write `teacher_model: none` for
   `excluded_from_training: true`.
 - Records may exist for review while excluded from training.
 
+### Certainty and mediated propositions (canon extraction)
+
+> **Certainty applies to the proposition as phrased.** A source may *establish*
+> that a character reported or believed something without establishing that the
+> reported external event is true.
+
+Phrase mediated claims explicitly. "Edith reports that Margaret disputes her
+account of the will" may be `certainty: "established"` — what is established is
+Edith's report, not Margaret's external action. The unresolved substance (whether
+the will was actually changed) stays in `insufficient_evidence`. This avoids a
+separate `mediated` enum: the wording carries the epistemic scope.
+
+## Focused-revision output and invention control
+
+### Structured revision output (and the no-change protocol)
+
+A focused-revision gold may be returned as a structured object so the
+"did-anything-change" decision is explicit and checkable:
+
+```json
+{ "changed": false, "reason": "No genuine defect found.", "text": "<source passage unchanged>" }
+```
+
+For a genuine correction the compatible shape is:
+
+```json
+{ "changed": true, "reason": "<brief description of the authorized correction>", "text": "<revised passage>" }
+```
+
+**No-change rules** (enforced by the validator when a structured gold is present):
+
+- when `changed: false`, `text` must **exactly** match the `## Context` source
+  (whitespace-normalized);
+- `reason` is brief — no unsolicited critique, no alternative rewrite, no synonym
+  substitution, no commentary embedded in `text`.
+
+This dispatch establishes and applies the no-change case (`dsa-revision-002`). The
+remaining revision golds are not migrated to structured JSON unless needed for
+schema consistency; a plain-prose gold remains valid.
+
+### `invention_budget`
+
+Every `focused_revision` record declares how much *new* material the revision may
+introduce:
+
+```yaml
+invention_budget:
+  level: none | bounded | open
+  allowed:  [ <specific permitted invention>, ... ]
+  prohibited: [ <specific prohibited invention>, ... ]
+```
+
+- **none** — no new facts, images, actions, objects, backstory, or motives.
+  Deletion, correction, and rearrangement of supplied language may still occur if
+  authorized. `allowed` must be empty.
+- **bounded** — limited invention only within the declared `allowed` list (which
+  must name at least one specific allowance).
+- **open** — broader invention within task/style constraints; used sparingly, and
+  `prohibited` must still be stated.
+
+## Constraint-check causal sets
+
+Constraint-check records declare `causal_constraint_ids` in front matter — the
+constraint IDs that **jointly** make the passage a violation (`[]` for a
+non-violation). The gold JSON reports `constraint_ids` (replacing the old singular
+`constraint_id`).
+
+> The gold `constraint_ids` must **equal** the declared `causal_constraint_ids` as
+> a **set**. Order does not matter. A missing or extra ID fails the exact
+> causal-set check, and the grader names the omitted constraint so the failure is
+> understandable.
+
+Every ID (in either set) must be declared in that record's `## Context`. A partial
+set fails: on `dsa-constraint-003`, `["D1", "D2"]` fails because D3 (the market
+window) is also load-bearing.
+
+## Source diversity and expansion policy
+
+Dataset A must not become a single-voice, single-source monoculture. The
+**working target** distribution for the eventual 300–400-record corpus (a planning
+range, not an immediate quota):
+
+- 50–60% deliberately varied synthetic sources;
+- 15–20% Gary-supplied or Gary-edited sources;
+- 15–20% verified public-domain sources or transformations;
+- 10–15% intentionally rough synthetic prose expressing targeted defects.
+
+**Anti-dominance rule.** Author-supplied material provides grounding and
+diversity, but:
+
+> No single author's craft constitution — including Gary's — may dominate the
+> generic Dataset A source distribution.
+
+**Teacher provenance is per-record.** Every model-authored source records the
+actual authoring model in `teacher_model`. Pooled attribution ("multiple models")
+is forbidden — each model is a separate licensing line item.
+
+**Public-domain provenance.** When `source_type: public_domain`, the record must
+carry a `public_domain_source` block:
+
+```yaml
+public_domain_source:
+  title: ...
+  author: ...
+  publication_year: ...
+  edition_or_archive: ...
+  source_url_or_identifier: ...
+  verification_note: ...
+```
+
+The validator requires this block whenever `source_type: public_domain`. (No
+public-domain records are added in this dispatch — schema/validation support only.)
+
 ## Review and promotion
 
 `draft → mechanically validated → Gate 1 adversarial review → Gate 2 independent

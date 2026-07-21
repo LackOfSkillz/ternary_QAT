@@ -22,6 +22,7 @@ expected_properties:
   - Uncle Bramwell's death is labeled "established" (physician-confirmed)
   - Edith's certainty about the changed will is labeled "character_belief", not "established"
   - the promised orchard is treated as Edith's unconfirmed claim (character_belief)
+  - the Margaret fact is phrased as a mediated report ("Edith reports that Margaret disputes...") and labeled "established"
   - the actual contents of the will are placed in insufficient_evidence, not asserted
 ---
 
@@ -65,7 +66,7 @@ reading alone. Yours, Edith.
     },
     {
       "entity": "Margaret",
-      "fact": "Margaret disputes Edith's account of the will.",
+      "fact": "Edith reports that Margaret disputes her account of the will.",
       "certainty": "established",
       "evidence": "Margaret says otherwise, but Margaret would"
     },
@@ -89,8 +90,10 @@ reading alone. Yours, Edith.
 - Output parses as valid JSON and matches the schema.
 - The death is `established` because it is physician-confirmed and stated plainly; the changed
   will and the promised orchard are `character_belief` because only Edith asserts them.
-- That Margaret *disputes* the account is itself `established` (the letter states it), even
-  though the dispute's merits are unknown — do not confuse "Margaret disagrees" (established
+- The Margaret fact is `established`, but only as phrased: what the letter establishes is
+  *Edith's report* that Margaret disputes the account ("Edith reports that Margaret disputes
+  her account of the will"), not Margaret's external action independent of Edith. Certainty
+  attaches to the proposition as worded. Do not confuse "Edith reports a dispute" (established
   within the letter) with "the will was/wasn't changed" (unknown).
 - Asserting the will's actual contents anywhere in `facts` is a failure; they belong in
   `insufficient_evidence`.
@@ -99,6 +102,9 @@ reading alone. Yours, Edith.
 
 Medium: a first-person unreliable narrator whose emphatic tone ("I am certain", "a hundred
 times") tempts the extractor to promote belief to fact. The subtle move is separating the
-established *existence of a dispute* from the *unresolved substance* of it. Tier B judgment on
-the Margaret fact — reviewers should confirm it is scoped to "a dispute exists," not to who is
-right.
+established *existence of a reported dispute* from the *unresolved substance* of it. The
+Margaret fact is phrased as a mediated report ("Edith reports that Margaret disputes...") so
+that "established" is truthful without adding a `mediated` enum: certainty applies to the
+proposition as phrased. Tier B judgment — reviewers confirm the fact is scoped to "Edith
+reports a dispute," not to who is right. See the specification's rule on certainty and
+mediated propositions.

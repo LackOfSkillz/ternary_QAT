@@ -17,18 +17,19 @@ license_status: unverified
 teacher_model: claude-opus-4-8
 teacher_terms_status: pending_review
 excluded_from_training: true
+causal_constraint_ids: []
 expected_properties:
   - output is valid JSON with a boolean 'violation' field
   - violation is false for this record
   - type equals "none"
-  - constraint_id is null
+  - constraint_ids is an empty list
   - explanation states why the apparent concern is actually consistent with canon
 ---
 
 ## Instruction
 
 You are a continuity checker for a fiction manuscript. You are given declared canon constraints and a draft passage. Decide whether the draft violates any constraint. Respond with one JSON object:
-{"violation": bool, "type": "factual_contradiction"|"knowledge_state"|"chronology"|"object_state"|"none", "constraint_id": <string or null>, "explanation": <string>, "evidence": <string>}
+{"violation": bool, "type": "factual_contradiction"|"knowledge_state"|"chronology"|"object_state"|"none", "constraint_ids": <array of the constraint id strings that jointly make this a violation; [] if none>, "explanation": <string>, "evidence": <string>}
 Do not manufacture a violation. If every apparent tension is resolved by the constraints, report no violation. Reporting a false violation is itself an error.
 
 ## Context
@@ -39,7 +40,7 @@ Declared canon constraints:
 - S3 (viewpoint rule): This scene is written in tight third person from Isolde's point of view. Isolde is looking into a mirror.
 
 Draft passage (Isolde's POV):
-"Isolde leaned close to the glass, close enough to fog it with her breath. The face that met her was her own and not her own — the same dark brows, the same stubborn jaw. And there, arced through the right brow, the pale seam of the old scar, catching the lamplight. She pressed her thumb to it, as she always did when she was afraid, and told herself it was only Maren looking back, only the memory of her sister in the mirror's trick of light."
+"Isolde leaned close to the glass, close enough to fog it with her breath. The face in the mirror was her own and not her own, the same dark brows, the same stubborn jaw. And there, arced through the right brow of the reflection, the pale seam of the old scar, catching the lamplight where the glass held it. She set her thumb against the cold surface, over the mark that was not on her own face, and told herself it was only Maren looking back, only the memory of her sister in the mirror's trick of light."
 
 ## Gold Response
 
@@ -47,9 +48,9 @@ Draft passage (Isolde's POV):
 {
   "violation": false,
   "type": "none",
-  "constraint_id": null,
-  "explanation": "At first glance the scar on the 'right brow' looks like it wrongly appears on Isolde (S2 says her brow is unmarked). But the passage does not assign the scar to Isolde's own face: she is at a mirror thinking of her twin, and the text frames the scarred brow as 'only Maren looking back, only the memory of her sister.' The scar belongs to Maren per S1, and the imagery is Isolde projecting her sister onto her reflection. No constraint is broken; the apparent contradiction is resolved by the mirror framing and the explicit attribution to Maren.",
-  "evidence": "only Maren looking back, only the memory of her sister in the mirror's trick of light"
+  "constraint_ids": [],
+  "explanation": "At first glance the scar on the 'right brow' looks like it wrongly appears on Isolde (S2 says her brow is unmarked). But the passage places the scar on the reflection, not on Isolde's face: it is 'arced through the right brow of the reflection,' and she sets her thumb against the glass 'over the mark that was not on her own face.' The scar belongs to Maren per S1, and the text names the image as 'only Maren looking back, only the memory of her sister.' Isolde's own brow stays unmarked (S2 honored); the scarred brow exists only in the reflected/remembered image. No constraint is broken.",
+  "evidence": "over the mark that was not on her own face"
 }
 ```
 
@@ -57,11 +58,11 @@ Draft passage (Isolde's POV):
 
 - Response is a single valid JSON object matching the schema.
 - violation is exactly false (the record must NOT be flagged).
-- type is exactly "none" and constraint_id is null.
-- explanation names the apparent concern (scar seeming to appear on Isolde) and explains why it is actually consistent (the scar is attributed to Maren via the mirror/memory framing, honoring S1 and S2).
-- evidence quotes the disambiguating clause that resolves the tension rather than a clause that would imply a violation.
+- type is exactly "none" and constraint_ids is `[]`.
+- explanation names the apparent concern (scar seeming to appear on Isolde) and explains why it is actually consistent: the scar is on the *reflection*, and Isolde touches the glass, not her own brow — S1 (scar is Maren's) and S2 (Isolde unmarked) are both honored.
+- evidence quotes a disambiguating clause (she touches "the mark that was not on her own face," or "only Maren looking back") rather than a clause that would imply a violation.
 - A checker that flags this as factual_contradiction fails the record.
 
 ## Reviewer Notes
 
-Teaches restraint. The surface pattern (a unique scar named while an unscarred twin is on camera) mimics the factual-contradiction template, but the constraints are honored because the text explicitly attributes the scar to the correct twin through the mirror device. Pairs with dsa-constraint-001 to separate genuine contradiction from a look-alike that resolves cleanly. The lesson is non-detection when detection is unwarranted, not compulsory error-finding.
+Teaches restraint. The surface pattern (a unique scar named while an unscarred twin is on camera) mimics the factual-contradiction template, but the constraints are honored because the scar is placed on the *reflection* and Isolde touches the glass — never a scar on her own body. This glass/reflection variant keeps the record `hard`: the disambiguation ("of the reflection," "the mark that was not on her own face") is present but not over-explained, so a careless checker still reads a contradiction. Pairs with dsa-constraint-001 to separate genuine contradiction from a look-alike that resolves cleanly. The lesson is non-detection when detection is unwarranted, not compulsory error-finding.
