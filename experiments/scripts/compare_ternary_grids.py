@@ -50,6 +50,10 @@ def ternary_qat(w, group=128, eps=1e-8):
 
 
 def prism_q2_0(w, group=128):
+    """Prism Q2_0 quantization MATH. The real Prism `GGML_TYPE_Q2_0` is fixed at
+    group 128 (`QK2_0 = 128`); calling this with group != 128 is a purely
+    HYPOTHETICAL mathematical parameterization for sensitivity analysis and is
+    NOT evidence that the Prism fork supports any other group size."""
     shape = w.shape
     wg = w.reshape(-1, group).astype(np.float32)
     d = np.abs(wg).max(axis=1, keepdims=True)
@@ -124,7 +128,9 @@ def main():
         ("ternary_qat", 128, "prism_q2_0", 128, "approximately_equivalent", True),
         ("prism_q2_0", 128, "upstream_tq2_0", 256, "not_equivalent", False),
         ("ternary_qat", 128, "upstream_tq2_0", 256, "not_equivalent", False),
-        ("ternary_qat", 64, "prism_q2_0", 64, "approximately_equivalent", True),
+        # HYPOTHETICAL g64: prism_reference_math_hypothetical_g64 — sensitivity
+        # check only; the real Prism Q2_0 is g128 (QK2_0=128), not a g64 artifact.
+        ("ternary_qat", 64, "prism_q2_0", 64, "approximately_equivalent_hypothetical_g64", True),
     ]
 
     results = []

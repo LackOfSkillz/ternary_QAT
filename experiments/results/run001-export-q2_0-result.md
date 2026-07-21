@@ -140,3 +140,27 @@ No adapter re-training, no ternary QAT, no distributed work, and no model-server
 deployment were performed. No literary-quality conclusion is drawn and no claim
 that Run 1 improved the model is made. The pipeline mechanics (merge → GGUF →
 TQ2_0 → reload → generate → compare) are proven end to end.
+
+## Deployment-grid amendment (Dispatch 11)
+
+The original survival finding above used **upstream `TQ2_0`** as the "packed"
+representation: **group size 256** with **Q6_K (non-ternarized) embeddings** —
+produced by stock `llama-quantize` and evaluated in stock llama.cpp.
+
+Dispatch 10 established that this is **not** the Prism deployment grid
+(`prism-format-characterization.md`): Prism ships **Q2_0 = GGML type 42**, group
+**128**, **ternary embeddings**, tied head, loadable only by the
+`PrismML-Eng/llama.cpp` (`prism`) fork.
+
+Dispatch 11 revalidated the finding on the **true grid**
+(`run001-prism-grid-revalidation.md`): the trained and untouched artifacts were
+re-quantized with the **actual Prism `llama-quantize --token-embedding-type
+Q2_0`** and evaluated on the **Prism runtime**. The untouched result is
+**byte-identical** to the official `Ternary-Bonsai-4B-Q2_0.gguf`. On this grid the
+trained artifact again returns the base revision **"It was what it was."** rather
+than the learned **"Nothing could change it."**
+
+**The original conclusion is CONFIRMED, not revised:** conventional-LoRA change
+does not survive ternary Q2_0 reprojection — now demonstrated on the real Prism
+deployment grid, not just an upstream approximation. The original upstream-TQ2_0
+results are retained above as the historical record.

@@ -50,7 +50,7 @@ undefined. With `eps = 1e-8` and a reporting threshold `near_zero = 1e-4`:
   small-by-small.
 
 Interpretation: `≈1` behavior survived packing; `≈0` packing erased the training
-change (the Run 1 finding); `>1` packing amplified/゚distorted behavior.
+change (the Run 1 finding); `>1` packing amplified or distorted behavior.
 
 ## Required outputs (future harness)
 

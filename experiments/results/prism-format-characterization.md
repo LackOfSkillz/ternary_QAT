@@ -100,13 +100,29 @@ quantize_row_q2_0_ref`; upstream `ggml-quants.c quantize_row_tq2_0_ref`.
 
 ### Equivalence classification (each cites the row above + probe results)
 
-- **ternary_QAT (g128) ≈ Prism Q2_0 (g128): APPROXIMATELY EQUIVALENT.** Same grid
-  (g128, amax scale), same embedding-ternarization and tied policy. Differences:
-  (a) Prism stores the scale in fp16 (ternary_QAT keeps fp32), (b) rounding differs
-  only at exactly ±0.5·amax (half-even vs half-away). Probe
-  (`compare_ternary_grids.py`): ternary levels **match 100%** on random
-  off-boundary data; max dequant rel-err **~4e-4** (fp16 scale). ⇒ ternary_QAT is
-  the correct fake-quant to emulate the Prism deployment grid.
+- **ternary_QAT (g128) vs Prism Q2_0 (g128): ARTIFACT-LEVEL EQUIVALENCE CONFIRMED**
+  (Dispatch 11). Same grid (g128, amax scale), same embedding-ternarization and
+  tied policy. Differences: (a) Prism stores the scale in fp16 (ternary_QAT keeps
+  fp32), (b) rounding differs only at exactly ±0.5·amax (half-even vs half-away).
+  - Reference-level probe (`compare_ternary_grids.py`, pure NumPy): ternary levels
+    match 100% on random off-boundary data; max dequant rel-err ~4e-4.
+  - **Artifact-level probe (Dispatch 11):** the real
+    `ternary.linear.ternarize_weight` vs the **compiled** fork function
+    `quantize_row_q2_0_ref` — linked from `libggml-base.so`
+    (`~/llama.cpp-prism/build-cpu/bin`, commit `7529fdaaf`, quantizer binary
+    sha256 `712e3b5e…50bad`) via `experiments/native/prism_q2_0_probe.c` on a
+    deterministic fixture (random / zeros / exact-±0.5 / near-boundary / outlier /
+    embedding-like, g128). Result: **code match 100% off exact-half boundaries**
+    (0 off-boundary mismatches), 2 mismatches only at exactly ±0.5 (rounding mode),
+    **scale rel-err max 1.2e-4** (fp16 storage), dequant abs-err 1.0 confined to the
+    two boundary elements. Scripts: `export_actual_torch_ternary_fixture.py`,
+    `compare_actual_torch_vs_prism.py`.
+  - **Bit-exact whole-artifact check:** our untouched base quantized with the Prism
+    quantizer (`--token-embedding-type Q2_0`) is **byte-identical** to the official
+    `Ternary-Bonsai-4B-Q2_0.gguf` (sha256 `4e0bf8b7…f28b8b`). See
+    `run001-prism-grid-revalidation.md`.
+  ⇒ ternary_QAT is the correct fake-quant to emulate the Prism deployment grid;
+  the only differences are the documented fp16-scale storage and ±0.5 half-rounding.
 - **ternary_QAT (g128) ≠ upstream TQ2_0 (g256): NOT EQUIVALENT.** Different group
   size and different embedding policy (Q6_K vs ternary).
 - **Prism Q2_0 (g128) vs upstream TQ2_0 (g256): NOT EQUIVALENT** (group size +
@@ -140,6 +156,13 @@ grid up to fp16-scale storage and ±0.5 half-rounding, so it is the right traini
 emulator. Run 1's earlier "matched-tooling" baseline used upstream TQ2_0 (g256,
 Q6_K embeddings) and is therefore **not** a faithful Prism proxy — Run 2/3 must
 quantize with the Prism quantizer and evaluate on the Prism runtime.
+
+## Hardware scope
+
+The Prism runtime and performance figures in this report are ARM64/GX10-specific
+validation results. They are not evidence for consumer laptop performance or
+minimum hardware requirements. Runtime qualification for any minimum-spec claim
+must be done on the designated 8 GB Windows laptop (see ROADMAP), not on the GX10.
 
 ## Unresolved questions
 
