@@ -48,9 +48,18 @@ license_status:
   - unverified
 
 teacher_terms_status:
-  - not_applicable      # hand-written, no teacher model
+  - not_applicable      # ONLY when there is genuinely no teacher/authoring model
   - pending_review
   - cleared
+
+# Origin of the record's authored content. Provenance records ORIGIN; review
+# status records ADJUDICATION. Human review NEVER converts model_authored to
+# human_authored.
+origin:
+  - human_authored
+  - model_authored
+  - mixed_origin
+  - unknown
 
 # Core failure labels — precise, distinguishable defects. Vague labels
 # (bad_style, weak_writing, not_engaging, needs_improvement) are forbidden.

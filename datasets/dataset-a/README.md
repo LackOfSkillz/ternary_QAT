@@ -72,12 +72,21 @@ context / gold response, provenance/exclusion fields, and prints counts by famil
   unassigned`, and **ready for inspection only — not approved**.
 - `approved/`, `rejected/`, `compiled/` are empty (placeholder `.gitkeep`).
 
+## Provenance discipline
+
+Provenance records **origin**; review status records **adjudication**. All 25 seed
+records are **`origin: model_authored`** by `claude-opus-4-8` (teacher terms
+`pending_review`, `excluded_from_training: true`). Human review never converts
+model-authored content into human-authored provenance. See
+`reviews/dispatch-12-correction.md`.
+
 ## Open questions (for Gary)
 
-- **Authoritative Craft Taxonomy** was not supplied; `docs/craft-taxonomy-reference.md`
-  records the tiers/examples from the dispatch and must be reconciled to the real
-  taxonomy when provided.
+- Authoritative Craft Taxonomy is installed at
+  [`docs/linewright-craft-taxonomy.md`](docs/linewright-craft-taxonomy.md);
+  `docs/craft-taxonomy-reference.md` is now a non-authoritative working subset.
 - The 360-record target distribution is **provisional** pending compiled-packet
   feasibility results.
-- Teacher-clearance is unresolved for any teacher-assisted record; such records
-  stay `excluded_from_training: true`. (The seed batch is hand-written synthetic.)
+- **Teacher-output licensing is unresolved.** All 25 records stay
+  `excluded_from_training: true` until a licensing memo clears the commercial
+  teacher-output case.

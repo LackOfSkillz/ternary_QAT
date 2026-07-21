@@ -78,7 +78,45 @@ Tier B labels must be treated as estimates, and Tier C techniques must appear on
 as declared author/scene-contract constraints — never as candidate-vote-learned
 preferences.
 
+## Section semantics by task family
+
+The `## Context` section means different things per family (enforced meaning in
+`schema/record-schema.yaml → context_semantics`):
+
+- **canon_extraction** — the source passage / supplied evidence.
+- **constraint_check** — the declared constraints/canon plus the passage checked.
+- **focused_revision** — the prose to revise.
+- **scene_contract** — the writer's scene request and available project constraints.
+- **fiction_boundary** — only the framing needed to classify the task. The
+  meta-rationale lives in a required `## Classification Rationale` section, not in
+  Context.
+
+### Scene-contract output fields
+
+A scene-contract `## Gold Response` is a structured contract with these fields.
+Viewpoint is split so the anchoring character and the narration mode are never
+conflated:
+
+- `viewpoint_character` — whose experience anchors the scene (a character).
+- `narrative_perspective` — narration person/distance (first person, third
+  limited/close, omniscient, objective, etc.).
+- `location`, `scene_objective`, `required_outcome`, `prohibited_outcome`,
+  `knowledge_boundary`, `protected_craft_or_tone`.
+- `problems` — for incomplete/contradictory requests, list what is missing or
+  contradictory and null the affected fields; never invent a resolution. A known
+  focal character with an unstated narration mode fills `viewpoint_character` and
+  nulls `narrative_perspective` (do not mark the character missing).
+
 ## Provenance and licensing
+
+**Provenance records origin; review status records adjudication.** Human review,
+editing, or approval does **not** convert model-authored source material into
+human-authored provenance — a `model_authored` record stays `model_authored`
+forever. The `origin` field (`human_authored | model_authored | mixed_origin |
+unknown`) and `teacher_model` must truthfully name any model that authored or
+materially generated the record; never write `teacher_model: none` for
+`model_authored` content.
+
 
 - Seed records use **newly generated internal synthetic passages** only, unless
   Gary explicitly supplied prose for a record.
@@ -91,10 +129,12 @@ preferences.
 
 ## Review and promotion
 
-`draft → mechanically_validated → substantive review → Gary review (where
-required) → substantively_approved / author_approved → frozen → compiled`. **No
-script promotes a record to approved.** Approved/frozen records are never placed
-in `drafts/`. Compilation to JSONL happens only after freeze.
+`draft → mechanically validated → Gate 1 adversarial review → Gate 2 independent
+model review → Gary author review (where required) → approved → frozen →
+compiled`. **No script promotes a record to approved**, and
+`mechanically_validated` is never a substitute for literary approval.
+Approved/frozen records are never placed in `drafts/`. Compilation to JSONL
+happens only after freeze.
 
 ## Split policy
 

@@ -55,6 +55,8 @@ def validate(root):
     req_by_type = schema["required_by_task_type"]
     sec_all = schema["sections_required_all"]
     sec_by_type = schema["sections_required_by_task_type"]
+    allowed_fields = set(schema["fields"].keys())
+    allow_unknown = schema.get("allow_unknown_fields", True)
 
     draft_files = sorted(glob.glob(os.path.join(root, "drafts", "**", "*.md"), recursive=True))
     approved_files = sorted(glob.glob(os.path.join(root, "approved", "**", "*.md"), recursive=True))
@@ -65,6 +67,8 @@ def validate(root):
     contexts = {}
     golds = {}
     fam_counts = {}
+    matched = {}     # id -> matched_pair_with
+    id_task = {}     # id -> task_type
 
     def err(f, msg):
         problems.append(f"{os.path.relpath(f, root)}: {msg}")
@@ -76,6 +80,12 @@ def validate(root):
             err(f, str(e))
             continue
 
+        # unknown front-matter keys (schema keys only; free-form sections are fine)
+        if not allow_unknown:
+            for key in fm:
+                if key not in allowed_fields:
+                    err(f, f"unknown front-matter field '{key}' (not declared in schema)")
+
         # required-all fields
         for field in req_all:
             if field not in fm or fm[field] in (None, ""):
@@ -83,6 +93,9 @@ def validate(root):
 
         tt = fm.get("task_type")
         rid = fm.get("id", "<no-id>")
+        id_task[rid] = tt
+        if fm.get("matched_pair_with"):
+            matched[rid] = fm["matched_pair_with"]
 
         # id uniqueness
         if rid in seen_ids:
@@ -103,6 +116,7 @@ def validate(root):
         check_enum("source_type", "source_type")
         check_enum("license_status", "license_status")
         check_enum("teacher_terms_status", "teacher_terms_status")
+        check_enum("origin", "origin")
         if "dataset" in fm and fm["dataset"] != "dataset-a":
             err(f, f"dataset must be 'dataset-a', got '{fm.get('dataset')}'")
 
@@ -158,6 +172,21 @@ def validate(root):
                 golds[gold] = f
 
         fam_counts[tt] = fam_counts.get(tt, 0) + 1
+
+    # matched_pair_with: existence, reciprocity, compatible task types
+    for rid, partner in matched.items():
+        loc = seen_ids.get(rid, "<?>")
+        if partner not in seen_ids:
+            problems.append(f"{os.path.relpath(loc, root)}: matched_pair_with "
+                            f"'{partner}' does not exist")
+            continue
+        back = matched.get(partner)
+        if back != rid:
+            problems.append(f"{os.path.relpath(loc, root)}: matched pair with "
+                            f"'{partner}' is not reciprocal (partner points to '{back}')")
+        if id_task.get(rid) != id_task.get(partner):
+            problems.append(f"{os.path.relpath(loc, root)}: matched pair task_type "
+                            f"mismatch ({id_task.get(rid)} vs {id_task.get(partner)})")
 
     return problems, {"records": len(all_files), "by_task_type": fam_counts,
                       "ids": len(seen_ids)}

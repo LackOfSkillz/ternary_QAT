@@ -29,12 +29,20 @@ fields:
   anti_slop_risks:       {type: list}
   expected_properties:   {type: list, desc: "checkable properties of the gold output"}
   failure_modes:         {type: list, enum_items: failure_label}
-  provenance:            {type: string}
+  provenance:            {type: string, desc: "truthful origin statement; names the authoring model if any"}
+  origin:                {type: enum, enum: origin, desc: "human_authored | model_authored | mixed_origin | unknown"}
   source_type:           {type: enum, enum: source_type}
   license_status:        {type: enum, enum: license_status}
-  teacher_model:         {type: string, desc: "'none' if hand-written"}
+  teacher_model:         {type: string, desc: "the model that authored/materially generated the record; 'none' ONLY if fully human_authored. Never write 'none' for model_authored content."}
   teacher_terms_status:  {type: enum, enum: teacher_terms_status}
-  excluded_from_training:{type: bool}
+  excluded_from_training: {type: bool}
+  matched_pair_with:     {type: string, optional: true, enum_optional: record_id, desc: "id of a reciprocally-paired record, or absent"}
+
+# Provenance vs review discipline:
+#   Provenance records ORIGIN (who/what authored the content). Review status
+#   records ADJUDICATION (whether a human accepted it). Human review, editing, or
+#   approval does NOT convert model-authored source material into human-authored
+#   provenance. A model_authored record stays model_authored forever.
 
 # fields required for EVERY record
 required_all:
@@ -48,10 +56,15 @@ required_all:
   - template_family
   - semantic_cluster
   - provenance
+  - origin
   - source_type
   - license_status
+  - teacher_model
   - teacher_terms_status
   - excluded_from_training
+
+# unknown front-matter keys are REJECTED unless declared in `fields` above.
+allow_unknown_fields: false
 
 # additional required fields by task family
 required_by_task_type:
@@ -60,6 +73,15 @@ required_by_task_type:
   focused_revision:      [craft_targets, protected_craft, authorized_changes, unauthorized_changes, anti_slop_targets, anti_slop_risks, style_profile, failure_modes]
   scene_contract:        [expected_properties]
   fiction_boundary:      [expected_properties]
+
+# ---- meaning of the `## Context` section, by task family ----
+# Context is family-specific; do not overload it.
+context_semantics:
+  canon_extraction:  "the source passage or supplied evidence"
+  constraint_check:  "the declared constraints/canon plus the passage being checked"
+  focused_revision:  "the prose to revise"
+  scene_contract:    "the writer's scene request and any available project constraints"
+  fiction_boundary:  "only the framing needed to classify the task; the meta-rationale goes in ## Classification Rationale, NOT here"
 
 # ---- required human-readable sections (## headings) by task family ----
 # 'Rejected Response' + 'Rejection Reasons' are required for focused_revision and
@@ -73,7 +95,7 @@ sections_required_all:
 
 sections_required_by_task_type:
   focused_revision:  [Protected Elements, Rejected Response, Rejection Reasons]
-  fiction_boundary:  [Rejected Response, Rejection Reasons]
+  fiction_boundary:  [Rejected Response, Rejection Reasons, Classification Rationale]
   scene_contract:    [Protected Elements]
 
 # sections allowed to be absent without penalty (per task family)
