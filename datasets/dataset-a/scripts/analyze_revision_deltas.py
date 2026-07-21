@@ -20,6 +20,20 @@ import re
 
 import yaml
 
+
+def structured_gold_text(gold):
+    """If the gold is the structured revision object {changed, reason, text},
+    return (text, changed). Otherwise (gold, None)."""
+    m = re.search(r"```(?:json)?\s*(.*?)```", gold, re.S)
+    if m:
+        try:
+            obj = json.loads(m.group(1))
+            if isinstance(obj, dict) and "text" in obj:
+                return obj["text"], obj.get("changed")
+        except Exception:
+            pass
+    return gold, None
+
 FILTER_WORDS = ["saw", "felt", "heard", "noticed", "realized", "watched",
                 "thought", "knew", "seemed", "wondered"]
 EMOTION_WORDS = ["grief", "sorrow", "joy", "fear", "anger", "angry", "love",
@@ -55,7 +69,10 @@ def strip_prefix(text, label):
 
 
 def sentences(t):
-    return [s.strip() for s in re.split(r"(?<=[.!?])\s+", t.strip()) if s.strip()]
+    # collapse intra-sentence whitespace so wrapped source prose and single-line
+    # gold text (e.g. from a structured no-change object) compare correctly.
+    return [re.sub(r"\s+", " ", s.strip())
+            for s in re.split(r"(?<=[.!?])\s+", t.strip()) if s.strip()]
 
 
 def words(t):
@@ -82,7 +99,7 @@ def analyze_one(fm, secs):
     src = secs.get("Context", "")
     # drop a leading "Passage:" / "Sentence:" label if present in revision context
     src = re.sub(r"^(Sentence|Passage):\s*", "", src)
-    gold = secs.get("Gold Response", "")
+    gold, gold_changed = structured_gold_text(secs.get("Gold Response", ""))
 
     sc_s, sc_g = sentences(src), sentences(gold)
     w_s, w_g = words(src), words(gold)
@@ -138,19 +155,37 @@ def analyze_one(fm, secs):
                                        "kind": "heuristic"}
 
     # ---- off-axis + teacher-signature flags ----
+    # Authorized-axis awareness (heuristic): some structural moves (combining or
+    # varying sentences) are explicitly authorized, so a low sentence-sequence
+    # similarity is EXPECTED and must not be treated as a major off-axis warning.
     flags = []
     authorized = " ".join(fm.get("authorized_changes", []) or []).lower()
     targets = " ".join((fm.get("craft_targets", []) or []) +
                        (fm.get("anti_slop_targets", []) or [])).lower()
     protected = " ".join(fm.get("protected_craft", []) or []).lower()
+    # low sentence-sequence similarity is EXPECTED when the task authorizes a
+    # structural rewrite (combining/varying sentences) or a line-level rewrite
+    # into subtext; those are on-axis, not off-axis.
+    structural_authorized = any(kw in (authorized + targets) for kw in
+                                ("combine", "vary sentence", "sentence length variance",
+                                 "turn_length_variance", "sentence_length_variance",
+                                 "rewrite", "subtext", "indirection"))
+    ib = fm.get("invention_budget") or {}
+    ib_level = ib.get("level")
 
     if metrics["em_dash"]["delta"] > 0 and "dash" not in (authorized + targets):
         flags.append(f"em dash introduced ({metrics['em_dash']['delta']}) but not "
                      f"an authorized/target change")
+    if metrics["colon"]["delta"] > 0 and "colon" not in (authorized + targets):
+        flags.append(f"colon introduced ({metrics['colon']['delta']}), not a named change")
     if metrics["semicolon"]["delta"] != 0 and "semicolon" not in authorized:
         flags.append("semicolon count changed, not a named target")
-    if ratio < 0.5:
+    if ratio < 0.5 and not structural_authorized:
         flags.append(f"large edit distance (similarity {ratio}) on a focused/minimal task")
+    # invention beyond a 'none' budget (heuristic: net new words with no deletion task)
+    if ib_level == "none" and metrics["word_count"]["delta"] > 6:
+        flags.append(f"word count grew by {metrics['word_count']['delta']} under a "
+                     f"'none' invention budget (possible added material)")
     if metrics["named_emotion_words"]["gold"] < metrics["named_emotion_words"]["source"] \
             and ("emotion" in protected or "named" in protected):
         flags.append("named-emotion word count dropped while emotion naming is protected")
@@ -203,6 +238,7 @@ def main():
             "protected_craft": fm.get("protected_craft"),
             "authorized_changes": fm.get("authorized_changes"),
             "unauthorized_changes": fm.get("unauthorized_changes"),
+            "invention_budget_level": (fm.get("invention_budget") or {}).get("level"),
             "metrics": metrics, "off_axis_flags": flags,
             "teacher_signatures": sigs, "machine_note": machine_note(fm, metrics, flags),
         })
@@ -214,13 +250,21 @@ def main():
     lines = ["# Gate 0 — Revision Delta Report", "",
              "Deterministic evidence for Gate 1 human review of the 10 focused-",
              "revision records. This report **does not approve or reject** anything.",
-             "Metrics are labeled deterministic | heuristic | unavailable.", ""]
+             "Metrics are labeled deterministic | heuristic | unavailable.", "",
+             "**Authorized-axis awareness (heuristic):** when a record explicitly",
+             "authorizes combining or varying sentences, low sentence-sequence",
+             "similarity is EXPECTED and is *not* flagged as off-axis. The scan still",
+             "flags unauthorized additions (new imagery/facts/interpretation, em",
+             "dashes/colons not named as targets, protected-element loss, and net new",
+             "words under a `none` invention budget). It does not judge prose quality.",
+             ""]
     for r in records:
         m = r["metrics"]
         lines += [f"## {r['id']}  ({r['style_profile']})", "",
                   f"- **Intended craft target:** {', '.join(r['craft_targets'] or []) or 'n/a'}",
                   f"- **Protected craft:** {', '.join(r['protected_craft'] or []) or 'n/a'}",
                   f"- **Authorized changes:** {', '.join(r['authorized_changes'] or []) or 'n/a'}",
+                  f"- **Invention budget:** {r['invention_budget_level'] or 'n/a'}",
                   "",
                   "| metric | source | gold | delta | kind |",
                   "|---|---|---|---|---|"]

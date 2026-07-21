@@ -4,37 +4,44 @@ Deterministic evidence for Gate 1 human review of the 10 focused-
 revision records. This report **does not approve or reject** anything.
 Metrics are labeled deterministic | heuristic | unavailable.
 
+**Authorized-axis awareness (heuristic):** when a record explicitly
+authorizes combining or varying sentences, low sentence-sequence
+similarity is EXPECTED and is *not* flagged as off-axis. The scan still
+flags unauthorized additions (new imagery/facts/interpretation, em
+dashes/colons not named as targets, protected-element loss, and net new
+words under a `none` invention budget). It does not judge prose quality.
+
 ## dsa-revision-001  (dark-speculative-v1)
 
 - **Intended craft target:** significant_detail, concrete_diction
 - **Protected craft:** flat_affect, single_sustained_image
 - **Authorized changes:** replace the one generic-atmosphere sentence with a specific, slightly-wrong sensory detail
+- **Invention budget:** bounded
 
 | metric | source | gold | delta | kind |
 |---|---|---|---|---|
-| word_count | 48 | 53 | 5 | deterministic |
+| word_count | 48 | 57 | 9 | deterministic |
 | sentence_count | 4 | 4 | 0 | heuristic |
-| avg_sentence_len | 12.0 | 13.2 | 1.1999999999999993 | heuristic |
-| sentence_len_variance | 5.34 | 5.54 | 0.20000000000000018 | heuristic |
+| avg_sentence_len | 12.0 | 14.2 | 2.1999999999999993 | heuristic |
+| sentence_len_variance | 5.34 | 6.26 | 0.9199999999999999 | heuristic |
 | em_dash | 0 | 0 | 0 | deterministic |
 | semicolon | 0 | 0 | 0 | deterministic |
 | colon | 0 | 0 | 0 | deterministic |
 | ellipsis | 0 | 0 | 0 | deterministic |
 | filter_words | 0 | 0 | 0 | deterministic |
-| adverbs_ly | 1 | 1 | 0 | heuristic |
+| adverbs_ly | 1 | 2 | 1 | heuristic |
 | named_emotion_words | 1 | 0 | -1 | heuristic |
 | max_repeated_opening | 1 | 1 | 0 | heuristic |
 | quote_chars | 0 | 0 | 0 | heuristic |
 
-- similarity ratio (heuristic): 0.25; changed sentence blocks: 1
+- similarity ratio (heuristic): 0.75; changed sentence blocks: 1
 - adjective_estimate: unavailable (no POS tagger)
 
-**Potential off-axis flags:**
-- ⚠ large edit distance (similarity 0.25) on a focused/minimal task
+**Potential off-axis flags:** none
 
 **Teacher-style signatures (heuristic):** none
 
-**Machine note:** 1 off-axis flag(s). Target: significant_detail, concrete_diction.
+**Machine note:** No off-axis flags. Target: significant_detail, concrete_diction. Edit similarity 0.75.
 
 **Reviewer decision (Gate 1):** _pending_
 
@@ -45,16 +52,17 @@ Metrics are labeled deterministic | heuristic | unavailable.
 - **Intended craft target:** editorial_restraint
 - **Protected craft:** existing_sentence_rhythm, existing_concrete_detail
 - **Authorized changes:** only fix a genuine error if one exists
+- **Invention budget:** none
 
 | metric | source | gold | delta | kind |
 |---|---|---|---|---|
-| word_count | 45 | 66 | 21 | deterministic |
-| sentence_count | 3 | 5 | 2 | heuristic |
-| avg_sentence_len | 15.0 | 13.2 | -1.8000000000000007 | heuristic |
-| sentence_len_variance | 6.48 | 7.73 | 1.25 | heuristic |
+| word_count | 45 | 45 | 0 | deterministic |
+| sentence_count | 3 | 3 | 0 | heuristic |
+| avg_sentence_len | 15.0 | 15.0 | 0.0 | heuristic |
+| sentence_len_variance | 6.48 | 6.48 | 0.0 | heuristic |
 | em_dash | 0 | 0 | 0 | deterministic |
 | semicolon | 0 | 0 | 0 | deterministic |
-| colon | 0 | 1 | 1 | deterministic |
+| colon | 0 | 0 | 0 | deterministic |
 | ellipsis | 0 | 0 | 0 | deterministic |
 | filter_words | 0 | 0 | 0 | deterministic |
 | adverbs_ly | 0 | 0 | 0 | heuristic |
@@ -62,14 +70,14 @@ Metrics are labeled deterministic | heuristic | unavailable.
 | max_repeated_opening | 1 | 1 | 0 | heuristic |
 | quote_chars | 0 | 0 | 0 | heuristic |
 
-- similarity ratio (heuristic): 0.5; changed sentence blocks: 1
+- similarity ratio (heuristic): 1.0; changed sentence blocks: 0
 - adjective_estimate: unavailable (no POS tagger)
 
 **Potential off-axis flags:** none
 
 **Teacher-style signatures (heuristic):** none
 
-**Machine note:** No off-axis flags. Target: editorial_restraint. Edit similarity 0.5.
+**Machine note:** No off-axis flags. Target: editorial_restraint. Edit similarity 1.0.
 
 **Reviewer decision (Gate 1):** _pending_
 
@@ -80,6 +88,7 @@ Metrics are labeled deterministic | heuristic | unavailable.
 - **Intended craft target:** trust_the_reader, psychic_distance
 - **Protected craft:** one_earned_named_emotion, close_free_indirect_distance
 - **Authorized changes:** delete the sentence that re-explains a feeling already shown
+- **Invention budget:** none
 
 | metric | source | gold | delta | kind |
 |---|---|---|---|---|
@@ -116,14 +125,15 @@ Metrics are labeled deterministic | heuristic | unavailable.
 - **Intended craft target:** significant_detail, concrete_diction
 - **Protected craft:** warm_close_distance, the_couples_specific_history
 - **Authorized changes:** replace the generic mood sentence with one concrete detail specific to these two people
+- **Invention budget:** bounded
 
 | metric | source | gold | delta | kind |
 |---|---|---|---|---|
-| word_count | 47 | 51 | 4 | deterministic |
+| word_count | 47 | 47 | 0 | deterministic |
 | sentence_count | 4 | 4 | 0 | heuristic |
-| avg_sentence_len | 11.8 | 12.8 | 1.0 | heuristic |
-| sentence_len_variance | 5.97 | 6.72 | 0.75 | heuristic |
-| em_dash | 0 | 1 | 1 | deterministic |
+| avg_sentence_len | 11.8 | 11.8 | 0.0 | heuristic |
+| sentence_len_variance | 5.97 | 5.97 | 0.0 | heuristic |
+| em_dash | 0 | 0 | 0 | deterministic |
 | semicolon | 0 | 0 | 0 | deterministic |
 | colon | 0 | 0 | 0 | deterministic |
 | ellipsis | 0 | 0 | 0 | deterministic |
@@ -136,12 +146,11 @@ Metrics are labeled deterministic | heuristic | unavailable.
 - similarity ratio (heuristic): 0.75; changed sentence blocks: 1
 - adjective_estimate: unavailable (no POS tagger)
 
-**Potential off-axis flags:**
-- ⚠ em dash introduced (1) but not an authorized/target change
+**Potential off-axis flags:** none
 
-**Teacher-style signatures (heuristic):** added em dash
+**Teacher-style signatures (heuristic):** none
 
-**Machine note:** 1 off-axis flag(s). Target: significant_detail, concrete_diction.
+**Machine note:** No off-axis flags. Target: significant_detail, concrete_diction. Edit similarity 0.75.
 
 **Reviewer decision (Gate 1):** _pending_
 
@@ -152,6 +161,7 @@ Metrics are labeled deterministic | heuristic | unavailable.
 - **Intended craft target:** significant_detail, concrete_evidence
 - **Protected craft:** lean_forward_momentum, the_open_scene_question
 - **Authorized changes:** replace the generic mood sentence with one concrete, checkable piece of evidence
+- **Invention budget:** bounded
 
 | metric | source | gold | delta | kind |
 |---|---|---|---|---|
@@ -169,15 +179,14 @@ Metrics are labeled deterministic | heuristic | unavailable.
 | max_repeated_opening | 3 | 3 | 0 | heuristic |
 | quote_chars | 0 | 0 | 0 | heuristic |
 
-- similarity ratio (heuristic): 0.4; changed sentence blocks: 1
+- similarity ratio (heuristic): 0.8; changed sentence blocks: 1
 - adjective_estimate: unavailable (no POS tagger)
 
-**Potential off-axis flags:**
-- ⚠ large edit distance (similarity 0.4) on a focused/minimal task
+**Potential off-axis flags:** none
 
 **Teacher-style signatures (heuristic):** none
 
-**Machine note:** 1 off-axis flag(s). Target: significant_detail, concrete_evidence.
+**Machine note:** No off-axis flags. Target: significant_detail, concrete_evidence. Edit similarity 0.8.
 
 **Reviewer decision (Gate 1):** _pending_
 
@@ -188,33 +197,32 @@ Metrics are labeled deterministic | heuristic | unavailable.
 - **Intended craft target:** sentence_length_variance, turn_length_variance
 - **Protected craft:** forward_momentum, the_short_punch_at_the_beat
 - **Authorized changes:** vary sentence length so the rhythm is not uniformly choppy, combine two or three clipped sentences where it does not blunt tension
+- **Invention budget:** none
 
 | metric | source | gold | delta | kind |
 |---|---|---|---|---|
-| word_count | 45 | 50 | 5 | deterministic |
-| sentence_count | 11 | 5 | -6 | heuristic |
-| avg_sentence_len | 4.1 | 10.0 | 5.9 | heuristic |
-| sentence_len_variance | 1.73 | 7.51 | 5.779999999999999 | heuristic |
-| em_dash | 0 | 1 | 1 | deterministic |
+| word_count | 45 | 47 | 2 | deterministic |
+| sentence_count | 11 | 6 | -5 | heuristic |
+| avg_sentence_len | 4.1 | 7.8 | 3.7 | heuristic |
+| sentence_len_variance | 1.73 | 6.23 | 4.5 | heuristic |
+| em_dash | 0 | 0 | 0 | deterministic |
 | semicolon | 0 | 0 | 0 | deterministic |
-| colon | 0 | 1 | 1 | deterministic |
+| colon | 0 | 0 | 0 | deterministic |
 | ellipsis | 0 | 0 | 0 | deterministic |
 | filter_words | 0 | 0 | 0 | deterministic |
 | adverbs_ly | 0 | 0 | 0 | heuristic |
 | named_emotion_words | 0 | 0 | 0 | heuristic |
-| max_repeated_opening | 6 | 2 | -4 | heuristic |
+| max_repeated_opening | 6 | 3 | -3 | heuristic |
 | quote_chars | 0 | 0 | 0 | heuristic |
 
-- similarity ratio (heuristic): 0.125; changed sentence blocks: 2
+- similarity ratio (heuristic): 0.353; changed sentence blocks: 3
 - adjective_estimate: unavailable (no POS tagger)
 
-**Potential off-axis flags:**
-- ⚠ em dash introduced (1) but not an authorized/target change
-- ⚠ large edit distance (similarity 0.125) on a focused/minimal task
+**Potential off-axis flags:** none
 
-**Teacher-style signatures (heuristic):** added em dash, short aphoristic-style ending changed/added (review)
+**Teacher-style signatures (heuristic):** none
 
-**Machine note:** 2 off-axis flag(s). Target: sentence_length_variance, turn_length_variance.
+**Machine note:** No off-axis flags. Target: sentence_length_variance, turn_length_variance. Edit similarity 0.353.
 
 **Reviewer decision (Gate 1):** _pending_
 
@@ -225,6 +233,7 @@ Metrics are labeled deterministic | heuristic | unavailable.
 - **Intended craft target:** metaphor_coherence
 - **Protected craft:** ornate_earned_syntax, the_sustained_river_image, deliberate_cadence
 - **Authorized changes:** repair only the one incoherent (mixed) metaphor so the central image stays coherent
+- **Invention budget:** none
 
 | metric | source | gold | delta | kind |
 |---|---|---|---|---|
@@ -260,6 +269,7 @@ Metrics are labeled deterministic | heuristic | unavailable.
 - **Intended craft target:** earn_the_abstraction
 - **Protected craft:** deliberate_anaphora, the_litany_rhythm
 - **Authorized changes:** delete the one hollow, profound-sounding sentence that says nothing
+- **Invention budget:** none
 
 | metric | source | gold | delta | kind |
 |---|---|---|---|---|
@@ -295,14 +305,15 @@ Metrics are labeled deterministic | heuristic | unavailable.
 - **Intended craft target:** subtext, naturalistic_dialogue
 - **Protected craft:** the_scene_outcome, each_character_position
 - **Authorized changes:** rewrite the on-the-nose lines so the feeling is implied through indirection or action
+- **Invention budget:** bounded
 
 | metric | source | gold | delta | kind |
 |---|---|---|---|---|
-| word_count | 59 | 63 | 4 | deterministic |
-| sentence_count | 4 | 8 | 4 | heuristic |
-| avg_sentence_len | 14.8 | 7.9 | -6.9 | heuristic |
-| sentence_len_variance | 7.08 | 3.48 | -3.6 | heuristic |
-| em_dash | 0 | 1 | 1 | deterministic |
+| word_count | 59 | 50 | -9 | deterministic |
+| sentence_count | 4 | 7 | 3 | heuristic |
+| avg_sentence_len | 14.8 | 7.1 | -7.700000000000001 | heuristic |
+| sentence_len_variance | 7.08 | 5.62 | -1.46 | heuristic |
+| em_dash | 0 | 0 | 0 | deterministic |
 | semicolon | 0 | 0 | 0 | deterministic |
 | colon | 0 | 0 | 0 | deterministic |
 | ellipsis | 0 | 0 | 0 | deterministic |
@@ -315,13 +326,11 @@ Metrics are labeled deterministic | heuristic | unavailable.
 - similarity ratio (heuristic): 0.0; changed sentence blocks: 1
 - adjective_estimate: unavailable (no POS tagger)
 
-**Potential off-axis flags:**
-- ⚠ em dash introduced (1) but not an authorized/target change
-- ⚠ large edit distance (similarity 0.0) on a focused/minimal task
+**Potential off-axis flags:** none
 
-**Teacher-style signatures (heuristic):** added em dash, short aphoristic-style ending changed/added (review)
+**Teacher-style signatures (heuristic):** short aphoristic-style ending changed/added (review)
 
-**Machine note:** 2 off-axis flag(s). Target: subtext, naturalistic_dialogue.
+**Machine note:** No off-axis flags. Target: subtext, naturalistic_dialogue. Edit similarity 0.0.
 
 **Reviewer decision (Gate 1):** _pending_
 
@@ -332,6 +341,7 @@ Metrics are labeled deterministic | heuristic | unavailable.
 - **Intended craft target:** adjective_economy
 - **Protected craft:** the_warm_wry_voice, the_useful_specific_adjectives
 - **Authorized changes:** trim the single three-plus adjective pile-up to its one or two load-bearing adjectives
+- **Invention budget:** none
 
 | metric | source | gold | delta | kind |
 |---|---|---|---|---|
@@ -349,14 +359,14 @@ Metrics are labeled deterministic | heuristic | unavailable.
 | max_repeated_opening | 2 | 2 | 0 | heuristic |
 | quote_chars | 2 | 2 | 0 | heuristic |
 
-- similarity ratio (heuristic): 0.5; changed sentence blocks: 1
+- similarity ratio (heuristic): 0.75; changed sentence blocks: 1
 - adjective_estimate: unavailable (no POS tagger)
 
 **Potential off-axis flags:** none
 
 **Teacher-style signatures (heuristic):** none
 
-**Machine note:** No off-axis flags. Target: adjective_economy. Edit similarity 0.5.
+**Machine note:** No off-axis flags. Target: adjective_economy. Edit similarity 0.75.
 
 **Reviewer decision (Gate 1):** _pending_
 
