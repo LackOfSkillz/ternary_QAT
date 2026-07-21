@@ -369,6 +369,37 @@ before scaled training data is created:
 
 These questions must not be deferred to release qualification.
 
+## Confirmed facts (Run 1 + deployment-grid characterization)
+
+These are established results, not plans. See
+`experiments/results/run001-export-q2_0-result.md` and
+`experiments/results/prism-format-characterization.md`.
+
+- **Conventional-LoRA BF16 change can disappear after ternary reprojection.** In
+  Run 1 the merged BF16 model reproduced the trained target, but after packing to
+  the ternary Q2_0 grid the trained and untouched artifacts behaved nearly
+  identically. Training in a representation the deployment grid cannot hold does
+  not survive.
+- **Run 2 and Run 3 must be a matched comparison** — same base, data, splits,
+  benchmark, seeds, quantizer, and runtime — evaluated on the **final packed
+  artifact**, not BF16 or training loss.
+- **The deployment grid is confirmed:** Prism **Q2_0 = GGML type 42** in the
+  `PrismML-Eng/llama.cpp` (`prism`) fork — group 128, per-group amax fp16 scale,
+  ternary `{-1,0,+1}`, **embeddings ternarized**, **lm_head tied**. It requires
+  the Prism runtime; stock/upstream llama.cpp cannot load it, and upstream
+  `TQ2_0` (group 256, Q6_K embeddings) is **not** a faithful proxy.
+- **`ternary_QAT` fake-quant matches the Prism grid** (g128 + `TernaryEmbedding`
+  + tied re-share), up to fp16-scale storage and ±0.5 half-rounding — so it is the
+  correct QAT emulator. QAT configs may only target this grid.
+- **Packed-artifact survival is the gate metric** (see
+  `docs/quantization-survival-metric.md`): behavioral movement after packing
+  relative to before. Grid movement, behavioral movement, and quantization
+  distortion are distinct and must be reported separately.
+- **The Run 2 vs Run 3 comparison is recipe-versus-recipe** (conventional-LoRA
+  then quantize, vs ternary-QAT), **not** a single-variable LR ablation.
+- **Multi-seed evaluation with a confidence interval is required** before any
+  comparative claim that QAT survives better.
+
 ## Revised phase order
 
 ### Phase 0: Guardrails and prerequisites
