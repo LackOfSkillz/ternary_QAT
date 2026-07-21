@@ -50,10 +50,11 @@ def main():
          "the day, it was what it was."},
     ]
     enc = tok.apply_chat_template(msgs, add_generation_prompt=True,
-                                  return_tensors="pt").to("cuda")
+                                  return_tensors="pt", return_dict=True).to("cuda")
+    in_len = enc["input_ids"].shape[1]
     with torch.no_grad():
-        gen = model.generate(enc, max_new_tokens=64, do_sample=False)
-    text = tok.decode(gen[0][enc.shape[1]:], skip_special_tokens=True)
+        gen = model.generate(**enc, max_new_tokens=64, do_sample=False)
+    text = tok.decode(gen[0][in_len:], skip_special_tokens=True)
     ok = bool(text.strip())
     print("generated:", repr(text))
     print("output nonempty:", ok)
