@@ -1,0 +1,80 @@
+split_id: dataset-a-experimental-split-v1
+freeze_id: dataset-a-experimental-v1
+method: deterministic_grouped_manual
+description: >
+  Hand-assigned, leakage-safe 28/7 split for the first end-to-end smoke test. No
+  validation split (the trainer's first diagnostic run does not require one).
+  Related records (matched pairs, positive/negative and restraint/override paired
+  lessons) are kept in the SAME split — all in train — so the evaluation set never
+  contains a near-duplicate of a training example. Every record appears exactly
+  once. Evaluation records are excluded from gradient training.
+
+train:
+  - dsa-canon-001
+  - dsa-canon-002
+  - dsa-canon-004
+  - dsa-canon-005
+  - dsa-constraint-001
+  - dsa-constraint-003
+  - dsa-constraint-004
+  - dsa-constraint-005
+  - dsa-revision-001
+  - dsa-revision-003
+  - dsa-revision-004
+  - dsa-revision-005
+  - dsa-revision-006
+  - dsa-revision-008
+  - dsa-revision-009
+  - dsa-revision-010
+  - dsa-revision-011
+  - dsa-revision-012
+  - dsa-revision-013
+  - dsa-revision-014
+  - dsa-revision-015
+  - dsa-revision-016
+  - dsa-revision-017
+  - dsa-revision-019
+  - dsa-revision-020
+  - dsa-scene-001
+  - dsa-scene-003
+  - dsa-boundary-002
+
+evaluation:
+  - dsa-canon-003
+  - dsa-constraint-002
+  - dsa-revision-002
+  - dsa-revision-007
+  - dsa-revision-018
+  - dsa-scene-002
+  - dsa-boundary-001
+
+leakage_groups:
+  lexical_substitution_pair:
+    - dsa-revision-011
+    - dsa-revision-012
+  body_reaction_pair:
+    - dsa-revision-013
+    - dsa-revision-014
+  delivery_tag_pair:
+    - dsa-revision-015
+    - dsa-revision-016
+  restraint_override_paired_lesson:
+    - dsa-revision-019
+    - dsa-revision-020
+  generic_atmosphere_matched_pair:
+    - dsa-revision-004
+    - dsa-revision-005
+
+rationale: >
+  All five related-record groups are placed entirely in TRAIN so no evaluation
+  record shares a semantic cluster, template family, matched positive/negative
+  construction, or restraint/override paired lesson with a training record. The
+  7-record evaluation set is a representative spread: one canon (canon-003), one
+  constraint (constraint-002), one scene-contract (scene-002), one fiction-boundary
+  (boundary-001, the depiction case — the actionable-harm refusal boundary-002
+  stays in train so safety coverage is trained), three revisions (revision-002 a
+  no-change restraint case; revision-007 lyrical mixed-metaphor; revision-018 an
+  anti-slop gaze-choreography calibration record). Evaluation style profiles:
+  dark-speculative, lyrical-mythic, romantic-emotional, and none (>= 3 required).
+  A second no-change record (revision-019) and the author-voice override
+  (revision-020) remain in train, so those lessons are learned, not only tested.

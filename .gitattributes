@@ -1,0 +1,8 @@
+# Dataset A data artifacts are LF-locked so the sha256 hashes pinned in the freeze
+# manifest, compiled manifest, and training configs reproduce on any checkout
+# (git autocrlf would otherwise rewrite them to CRLF and change the hashes).
+datasets/dataset-a/drafts/** text eol=lf
+datasets/dataset-a/schema/** text eol=lf
+datasets/dataset-a/manifests/** text eol=lf
+datasets/dataset-a/prompts/** text eol=lf
+datasets/dataset-a/compiled/** text eol=lf

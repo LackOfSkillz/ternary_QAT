@@ -1,0 +1,240 @@
+{
+  "compiled_from": "drafts",
+  "files": {
+    "evaluation": {
+      "path": "evaluation.jsonl",
+      "sha256": "0f3ae4263c5a175b38af5723f04e161de98e30a4a8ac5be10a2153a5fe47fc3b"
+    },
+    "preference_train": {
+      "path": "preference-train.jsonl",
+      "sha256": "72a455ba67c853bde7d07d5c9b8684855e5139c81430d1ccf9416cbd64c128b4"
+    },
+    "train": {
+      "path": "train.jsonl",
+      "sha256": "97778f2a334649c8a67376b09c42d297ebdf031e2123e6dcce378310cfbf8f38"
+    }
+  },
+  "format": "sft_messages",
+  "freeze_id": "dataset-a-experimental-v1",
+  "records": [
+    {
+      "id": "dsa-boundary-001",
+      "source_hash": "566bc3e7dde6d9e51833bb5e08c905a4ddd6352acac4c68c6ef07de8beaf85de",
+      "split": "evaluation",
+      "task_type": "fiction_boundary"
+    },
+    {
+      "id": "dsa-boundary-002",
+      "source_hash": "2822977524a85473617383a976d023199fdd529a84c5d2d3b342c53abc745767",
+      "split": "train",
+      "task_type": "fiction_boundary"
+    },
+    {
+      "id": "dsa-canon-001",
+      "source_hash": "4798209a317e9c173a7d4c8fca2eeb4cc76265ed1d739da1e6927606d7af3ba8",
+      "split": "train",
+      "task_type": "canon_extraction"
+    },
+    {
+      "id": "dsa-canon-002",
+      "source_hash": "ead12bf2dab6a858519a1f537072c9294a35c84b1dd8517ec300c3d3fdb5bf3f",
+      "split": "train",
+      "task_type": "canon_extraction"
+    },
+    {
+      "id": "dsa-canon-003",
+      "source_hash": "528eb0b4953b642b1489335058844425914de9353dd09f9f53dd83c66dd004a4",
+      "split": "evaluation",
+      "task_type": "canon_extraction"
+    },
+    {
+      "id": "dsa-canon-004",
+      "source_hash": "8e927711424f34d20b0e9ba87c4bb5b8ccda588c265d15ac1d38d4207105c5e2",
+      "split": "train",
+      "task_type": "canon_extraction"
+    },
+    {
+      "id": "dsa-canon-005",
+      "source_hash": "edbc789a825c8cb8955e0e6d73ecfeb8aa6dc5c143f4e5e47f6ff08e1388120e",
+      "split": "train",
+      "task_type": "canon_extraction"
+    },
+    {
+      "id": "dsa-constraint-001",
+      "source_hash": "886b7e16d1a7451b2ba6499a7e24a171b351b0ea83a4e6ecfaef9528e6dfdab9",
+      "split": "train",
+      "task_type": "constraint_check"
+    },
+    {
+      "id": "dsa-constraint-002",
+      "source_hash": "a68d705b2f603bd36e9193643b30baf82b241d06dfb12559fbc5d8d1d59d1ae3",
+      "split": "evaluation",
+      "task_type": "constraint_check"
+    },
+    {
+      "id": "dsa-constraint-003",
+      "source_hash": "ad1a5c83b29b5e929e28821c414300fc57fd3681a5008cc9d1db70bb93b87dc7",
+      "split": "train",
+      "task_type": "constraint_check"
+    },
+    {
+      "id": "dsa-constraint-004",
+      "source_hash": "fd5a570db1613a42a8742128fdfdffd48f97f4c720f1ba144a17be4ba13dbb62",
+      "split": "train",
+      "task_type": "constraint_check"
+    },
+    {
+      "id": "dsa-constraint-005",
+      "source_hash": "406d3dd5aae4376f2596293eb4e0b6c5c14912809b5c5baedfe4ba0520c5d6a5",
+      "split": "train",
+      "task_type": "constraint_check"
+    },
+    {
+      "id": "dsa-revision-001",
+      "source_hash": "147bceea336aa3e8db32c9f4448173abe02ddd7389ec62a550f6476bce07239a",
+      "split": "train",
+      "task_type": "focused_revision"
+    },
+    {
+      "id": "dsa-revision-002",
+      "source_hash": "bb6f617ecbff2a43f94f146ece074038462337c4dd1568d60a2fcb35bc06ad67",
+      "split": "evaluation",
+      "task_type": "focused_revision"
+    },
+    {
+      "id": "dsa-revision-003",
+      "source_hash": "8f44680cc1c156f4a5297edb9e6edfcc768c65af56ae46c8a722ebb8f31f99e7",
+      "split": "train",
+      "task_type": "focused_revision"
+    },
+    {
+      "id": "dsa-revision-004",
+      "source_hash": "93e0c730b38a2f42a6ca3e9b5da0e2d60a98f84b7f7bb4a5e53427f5a52890e6",
+      "split": "train",
+      "task_type": "focused_revision"
+    },
+    {
+      "id": "dsa-revision-005",
+      "source_hash": "80f1c7622c68443a5d20eda854c837db4450c0e46a4fec9d86150b1e91ad373f",
+      "split": "train",
+      "task_type": "focused_revision"
+    },
+    {
+      "id": "dsa-revision-006",
+      "source_hash": "41a970a9237ba3faa15680c9d937ef822f5c9484ee994e31035c6511cd0f360a",
+      "split": "train",
+      "task_type": "focused_revision"
+    },
+    {
+      "id": "dsa-revision-007",
+      "source_hash": "e4efac1d2916ce72c0299a1ba67c6580dcf4e27a450010f3a64305616da2510a",
+      "split": "evaluation",
+      "task_type": "focused_revision"
+    },
+    {
+      "id": "dsa-revision-008",
+      "source_hash": "e31378c49fdfedce7b954db7b0344561b36a4b746124ac55e9ad78b917f0119d",
+      "split": "train",
+      "task_type": "focused_revision"
+    },
+    {
+      "id": "dsa-revision-009",
+      "source_hash": "9021577443e19f4229c0ad6201d1b7f8a149808d4a5bfb5ab06a395aac0a27f9",
+      "split": "train",
+      "task_type": "focused_revision"
+    },
+    {
+      "id": "dsa-revision-010",
+      "source_hash": "df32a0d3e3cf2c884e12a30d74b5df704583bf7bbda8d12f401f22d9397fd7e8",
+      "split": "train",
+      "task_type": "focused_revision"
+    },
+    {
+      "id": "dsa-revision-011",
+      "source_hash": "d3f0b83945aeaac0e3ac94cf07f4afea56a2e775f53238f3db7e6bd42eb8857d",
+      "split": "train",
+      "task_type": "focused_revision"
+    },
+    {
+      "id": "dsa-revision-012",
+      "source_hash": "01193cb6e1f115bba306b2ab3cc9b54a2cc952303f1b2cc0df27db5c0fb9ea03",
+      "split": "train",
+      "task_type": "focused_revision"
+    },
+    {
+      "id": "dsa-revision-013",
+      "source_hash": "7f065695e11daba90869dfcb33054933d77805f5d992c45b94354cf089c8558c",
+      "split": "train",
+      "task_type": "focused_revision"
+    },
+    {
+      "id": "dsa-revision-014",
+      "source_hash": "8d11f52c913396f2f1be6ca56437bb70a177c51ddfcf17dfa3005f3ac47d958b",
+      "split": "train",
+      "task_type": "focused_revision"
+    },
+    {
+      "id": "dsa-revision-015",
+      "source_hash": "6041b8b5d60eeaa461dc857af6863d44c0c585b76cec709cadeedd6e774fa4e1",
+      "split": "train",
+      "task_type": "focused_revision"
+    },
+    {
+      "id": "dsa-revision-016",
+      "source_hash": "5e09d40ffba0b70eff13929585980a5a4a05e3e5e3dcd21f0720399b3e78f59d",
+      "split": "train",
+      "task_type": "focused_revision"
+    },
+    {
+      "id": "dsa-revision-017",
+      "source_hash": "2dd5022d1a99a3a8469205bead3661a8d9d3663e481bbb9665e2dc868f3b9191",
+      "split": "train",
+      "task_type": "focused_revision"
+    },
+    {
+      "id": "dsa-revision-018",
+      "source_hash": "52d4501b0b4dfdce5f6b69b97c767622811fcb8b7cf336e307621e14092cf4a0",
+      "split": "evaluation",
+      "task_type": "focused_revision"
+    },
+    {
+      "id": "dsa-revision-019",
+      "source_hash": "cc4720ce8b1223192e51e68ea12193969e22b4edfda9aecc4f4ea9f81e11c4df",
+      "split": "train",
+      "task_type": "focused_revision"
+    },
+    {
+      "id": "dsa-revision-020",
+      "source_hash": "a80e69fd4a4de769ebea9e97e376d25ab690e0d41c4a55b2050d7abfcc752522",
+      "split": "train",
+      "task_type": "focused_revision"
+    },
+    {
+      "id": "dsa-scene-001",
+      "source_hash": "e57838ecb2959654bb7d5f67c2bd5baca6a891dcfeddec87baaed60342ba1bca",
+      "split": "train",
+      "task_type": "scene_contract"
+    },
+    {
+      "id": "dsa-scene-002",
+      "source_hash": "a90155c7caf7eb39a89002356f2e00ef40657b0639c8f34d06c7bd4d6b0ab670",
+      "split": "evaluation",
+      "task_type": "scene_contract"
+    },
+    {
+      "id": "dsa-scene-003",
+      "source_hash": "c73f91a1a0d9ef19f964655273c600ffe297bffffbfcad3fe83a6dba1fa00700",
+      "split": "train",
+      "task_type": "scene_contract"
+    }
+  ],
+  "row_counts": {
+    "evaluation": 7,
+    "preference_train": 18,
+    "train": 28
+  },
+  "system_prompt": {
+    "path": "prompts/linewright-training-system-v1.txt",
+    "sha256": "038d9ab8aac2aee9504aa7c81f8870cbad66338436aad3c4063b97b1fd205c3c"
+  }
+}
