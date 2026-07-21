@@ -65,15 +65,20 @@ def main():
     all_ok = True
     for task, system, user in PROMPTS:
         prompt = chatml(system, user)
+        # Use llama-completion (non-interactive) — this llama.cpp build dropped
+        # llama-cli's -no-cnv flag in favor of the dedicated completion tool.
         cmd = [
             args.llama_cli, "-m", args.gguf, "-p", prompt,
             "-n", str(args.n_predict), "-c", str(args.ctx),
             "--temp", "0", "--seed", str(args.seed), "-ngl", str(args.ngl),
-            "-no-cnv", "--no-display-prompt",
+            "--no-display-prompt",
         ]
         t0 = time.time()
         try:
-            proc = subprocess.run(cmd, capture_output=True, text=True, timeout=600)
+            # stdin=DEVNULL so the tool receives EOF and exits after generating
+            # (llama-completion otherwise stays interactive and hangs).
+            proc = subprocess.run(cmd, capture_output=True, text=True, timeout=600,
+                                  stdin=subprocess.DEVNULL)
             rc = proc.returncode
             out = proc.stdout.strip()
             err = proc.stderr
