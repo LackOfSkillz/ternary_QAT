@@ -1,0 +1,571 @@
+- phrase: a man named
+  reason: corpus_specific_proper_name
+  source_files:
+  - trigrams-electro-a.txt
+- phrase: aes sedai
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-a.txt
+  - bigrams-electro-b.txt
+- phrase: alistair finch
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-b.txt
+- phrase: aris thorne
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-a.txt
+  - bigrams-electro-b.txt
+- phrase: blackwood manor
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-b.txt
+- phrase: commander valerius
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-a.txt
+  - bigrams-electro-b.txt
+- phrase: constructed fa
+  reason: malformed_or_truncated
+  source_files:
+  - bigrams-electro-b.txt
+- phrase: elara corrected
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-a.txt
+  - bigrams-electro-b.txt
+- phrase: elara countered
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-a.txt
+- phrase: elara countered her
+  reason: corpus_specific_proper_name
+  source_files:
+  - trigrams-electro-a.txt
+- phrase: elara did
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-a.txt
+- phrase: elara did not
+  reason: corpus_specific_proper_name
+  source_files:
+  - trigrams-electro-a.txt
+- phrase: elara didn't
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-a.txt
+  - bigrams-electro-b.txt
+- phrase: elara felt
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-a.txt
+- phrase: elara felt a
+  reason: corpus_specific_proper_name
+  source_files:
+  - trigrams-electro-a.txt
+- phrase: elara felt the
+  reason: corpus_specific_proper_name
+  source_files:
+  - trigrams-electro-a.txt
+- phrase: elara finally
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-a.txt
+  - bigrams-electro-b.txt
+- phrase: elara gasped
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-b.txt
+- phrase: elara insisted
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-a.txt
+  - bigrams-electro-b.txt
+- phrase: elara leaned
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-a.txt
+  - bigrams-electro-b.txt
+- phrase: elara looked
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-a.txt
+  - bigrams-electro-b.txt
+- phrase: elara met
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-b.txt
+- phrase: elara moved
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-a.txt
+  - bigrams-electro-b.txt
+- phrase: elara murmured
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-a.txt
+- phrase: elara murmured her
+  reason: corpus_specific_proper_name
+  source_files:
+  - trigrams-electro-a.txt
+- phrase: elara nodded
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-a.txt
+  - bigrams-electro-b.txt
+- phrase: elara paused
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-a.txt
+  - bigrams-electro-b.txt
+- phrase: elara pressed
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-a.txt
+  - bigrams-electro-b.txt
+- phrase: elara reached
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-b.txt
+- phrase: elara replied
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-a.txt
+  - bigrams-electro-b.txt
+- phrase: elara said
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-a.txt
+- phrase: elara said her
+  reason: corpus_specific_proper_name
+  source_files:
+  - trigrams-electro-a.txt
+- phrase: elara sat
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-a.txt
+  - bigrams-electro-b.txt
+- phrase: elara sighed
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-a.txt
+  - bigrams-electro-b.txt
+- phrase: elara smiled
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-b.txt
+- phrase: elara stated
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-b.txt
+- phrase: elara stepped
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-a.txt
+  - bigrams-electro-b.txt
+- phrase: elara stood
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-a.txt
+  - bigrams-electro-b.txt
+- phrase: elara traced
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-b.txt
+- phrase: elara vance
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-a.txt
+  - bigrams-electro-b.txt
+- phrase: elara watched
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-a.txt
+- phrase: elara watched the
+  reason: corpus_specific_proper_name
+  source_files:
+  - trigrams-electro-a.txt
+- phrase: elara whispered
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-a.txt
+  - bigrams-electro-b.txt
+- phrase: elias corrected
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-b.txt
+- phrase: elias countered
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-a.txt
+  - bigrams-electro-b.txt
+- phrase: elias didn't
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-a.txt
+  - bigrams-electro-b.txt
+- phrase: elias felt
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-a.txt
+- phrase: elias felt a
+  reason: corpus_specific_proper_name
+  source_files:
+  - trigrams-electro-a.txt
+- phrase: elias felt the
+  reason: corpus_specific_proper_name
+  source_files:
+  - trigrams-electro-a.txt
+- phrase: elias finally
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-a.txt
+  - bigrams-electro-b.txt
+- phrase: elias insisted
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-b.txt
+- phrase: elias leaned
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-a.txt
+  - bigrams-electro-b.txt
+- phrase: elias looked
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-a.txt
+  - bigrams-electro-b.txt
+- phrase: elias managed
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-b.txt
+- phrase: elias murmured
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-a.txt
+  - bigrams-electro-b.txt
+- phrase: elias nodded
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-a.txt
+  - bigrams-electro-b.txt
+- phrase: elias paused
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-a.txt
+  - bigrams-electro-b.txt
+- phrase: elias pressed
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-b.txt
+- phrase: elias replied
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-b.txt
+- phrase: elias said
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-a.txt
+  - bigrams-electro-b.txt
+- phrase: elias sat
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-a.txt
+  - bigrams-electro-b.txt
+- phrase: elias sighed
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-a.txt
+  - bigrams-electro-b.txt
+- phrase: elias stood
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-a.txt
+  - bigrams-electro-b.txt
+- phrase: elias thorne
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-a.txt
+  - bigrams-electro-b.txt
+- phrase: elias watched
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-a.txt
+  - bigrams-electro-b.txt
+- phrase: elias whispered
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-a.txt
+  - bigrams-electro-b.txt
+- phrase: fa ade
+  reason: malformed_or_truncated
+  source_files:
+  - bigrams-electro-a.txt
+- phrase: fa ade of
+  reason: malformed_or_truncated
+  source_files:
+  - trigrams-electro-a.txt
+- phrase: kael corrected
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-b.txt
+- phrase: kael countered
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-a.txt
+  - bigrams-electro-b.txt
+- phrase: kael did
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-b.txt
+- phrase: kael didn't
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-a.txt
+  - bigrams-electro-b.txt
+- phrase: kael felt
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-a.txt
+- phrase: kael felt a
+  reason: corpus_specific_proper_name
+  source_files:
+  - trigrams-electro-a.txt
+- phrase: kael felt the
+  reason: corpus_specific_proper_name
+  source_files:
+  - trigrams-electro-a.txt
+- phrase: kael finally
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-a.txt
+  - bigrams-electro-b.txt
+- phrase: kael leaned
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-a.txt
+  - bigrams-electro-b.txt
+- phrase: kael looked
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-a.txt
+  - bigrams-electro-b.txt
+- phrase: kael moved
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-b.txt
+- phrase: kael murmured
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-a.txt
+  - bigrams-electro-b.txt
+- phrase: kael muttered
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-b.txt
+- phrase: kael nodded
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-a.txt
+  - bigrams-electro-b.txt
+- phrase: kael paused
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-a.txt
+  - bigrams-electro-b.txt
+- phrase: kael replied
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-a.txt
+  - bigrams-electro-b.txt
+- phrase: kael said
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-a.txt
+  - bigrams-electro-b.txt
+- phrase: kael scoffed
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-a.txt
+  - bigrams-electro-b.txt
+- phrase: kael shifted
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-a.txt
+  - bigrams-electro-b.txt
+- phrase: kael sighed
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-a.txt
+  - bigrams-electro-b.txt
+- phrase: kael stated
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-b.txt
+- phrase: kael stepped
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-b.txt
+- phrase: kael stood
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-a.txt
+  - bigrams-electro-b.txt
+- phrase: kael watched
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-a.txt
+  - bigrams-electro-b.txt
+- phrase: kael whispered
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-a.txt
+  - bigrams-electro-b.txt
+- phrase: kaelen felt
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-a.txt
+  - bigrams-electro-b.txt
+- phrase: king theron
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-a.txt
+  - bigrams-electro-b.txt
+- phrase: lady elara
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-a.txt
+  - bigrams-electro-b.txt
+- phrase: lady isolde
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-a.txt
+  - bigrams-electro-b.txt
+- phrase: lord valerius
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-a.txt
+- phrase: lord valerius a
+  reason: corpus_specific_proper_name
+  source_files:
+  - trigrams-electro-a.txt
+- phrase: lyra countered
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-b.txt
+- phrase: lyra felt
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-b.txt
+- phrase: lyra finally
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-a.txt
+  - bigrams-electro-b.txt
+- phrase: lyra leaned
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-a.txt
+  - bigrams-electro-b.txt
+- phrase: lyra murmured
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-b.txt
+- phrase: lyra whispered
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-b.txt
+- phrase: man named
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-a.txt
+- phrase: named kael
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-a.txt
+  - bigrams-electro-b.txt
+- phrase: named lyra
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-b.txt
+- phrase: sector gamma
+  reason: corpus_specific_setting_identifier
+  source_files:
+  - bigrams-electro-a.txt
+  - bigrams-electro-b.txt
+- phrase: silas finally
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-b.txt
+- phrase: sir kaelen
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-b.txt
+- phrase: thorne a man
+  reason: corpus_specific_proper_name
+  source_files:
+  - trigrams-electro-a.txt
+- phrase: thorne finally
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-b.txt
+- phrase: thorne leaned
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-a.txt
+  - bigrams-electro-b.txt
+- phrase: unit 7
+  reason: corpus_specific_setting_or_numeric
+  source_files:
+  - bigrams-electro-b.txt
+- phrase: unit 734
+  reason: corpus_specific_setting_or_numeric
+  source_files:
+  - bigrams-electro-a.txt
+  - bigrams-electro-b.txt
+- phrase: valerius a man
+  reason: corpus_specific_proper_name
+  source_files:
+  - trigrams-electro-a.txt
+- phrase: valerius countered
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-a.txt
+  - bigrams-electro-b.txt
+- phrase: valerius did
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-b.txt
+- phrase: valerius felt
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-a.txt
+  - bigrams-electro-b.txt
+- phrase: valerius finally
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-a.txt
+  - bigrams-electro-b.txt
+- phrase: valerius leaned
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-a.txt
+  - bigrams-electro-b.txt
+- phrase: valerius sighed
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-b.txt
+- phrase: valerius stated
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-b.txt
+- phrase: valerius stood
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-a.txt
+  - bigrams-electro-b.txt
+- phrase: woman named
+  reason: corpus_specific_proper_name
+  source_files:
+  - bigrams-electro-a.txt
+  - bigrams-electro-b.txt

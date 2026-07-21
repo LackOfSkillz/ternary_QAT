@@ -1,0 +1,132 @@
+# Phrase families — structural risk groupings (AUTHORED, not generated).
+#
+# A family groups phrases by the CRAFT FAILURE they risk WHEN THEY CLUSTER OR
+# REPEAT. Membership is a research prior, not a verdict: no phrase here is
+# prohibited and none proves AI authorship. `match_tokens` are whole-word tokens;
+# `match_phrases` are word-boundary phrase matches; `high_risk` lists the members
+# strongly associated with repetitive model prose (they become
+# `high_risk_signature` in tiering — everything else that matches a family is
+# `contextual_risk`).
+
+meta:
+  version: 1
+  tiering_rule: >
+    proper-name/malformed -> corpus_artifact; else in any family.high_risk ->
+    high_risk_signature; else matches any family -> contextual_risk; else
+    ordinary_phrase. No phrase is ever labeled "AI-only".
+
+families:
+
+  - family_id: embodied_emotion_shorthand
+    description: Stock bodily reactions standing in for scene-specific behavior.
+    candidate_phrases: [breath hitched, heart hammered, jaw tightened, swallowed hard, knuckles white, cold knot, hands trembling, chest heaving]
+    risk_when: The same body-reaction vocabulary carries every emotional turn, or the same cue repeats across characters.
+    acceptable_when: One earned physical reaction anchors a specific beat.
+    do_not_flag_when: A single instance fits the character and the moment.
+    severity: medium
+    match_tokens: [breath, hitched, hammered, hammering, swallowed, knuckles, trembling, flinch, gasp, gasps, heaving, jaw, shudder, shuddering, shuddered, knot]
+    high_risk: []
+
+  - family_id: dialogue_delivery_template
+    description: voice-plus-modifier and said-tag constructions that narrate delivery instead of letting dialogue carry it.
+    candidate_phrases: [voice low, voice dropping, voice softening, voice hardening, voice barely audible, said his voice, murmured her voice]
+    risk_when: Repetitive voice-modifier tags accumulate, or narration explains a delivery the line already conveys.
+    acceptable_when: Occasional attribution clarifies who speaks or a genuine tonal shift.
+    do_not_flag_when: A single natural tag in a long exchange.
+    severity: high
+    match_tokens: [voice, murmured, whispered, rasped, muttered, scoffed]
+    high_risk: [voice dropping, voice dropping to, his voice dropping, voice barely audible]
+
+  - family_id: pressure_metaphor
+    description: Weight/pressure/suffocation abstractions substituting for observable evidence.
+    candidate_phrases: [crushing weight, physical weight, suffocating pressure, hung heavy, pressure building, silence descended]
+    risk_when: Abstract tension replaces concrete evidence, or the same weight/pressure system recurs.
+    acceptable_when: A single, earned metaphor lands a specific stakes moment.
+    do_not_flag_when: Literal physical weight/pressure in the scene.
+    severity: high
+    match_tokens: [crushing, suffocating, pressure, oppressive, weight, hung, palpable, immense, pressurized, weighted]
+    high_risk: [crushing weight, crushing weight of, physical weight, a physical weight, physical weight pressing, suffocating pressure]
+
+  - family_id: generic_intensifier
+    description: Emotional-inflation intensifiers applied uniformly across unrelated voices.
+    candidate_phrases: [profound silence, utterly devoid, absolute certainty, sheer scale, sudden sharp, finally spoke]
+    risk_when: The same intensifier profile saturates the prose regardless of voice.
+    acceptable_when: One load-bearing intensifier marks genuine intensity.
+    do_not_flag_when: Ordinary use where the intensifier is earned and rare.
+    severity: high
+    match_tokens: [profound, utterly, absolute, sheer, sudden, finally, terrifying, desperate, profoundly, absolutely]
+    high_risk: [profound silence, profound sense, profound quiet, utterly devoid, utterly devoid of, absolute certainty]
+
+  - family_id: gaze_eye_choreography
+    description: Scenes blocked through repeated eye/gaze movement.
+    candidate_phrases: [gaze fixed, eyes narrowed, eyes wide, gaze sweeping, eyes meeting, looked away]
+    risk_when: Interaction reduces to a series of gaze exchanges and eye movements.
+    acceptable_when: A meaningful look does real narrative work once.
+    do_not_flag_when: A single, motivated glance.
+    severity: medium
+    match_tokens: [gaze, eyes, eye]
+    match_phrases: [looked away, looked past, looking away]
+    high_risk: []
+
+  - family_id: generic_sensory_shorthand
+    description: Sensory detail that sounds specific but recurs across unrelated scenes.
+    candidate_phrases: [metallic tang, scent of ozone, damp earth, old blood, stale air, cold stone]
+    risk_when: The same "specific" sensory notes reappear across settings and genres.
+    acceptable_when: A sensory detail is genuinely particular to this place/moment.
+    do_not_flag_when: A single grounded sensory beat.
+    severity: medium
+    match_tokens: [metallic, tang, ozone, scent, smell, smelled, smelling, smells, damp, stale, woodsmoke, ochre, coppery]
+    high_risk: []
+
+  - family_id: comparative_template
+    description: Repeated simile/comparison architecture ("felt like a", "the way ...").
+    candidate_phrases: [felt like a, looked like a, sound like a, moved like, tasted like, the way]
+    risk_when: The same comparative frame repeats as a structural tic.
+    acceptable_when: A fresh, specific comparison earns its place.
+    do_not_flag_when: Ordinary single similes.
+    severity: medium
+    match_tokens: [like]
+    match_phrases: [the way, way the]
+    high_risk: []
+
+  - family_id: transition_realization
+    description: Predictable scene-transition and manufactured-realization language.
+    candidate_phrases: [realization struck, suddenly felt, sudden sharp, finally spoke, finally turned, vanished replaced by, gave way to]
+    risk_when: Beats are manufactured with stock realization/transition phrasing.
+    acceptable_when: A genuine turn is marked once, plainly.
+    do_not_flag_when: Ordinary narration of a change.
+    severity: medium
+    match_tokens: [realization, suddenly, finally, replaced]
+    match_phrases: [gave way, giving way, shift occurred]
+    high_risk: [realization struck, vanished replaced by]
+
+  - family_id: abstract_menace_atmosphere
+    description: Naming atmosphere/dread instead of creating evidence for it.
+    candidate_phrases: [oppressive silence, unnerving stillness, impending doom, creeping dread, terrifying certainty, profound quiet]
+    risk_when: Menace is asserted through abstraction rather than shown.
+    acceptable_when: A single atmospheric label frames concrete detail.
+    do_not_flag_when: Ordinary mood-setting that also shows evidence.
+    severity: high
+    match_tokens: [dread, doom, menace, stillness, encroaching, creeping, ominous, foreboding, certainty]
+    match_phrases: [oppressive silence]
+    high_risk: [impending doom, creeping dread, oppressive silence, unnerving stillness, terrifying certainty]
+
+  - family_id: polished_material_shorthand
+    description: Repeated artificial-luxury imagery across settings and genres.
+    candidate_phrases: [polished obsidian, polished steel, polished mahogany, polished chrome]
+    risk_when: The same polished/obsidian/luxury materials recur regardless of setting.
+    acceptable_when: A specific object is genuinely made of the named material.
+    do_not_flag_when: A single, motivated material detail.
+    severity: medium
+    match_tokens: [polished, obsidian, mahogany, chrome, gilded]
+    high_risk: [polished obsidian, polished steel, polished mahogany, polished chrome]
+
+  - family_id: blocking_and_movement
+    description: Choreographed posture/blocking beats (leaning, stepping, nodding) used as filler.
+    candidate_phrases: [leaned forward, leaned closer, stepped closer, stepped forward, nodded slowly, shook his head, arms crossed]
+    risk_when: Interaction is padded with repeated lean/step/nod blocking.
+    acceptable_when: A movement conveys a specific, motivated action.
+    do_not_flag_when: A single natural gesture.
+    severity: medium
+    match_tokens: [leaned, leaning, stepped, stepping, nodded, shook, tilted, shifted, crossed]
+    high_risk: []
