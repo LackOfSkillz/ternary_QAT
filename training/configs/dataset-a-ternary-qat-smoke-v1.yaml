@@ -69,7 +69,7 @@ ternary_qat:                            # the only genuinely QAT-specific block
 intervals:
   checkpoint_interval_steps: 10
   eval_interval_steps: 10
-  logging_interval_steps: 2
+  logging_interval_steps: 1
   eval_before_training: true
 
 stop_conditions:

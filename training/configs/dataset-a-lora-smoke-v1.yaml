@@ -68,7 +68,7 @@ optimization:
 intervals:
   checkpoint_interval_steps: 10         # ~2 checkpoints
   eval_interval_steps: 10               # eval before (step 0), mid, and after
-  logging_interval_steps: 2             # frequent logging
+  logging_interval_steps: 1             # log every step (tiny run)
   eval_before_training: true
 
 stop_conditions:                        # see runbook; abort the run if any trip
