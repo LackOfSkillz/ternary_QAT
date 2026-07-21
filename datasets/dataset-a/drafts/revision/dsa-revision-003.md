@@ -60,14 +60,14 @@ minimalize the voice or add anything.
 
 ## Context
 
-She watched the train take him the way you watch weather. When it was gone she
+She watched the train take him. She might have been watching weather. When it was gone she
 stood a while on the empty platform, holding the grief carefully, like a full cup
 she did not want to spill. It was grief because she loved him and he was leaving,
 and that combination always produces sorrow in the human heart.
 
 ## Gold Response
 
-She watched the train take him the way you watch weather. When it was gone she
+She watched the train take him. She might have been watching weather. When it was gone she
 stood a while on the empty platform, holding the grief carefully, like a full cup
 she did not want to spill.
 
@@ -102,3 +102,9 @@ platform. She did not spill.
 Preservation trap: the tempting failure is to treat all emotion-naming as slop.
 Here naming is protected; only the *re-explanation* is slop. Tier B (psychic
 distance / earned naming) — reviewer should confirm the naming reads as earned.
+
+Dispatch 16 comparative correction: the opening "the way you watch weather" was
+revised to "She might have been watching weather" to trim the corpus-wide
+comparative-template (`the way...`) house style. The detachment and close distance
+are preserved, and the record's task (removing the redundant final interpretation)
+is unchanged. The protected cup simile is kept — a fresh, earned comparison stays.
