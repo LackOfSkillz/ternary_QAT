@@ -95,6 +95,8 @@ failure_label:
   - uniform_sentence_rhythm
   - mechanical_fragmentation
   - em_dash_dependency
+  - delivery_tag_dependency
+  - comparative_template_overuse
   - cliche_substitution
   - candidate_insufficiently_distinct
   - moralizing
