@@ -103,14 +103,20 @@ def test_segmented_report_deterministic():
     assert sig.render_segmented_md(recs, FAM, new) == sig.render_segmented_md(recs, FAM, new)
 
 
-# 12 + 13. all existing AND new records remain draft, unassigned, excluded
-def test_all_records_draft_and_excluded():
+# 12 + 13. after the Dispatch 17 experimental freeze, all records are approved for
+# experimental use only (never production), split-assigned, with correct exclusion.
+def test_all_records_experimentally_frozen():
     for f in _drafts():
         fm = _fm(f)
-        assert fm["review_status"] == "draft", f
-        assert fm["split"] == "unassigned", f
-        assert fm["excluded_from_training"] is True, f
+        assert fm["review_status"] == "approved", f
+        assert fm["experimental_use_only"] is True, f
+        assert fm["production_approved"] is False, f
         assert fm["teacher_terms_status"] == "pending_review", f
+        assert fm["split"] in ("train", "evaluation"), f
+        if fm["split"] == "evaluation":
+            assert fm["excluded_from_training"] is True, f     # never gradient-trained
+        else:
+            assert fm["excluded_from_training"] is False, f
 
 
 def test_new_records_present_and_excluded():
@@ -121,8 +127,16 @@ def test_new_records_present_and_excluded():
 
 # 14. no raw Electro artifact entered compiled/training paths
 def test_no_raw_electro_in_compiled_or_dataset():
-    compiled = glob.glob(os.path.join(DA_ROOT, "compiled", "**", "*.jsonl"), recursive=True)
-    assert compiled == []
+    # compiled JSONL may now exist (the experimental freeze), but NO raw Electro
+    # phrase-list file may appear under compiled, and the raw lists must not be
+    # embedded in the compiled targets.
+    # No raw Electro phrase-LIST file may appear under compiled. (Individual phrases
+    # legitimately appear inside records — that is the material being taught — so the
+    # guard is the raw list files, not phrase substrings; the compiler only ever
+    # reads drafts/**/*.md, never the research raw lists.)
+    for f in glob.glob(os.path.join(DA_ROOT, "compiled", "**", "*"), recursive=True):
+        base = os.path.basename(f).lower()
+        assert not (base.startswith("bigrams") or base.startswith("trigrams"))
     # raw lists exist ONLY under the research artifact
     raws = glob.glob(os.path.join(DA_ROOT, "..", "**", "raw", "*.txt"), recursive=True)
     for r in raws:
