@@ -1,0 +1,66 @@
+# Run 1 — Pipeline smoke test (conventional LoRA)
+# STATUS: PROVISIONAL DRAFT — do not execute. Values are placeholders pending
+# GX10 stack verification and compatibility evidence. See TRAINING_PILOT.md and
+# ROADMAP.md. Compatibility must be recorded before any run (installation
+# succeeding is NOT proof of a working CUDA/training stack).
+
+experiment_id: run001-lora-smoke        # provisional
+status: provisional-draft               # not runnable until verified
+
+model:
+  base_model: prism-ml/Ternary-Bonsai-4B-unpacked
+  base_model_revision: TODO             # pin exact commit/revision before running
+  tokenizer_revision: TODO              # pin exact tokenizer revision
+
+paths:
+  output_dir: experiments/checkpoints/run001-lora-smoke   # provisional
+  cache_dir: experiments/.hf_cache                        # provisional (git-ignored)
+
+reproducibility:
+  seed: 20260721                        # provisional
+
+sequence:
+  max_seq_length: 2048                  # provisional; calibrate to packet profiles
+
+lora:
+  rank: 16                              # provisional (smoke: small)
+  alpha: 32                             # provisional
+  dropout: 0.05                         # provisional
+  target_modules:                       # provisional; confirm against model arch
+    - q_proj
+    - k_proj
+    - v_proj
+    - o_proj
+    - gate_proj
+    - up_proj
+    - down_proj
+
+optimization:
+  learning_rate: 2.0e-4                 # provisional (note: ternary QAT wants 10-50x higher;
+                                        # this is conventional LoRA, so standard-range)
+  max_steps: 100                        # provisional (smoke: 50-200)
+  micro_batch_size: 1                   # provisional
+  gradient_accumulation_steps: 8        # provisional
+  gradient_checkpointing: true          # provisional
+  precision: bf16                       # provisional (GB10 supports bf16; confirm)
+  optimizer: adamw_torch                # provisional
+  lr_scheduler: cosine                  # provisional
+  warmup_ratio: 0.03                    # provisional
+
+intervals:
+  checkpoint_interval_steps: 50         # provisional
+  eval_interval_steps: 50               # provisional
+  logging_interval_steps: 10            # provisional
+
+resume:
+  resume_from_checkpoint: false         # provisional; set to a path to resume
+
+compatibility_evidence:
+  torch_version: TODO                   # record verified CUDA-enabled torch build
+  cuda_runtime: TODO                    # record runtime CUDA (driver reports 13.0)
+  transformers_version: TODO
+  peft_version: TODO
+  accelerate_version: TODO
+  unsloth_supported: unknown            # verify GB10/arm64 support before enabling
+  verified_on_host: TODO                # e.g. gx10-9141
+  verified_smoke_forward_backward: false

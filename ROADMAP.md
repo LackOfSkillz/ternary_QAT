@@ -45,23 +45,39 @@ In addition:
 - Any benchmark distributed publicly or shipped with LineWright must use
   synthetic, licensed, public-domain, or otherwise distributable material.
 
-## Scheduling gate
+## Scheduling policy
 
-> **No Gary-hours may be spent on the starter-model track before VOICE-P0A has
-> shipped and the craft taxonomy experiment has run.**
+> **Automated starter-model infrastructure, dataset-generation jobs, baseline
+> evaluations, and training runs may proceed in parallel with LineWright
+> development. Gary's manual adjudication, gold-example writing, threshold
+> selection, and extended output review must not displace active LineWright
+> milestones.**
 
-Aedan may perform low-cost infrastructure and documentation work before that
-gate. The following remain **blocked** until the gate clears:
+Starter-model work is **no longer globally blocked behind VOICE-P0A**. Low-cost
+and automated work may run in parallel. What is protected is Gary's scarce
+manual-adjudication time, which must not displace active LineWright milestones,
+Voice Lab work, or Gary's manuscript writing. The distinction below is between
+work that may run in parallel and human work that is protected.
 
-- Dataset review
-- Mapping adjudication
-- Threshold adjudication
+### Allowed in parallel
+
+- Environment setup
+- Automated dataset generation
+- Validation scripts
+- Baseline inference
+- Training
+- Checkpoint evaluation
+- Export and quantization
+- Automated reporting
+
+### Protected human work
+
+- Taxonomy adjudication
 - Gold-answer writing
-- Manual benchmark scoring
-- Training-data approval
-
-The starter-model track may not displace the active LineWright roadmap, Voice Lab
-work, or Gary's manuscript writing.
+- Final threshold selection
+- Manual literary review
+- Large-scale dataset approval
+- Extended benchmark interpretation
 
 ## Initial model candidate
 
@@ -492,8 +508,10 @@ evaluated. Target direction:
 
 1. Finish and commit the local baseline environment files.
 2. Approve and commit this roadmap and README update.
-3. Wait for the scheduling gate before Gary performs adjudication work.
-4. After the gate, produce a candidate Craft Taxonomy mapping evidence table.
+3. Run automated infrastructure, dataset-generation, and pilot-training work in
+   parallel, scheduling Gary's manual adjudication so it does not displace active
+   LineWright milestones.
+4. Produce a candidate Craft Taxonomy mapping evidence table for Gary's review.
 5. Measure representative compiled packets.
 6. Verify licenses and teacher-output rights.
 7. Run the untouched 4B feasibility test.

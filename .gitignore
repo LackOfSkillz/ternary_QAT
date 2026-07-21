@@ -6,3 +6,37 @@ __pycache__/
 build/
 dist/
 *.egg-info/
+
+# --- Model weights / checkpoints (never source-controlled) ---
+*.safetensors
+*.bin
+*.pt
+*.pth
+*.ckpt
+*.gguf
+
+# --- Hugging Face caches and downloaded model directories ---
+.hf_cache/
+hf_cache/
+huggingface/
+**/models--*/
+**/hub/
+
+# --- Experiment heavy outputs: keep directory structure + small text files ---
+# Checkpoint contents (keep the dir via .gitkeep)
+experiments/checkpoints/**
+!experiments/checkpoints/.gitkeep
+# Generated datasets not approved for source control (keep the dir)
+experiments/datasets/**
+!experiments/datasets/.gitkeep
+# Large runtime logs (keep the dir)
+experiments/logs/**
+!experiments/logs/.gitkeep
+
+# --- Large runtime logs anywhere / temporary export directories ---
+*.log
+**/export-tmp/
+**/*.export-tmp/
+
+# Note: YAML configs, schema docs, manifests, approved benchmark definitions,
+# small summary results, and scripts are intentionally NOT ignored.

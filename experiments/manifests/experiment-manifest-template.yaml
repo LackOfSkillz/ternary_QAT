@@ -1,0 +1,60 @@
+# Experiment manifest — TEMPLATE
+# Copy per run and fill every field. One manifest fully describes and reproduces
+# a run. Leave a field as TODO only if genuinely not yet known; never delete
+# fields. See ROADMAP.md (Judge-model rule, provenance requirements) and
+# TRAINING_PILOT.md.
+
+experiment_id: TODO                     # e.g. run001-lora-smoke
+
+timestamps:
+  start: TODO                           # ISO-8601 UTC
+  end: TODO                             # ISO-8601 UTC
+
+git_commit: TODO                        # repo commit the run was launched from
+
+model:
+  base_model_repo: TODO                 # e.g. prism-ml/Ternary-Bonsai-4B-unpacked
+  base_model_revision: TODO             # exact commit/revision
+  tokenizer_revision: TODO
+
+dataset:
+  version: TODO
+  checksum: TODO                        # e.g. sha256 of the JSONL
+
+config:
+  checksum: TODO                        # checksum of the run config YAML
+
+environment:
+  hostname: TODO                        # e.g. gx10-9141
+  cpu: TODO                             # e.g. 20-core Grace (Cortex-X925 + A725), aarch64
+  gpu: TODO                             # e.g. NVIDIA GB10 (unified memory)
+  driver: TODO                          # e.g. 580.159.03
+  cuda: TODO                            # e.g. 13.0
+  pytorch: TODO
+  transformers: TODO
+  peft: TODO
+  accelerate: TODO
+  unsloth: not_used                     # or version if used
+
+reproducibility:
+  random_seed: TODO
+
+checkpoints:
+  paths: []                             # list of checkpoint paths written
+  resume_history: []                    # list of {resumed_from, at_step, timestamp}
+
+pipeline_commands:
+  merge_command: TODO                   # exact command used to merge LoRA
+  export_command: TODO                  # exact GGUF conversion command
+  quantization_command: TODO            # exact Prism-ML llama-quantize command (Q2_0)
+
+artifact:
+  final_artifact_path: TODO
+  final_artifact_checksum: TODO         # e.g. sha256 of final .gguf
+
+evaluation:
+  benchmark_version: TODO
+  result_summary: TODO                  # concise per-capability summary
+
+deviations: TODO                        # anything that differed from the config/plan
+notes: TODO
