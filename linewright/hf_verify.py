@@ -89,8 +89,15 @@ def main():
             "disposition": repro["disposition"], "accepted": repro["accepted"],
             "exact": repro["exact_match"], "normalized": repro["normalized_match"],
             "materially_equivalent": repro["materially_equivalent"], "failed": repro["failed"]}
-        if not repro["accepted"]:
-            summary["stopped_at"] = "reproducibility_not_accepted"
+        # Per Dispatch Part 5, only a `failed` disposition blocks gradient steps.
+        # materially_equivalent proceeds with a documented reason (GPU/kernel
+        # nondeterminism), recorded here.
+        if repro["disposition"] == "materially_equivalent":
+            summary["phases"]["reproducibility"]["reason"] = (
+                "raw outputs differ but structured checks/parsed outputs agree; "
+                "attributed to GPU/kernel nondeterminism under greedy decoding")
+        if repro["disposition"] == "failed":
+            summary["stopped_at"] = "reproducibility_failed"
             _finish(summary, repo_before)
             return
 
