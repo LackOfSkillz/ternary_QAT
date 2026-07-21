@@ -85,8 +85,41 @@ Compatible Prism-ML llama-quantize
 Final Q2_0 GGUF
 ```
 
-LineWright training work is currently at the **environment-setup and planning**
-stage only; no training, dataset generation, or benchmarking has begun.
+LineWright training work has completed a **Run 1 pipeline smoke test** (train →
+merge → GGUF → Prism Q2_0 → evaluate) and deployment-grid characterization; it has
+**not** begun bulk dataset generation or a production training run.
+
+### Dataset work: research instrument vs. production corpus
+
+LineWright is a **fiction-first private writing studio for novelists**. Dataset
+work in this repository is split so a new contributor can tell the difference:
+
+- **Dataset A — a research instrument, not a shipping dataset.** A narrow,
+  fiction-only, heavily-reviewed set (~300–400 approved records) built solely to
+  drive the matched conventional-LoRA vs ternary-QAT comparison and to test
+  whether a small model can follow fiction-craft instructions **without collapsing
+  every passage into one house style**. See [`datasets/dataset-a/`](datasets/dataset-a/).
+- **Dataset B — the production fiction corpus (later).** Trains the bundled
+  fiction model; not created here.
+- **Future Writing Engines** (non-fiction specialists) are a **commercial vision,
+  not a committed release**, and a larger future fiction model would be a
+  transparent hardware tier — never withheld quality.
+
+Dataset A is authored as human-readable **Markdown** (one file per record), moves
+through **draft → mechanically validated → substantive review → Gary review →
+approved → frozen → compiled**, and is deterministically compiled to JSONL **only
+after approval and freeze**. Every record carries provenance and licensing fields;
+**no generated record automatically enters training**.
+
+Governing principle:
+
+> Teach a specific fiction-writing operation, preserve everything the author did
+> not authorize the model to change, and produce an output that can be evaluated.
+
+Anti-style-collapse principle:
+
+> Anti-slop training must remove genericness, redundancy, unearned explanation,
+> and unauthorized rewriting without imposing a universal house style.
 
 Weights are ternarized to `{-1, 0, 1}` per group of (128/64/user-defined) consecutive weights along the last dim, matching the Bonsai on-disk format (verified bit-exact). Embeddings + all `nn.Linear` modules (attn, MLP, lm_head) are ternarized; norms stay FP.
 

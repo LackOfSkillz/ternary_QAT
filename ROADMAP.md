@@ -19,6 +19,18 @@ Nothing here asserts that Ternary-Bonsai 4B, ternary QAT, or Q2_0 has already
 been selected for release. Every element below is subject to the feasibility
 gates defined in this document.
 
+## Product decision (authoritative)
+
+- **LineWright remains a fiction-first private writing studio for novelists.**
+- The bundled fiction model is the **core** fiction model — it is not a
+  deliberately weakened demo tier.
+- A larger future fiction model may exist only as a **transparent hardware tier**
+  (larger parameter count or context capacity), never as withheld training
+  quality. There is **no paid "Fiction Pro" quality tier**.
+- Future **non-fiction specialist Writing Engines** (biography, essays, technical
+  authoring, etc.) are a **commercial vision, not an active implementation
+  commitment**, and generate no roadmap work now beyond a brief horizon note.
+
 ## Upstream attribution
 
 - This fork is based on [`electroglyph/ternary_QAT`](https://github.com/electroglyph/ternary_QAT).
@@ -534,6 +546,55 @@ evaluated. Target direction:
 - Final GGUF verification
 - Final fiction-permission benchmark
 - Confirmation that no Required-tier capability regressed materially
+
+## Dataset and starter-model training track
+
+This track feeds the matched conventional-LoRA vs ternary-QAT comparison and,
+later, the bundled fiction model. It runs within the existing model-training
+sequence and does not renumber LineWright application milestones.
+
+### Dataset A — Methods Comparison Instrument
+
+- **Purpose:** a narrow, fiction-only dataset built to drive the matched
+  conventional-LoRA vs ternary-QAT comparison, with deterministic or strongly
+  structured evaluation. Fully reviewed before freeze. **Not intended to ship.**
+- It exists to answer: (1) can we create a strong, concentrated behavioral delta
+  at BF16? (2) does ternary QAT preserve more of that behavior through the actual
+  Prism Q2_0 deployment grid? (3) can a small model follow fiction-craft
+  instructions without collapsing every passage into one house style?
+- **Planned scale:** approximately **300–400 approved records** (~360 working
+  target, provisional until compiled-packet feasibility results are in).
+- **Initial task families:** (1) canon and scene-state extraction, (2) constraint
+  and continuity checking, (3) focused anti-slop revision with protected craft
+  features, (4) structured scene-contract construction, (5) small
+  fiction-depiction-vs-actionable-instruction boundary set.
+- Approximately **10% no-change / no-violation** cases distributed across families.
+- Source of record is human-reviewable Markdown; deterministic compilation to
+  JSONL happens only after approval and freeze. See
+  [`datasets/dataset-a/`](datasets/dataset-a/).
+
+### Dataset B — Production Fiction Corpus (later stage)
+
+Recorded as a **later** stage only; **no Dataset B files or examples are created
+now**. Purpose: train the **bundled** LineWright fiction model — broaden fiction
+craft coverage, deepen voice-preserving revision, expand genre/style diversity,
+incorporate compiled-packet feasibility findings — behind licensing and
+teacher-clearance gates.
+
+### Future Writing Engines (horizon note only)
+
+Separately reviewed non-fiction domains that *may* one day become independent
+Writing Engines: biography and memoir, essays and articles, technical authoring,
+professional writing, other non-fiction domains. Each would require its own
+dataset, evaluation suite, domain-expert review, licensing clearance,
+application-surface work, and hardware QA. This is horizon backlog; no design or
+implementation now.
+
+> Hybrid projects may eventually require per-engine Context Compiler packet
+> profiles, context budgets, constitutions, and visible routing receipts.
+
+That belongs in the Model Studio / provider-routing horizon backlog — do not
+design or implement it now.
 
 ## Immediate next steps
 
