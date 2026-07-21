@@ -4,17 +4,25 @@
 # ROADMAP.md. Compatibility must be recorded before any run (installation
 # succeeding is NOT proof of a working CUDA/training stack).
 
-experiment_id: run001-lora-smoke        # provisional
-status: provisional-draft               # not runnable until verified
+experiment_id: run001-lora-smoke
+status: smoke-ready                     # verified: editable install, dataset, dry-run, targets
 
 model:
   base_model: prism-ml/Ternary-Bonsai-4B-unpacked
-  base_model_revision: TODO             # pin exact commit/revision before running
-  tokenizer_revision: TODO              # pin exact tokenizer revision
+  base_model_path: /workspace/hf-cache/prism-ml/Ternary-Bonsai-4B-unpacked
+  base_model_revision: 4485fae7a00129467b9329b738110d88b2942a1a
+  tokenizer_revision: 4485fae7a00129467b9329b738110d88b2942a1a
 
 paths:
-  output_dir: experiments/checkpoints/run001-lora-smoke   # provisional
-  cache_dir: experiments/.hf_cache                        # provisional (git-ignored)
+  output_dir: /workspace/checkpoints/run001-lora-smoke
+  logging_dir: /workspace/logs/run001-lora-smoke
+  cache_dir: /workspace/hf-cache
+
+dataset:
+  train_path: /workspace/datasets/run001-train.jsonl
+  eval_path: /workspace/datasets/run001-eval.jsonl
+  train_checksum: f2a3ef4dee6c725a2e7ade6fba9b59d8d046967679ce96fb59ec267b72614fdd
+  eval_checksum: 44f92747520fc0591920e2da29ed0a5bd76645d18a351730787487f2835cf165
 
 reproducibility:
   seed: 20260721                        # provisional
@@ -69,5 +77,6 @@ compatibility_evidence:
   attn_implementation: sdpa             # FlashAttention NOT used (sm_121 unsupported by FA3)
   base_image: nvcr.io/nvidia/pytorch:25.11-py3
   derived_image: linewright-ternary-train:run001
-  derived_image_id: sha256:e2d9ed828c2e39411689e1f0fd197810f7d870139a8e43bc7a21d3efdf030991
-  editable_install: blocked             # setuptools flat-layout discovery (docker/,ternary/,experiments/); used PYTHONPATH
+  derived_image_id: sha256:31d26c6bbcf953dd6a93da1d51ac4ec8f31f62d4b8b111687fb4196883a724eb  # rebuilt: torchao removed
+  editable_install: ok                  # fixed via [tool.setuptools.packages.find] include=["ternary*"]
+  torchao_removed: true                 # NGC torchao 0.14 removed; peft 0.19.1 raised on it (unused by Run 1)

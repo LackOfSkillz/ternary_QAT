@@ -1,0 +1,66 @@
+# Run 1 manifest — LoRA smoke test. Pre-launch fields filled; post-run fields
+# marked `pending` until the run completes (updated in Part J).
+
+experiment_id: run001-lora-smoke
+
+timestamps:
+  start: pending
+  end: pending
+
+git_commit: pending                     # launch commit (feat: add Run 1 pipeline), filled at launch
+
+model:
+  base_model_repo: prism-ml/Ternary-Bonsai-4B-unpacked
+  base_model_revision: 4485fae7a00129467b9329b738110d88b2942a1a
+  tokenizer_revision: 4485fae7a00129467b9329b738110d88b2942a1a
+
+dataset:
+  version: run001-smoke-v1
+  checksum: pending                     # see train_checksum/eval_checksum below
+  train_checksum: f2a3ef4dee6c725a2e7ade6fba9b59d8d046967679ce96fb59ec267b72614fdd
+  eval_checksum: 44f92747520fc0591920e2da29ed0a5bd76645d18a351730787487f2835cf165
+  train_count: 80
+  eval_count: 24
+
+config:
+  checksum: pending                     # sha256 of run001-lora-smoke.yaml, recorded at launch
+
+environment:
+  hostname: gx10-9141
+  cpu: 20-core Grace (10x Cortex-X925 + 10x Cortex-A725), aarch64
+  gpu: NVIDIA GB10 (unified memory, sm_121)
+  driver: 580.159.03
+  cuda: "13.0"
+  pytorch: 2.10.0a0+b558c986e8.nv25.11
+  transformers: 5.14.1
+  peft: 0.19.1
+  accelerate: 1.14.0
+  unsloth: not_used
+  container_image: linewright-ternary-train:run001
+  container_image_id: sha256:31d26c6bbcf953dd6a93da1d51ac4ec8f31f62d4b8b111687fb4196883a724eb
+
+reproducibility:
+  random_seed: 20260721
+
+checkpoints:
+  paths: []                             # expected: checkpoint-50, checkpoint-100 under output_dir
+  expected_output_dir: /workspace/checkpoints/run001-lora-smoke
+  resume_history: []
+
+pipeline_commands:
+  merge_command: n/a                    # Run 1 stops before merge
+  export_command: n/a                   # Run 1 stops before GGUF conversion
+  quantization_command: n/a             # Run 1 stops before Q2_0 quantization
+
+artifact:
+  final_artifact_path: /workspace/checkpoints/run001-lora-smoke   # LoRA adapter (not merged)
+  final_artifact_checksum: pending
+
+evaluation:
+  benchmark_version: run001-eval-v1
+  result_summary: pending
+
+deviations: pending                     # note: assistant-only loss masking IS implemented
+notes: |
+  Conventional LoRA only (no ternary swap_linear, no Unsloth/TRL/bitsandbytes/
+  FlashAttention). One GX10. Attention: SDPA. Stops before merge/export/quantize.

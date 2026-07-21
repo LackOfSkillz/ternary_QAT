@@ -26,6 +26,11 @@ RUN python -m pip install --upgrade pip && \
       "pytest==8.1.1" \
       "sentencepiece==0.2.2"
 
+# The NGC base bundles torchao 0.14 (git). peft 0.19.1's LoRA dispatch calls
+# is_torchao_available(), which RAISES on torchao<=0.16 even when torchao is
+# unused. Run 1 is plain bf16 LoRA and needs no torchao, so remove it.
+RUN python -m pip uninstall -y torchao || true
+
 # HF_HOME is the single modern cache root (covers the deprecated
 # TRANSFORMERS_CACHE in transformers 5.x). Mounted to a host dir at runtime.
 ENV HF_HOME=/workspace/hf-cache
