@@ -1,0 +1,34 @@
+{
+ "scene_drafting": {
+  "avg_chars": 478.2,
+  "max_chars": 545
+ },
+ "focused_revision": {
+  "avg_chars": 151.9,
+  "max_chars": 250
+ },
+ "voice_preservation": {
+  "avg_chars": 222.1,
+  "max_chars": 356
+ },
+ "no_change_and_restraint": {
+  "avg_chars": 124.0,
+  "max_chars": 191
+ },
+ "canon_application": {
+  "avg_chars": 235.4,
+  "max_chars": 339
+ },
+ "structured_protocol": {
+  "avg_chars": 115.6,
+  "max_chars": 210
+ },
+ "multi_turn_revision": {
+  "avg_chars": 51.5,
+  "max_chars": 68
+ },
+ "anti_repetition_and_slop": {
+  "avg_chars": 105.5,
+  "max_chars": 116
+ }
+}

@@ -1,0 +1,50 @@
+{
+ "scene_drafting": {
+  "total_tokens_proxy": 1110,
+  "avg_output_tokens": 92.5,
+  "max_output_tokens": 103,
+  "token_share": 0.51
+ },
+ "focused_revision": {
+  "total_tokens_proxy": 295,
+  "avg_output_tokens": 29.5,
+  "max_output_tokens": 47,
+  "token_share": 0.136
+ },
+ "voice_preservation": {
+  "total_tokens_proxy": 304,
+  "avg_output_tokens": 43.4,
+  "max_output_tokens": 67,
+  "token_share": 0.14
+ },
+ "no_change_and_restraint": {
+  "total_tokens_proxy": 100,
+  "avg_output_tokens": 20.0,
+  "max_output_tokens": 29,
+  "token_share": 0.046
+ },
+ "canon_application": {
+  "total_tokens_proxy": 223,
+  "avg_output_tokens": 44.6,
+  "max_output_tokens": 69,
+  "token_share": 0.102
+ },
+ "structured_protocol": {
+  "total_tokens_proxy": 80,
+  "avg_output_tokens": 16.0,
+  "max_output_tokens": 29,
+  "token_share": 0.037
+ },
+ "multi_turn_revision": {
+  "total_tokens_proxy": 22,
+  "avg_output_tokens": 11.0,
+  "max_output_tokens": 14,
+  "token_share": 0.01
+ },
+ "anti_repetition_and_slop": {
+  "total_tokens_proxy": 43,
+  "avg_output_tokens": 21.5,
+  "max_output_tokens": 24,
+  "token_share": 0.02
+ }
+}

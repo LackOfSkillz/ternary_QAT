@@ -1,0 +1,10 @@
+{
+ "pools": {
+  "training": 48
+ },
+ "rules": {
+  "benchmark_items_in_training": 0,
+  "calibration_in_training": 0,
+  "permanent_trend_in_training": 0
+ }
+}

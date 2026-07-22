@@ -1,0 +1,44 @@
+{
+ "top_repeated_openings": [
+  {
+   "opening": "he had",
+   "count": 3
+  },
+  {
+   "opening": "then he",
+   "count": 2
+  },
+  {
+   "opening": "she did",
+   "count": 2
+  },
+  {
+   "opening": "it was",
+   "count": 2
+  },
+  {
+   "opening": "when the",
+   "count": 2
+  },
+  {
+   "opening": "they voted",
+   "count": 2
+  },
+  {
+   "opening": "in the",
+   "count": 2
+  },
+  {
+   "opening": "she had",
+   "count": 2
+  },
+  {
+   "opening": "the gulls",
+   "count": 2
+  },
+  {
+   "opening": "the window",
+   "count": 2
+  }
+ ]
+}

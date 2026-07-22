@@ -1,0 +1,5 @@
+{
+ "threshold": 0.3,
+ "near_duplicate_pairs": [],
+ "max_pairwise_jaccard": 0.0
+}

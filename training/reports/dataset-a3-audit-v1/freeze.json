@@ -1,0 +1,9 @@
+{
+ "record_count": 48,
+ "training_record_count": 48,
+ "token_count_proxy": 2177,
+ "train_sha256": "91e572421fe6bdef110bbf2855e331286987b0377de7013886782c608d3a206e",
+ "full_corpus_sha256": "91e572421fe6bdef110bbf2855e331286987b0377de7013886782c608d3a206e",
+ "manifest_sha256": null,
+ "note": "pilot freeze; training_only; Gate-3 review pending"
+}

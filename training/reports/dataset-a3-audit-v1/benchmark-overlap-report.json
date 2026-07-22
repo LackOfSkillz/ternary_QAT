@@ -1,0 +1,7 @@
+{
+ "method": "shingle_jaccard_4gram (embedding proxy; substitution logged)",
+ "flag_threshold": 0.1,
+ "flagged": [],
+ "clean": true,
+ "max_overlap": 0.0
+}

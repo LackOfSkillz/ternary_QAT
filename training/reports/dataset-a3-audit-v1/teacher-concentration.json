@@ -1,0 +1,13 @@
+{
+ "records_by_teacher": {
+  "claude-opus-4-8": 48
+ },
+ "tokens_by_teacher": {
+  "claude-opus-4-8": 2177
+ },
+ "records_by_human_editor": {
+  "none": 48
+ },
+ "single_teacher_pilot_justified": true,
+ "justification": "feasibility pilot; single teacher flagged; production build requires teacher diversification + human curation + Gate-3 review"
+}
