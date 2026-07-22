@@ -60,3 +60,9 @@ training/runs/**/*.ckpt
 # baseline evidence (base/eval-*.json) trackable.
 training/runs/**/integrity/**
 training/runs/**/rehearsal/**
+
+# GX10 HF-verification machine-specific raw artifacts (regenerable; results are in
+# hf-verify-summary.json + the *-verification.json + the verification report).
+training/runs/**/integrity-hf/base-model-before.json
+training/runs/**/integrity-hf/base-model-after-*.json
+training/runs/**/rehearsal-hf-*/

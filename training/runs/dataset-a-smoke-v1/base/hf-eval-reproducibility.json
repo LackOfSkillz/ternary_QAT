@@ -1,0 +1,85 @@
+{
+  "accepted": true,
+  "disposition": "exact_match",
+  "exact_match": 7,
+  "failed": 0,
+  "material_disagreements": [],
+  "materially_equivalent": 0,
+  "materially_equivalent_requires_reason": false,
+  "normalized_match": 0,
+  "per_record": [
+    {
+      "deterministic_checks_equal": true,
+      "format_valid_equal": true,
+      "len1": 650,
+      "len2": 650,
+      "normalized_equal": true,
+      "parsed_equal": true,
+      "raw_equal": true,
+      "record_id": "dsa-boundary-001"
+    },
+    {
+      "deterministic_checks_equal": true,
+      "format_valid_equal": true,
+      "len1": 963,
+      "len2": 963,
+      "normalized_equal": true,
+      "parsed_equal": true,
+      "raw_equal": true,
+      "record_id": "dsa-canon-003"
+    },
+    {
+      "deterministic_checks_equal": true,
+      "format_valid_equal": true,
+      "len1": 819,
+      "len2": 819,
+      "normalized_equal": true,
+      "parsed_equal": true,
+      "raw_equal": true,
+      "record_id": "dsa-constraint-002"
+    },
+    {
+      "deterministic_checks_equal": true,
+      "format_valid_equal": true,
+      "len1": 243,
+      "len2": 243,
+      "normalized_equal": true,
+      "parsed_equal": true,
+      "raw_equal": true,
+      "record_id": "dsa-revision-002"
+    },
+    {
+      "deterministic_checks_equal": true,
+      "format_valid_equal": true,
+      "len1": 306,
+      "len2": 306,
+      "normalized_equal": true,
+      "parsed_equal": true,
+      "raw_equal": true,
+      "record_id": "dsa-revision-007"
+    },
+    {
+      "deterministic_checks_equal": true,
+      "format_valid_equal": true,
+      "len1": 205,
+      "len2": 205,
+      "normalized_equal": true,
+      "parsed_equal": true,
+      "raw_equal": true,
+      "record_id": "dsa-revision-018"
+    },
+    {
+      "deterministic_checks_equal": true,
+      "format_valid_equal": true,
+      "len1": 807,
+      "len2": 807,
+      "normalized_equal": true,
+      "parsed_equal": true,
+      "raw_equal": true,
+      "record_id": "dsa-scene-002"
+    }
+  ],
+  "record_count": 7,
+  "run1_raw_hash": "a5b06151a6f1b58f91b671226839a0f4c4dae18883db43cc9d4b2297055f8f4b",
+  "run2_raw_hash": "a5b06151a6f1b58f91b671226839a0f4c4dae18883db43cc9d4b2297055f8f4b"
+}

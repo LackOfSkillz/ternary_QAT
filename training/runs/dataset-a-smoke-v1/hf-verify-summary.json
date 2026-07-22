@@ -1,0 +1,191 @@
+{
+  "base_model_file_count": 51,
+  "base_model_integrity_ok": true,
+  "base_model_root_hash": "890df375f933302e727564a174ebff3950decbc231af0f3a04eba4eb626243ed",
+  "gpu": {
+    "bf16": true,
+    "compute_capability": "12.1",
+    "cuda_available": true,
+    "device": "NVIDIA GB10",
+    "hostname": "a0c17f1ede94",
+    "torch": "2.10.0a0+b558c986e8.nv25.11",
+    "torch_cuda": "13.0",
+    "total_mem_mb": 124610.1
+  },
+  "phases": {
+    "base_eval": {
+      "environment": {
+        "chat_template": true,
+        "device": "cuda",
+        "load_seconds": 0.87,
+        "model_class": "Qwen3ForCausalLM",
+        "model_src": "/workspace/hf-cache/prism-ml/Ternary-Bonsai-4B-unpacked",
+        "resolved_revision": "4485fae7a00129467b9329b738110d88b2942a1a",
+        "revision_check": "path_pinned",
+        "tokenizer_class": "Qwen2Tokenizer",
+        "total_params": 4021784576
+      },
+      "record_count": 7,
+      "run1": "training/runs/dataset-a-smoke-v1/base/hf-eval-run-1.json",
+      "run1_hash": "0d853a00faf3fc784af2806e1754703535d09275b56017fff304c91f19cfb080",
+      "run2": "training/runs/dataset-a-smoke-v1/base/hf-eval-run-2.json",
+      "run2_hash": "00dd5aba960ef5c97e8ccaab1c6987bd06eb39e15620dd14ba88370bb698fec4"
+    },
+    "base_integrity": {
+      "eval": true,
+      "lora": true,
+      "qat": true
+    },
+    "lora": {
+      "checkpoint_reload": {
+        "backend": "hf",
+        "checkpoint": "/workspace/training/runs/dataset-a-smoke-v1/rehearsal-hf-lora/checkpoints/step-1",
+        "checkpoint_type": "lora",
+        "cuda_peak_mb": 7866.3,
+        "load_seconds": 3.54,
+        "missing_keys": 0,
+        "model_class": "PeftModelForCausalLM",
+        "model_init": true,
+        "ok": true,
+        "output": "Reload check: produce one short line.",
+        "output_nonempty": true,
+        "step": 1,
+        "tokenizer_class": "Qwen2Tokenizer",
+        "tokenizer_init": true,
+        "unexpected_keys": 0
+      },
+      "completed_steps": 1,
+      "diagnostics": {
+        "chat_template": true,
+        "device": "cuda",
+        "load_seconds": 0.68,
+        "lora_alpha": 32,
+        "lora_dropout": 0.05,
+        "lora_matched_names": [
+          "model.layers.0.mlp.down_proj",
+          "model.layers.0.mlp.gate_proj",
+          "model.layers.0.mlp.up_proj",
+          "model.layers.0.self_attn.k_proj",
+          "model.layers.0.self_attn.o_proj",
+          "model.layers.0.self_attn.q_proj",
+          "model.layers.0.self_attn.v_proj",
+          "model.layers.1.mlp.down_proj",
+          "model.layers.1.mlp.gate_proj",
+          "model.layers.1.mlp.up_proj",
+          "model.layers.1.self_attn.k_proj",
+          "model.layers.1.self_attn.o_proj",
+          "model.layers.1.self_attn.q_proj",
+          "model.layers.1.self_attn.v_proj",
+          "model.layers.10.mlp.down_proj",
+          "model.layers.10.mlp.gate_proj",
+          "model.layers.10.mlp.up_proj",
+          "model.layers.10.self_attn.k_proj",
+          "model.layers.10.self_attn.o_proj",
+          "model.layers.10.self_attn.q_proj"
+        ],
+        "lora_modules_matched": 252,
+        "lora_rank": 16,
+        "lora_target_modules": [
+          "q_proj",
+          "k_proj",
+          "v_proj",
+          "o_proj",
+          "gate_proj",
+          "up_proj",
+          "down_proj"
+        ],
+        "lora_total_params": 4054814720,
+        "lora_trainable_params": 33030144,
+        "lora_trainable_pct": 0.8146,
+        "mask_counts_first_batch": {
+          "input": 33,
+          "masked": 30,
+          "target": 3,
+          "truncated": 0
+        },
+        "model_class": "Qwen3ForCausalLM",
+        "model_src": "/workspace/hf-cache/prism-ml/Ternary-Bonsai-4B-unpacked",
+        "resolved_revision": "4485fae7a00129467b9329b738110d88b2942a1a",
+        "revision_check": "path_pinned",
+        "tokenizer_class": "Qwen2Tokenizer",
+        "total_params": 4021784576,
+        "train_batches": 2
+      },
+      "exit_code": 0,
+      "repository_verification_ok": true,
+      "status": "completed",
+      "step1_batch_ids": [
+        "hf-syn-001"
+      ],
+      "step1_grad_norm": 5.838365,
+      "step1_loss": 1.769024,
+      "stop_reason": "max_steps_reached"
+    },
+    "qat": {
+      "checkpoint_reload": {
+        "backend": "hf",
+        "checkpoint": "/workspace/training/runs/dataset-a-smoke-v1/rehearsal-hf-qat/checkpoints/step-1",
+        "checkpoint_type": "ternary-qat",
+        "cuda_peak_mb": 12189.8,
+        "load_seconds": 23.01,
+        "missing_keys": 0,
+        "model_class": "Qwen3ForCausalLM",
+        "model_init": true,
+        "ok": true,
+        "output": "................",
+        "output_nonempty": true,
+        "step": 1,
+        "tokenizer_class": "Qwen2Tokenizer",
+        "tokenizer_init": true,
+        "unexpected_keys": 0
+      },
+      "completed_steps": 1,
+      "diagnostics": {
+        "chat_template": true,
+        "device": "cuda",
+        "load_seconds": 0.78,
+        "mask_counts_first_batch": {
+          "input": 33,
+          "masked": 30,
+          "target": 3,
+          "truncated": 0
+        },
+        "model_class": "Qwen3ForCausalLM",
+        "model_src": "/workspace/hf-cache/prism-ml/Ternary-Bonsai-4B-unpacked",
+        "resolved_revision": "4485fae7a00129467b9329b738110d88b2942a1a",
+        "revision_check": "path_pinned",
+        "ternary_excluded_count": 0,
+        "ternary_excluded_remaining_linear": [],
+        "ternary_group_size": 128,
+        "ternary_linear_before": 253,
+        "ternary_modules_replaced": 254,
+        "ternary_trainable_params": 4021784576,
+        "tied_after": true,
+        "tied_before": true,
+        "tied_weight_result": "preserved",
+        "tokenizer_class": "Qwen2Tokenizer",
+        "total_params": 4021784576,
+        "train_batches": 2
+      },
+      "exit_code": 0,
+      "repository_verification_ok": true,
+      "status": "completed",
+      "step1_batch_ids": [
+        "hf-syn-001"
+      ],
+      "step1_grad_norm": 96.5,
+      "step1_loss": 1.810558,
+      "stop_reason": "max_steps_reached"
+    },
+    "reproducibility": {
+      "accepted": true,
+      "disposition": "exact_match",
+      "exact": 7,
+      "failed": 0,
+      "materially_equivalent": 0,
+      "normalized": 0
+    }
+  },
+  "repository_integrity_ok": true,
+  "stopped_at": null
+}

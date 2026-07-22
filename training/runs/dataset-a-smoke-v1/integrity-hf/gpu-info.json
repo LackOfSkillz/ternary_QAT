@@ -1,0 +1,10 @@
+{
+  "bf16": true,
+  "compute_capability": "12.1",
+  "cuda_available": true,
+  "device": "NVIDIA GB10",
+  "hostname": "a0c17f1ede94",
+  "torch": "2.10.0a0+b558c986e8.nv25.11",
+  "torch_cuda": "13.0",
+  "total_mem_mb": 124610.1
+}

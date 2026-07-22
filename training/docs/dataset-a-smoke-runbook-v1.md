@@ -19,8 +19,26 @@ manifest.json      9d067c32…    system prompt      038d9ab8…
 ```
 
 Steps 1–11 were completed in **Dispatch 18A** on the CPU host with the stub backend.
-Steps 12–18 are **reserved for Dispatch 18B** and run on the GX10 with `--backend hf`,
-after the real-model baseline (steps 8–10) is re-run there and accepted.
+The real **HFBackend is implemented and verified on the GX10** (Dispatch 18A.1):
+base evaluation ×2 reproducible (exact_match), and real LoRA + ternary-QAT one-step
+rehearsals passed with finite loss/gradients, fresh-process checkpoint reloads, an
+unchanged base checkpoint, and clean repository integrity. See
+`training/reports/dataset-a-hf-backend-verification-v1.md`. Steps 12–18 (the real
+20-step runs) are **reserved for Dispatch 18B** and run on the GX10 with
+`--backend hf`.
+
+### Verified GX10 invocation (Dispatch 18A.1)
+
+```bash
+docker run --rm --gpus all --ipc=host --ulimit memlock=-1 --ulimit stack=67108864 \
+  -v /home/gary/projects/ternary_QAT:/workspace \
+  -v /home/gary/linewright-model-training/hf-cache:/workspace/hf-cache \
+  -w /workspace -e PYTHONPATH=/workspace -e PYTHONDONTWRITEBYTECODE=1 \
+  -e HF_HUB_OFFLINE=1 -e TRANSFORMERS_OFFLINE=1 \
+  linewright-ternary-train:run001 \
+  python -m linewright.hf_verify \
+    --base-model-dir /workspace/hf-cache/prism-ml/Ternary-Bonsai-4B-unpacked
+```
 
 ---
 
@@ -96,8 +114,10 @@ train file is never used for gradients here.
 
 ## Dispatch 18B — reserved (real training, GX10, `--backend hf`)
 
-> Precondition: re-run steps 8–10 on the GX10 with `--backend hf` against the real
-> 4B base model and confirm the reproducibility gate is accepted.
+> Precondition (met in Dispatch 18A.1): steps 8–10 were run on the GX10 with
+> `--backend hf` against the real 4B model and the reproducibility gate was accepted
+> (exact_match), and the real LoRA + ternary-QAT one-step rehearsals passed. The
+> 20-step runs below remain disabled until Gary schedules Dispatch 18B.
 
 ### 12. LoRA smoke training
 ```bash
