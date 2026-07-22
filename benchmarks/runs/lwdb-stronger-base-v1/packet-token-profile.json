@@ -1,0 +1,177 @@
+{
+ "note": "Real per-model tokenizer counts (system+user prompt, chat-template applied). Ministral counts use fix_mistral_regex=True. Qwen non-thinking. Target bands are approximate; long-family under-fills its 8-12K band because padding is prohibited (see limitation).",
+ "target_bands": {
+  "bare": "150-300",
+  "compact": "500-1000",
+  "realistic": "2000-4000",
+  "long": "8000-12000",
+  "long_noisy": "8000-12000",
+  "long_salience_repaired": "8000-12000"
+ },
+ "per_item": [
+  {
+   "item_id": "pf-scene_drafting-bare",
+   "task": "scene_drafting",
+   "arm": "bare",
+   "qwen3_tokens": 2,
+   "ministral_tokens": 120,
+   "bonsai4b_tokens": 2
+  },
+  {
+   "item_id": "pf-scene_drafting-compact",
+   "task": "scene_drafting",
+   "arm": "compact",
+   "qwen3_tokens": 2,
+   "ministral_tokens": 843,
+   "bonsai4b_tokens": 2
+  },
+  {
+   "item_id": "pf-scene_drafting-realistic",
+   "task": "scene_drafting",
+   "arm": "realistic",
+   "qwen3_tokens": 2,
+   "ministral_tokens": 2001,
+   "bonsai4b_tokens": 2
+  },
+  {
+   "item_id": "pf-scene_drafting-long",
+   "task": "scene_drafting",
+   "arm": "long",
+   "qwen3_tokens": 2,
+   "ministral_tokens": 4848,
+   "bonsai4b_tokens": 2
+  },
+  {
+   "item_id": "pf-scene_drafting-long_noisy",
+   "task": "scene_drafting",
+   "arm": "long_noisy",
+   "qwen3_tokens": 2,
+   "ministral_tokens": 5133,
+   "bonsai4b_tokens": 2
+  },
+  {
+   "item_id": "pf-scene_drafting-long_salience_repaired",
+   "task": "scene_drafting",
+   "arm": "long_salience_repaired",
+   "qwen3_tokens": 2,
+   "ministral_tokens": 5167,
+   "bonsai4b_tokens": 2
+  },
+  {
+   "item_id": "pf-focused_revision-bare",
+   "task": "focused_revision",
+   "arm": "bare",
+   "qwen3_tokens": 2,
+   "ministral_tokens": 198,
+   "bonsai4b_tokens": 2
+  },
+  {
+   "item_id": "pf-focused_revision-compact",
+   "task": "focused_revision",
+   "arm": "compact",
+   "qwen3_tokens": 2,
+   "ministral_tokens": 967,
+   "bonsai4b_tokens": 2
+  },
+  {
+   "item_id": "pf-focused_revision-realistic",
+   "task": "focused_revision",
+   "arm": "realistic",
+   "qwen3_tokens": 2,
+   "ministral_tokens": 2125,
+   "bonsai4b_tokens": 2
+  },
+  {
+   "item_id": "pf-focused_revision-long",
+   "task": "focused_revision",
+   "arm": "long",
+   "qwen3_tokens": 2,
+   "ministral_tokens": 4972,
+   "bonsai4b_tokens": 2
+  },
+  {
+   "item_id": "pf-focused_revision-long_noisy",
+   "task": "focused_revision",
+   "arm": "long_noisy",
+   "qwen3_tokens": 2,
+   "ministral_tokens": 5257,
+   "bonsai4b_tokens": 2
+  },
+  {
+   "item_id": "pf-focused_revision-long_salience_repaired",
+   "task": "focused_revision",
+   "arm": "long_salience_repaired",
+   "qwen3_tokens": 2,
+   "ministral_tokens": 5291,
+   "bonsai4b_tokens": 2
+  },
+  {
+   "item_id": "pf-canon_sensitive_continuation-bare",
+   "task": "canon_sensitive_continuation",
+   "arm": "bare",
+   "qwen3_tokens": 2,
+   "ministral_tokens": 186,
+   "bonsai4b_tokens": 2
+  },
+  {
+   "item_id": "pf-canon_sensitive_continuation-compact",
+   "task": "canon_sensitive_continuation",
+   "arm": "compact",
+   "qwen3_tokens": 2,
+   "ministral_tokens": 1031,
+   "bonsai4b_tokens": 2
+  },
+  {
+   "item_id": "pf-canon_sensitive_continuation-realistic",
+   "task": "canon_sensitive_continuation",
+   "arm": "realistic",
+   "qwen3_tokens": 2,
+   "ministral_tokens": 2189,
+   "bonsai4b_tokens": 2
+  },
+  {
+   "item_id": "pf-canon_sensitive_continuation-long",
+   "task": "canon_sensitive_continuation",
+   "arm": "long",
+   "qwen3_tokens": 2,
+   "ministral_tokens": 5036,
+   "bonsai4b_tokens": 2
+  },
+  {
+   "item_id": "pf-canon_sensitive_continuation-long_noisy",
+   "task": "canon_sensitive_continuation",
+   "arm": "long_noisy",
+   "qwen3_tokens": 2,
+   "ministral_tokens": 5321,
+   "bonsai4b_tokens": 2
+  },
+  {
+   "item_id": "pf-canon_sensitive_continuation-long_salience_repaired",
+   "task": "canon_sensitive_continuation",
+   "arm": "long_salience_repaired",
+   "qwen3_tokens": 2,
+   "ministral_tokens": 5355,
+   "bonsai4b_tokens": 2
+  }
+ ],
+ "ministral_band_status": {
+  "pf-scene_drafting-bare": "below",
+  "pf-scene_drafting-compact": "in_band",
+  "pf-scene_drafting-realistic": "in_band",
+  "pf-scene_drafting-long": "below",
+  "pf-scene_drafting-long_noisy": "below",
+  "pf-scene_drafting-long_salience_repaired": "below",
+  "pf-focused_revision-bare": "in_band",
+  "pf-focused_revision-compact": "in_band",
+  "pf-focused_revision-realistic": "in_band",
+  "pf-focused_revision-long": "below",
+  "pf-focused_revision-long_noisy": "below",
+  "pf-focused_revision-long_salience_repaired": "below",
+  "pf-canon_sensitive_continuation-bare": "in_band",
+  "pf-canon_sensitive_continuation-compact": "above",
+  "pf-canon_sensitive_continuation-realistic": "in_band",
+  "pf-canon_sensitive_continuation-long": "below",
+  "pf-canon_sensitive_continuation-long_noisy": "below",
+  "pf-canon_sensitive_continuation-long_salience_repaired": "below"
+ }
+}

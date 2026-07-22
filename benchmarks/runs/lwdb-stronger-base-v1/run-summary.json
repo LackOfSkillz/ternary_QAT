@@ -1,0 +1,82 @@
+{
+ "run_id": "lwdb-stronger-base-v1",
+ "plan_hash": "d45a04a952598d313dd242b69464b24fea7935a9beb8fb205d5e07739f99f2b3",
+ "integrity": {
+  "expected_jobs": 94,
+  "got_jobs": 94,
+  "missing": 0,
+  "problems": [],
+  "mechanical_replay_identical": true
+ },
+ "per_role": {
+  "ministral_3_8b_instruct": {
+   "n_fast": 20,
+   "n_packet": 18,
+   "fast_mechanical_pass_rate": 0.45,
+   "core_prose_pass_rate": 0.714,
+   "core_prose_n": 7,
+   "bare_success_rate": 0.421,
+   "modules_with_usable": 5,
+   "realistic_packet_pass_rate": 1.0,
+   "severe_slop_rate": 0.0,
+   "token_cap_rate": 0.026,
+   "reasoning_trace_rate": 0.0,
+   "packet_arm_pass_rates": {
+    "bare": 1.0,
+    "compact": 1.0,
+    "realistic": 1.0,
+    "long": 1.0,
+    "long_noisy": 1.0,
+    "long_salience_repaired": 1.0
+   },
+   "protected_line_preserved_rate": 0.5,
+   "anachronism_rate": 0.056
+  },
+  "qwen3_8b_non_thinking": {
+   "n_fast": 20,
+   "n_packet": 18,
+   "fast_mechanical_pass_rate": 0.75,
+   "core_prose_pass_rate": 0.857,
+   "core_prose_n": 7,
+   "bare_success_rate": 0.737,
+   "modules_with_usable": 7,
+   "realistic_packet_pass_rate": 1.0,
+   "severe_slop_rate": 0.0,
+   "token_cap_rate": 0.0,
+   "reasoning_trace_rate": 0.0,
+   "packet_arm_pass_rates": {
+    "bare": 1.0,
+    "compact": 1.0,
+    "realistic": 1.0,
+    "long": 1.0,
+    "long_noisy": 1.0,
+    "long_salience_repaired": 1.0
+   },
+   "protected_line_preserved_rate": 0.583,
+   "anachronism_rate": 0.222
+  },
+  "target_base_4b": {
+   "n_fast": 0,
+   "n_packet": 18,
+   "fast_mechanical_pass_rate": null,
+   "core_prose_pass_rate": null,
+   "core_prose_n": 0,
+   "bare_success_rate": null,
+   "modules_with_usable": 0,
+   "realistic_packet_pass_rate": 1.0,
+   "severe_slop_rate": 0.0,
+   "token_cap_rate": 0.0,
+   "reasoning_trace_rate": 0.0,
+   "packet_arm_pass_rates": {
+    "bare": 1.0,
+    "compact": 1.0,
+    "realistic": 1.0,
+    "long": 1.0,
+    "long_noisy": 1.0,
+    "long_salience_repaired": 0.667
+   },
+   "protected_line_preserved_rate": 0.667,
+   "anachronism_rate": 0.278
+  }
+ }
+}

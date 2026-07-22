@@ -71,7 +71,10 @@ def main():
         pad_id = tok.pad_token_id
     else:  # mistral3_text_only
         from transformers import AutoProcessor, AutoModelForImageTextToText
-        proc = AutoProcessor.from_pretrained(args.model_path)
+        try:  # Mistral tokenizer ships an incorrect regex; the flag fixes tokenization
+            proc = AutoProcessor.from_pretrained(args.model_path, fix_mistral_regex=True)
+        except TypeError:
+            proc = AutoProcessor.from_pretrained(args.model_path)
         model = AutoModelForImageTextToText.from_pretrained(
             args.model_path, torch_dtype=torch.bfloat16, device_map="cuda")
         model.eval()

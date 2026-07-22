@@ -1,0 +1,9 @@
+{
+  "run_id": "lwdb-stronger-base-v1",
+  "roles": {
+    "target_base_4b": {"model_id": "prism-ml/Ternary-Bonsai-4B-unpacked", "revision": "unpacked", "precision": "bf16", "loader": "causal_lm", "fast_battery": "reused_from_dispatch_24"},
+    "ministral_3_8b_instruct": {"model_id": "mistralai/Ministral-3-8B-Instruct-2512", "revision": "5b26027e7b19eeb4b7352e1fed3926375dd2cb4d", "tokenizer_revision": "5b26027e7b19eeb4b7352e1fed3926375dd2cb4d", "precision": "fp8_official", "architecture": "Mistral3ForConditionalGeneration", "modality": "text_only_vision_disabled", "loader": "mistral3_text_only", "fix_mistral_regex": true},
+    "qwen3_8b_non_thinking": {"model_id": "Qwen/Qwen3-8B", "revision": "b968826d9c46dd6066d109eabc6255188de91218", "tokenizer_revision": "b968826d9c46dd6066d109eabc6255188de91218", "precision": "bf16", "architecture": "Qwen3ForCausalLM", "loader": "causal_lm", "thinking": "disabled", "reasoning_trace_detected_rate": 0.0}
+  },
+  "generation": {"temperature": 0.0, "top_p": 1.0, "top_k": 0, "repetition_penalty": 1.0, "seed": 20260722, "max_new_tokens": 1024, "decoding": "greedy_argmax"}
+}

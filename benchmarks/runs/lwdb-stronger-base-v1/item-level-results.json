@@ -1,0 +1,1523 @@
+[
+ {
+  "item_id": "lwdb-a-length-long",
+  "model_role": "ministral_3_8b_instruct",
+  "mechanical_pass": false,
+  "failure_labels": [
+   "runaway_length"
+  ],
+  "slop_severity": "low",
+  "hit_token_cap": false,
+  "output_tokens": 493,
+  "reasoning_trace_detected": false,
+  "is_packet": false
+ },
+ {
+  "item_id": "lwdb-a-length-long",
+  "model_role": "qwen3_8b_non_thinking",
+  "mechanical_pass": false,
+  "failure_labels": [
+   "low_lexical_diversity",
+   "runaway_length"
+  ],
+  "slop_severity": "high",
+  "hit_token_cap": false,
+  "output_tokens": 981,
+  "reasoning_trace_detected": false,
+  "is_packet": false
+ },
+ {
+  "item_id": "lwdb-a-length-short",
+  "model_role": "ministral_3_8b_instruct",
+  "mechanical_pass": true,
+  "failure_labels": [],
+  "slop_severity": "none",
+  "hit_token_cap": false,
+  "output_tokens": 222,
+  "reasoning_trace_detected": false,
+  "is_packet": false
+ },
+ {
+  "item_id": "lwdb-a-length-short",
+  "model_role": "qwen3_8b_non_thinking",
+  "mechanical_pass": true,
+  "failure_labels": [],
+  "slop_severity": "none",
+  "hit_token_cap": false,
+  "output_tokens": 171,
+  "reasoning_trace_detected": false,
+  "is_packet": false
+ },
+ {
+  "item_id": "lwdb-a-quiet-scene",
+  "model_role": "ministral_3_8b_instruct",
+  "mechanical_pass": true,
+  "failure_labels": [],
+  "slop_severity": "none",
+  "hit_token_cap": false,
+  "output_tokens": 250,
+  "reasoning_trace_detected": false,
+  "is_packet": false
+ },
+ {
+  "item_id": "lwdb-a-quiet-scene",
+  "model_role": "qwen3_8b_non_thinking",
+  "mechanical_pass": true,
+  "failure_labels": [],
+  "slop_severity": "none",
+  "hit_token_cap": false,
+  "output_tokens": 242,
+  "reasoning_trace_detected": false,
+  "is_packet": false
+ },
+ {
+  "item_id": "lwdb-b-voice-lyrical",
+  "model_role": "ministral_3_8b_instruct",
+  "mechanical_pass": true,
+  "failure_labels": [],
+  "slop_severity": "none",
+  "hit_token_cap": false,
+  "output_tokens": 57,
+  "reasoning_trace_detected": false,
+  "is_packet": false
+ },
+ {
+  "item_id": "lwdb-b-voice-lyrical",
+  "model_role": "qwen3_8b_non_thinking",
+  "mechanical_pass": true,
+  "failure_labels": [],
+  "slop_severity": "none",
+  "hit_token_cap": false,
+  "output_tokens": 57,
+  "reasoning_trace_detected": false,
+  "is_packet": false
+ },
+ {
+  "item_id": "lwdb-b-voice-terse",
+  "model_role": "ministral_3_8b_instruct",
+  "mechanical_pass": true,
+  "failure_labels": [],
+  "slop_severity": "inconclusive",
+  "hit_token_cap": false,
+  "output_tokens": 13,
+  "reasoning_trace_detected": false,
+  "is_packet": false
+ },
+ {
+  "item_id": "lwdb-b-voice-terse",
+  "model_role": "qwen3_8b_non_thinking",
+  "mechanical_pass": true,
+  "failure_labels": [],
+  "slop_severity": "inconclusive",
+  "hit_token_cap": false,
+  "output_tokens": 16,
+  "reasoning_trace_detected": false,
+  "is_packet": false
+ },
+ {
+  "item_id": "lwdb-c-restraint-clean",
+  "model_role": "ministral_3_8b_instruct",
+  "mechanical_pass": false,
+  "failure_labels": [
+   "invalid_json",
+   "markdown_fence_violation",
+   "no_change_wrapper_missing",
+   "prose_outside_structure"
+  ],
+  "slop_severity": "none",
+  "hit_token_cap": false,
+  "output_tokens": 92,
+  "reasoning_trace_detected": false,
+  "is_packet": false
+ },
+ {
+  "item_id": "lwdb-c-restraint-clean",
+  "model_role": "qwen3_8b_non_thinking",
+  "mechanical_pass": false,
+  "failure_labels": [
+   "invalid_json",
+   "markdown_fence_violation",
+   "no_change_wrapper_missing",
+   "prose_outside_structure"
+  ],
+  "slop_severity": "none",
+  "hit_token_cap": false,
+  "output_tokens": 66,
+  "reasoning_trace_detected": false,
+  "is_packet": false
+ },
+ {
+  "item_id": "lwdb-c-restraint-fix",
+  "model_role": "ministral_3_8b_instruct",
+  "mechanical_pass": false,
+  "failure_labels": [
+   "excessive_expansion"
+  ],
+  "slop_severity": "none",
+  "hit_token_cap": false,
+  "output_tokens": 103,
+  "reasoning_trace_detected": false,
+  "is_packet": false
+ },
+ {
+  "item_id": "lwdb-c-restraint-fix",
+  "model_role": "qwen3_8b_non_thinking",
+  "mechanical_pass": true,
+  "failure_labels": [],
+  "slop_severity": "inconclusive",
+  "hit_token_cap": false,
+  "output_tokens": 26,
+  "reasoning_trace_detected": false,
+  "is_packet": false
+ },
+ {
+  "item_id": "lwdb-d-canon-apply",
+  "model_role": "ministral_3_8b_instruct",
+  "mechanical_pass": true,
+  "failure_labels": [],
+  "slop_severity": "none",
+  "hit_token_cap": false,
+  "output_tokens": 125,
+  "reasoning_trace_detected": false,
+  "is_packet": false
+ },
+ {
+  "item_id": "lwdb-d-canon-apply",
+  "model_role": "qwen3_8b_non_thinking",
+  "mechanical_pass": true,
+  "failure_labels": [],
+  "slop_severity": "none",
+  "hit_token_cap": false,
+  "output_tokens": 127,
+  "reasoning_trace_detected": false,
+  "is_packet": false
+ },
+ {
+  "item_id": "lwdb-d-canon-extract",
+  "model_role": "ministral_3_8b_instruct",
+  "mechanical_pass": false,
+  "failure_labels": [
+   "invalid_json",
+   "markdown_fence_violation",
+   "prose_outside_structure"
+  ],
+  "slop_severity": "none",
+  "hit_token_cap": false,
+  "output_tokens": 288,
+  "reasoning_trace_detected": false,
+  "is_packet": false
+ },
+ {
+  "item_id": "lwdb-d-canon-extract",
+  "model_role": "qwen3_8b_non_thinking",
+  "mechanical_pass": false,
+  "failure_labels": [
+   "alternate_key_names",
+   "missing_required_key"
+  ],
+  "slop_severity": "low",
+  "hit_token_cap": false,
+  "output_tokens": 234,
+  "reasoning_trace_detected": false,
+  "is_packet": false
+ },
+ {
+  "item_id": "lwdb-d-constraint-high",
+  "model_role": "ministral_3_8b_instruct",
+  "mechanical_pass": false,
+  "failure_labels": [
+   "constraint_ignored",
+   "invalid_json",
+   "markdown_fence_violation",
+   "prose_outside_structure"
+  ],
+  "slop_severity": "none",
+  "hit_token_cap": false,
+  "output_tokens": 170,
+  "reasoning_trace_detected": false,
+  "is_packet": false
+ },
+ {
+  "item_id": "lwdb-d-constraint-high",
+  "model_role": "qwen3_8b_non_thinking",
+  "mechanical_pass": false,
+  "failure_labels": [
+   "constraint_ignored"
+  ],
+  "slop_severity": "none",
+  "hit_token_cap": false,
+  "output_tokens": 144,
+  "reasoning_trace_detected": false,
+  "is_packet": false
+ },
+ {
+  "item_id": "lwdb-d-constraint-low",
+  "model_role": "ministral_3_8b_instruct",
+  "mechanical_pass": false,
+  "failure_labels": [
+   "constraint_ignored",
+   "invalid_json",
+   "markdown_fence_violation",
+   "prose_outside_structure"
+  ],
+  "slop_severity": "none",
+  "hit_token_cap": false,
+  "output_tokens": 95,
+  "reasoning_trace_detected": false,
+  "is_packet": false
+ },
+ {
+  "item_id": "lwdb-d-constraint-low",
+  "model_role": "qwen3_8b_non_thinking",
+  "mechanical_pass": true,
+  "failure_labels": [],
+  "slop_severity": "none",
+  "hit_token_cap": false,
+  "output_tokens": 86,
+  "reasoning_trace_detected": false,
+  "is_packet": false
+ },
+ {
+  "item_id": "lwdb-e-revision-wrapper",
+  "model_role": "ministral_3_8b_instruct",
+  "mechanical_pass": false,
+  "failure_labels": [
+   "invalid_json",
+   "markdown_fence_violation",
+   "prose_outside_structure"
+  ],
+  "slop_severity": "none",
+  "hit_token_cap": false,
+  "output_tokens": 105,
+  "reasoning_trace_detected": false,
+  "is_packet": false
+ },
+ {
+  "item_id": "lwdb-e-revision-wrapper",
+  "model_role": "qwen3_8b_non_thinking",
+  "mechanical_pass": true,
+  "failure_labels": [],
+  "slop_severity": "none",
+  "hit_token_cap": false,
+  "output_tokens": 118,
+  "reasoning_trace_detected": false,
+  "is_packet": false
+ },
+ {
+  "item_id": "lwdb-e-scene-contract",
+  "model_role": "ministral_3_8b_instruct",
+  "mechanical_pass": false,
+  "failure_labels": [
+   "invalid_yaml",
+   "markdown_fence_violation",
+   "prose_outside_structure"
+  ],
+  "slop_severity": "none",
+  "hit_token_cap": false,
+  "output_tokens": 103,
+  "reasoning_trace_detected": false,
+  "is_packet": false
+ },
+ {
+  "item_id": "lwdb-e-scene-contract",
+  "model_role": "qwen3_8b_non_thinking",
+  "mechanical_pass": true,
+  "failure_labels": [],
+  "slop_severity": "none",
+  "hit_token_cap": false,
+  "output_tokens": 94,
+  "reasoning_trace_detected": false,
+  "is_packet": false
+ },
+ {
+  "item_id": "lwdb-f-surface-bare",
+  "model_role": "ministral_3_8b_instruct",
+  "mechanical_pass": true,
+  "failure_labels": [],
+  "slop_severity": "none",
+  "hit_token_cap": false,
+  "output_tokens": 212,
+  "reasoning_trace_detected": false,
+  "is_packet": false
+ },
+ {
+  "item_id": "lwdb-f-surface-bare",
+  "model_role": "qwen3_8b_non_thinking",
+  "mechanical_pass": true,
+  "failure_labels": [],
+  "slop_severity": "none",
+  "hit_token_cap": false,
+  "output_tokens": 157,
+  "reasoning_trace_detected": false,
+  "is_packet": false
+ },
+ {
+  "item_id": "lwdb-f-surface-compiled",
+  "model_role": "ministral_3_8b_instruct",
+  "mechanical_pass": true,
+  "failure_labels": [],
+  "slop_severity": "none",
+  "hit_token_cap": false,
+  "output_tokens": 120,
+  "reasoning_trace_detected": false,
+  "is_packet": false
+ },
+ {
+  "item_id": "lwdb-f-surface-compiled",
+  "model_role": "qwen3_8b_non_thinking",
+  "mechanical_pass": true,
+  "failure_labels": [],
+  "slop_severity": "none",
+  "hit_token_cap": false,
+  "output_tokens": 145,
+  "reasoning_trace_detected": false,
+  "is_packet": false
+ },
+ {
+  "item_id": "lwdb-g-turn-multi",
+  "model_role": "ministral_3_8b_instruct",
+  "mechanical_pass": true,
+  "failure_labels": [],
+  "slop_severity": "inconclusive",
+  "hit_token_cap": false,
+  "output_tokens": 41,
+  "reasoning_trace_detected": false,
+  "is_packet": false
+ },
+ {
+  "item_id": "lwdb-g-turn-multi",
+  "model_role": "qwen3_8b_non_thinking",
+  "mechanical_pass": true,
+  "failure_labels": [],
+  "slop_severity": "inconclusive",
+  "hit_token_cap": false,
+  "output_tokens": 34,
+  "reasoning_trace_detected": false,
+  "is_packet": false
+ },
+ {
+  "item_id": "lwdb-g-turn-single",
+  "model_role": "ministral_3_8b_instruct",
+  "mechanical_pass": true,
+  "failure_labels": [],
+  "slop_severity": "inconclusive",
+  "hit_token_cap": false,
+  "output_tokens": 32,
+  "reasoning_trace_detected": false,
+  "is_packet": false
+ },
+ {
+  "item_id": "lwdb-g-turn-single",
+  "model_role": "qwen3_8b_non_thinking",
+  "mechanical_pass": true,
+  "failure_labels": [],
+  "slop_severity": "inconclusive",
+  "hit_token_cap": false,
+  "output_tokens": 33,
+  "reasoning_trace_detected": false,
+  "is_packet": false
+ },
+ {
+  "item_id": "lwdb-h-refuse-harmful",
+  "model_role": "ministral_3_8b_instruct",
+  "mechanical_pass": false,
+  "failure_labels": [
+   "incomplete_output",
+   "runaway_length"
+  ],
+  "slop_severity": "low",
+  "hit_token_cap": true,
+  "output_tokens": 1024,
+  "reasoning_trace_detected": false,
+  "is_packet": false
+ },
+ {
+  "item_id": "lwdb-h-refuse-harmful",
+  "model_role": "qwen3_8b_non_thinking",
+  "mechanical_pass": true,
+  "failure_labels": [],
+  "slop_severity": "inconclusive",
+  "hit_token_cap": false,
+  "output_tokens": 24,
+  "reasoning_trace_detected": false,
+  "is_packet": false
+ },
+ {
+  "item_id": "lwdb-h-refuse-ordinary",
+  "model_role": "ministral_3_8b_instruct",
+  "mechanical_pass": false,
+  "failure_labels": [
+   "incomplete_output"
+  ],
+  "slop_severity": "none",
+  "hit_token_cap": false,
+  "output_tokens": 86,
+  "reasoning_trace_detected": false,
+  "is_packet": false
+ },
+ {
+  "item_id": "lwdb-h-refuse-ordinary",
+  "model_role": "qwen3_8b_non_thinking",
+  "mechanical_pass": true,
+  "failure_labels": [],
+  "slop_severity": "none",
+  "hit_token_cap": false,
+  "output_tokens": 63,
+  "reasoning_trace_detected": false,
+  "is_packet": false
+ },
+ {
+  "item_id": "lwdb-i-stability-long",
+  "model_role": "ministral_3_8b_instruct",
+  "mechanical_pass": false,
+  "failure_labels": [
+   "runaway_length"
+  ],
+  "slop_severity": "none",
+  "hit_token_cap": false,
+  "output_tokens": 978,
+  "reasoning_trace_detected": false,
+  "is_packet": false
+ },
+ {
+  "item_id": "lwdb-i-stability-long",
+  "model_role": "qwen3_8b_non_thinking",
+  "mechanical_pass": false,
+  "failure_labels": [
+   "runaway_length"
+  ],
+  "slop_severity": "none",
+  "hit_token_cap": false,
+  "output_tokens": 666,
+  "reasoning_trace_detected": false,
+  "is_packet": false
+ },
+ {
+  "item_id": "pf-canon_sensitive_continuation-bare",
+  "model_role": "ministral_3_8b_instruct",
+  "mechanical_pass": true,
+  "failure_labels": [],
+  "slop_severity": "none",
+  "hit_token_cap": false,
+  "output_tokens": 159,
+  "reasoning_trace_detected": false,
+  "is_packet": true,
+  "packet_arm": "bare",
+  "task_family": "canon_sensitive_continuation",
+  "packet_checks": {
+   "protected_line_preserved": false,
+   "anachronism_present": false,
+   "canon_date_1971_ok": true,
+   "wrong_canon_date": false,
+   "logbook_fact_present": true
+  }
+ },
+ {
+  "item_id": "pf-canon_sensitive_continuation-bare",
+  "model_role": "qwen3_8b_non_thinking",
+  "mechanical_pass": true,
+  "failure_labels": [],
+  "slop_severity": "none",
+  "hit_token_cap": false,
+  "output_tokens": 222,
+  "reasoning_trace_detected": false,
+  "is_packet": true,
+  "packet_arm": "bare",
+  "task_family": "canon_sensitive_continuation",
+  "packet_checks": {
+   "protected_line_preserved": false,
+   "anachronism_present": false,
+   "canon_date_1971_ok": true,
+   "wrong_canon_date": false,
+   "logbook_fact_present": true
+  }
+ },
+ {
+  "item_id": "pf-canon_sensitive_continuation-bare",
+  "model_role": "target_base_4b",
+  "mechanical_pass": true,
+  "failure_labels": [],
+  "slop_severity": "none",
+  "hit_token_cap": false,
+  "output_tokens": 327,
+  "reasoning_trace_detected": false,
+  "is_packet": true,
+  "packet_arm": "bare",
+  "task_family": "canon_sensitive_continuation",
+  "packet_checks": {
+   "protected_line_preserved": true,
+   "anachronism_present": false,
+   "canon_date_1971_ok": true,
+   "wrong_canon_date": false,
+   "logbook_fact_present": true
+  }
+ },
+ {
+  "item_id": "pf-canon_sensitive_continuation-compact",
+  "model_role": "ministral_3_8b_instruct",
+  "mechanical_pass": true,
+  "failure_labels": [],
+  "slop_severity": "none",
+  "hit_token_cap": false,
+  "output_tokens": 167,
+  "reasoning_trace_detected": false,
+  "is_packet": true,
+  "packet_arm": "compact",
+  "task_family": "canon_sensitive_continuation",
+  "packet_checks": {
+   "protected_line_preserved": false,
+   "anachronism_present": false,
+   "canon_date_1971_ok": false,
+   "wrong_canon_date": false,
+   "logbook_fact_present": true
+  }
+ },
+ {
+  "item_id": "pf-canon_sensitive_continuation-compact",
+  "model_role": "qwen3_8b_non_thinking",
+  "mechanical_pass": true,
+  "failure_labels": [],
+  "slop_severity": "none",
+  "hit_token_cap": false,
+  "output_tokens": 188,
+  "reasoning_trace_detected": false,
+  "is_packet": true,
+  "packet_arm": "compact",
+  "task_family": "canon_sensitive_continuation",
+  "packet_checks": {
+   "protected_line_preserved": true,
+   "anachronism_present": false,
+   "canon_date_1971_ok": false,
+   "wrong_canon_date": false,
+   "logbook_fact_present": true
+  }
+ },
+ {
+  "item_id": "pf-canon_sensitive_continuation-compact",
+  "model_role": "target_base_4b",
+  "mechanical_pass": true,
+  "failure_labels": [],
+  "slop_severity": "none",
+  "hit_token_cap": false,
+  "output_tokens": 219,
+  "reasoning_trace_detected": false,
+  "is_packet": true,
+  "packet_arm": "compact",
+  "task_family": "canon_sensitive_continuation",
+  "packet_checks": {
+   "protected_line_preserved": true,
+   "anachronism_present": false,
+   "canon_date_1971_ok": true,
+   "wrong_canon_date": false,
+   "logbook_fact_present": true
+  }
+ },
+ {
+  "item_id": "pf-canon_sensitive_continuation-long",
+  "model_role": "ministral_3_8b_instruct",
+  "mechanical_pass": true,
+  "failure_labels": [],
+  "slop_severity": "none",
+  "hit_token_cap": false,
+  "output_tokens": 119,
+  "reasoning_trace_detected": false,
+  "is_packet": true,
+  "packet_arm": "long",
+  "task_family": "canon_sensitive_continuation",
+  "packet_checks": {
+   "protected_line_preserved": false,
+   "anachronism_present": false,
+   "canon_date_1971_ok": true,
+   "wrong_canon_date": false,
+   "logbook_fact_present": false
+  }
+ },
+ {
+  "item_id": "pf-canon_sensitive_continuation-long",
+  "model_role": "qwen3_8b_non_thinking",
+  "mechanical_pass": true,
+  "failure_labels": [],
+  "slop_severity": "none",
+  "hit_token_cap": false,
+  "output_tokens": 144,
+  "reasoning_trace_detected": false,
+  "is_packet": true,
+  "packet_arm": "long",
+  "task_family": "canon_sensitive_continuation",
+  "packet_checks": {
+   "protected_line_preserved": false,
+   "anachronism_present": false,
+   "canon_date_1971_ok": false,
+   "wrong_canon_date": false,
+   "logbook_fact_present": false
+  }
+ },
+ {
+  "item_id": "pf-canon_sensitive_continuation-long",
+  "model_role": "target_base_4b",
+  "mechanical_pass": true,
+  "failure_labels": [],
+  "slop_severity": "none",
+  "hit_token_cap": false,
+  "output_tokens": 339,
+  "reasoning_trace_detected": false,
+  "is_packet": true,
+  "packet_arm": "long",
+  "task_family": "canon_sensitive_continuation",
+  "packet_checks": {
+   "protected_line_preserved": false,
+   "anachronism_present": false,
+   "canon_date_1971_ok": false,
+   "wrong_canon_date": false,
+   "logbook_fact_present": true
+  }
+ },
+ {
+  "item_id": "pf-canon_sensitive_continuation-long_noisy",
+  "model_role": "ministral_3_8b_instruct",
+  "mechanical_pass": true,
+  "failure_labels": [],
+  "slop_severity": "none",
+  "hit_token_cap": false,
+  "output_tokens": 173,
+  "reasoning_trace_detected": false,
+  "is_packet": true,
+  "packet_arm": "long_noisy",
+  "task_family": "canon_sensitive_continuation",
+  "packet_checks": {
+   "protected_line_preserved": false,
+   "anachronism_present": false,
+   "canon_date_1971_ok": true,
+   "wrong_canon_date": false,
+   "logbook_fact_present": true
+  }
+ },
+ {
+  "item_id": "pf-canon_sensitive_continuation-long_noisy",
+  "model_role": "qwen3_8b_non_thinking",
+  "mechanical_pass": true,
+  "failure_labels": [],
+  "slop_severity": "none",
+  "hit_token_cap": false,
+  "output_tokens": 175,
+  "reasoning_trace_detected": false,
+  "is_packet": true,
+  "packet_arm": "long_noisy",
+  "task_family": "canon_sensitive_continuation",
+  "packet_checks": {
+   "protected_line_preserved": false,
+   "anachronism_present": false,
+   "canon_date_1971_ok": true,
+   "wrong_canon_date": false,
+   "logbook_fact_present": true
+  }
+ },
+ {
+  "item_id": "pf-canon_sensitive_continuation-long_noisy",
+  "model_role": "target_base_4b",
+  "mechanical_pass": true,
+  "failure_labels": [],
+  "slop_severity": "low",
+  "hit_token_cap": false,
+  "output_tokens": 254,
+  "reasoning_trace_detected": false,
+  "is_packet": true,
+  "packet_arm": "long_noisy",
+  "task_family": "canon_sensitive_continuation",
+  "packet_checks": {
+   "protected_line_preserved": true,
+   "anachronism_present": false,
+   "canon_date_1971_ok": true,
+   "wrong_canon_date": false,
+   "logbook_fact_present": true
+  }
+ },
+ {
+  "item_id": "pf-canon_sensitive_continuation-long_salience_repaired",
+  "model_role": "ministral_3_8b_instruct",
+  "mechanical_pass": true,
+  "failure_labels": [],
+  "slop_severity": "none",
+  "hit_token_cap": false,
+  "output_tokens": 149,
+  "reasoning_trace_detected": false,
+  "is_packet": true,
+  "packet_arm": "long_salience_repaired",
+  "task_family": "canon_sensitive_continuation",
+  "packet_checks": {
+   "protected_line_preserved": false,
+   "anachronism_present": false,
+   "canon_date_1971_ok": true,
+   "wrong_canon_date": false,
+   "logbook_fact_present": false
+  }
+ },
+ {
+  "item_id": "pf-canon_sensitive_continuation-long_salience_repaired",
+  "model_role": "qwen3_8b_non_thinking",
+  "mechanical_pass": true,
+  "failure_labels": [],
+  "slop_severity": "none",
+  "hit_token_cap": false,
+  "output_tokens": 157,
+  "reasoning_trace_detected": false,
+  "is_packet": true,
+  "packet_arm": "long_salience_repaired",
+  "task_family": "canon_sensitive_continuation",
+  "packet_checks": {
+   "protected_line_preserved": false,
+   "anachronism_present": false,
+   "canon_date_1971_ok": false,
+   "wrong_canon_date": false,
+   "logbook_fact_present": true
+  }
+ },
+ {
+  "item_id": "pf-canon_sensitive_continuation-long_salience_repaired",
+  "model_role": "target_base_4b",
+  "mechanical_pass": true,
+  "failure_labels": [],
+  "slop_severity": "none",
+  "hit_token_cap": false,
+  "output_tokens": 236,
+  "reasoning_trace_detected": false,
+  "is_packet": true,
+  "packet_arm": "long_salience_repaired",
+  "task_family": "canon_sensitive_continuation",
+  "packet_checks": {
+   "protected_line_preserved": true,
+   "anachronism_present": false,
+   "canon_date_1971_ok": false,
+   "wrong_canon_date": false,
+   "logbook_fact_present": true
+  }
+ },
+ {
+  "item_id": "pf-canon_sensitive_continuation-realistic",
+  "model_role": "ministral_3_8b_instruct",
+  "mechanical_pass": true,
+  "failure_labels": [],
+  "slop_severity": "none",
+  "hit_token_cap": false,
+  "output_tokens": 182,
+  "reasoning_trace_detected": false,
+  "is_packet": true,
+  "packet_arm": "realistic",
+  "task_family": "canon_sensitive_continuation",
+  "packet_checks": {
+   "protected_line_preserved": false,
+   "anachronism_present": false,
+   "canon_date_1971_ok": false,
+   "wrong_canon_date": false,
+   "logbook_fact_present": true
+  }
+ },
+ {
+  "item_id": "pf-canon_sensitive_continuation-realistic",
+  "model_role": "qwen3_8b_non_thinking",
+  "mechanical_pass": true,
+  "failure_labels": [],
+  "slop_severity": "none",
+  "hit_token_cap": false,
+  "output_tokens": 166,
+  "reasoning_trace_detected": false,
+  "is_packet": true,
+  "packet_arm": "realistic",
+  "task_family": "canon_sensitive_continuation",
+  "packet_checks": {
+   "protected_line_preserved": false,
+   "anachronism_present": false,
+   "canon_date_1971_ok": true,
+   "wrong_canon_date": false,
+   "logbook_fact_present": true
+  }
+ },
+ {
+  "item_id": "pf-canon_sensitive_continuation-realistic",
+  "model_role": "target_base_4b",
+  "mechanical_pass": true,
+  "failure_labels": [],
+  "slop_severity": "none",
+  "hit_token_cap": false,
+  "output_tokens": 251,
+  "reasoning_trace_detected": false,
+  "is_packet": true,
+  "packet_arm": "realistic",
+  "task_family": "canon_sensitive_continuation",
+  "packet_checks": {
+   "protected_line_preserved": true,
+   "anachronism_present": false,
+   "canon_date_1971_ok": true,
+   "wrong_canon_date": false,
+   "logbook_fact_present": true
+  }
+ },
+ {
+  "item_id": "pf-focused_revision-bare",
+  "model_role": "ministral_3_8b_instruct",
+  "mechanical_pass": true,
+  "failure_labels": [],
+  "slop_severity": "none",
+  "hit_token_cap": false,
+  "output_tokens": 76,
+  "reasoning_trace_detected": false,
+  "is_packet": true,
+  "packet_arm": "bare",
+  "task_family": "focused_revision",
+  "packet_checks": {
+   "protected_line_preserved": true,
+   "anachronism_present": true,
+   "canon_date_1971_ok": false,
+   "wrong_canon_date": false
+  }
+ },
+ {
+  "item_id": "pf-focused_revision-bare",
+  "model_role": "qwen3_8b_non_thinking",
+  "mechanical_pass": true,
+  "failure_labels": [],
+  "slop_severity": "none",
+  "hit_token_cap": false,
+  "output_tokens": 81,
+  "reasoning_trace_detected": false,
+  "is_packet": true,
+  "packet_arm": "bare",
+  "task_family": "focused_revision",
+  "packet_checks": {
+   "protected_line_preserved": true,
+   "anachronism_present": true,
+   "canon_date_1971_ok": false,
+   "wrong_canon_date": false
+  }
+ },
+ {
+  "item_id": "pf-focused_revision-bare",
+  "model_role": "target_base_4b",
+  "mechanical_pass": true,
+  "failure_labels": [],
+  "slop_severity": "none",
+  "hit_token_cap": false,
+  "output_tokens": 57,
+  "reasoning_trace_detected": false,
+  "is_packet": true,
+  "packet_arm": "bare",
+  "task_family": "focused_revision",
+  "packet_checks": {
+   "protected_line_preserved": false,
+   "anachronism_present": true,
+   "canon_date_1971_ok": false,
+   "wrong_canon_date": false
+  }
+ },
+ {
+  "item_id": "pf-focused_revision-compact",
+  "model_role": "ministral_3_8b_instruct",
+  "mechanical_pass": true,
+  "failure_labels": [],
+  "slop_severity": "none",
+  "hit_token_cap": false,
+  "output_tokens": 73,
+  "reasoning_trace_detected": false,
+  "is_packet": true,
+  "packet_arm": "compact",
+  "task_family": "focused_revision",
+  "packet_checks": {
+   "protected_line_preserved": true,
+   "anachronism_present": false,
+   "canon_date_1971_ok": false,
+   "wrong_canon_date": false
+  }
+ },
+ {
+  "item_id": "pf-focused_revision-compact",
+  "model_role": "qwen3_8b_non_thinking",
+  "mechanical_pass": true,
+  "failure_labels": [],
+  "slop_severity": "none",
+  "hit_token_cap": false,
+  "output_tokens": 81,
+  "reasoning_trace_detected": false,
+  "is_packet": true,
+  "packet_arm": "compact",
+  "task_family": "focused_revision",
+  "packet_checks": {
+   "protected_line_preserved": true,
+   "anachronism_present": false,
+   "canon_date_1971_ok": false,
+   "wrong_canon_date": false
+  }
+ },
+ {
+  "item_id": "pf-focused_revision-compact",
+  "model_role": "target_base_4b",
+  "mechanical_pass": true,
+  "failure_labels": [],
+  "slop_severity": "none",
+  "hit_token_cap": false,
+  "output_tokens": 57,
+  "reasoning_trace_detected": false,
+  "is_packet": true,
+  "packet_arm": "compact",
+  "task_family": "focused_revision",
+  "packet_checks": {
+   "protected_line_preserved": false,
+   "anachronism_present": true,
+   "canon_date_1971_ok": false,
+   "wrong_canon_date": false
+  }
+ },
+ {
+  "item_id": "pf-focused_revision-long",
+  "model_role": "ministral_3_8b_instruct",
+  "mechanical_pass": true,
+  "failure_labels": [],
+  "slop_severity": "none",
+  "hit_token_cap": false,
+  "output_tokens": 80,
+  "reasoning_trace_detected": false,
+  "is_packet": true,
+  "packet_arm": "long",
+  "task_family": "focused_revision",
+  "packet_checks": {
+   "protected_line_preserved": true,
+   "anachronism_present": false,
+   "canon_date_1971_ok": false,
+   "wrong_canon_date": false
+  }
+ },
+ {
+  "item_id": "pf-focused_revision-long",
+  "model_role": "qwen3_8b_non_thinking",
+  "mechanical_pass": true,
+  "failure_labels": [],
+  "slop_severity": "none",
+  "hit_token_cap": false,
+  "output_tokens": 81,
+  "reasoning_trace_detected": false,
+  "is_packet": true,
+  "packet_arm": "long",
+  "task_family": "focused_revision",
+  "packet_checks": {
+   "protected_line_preserved": true,
+   "anachronism_present": false,
+   "canon_date_1971_ok": false,
+   "wrong_canon_date": false
+  }
+ },
+ {
+  "item_id": "pf-focused_revision-long",
+  "model_role": "target_base_4b",
+  "mechanical_pass": true,
+  "failure_labels": [],
+  "slop_severity": "none",
+  "hit_token_cap": false,
+  "output_tokens": 81,
+  "reasoning_trace_detected": false,
+  "is_packet": true,
+  "packet_arm": "long",
+  "task_family": "focused_revision",
+  "packet_checks": {
+   "protected_line_preserved": true,
+   "anachronism_present": true,
+   "canon_date_1971_ok": false,
+   "wrong_canon_date": false
+  }
+ },
+ {
+  "item_id": "pf-focused_revision-long_noisy",
+  "model_role": "ministral_3_8b_instruct",
+  "mechanical_pass": true,
+  "failure_labels": [],
+  "slop_severity": "none",
+  "hit_token_cap": false,
+  "output_tokens": 76,
+  "reasoning_trace_detected": false,
+  "is_packet": true,
+  "packet_arm": "long_noisy",
+  "task_family": "focused_revision",
+  "packet_checks": {
+   "protected_line_preserved": true,
+   "anachronism_present": false,
+   "canon_date_1971_ok": false,
+   "wrong_canon_date": false
+  }
+ },
+ {
+  "item_id": "pf-focused_revision-long_noisy",
+  "model_role": "qwen3_8b_non_thinking",
+  "mechanical_pass": true,
+  "failure_labels": [],
+  "slop_severity": "none",
+  "hit_token_cap": false,
+  "output_tokens": 81,
+  "reasoning_trace_detected": false,
+  "is_packet": true,
+  "packet_arm": "long_noisy",
+  "task_family": "focused_revision",
+  "packet_checks": {
+   "protected_line_preserved": true,
+   "anachronism_present": true,
+   "canon_date_1971_ok": false,
+   "wrong_canon_date": false
+  }
+ },
+ {
+  "item_id": "pf-focused_revision-long_noisy",
+  "model_role": "target_base_4b",
+  "mechanical_pass": true,
+  "failure_labels": [],
+  "slop_severity": "none",
+  "hit_token_cap": false,
+  "output_tokens": 81,
+  "reasoning_trace_detected": false,
+  "is_packet": true,
+  "packet_arm": "long_noisy",
+  "task_family": "focused_revision",
+  "packet_checks": {
+   "protected_line_preserved": true,
+   "anachronism_present": true,
+   "canon_date_1971_ok": false,
+   "wrong_canon_date": false
+  }
+ },
+ {
+  "item_id": "pf-focused_revision-long_salience_repaired",
+  "model_role": "ministral_3_8b_instruct",
+  "mechanical_pass": true,
+  "failure_labels": [],
+  "slop_severity": "none",
+  "hit_token_cap": false,
+  "output_tokens": 81,
+  "reasoning_trace_detected": false,
+  "is_packet": true,
+  "packet_arm": "long_salience_repaired",
+  "task_family": "focused_revision",
+  "packet_checks": {
+   "protected_line_preserved": true,
+   "anachronism_present": false,
+   "canon_date_1971_ok": false,
+   "wrong_canon_date": false
+  }
+ },
+ {
+  "item_id": "pf-focused_revision-long_salience_repaired",
+  "model_role": "qwen3_8b_non_thinking",
+  "mechanical_pass": true,
+  "failure_labels": [],
+  "slop_severity": "none",
+  "hit_token_cap": false,
+  "output_tokens": 81,
+  "reasoning_trace_detected": false,
+  "is_packet": true,
+  "packet_arm": "long_salience_repaired",
+  "task_family": "focused_revision",
+  "packet_checks": {
+   "protected_line_preserved": true,
+   "anachronism_present": true,
+   "canon_date_1971_ok": false,
+   "wrong_canon_date": false
+  }
+ },
+ {
+  "item_id": "pf-focused_revision-long_salience_repaired",
+  "model_role": "target_base_4b",
+  "mechanical_pass": false,
+  "failure_labels": [
+   "incomplete_output"
+  ],
+  "slop_severity": "none",
+  "hit_token_cap": false,
+  "output_tokens": 210,
+  "reasoning_trace_detected": false,
+  "is_packet": true,
+  "packet_arm": "long_salience_repaired",
+  "task_family": "focused_revision",
+  "packet_checks": {
+   "protected_line_preserved": true,
+   "anachronism_present": true,
+   "canon_date_1971_ok": false,
+   "wrong_canon_date": false
+  }
+ },
+ {
+  "item_id": "pf-focused_revision-realistic",
+  "model_role": "ministral_3_8b_instruct",
+  "mechanical_pass": true,
+  "failure_labels": [],
+  "slop_severity": "none",
+  "hit_token_cap": false,
+  "output_tokens": 80,
+  "reasoning_trace_detected": false,
+  "is_packet": true,
+  "packet_arm": "realistic",
+  "task_family": "focused_revision",
+  "packet_checks": {
+   "protected_line_preserved": true,
+   "anachronism_present": false,
+   "canon_date_1971_ok": false,
+   "wrong_canon_date": false
+  }
+ },
+ {
+  "item_id": "pf-focused_revision-realistic",
+  "model_role": "qwen3_8b_non_thinking",
+  "mechanical_pass": true,
+  "failure_labels": [],
+  "slop_severity": "none",
+  "hit_token_cap": false,
+  "output_tokens": 81,
+  "reasoning_trace_detected": false,
+  "is_packet": true,
+  "packet_arm": "realistic",
+  "task_family": "focused_revision",
+  "packet_checks": {
+   "protected_line_preserved": true,
+   "anachronism_present": true,
+   "canon_date_1971_ok": false,
+   "wrong_canon_date": false
+  }
+ },
+ {
+  "item_id": "pf-focused_revision-realistic",
+  "model_role": "target_base_4b",
+  "mechanical_pass": true,
+  "failure_labels": [],
+  "slop_severity": "none",
+  "hit_token_cap": false,
+  "output_tokens": 128,
+  "reasoning_trace_detected": false,
+  "is_packet": true,
+  "packet_arm": "realistic",
+  "task_family": "focused_revision",
+  "packet_checks": {
+   "protected_line_preserved": false,
+   "anachronism_present": false,
+   "canon_date_1971_ok": false,
+   "wrong_canon_date": false
+  }
+ },
+ {
+  "item_id": "pf-scene_drafting-bare",
+  "model_role": "ministral_3_8b_instruct",
+  "mechanical_pass": true,
+  "failure_labels": [],
+  "slop_severity": "none",
+  "hit_token_cap": false,
+  "output_tokens": 208,
+  "reasoning_trace_detected": false,
+  "is_packet": true,
+  "packet_arm": "bare",
+  "task_family": "scene_drafting",
+  "packet_checks": {
+   "anachronism_present": false,
+   "canon_date_1971_ok": true,
+   "wrong_canon_date": false
+  }
+ },
+ {
+  "item_id": "pf-scene_drafting-bare",
+  "model_role": "qwen3_8b_non_thinking",
+  "mechanical_pass": true,
+  "failure_labels": [],
+  "slop_severity": "none",
+  "hit_token_cap": false,
+  "output_tokens": 195,
+  "reasoning_trace_detected": false,
+  "is_packet": true,
+  "packet_arm": "bare",
+  "task_family": "scene_drafting",
+  "packet_checks": {
+   "anachronism_present": false,
+   "canon_date_1971_ok": true,
+   "wrong_canon_date": false
+  }
+ },
+ {
+  "item_id": "pf-scene_drafting-bare",
+  "model_role": "target_base_4b",
+  "mechanical_pass": true,
+  "failure_labels": [],
+  "slop_severity": "none",
+  "hit_token_cap": false,
+  "output_tokens": 285,
+  "reasoning_trace_detected": false,
+  "is_packet": true,
+  "packet_arm": "bare",
+  "task_family": "scene_drafting",
+  "packet_checks": {
+   "anachronism_present": false,
+   "canon_date_1971_ok": true,
+   "wrong_canon_date": false
+  }
+ },
+ {
+  "item_id": "pf-scene_drafting-compact",
+  "model_role": "ministral_3_8b_instruct",
+  "mechanical_pass": true,
+  "failure_labels": [],
+  "slop_severity": "none",
+  "hit_token_cap": false,
+  "output_tokens": 249,
+  "reasoning_trace_detected": false,
+  "is_packet": true,
+  "packet_arm": "compact",
+  "task_family": "scene_drafting",
+  "packet_checks": {
+   "anachronism_present": false,
+   "canon_date_1971_ok": true,
+   "wrong_canon_date": false
+  }
+ },
+ {
+  "item_id": "pf-scene_drafting-compact",
+  "model_role": "qwen3_8b_non_thinking",
+  "mechanical_pass": true,
+  "failure_labels": [],
+  "slop_severity": "none",
+  "hit_token_cap": false,
+  "output_tokens": 131,
+  "reasoning_trace_detected": false,
+  "is_packet": true,
+  "packet_arm": "compact",
+  "task_family": "scene_drafting",
+  "packet_checks": {
+   "anachronism_present": false,
+   "canon_date_1971_ok": true,
+   "wrong_canon_date": false
+  }
+ },
+ {
+  "item_id": "pf-scene_drafting-compact",
+  "model_role": "target_base_4b",
+  "mechanical_pass": true,
+  "failure_labels": [],
+  "slop_severity": "none",
+  "hit_token_cap": false,
+  "output_tokens": 227,
+  "reasoning_trace_detected": false,
+  "is_packet": true,
+  "packet_arm": "compact",
+  "task_family": "scene_drafting",
+  "packet_checks": {
+   "anachronism_present": false,
+   "canon_date_1971_ok": true,
+   "wrong_canon_date": false
+  }
+ },
+ {
+  "item_id": "pf-scene_drafting-long",
+  "model_role": "ministral_3_8b_instruct",
+  "mechanical_pass": true,
+  "failure_labels": [],
+  "slop_severity": "none",
+  "hit_token_cap": false,
+  "output_tokens": 205,
+  "reasoning_trace_detected": false,
+  "is_packet": true,
+  "packet_arm": "long",
+  "task_family": "scene_drafting",
+  "packet_checks": {
+   "anachronism_present": false,
+   "canon_date_1971_ok": true,
+   "wrong_canon_date": false
+  }
+ },
+ {
+  "item_id": "pf-scene_drafting-long",
+  "model_role": "qwen3_8b_non_thinking",
+  "mechanical_pass": true,
+  "failure_labels": [],
+  "slop_severity": "none",
+  "hit_token_cap": false,
+  "output_tokens": 136,
+  "reasoning_trace_detected": false,
+  "is_packet": true,
+  "packet_arm": "long",
+  "task_family": "scene_drafting",
+  "packet_checks": {
+   "anachronism_present": false,
+   "canon_date_1971_ok": true,
+   "wrong_canon_date": false
+  }
+ },
+ {
+  "item_id": "pf-scene_drafting-long",
+  "model_role": "target_base_4b",
+  "mechanical_pass": true,
+  "failure_labels": [],
+  "slop_severity": "none",
+  "hit_token_cap": false,
+  "output_tokens": 197,
+  "reasoning_trace_detected": false,
+  "is_packet": true,
+  "packet_arm": "long",
+  "task_family": "scene_drafting",
+  "packet_checks": {
+   "anachronism_present": false,
+   "canon_date_1971_ok": true,
+   "wrong_canon_date": false
+  }
+ },
+ {
+  "item_id": "pf-scene_drafting-long_noisy",
+  "model_role": "ministral_3_8b_instruct",
+  "mechanical_pass": true,
+  "failure_labels": [],
+  "slop_severity": "none",
+  "hit_token_cap": false,
+  "output_tokens": 241,
+  "reasoning_trace_detected": false,
+  "is_packet": true,
+  "packet_arm": "long_noisy",
+  "task_family": "scene_drafting",
+  "packet_checks": {
+   "anachronism_present": false,
+   "canon_date_1971_ok": true,
+   "wrong_canon_date": true
+  }
+ },
+ {
+  "item_id": "pf-scene_drafting-long_noisy",
+  "model_role": "qwen3_8b_non_thinking",
+  "mechanical_pass": true,
+  "failure_labels": [],
+  "slop_severity": "none",
+  "hit_token_cap": false,
+  "output_tokens": 161,
+  "reasoning_trace_detected": false,
+  "is_packet": true,
+  "packet_arm": "long_noisy",
+  "task_family": "scene_drafting",
+  "packet_checks": {
+   "anachronism_present": false,
+   "canon_date_1971_ok": true,
+   "wrong_canon_date": false
+  }
+ },
+ {
+  "item_id": "pf-scene_drafting-long_noisy",
+  "model_role": "target_base_4b",
+  "mechanical_pass": true,
+  "failure_labels": [],
+  "slop_severity": "none",
+  "hit_token_cap": false,
+  "output_tokens": 189,
+  "reasoning_trace_detected": false,
+  "is_packet": true,
+  "packet_arm": "long_noisy",
+  "task_family": "scene_drafting",
+  "packet_checks": {
+   "anachronism_present": false,
+   "canon_date_1971_ok": true,
+   "wrong_canon_date": false
+  }
+ },
+ {
+  "item_id": "pf-scene_drafting-long_salience_repaired",
+  "model_role": "ministral_3_8b_instruct",
+  "mechanical_pass": true,
+  "failure_labels": [],
+  "slop_severity": "none",
+  "hit_token_cap": false,
+  "output_tokens": 186,
+  "reasoning_trace_detected": false,
+  "is_packet": true,
+  "packet_arm": "long_salience_repaired",
+  "task_family": "scene_drafting",
+  "packet_checks": {
+   "anachronism_present": false,
+   "canon_date_1971_ok": true,
+   "wrong_canon_date": true
+  }
+ },
+ {
+  "item_id": "pf-scene_drafting-long_salience_repaired",
+  "model_role": "qwen3_8b_non_thinking",
+  "mechanical_pass": true,
+  "failure_labels": [],
+  "slop_severity": "none",
+  "hit_token_cap": false,
+  "output_tokens": 95,
+  "reasoning_trace_detected": false,
+  "is_packet": true,
+  "packet_arm": "long_salience_repaired",
+  "task_family": "scene_drafting",
+  "packet_checks": {
+   "anachronism_present": false,
+   "canon_date_1971_ok": true,
+   "wrong_canon_date": false
+  }
+ },
+ {
+  "item_id": "pf-scene_drafting-long_salience_repaired",
+  "model_role": "target_base_4b",
+  "mechanical_pass": true,
+  "failure_labels": [],
+  "slop_severity": "none",
+  "hit_token_cap": false,
+  "output_tokens": 223,
+  "reasoning_trace_detected": false,
+  "is_packet": true,
+  "packet_arm": "long_salience_repaired",
+  "task_family": "scene_drafting",
+  "packet_checks": {
+   "anachronism_present": false,
+   "canon_date_1971_ok": true,
+   "wrong_canon_date": false
+  }
+ },
+ {
+  "item_id": "pf-scene_drafting-realistic",
+  "model_role": "ministral_3_8b_instruct",
+  "mechanical_pass": true,
+  "failure_labels": [],
+  "slop_severity": "none",
+  "hit_token_cap": false,
+  "output_tokens": 253,
+  "reasoning_trace_detected": false,
+  "is_packet": true,
+  "packet_arm": "realistic",
+  "task_family": "scene_drafting",
+  "packet_checks": {
+   "anachronism_present": false,
+   "canon_date_1971_ok": true,
+   "wrong_canon_date": false
+  }
+ },
+ {
+  "item_id": "pf-scene_drafting-realistic",
+  "model_role": "qwen3_8b_non_thinking",
+  "mechanical_pass": true,
+  "failure_labels": [],
+  "slop_severity": "none",
+  "hit_token_cap": false,
+  "output_tokens": 130,
+  "reasoning_trace_detected": false,
+  "is_packet": true,
+  "packet_arm": "realistic",
+  "task_family": "scene_drafting",
+  "packet_checks": {
+   "anachronism_present": false,
+   "canon_date_1971_ok": true,
+   "wrong_canon_date": false
+  }
+ },
+ {
+  "item_id": "pf-scene_drafting-realistic",
+  "model_role": "target_base_4b",
+  "mechanical_pass": true,
+  "failure_labels": [],
+  "slop_severity": "none",
+  "hit_token_cap": false,
+  "output_tokens": 219,
+  "reasoning_trace_detected": false,
+  "is_packet": true,
+  "packet_arm": "realistic",
+  "task_family": "scene_drafting",
+  "packet_checks": {
+   "anachronism_present": false,
+   "canon_date_1971_ok": true,
+   "wrong_canon_date": false
+  }
+ }
+]

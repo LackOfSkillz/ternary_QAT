@@ -1,0 +1,8 @@
+{
+  "run_id": "lwdb-stronger-base-v1",
+  "image": "linewright-ternary-train:d26 (= run001 + kernels==0.15.2)",
+  "torch": "2.10.0a0+...nv25.11", "transformers": "5.14.1", "peft": "0.19.1", "kernels": "0.15.2",
+  "host": "gx10-9141 (GB10, 121GB unified memory)", "execution_mode": "sequential_single_host_by_role",
+  "note": "Plan is execution-mode-invariant (plan_hash identical to any topology). Host id excluded from reviewer artifacts.",
+  "resident_memory_gb": {"bonsai4b_bf16": 8.04, "qwen3_8b_bf16": 16.38, "ministral_8b_fp8_text_load": 10.43}
+}
