@@ -12,6 +12,7 @@ REPO_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 AUTHORIZED_OUTPUT_ROOTS = [
     os.path.join("training", "runs", "dataset-a-smoke-v1"),
     os.path.join("training", "runs", "dataset-a-qat-calibration-v1"),
+    os.path.join("training", "runs", "dataset-a-full-comparison-v1"),
 ]
 
 # Fields that LoRA and ternary-QAT smoke configs MUST share for an interpretable
