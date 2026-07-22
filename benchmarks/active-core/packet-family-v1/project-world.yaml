@@ -1,0 +1,417 @@
+# LineWright Packet-Family v1 — Project World ("Saltford Light")
+#
+# A single coherent literary-fiction project bible. The packet-family builder composes six
+# controlled arms (bare -> long_salience_repaired) x three task families by SELECTING and
+# REORDERING these components. The noisy and salience-repaired arms carry the SAME semantic
+# information; only organization differs. All content is original, synthetic, distributable,
+# benchmark_only, and excluded from training by construction.
+#
+# Salience tiers drive arm composition:
+#   core       -> present from the 'compact' arm upward   (directly needed for every task)
+#   secondary  -> present from the 'realistic' arm upward  (relevant background)
+#   peripheral -> present only in 'long' arms              (legitimate but not needed now)
+#
+# Many canon facts are mechanically checkable (exact spellings, dates, stated facts, a
+# protected sentence), so preservation/violation can be scored deterministically.
+
+project:
+  id: saltford-light
+  title: "Saltford Light"
+  logline: >-
+    In a decommissioned lighthouse on the Cornish coast, a retired keeper's daughter returns
+    to sort her dead father's effects and finds his logbooks contradict the official account
+    of the night a supply boat was lost in 1971.
+  register: literary_fiction
+  tense: past
+  point_of_view: third_person_limited
+  pov_character: Edith Vane
+
+# ---------------------------------------------------------------------------
+authority_or_constitution:
+  tier: core
+  text: >-
+    You are LineWright, a fiction-craft writing assistant. You serve the author and the
+    declared task, never a house style. Obey the task authority; preserve canon exactly;
+    obey declared hard constraints; respect the invention budget; preserve the author's
+    voice; revise only authorized elements; prefer no change when a passage is already
+    right; reduce generic and repetitive habits at the craft level; and do not explain your
+    work unless asked. For structured tasks, return output in exactly the requested shape.
+
+# ---------------------------------------------------------------------------
+voice_packet:
+  tier: core
+  text: >-
+    Third person limited to Edith Vane, past tense. Dry, plain, observational; short
+    declaratives cut by the occasional longer clause. Concrete nouns over adjectives.
+    Emotion shown through action and object, never named outright. No rhetorical questions.
+    No em-dash pile-ups. Cornish coastal specifics are welcome; sentiment is not.
+
+style_guide:
+  tier: peripheral
+  text: >-
+    Project-level guidance (applies across the novel, not just this scene): chapters open on
+    a concrete image, not weather-as-mood. Dialogue is sparse and unquoted-thought is rare.
+    Avoid the words "somehow", "just", and "very". Prefer British spelling (harbour, colour,
+    grey). Scene breaks are marked with a single centered asterisk. Time is rendered in
+    24-hour form only inside logbook entries; otherwise in prose.
+
+knowledge_boundaries:
+  tier: core
+  text: >-
+    You know only what this packet provides about Saltford Light and its people. Do not
+    import facts about real Cornish towns, real lighthouses, or real 1971 events. If a needed
+    detail is absent, invent within the invention budget or leave it unspecified — never
+    assert unprovided canon.
+
+hard_constraints:
+  tier: core
+  items:
+    - id: hc-dead-stays-dead
+      text: "Silas Vane (Edith's father) is dead before the story begins. He never appears alive in present-time scenes."
+    - id: hc-decommission-date
+      text: "The lighthouse was decommissioned in 1971. Do not state any other year."
+    - id: hc-no-anachronism
+      text: "Present-time scenes occur in 1998. No mobile phones, no internet, no post-1998 technology."
+    - id: hc-lamp-out
+      text: "The lamp does not work; the light has been dark since decommissioning. Do not depict a lit beam in present time."
+    - id: hc-name-spellings
+      text: "Exact spellings are canon: Edith Vane, Silas Vane, Tamsin Roe, Bevis Kerr, the sloop 'Marigold', Saltford, Card close."
+
+invention_budget:
+  tier: core
+  text: >-
+    You MAY invent minor sensory detail (light, weather, texture, small objects) and Edith's
+    unspoken interiority. You MAY NOT invent new named characters, new deaths, new documents,
+    or plot events that change the canon timeline. New objects must be period-plausible for
+    1998 (present) or 1971 (logbook flashback).
+
+output_contract:
+  tier: core
+  prose:
+    text: "Return only the scene prose. No preamble, no title, no author's note, no explanation."
+  revision:
+    text: "Return only the revised passage in the same form as the input. Do not summarize your changes."
+  continuation:
+    text: "Return only the continuation prose that follows the given passage, in the same voice and tense."
+
+protected_elements:
+  tier: core
+  items:
+    - id: pe-opening-line
+      applies_to: [focused_revision, canon_sensitive_continuation]
+      text: >-
+        PROTECTED — reproduce verbatim, do not alter: "The stairs went up in the dark the way
+        she remembered, ninety-nine of them, and she counted every one."
+    - id: pe-logbook-fact
+      applies_to: [canon_sensitive_continuation]
+      text: >-
+        PROTECTED CANON FACT — must remain true and unaltered: Silas's final logbook entry is
+        dated 14 November 1971 and reads, in part, "Marigold not returned. Light out at 23:40.
+        I did not go down." This contradicts the official account that the light burned all night.
+
+# ---------------------------------------------------------------------------
+canon:
+  core:
+    - id: cn-edith
+      text: >-
+        Edith Vane, 54, a bookbinder from Bristol, only child of the last keeper. Careful,
+        undemonstrative, estranged from Saltford for twenty-seven years. She returned after
+        her father's death to clear the keeper's cottage before the Trust takes the light.
+    - id: cn-silas
+      text: >-
+        Silas Vane, her father, keeper of Saltford Light from 1949 until decommissioning in
+        1971, then its unpaid caretaker until his death in the autumn of 1998. Taciturn,
+        exact, a keeper of logs long after there was anything to log.
+    - id: cn-light
+      text: >-
+        Saltford Light: a squat granite tower on Cardn Point, joined to the keeper's cottage
+        by a covered walk. Ninety-nine steps to the lamp room. Decommissioned 1971; the lamp
+        dark since. Owned now by the Cardn Heritage Trust.
+    - id: cn-marigold
+      text: >-
+        The Marigold: a fishing sloop lost with two hands on the night of 14 November 1971.
+        The official inquiry found the Saltford light had burned normally that night. Silas's
+        logbook says otherwise.
+  secondary:
+    - id: cn-tamsin
+      text: >-
+        Tamsin Roe, 60, runs the Saltford post office and remembers Edith as a girl. Kind,
+        watchful, a small-town archivist of other people's business. She kept the newspaper
+        clippings about the Marigold.
+    - id: cn-bevis
+      text: >-
+        Bevis Kerr, 71, was a deckhand who survived the Marigold because he stayed ashore
+        drunk that night. He has never spoken of it. He mends crab pots on the harbour wall
+        and will not meet Edith's eye.
+    - id: cn-cottage
+      text: >-
+        The keeper's cottage: two rooms down, two up, a slate floor, a dresser of charts.
+        Silas's logbooks fill the bottom drawer, forty-nine years of them, bound in oilcloth.
+    - id: cn-inquiry
+      text: >-
+        The 1972 Board of Trade inquiry into the Marigold ruled the loss an act of weather and
+        cleared the light. Its report is the official account. Silas gave evidence and said
+        nothing about the lamp being out.
+  peripheral:
+    - id: cn-cardn-close
+      text: >-
+        Cardn close: the row of four coastguard cottages below the point, three now holiday
+        lets. The Vanes never lived there; keepers kept to the light.
+    - id: cn-trust
+      text: >-
+        The Cardn Heritage Trust plans to convert the light to a visitor centre. Its surveyor,
+        unnamed and off-page, is due in a fortnight. This is why the cottage must be cleared.
+    - id: cn-weather-1971
+      text: >-
+        The night of 14 November 1971 brought a south-westerly gale, force 9, and a spring
+        tide. Three vessels ran for harbour; only the Marigold did not come in.
+    - id: cn-bookbinding
+      text: >-
+        Edith's trade: she rebinds damaged books for libraries and private collectors. She
+        notices how things are made, where a spine has been broken and reset. She reads objects.
+    - id: cn-mother
+      text: >-
+        Edith's mother, Nan Vane, left Saltford in 1971 and died in Bristol in 1990. She never
+        explained the leaving. Edith went with her and did not come back until now.
+
+# ---------------------------------------------------------------------------
+scene_contexts:
+  # Adjacent-scene summaries: legitimate project context, not the immediate task.
+  secondary:
+    - id: sc-arrival
+      text: >-
+        PRECEDING SCENE (established): Edith arrived at dusk, let herself in with the key
+        Tamsin had kept, and found the cottage exactly as her father left it — a cup rinsed and
+        upturned, the bed made. She did not light a fire. She slept in her coat.
+  peripheral:
+    - id: sc-postoffice
+      text: >-
+        ADJACENT SCENE (later, established): Tamsin will give Edith the Marigold clippings over
+        the post-office counter and say, without being asked, that Silas came in every 14th of
+        November for twenty-seven years and bought nothing.
+    - id: sc-harbourwall
+      text: >-
+        ADJACENT SCENE (later, established): Bevis Kerr, mending pots, will refuse to speak of
+        the Marigold, then say only, "The light was out. I saw it out." and go back to his work.
+
+# ---------------------------------------------------------------------------
+world_facts:
+  # Lower-priority but genuine project facts (the "noise" in the noisy arm is real, not filler).
+  peripheral:
+    - id: wf-tides
+      text: "Saltford harbour dries at low spring tide; boats sit on the mud. The bar is dangerous two hours either side of low water."
+    - id: wf-trade
+      text: "The village lived on pilchard and crab; the fleet was six boats in 1971 and is two now."
+    - id: wf-chapel
+      text: "The Bethel chapel above the harbour closed in 1984. Its bell was sold to a farm at Zennor."
+    - id: wf-lamp-tech
+      text: "Saltford's lamp was a first-order fixed catadioptric, paraffin-vapour until 1959, then electric. Its character was a fixed white light, not a flash."
+    - id: wf-railway
+      text: "The branch railway to Saltford closed in 1965. The old station is a chandlery now."
+    - id: wf-name-origin
+      text: "Saltford takes its name from the medieval salt pans east of the point, long since silted."
+
+# ---------------------------------------------------------------------------
+# Deep-archive documents. Genuine project material (the papers Edith is sorting),
+# highly relevant to the mystery but NOT needed for the immediate compact task.
+# Tiered peripheral: present only in the long arms, where they legitimately stress
+# long-context handling and salience (the answer is buried among true-but-secondary
+# entries). Not filler: every entry is coherent canon.
+documents:
+  peripheral:
+    - id: doc-logbook-1971
+      kind: primary_source_transcript
+      title: "Transcript — Saltford Light keeper's log, Oct–Nov 1971 (excerpt)"
+      text: |
+        Transcribed from Silas Vane's oilcloth logbooks, bottom drawer of the cottage dresser.
+        Times in 24-hour form as kept.
+
+        01 Oct 1971. Light electric, order good. Wind SW 3. Painted the lantern gallery rail.
+        Nan to Truro on the bus. Quiet.
+        07 Oct 1971. Fog signal tested 09:00, working. Marigold out three days, back with a poor
+        catch. Kerr drunk on the wall again.
+        15 Oct 1971. Board circular: Saltford under review for automation. I have said nothing to
+        Nan. Wind SW 5, rising.
+        22 Oct 1971. Nan asks what review means. I said it means nothing yet. It does not mean
+        nothing. Light order good.
+        31 Oct 1971. Gale SW 7. Two boats in early. Lamp steady. Slept in the lamp room.
+        05 Nov 1971. Board confirms decommission end of the year. Twenty-two years. I signed the
+        paper on the kitchen table and Nan watched me sign it.
+        09 Nov 1971. Nan speaks of Bristol, of her sister. I keep the light. That is what I know
+        to do. Wind SW 4.
+        13 Nov 1971. Glass falling all day. Warned the fleet at the quay. Kerr laughed. Marigold
+        means to go out for the tide. I told Roe's boy the bar would be bad by midnight.
+        14 Nov 1971. Glass very low. SW 8 by dark, 9 in the gusts, spring tide. Three boats ran
+        for harbour by 22:00. Marigold not among them.
+        14 Nov 1971, later. Marigold not returned. Light out at 23:40. I did not go down.
+        15 Nov 1971. They are searching. I have told the inquiry what a keeper tells an inquiry.
+        The lamp is a machine and machines fail. That is all I will write here.
+        20 Nov 1971. Wreckage east of the point. Two lost. The village does not look at me. Nan
+        has packed the small case.
+        30 Nov 1971. Nan and the girl left on the morning bus. Edith did not wave. I do not blame
+        her. Light dark now for good. End of the working log.
+    - id: doc-inquiry-1972
+      kind: official_report_excerpt
+      title: "Excerpt — Board of Trade inquiry into the loss of the sloop Marigold, 1972"
+      text: |
+        FINDINGS (excerpt). The Court finds that the sloop Marigold was lost with two hands on
+        the night of 14 November 1971 in a south-westerly gale of force 9 and a spring tide,
+        conditions in which the vessel ought not to have put to sea. The Court finds no fault in
+        the Saltford light, which the keeper, Mr S. Vane, testified burned in good order
+        throughout the night. The loss is attributed to weather and to an error of judgement by
+        the master in crossing the bar. The Court records the keeper's long and exemplary
+        service. No further action is recommended.
+    - id: doc-priorscene-cottage
+      kind: prior_scene_prose
+      title: "Established prior-scene prose (chapter opening, do not rewrite; context only)"
+      text: |
+        The key was warm from Tamsin's hand and cold by the time Edith reached the door. Inside,
+        the cottage held its breath. Someone — her father, there was no one else — had rinsed a
+        cup and set it upside down on the board to dry, and it had dried, and the ring of it was
+        still there in the enamel like a coin left in a till. She did not touch the cup. She put
+        her case on the slate and stood in the dark until the sea sorted itself into separate
+        sounds, and then she went up, counting, the way you count a thing to keep from thinking.
+    - id: doc-charnotes-extended
+      kind: character_notes
+      title: "Extended character notes (secondary; background only)"
+      text: |
+        Tamsin Roe keeps a shoebox under the post-office counter: clippings, the order of
+        service from Nan Vane's memorial (posted from Bristol, unattended), and a photograph of
+        the 1971 fleet in which the Marigold is the third boat, low in the water. She has never
+        decided whether Silas was a coward or a witness, and the not-deciding has cost her
+        sleep for twenty-seven years.
+        Bevis Kerr has one true sentence in him and has spent a lifetime not saying it. He was
+        to have sailed on the Marigold and did not, and the shame of surviving by drunkenness
+        has hardened into a silence the whole village mistakes for hardness. He watches the dark
+        tower the way other men watch a grave.
+    - id: doc-logbook-extended
+      kind: primary_source_transcript
+      title: "Transcript — Saltford Light keeper's log, 1969–1971 (extended excerpt)"
+      text: |
+        Further transcription from Silas Vane's oilcloth logbooks. The hand grows smaller toward
+        the end. Times in 24-hour form as kept.
+
+        03 Jan 1969. New year, old light. Order good. Wind NW 4, hard frost on the gallery. Nan's
+        chilblains bad. Kerr's boat holed on the bar, no lives.
+        18 Jan 1969. Board inspector came, went. Said the word "automation" and drank my tea.
+        Wrote nothing in his book that I could see. I have kept this light for twenty years.
+        22 Feb 1969. Fog three days. Ran the signal by hand when the compressor failed. Nan
+        brought soup to the lamp room at two in the morning and did not speak, and that was worse
+        than speaking.
+        14 Mar 1969. Marigold refitted, Roe skippering now his father is poorly. A good enough
+        boat, badly loved. Wind SW 5.
+        01 May 1969. Painted the tower. The girl Edith wrote from the school in Truro that she
+        will not come home for the summer. Nan read the letter twice and put it in her apron.
+        30 Jun 1969. Longest light of the year and the lamp not needed till near ten. Sat on the
+        step. A basking shark off the point, big as a keel. Told no one; they would have gone
+        after it.
+        15 Aug 1969. Regatta. Bethel choir on the quay. Kerr drunk by noon and weeping, would not
+        say why. I did not ask. A man's reasons are his own until they are the sea's.
+        02 Nov 1969. Glass falling. Warned the fleet. All in by dark but the Marigold, which came
+        at last with her lamp out and Roe swearing he had oil. I did not believe him. Logged it.
+        20 Dec 1969. Snow on the point, rare. The light through it like something remembered. Nan
+        speaks of her sister in Bristol most evenings now.
+        11 Feb 1970. Compressor failed for good. Board will not repair what it means to close.
+        Ran the signal by hand in a gale, force 8, six hours. My arms remember it still.
+        19 Apr 1970. Inspector again. This time he wrote. Nan watched him leave from the window
+        and said, "That's the end of us, then," and I had no answer that was not a lie.
+        03 Jun 1970. The girl sixteen now and gone to a bindery as apprentice. She is good with
+        her hands and cold with her letters. I do not blame her. I taught her to count the stairs
+        and little else.
+        28 Sep 1970. Equinox gales. Two boats damaged. The light steady. It is the one thing I
+        have never let fail, and it is the thing they mean to switch off.
+        14 Nov 1970. A year to the night before it happened, though I did not know that then.
+        Quiet. Wind SW 3. I note it now only because of what the same date would come to mean.
+        30 Dec 1970. Last log of the year. Board circular: decommission scheduled 1971. Twenty-two
+        years of nights. I will keep it well until they take it, and after, for nothing, because
+        a dark light still wants a keeper or it falls.
+        09 Feb 1971. Ice on the ninety-nine steps. Salted them. Nan did not come up. She has
+        stopped coming up.
+        21 Mar 1971. Roe's father died. Roe skippers the Marigold outright now, and worse for it,
+        being young and needing the money and afraid of neither weather nor me.
+        07 Jul 1971. Told Roe plainly the Marigold's lamp was untrustworthy and the bar unkind on
+        a spring ebb. He thanked me and did nothing. A warning given is a warning kept, whatever
+        follows. I have that, at least.
+        30 Oct 1971. Two weeks left of the working light. Nan's case is packed and stands in the
+        hall like a guest who will not sit. Wind SW 6.
+    - id: doc-testimony-1972
+      kind: official_report_excerpt
+      title: "Excerpt — keeper's testimony, Board of Trade inquiry, 1972"
+      text: |
+        EXAMINATION of Mr S. VANE, keeper.
+        Q. Mr Vane, was the Saltford light burning on the night of 14 November 1971?
+        A. It was my duty to keep it burning.
+        Q. That is not what I asked. Was it burning?
+        A. A light is kept, sir, or it is not. I kept it as I kept it every night for twenty-two
+        years.
+        Q. Did you at any time that night observe the Marigold in distress?
+        A. I observed weather no boat should have been out in.
+        Q. Did you go down to the harbour?
+        A. There was nothing at the harbour I could have done that the sea had not already decided.
+        THE COURT: The witness will answer plainly.
+        A. I have answered as plainly as the night allows, my lord.
+        [The Court found the witness's service exemplary and pressed the matter no further.]
+    - id: doc-clippings
+      kind: newspaper_clippings
+      title: "Clippings kept by Tamsin Roe (Saltford post office)"
+      text: |
+        THE CORNISHMAN, 19 Nov 1971. — LIGHTHOUSE VILLAGE MOURNS TWO. The fishing community of
+        Saltford is in mourning after the sloop Marigold was lost with two hands in Sunday's
+        gale. The Saltford light, itself due to be decommissioned within weeks, is said to have
+        burned throughout the night. "A cruel end to a hard season," said one villager.
+        THE CORNISHMAN, 4 Feb 1972. — INQUIRY CLEARS SALTFORD LIGHT. The Board of Trade inquiry
+        into the loss of the Marigold has attributed the tragedy to weather and to an error of
+        judgement by the master. The keeper, Mr Silas Vane, was commended for long service.
+        PARISH NOTICE, undated. — The family of the late N. Vane thank friends at Saltford for
+        their kindness. There will be no service in the village.
+    - id: doc-nan-letter
+      kind: private_letter
+      title: "Letter, Nan Vane to her sister, Bristol, Dec 1971 (found in the cottage)"
+      text: |
+        Dear Grace, We are come safe though I would not call it well. Edith is silent as her
+        father and I have two of them now in one small body. I will not write what I think about
+        that night because thinking it is enough and I have to live in the same skin as the
+        thought. He kept his light. That is what he will say to his grave, that he kept his
+        light, and it will be true, and it will not be the whole of the truth, and I could not
+        stay in a house built on the difference. Kiss the children. — N.
+    - id: doc-chart-notes
+      kind: annotated_chart
+      title: "Silas's annotations, Admiralty chart 1149 (Cardn Point and bar)"
+      text: |
+        Marginal notes in the keeper's hand. — "Bar dries 1.8m springs. Do not cross 2hrs either
+        side LW in any sea from SW." — "Overfalls E of point on the ebb, worse with swell." —
+        "Marigold draws too much for this ground and Roe will not be told." — "The light shows
+        the rocks; it cannot show a man his own sense." — "14/11. Marked the last night here so I
+        need not write it where Nan reads."
+    - id: doc-logbook-early
+      kind: primary_source_transcript
+      title: "Transcript — Saltford Light keeper's log, selected entries 1949–1968"
+      text: |
+        The early books, larger-handed, the ink browner. Selected entries only; the working
+        record of a keeper's life. Times in 24-hour form as kept.
+
+        02 May 1949. First night as keeper of Saltford. Old Pengelly handed me the log and the
+        keys and said mind the ninety-nine and mind yourself and went down them for the last
+        time. Wind SW 2. Light lit at 20:14. I did not sleep for watching it.
+        14 Sep 1949. Learned the lamp's every sound. It speaks if you listen. A keeper who cannot
+        hear his light by ear is no keeper.
+        06 Feb 1951. Married Nan Trewin at St Just. Brought her to the cottage in the rain. She
+        stood in the covered walk and looked up the ninety-nine steps and said, "You'll not get
+        me up there," and mostly I did not.
+        19 Nov 1953. Worst gale in memory. Force 10. Held the lamp through it, thirty hours
+        without the bed. Two ships stood off by my light and lived. That is the whole of the job
+        in one night.
+        30 Apr 1955. Edith born, at Truro, in the morning. I lit the lamp that evening as always.
+        A man does not stop the world for joy; he keeps the light, and the joy keeps beside it.
+        11 Aug 1958. Taught Edith the ninety-nine steps, counting each. She is three and counts
+        to ninety-nine before she can say her own name plain. Nan says I am making her strange. I
+        am making her careful, which is a kinder word for the same thing.
+        07 Jul 1959. Converted to electric. The paraffin days done. Cleaner, colder. I do not say
+        I miss the smell of the old light but I note that I have written this line.
+        23 Dec 1962. Ice storm. The gallery a chandelier. Edith seven, up the steps against her
+        mother's word, to see it. We stood and said nothing and it was the best hour of that year.
+        14 Mar 1965. Branch railway closed. The village a little more alone. The sea does not
+        notice our timetables.
+        30 Oct 1968. Twenty years next spring. The Board's letters come oftener now, and warmer,
+        which in the Board's tongue means the end is near. A warm letter from the Board is a cold
+        thing to a keeper.

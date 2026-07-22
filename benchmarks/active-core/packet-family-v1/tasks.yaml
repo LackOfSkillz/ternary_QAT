@@ -1,0 +1,65 @@
+# LineWright Packet-Family v1 — Task families
+#
+# Three task families, each run across all six packet arms. The immediate task text is
+# IDENTICAL across arms; only the surrounding compiled context changes. This isolates
+# context/length/salience handling as the controlled variable.
+
+tasks:
+  - id: scene_drafting
+    task_family: scene_drafting
+    output_type: prose
+    output_contract_ref: prose
+    protected_ids: []
+    mechanical_dimensions: [format_valid, protocol_valid, constraint_valid, source_fidelity,
+                            repetition_valid, memorization_valid, completion_valid]
+    reviewer_dimensions: [instruction_compliance, scope_control, voice_preservation,
+                          scene_coherence, prose_quality, canon_fidelity]
+    task_instruction: >-
+      Write the next scene (about 150–200 words). Edith opens the bottom drawer of the dresser
+      and lifts out the oilcloth logbooks. She does not yet read them; she registers their
+      weight and order, and the fact that the last one is not where a finished thing would be.
+      Quiet, character-centered, third person limited to Edith, past tense. End on a concrete
+      physical action, not a reflection.
+
+  - id: focused_revision
+    task_family: focused_revision
+    output_type: prose
+    output_contract_ref: revision
+    protected_ids: [pe-opening-line]
+    mechanical_dimensions: [format_valid, protocol_valid, constraint_valid, source_fidelity,
+                            no_change_valid, repetition_valid, memorization_valid, completion_valid]
+    reviewer_dimensions: [instruction_compliance, scope_control, voice_preservation,
+                          prose_quality, canon_fidelity, slop_or_repetition]
+    task_instruction: >-
+      Revise the passage below. Fix ONLY these authorized problems: (1) the generic, overwritten
+      simile in the second sentence; (2) the repeated sentence-opening "She"; (3) the
+      anachronism. Do NOT change the protected opening sentence, do NOT alter the plot, and do
+      NOT impose a different voice. Prefer the smallest change that fixes each problem. Return
+      only the revised passage.
+    input_passage: |
+      The stairs went up in the dark the way she remembered, ninety-nine of them, and she counted every one.
+      The lamp room waited at the top like a held breath in the throat of a sleeping giant, vast and terrible and infinitely sad.
+      She checked her phone for the time. She found the switch. She saw the great dark eye of the lens, and it saw nothing back.
+    embedded_problems:
+      - overwritten_simile: "like a held breath in the throat of a sleeping giant, vast and terrible and infinitely sad"
+      - repeated_openers: "She checked... She found... She saw..."
+      - anachronism: "checked her phone"   # 1998 present-time; violates hc-no-anachronism
+
+  - id: canon_sensitive_continuation
+    task_family: canon_sensitive_continuation
+    output_type: prose
+    output_contract_ref: continuation
+    protected_ids: [pe-opening-line, pe-logbook-fact]
+    mechanical_dimensions: [format_valid, protocol_valid, constraint_valid, source_fidelity,
+                            repetition_valid, memorization_valid, completion_valid]
+    reviewer_dimensions: [instruction_compliance, scope_control, voice_preservation,
+                          scene_coherence, prose_quality, canon_fidelity]
+    task_instruction: >-
+      Continue the scene (about 150–200 words) from the passage below, in the same voice and
+      past tense. Edith finds and reads Silas's final logbook entry. The continuation must be
+      consistent with canon: the entry is dated 14 November 1971 and says the Marigold did not
+      return and the light was out at 23:40 and that he did not go down — and this contradicts
+      the official inquiry. Do not invent new named characters or new documents. Do not depict
+      the lamp lit in present time. End on Edith's restraint, not a revelation speech.
+    preceding_passage: |
+      The stairs went up in the dark the way she remembered, ninety-nine of them, and she counted every one.

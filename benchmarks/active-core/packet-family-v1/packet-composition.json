@@ -1,0 +1,389 @@
+{
+ "battery_version": "packet-family-v1",
+ "project": {
+  "id": "saltford-light",
+  "title": "Saltford Light",
+  "logline": "In a decommissioned lighthouse on the Cornish coast, a retired keeper's daughter returns to sort her dead father's effects and finds his logbooks contradict the official account of the night a supply boat was lost in 1971.",
+  "register": "literary_fiction",
+  "tense": "past",
+  "point_of_view": "third_person_limited",
+  "pov_character": "Edith Vane"
+ },
+ "arms": [
+  "bare",
+  "compact",
+  "realistic",
+  "long",
+  "long_noisy",
+  "long_salience_repaired"
+ ],
+ "tasks": [
+  "scene_drafting",
+  "focused_revision",
+  "canon_sensitive_continuation"
+ ],
+ "n_items": 18,
+ "noisy_repaired_identical_content": true,
+ "monotone_char_growth_per_task": {
+  "scene_drafting": [
+   494,
+   3426,
+   7545,
+   17657
+  ],
+  "focused_revision": [
+   853,
+   3968,
+   8087,
+   18199
+  ],
+  "canon_sensitive_continuation": [
+   751,
+   4134,
+   8253,
+   18365
+  ]
+ },
+ "items": [
+  {
+   "item_id": "pf-scene_drafting-bare",
+   "task": "scene_drafting",
+   "arm": "bare",
+   "components": [
+    "task"
+   ],
+   "char_len": 494
+  },
+  {
+   "item_id": "pf-scene_drafting-compact",
+   "task": "scene_drafting",
+   "arm": "compact",
+   "components": [
+    "task",
+    "voice",
+    "knowledge_boundaries",
+    "canon_core",
+    "hard_constraints",
+    "invention_budget",
+    "output_contract"
+   ],
+   "char_len": 3426
+  },
+  {
+   "item_id": "pf-scene_drafting-realistic",
+   "task": "scene_drafting",
+   "arm": "realistic",
+   "components": [
+    "task",
+    "voice",
+    "knowledge_boundaries",
+    "canon_core",
+    "hard_constraints",
+    "invention_budget",
+    "output_contract",
+    "canon_secondary",
+    "scene_arrival",
+    "documents_relevant"
+   ],
+   "char_len": 7545
+  },
+  {
+   "item_id": "pf-scene_drafting-long",
+   "task": "scene_drafting",
+   "arm": "long",
+   "components": [
+    "task",
+    "voice",
+    "knowledge_boundaries",
+    "canon_core",
+    "hard_constraints",
+    "invention_budget",
+    "output_contract",
+    "canon_secondary",
+    "scene_arrival",
+    "documents_relevant",
+    "canon_peripheral",
+    "scene_adjacent",
+    "documents_archive"
+   ],
+   "char_len": 17657
+  },
+  {
+   "item_id": "pf-scene_drafting-long_noisy",
+   "task": "scene_drafting",
+   "arm": "long_noisy",
+   "components": [
+    "canon_peripheral",
+    "scene_adjacent",
+    "task",
+    "documents_archive",
+    "world_facts",
+    "voice",
+    "style_guide",
+    "knowledge_boundaries",
+    "canon_core",
+    "hard_constraints",
+    "invention_budget",
+    "output_contract",
+    "canon_secondary",
+    "scene_arrival",
+    "documents_relevant"
+   ],
+   "char_len": 18742
+  },
+  {
+   "item_id": "pf-scene_drafting-long_salience_repaired",
+   "task": "scene_drafting",
+   "arm": "long_salience_repaired",
+   "components": [
+    "task",
+    "voice",
+    "knowledge_boundaries",
+    "canon_core",
+    "hard_constraints",
+    "invention_budget",
+    "output_contract",
+    "canon_secondary",
+    "scene_arrival",
+    "documents_relevant",
+    "appendix_header",
+    "canon_peripheral",
+    "scene_adjacent",
+    "documents_archive",
+    "world_facts",
+    "style_guide"
+   ],
+   "char_len": 18880
+  },
+  {
+   "item_id": "pf-focused_revision-bare",
+   "task": "focused_revision",
+   "arm": "bare",
+   "components": [
+    "task"
+   ],
+   "char_len": 853
+  },
+  {
+   "item_id": "pf-focused_revision-compact",
+   "task": "focused_revision",
+   "arm": "compact",
+   "components": [
+    "task",
+    "voice",
+    "knowledge_boundaries",
+    "canon_core",
+    "hard_constraints",
+    "invention_budget",
+    "protected",
+    "output_contract"
+   ],
+   "char_len": 3968
+  },
+  {
+   "item_id": "pf-focused_revision-realistic",
+   "task": "focused_revision",
+   "arm": "realistic",
+   "components": [
+    "task",
+    "voice",
+    "knowledge_boundaries",
+    "canon_core",
+    "hard_constraints",
+    "invention_budget",
+    "protected",
+    "output_contract",
+    "canon_secondary",
+    "scene_arrival",
+    "documents_relevant"
+   ],
+   "char_len": 8087
+  },
+  {
+   "item_id": "pf-focused_revision-long",
+   "task": "focused_revision",
+   "arm": "long",
+   "components": [
+    "task",
+    "voice",
+    "knowledge_boundaries",
+    "canon_core",
+    "hard_constraints",
+    "invention_budget",
+    "protected",
+    "output_contract",
+    "canon_secondary",
+    "scene_arrival",
+    "documents_relevant",
+    "canon_peripheral",
+    "scene_adjacent",
+    "documents_archive"
+   ],
+   "char_len": 18199
+  },
+  {
+   "item_id": "pf-focused_revision-long_noisy",
+   "task": "focused_revision",
+   "arm": "long_noisy",
+   "components": [
+    "canon_peripheral",
+    "scene_adjacent",
+    "task",
+    "documents_archive",
+    "world_facts",
+    "voice",
+    "style_guide",
+    "knowledge_boundaries",
+    "canon_core",
+    "hard_constraints",
+    "invention_budget",
+    "protected",
+    "output_contract",
+    "canon_secondary",
+    "scene_arrival",
+    "documents_relevant"
+   ],
+   "char_len": 19284
+  },
+  {
+   "item_id": "pf-focused_revision-long_salience_repaired",
+   "task": "focused_revision",
+   "arm": "long_salience_repaired",
+   "components": [
+    "task",
+    "voice",
+    "knowledge_boundaries",
+    "canon_core",
+    "hard_constraints",
+    "invention_budget",
+    "protected",
+    "output_contract",
+    "canon_secondary",
+    "scene_arrival",
+    "documents_relevant",
+    "appendix_header",
+    "canon_peripheral",
+    "scene_adjacent",
+    "documents_archive",
+    "world_facts",
+    "style_guide"
+   ],
+   "char_len": 19422
+  },
+  {
+   "item_id": "pf-canon_sensitive_continuation-bare",
+   "task": "canon_sensitive_continuation",
+   "arm": "bare",
+   "components": [
+    "task"
+   ],
+   "char_len": 751
+  },
+  {
+   "item_id": "pf-canon_sensitive_continuation-compact",
+   "task": "canon_sensitive_continuation",
+   "arm": "compact",
+   "components": [
+    "task",
+    "voice",
+    "knowledge_boundaries",
+    "canon_core",
+    "hard_constraints",
+    "invention_budget",
+    "protected",
+    "output_contract"
+   ],
+   "char_len": 4134
+  },
+  {
+   "item_id": "pf-canon_sensitive_continuation-realistic",
+   "task": "canon_sensitive_continuation",
+   "arm": "realistic",
+   "components": [
+    "task",
+    "voice",
+    "knowledge_boundaries",
+    "canon_core",
+    "hard_constraints",
+    "invention_budget",
+    "protected",
+    "output_contract",
+    "canon_secondary",
+    "scene_arrival",
+    "documents_relevant"
+   ],
+   "char_len": 8253
+  },
+  {
+   "item_id": "pf-canon_sensitive_continuation-long",
+   "task": "canon_sensitive_continuation",
+   "arm": "long",
+   "components": [
+    "task",
+    "voice",
+    "knowledge_boundaries",
+    "canon_core",
+    "hard_constraints",
+    "invention_budget",
+    "protected",
+    "output_contract",
+    "canon_secondary",
+    "scene_arrival",
+    "documents_relevant",
+    "canon_peripheral",
+    "scene_adjacent",
+    "documents_archive"
+   ],
+   "char_len": 18365
+  },
+  {
+   "item_id": "pf-canon_sensitive_continuation-long_noisy",
+   "task": "canon_sensitive_continuation",
+   "arm": "long_noisy",
+   "components": [
+    "canon_peripheral",
+    "scene_adjacent",
+    "task",
+    "documents_archive",
+    "world_facts",
+    "voice",
+    "style_guide",
+    "knowledge_boundaries",
+    "canon_core",
+    "hard_constraints",
+    "invention_budget",
+    "protected",
+    "output_contract",
+    "canon_secondary",
+    "scene_arrival",
+    "documents_relevant"
+   ],
+   "char_len": 19450
+  },
+  {
+   "item_id": "pf-canon_sensitive_continuation-long_salience_repaired",
+   "task": "canon_sensitive_continuation",
+   "arm": "long_salience_repaired",
+   "components": [
+    "task",
+    "voice",
+    "knowledge_boundaries",
+    "canon_core",
+    "hard_constraints",
+    "invention_budget",
+    "protected",
+    "output_contract",
+    "canon_secondary",
+    "scene_arrival",
+    "documents_relevant",
+    "appendix_header",
+    "canon_peripheral",
+    "scene_adjacent",
+    "documents_archive",
+    "world_facts",
+    "style_guide"
+   ],
+   "char_len": 19588
+  }
+ ]
+}
