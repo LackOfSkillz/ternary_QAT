@@ -238,3 +238,36 @@ def test_hf_run_rejects_inject():
 # 20 the real 20-step configs still say 20 (unexecuted here)
 def test_real_configs_still_20_steps():
     assert C.load_config(LORA)["optimization"]["max_steps"] == 20
+
+
+QAT = os.path.join(_ROOT, "training", "configs", "dataset-a-ternary-qat-smoke-v1.yaml")
+
+
+def test_qat_config_policy_matches_swap_implementation():
+    """The reconciled QAT config must state the SAME policy the verified
+    ternary/swap.py actually applies: embeddings + lm_head ternary, norms FP."""
+    pol = C.load_config(QAT)["ternary_qat"]["module_policy"]
+    assert pol["embeddings"] == "ternary"
+    assert pol["lm_head"] == "ternary"
+    assert pol["attention_linear"] == "ternary"
+    assert pol["mlp_linear"] == "ternary"
+    assert pol["normalization_layers"] == "full_precision"
+    assert "keep_modules_full_precision" not in C.load_config(QAT)["ternary_qat"]
+
+    # actual behavior: swap_linear ternarizes embed + lm_head + attn, excludes norms
+    from ternary.swap import swap_linear, TernaryEmbedding
+    from ternary.linear import TernaryLinear
+
+    class M(nn.Module):
+        def __init__(self):
+            super().__init__()
+            self.embed_tokens = nn.Embedding(8, 16)
+            self.q_proj = nn.Linear(16, 16)
+            self.input_norm = nn.Linear(16, 16)   # 'norm' -> excluded (full precision)
+            self.lm_head = nn.Linear(16, 8)
+    m = M()
+    swap_linear(m, None)
+    assert isinstance(m.embed_tokens, TernaryEmbedding)     # embeddings ternary
+    assert isinstance(m.lm_head, TernaryLinear)             # lm_head ternary
+    assert isinstance(m.q_proj, TernaryLinear)              # attention ternary
+    assert not isinstance(m.input_norm, TernaryLinear)      # norm full precision

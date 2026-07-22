@@ -60,10 +60,17 @@ ternary_qat:                            # the only genuinely QAT-specific block
   group_size: 128                       # Prism g128 convention (matches ternary_QAT.ternarize_weight)
   rounding: half_even                   # torch.round half-even; artifact-equivalent to Prism q2_0_ref
   scale_dtype: fp16                      # amax fp16 scale (Prism Q2_0)
-  tie_word_embeddings_swap: true        # swap tied embedding/lm_head consistently
-  keep_modules_full_precision:          # do not ternarize these (stability)
-    - embed_tokens
-    - lm_head
+  # Reconciled with the VERIFIED ternary/swap.py (Bonsai-style): attention, MLP,
+  # embeddings, and lm_head are all ternarized; normalization layers stay full
+  # precision; tied embeddings are preserved. (18A.1 verified: 254 modules replaced,
+  # 0 plain linears remain, tie preserved.)
+  module_policy:
+    attention_linear: ternary
+    mlp_linear: ternary
+    embeddings: ternary
+    lm_head: ternary
+    normalization_layers: full_precision
+  tied_weight_policy: preserve
   preserve_base_checkpoint: true        # QAT must NOT modify the base checkpoint on disk
 
 intervals:

@@ -39,7 +39,13 @@ ternary_qat:
   group_size: 128
   rounding: half_even
   scale_dtype: fp16
-  keep_modules_full_precision: [embed_tokens, lm_head]
+  module_policy:
+    attention_linear: ternary
+    mlp_linear: ternary
+    embeddings: ternary
+    lm_head: ternary
+    normalization_layers: full_precision
+  tied_weight_policy: preserve
 
 optimization:
   learning_rate: 4.0e-3
