@@ -1,0 +1,45 @@
+# LineWright Diagnostic Battery — frozen execution/generation plan schema (v1, Dispatch 23)
+#
+# A plan is created and HASHED before generation begins. Parallel and sequential execution
+# consume the SAME frozen plan and produce the same normalized results; only scheduling and
+# wall-clock may differ. After a run begins the plan must not mutate silently: a changed
+# plan requires a new plan_id, plan_hash, and run_id.
+
+schema: execution-plan
+schema_version: 1
+status: architecture_only
+
+fields:
+  plan_id:                {type: string, required: true}
+  battery_version:        {type: string, required: true}
+  battery_profile:        {type: enum, required: true, enum: [fast, full, calibration]}
+  execution_mode:         {type: enum, required: true, enum: execution_mode}
+  scheduling_policy:      {type: enum, required: true, enum: [round_robin, model_sequential, fifo]}
+  item_ids:               {type: list, required: true}
+  item_hashes:            {type: map, required: true, desc: "item_id -> content hash"}
+  behavior_contract_hashes: {type: map, required: true, desc: "item_id -> locked contract hash"}
+  model_roles:            {type: list, required: true, desc: "roles participating (target_base, ...)"}
+  model_descriptors:      {type: map, required: true, desc: "role -> {identity, checkpoint, revision, endpoint_id}"}
+  model_revisions:        {type: map, required: true}
+  tokenizer_revisions:    {type: map, required: true}
+  chat_templates:         {type: map, required: false}
+  system_prompts:         {type: map, required: false}
+  generation_settings:    {type: map, required: true, desc: "{temperature, top_p, ...}"}
+  generation_settings_hash: {type: string, required: true}
+  seeds:                  {type: map, required: true}
+  max_new_tokens:         {type: int, required: true}
+  stop_sequences:         {type: list, required: false}
+  retry_policy:           {type: ref, required: true, desc: "retry-policy id"}
+  output_directory:       {type: string, required: true}
+  created_at:             {type: string, required: true}
+  plan_hash:              {type: string, required: true, desc: "hash over the immutable plan body (excludes timing)"}
+
+enums:
+  execution_mode: [parallel_multi_host, parallel_single_host, sequential_single_host, sequential_multi_host]
+
+hash_excludes: [created_at, plan_id, plan_hash, output_directory]
+
+rules:
+  - "plan_hash covers item content, contracts, model descriptors/revisions, generation settings, seeds, and token limits; it excludes timing and the output directory."
+  - "a run must reference exactly one frozen plan; mutating benchmark semantics requires a new plan_id + plan_hash + run_id."
+  - "secrets (API keys) are never serialized into a plan; endpoints reference secrets by env/external-secret name."

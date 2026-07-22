@@ -1,0 +1,36 @@
+# LineWright Diagnostic Battery — run state machine schema (v1, Dispatch 23)
+#
+# The durable lifecycle of one battery run in the SQLite ledger. States are explicit; every
+# transition is documented. Ambiguous states are forbidden.
+
+schema: run-state
+schema_version: 1
+status: architecture_only
+
+states:
+  - created                 # ledger row exists; plan attached
+  - validating              # instrument validation (replay + calibration) in progress
+  - running                 # jobs being leased/executed
+  - pause_requested         # a pause was requested; draining or cancelling
+  - paused                  # no active assignment; all completed work persisted
+  - resuming                # verifying plan/ledger/outputs before continuing
+  - completed               # all jobs completed successfully
+  - completed_with_failures # finished; some jobs failed_terminal
+  - cancelled               # user cancelled
+  - failed                  # unrecoverable controller/plan failure
+
+transitions:
+  created:                 [validating, cancelled, failed]
+  validating:              [running, failed, cancelled]
+  running:                 [pause_requested, completed, completed_with_failures, failed, cancelled]
+  pause_requested:         [paused, running, failed]
+  paused:                  [resuming, cancelled]
+  resuming:                [running, failed, cancelled]
+  completed:               []
+  completed_with_failures: []
+  cancelled:               []
+  failed:                  [resuming]      # a failed run may be re-validated and resumed
+
+rules:
+  - "a run may produce trusted model findings only from the running/completed path AFTER instrument validation passed; otherwise findings are quarantined."
+  - "pause/resume never changes plan_hash or benchmark semantics."

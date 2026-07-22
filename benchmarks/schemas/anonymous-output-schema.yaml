@@ -17,10 +17,18 @@ fields:
 
 forbidden_fields:
   - model_identity
+  - model_role
   - checkpoint_step
+  - checkpoint_ref
   - training_method
   - loss
   - base_vs_tuned
   - prior_score
+  - host_id
+  - worker_id
+  - execution_mode
+  - started_at
+  - completed_at
+  - backend_metadata
 notes:
   - "these fields MUST NOT appear in an anonymous output record (blind-review guarantee, mirrors linewright/evaluation/reviewer_packet.FORBIDDEN_IN_PACKET)."

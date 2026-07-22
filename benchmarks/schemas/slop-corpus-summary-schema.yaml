@@ -1,0 +1,30 @@
+# LineWright Diagnostic Battery — corpus-level slop summary schema (v1, Dispatch 23)
+#
+# Slop is measured per-output AND per-run. This schema captures sameness that appears only
+# ACROSS outputs (repeated openings, image families, scene solutions, voice/genre
+# convergence). Corpus-level comparison across model roles happens only after blind
+# per-output scoring is locked.
+
+schema: slop-corpus-summary
+schema_version: 1
+status: architecture_only
+
+fields:
+  run_id:                 {type: ref, required: true}
+  model_role:             {type: string, required: true}
+  output_ids:             {type: list, required: true}
+  cross_output_similarity: {type: map, required: false, desc: "pairwise/cluster similarity evidence"}
+  opening_pattern_clusters: {type: list, required: false}
+  ending_pattern_clusters:  {type: list, required: false}
+  image_family_clusters:    {type: list, required: false}
+  scene_solution_clusters:  {type: list, required: false}
+  voice_convergence:        {type: map, required: false}
+  genre_separation:         {type: map, required: false}
+  dominant_templates:       {type: list, required: false}
+  evidence_output_ids:      {type: list, required: true, desc: "the outputs supporting each cluster"}
+  confidence:               {type: enum, required: true, enum: [high, moderate, low, inconclusive]}
+  limitations:              {type: list, required: true}
+
+rules:
+  - "corpus-level analysis compares model roles ONLY after blind per-output scoring is locked."
+  - "every cluster cites the evidence outputs that support it; no cluster without evidence."

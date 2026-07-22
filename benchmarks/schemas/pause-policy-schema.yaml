@@ -1,0 +1,28 @@
+# LineWright Diagnostic Battery — pause policy schema (v1, Dispatch 23)
+#
+# Two pause modes. Both stop new assignment and preserve every completed job.
+
+schema: pause-policy
+schema_version: 1
+status: architecture_only
+
+modes:
+  graceful:
+    stops_new_assignment: true
+    allows_active_to_finish: true
+    persists_completed_results: true
+    flushes_logs_and_db: true
+    releases_or_expires_leases_cleanly: true
+    final_state: paused
+  immediate:
+    stops_new_assignment: true
+    attempts_to_cancel_active_requests: true
+    marks_incomplete_active_jobs: interrupted
+    preserves_completed_jobs: true
+    final_state: paused
+
+rules:
+  - "an interrupted active generation may restart from the beginning of that one item on resume."
+  - "we do NOT claim arbitrary inference backends can preserve/restore a partially generated KV cache; mid-generation recovery is item-level, not token-level."
+  - "controller_modes: persistent_remote (coordinator stays on a persistent host; laptop is a control client) and local_resumable (controller stops with the laptop, resumes from the ledger)."
+  - "a run must not depend on the client laptop keeping the same IP address."

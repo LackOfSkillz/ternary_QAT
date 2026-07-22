@@ -1,0 +1,34 @@
+# LineWright Diagnostic Battery — retry policy schema (v1, Dispatch 23)
+#
+# Bounded, recorded retries. A retry never overwrites an existing valid completed result.
+
+schema: retry-policy
+schema_version: 1
+status: architecture_only
+
+fields:
+  policy_id:        {type: string, required: true}
+  max_attempts:     {type: int, required: true, desc: "bound on attempts per job"}
+  backoff_seconds:  {type: list, required: false, desc: "per-attempt backoff schedule"}
+  retryable_failures: {type: list, required: true}
+  terminal_failures:  {type: list, required: true}
+
+retryable_failures:
+  - transient_network_failure
+  - worker_disconnect
+  - endpoint_timeout
+  - expired_lease
+  - controller_interruption
+
+terminal_or_manual_failures:
+  - invalid_generation_plan
+  - model_revision_mismatch
+  - prompt_hash_mismatch
+  - unsupported_required_parameter
+  - repeated_out_of_memory
+  - invalid_result_schema
+
+rules:
+  - "attempt_count is incremented and recorded per attempt; exceeding max_attempts demotes failed_retryable -> failed_terminal."
+  - "terminal failures are never auto-retried; they require a corrected plan or manual action."
+  - "a retry writes a NEW attempt; it never silently overwrites a valid completed result."

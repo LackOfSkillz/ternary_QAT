@@ -32,7 +32,7 @@ layers:
   layer_1_instrument_validation:
     components: [grader_calibration_items, mechanical_reproducibility, reviewer_reliability]
   layer_2_capability_modules:
-    modules: [A, B, C, D, E, F, G, H, I]
+    modules: [A, B, C, D, E, F, G, H, I, J]
   layer_3_controlled_families:
     family_types: [voice_pair, surface_pair, length_pair, canon_pair, restraint_pair,
                    context_pair, turn_pair, constraint_pair, difficulty_family]
@@ -57,6 +57,8 @@ modules:
   H: {name: refusal_and_fiction_boundary_calibration, standalone_ok: true}
   I: {name: stability_and_degeneration, standalone_ok: true,
       note: "partly standalone, partly embedded across all modules"}
+  J: {name: slop_detection_and_stylistic_degradation, standalone_ok: true, dispatch: 23,
+      note: "NOT an AI-authorship detector; hybrid deterministic + semantic-interface + reviewer; thresholds unvalidated"}
 
 # ---- battery profiles (fast + full share ONE architecture) ----
 battery_profiles:
@@ -163,6 +165,21 @@ required_schemas:
   - diagnostic-finding-schema
   - battery-run-summary-schema
   - benchmark-provenance-schema
+  # Dispatch 23 additions
+  - execution-plan-schema
+  - endpoint-descriptor-schema
+  - run-state-schema
+  - job-state-schema
+  - worker-descriptor-schema
+  - worker-lease-schema
+  - retry-policy-schema
+  - pause-policy-schema
+  - normalized-generation-result-schema
+  - instrument-replay-result-schema
+  - slop-report-schema
+  - slop-detector-manifest-schema
+  - slop-reference-profile-schema
+  - slop-corpus-summary-schema
 
 # ---- this dispatch produced NO items, generations, thresholds, or training ----
 dispatch_22_outputs:
@@ -175,10 +192,56 @@ dispatch_22_outputs:
 # ---- evaluation workstream roadmap ----
 future_dispatches:
   22: {title: architecture_and_specification, status: current}
-  23: {title: instrument_calibration_and_grader_validation, status: planned}
+  23: {title: instrument_calibration_hardware_agnostic_execution_durable_resume_and_slop_foundation, status: current}
   24: {title: fast_battery_construction_and_first_execution, status: planned}
   25: {title: fast_battery_validation_and_diagnostic_engine, status: planned}
   26: {title: full_battery_construction, status: planned}
   27: {title: full_battery_baseline_and_certification, status: planned}
 
+# ---- Dispatch 23 additions (calibration, execution, resume, slop) ----
+dispatch_23:
+  title: "Instrument Calibration, Hardware-Agnostic Execution, Durable Pause/Resume, and Slop-Detection Foundation"
+  status: implemented
+  instrument_validation:
+    grader_calibration_kinds: 12
+    reviewer_classifications: [calibrated, conditionally_usable, unreliable_for_run]
+    reviewer_threshold_status: provisional_unvalidated
+    mechanical_replay_required: true
+    instrument_valid_rule: [mechanical_replay_passed, calibration_set_valid, sufficient_calibrated_reviewers]
+    on_failure: {overall: insufficient_evidence, findings_status: quarantined}
+  execution:
+    modes: [parallel_multi_host, parallel_single_host, sequential_single_host, sequential_multi_host]
+    endpoint_types: [openai_compatible_http, local_huggingface, local_subprocess, test_stub]
+    frozen_plan: true
+    plan_hash_excludes: [execution_mode, scheduling_policy, created_at, plan_id, plan_hash, output_directory]
+    controller_modes: [persistent_remote, local_resumable]
+    state_store: sqlite
+  resume:
+    graceful_pause: true
+    immediate_pause: true
+    controller_restart_recovery: true
+    expired_lease_recovery: true
+    output_integrity_verification: true
+    mid_generation_recovery: item_level_only     # no false KV-cache restore promise
+  slop:
+    module: J
+    is_ai_authorship_detector: false
+    layers: [deterministic, semantic_interface, reviewer_checklist]
+    deterministic_metrics_status: implemented
+    semantic_detectors_status: interface_only
+    thresholds_status: unvalidated
+    per_output_report: slop-report-schema
+    corpus_summary: slop-corpus-summary-schema
+    research_review: training/docs/slop-detection-research-review-v1.md
+  dispatch_23_outputs:
+    benchmark_items_created: 0
+    ordinary_fast_full_benchmark_run: false
+    model_generations_real: 0
+    training_runs: 0
+    numeric_capability_floors_set: false
+    numeric_slop_thresholds_set: false
+    dataset_a_changed: false
+
 primary_specification: training/docs/linewright-diagnostic-battery-architecture-v1.md
+execution_and_resume_doc: training/docs/lwdb-execution-and-resume-v1.md
+slop_report_doc: training/docs/lwdb-slop-report-v1.md

@@ -1,0 +1,29 @@
+# LineWright Diagnostic Battery — slop detector manifest schema (v1, Dispatch 23)
+#
+# Pins the exact detector suite so a slop report is reproducible. Embedding models,
+# tokenizers, phrase inventory, and checklist are all versioned. Thresholds stay unvalidated.
+
+schema: slop-detector-manifest
+schema_version: 1
+status: architecture_only
+
+fields:
+  detector_suite_id:            {type: string, required: true}
+  suite_version:                {type: string, required: true}
+  deterministic_metric_versions: {type: map, required: true, desc: "metric_name -> version"}
+  semantic_detector_versions:   {type: map, required: false, desc: "detector_id -> version (interface-only)"}
+  embedding_models:             {type: list, required: false, desc: "{model_name, revision, tokenizer_revision, pooling, normalization}"}
+  tokenizers:                   {type: list, required: false}
+  phrase_inventory_version:     {type: string, required: false}
+  reviewer_checklist_version:   {type: string, required: true}
+  reference_profiles:           {type: list, required: false, desc: "reference-profile ids in use"}
+  supported_languages:          {type: list, required: true}
+  known_limitations:            {type: list, required: true}
+  threshold_profile:            {type: string, required: false}
+  threshold_status:             {type: enum, required: true, enum: [unvalidated, provisional, calibrated]}
+  research_review_ref:          {type: string, required: true}
+
+rules:
+  - "threshold_status is 'unvalidated' in Dispatch 23; no numeric slop threshold is claimed as empirical truth."
+  - "embedding models/tokenizers are pinned by revision; a suite change increments suite_version."
+  - "known_limitations must be non-empty (short-text instability, genre/voice confounds, language scope)."

@@ -1,0 +1,18 @@
+# LineWright Diagnostic Battery — worker descriptor schema (v1, Dispatch 23)
+
+schema: worker-descriptor
+schema_version: 1
+status: architecture_only
+
+fields:
+  worker_id:      {type: string, required: true}
+  host_id:        {type: string, required: true}
+  endpoint_id:    {type: ref, required: true}
+  status:         {type: enum, required: true, enum: [idle, leasing, busy, offline]}
+  current_job_id: {type: string, required: false}
+  last_heartbeat: {type: string, required: false}
+  capabilities:   {type: map, required: false, desc: "{model_roles: [...], max_new_tokens, ...}"}
+
+rules:
+  - "a worker only executes jobs whose model_role is in its capabilities.model_roles."
+  - "a worker emits heartbeats; a stale heartbeat lets the controller reclaim its lease."

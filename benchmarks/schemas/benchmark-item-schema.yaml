@@ -64,7 +64,15 @@ negative_space_block:
 enums:
   module: [A_long_form_scene, B_focused_revision, C_restraint_no_change,
            D_canon_continuity_constraint, E_structured_protocol, F_context_robustness,
-           G_multi_turn, H_refusal_boundary, I_stability_degeneration]
+           G_multi_turn, H_refusal_boundary, I_stability_degeneration,
+           J_slop_detection]              # Dispatch 23 — Module J (slop / stylistic degradation)
+  slop_family: [exact_repetition, structural_repetition, semantic_redundancy,
+                explanation_after_demonstration, stock_phrase_concentration,
+                lexical_genericness, syntactic_pattern_collapse, sentence_rhythm_collapse,
+                paragraph_shape_collapse, vague_abstraction, weak_specificity,
+                voice_flattening, character_voice_homogenization, local_coherence_failure,
+                scene_progression_failure, corpus_level_sameness, verbose_overexplaining,
+                generic_conclusion_or_moral]
   difficulty: [easy, moderate, hard, adversarial]
   prompt_surface: [bare, compact_packet, full_compiled_packet, noisy_compiled_packet]
   lifecycle_status: [development, candidate, active, used_for_measurement,

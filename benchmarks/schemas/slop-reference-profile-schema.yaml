@@ -1,0 +1,32 @@
+# LineWright Diagnostic Battery — slop reference profile schema (v1, Dispatch 23)
+#
+# A reference profile is the baseline a slop measurement is compared against. Profiles are
+# NOT universally interchangeable: a lyrical fantasy passage must not be judged against a
+# terse-noir rhythm profile.
+
+schema: slop-reference-profile
+schema_version: 1
+status: architecture_only
+
+fields:
+  reference_profile_id: {type: string, required: true}
+  profile_type:         {type: enum, required: true, enum: reference_profile_type}
+  genre:                {type: string, required: false}
+  requested_voice:      {type: string, required: false}
+  description:          {type: string, required: true}
+  distributions:        {type: map, required: false, desc: "expected ranges for rhythm/diversity metrics (unset until calibrated)"}
+  source_material_class: {type: enum, required: true, enum: [synthetic, licensed, public_domain, otherwise_distributable]}
+  interchangeable_with:  {type: list, required: false, desc: "profiles this one MAY be compared against"}
+
+enums:
+  reference_profile_type:
+    - requested_author_voice
+    - genre_reference
+    - human_written_calibration
+    - known_good_linewright_output
+    - model_run_distribution
+
+rules:
+  - "profiles are not assumed universally interchangeable; a comparison must use a compatible profile (genre/voice matched)."
+  - "distribution ranges are unset until calibration provides them; a profile never carries an invented numeric threshold."
+  - "reference material is distributable only (never author manuscript content)."

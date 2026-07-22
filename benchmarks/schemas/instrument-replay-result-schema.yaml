@@ -1,0 +1,30 @@
+# LineWright Diagnostic Battery — mechanical replay result schema (v1, Dispatch 23)
+#
+# Every deterministic mechanical scorer is run at least twice on identical inputs during
+# instrument validation. A mismatch is an instrument failure that invalidates the run.
+
+schema: instrument-replay-result
+schema_version: 1
+status: architecture_only
+
+fields:
+  replay_id:          {type: string, required: true}
+  run_id:             {type: ref, required: true}
+  validator_name:     {type: string, required: true}
+  validator_version:  {type: string, required: true}
+  input_hash:         {type: string, required: true}
+  first_result_hash:  {type: string, required: true}
+  replay_result_hash: {type: string, required: true}
+  identical:          {type: bool, required: true}
+  differing_fields:   {type: list, required: false}
+  run_validity_consequence: {type: enum, required: true, enum: [none, invalidate_run]}
+
+invariants:
+  identical_boolean_results: true
+  identical_failure_labels: true
+  identical_evidence_values: true
+  identical_defined_ordering: true
+
+rules:
+  - "if identical is false, run_validity_consequence is invalidate_run and the run's findings are quarantined (overall: insufficient_evidence)."
+  - "the report records validator name, version, input hash, both result hashes, and the differing fields."

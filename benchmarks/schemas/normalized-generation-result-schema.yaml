@@ -1,0 +1,51 @@
+# LineWright Diagnostic Battery — normalized generation result schema (v1, Dispatch 23)
+#
+# Every completed model x item generation emits this SAME record regardless of execution
+# mode. Review packets strip the identity/timing/backend fields (see stripped_for_review).
+
+schema: normalized-generation-result
+schema_version: 1
+status: architecture_only
+
+fields:
+  result_id:               {type: string, required: true}
+  run_id:                  {type: ref, required: true}
+  job_id:                  {type: ref, required: true}
+  plan_id:                 {type: ref, required: true}
+  benchmark_item_id:       {type: ref, required: true}
+  model_role:              {type: string, required: true}
+  model_identity_ref:      {type: string, required: true, desc: "reference into the model-role manifest; not exposed to reviewers"}
+  model_revision:          {type: string, required: false}
+  checkpoint_ref:          {type: string, required: false}
+  prompt_hash:             {type: string, required: true}
+  behavior_contract_hash:  {type: string, required: true}
+  generation_settings_hash: {type: string, required: true}
+  execution_mode:          {type: string, required: true}
+  worker_id:               {type: string, required: true}
+  host_id:                 {type: string, required: true}
+  started_at:              {type: string, required: true}
+  completed_at:            {type: string, required: true}
+  input_tokens:            {type: int, required: false}
+  output_tokens:           {type: int, required: false}
+  finish_reason:           {type: string, required: false}
+  hit_token_cap:           {type: bool, required: true}
+  output_text:             {type: string, required: true}
+  output_hash:             {type: string, required: true}
+  backend_metadata:        {type: map, required: false}
+  status:                  {type: enum, required: true, enum: [completed, failed]}
+
+stripped_for_review:   # fields removed before an anonymous-output record reaches a reviewer
+  - model_role
+  - model_identity_ref
+  - model_revision
+  - checkpoint_ref
+  - host_id
+  - execution_mode
+  - worker_id
+  - started_at
+  - completed_at
+  - backend_metadata
+
+rules:
+  - "the normalized result is execution-mode neutral: parallel and sequential runs of the same plan produce structurally identical records."
+  - "output_hash lets resume verify a completed job without re-reading semantics."

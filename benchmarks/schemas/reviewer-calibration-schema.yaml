@@ -12,11 +12,19 @@ fields:
   reviewer_id:        {type: string, required: true}
   run_id:             {type: ref, required: true}
   calibration_items:  {type: list, required: true, desc: "hidden calibration item_ids scored"}
-  caught_known_good:  {type: int, required: true, desc: "# of known-good items correctly accepted"}
-  caught_known_broken: {type: int, required: true, desc: "# of known-broken items correctly rejected"}
-  false_accept:       {type: int, required: true, desc: "known-broken accepted (missed a fatal flaw)"}
-  false_reject:       {type: int, required: true, desc: "known-good rejected"}
+  # aggregate counts (Dispatch-23 A3). caught_* retained as backward-compatible aliases.
+  known_good_total:   {type: int, required: true}
+  known_good_correct: {type: int, required: true}
+  known_broken_total: {type: int, required: true}
+  known_broken_correct: {type: int, required: true}
+  caught_known_good:  {type: int, required: false, desc: "alias of known_good_correct (back-compat)"}
+  caught_known_broken: {type: int, required: false, desc: "alias of known_broken_correct (back-compat)"}
+  false_accepts:      {type: int, required: true, desc: "known-broken accepted (missed a fatal flaw)"}
+  false_rejects:      {type: int, required: true, desc: "known-good rejected"}
+  fatal_flaws_missed: {type: int, required: true, desc: "known-broken items whose fatal flaw was not caught"}
   classification:     {type: enum, required: true, enum: classification}
+  classification_basis: {type: string, required: true, desc: "the threshold rule that produced the classification"}
+  threshold_profile_version: {type: string, required: true, desc: "e.g. provisional_unvalidated-v1"}
 
 classification:
   calibrated:            "trusted for this run's scoring"

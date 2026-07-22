@@ -1,0 +1,110 @@
+# LineWright Diagnostic Battery — per-output slop report schema (v1, Dispatch 23)
+#
+# Module J. A valid slop report NEVER collapses into one opaque score: deterministic,
+# semantic, lexical/style, and reviewer evidence stay separate, each with evidence spans and
+# its own confidence. Thresholds are unvalidated until calibration (Dispatch 24+).
+
+schema: slop-report
+schema_version: 1
+status: architecture_only
+
+identity:
+  slop_report_id:      {type: string, required: true}
+  run_id:              {type: ref, required: false}
+  output_id:           {type: ref, required: true}
+  item_id:             {type: ref, required: false}
+  detector_manifest_id: {type: ref, required: true}
+  reference_profile_id: {type: ref, required: false}
+  created_at:          {type: string, required: true}
+
+input_characteristics:
+  task_type:           {type: string}
+  requested_voice:     {type: string}
+  genre:               {type: string}
+  target_length:       {type: int}
+  actual_length:       {type: int}
+  prompt_surface:      {type: enum, enum: [bare, compact_packet, full_compiled_packet, noisy_compiled_packet]}
+  short_output_metric_limitations: {type: bool, desc: "true when the output is too short for stable diversity metrics"}
+
+deterministic:
+  exact_duplicate_sentences:   {type: int}
+  exact_duplicate_clauses:     {type: int}
+  repeated_ngram_rates:        {type: map, desc: "n -> max repeat count"}
+  repeated_sentence_openings:  {type: int}
+  repeated_paragraph_openings: {type: int}
+  compression_ratio:           {type: number}
+  lexical_diversity:
+    unique_token_ratio: {type: number}
+    mattr:              {type: number}
+    mtld:               {type: number}
+    hdd:                {type: number}
+    hapax_rate:         {type: number}
+  sentence_rhythm:
+    mean:     {type: number}
+    variance: {type: number}
+    entropy:  {type: number}
+  paragraph_shape:             {type: map}
+  output_to_source_ratio:      {type: number}
+  hit_token_cap:               {type: bool}
+  evidence_spans:              {type: list, desc: "verbatim spans supporting each deterministic flag"}
+
+semantic:      # interface-only in Dispatch 23; detectors pinned, thresholds unvalidated
+  redundant_span_pairs:             {type: list}
+  paraphrase_loops:                 {type: list}
+  explanation_after_demonstration:  {type: list}
+  repeated_paragraph_functions:     {type: list}
+  local_coherence_flags:            {type: list}
+  scene_progression_flags:          {type: list}
+  voice_profile_distance:           {type: number}
+  character_voice_similarity:       {type: number}
+  cross_output_template_similarity: {type: number}
+  evidence_spans:                   {type: list}
+  detector_confidence:              {type: enum, enum: [high, moderate, low, unvalidated]}
+
+lexical_style:
+  stock_phrase_hits:      {type: list}
+  clustered_stock_phrases: {type: list}
+  vague_language_signals: {type: list}
+  abstraction_signals:    {type: list}
+  specificity_signals:    {type: list}
+  weak_verb_signals:      {type: list}
+  evidence_spans:         {type: list}
+
+reviewer:
+  checklist_results:          {type: list, desc: "one entry per slop_reviewer_checklist id"}
+  reviewer_ids:               {type: list}
+  reviewer_calibration_status: {type: map}
+  agreement:                  {type: string}
+  evidence_spans:             {type: list}
+
+corpus_level:
+  repeated_opening_patterns_across_outputs: {type: list}
+  repeated_scene_solutions:   {type: list}
+  repeated_image_families:    {type: list}
+  repeated_emotional_arcs:    {type: list}
+  cross_genre_voice_convergence: {type: list}
+  cross_output_similarity_clusters: {type: list}
+
+summary:
+  severity:                {type: enum, required: true, enum: severity}
+  dominant_failure_types:  {type: list}
+  fatal_slop_failure:      {type: bool}
+  mechanical_confidence:   {type: enum, enum: [high, moderate, low, inconclusive]}
+  semantic_confidence:     {type: enum, enum: [high, moderate, low, unvalidated, inconclusive]}
+  reviewer_confidence:     {type: enum, enum: [high, moderate, low, inconclusive]}
+  overall_confidence:      {type: enum, enum: [high, moderate, low, inconclusive]}
+  limitations:             {type: list, required: true}
+  likely_bottlenecks:      {type: list}
+  recommended_dataset_actions:  {type: list}
+  recommended_training_actions: {type: list}
+  recommended_context_actions:  {type: list}
+  recommended_decoding_actions: {type: list}
+
+enums:
+  severity: [none, low, moderate, high, severe, inconclusive]
+
+rules:
+  - "no single opaque score; every family reports evidence spans and its own confidence."
+  - "semantic detector_confidence stays 'unvalidated' until calibration; a scalar without implicated passages is insufficient."
+  - "short outputs set short_output_metric_limitations and diversity metrics are reported with that caveat, never as a verdict."
+  - "recommendations are separated into dataset / training / context / decoding levers; they are hypotheses, not causal verdicts."

@@ -1,0 +1,28 @@
+# LineWright Diagnostic Battery — endpoint descriptor schema (v1, Dispatch 23)
+#
+# Normalized configuration for a model worker endpoint. Never store API keys directly;
+# reference them by environment variable or external-secret name.
+
+schema: endpoint-descriptor
+schema_version: 1
+status: architecture_only
+
+fields:
+  endpoint_id:            {type: string, required: true}
+  endpoint_type:          {type: enum, required: true, enum: endpoint_type}
+  base_url:               {type: string, required: false, desc: "for http endpoints"}
+  model_name:             {type: string, required: true}
+  health_check:           {type: map, required: false, desc: "{path, expected_status}"}
+  authentication_source:  {type: string, required: false, desc: "ENV:VAR_NAME or secret ref; NEVER a literal key"}
+  timeout:                {type: number, required: false, desc: "seconds"}
+  supported_parameters:   {type: list, required: false}
+  unsupported_parameters: {type: list, required: false}
+  host_metadata:          {type: map, required: false, desc: "{host_id, device, vram_gb, ...}"}
+
+enums:
+  endpoint_type: [openai_compatible_http, local_huggingface, local_subprocess, test_stub]
+
+rules:
+  - "authentication_source is a REFERENCE (ENV:NAME / secret name), never a literal secret; committed manifests must not contain keys."
+  - "unsupported_parameters lets the planner reject a plan that requires a parameter the endpoint cannot honor (terminal failure, not a silent drop)."
+  - "test_stub endpoints are deterministic and used for orchestration tests without a real model."

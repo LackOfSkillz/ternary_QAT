@@ -1,0 +1,19 @@
+# LineWright Diagnostic Battery — worker lease schema (v1, Dispatch 23)
+#
+# Workers LEASE jobs and emit heartbeats. An expired lease is reclaimable so a lost worker
+# never strands a job.
+
+schema: worker-lease
+schema_version: 1
+status: architecture_only
+
+fields:
+  job_id:          {type: ref, required: true}
+  worker_id:       {type: ref, required: true}
+  acquired_at:     {type: string, required: true}
+  last_heartbeat:  {type: string, required: true}
+  lease_expires_at: {type: string, required: true}
+
+rules:
+  - "on controller start, a running job whose lease_expires_at has passed transitions running -> interrupted -> pending (per retry policy)."
+  - "a heartbeat extends lease_expires_at; missed heartbeats let the controller reclaim the job."

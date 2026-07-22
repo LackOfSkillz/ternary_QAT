@@ -1,0 +1,34 @@
+# LineWright Diagnostic Battery — job state machine schema (v1, Dispatch 23)
+#
+# The atomic durable work unit is: one model role x one benchmark item x one generation
+# configuration = one job. Completed jobs are persisted immediately.
+
+schema: job-state
+schema_version: 1
+status: architecture_only
+
+states:
+  - pending           # not yet leased
+  - leased            # a worker holds a lease but has not started
+  - running           # generation in progress
+  - completed         # result persisted + integrity-verifiable
+  - failed_retryable  # transient failure; eligible for retry per policy
+  - failed_terminal   # unrecoverable; not retried
+  - interrupted       # active generation stopped (immediate pause / expired lease / controller loss)
+  - cancelled         # run cancelled
+
+transitions:
+  pending:          [leased, cancelled]
+  leased:           [running, interrupted, pending, cancelled]
+  running:          [completed, failed_retryable, failed_terminal, interrupted, cancelled]
+  failed_retryable: [pending, failed_terminal, cancelled]   # requeued until attempts exhausted
+  interrupted:      [pending, cancelled]                    # requeued on resume
+  completed:        [interrupted]                           # only if integrity verification fails on resume
+  failed_terminal:  []
+  cancelled:        []
+
+rules:
+  - "a completed job is persisted immediately; the run never waits for the whole queue to save."
+  - "a completed job is skipped on resume ONLY after output-integrity verification passes; a failed check demotes completed -> interrupted or failed_terminal."
+  - "a retry never overwrites an existing valid completed result silently."
+  - "an expired-lease running job becomes interrupted -> pending per retry policy; a lost worker never leaves a job stuck forever."
