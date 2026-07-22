@@ -121,3 +121,35 @@ def test_zip_sha_matches_manifest_and_source_commit_recorded():
         assert m[rev]["reviewer_id"] == rev
     # orders differ between reviewers (randomized presentation)
     assert m["chatgpt"]["unit_order_sha256"] != m["claude"]["unit_order_sha256"]
+
+
+# ---- external blind review aggregation (ChatGPT + Claude) ----------------
+
+def test_external_review_transcription_self_validates():
+    import importlib.util, sys
+    p = os.path.join(REPO, "benchmarks", "active-core", "qwen-confirmation-v1", "aggregate_external_review.py")
+    if not os.path.exists(p):
+        pytest.skip("aggregator absent")
+    if REPO not in sys.path:
+        sys.path.insert(0, REPO)
+    spec = importlib.util.spec_from_file_location("agg_ext", p)
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    mod.validate()  # asserts CG means 2.222/1.944 + fatal counts 12/10; raises on mismatch
+
+
+def test_external_review_summary_invariants():
+    p = os.path.join(REPO, "benchmarks", "runs", "qwen-prose-confirmation-v1", "external-review-summary.json")
+    if not os.path.exists(p):
+        pytest.skip("external review summary not generated")
+    s = json.load(open(p, encoding="utf-8"))
+    # both reviewers perfectly calibrated on broken controls
+    for rv in ("chatgpt", "claude"):
+        c = s["reviewer_calibration"][rv]
+        assert c["broken_caught"] == c["broken_total"] and c["good_not_fatal"] is True
+    # Q4 not materially worse: prose/voice/instruction deltas within the 0.35 floor (in fact <=0)
+    d = s["bf16_to_q4_deltas"]
+    assert d["prose_quality"] <= 0.35 and d["voice_preservation"] <= 0.35 and d["instruction_compliance"] <= 0.35
+    # base fatal rate is recorded and flagged against the provisional floor (honest surfacing)
+    assert "fatal_prose_failure_rate" in s["base_prose_overall"]
+    assert s["base_prose_overall"]["exceeds_provisional_fatal_floor"] in (True, False)

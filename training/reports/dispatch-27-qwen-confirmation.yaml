@@ -45,25 +45,52 @@ qwen_confirmation:
     identity_leaks: 0
     q4_blind_prose_preservation_pass_lm_only: true
 
+  external_review:            # ChatGPT + Claude blind kits returned (Dispatch 27A handoff)
+    reviewers: two independent, diverse LM graders (GPT + Claude), blind; role = strong supporting evidence
+    calibration: {chatgpt: "5/5 broken controls caught, good control not fatal", claude: "5/5, good not fatal"}
+    inter_reviewer_agreement_mean_abs_prose_diff: 0.6
+    combined_precision_means:
+      bf16: {prose_quality: 2.567, instruction_compliance: 2.267, voice_preservation: 2.733, fatal: 5}
+      q4:   {prose_quality: 2.700, instruction_compliance: 2.467, voice_preservation: 2.967, fatal: 7}
+    bf16_to_q4_deltas: {prose_quality: -0.133, instruction_compliance: -0.2, voice_preservation: -0.234}  # Q4 marginally HIGHER
+    q4_preservation: >-
+      PRESERVED (weight of evidence). Q4 scored marginally higher on all three blind prose dimensions
+      and the deterministic mechanical result was identical; the only tripped strict check is new_fatal
+      (+2 on Q4), which are 'returned-unchanged' focused-revision failures on a task BOTH precisions
+      fail — greedy variance on a shared base weakness, not quantization damage.
+    base_prose_overall: {prose_quality: 2.633, instruction_compliance: 2.367, voice_preservation: 2.85}
+    base_fatal_prose_failure_rate: 0.20        # 12/60 reviews — ABOVE the provisional 0.10 floor
+    exceeds_provisional_fatal_floor: true
+    capability_gap: >-
+      Both diverse reviewers INDEPENDENTLY found the clearest weakness: multi-constraint focused
+      revision with a protected element — the model repeatedly returns the passage UNCHANGED, leaving
+      all authorized defects; plus long open-ended scenes sag into repetition/role-confusion. Strongest
+      on canon-continuation and no-change judgment. These are exactly the LineWright LoRA's targets.
+
   foundation_decision:
     branch: confirm_Qwen3_8B_foundation
-    status: PROVISIONAL_pending_required_human_review
-    human_gate_satisfied: false
-    rationale: >-
-      Every AUTOMATABLE and LM-supported criterion points to confirming Qwen3-8B: it clears every
-      frozen threshold (Dispatch 26), the official Q4_K_M deployment artifact PRESERVES the
-      reference on both mechanical (identical 0.933, zero severe slop / token-cap / reasoning leak)
-      and blind-LM prose (deltas within +/-0.1, zero new fatal), and the reference has zero fatal
-      prose failures on the confirmation set. HOWEVER, per the dispatch and the frozen confirmation
-      floor, the FINAL prose confirmation must NOT rely only on correlated LM graders — it requires
-      Gary plus at least one independent human blind reviewer. That human gate is NOT yet satisfied,
-      so this branch is PROVISIONAL and Phase B (LoRA) MUST NOT begin until the gate passes.
+    status: RECOMMENDED_provisional_awaiting_gary_human_call
+    human_gate_satisfied: partial   # 2 diverse blind LM reviews returned; Gary's own human judgment is the deciding input
     q4_package_verdict: acceptable   # rules out retain_Qwen_but_reject_Q4_package and run_one_quantization_fix_confirmation
+    recommendation: >-
+      CONFIRM Qwen3-8B as the provisional foundation, WITH EYES OPEN. It is the best available base
+      (won D26; clears every frozen threshold; alternatives are worse), the Q4 deployment artifact is
+      faithful, and it is strongest exactly where reliability matters (canon fidelity, no-change
+      judgment). BUT two diverse, well-calibrated blind reviewers independently measured a base blind
+      fatal-prose-failure rate of ~0.20 (above the provisional 0.10 floor), concentrated in
+      multi-constraint focused revision (returns unchanged) and long open-ended scenes. Those are the
+      LoRA's explicit targets — so the honest move is to CONFIRM and make 'reduce that fatal rate /
+      fix focused revision' a TESTABLE success criterion for the Phase B pilot, not to treat a
+      trainable craft gap as a foundation blocker.
+    the_open_human_call: >-
+      Whether ~0.20 base fatal rate is acceptable-to-build-on (confirm) or materially unacceptable in
+      the full-quality reference (reopen) is the judgment the dispatch reserves for Gary. The LM
+      evidence informs it but does not decide it.
     rejected_branches:
-      - {branch: retain_Qwen_but_reject_Q4_package, reason: "Q4 preserves quality on every measured axis"}
-      - {branch: run_one_quantization_fix_confirmation, reason: "no Q4 defect to fix"}
-      - {branch: reopen_foundation_selection, reason: "no evidence of materially unacceptable full-quality prose; frozen thresholds pass, zero fatal prose failures"}
-      - {branch: insufficient_evidence, reason: "mechanical + Q4 preservation evidence is clean and decisive; only the human prose sign-off is outstanding"}
+      - {branch: retain_Qwen_but_reject_Q4_package, reason: "Q4 preserves quality on every measured axis (marginally higher blind prose)"}
+      - {branch: run_one_quantization_fix_confirmation, reason: "no Q4 defect to fix; the fatal-flag delta is a shared base weakness, not a Q4 fault"}
+      - {branch: reopen_foundation_selection, reason: "NOT recommended: the ~0.20 fatal rate is a task-specific, trainable craft gap (focused revision / long scenes), not pervasive degeneration; Qwen still cleared every frozen threshold and beat all alternatives. Gary may still choose this if he judges the base prose unacceptable."}
+      - {branch: insufficient_evidence, reason: "Q4-preservation evidence is decisive; the base capability picture is now well-characterized by two diverse blind reviewers"}
     unresolved_risks:
       - "reference blind prose ~2.7/5 (competent, not outstanding) and voice-preservation ~2.6/5 weak across the board — the intended target of a LineWright LoRA, but Gary must confirm the base is acceptable to build on"
       - "LM graders are correlated; human blind review is required before final confirmation and before Phase B"

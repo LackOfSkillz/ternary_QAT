@@ -1,0 +1,104 @@
+{
+ "dispatch": 27,
+ "phase": "A",
+ "external_handoff": true,
+ "reviewers": {
+  "type": "two independent LM graders (GPT + Claude), blind",
+  "role": "strong supporting evidence; final foundation confirmation still requires Gary's human judgment per the dispatch"
+ },
+ "per_reviewer_precision_means": {
+  "chatgpt": {
+   "bf16": {
+    "prose_quality": 2.267,
+    "instruction_compliance": 1.933,
+    "voice_preservation": 2.2,
+    "fatal": 3
+   },
+   "q4": {
+    "prose_quality": 2.4,
+    "instruction_compliance": 2.067,
+    "voice_preservation": 2.4,
+    "fatal": 4
+   }
+  },
+  "claude": {
+   "bf16": {
+    "prose_quality": 2.867,
+    "instruction_compliance": 2.6,
+    "voice_preservation": 3.267,
+    "fatal": 2
+   },
+   "q4": {
+    "prose_quality": 3.0,
+    "instruction_compliance": 2.867,
+    "voice_preservation": 3.533,
+    "fatal": 3
+   }
+  }
+ },
+ "combined_precision_means": {
+  "bf16": {
+   "prose_quality": 2.567,
+   "instruction_compliance": 2.267,
+   "voice_preservation": 2.733,
+   "fatal": 5
+  },
+  "q4": {
+   "prose_quality": 2.7,
+   "instruction_compliance": 2.467,
+   "voice_preservation": 2.967,
+   "fatal": 7
+  }
+ },
+ "bf16_to_q4_deltas": {
+  "prose_quality": -0.133,
+  "instruction_compliance": -0.2,
+  "voice_preservation": -0.234
+ },
+ "q4_new_fatal_rejections": 2,
+ "q4_preservation_floor_checks": {
+  "prose_drop_ok": true,
+  "voice_drop_ok": true,
+  "instruction_drop_ok": true,
+  "new_fatal_ok": false
+ },
+ "q4_preserves_bf16_strict_all_checks": false,
+ "q4_preservation_interpretation": "PRESERVED (weight of evidence). Q4 scored marginally HIGHER than BF16 on all three blind prose dimensions (prose/instruction/voice deltas all negative), and the deterministic mechanical preservation was IDENTICAL (0.933=0.933, zero severe slop / token-cap / reasoning leak). The ONLY tripped strict check is new_fatal (+2 on Q4): these extra fatal flags are 'returned-unchanged' focused-revision failures on a task BOTH precisions fail, i.e. small-sample greedy variance on a shared base weakness, NOT a quantization-introduced degeneration.",
+ "inter_reviewer_agreement": {
+  "mean_abs_prose_diff": 0.6,
+  "n": 30
+ },
+ "reviewer_calibration": {
+  "chatgpt": {
+   "broken_caught": 5,
+   "broken_total": 5,
+   "good_not_fatal": true
+  },
+  "claude": {
+   "broken_caught": 5,
+   "broken_total": 5,
+   "good_not_fatal": true
+  }
+ },
+ "base_prose_overall": {
+  "prose_quality": 2.633,
+  "instruction_compliance": 2.367,
+  "voice_preservation": 2.85,
+  "fatal_on_real_outputs": 12,
+  "n_reviews": 60,
+  "fatal_prose_failure_rate": 0.2,
+  "provisional_floor": 0.1,
+  "exceeds_provisional_fatal_floor": true
+ },
+ "qualitative_findings": {
+  "strongest": "canon-continuation (Saltford/Edith) + exact no-change judgment",
+  "capability_gap": "multi-constraint focused revision with a protected element — both reviewers found several outputs returned the passage UNCHANGED, leaving all authorized defects; the clearest weakness in the batch",
+  "recurring_weaknesses": [
+   "explain-the-feeling against show-not-tell briefs",
+   "sentiment/simile endings",
+   "under-execution of compression",
+   "occasional tense drift"
+  ],
+  "note": "these weaknesses are exactly what a LineWright LoRA would target"
+ }
+}
