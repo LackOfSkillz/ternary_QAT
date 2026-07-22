@@ -1,0 +1,28 @@
+{
+  "dispatch": 26,
+  "note": "Traceable deployment assessment. Resident memory measured on the GB10; official GGUF artifacts recorded. Physical 8GB-GPU testing is UNAVAILABLE (the GB10 has 121GB unified memory, no discrete 8GB GPU) — 8GB fit is reasoned from artifact size + measured resident memory, marked accordingly.",
+  "resident_memory_gb_measured": {
+    "bonsai4b_bf16_load": 8.04,
+    "qwen3_8b_bf16_load": 16.38,
+    "ministral_8b_fp8_text_load": 10.43,
+    "ministral_8b_fp8_gen_spike_short_ctx": 26.81
+  },
+  "official_quantizations": {
+    "qwen3_8b": {"repo": "Qwen/Qwen3-8B-GGUF", "revision": "7c41481f57cb95916b40956ab2f0b139b296d974", "q4_k_m_file": "Qwen3-8B-Q4_K_M.gguf", "single_file": true},
+    "ministral_3_8b": {"repo": "mistralai/Ministral-3-8B-Instruct-2512-GGUF", "exists": true}
+  },
+  "gguf_llama_cpp_maturity": {
+    "qwen3_8b": "MATURE (official + extensive community GGUF; well-supported in llama.cpp)",
+    "ministral_3_8b": "official GGUF EXISTS, but mistral3 (multimodal) + FP8-source GGUF quality and 8GB behaviour are UNVERIFIED here"
+  },
+  "eight_gb_fit_reasoning": {
+    "qwen3_q4_k_m": "Q4_K_M ~4.7GB weights; fits an 8GB GPU with KV headroom at 8K context (minimum tier). VIABLE.",
+    "ministral": "an official/community Q4 GGUF would be ~5GB and fit 8GB by size, BUT mistral3 llama.cpp support + FP8->GGUF quality are unverified; the transformers FP8 path resident is 10.4GB (load) and spikes to ~27GB in generation — does NOT fit 8GB. UNVERIFIED for the 8GB local target."
+  },
+  "physical_8gb_hardware_tested": false,
+  "physical_8gb_note": "no 8GB GPU on the GB10 hosts (121GB unified); constrained-environment testing unavailable — 8GB fit reasoned, not measured on 8GB hardware.",
+  "qwen3_8gb_path_viable": true,
+  "ministral_8gb_path_viable": null,
+  "quality_delta_vs_phase_a": "PENDING — a blind pass on the quantized (GGUF) outputs is required before ship; the frozen floors apply to the DEPLOYED artifact, not only full precision.",
+  "reasoning_trace_leak_qwen": 0.0
+}

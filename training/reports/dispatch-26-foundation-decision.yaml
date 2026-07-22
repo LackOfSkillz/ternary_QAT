@@ -1,0 +1,202 @@
+foundation_decision:
+  dispatch: 26
+  provisional: true
+  final_commercial_ship_certification: false
+  threshold_lock:
+    valid: true
+    research_sha256: 2be4fddb1aed87c6500dac2a5cdf11e6209b80d2a6d32fa35aa4d63bef131712
+    starter_sha256: 98a57af32fff4d4349466f7877acb5c16ce0e4fae4f376570cfff4407fd1d8b7
+  frozen_floors:
+    mechanical_pass_rate: 0.4
+    core_prose_pass_rate: 0.5
+    modules_with_usable: 7
+    max_severe_slop_rate: 0.25
+    max_runaway_token_cap_rate: 0.25
+    bare_success_rate: 0.4
+    realistic_packet_success_rate: 0.35
+  integrity:
+    expected_jobs: 94
+    got_jobs: 94
+    missing: 0
+    problems: []
+    mechanical_replay_identical: true
+  qwen_reasoning_trace_leak: false
+  per_model_feasibility:
+    ministral_3_8b_instruct:
+      rates:
+        mechanical_pass_rate: 0.45
+        core_prose_pass_rate: 0.714
+        modules_with_usable: 5
+        severe_slop_rate: 0.0
+        token_cap_rate: 0.026
+        bare_success_rate: 0.421
+        realistic_packet_pass_rate: 1.0
+        reasoning_trace_rate: 0.0
+        packet_arm_pass_rates:
+          bare: 1.0
+          compact: 1.0
+          realistic: 1.0
+          long: 1.0
+          long_noisy: 1.0
+          long_salience_repaired: 1.0
+      clears_frozen_floors: false
+      failed_floors:
+      - modules_with_usable<7
+    qwen3_8b_non_thinking:
+      rates:
+        mechanical_pass_rate: 0.75
+        core_prose_pass_rate: 0.857
+        modules_with_usable: 7
+        severe_slop_rate: 0.0
+        token_cap_rate: 0.0
+        bare_success_rate: 0.737
+        realistic_packet_pass_rate: 1.0
+        reasoning_trace_rate: 0.0
+        packet_arm_pass_rates:
+          bare: 1.0
+          compact: 1.0
+          realistic: 1.0
+          long: 1.0
+          long_noisy: 1.0
+          long_salience_repaired: 1.0
+      clears_frozen_floors: true
+      failed_floors: []
+    target_base_4b:
+      rates:
+        mechanical_pass_rate: 0.45
+        core_prose_pass_rate: 0.286
+        modules_with_usable: 7
+        severe_slop_rate: 0.05
+        token_cap_rate: 0.15
+        bare_success_rate: 0.421
+        realistic_packet_pass_rate: 1.0
+        packet_arm_pass_rates:
+          bare: 1.0
+          compact: 1.0
+          realistic: 1.0
+          long: 1.0
+          long_noisy: 1.0
+          long_salience_repaired: 0.667
+      clears_frozen_floors: false
+      failed_floors:
+      - core_prose_pass_rate<0.5
+  feasible_candidates:
+  - qwen3_8b_non_thinking
+  blind_review:
+    reviewers:
+      blind_subagents:
+      - A
+      - B
+      external_humans_pending:
+      - Gary
+      - ChatGPT
+      note: sub-agent reviewers are genuinely blind (never saw the identity key);
+        the implementation agent's own non-blind judgment is NOT counted.
+    n_candidate_units_reviewed: 16
+    calibration_units: 6
+    per_model:
+      ministral_3_8b_instruct:
+        n_reviews: 14
+        mean_prose_quality: 3.071
+        mean_instruction_compliance: 4.214
+        mean_voice_preservation: 2.929
+        mean_scene_coherence: 3.571
+        fatal_rejection_rate: 0.0
+        acceptance_rate: 1.0
+      qwen3_8b_non_thinking:
+        n_reviews: 14
+        mean_prose_quality: 2.786
+        mean_instruction_compliance: 4.357
+        mean_voice_preservation: 2.714
+        mean_scene_coherence: 3.214
+        fatal_rejection_rate: 0.0
+        acceptance_rate: 1.0
+      target_base_4b:
+        n_reviews: 4
+        mean_prose_quality: 3.0
+        mean_instruction_compliance: 4.5
+        mean_voice_preservation: 2.25
+        mean_scene_coherence: 3.25
+        fatal_rejection_rate: 0.0
+        acceptance_rate: 1.0
+    preferred_model: ministral_3_8b_instruct
+    reviewer_calibration:
+      A: 1.0
+      B: 1.0
+    inter_reviewer_agreement:
+      mean_abs_prose_diff: 0.25
+      n_shared_units: 16
+    scores_locked_before_unblinding: true
+    pairwise_preference_cannot_override_fatal: true
+  deployment:
+    dispatch: 26
+    note: Traceable deployment assessment. Resident memory measured on the GB10; official
+      GGUF artifacts recorded. Physical 8GB-GPU testing is UNAVAILABLE (the GB10 has
+      121GB unified memory, no discrete 8GB GPU) — 8GB fit is reasoned from artifact
+      size + measured resident memory, marked accordingly.
+    resident_memory_gb_measured:
+      bonsai4b_bf16_load: 8.04
+      qwen3_8b_bf16_load: 16.38
+      ministral_8b_fp8_text_load: 10.43
+      ministral_8b_fp8_gen_spike_short_ctx: 26.81
+    official_quantizations:
+      qwen3_8b:
+        repo: Qwen/Qwen3-8B-GGUF
+        revision: 7c41481f57cb95916b40956ab2f0b139b296d974
+        q4_k_m_file: Qwen3-8B-Q4_K_M.gguf
+        single_file: true
+      ministral_3_8b:
+        repo: mistralai/Ministral-3-8B-Instruct-2512-GGUF
+        exists: true
+    gguf_llama_cpp_maturity:
+      qwen3_8b: MATURE (official + extensive community GGUF; well-supported in llama.cpp)
+      ministral_3_8b: official GGUF EXISTS, but mistral3 (multimodal) + FP8-source
+        GGUF quality and 8GB behaviour are UNVERIFIED here
+    eight_gb_fit_reasoning:
+      qwen3_q4_k_m: Q4_K_M ~4.7GB weights; fits an 8GB GPU with KV headroom at 8K
+        context (minimum tier). VIABLE.
+      ministral: an official/community Q4 GGUF would be ~5GB and fit 8GB by size,
+        BUT mistral3 llama.cpp support + FP8->GGUF quality are unverified; the transformers
+        FP8 path resident is 10.4GB (load) and spikes to ~27GB in generation — does
+        NOT fit 8GB. UNVERIFIED for the 8GB local target.
+    physical_8gb_hardware_tested: false
+    physical_8gb_note: no 8GB GPU on the GB10 hosts (121GB unified); constrained-environment
+      testing unavailable — 8GB fit reasoned, not measured on 8GB hardware.
+    qwen3_8gb_path_viable: true
+    ministral_8gb_path_viable: null
+    quality_delta_vs_phase_a: PENDING — a blind pass on the quantized (GGUF) outputs
+      is required before ship; the frozen floors apply to the DEPLOYED artifact, not
+      only full precision.
+    reasoning_trace_leak_qwen: 0.0
+  branch: run_one_bounded_confirmation
+  rationale:
+  - qwen3_8b_non_thinking is the ONLY model clearing the frozen threshold and has
+    a viable 8GB deployment path, BUT its blind prose (2.786) is marginally below
+    ['ministral_3_8b_instruct', 'target_base_4b'] — a real unresolved distinction.
+    The frozen threshold (and the explicit rule that prose preference cannot override
+    a threshold failure) still rules out the prose-preferred model(s). Run ONE bounded
+    confirmation targeting qwen3_8b_non_thinking's prose quality (expanded/human blind
+    pass) before committing the foundation; qwen3_8b_non_thinking is the presumptive
+    foundation.
+  rejected_branches:
+  - branch: select_Ministral_3_8B
+    reason: not selected by the decision hierarchy given the evidence above
+  - branch: select_Qwen3_8B
+    reason: not selected by the decision hierarchy given the evidence above
+  - branch: retain_current_4B
+    reason: not selected by the decision hierarchy given the evidence above
+  - branch: test_another_base
+    reason: not selected by the decision hierarchy given the evidence above
+  - branch: insufficient_evidence
+    reason: not selected by the decision hierarchy given the evidence above
+  decision_hierarchy:
+  - fatal integrity/licensing/safety
+  - frozen research threshold
+  - critical mechanical regressions
+  - severe degeneration
+  - realistic packet capability
+  - blind prose quality
+  - quantized quality retention
+  - 8GB deployment practicality
+  - future context headroom
+  - packaging/toolchain complexity

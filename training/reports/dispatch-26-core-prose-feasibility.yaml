@@ -1,0 +1,20 @@
+core_prose_feasibility:
+  frozen_floor: 0.5
+  per_model:
+    ministral_3_8b_instruct:
+      core_prose_pass_rate: 0.714
+      clears_floor: true
+      clears_all_floors: false
+      failed_floors:
+      - modules_with_usable<7
+    qwen3_8b_non_thinking:
+      core_prose_pass_rate: 0.857
+      clears_floor: true
+      clears_all_floors: true
+      failed_floors: []
+    target_base_4b:
+      core_prose_pass_rate: 0.286
+      clears_floor: false
+      clears_all_floors: false
+      failed_floors:
+      - core_prose_pass_rate<0.5
