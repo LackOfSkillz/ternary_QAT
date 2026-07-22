@@ -1,0 +1,77 @@
+# Ternary-QAT stability calibration — candidate 1 (lr 2e-4). Dispatch 19.
+# Short 10-step run with warmup + gradient clipping to find the first stable QAT
+# learning rate after the 4e-3 divergence. GX10 backend: hf only. Not the 20-step run.
+experiment_id: dataset-a-ternary-qat-calibration-2e-4
+status: calibration
+production_approved: false
+experimental_use_only: true
+
+model:
+  base_model: prism-ml/Ternary-Bonsai-4B-unpacked
+  base_model_path: /workspace/hf-cache/prism-ml/Ternary-Bonsai-4B-unpacked
+  base_model_revision: 4485fae7a00129467b9329b738110d88b2942a1a
+  tokenizer_revision: 4485fae7a00129467b9329b738110d88b2942a1a
+
+paths:
+  output_dir: training/runs/dataset-a-qat-calibration-v1/lr-2e-4
+  logging_dir: training/runs/dataset-a-qat-calibration-v1/lr-2e-4/logs
+  cache_dir: /workspace/hf-cache
+
+dataset:
+  train_file: datasets/dataset-a/compiled/experimental-v1/train.jsonl
+  evaluation_file: datasets/dataset-a/compiled/experimental-v1/evaluation.jsonl
+  system_prompt_file: datasets/dataset-a/prompts/linewright-training-system-v1.txt
+  train_checksum: 97778f2a334649c8a67376b09c42d297ebdf031e2123e6dcce378310cfbf8f38
+  evaluation_checksum: 0f3ae4263c5a175b38af5723f04e161de98e30a4a8ac5be10a2153a5fe47fc3b
+  system_prompt_checksum: 038d9ab8aac2aee9504aa7c81f8870cbad66338436aad3c4063b97b1fd205c3c
+  format: sft_messages
+
+reproducibility:
+  seed: 20260721
+  deterministic: true
+
+sequence:
+  max_sequence_length: 2048
+
+ternary_qat:
+  method: straight_through_estimator
+  swap_linear: true
+  ternary_linear_module: ternary.linear
+  group_size: 128
+  rounding: half_even
+  scale_dtype: fp16
+  module_policy:
+    attention_linear: ternary
+    mlp_linear: ternary
+    embeddings: ternary
+    lm_head: ternary
+    normalization_layers: full_precision
+  tied_weight_policy: preserve
+  preserve_base_checkpoint: true
+
+optimization:
+  learning_rate: 2.0e-4
+  max_steps: 10
+  micro_batch_size: 1
+  gradient_accumulation_steps: 8
+  precision: bf16
+  optimizer: adamw_torch
+  completion_only_loss: true
+  packing: false
+
+gradient_clipping:
+  enabled: true
+  max_norm: 1.0
+  norm_type: 2.0
+
+gradient_monitor:
+  max_global_norm: 100.0
+  consecutive_step_limit: 2
+
+warmup_steps: 3
+
+intervals:
+  checkpoint_interval_steps: 5
+  eval_interval_steps: 5
+  logging_interval_steps: 1
+  eval_before_training: false
