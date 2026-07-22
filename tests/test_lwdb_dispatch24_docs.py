@@ -21,13 +21,14 @@ def test_readme_and_roadmap_mark_dispatch_24():
     r = _read(os.path.join(REPO, "README.md"))
     assert "fast battery" in r.lower() and "dual-GX10" in r
     rd = _read(os.path.join(REPO, "ROADMAP.md"))
-    assert re.search(r"\*\*24\*\*.*current", rd) or re.search(r"24.*current", rd)
+    # Dispatch 24 is marked (current or done); 25-27 preserved
+    assert re.search(r"24.*(current|done)", rd, re.I)
     for d in (25, 26, 27):
         assert re.search(rf"\b{d}\b", rd)
 
 
 def test_training_pilot_documents_first_execution():
-    t = _read(os.path.join(REPO, "TRAINING_PILOT.md"))
+    t = " ".join(_read(os.path.join(REPO, "TRAINING_PILOT.md")).split())  # normalize whitespace
     assert "dual-GX10" in t and "frozen generation plan" in t
     assert "sequential" in t.lower() and "resume" in t.lower()
 
@@ -91,7 +92,11 @@ def test_dataset_a2_pilot_unchanged():
         assert digest(rows) == man[key]
 
 
-def test_no_committed_ledger_or_output_dirs():
-    import glob
-    for pat in ("**/*.sqlite",):
-        assert not glob.glob(os.path.join(RUN, pat), recursive=True)
+def test_ledger_and_raw_outputs_are_git_ignored():
+    # a live run creates a ledger + raw outputs locally; they must be git-ignored, not tracked
+    import subprocess
+    for rel in ("run-ledger.sqlite", "normalized-results", "reviewer-packets"):
+        p = os.path.join("benchmarks", "runs", "lwdb-fast-v1-20260722", rel)
+        r = subprocess.run(["git", "check-ignore", p], cwd=REPO, capture_output=True, text=True)
+        if os.path.exists(os.path.join(REPO, p)):
+            assert r.returncode == 0, f"{rel} exists but is not git-ignored"

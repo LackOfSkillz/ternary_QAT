@@ -131,10 +131,14 @@ def test_calibration_records_are_benchmark_only():
 # ---- no training run / no ordinary benchmark / no committed run artifacts ----
 
 def test_no_sqlite_run_artifacts_committed():
-    # ledger dbs are tmp-only; none should be tracked under the repo tree
+    # a live run may create a ledger db locally; it must be git-IGNORED, never tracked.
+    import subprocess
     for pat in ("**/*.db", "**/*.sqlite"):
         for p in glob.glob(os.path.join(BENCH, pat), recursive=True):
-            raise AssertionError(f"unexpected committed ledger db: {p}")
+            rel = os.path.relpath(p, REPO)
+            r = subprocess.run(["git", "check-ignore", rel], cwd=REPO,
+                               capture_output=True, text=True)
+            assert r.returncode == 0, f"ledger db not git-ignored: {rel}"
 
 
 def test_benchmark_lifecycle_dirs_have_no_ordinary_items():
