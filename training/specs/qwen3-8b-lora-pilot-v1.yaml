@@ -1,0 +1,93 @@
+# Dispatch 27 Phase B — Conservative Qwen3-8B LoRA Pilot config (v1)
+#
+# FROZEN CONFIG ONLY. Training is HELD pending Gary's human foundation confirmation (Phase A
+# gate). This spec is committed BEFORE any training; the exact base revision, dataset hash, and
+# recipe are pinned so the run is reproducible and single-variable. NOT a production run.
+
+spec_id: qwen3-8b-lora-pilot-v1
+dispatch: 27
+phase: B
+status: frozen_config_training_held
+training_started: false
+entry_gate: requires confirm_Qwen3_8B_foundation via human blind review (Gary + independent)
+phase_a_decision_commit: 2422993   # Dispatch 27 Phase A provisional confirmation (record on execution)
+
+frozen_thresholds:
+  research_continuation_sha256: 2be4fddb1aed87c6500dac2a5cdf11e6209b80d2a6d32fa35aa4d63bef131712
+  starter_model_acceptance_sha256: 98a57af32fff4d4349466f7877acb5c16ce0e4fae4f376570cfff4407fd1d8b7
+  unchanged: true
+
+base:
+  model_id: Qwen/Qwen3-8B
+  revision: b968826d9c46dd6066d109eabc6255188de91218
+  variant: Instruct (post-trained)   # do NOT switch to Qwen3 Base
+  thinking: disabled                 # enable_thinking=False; verify zero <think> in eval
+  architecture: {model_type: qwen3, num_hidden_layers: 36, hidden_size: 4096, heads: 32, kv_heads: 8, tie_word_embeddings: false}
+
+dataset:
+  name: dataset-a.3 (pilot)
+  records_jsonl: datasets/dataset-a.3/records/a3-pilot.jsonl
+  train_sha256: 91e572421fe6bdef... # full hash in dataset-a3-audit-v1/freeze.json; verify at train time
+  record_count: 48
+  note: pilot corpus (training_only, draft, Gate-3 pending); production build must scale + human-curate first
+
+method: LoRA
+lora:
+  rank: 16
+  alpha: 16                # ~1x rank (conservative; not the max of the 8-16 / 1-2x ranges)
+  dropout: 0.05
+  target_modules: [q_proj, k_proj, v_proj, o_proj, gate_proj, up_proj, down_proj]
+  bias: none
+  task_type: CAUSAL_LM
+optimizer:
+  learning_rate: 1.0e-5    # conservative end of the 5e-6..2e-5 range (NOT the ternary-QAT 7e-4 regime)
+  lr_schedule: cosine
+  warmup_ratio: 0.03
+  weight_decay: 0.0        # rationale: tiny adapter on a strong base; regularise via low LR + few passes, not decay
+  gradient_clipping: 1.0
+  optimizer: adamw
+  mixed_precision: bf16
+training:
+  epochs: 1                # approximately_1_or_less
+  shuffle: true
+  early_stopping: {monitor: validation_loss, patience: 2, required: true}
+  heldout_monitoring: required   # development pool held out from training
+  seed: 20260722
+sequence_length:
+  maximum_sequence_length: 2048     # from A.3 stats, NOT the 131K advertised context
+  p95_training_record_tokens: to_measure_at_train_time  # A.3 records are short; expect << 2048
+  truncation_rate: expect_~0
+  packing: disabled                 # preserve record boundaries + loss masking; enable only if verified correct
+checkpointing:
+  frequent: true
+  cadence: every_3_optimizer_steps
+  minimum_trained_checkpoints_before_final: 4
+  save: [base, step-3, step-6, step-9, step-12, final]  # adjust to actual steps/batch; keep >=4 trained
+  record_per_checkpoint: [optimizer_step, examples_seen, tokens_seen, estimated_dataset_passes,
+                          training_loss, validation_loss, learning_rate, gradient_norm, adapter_hash]
+stop_conditions:
+  - severe slop emerges
+  - token-cap runaway emerges
+  - a frozen critical module regresses
+  - validation loss worsens consistently
+  - output diversity collapses
+  - reasoning traces appear
+  - checkpoint performance peaks then declines
+
+exposure_budget:
+  effective_examples_seen: ~48 (1 pass)
+  estimated_dataset_passes: ~1
+  comparison_with_failed_4b_recipe: >-
+    The 4B LoRA-20 overexposed 28 records across ~5 passes and collapsed by step 20 (severe slop
+    9/20, token-cap 9/20). This pilot: MORE records (48 > 28), FEWER passes (~1 vs ~5), LOWER LR
+    (1e-5, conservative), frequent early checkpoints, and early stopping — designed to catch peak
+    BEFORE degeneration rather than train through it.
+
+not_allowed:
+  - broad hyperparameter sweep
+  - varying LR/rank/alpha/dropout/dataset/steps simultaneously
+  - training from Qwen3 Base
+  - enabling thinking mode
+  - launching QAT
+  - training LoRA and QAT simultaneously
+  - modifying frozen thresholds / Fast Battery v1 / Dataset A / A.2

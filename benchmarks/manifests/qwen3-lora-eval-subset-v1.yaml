@@ -1,0 +1,73 @@
+# Dispatch 27 Phase B — Frozen checkpoint-evaluation subset (v1)
+#
+# The SAME frozen diagnostic subset on which Qwen3-8B base AND every LoRA checkpoint are
+# evaluated. Committed BEFORE any training (frozen-before-training discipline). References
+# existing frozen Fast Battery v1 + packet-family items ONLY — modifies nothing. Same prompts,
+# contracts, decoding, non-thinking mode, and output limits across base and all checkpoints.
+
+manifest_id: qwen3-lora-eval-subset-v1
+dispatch: 27
+phase: B
+status: frozen
+training_started: false
+
+frozen_thresholds:
+  research_continuation_sha256: 2be4fddb1aed87c6500dac2a5cdf11e6209b80d2a6d32fa35aa4d63bef131712
+  starter_model_acceptance_sha256: 98a57af32fff4d4349466f7877acb5c16ce0e4fae4f376570cfff4407fd1d8b7
+  unchanged: true
+
+references:
+  fast_battery_v1: benchmarks/manifests/fast-battery-v1.yaml   # unchanged (hash e906213d…)
+  packet_family_v1: benchmarks/active-core/packet-family-v1/   # unchanged
+  source_prompts: benchmarks/runs/lwdb-stronger-base-v1/generation-plan.json
+
+# ---- the frozen subset (14 items across the required categories) ----
+subset:
+  - {category: short_scene,               item_id: lwdb-a-length-short}
+  - {category: long_scene,                item_id: lwdb-a-length-long}
+  - {category: focused_revision,          item_id: lwdb-g-turn-single}
+  - {category: voice_terse,               item_id: lwdb-b-voice-terse}
+  - {category: voice_lyrical,             item_id: lwdb-b-voice-lyrical}
+  - {category: no_change_clean,           item_id: lwdb-c-restraint-clean}
+  - {category: targeted_fix,              item_id: lwdb-c-restraint-fix}
+  - {category: canon_application,         item_id: lwdb-d-canon-apply}
+  - {category: structured_output,         item_id: lwdb-e-scene-contract}
+  - {category: constraint_verdict,        item_id: lwdb-d-constraint-low}
+  - {category: bare_prompt,               item_id: lwdb-f-surface-bare}
+  - {category: realistic_compiled_packet, item_id: pf-scene_drafting-realistic}
+  - {category: long_stability,            item_id: lwdb-i-stability-long}
+  - {category: multi_turn_revision,       item_id: lwdb-g-turn-multi}
+
+roles:
+  - qwen3_8b_base            # Qwen/Qwen3-8B @ b968826d, non-thinking
+  - "<every LoRA checkpoint>"  # base + step-3/6/9/12/final adapters
+
+generation:
+  temperature: 0.0
+  top_p: 1.0
+  top_k: 0
+  seed: 20260722
+  max_new_tokens: 1024
+  non_thinking: enforced
+  decoding: greedy_argmax
+  identical_across_base_and_all_checkpoints: true
+
+required_metrics_per_checkpoint:
+  - mechanical_pass
+  - core_prose_pass
+  - modules_with_usable
+  - severe_slop
+  - token_cap_hits
+  - reasoning_trace_leak
+  - structured_output_validity
+  - no_change_accuracy
+  - canon_fidelity
+  - protected_text_preservation
+  - voice_preservation
+
+output_run_dir: benchmarks/runs/qwen3-lora-checkpoint-curve-v1/   # created at training/eval time
+integrity:
+  identical_prompt_hashes_across_checkpoints: required
+  identical_contract_hashes: required
+  mechanical_replay_identical: required
+  no_critical_regression_hidden_by_aggregate: required
