@@ -82,3 +82,10 @@ training/runs/**/lr-*/run-manifest.json
 training/runs/**/lr-*/integrity/
 training/runs/dataset-a-qat-calibration-v1/integrity/base-model-*.json
 training/runs/dataset-a-qat-calibration-v1/integrity/repository-*.json
+
+# Dispatch 20 full-comparison machine-specific raw artifacts. Checkpoints, integrity/**
+# (base-model-*/repository-* inventories, whose verdicts are echoed in the tracked
+# full-comparison-summary.json), and run-manifest.json are already covered by the
+# generic rules above. Re-include the QAT eval.json for THIS run only (the generic
+# ternary-qat/eval.json ignore near the top is Dispatch-18B-specific).
+!training/runs/dataset-a-full-comparison-v1/ternary-qat/eval.json
