@@ -1,0 +1,111 @@
+lora_training_integrity:
+  dispatch: 27
+  phase: B
+  run_id: qwen3-lora-checkpoint-curve-v1
+  integrity_outcome: valid
+  base_model: Qwen/Qwen3-8B
+  base_revision: b968826d9c46dd6066d109eabc6255188de91218
+  base_revision_correct: true
+  dataset: dataset-a.3 (pilot)
+  dataset_train_sha256: 91e572421fe6bdef110bbf28...
+  dataset_hash_matches_frozen: true
+  dataset_a_unchanged: true
+  dataset_a2_unchanged: true
+  train_records: 42
+  validation_records: 6
+  held_out:
+  - a3-canon-001
+  - a3-nochange-001
+  - a3-rev-001
+  - a3-scene-001
+  - a3-struct-001
+  - a3-voice-001
+  thinking: disabled
+  lora:
+    rank: 16
+    alpha: 16
+    target_modules:
+    - q_proj
+    - k_proj
+    - v_proj
+    - o_proj
+    - gate_proj
+    - up_proj
+    - down_proj
+  trainable_parameter_count: 43646976
+  container: linewright-ternary-train:d26
+  torch: 2.10.0a0+nv25.11
+  transformers: 5.14.1
+  peft: 0.19.1
+  host: gx10-9141 (GB10)
+  elapsed_seconds: 23.9
+  peak_memory_gb: 23.51
+  final_training_loss: 5.3535
+  final_validation_loss: 4.3981
+  loss_finite: true
+  gradient_norms_finite: true
+  no_nan_or_inf: true
+  no_silent_resume: true
+  no_checkpoint_substitution: true
+  qat_launched: false
+  final_adapter_sha256: 164fd379ae0f32412e02d69a388581498713a3a9a0becc2fe19ec7bfac816652
+  checkpoints:
+  - optimizer_step: 3
+    examples_seen: 6
+    estimated_dataset_passes: 0.14
+    training_loss: 4.9899
+    validation_loss: 4.4299
+    learning_rate: 9.938441702975689e-06
+    grad_norm: 3.9341
+    adapter_sha256: 5a550c7231191146bdaa4398f377b2cee690a1280782a9b50bfeb02fe96096f5
+  - optimizer_step: 6
+    examples_seen: 12
+    estimated_dataset_passes: 0.29
+    training_loss: 3.2161
+    validation_loss: 4.4226
+    learning_rate: 9.045084971874738e-06
+    grad_norm: 2.6729
+    adapter_sha256: 39bf8323c7d34162228014ad7b2e1a683bf69bc4df9e62caa7285a1d2c99785a
+  - optimizer_step: 9
+    examples_seen: 18
+    estimated_dataset_passes: 0.43
+    training_loss: 5.2578
+    validation_loss: 4.412
+    learning_rate: 7.269952498697734e-06
+    grad_norm: 4.5504
+    adapter_sha256: 1b0b0491c794ece4d3d0c820547978611ff5e657a756915af3a285dcde307ea8
+  - optimizer_step: 12
+    examples_seen: 24
+    estimated_dataset_passes: 0.57
+    training_loss: 6.657
+    validation_loss: 4.3993
+    learning_rate: 5.0e-06
+    grad_norm: 4.773
+    adapter_sha256: 09c3ff0ea504f7a89600538078eeabad0af92ab47d4aeaaa4ad8c25c784fa0f9
+  - optimizer_step: 15
+    examples_seen: 30
+    estimated_dataset_passes: 0.71
+    training_loss: 2.5833
+    validation_loss: 4.3922
+    learning_rate: 2.7300475013022666e-06
+    grad_norm: 2.9582
+    adapter_sha256: afbee4c815a27f5ce3b3f86803a9223539b753385d5f8c61c67d10ce56a973ee
+  - optimizer_step: 18
+    examples_seen: 36
+    estimated_dataset_passes: 0.86
+    training_loss: 3.7123
+    validation_loss: 4.3783
+    learning_rate: 9.549150281252633e-07
+    grad_norm: 4.0862
+    adapter_sha256: c3498c4d1eb9194a9a0b63f15ec4d74cf0f49ee43a3a6148b330b715f6749afb
+  - optimizer_step: 21
+    examples_seen: 42
+    estimated_dataset_passes: 1.0
+    training_loss: 5.3535
+    validation_loss: 4.3981
+    learning_rate: 6.15582970243117e-08
+    grad_norm: 4.7717
+    adapter_sha256: 164fd379ae0f32412e02d69a388581498713a3a9a0becc2fe19ec7bfac816652
+  note: 7 step checkpoints (3,6,9,12,15,18,21) + final (== step-21). Val loss monotone-decreases
+    4.4298->4.3783 (step 3->18), slight uptick at step-21; train loss noisy (batch=2,
+    42 records). No collapse.
