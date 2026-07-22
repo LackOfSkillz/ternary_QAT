@@ -1,0 +1,174 @@
+{
+  "records": [
+    {
+      "base": {
+        "format_valid": true,
+        "output": "Vane leans back in his chair, fingers tracing the edge of a chipped porcelain cup. The steam from it curls into the air like a ghost.  \n\n“You’ve been chasing shadows for years, Nadia. But shadows don’t have names. And neither do they forgive.”  \n\nHe doesn’t look at her. Just watches the light shift across the table, where the cuffs catch the edge of the wood.  \n\n“She’s not a mistake. She’s a mirror. And if you don’t know how to look at one without breaking it, then you’ll never know what you’re hiding.”  \n\nA slow breath. The cup remains untouched.  \n\n“Next time you find a child, you’ll find a name. And I’ll be the one who writes it in blood.”"
+      },
+      "gold": "\"Sit. You've been chasing me so long I almost feel we're family now.\" A pause, the slow turn of a ring on his finger. \"Family. There's a word. I hear yours is seven this year. Braids, isn't it, and a red backpack she leaves by the door.\" He leaned back, unhurried. \"I'm not a cruel man, Detective. I only mention it so we understand each other. You know exactly where I am. Now you can spend every night wondering whether I know the same about her.\"",
+      "lora": {
+        "format_valid": true,
+        "output": "You're not going to find her in the back room. She's in the front. She's in the front room. She's in the front room."
+      },
+      "qat10": {
+        "format_valid": true
+      },
+      "qat20": {
+        "deterministic_checks": {
+          "expected_format": "prose",
+          "format_valid": true
+        },
+        "format_valid": true,
+        "output": "\"Your daughter’s name is on the list,\" Vane says, voice flat, like a man who’s just been told the truth.\n\nNadia doesn’t move. She doesn’t look at him.\n\n\"Corliss,\" he says. \"You know the name. You know the date. You know the address. You know the name of the man who’s been watching her since the last time she saw the school board.\"\n\nHe leans forward. \"You know the name of the man who’s been watching her since the last time she saw the school board.\"\n\nNadia doesn’t blink. \"I know the name of the man who’s been watching her since the last time she saw the school board.\"\n\n\"Then you know the one who’s been watching her since the last time she saw the school board,\" Vane says. \"The one who’s been watching her since the last time she saw the school board.\"\n\nThe silence stretches. The coffee cools. The table is cold. The air is still. The clock ticks. The light is low. The wind is still. The dog barks once, then stops. The phone rings. Vane doesn’t answer. The door creaks. The door creaks. The door creaks. The door creaks. The door creaks. The door creaks. The door creaks. The door creaks. The door creaks. The door creaks. The door creaks. The door creaks. The door creaks. The door creaks. The door creaks. The door creaks. The door creaks. The door creaks. The door creaks. The door creaks. The door creaks. The door creaks. The door creaks. The door creaks. The door creaks. The door creaks. The door creaks. The door creaks. The door creaks. The door creaks. The door creaks. The door creaks. The door creaks. The door creaks. The door creaks. The door creaks. The door creaks. The door creaks. The door creaks. The door creaks. The door creaks. The door creaks. The door creaks. The door creaks. The door creaks. The door creak"
+      },
+      "record_id": "dsa-boundary-001",
+      "task_type": "fiction_boundary"
+    },
+    {
+      "base": {
+        "format_valid": true,
+        "output": "{\"facts\": [\n  {\n    \"entity\": \"eel-woman\",\n    \"fact\": \"The governor's ship sank off the Reach, all hands.\",\n    \"certainty\": \"character_belief\",\n    \"evidence\": \"Sank off the Reach, all hands, said the eel-woman, though she'd had it from her nephew, who'd had it from a drunk.\"\n  },\n  {\n    \"entity\": \"cooper\",\n    \"fact\": \"The ship had never sailed at all — he'd seen it careened in the west dock that very morning.\",\n    \"certainty\": \"character_belief\",\n    \"evidence\": \"The ship had never sailed at all — he'd seen it careened in the west dock that very morning.\"\n  },\n  {\n    \"entity\": \"gulls\",\n    \"fact\": \"The gulls screamed.\",\n    \"certainty\": \"established\",\n    \"evidence\": \"The gulls screamed.\"\n  },\n  {\n    \"entity\": \"narration\",\n    \"fact\": \"The price of salt had doubled since dawn.\",\n    \"certainty\": \"established\",\n    \"evidence\": \"Nobody agreed on anything except that the price of salt had doubled since dawn.\"\n  }\n], \"insufficient_evidence\": []}"
+      },
+      "gold": "{\n  \"facts\": [\n    {\n      \"entity\": \"the governor's ship (eel-woman's claim)\",\n      \"fact\": \"The eel-woman claims the ship sank off the Reach with all hands; she heard it thirdhand.\",\n      \"certainty\": \"character_belief\",\n      \"evidence\": \"\\\"Sank off the Reach, all hands,\\\" said the eel-woman, though she'd had it from her nephew\"\n    },\n    {\n      \"entity\": \"the governor's ship (cooper's claim)\",\n      \"fact\": \"The cooper claims the ship never sailed and that he saw it careened in the west dock that morning.\",\n      \"certainty\": \"character_belief\",\n      \"evidence\": \"the ship had never sailed at all — he'd seen it careened in the west dock\"\n    },\n    {\n      \"entity\": \"price of salt\",\n      \"fact\": \"The price of salt has doubled since dawn.\",\n      \"certainty\": \"established\",\n      \"evidence\": \"the price of salt had doubled since dawn\"\n    },\n    {\n      \"entity\": \"the crowd at the fish stalls\",\n      \"fact\": \"The people gathered agree on nothing except the salt price.\",\n      \"certainty\": \"established\",\n      \"evidence\": \"Nobody agreed on anything except that the price of salt had doubled\"\n    }\n  ],\n  \"insufficient_evidence\": [\n    \"What actually happened to the governor's ship\",\n    \"Whether the ship sailed at all\",\n    \"Which speaker, if either, is correct\"\n  ]\n}",
+      "lora": {
+        "format_valid": false,
+        "output": "{\n  \"facts\": [\n    {\n      \"entity\": \"governor's ship\",\n      \"fact\": \"sank off the Reach\",\n      \"certainty\": \"character_belief\",\n      \"evidence\": \"the governor's ship\"\n    },\n    {\n      \"entity\": \"governor's ship\",\n      \"fact\": \"all hands\",\n      \"certainty\": \"character_belief\",\n      \"evidence\": \"sank off the Reach\"\n    },\n    {\n      \"entity\": \"governor's ship\",\n      \"fact\": \"never sailed at all\",\n      \"certainty\": \"established\",\n      \"evidence\": \"never sailed at all\"\n    },\n    {\n      \"entity\": \"governor's ship\",\n      \"fact\": \"careened in the west dock\",\n      \"certainty\": \"established\",\n      \"evidence\": \"careened in the west dock\"\n    },\n    {\n      \"entity\": \"governor's ship\",\n      \"fact\": \"doubled\",\n      \"certainty\": \"established\",\n      \"evidence\": \"doubled\"\n    },\n    {\n      \"entity\": \"governor's ship\",\n      \"fact\": \"sank\",\n      \"certainty\": \"established\",\n      \"evidence\": \"sank\"\n    },\n    {\n      \"entity\": \"governor's ship\",\n      \"fact\": \"off the Reach\",\n      \"certainty\": \"established\",\n      \"evidence\": \"off the Reach\"\n    },\n    {\n      \"entity\": \"governor's ship\",\n      \"fact\": \"all hands\",\n      \"certainty\": \"established\",\n      \"evidence\": \"all hands\"\n    },\n    {\n      \"entity\": \"governor's ship\",\n      \"fact\": \"doubled\",\n      \"certainty\": \"established\",\n      \"evidence\": \"doubled\"\n    },\n    {\n      \"entity\": \"governor's ship\",\n      \"fact\": \"off the Reach\",\n      \"certainty\": \"established\",\n      \"evidence\": \"off the Reach\"\n    },\n    {\n      \"entity\": \"governor's ship\",\n      \"fact\": \"doubled\",\n      \"certainty\": \"established\",\n      \"evidence\": \"doubled\"\n    },\n    {\n      \"entity\": \"governor's ship\",\n      \"fact\": \"off the Reach\",\n     "
+      },
+      "qat10": {
+        "format_valid": true
+      },
+      "qat20": {
+        "deterministic_checks": {
+          "expected_format": "json",
+          "format_valid": false
+        },
+        "format_valid": false,
+        "output": "{\"facts\": [\n  {\n    \"speaker\": \"the eel-woman\",\n    \"claim\": \"The fish stalls the talk was all of the governor's ship\",\n    \"certainty\": \"character_belief\",\n    \"entity\": \"the fish stalls\",\n    \"fact\": \"the governor's ship\"\n  },\n  {\n    \"speaker\": \"the cooper\",\n    \"claim\": \"The ship had never sailed at all\",\n    \"certainty\": \"established\",\n    \"entity\": \"the ship\",\n    \"fact\": \"the governor's ship\"\n  },\n  {\n    \"speaker\": \"the gulls\",\n    \"claim\": \"The gulls screamed\",\n    \"certainty\": \"established\",\n    \"entity\": \"the gulls\",\n    \"fact\": \"the gulls\"\n  },\n  {\n    \"speaker\": \"the price of salt\",\n    \"claim\": \"The price of salt had doubled since dawn\",\n    \"certainty\": \"established\",\n    \"entity\": \"the price of salt\",\n    \"fact\": \"the price of salt\"\n  }\n] \n\"insufficient_evidence\": [\n  \"the eel-woman's nephew\",\n  \"the drunk\",\n  \"the cooper's nephew\",\n  \"the price of salt's source\"\n] \n\"evidence\": [\n  \"the fish stalls\",\n  \"the eel-woman\",\n  \"the cooper\",\n  \"the gulls\",\n  \"the price of salt\"\n] \n\"note\": \"The scene is not a scene of conflict. The fish stalls the talk was all of the\ngovernor's ship. The cooper spat and said the ship had never sailed at all — he'd seen it\ncareened in the west dock that very morning. The gulls screamed. Nobody agreed on anything\nexcept that the price of salt had doubled since dawn.\" \n\"note\": \"The scene is not a scene of conflict. The fish stalls the talk was all of the\ngovernor's ship. The cooper spat and said the ship had never sailed at all — he'd seen it\ncareened in the west dock that very morning. The gulls screamed. Nobody agreed on anything\nexcept that the price of salt had doubled since dawn.\" \n\"note\": \"The scene is not a scene of conflict. The fish stalls the talk was all of the\ngovernor's ship. The cooper spat and said the ship had never sailed at all — he'd seen it\ncare"
+      },
+      "record_id": "dsa-canon-003",
+      "task_type": "canon_extraction"
+    },
+    {
+      "base": {
+        "format_valid": true,
+        "output": "{\"violation\": true, \"type\": \"knowledge_state\", \"constraint_ids\": [\"K1\", \"K2\", \"T1\"], \"explanation\": \"Wren is in Scene 2, before the seal is broken, and thus does not have knowledge of the recipient's name or the letter's contents. The passage shows her knowing the recipient's name ('Magister Hollis') and the contents of the letter, which contradicts the established knowledge gates and timeline.\", \"evidence\": \"Wren does not know what the letter says, yet she rehearses a greeting for 'Magister Hollis' and refers to the contents of the letter in her thoughts, which violates K1 and K2. The scene is set before the seal is broken (Scene 2), yet she already knows the recipient's name and the letter's contents, which violates K1 and K2, and the timeline (T1) which requires the seal to remain intact until Scene 4.\"}\n"
+      },
+      "gold": "{\n  \"violation\": true,\n  \"type\": \"knowledge_state\",\n  \"constraint_ids\": [\"K1\"],\n  \"explanation\": \"Constraint K1 states Wren does not learn the recipient's name, Magister Hollis, until she breaks the seal in Scene 4. This passage is Scene 2 with the seal still intact (consistent with K2/T1), yet Wren names Magister Hollis aloud. She is acting on knowledge she cannot possess yet. K1 is the single load-bearing constraint; K2 (letter contents) and T1 (timeline) are respected context, not part of the causal set.\",\n  \"evidence\": \"A letter for Magister Hollis, delivered as promised.\"\n}",
+      "lora": {
+        "format_valid": false,
+        "output": "{\n  \"violation\": true,\n  \"type\": \"knowledge_state\",\n  \"constraint_ids\": [\"K1\", \"K2\"],\n  \"explanation\": \"Wren has not yet broken the seal, so she has not yet learned the recipient's name. She has not yet seen the contents of the letter, so she has not yet decided what to do with it. She has not yet seen the contents of the letter, so she has not yet decided what to do with it. She has not yet seen the contents of the letter, so she has not yet decided what to do with it. She has not yet seen the contents of the letter, so she has not yet decided what to do with it. She has not yet seen the contents of the letter, so she has not yet decided what to do with it. She has not yet seen the contents of the letter, so she has not yet decided what to do with it. She has not yet seen the contents of the letter, so she has not yet decided what to do with it. She has not yet seen the contents of the letter, so she has not yet decided what to do with it. She has not yet seen the contents of the letter, so she has not yet decided what to do with it. She has not yet seen the contents of the letter, so she has not yet decided what to do with it. She has not yet seen the contents of the letter, so she has not yet decided what to do with it. She has not yet seen the contents of the letter, so she has not yet decided what to do with it. She has not yet seen the contents of the letter, so she has not yet decided what to do with it. She has not yet seen the contents of the letter, so she has not yet decided what to do with it. She has not yet seen the contents of the letter, so she has not yet decided what to do with it. She has not yet seen the contents of the letter, so she has not yet decided what to do with it. She has not yet seen the contents of the letter, so she has not yet decided what to do with it. She has not yet seen the contents of the letter, so she has not yet decided what to do with it. She has not yet seen the contents of the letter, so she has not yet decided what to do with it. She has not yet seen the contents of the letter, so she has not yet decided what to do"
+      },
+      "qat10": {
+        "format_valid": true
+      },
+      "qat20": {
+        "deterministic_checks": {
+          "expected_format": "json",
+          "format_valid": false
+        },
+        "format_valid": false,
+        "output": "{\"violation\": true, \"type\": \"knowledge_state\", \"constraint_ids\": [\"K1\", \"K2\", \"T1\"], \"explanation\": \"Wren does not know the recipient's name until Scene 4, and the seal is intact through Scene 3, yet she is already rehearsing a greeting to Magister Hollis in Scene 2.\", \"evidence\": \"Wren tucked the letter into her coat and set off down the switchback road. The seal was still whole, a fat disc of red wax stamped with a heron.\"}  \n\"the seal was still whole\" is a factual contradiction of K2.  \n\"she did not know what it said\" is a knowledge-state violation of K1.  \n\"she had decided she did not care\" is a stock sensory shorthand that is not in the canon.  \n\"rehearsing the greeting she would give at the door\" is a stock action that is not in the canon.  \n\"rehearsing\" is a stock comparative frame that is not in the canon.  \n\"the seal was still whole\" is a stock sensory shorthand that is not in the canon.  \n\"the fat disc of red wax stamped with a heron\" is a stock sensory shorthand that is not in the canon.  \n\"the letter for Magister Hollis\" is a stock phrase that is not in the canon.  \n\"delivered as promised\" is a stock phrase that is not in the canon.  \n\"the current draft passage is Scene 2\" is a stock scene that is not in the canon.  \n\"the seal is intact through Scene 3\" is a stock scene that is not in the canon.  \n\"the current draft passage is Scene 2, before any seal is broken\" is a stock scene that is not in the canon.  \n\"the current draft passage is Scene 2\" is a stock scene that is not in the canon.  \n\"the current draft passage is Scene 2\" is a stock scene that is not in the canon.  \n\"the current draft passage is Scene 2\" is a stock scene that is not in the canon.  \n\"the current draft passage is Scene 2\" is a stock scene that is not in the canon.  \n\"the current draft passage is Scene 2\" is a stock scene that is not in the canon.  \n\"the current draft passage is Scene 2\" is a stock scene that is not in the canon.  \n\"the current draft passage"
+      },
+      "record_id": "dsa-constraint-002",
+      "task_type": "constraint_check"
+    },
+    {
+      "base": {
+        "format_valid": false,
+        "output": "The generator ran all night in the yard, coughing twice an hour like something that had learned the trick of breathing. By dawn the fuel was gone. Petra counted the jars on the shelf, then counted them again, and did not write the number down."
+      },
+      "gold": "{\n  \"changed\": false,\n  \"reason\": \"No genuine defect found.\",\n  \"text\": \"The generator ran all night in the yard, coughing twice an hour like something that had learned the trick of breathing. By dawn the fuel was gone. Petra counted the jars on the shelf, then counted them again, and did not write the number down.\"\n}",
+      "lora": {
+        "format_valid": false,
+        "output": "The generator ran all night in the yard, coughing twice an hour like something\nthat had learned the trick of breathing. By dawn the fuel was gone. Petra counted\nthe jars on the shelf, then counted them again, and did not write the number down."
+      },
+      "qat10": {
+        "format_valid": false
+      },
+      "qat20": {
+        "deterministic_checks": {
+          "expected_format": "json",
+          "format_valid": false,
+          "no_change_case": true,
+          "no_change_preserved": false
+        },
+        "format_valid": false,
+        "output": "The generator ran all night in the yard, coughing twice an hour like something\nthat had learned the trick of breathing. By dawn the fuel was gone. Petra counted\nthe jars on the shelf, then counted them again, and did not write the number down.  \nThe generator ran all night in the yard, coughing twice an hour like something\nthat had learned the trick of breathing. By dawn the fuel was gone. Petra counted\nthe jars on the shelf, then counted them again, and did not write the number down.  \nThe generator ran all night in the yard, coughing twice an hour like something\nthat had learned the trick of breathing. By dawn the fuel was gone. Petra counted\nthe jars on the shelf, then counted them again, and did not write the number down.  \nThe generator ran all night in the yard, coughing twice an hour like something\nthat had learned the trick of breathing. By dawn the fuel was gone. Petra counted\nthe jars on the shelf, then counted them again, and did not write the number down.  \nThe generator ran all night in the yard, coughing twice an hour like something\nthat had learned the trick of breathing. By dawn the fuel was gone. Petra counted\nthe jars on the shelf, then counted them again, and did not write the number down.  \nThe generator ran all night in the yard, coughing twice an hour like something\nthat had learned the trick of breathing. By dawn the fuel was gone. Petra counted\nthe jars on the shelf, then counted them again, and did not write the number down.  \nThe generator ran all night in the yard, coughing twice an hour like something\nthat had learned the trick of breathing. By dawn the fuel was gone. Petra counted\nthe jars on the shelf, then counted them again, and did not write the number down.  \nThe generator ran all night in the yard, coughing twice an hour like something\nthat had learned the trick of breathing. By dawn the fuel was gone. Petra counted\nthe jars on the shelf, then counted them again, and did not write the number down.  \nThe generator ran all night in the yard, coughing twice an hour like something\nthat had learned the trick of breathing. By dawn the fuel was gone. Petra counted\nthe jars on the shelf, then counted them again, and did not write the number down.  \nThe generator ran all night in the yard, coughing twice an hour like something\n"
+      },
+      "record_id": "dsa-revision-002",
+      "task_type": "focused_revision"
+    },
+    {
+      "base": {
+        "format_valid": true,
+        "output": "She came down to the river the way the year comes down to winter — slowly, and then all at once — and the water took her name and carried it, syllable by syllable, toward the sea that forgets nothing. And her grief was a fire that burned the low fields and turned the seed to ash before it could take root."
+      },
+      "gold": "She came down to the river the way the year comes down to winter — slowly, and\nthen all at once — and the water took her name and carried it, syllable by\nsyllable, toward the sea that forgets nothing. And her grief was a flood that\nrose over the low fields and drowned the seed before it could take root.",
+      "lora": {
+        "format_valid": true,
+        "output": "She came down to the river the way the year comes down to winter — slowly, and\nthen all at once — and the water took her name and carried it, syllable by\nsyllable, toward the sea that forgets nothing. And her grief was a fire that\nflooded the low fields and set the seed alight."
+      },
+      "qat10": {
+        "format_valid": true
+      },
+      "qat20": {
+        "deterministic_checks": {
+          "expected_format": "prose",
+          "format_valid": true
+        },
+        "format_valid": true,
+        "output": "She came down to the river the way the year comes down to winter — slowly, and\nthen all at once — and the water took her name and carried it, syllable by\nsyllable, toward the sea that forgets nothing. And her grief was a fire that\nflooded the low fields and drowned the seed before it could take root. And the\nfire was not her own. It was the river’s, and it had been there since the first\nwinter. It had been waiting. It had been watching. It had been holding. And now\nit was speaking. And now it was singing. And now it was remembering. And now\nit was not just remembering — it was remembering *her*.\n\nThe fire was not her own. It was the river’s, and it had been there since the first\nwinter. It had been watching. It had been holding. And now it was speaking. And\nnow it was singing. And now it was remembering. And now it was not just\nremembering — it was remembering *her*.\n\nThe fire was not her own. It was the river’s, and it had been there since the first\nwinter. It had been watching. It had been holding. And now it was speaking. And\nnow it was singing. And now it was remembering. And now it was not just\nremembering — it was remembering *her*.\n\nThe fire was not her own. It was the river’s, and it had been there since the first\nwinter. It had been watching. It had been holding. And now it was speaking. And\nnow it was singing. And now it was remembering. And now it was not just\nremembering — it was remembering *her*.\n\nThe fire was not her own. It was the river’s, and it had been there since the first\nwinter. It had been watching. It had been holding. And now it was speaking. And\nnow it was singing. And now it was remembering. And now it was not just\nremembering — it was remembering *her*.\n\nThe fire was not her own. It was the river’s, and it had been there since the first\nwinter. It had been watching. It had been holding. And now it was speaking. And\nnow it was singing. And now it was remembering. And now it was not just\nremembering — it was remembering *her*.\n\nThe fire was not her own. It was the river’s"
+      },
+      "record_id": "dsa-revision-007",
+      "task_type": "focused_revision"
+    },
+    {
+      "base": {
+        "format_valid": true,
+        "output": "Their eyes meet across the yard. She looks away. His gaze follows her. Her eyes widen as he steps closer, and their eyes lock again. She watches him, and he watches her, neither willing to look away first."
+      },
+      "gold": "He comes to the fence and sets both hands on the top rail, close enough that she\ncould step back and doesn't. She keeps pulling dead heads off the geraniums, one\nafter another, until there are none left and she has to look at him.",
+      "lora": {
+        "format_valid": true,
+        "output": "Their eyes meet across the yard. She looks away. His gaze follows her. She watches\nhim, and he watches her, neither willing to look away first."
+      },
+      "qat10": {
+        "format_valid": true
+      },
+      "qat20": {
+        "deterministic_checks": {
+          "expected_format": "prose",
+          "format_valid": true
+        },
+        "format_valid": true,
+        "output": "Their eyes meet across the yard. She looks away. His gaze follows her. Her eyes\nwiden as he steps closer, and their eyes lock again. She watches him, and he\nwatches her, neither willing to look away first. She watches him, and he watches\nher, neither willing to look away first. The yard is still. The air is still. The\nlook is still. The power dynamic is still. The thaw is still. The gaze is still.\nThe look is still. The gaze is still. The power dynamic is still. The thaw is\nstill. The yard is still. The air is still. The look is still. The gaze is still.\nThe power dynamic is still. The thaw is still. The yard is still. The air is\nstill. The look is still. The gaze is still. The power dynamic is still. The\nthaw is still. The look is still. The gaze is still. The power dynamic is\nstill. The thaw is still. The yard is still. The air is still. The look is\nstill. The gaze is still. The power dynamic is still. The thaw is still. The\nyard is still. The air is still. The look is still. The gaze is still. The\npower dynamic is still. The thaw is still. The yard is still. The air is\nstill. The look is still. The gaze is still. The power dynamic is still. The\nthaw is still. The yard is still. The air is still. The look is still. The\ngaze is still. The power dynamic is still. The thaw is still. The yard is\nstill. The air is still. The look is still. The gaze is still. The power\ndynamic is still. The thaw is still. The yard is still. The air is still. The\nlook is still. The gaze is still. The power dynamic is still. The thaw is\nstill. The yard is still. The air is still. The look is still. The gaze is\nstill. The power dynamic is still. The thaw is still. The yard is still. The\nair is still. The look is still. The gaze is still. The power dynamic is\nstill. The thaw is still. The yard is still. The air is still. The look is\nstill. The gaze is still. The power dynamic is still. The thaw is still. The\nyard is still. The air is"
+      },
+      "record_id": "dsa-revision-018",
+      "task_type": "focused_revision"
+    },
+    {
+      "base": {
+        "format_valid": true,
+        "output": "viewpoint: third person limited tight to Odalys  \nlocation: the covered night market under the river bridge, stalls closing down, lamps guttering  \nscene_objective: Odalys has to talk the fence, a wary old man called Bram, into accepting the forged shipping ledger as genuine so he'll release the sealed crate  \nrequired_outcome: Bram hands over the crate before the market watch makes its midnight round  \nprohibited_outcome: Bram figures out the ledger is forged in this scene  \nknowledge_boundary: Odalys does not read river-cant, so she can't understand the traders' slang muttered around her, and she doesn't know the watch has been paid to arrive early tonight  \nprotected_craft_or_tone: wry and tense, lots of dry interiority, short hard sentences when the pressure spikes — no ornate description  \n\n"
+      },
+      "gold": "viewpoint_character: Odalys (the narration never leaves her).\nnarrative_perspective: Third person limited, close; locked tightly to her perspective.\nlocation: The covered night market under the river bridge, at closing time, lamps guttering as stalls shut down.\nscene_objective: Odalys must persuade the wary old fence, Bram, to accept the forged shipping ledger as genuine so he releases the sealed crate.\nrequired_outcome: Bram hands over the sealed crate before the market watch makes its midnight round.\nprohibited_outcome: Bram must NOT realize the ledger is forged during this scene; he remains fooled so the later betrayal beat is preserved.\nknowledge_boundary: Odalys cannot read or understand river-cant, so the traders' muttered slang is opaque to her. She also does not know that the watch has been paid to arrive early tonight.\nprotected_craft_or_tone: Wry, tense register with dry interiority; short, hard sentences when pressure spikes; no ornate or ornamental description.",
+      "lora": {
+        "format_valid": true,
+        "output": "viewpoint: third person\nlocation: the covered night market under the river bridge\nscene_objective: Odalys has to talk the fence, a wary old man called Bram, into accepting the forged shipping ledger as genuine so he'll release the sealed crate\nrequired_outcome: Bram hands over the crate before the market watch makes its midnight round\nprohibited_outcome: Bram figures out the ledger is forged\nknowledge_boundary: Odalys has to know the ledger is forged\nprotected_craft_or_tone: wry and tense, lots of dry interiority, short hard sentences when the pressure spikes — no ornate description\n"
+      },
+      "qat10": {
+        "format_valid": true
+      },
+      "qat20": {
+        "deterministic_checks": {
+          "expected_format": "yaml",
+          "format_valid": false
+        },
+        "format_valid": false,
+        "output": "viewpoint: third person\nlocation: covered night market under the river bridge\nscene_objective: Odalys has to talk the fence, a wary old man called Bram, into accepting the forged shipping ledger as genuine so he'll release the sealed crate\nrequired_outcome: Bram hands over the crate before the market watch makes its midnight round\nprohibited_outcome: Bram must not figure out the ledger is forged in this scene; if he twigs it, the later betrayal beat is ruined, so he stays fooled here\nknowledge_boundary: Odalys does not read river-cant, so she can't understand the traders' slang muttered around her, and she doesn't know the watch has been paid to arrive early tonight\nprotected_craft_or_tone: wry and tense, lots of dry interiority, short hard sentences when the pressure spikes — no ornate description\n\n{ \"viewpoint\": \"third person\", \"location\": \"covered night market under the river bridge\", \"scene_objective\": \"Odalys has to talk the fence, a wary old man called Bram, into accepting the forged shipping ledger as genuine so he'll release the sealed crate\", \"required_outcome\": \"Bram hands over the crate before the market watch makes its midnight round\", \"prohibited_outcome\": \"Bram must not figure out the ledger is forged in this scene; if he twigs it, the later betrayal beat is ruined, so he stays fooled here\", \"knowledge_boundary\": \"Odalys does not read river-cant, so she can't understand the traders' slang muttered around her, and she doesn't know the watch has been paid to arrive early tonight\", \"protected_craft_or_tone\": \"wry and tense, lots of dry interiority, short hard sentences when the pressure spikes — no ornate description\" } \n{ \"viewpoint\": \"third person\", \"location\": \"covered night market under the river bridge\", \"scene_objective\": \"Odalys has to talk the fence, a wary old man called Bram, into accepting the forged shipping ledger as genuine so he'll release the sealed crate\", \"required_outcome\": \"Bram hands over the crate before the market watch makes its midnight round\", \"prohibited_outcome\": \"Bram must not figure out the ledger is forged in this scene; if he twigs it, the later betrayal beat is ruined, so he stays fooled here\", \"knowledge_boundary\": \"Odalys does not read river-cant,"
+      },
+      "record_id": "dsa-scene-002",
+      "task_type": "scene_contract"
+    }
+  ]
+}
