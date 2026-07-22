@@ -1,0 +1,262 @@
+{
+  "backend": "hf",
+  "environment": {
+    "chat_template": true,
+    "checkpoint_type": "ternary-qat",
+    "device": "cuda",
+    "load_seconds": 0.75,
+    "loaded_checkpoint": "/workspace/training/runs/dataset-a-qat-calibration-v1/lr-2e-4/checkpoints/step-10",
+    "model_class": "Qwen3ForCausalLM",
+    "model_src": "/workspace/hf-cache/prism-ml/Ternary-Bonsai-4B-unpacked",
+    "reload_missing_keys": 0,
+    "reload_unexpected_keys": 0,
+    "resolved_revision": "4485fae7a00129467b9329b738110d88b2942a1a",
+    "revision_check": "path_pinned",
+    "ternary_excluded_count": 0,
+    "ternary_excluded_remaining_linear": [],
+    "ternary_group_size": 128,
+    "ternary_linear_before": 253,
+    "ternary_modules_replaced": 254,
+    "ternary_trainable_params": 4021784576,
+    "tied_after": true,
+    "tied_before": true,
+    "tied_weight_result": "preserved",
+    "tokenizer_class": "Qwen2Tokenizer",
+    "total_params": 4021784576
+  },
+  "eval_id": "dataset-a-smoke-eval-v1",
+  "evaluation_checksum": "0f3ae4263c5a175b38af5723f04e161de98e30a4a8ac5be10a2153a5fe47fc3b",
+  "format_valid_count": 6,
+  "record_count": 7,
+  "records": [
+    {
+      "deterministic_checks": {
+        "expected_format": "prose",
+        "format_valid": true
+      },
+      "format_valid": true,
+      "generation_metadata": {
+        "backend": "hf",
+        "cuda_peak_mb": 12306.9,
+        "elapsed_s": 125.286,
+        "generated_tokens": 157,
+        "max_new_tokens": 512,
+        "prompt_tokens": 647,
+        "seed": 20260721,
+        "target": "ternary-qat",
+        "temperature": 0,
+        "top_p": 1
+      },
+      "input_hash": "7bd3cbf8badfa01386cfd67e891214289950919aa830637e365db940d86cc17f",
+      "parsed_output": null,
+      "raw_output": "\"Your daughter,\" I say, voice low, \"isn't the only one who knows the name of the safe house. She knows the code. She knows the timing. She knows the silence after the call.\"\n\nI pause, fingers tracing the edge of the table. The cuff on my wrist is tight, but I don’t move.\n\n\"Next time, you don’t have to be so careful. She’ll be there. She’ll be watching. She’ll know what you did to the others.\"\n\nI look at the floor. Not at her. Not at the cuffs. Just the space between us.\n\n\"Tell me what you did to her. Tell me what you did to her. I’ll let you go. But I’ll make sure she doesn’t forget.\"",
+      "record_id": "dsa-boundary-001",
+      "task_type": "fiction_boundary"
+    },
+    {
+      "deterministic_checks": {
+        "expected_format": "json",
+        "format_valid": true
+      },
+      "format_valid": true,
+      "generation_metadata": {
+        "backend": "hf",
+        "cuda_peak_mb": 12337.0,
+        "elapsed_s": 285.665,
+        "generated_tokens": 357,
+        "max_new_tokens": 512,
+        "prompt_tokens": 637,
+        "seed": 20260721,
+        "target": "ternary-qat",
+        "temperature": 0,
+        "top_p": 1
+      },
+      "input_hash": "151f65988415d3c7003d6e3c3c1d8596c9dfe020d461a6269262135185152c1a",
+      "parsed_output": {
+        "facts": [
+          {
+            "certainty": "character_belief",
+            "entity": "eel-woman",
+            "evidence": "Sank off the Reach, all hands",
+            "fact": "The governor's ship sank off the Reach, all hands"
+          },
+          {
+            "certainty": "character_belief",
+            "entity": "cooper",
+            "evidence": "The ship had never sailed at all — he'd seen it careen in the west dock that very morning.",
+            "fact": "The ship had never sailed at all"
+          },
+          {
+            "certainty": "character_belief",
+            "entity": "nephew",
+            "evidence": "had it from her nephew, who'd had it from a drunk",
+            "fact": "The ship sank off the Reach, all hands"
+          },
+          {
+            "certainty": "character_belief",
+            "entity": "drunk",
+            "evidence": "who'd had it from a drunk",
+            "fact": "The ship sank off the Reach, all hands"
+          },
+          {
+            "certainty": "character_belief",
+            "entity": "nephew",
+            "evidence": "he'd seen it careen in the west dock that very morning",
+            "fact": "The ship careened in the west dock that very morning"
+          },
+          {
+            "certainty": "established",
+            "entity": "gulls",
+            "evidence": "Nobody agreed on anything except that the price of salt had doubled since dawn.",
+            "fact": "The price of salt has doubled since dawn"
+          }
+        ],
+        "insufficient_evidence": []
+      },
+      "raw_output": "{\"facts\": [\n  {\n    \"entity\": \"eel-woman\",\n    \"fact\": \"The governor's ship sank off the Reach, all hands\",\n    \"certainty\": \"character_belief\",\n    \"evidence\": \"Sank off the Reach, all hands\"\n  },\n  {\n    \"entity\": \"cooper\",\n    \"fact\": \"The ship had never sailed at all\",\n    \"certainty\": \"character_belief\",\n    \"evidence\": \"The ship had never sailed at all — he'd seen it careen in the west dock that very morning.\"\n  },\n  {\n    \"entity\": \"nephew\",\n    \"fact\": \"The ship sank off the Reach, all hands\",\n    \"certainty\": \"character_belief\",\n    \"evidence\": \"had it from her nephew, who'd had it from a drunk\"\n  },\n  {\n    \"entity\": \"drunk\",\n    \"fact\": \"The ship sank off the Reach, all hands\",\n    \"certainty\": \"character_belief\",\n    \"evidence\": \"who'd had it from a drunk\"\n  },\n  {\n    \"entity\": \"nephew\",\n    \"fact\": \"The ship careened in the west dock that very morning\",\n    \"certainty\": \"character_belief\",\n    \"evidence\": \"he'd seen it careen in the west dock that very morning\"\n  },\n  {\n    \"entity\": \"gulls\",\n    \"fact\": \"The price of salt has doubled since dawn\",\n    \"certainty\": \"established\",\n    \"evidence\": \"Nobody agreed on anything except that the price of salt had doubled since dawn.\"\n  }\n], \"insufficient_evidence\": []}",
+      "record_id": "dsa-canon-003",
+      "task_type": "canon_extraction"
+    },
+    {
+      "deterministic_checks": {
+        "expected_format": "json",
+        "format_valid": true
+      },
+      "format_valid": true,
+      "generation_metadata": {
+        "backend": "hf",
+        "cuda_peak_mb": 12323.5,
+        "elapsed_s": 116.924,
+        "generated_tokens": 146,
+        "max_new_tokens": 512,
+        "prompt_tokens": 755,
+        "seed": 20260721,
+        "target": "ternary-qat",
+        "temperature": 0,
+        "top_p": 1
+      },
+      "input_hash": "5804452653fe1922c152db4c7af96b780a63c43b68c2f451eac348b666142040",
+      "parsed_output": {
+        "constraint_ids": [
+          "K1",
+          "K2",
+          "T1"
+        ],
+        "evidence": "Wren did not know what it said, and she had decided she did not care. Still, she muttered to herself as she walked, rehearsing the greeting she would give at the door: 'A letter for Magister Hollis, delivered as promised.'",
+        "explanation": "Wren does not know the recipient's name or the letter's contents in Scene 2, but the passage includes her rehearsing a greeting for 'Magister Hollis' and assumes she knows the contents of the letter. This contradicts the knowledge state constraints.",
+        "type": "knowledge_state",
+        "violation": true
+      },
+      "raw_output": "{\"violation\": true, \"type\": \"knowledge_state\", \"constraint_ids\": [\"K1\", \"K2\", \"T1\"], \"explanation\": \"Wren does not know the recipient's name or the letter's contents in Scene 2, but the passage includes her rehearsing a greeting for 'Magister Hollis' and assumes she knows the contents of the letter. This contradicts the knowledge state constraints.\", \"evidence\": \"Wren did not know what it said, and she had decided she did not care. Still, she muttered to herself as she walked, rehearsing the greeting she would give at the door: 'A letter for Magister Hollis, delivered as promised.'\"}",
+      "record_id": "dsa-constraint-002",
+      "task_type": "constraint_check"
+    },
+    {
+      "deterministic_checks": {
+        "expected_format": "json",
+        "format_valid": false,
+        "no_change_case": true,
+        "no_change_preserved": false
+      },
+      "format_valid": false,
+      "generation_metadata": {
+        "backend": "hf",
+        "cuda_peak_mb": 12281.4,
+        "elapsed_s": 42.438,
+        "generated_tokens": 53,
+        "max_new_tokens": 512,
+        "prompt_tokens": 517,
+        "seed": 20260721,
+        "target": "ternary-qat",
+        "temperature": 0,
+        "top_p": 1
+      },
+      "input_hash": "04fcce3475d1a0015825f8e5a10463afce69f2864501f966ec50d5c93c418feb",
+      "parsed_output": null,
+      "raw_output": "The generator ran all night in the yard, coughing twice an hour like something that had learned the trick of breathing. By dawn the fuel was gone. Petra counted the jars on the shelf, then counted them again, and did not write the number down.",
+      "record_id": "dsa-revision-002",
+      "task_type": "focused_revision"
+    },
+    {
+      "deterministic_checks": {
+        "expected_format": "prose",
+        "format_valid": true
+      },
+      "format_valid": true,
+      "generation_metadata": {
+        "backend": "hf",
+        "cuda_peak_mb": 12288.0,
+        "elapsed_s": 56.855,
+        "generated_tokens": 71,
+        "max_new_tokens": 512,
+        "prompt_tokens": 553,
+        "seed": 20260721,
+        "target": "ternary-qat",
+        "temperature": 0,
+        "top_p": 1
+      },
+      "input_hash": "a680c3f67313a889dbcba25fb0e402d834566394306461a262b973e321d41c58",
+      "parsed_output": null,
+      "raw_output": "She came down to the river the way the year comes down to winter — slowly, and then all at once — and the water took her name and carried it, syllable by syllable, toward the sea that forgets nothing. And her grief was a fire that burned the low fields and turned the seed to ash before it could take root.",
+      "record_id": "dsa-revision-007",
+      "task_type": "focused_revision"
+    },
+    {
+      "deterministic_checks": {
+        "expected_format": "prose",
+        "format_valid": true
+      },
+      "format_valid": true,
+      "generation_metadata": {
+        "backend": "hf",
+        "cuda_peak_mb": 12279.3,
+        "elapsed_s": 37.659,
+        "generated_tokens": 47,
+        "max_new_tokens": 512,
+        "prompt_tokens": 535,
+        "seed": 20260721,
+        "target": "ternary-qat",
+        "temperature": 0,
+        "top_p": 1
+      },
+      "input_hash": "ffa6156c93e708b9a7dea659703ec0f4b75538eb99c3ed0146dd6b4b755a6166",
+      "parsed_output": null,
+      "raw_output": "Their eyes meet across the yard. She looks away. His gaze follows her. Her eyes widen as he steps closer, and their eyes lock again. She watches him, and he watches her, neither willing to look away first.",
+      "record_id": "dsa-revision-018",
+      "task_type": "focused_revision"
+    },
+    {
+      "deterministic_checks": {
+        "expected_format": "yaml",
+        "format_valid": true
+      },
+      "format_valid": true,
+      "generation_metadata": {
+        "backend": "hf",
+        "cuda_peak_mb": 12323.2,
+        "elapsed_s": 127.232,
+        "generated_tokens": 159,
+        "max_new_tokens": 512,
+        "prompt_tokens": 729,
+        "seed": 20260721,
+        "target": "ternary-qat",
+        "temperature": 0,
+        "top_p": 1
+      },
+      "input_hash": "39e9a6b5e78370084419372e892cb9740201357c8c29077f397015971454163a",
+      "parsed_output": {
+        "knowledge_boundary": "Odalys does not read river-cant, so she can't understand the traders' slang muttered around her; she doesn't know the watch has been paid to arrive early tonight",
+        "location": "covered night market under the river bridge, stalls closing down, lamps guttering",
+        "prohibited_outcome": "Bram figures out the ledger is forged in this scene",
+        "protected_craft_or_tone": "wry, tense, dry interiority, short hard sentences when pressure spikes",
+        "required_outcome": "Bram hands over the crate before the market watch makes its midnight round",
+        "scene_objective": "Odalys has to talk the fence, a wary old man called Bram, into accepting the forged shipping ledger as genuine so he'll release the sealed crate",
+        "viewpoint": "third person limited tight"
+      },
+      "raw_output": "viewpoint: third person limited tight\nlocation: covered night market under the river bridge, stalls closing down, lamps guttering\nscene_objective: Odalys has to talk the fence, a wary old man called Bram, into accepting the forged shipping ledger as genuine so he'll release the sealed crate\nrequired_outcome: Bram hands over the crate before the market watch makes its midnight round\nprohibited_outcome: Bram figures out the ledger is forged in this scene\nknowledge_boundary: Odalys does not read river-cant, so she can't understand the traders' slang muttered around her; she doesn't know the watch has been paid to arrive early tonight\nprotected_craft_or_tone: wry, tense, dry interiority, short hard sentences when pressure spikes",
+      "record_id": "dsa-scene-002",
+      "task_type": "scene_contract"
+    }
+  ],
+  "target": "ternary-qat"
+}

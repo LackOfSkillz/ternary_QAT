@@ -74,3 +74,11 @@ training/runs/**/integrity-18b/repository-*.json
 training/runs/**/lora/run-manifest.json
 training/runs/**/ternary-qat/run-manifest.json
 training/runs/**/ternary-qat/eval.json
+
+# Dispatch 19 QAT calibration machine-specific raw artifacts (regenerable; results
+# are in qat-calibration-summary.json, eval JSONs, comparison, final-verification).
+training/runs/**/lr-*/checkpoints/
+training/runs/**/lr-*/run-manifest.json
+training/runs/**/lr-*/integrity/
+training/runs/dataset-a-qat-calibration-v1/integrity/base-model-*.json
+training/runs/dataset-a-qat-calibration-v1/integrity/repository-*.json
