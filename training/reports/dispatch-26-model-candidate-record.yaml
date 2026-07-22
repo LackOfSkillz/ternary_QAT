@@ -1,0 +1,167 @@
+# Dispatch 26 — Model Licensing and Product-Suitability Record
+#
+# Authoritative identity, licensing, and deployment record for the controlled
+# stronger-base comparison. Facts are drawn from the official Hugging Face model
+# cards / config files (fetched 2026-07-22 from the GX10 host, unauthenticated,
+# both repositories PUBLIC/ungated). Fields not yet mechanically verified on the
+# downloaded snapshot carry an explicit `verification:` tag; unresolved
+# deployment/licensing conditions are surfaced, not smoothed over.
+#
+# This record is a FROZEN pre-generation artifact: it is authored and committed
+# BEFORE any candidate inference, in the same discipline as the Dispatch-25
+# threshold lock.
+
+dispatch: 26
+purpose: controlled_stronger_base_comparison
+changes_only: base_model
+recorded_at: "2026-07-22"
+recorded_by: agent_aedan
+authority: delegated_by_gary
+provisional: true
+final_commercial_ship_certification: false
+
+frozen_thresholds_referenced:
+  research_continuation: benchmarks/thresholds/research-continuation-v0.yaml
+  research_continuation_sha256: 2be4fddb1aed87c6500dac2a5cdf11e6209b80d2a6d32fa35aa4d63bef131712
+  starter_model_acceptance: benchmarks/thresholds/starter-model-acceptance-v0.yaml
+  starter_model_acceptance_sha256: 98a57af32fff4d4349466f7877acb5c16ce0e4fae4f376570cfff4407fd1d8b7
+  lock: benchmarks/thresholds/threshold-lock-v0.json
+  lock_git_commit: a4451674ade954976ade3af550a39a61592c652a
+  thresholds_unchanged_this_dispatch: true
+
+candidates:
+
+  control_4b:
+    model: Ternary-Bonsai 4B (unpacked)
+    organization: Prism-ML
+    exact_model_id: prism-ml/Ternary-Bonsai-4B-unpacked
+    role: target_base_4b
+    architecture: Qwen3ForCausalLM
+    release_family: Ternary-Bonsai (unpacked ternary text model)
+    license: see_upstream_prism_ml_card
+    commercial_use: subject_to_prism_ml_terms
+    native_context: 40960
+    precision_tested: bf16 (unpacked)
+    notes: >-
+      Existing LineWright control. Dispatch-24 Fast-Battery results are reused
+      where directly comparable; rerun on the NEW packet family because no
+      comparable prior result exists.
+
+  ministral_3_8b_instruct:
+    model: Ministral 3 8B Instruct 2512
+    organization: Mistral AI
+    exact_model_id: mistralai/Ministral-3-8B-Instruct-2512
+    role: ministral_3_8b_instruct
+    revision: 5b26027e7b19eeb4b7352e1fed3926375dd2cb4d
+    tokenizer_revision: 5b26027e7b19eeb4b7352e1fed3926375dd2cb4d   # single-repo: tokenizer at model commit
+    chat_template_revision: 5b26027e7b19eeb4b7352e1fed3926375dd2cb4d
+    chat_template_mechanism: chat_template.jinja (+ tekken.json / mistral-common; SYSTEM_PROMPT.txt shipped)
+    release_family: Ministral 3 (Dec-2025 "2512"), edge-oriented
+    architecture: Mistral3ForConditionalGeneration
+    model_type: mistral3
+    modality: MULTIMODAL (text + vision)   # vision disabled for this comparison; run text-only
+    text_stack: {hidden_size: 4096, num_hidden_layers: 34, vocab_size: 131072}
+    official_precision: FP8   # this repo IS the official FP8 checkpoint
+    quantization_config:
+      quant_method: fp8
+      activation_scheme: static
+      dequantize: false
+      modules_not_converted: [model.vision_tower, model.multi_modal_projector, lm_head]
+    license: apache-2.0
+    commercial_use: permitted
+    redistribution_of_weights: permitted (Apache-2.0; retain LICENSE + NOTICE)
+    derivative_model_rights: permitted (fine-tune and redistribute derivatives)
+    required_attribution: Apache-2.0 license/notice retention
+    usage_restrictions: none_beyond_apache_2_0
+    base_variant_available: probable (Ministral 3 family ships Base/Instruct/Reasoning)
+    instruct_variant_available: yes (this repo)
+    reasoning_variant_available: probable (do NOT substitute)
+    official_quantizations: FP8 (this repo, vLLM-native)
+    community_quantizations:
+      verification: PENDING
+      concern: >-
+        llama.cpp / GGUF support for mistral3 (multimodal, FP8) may be immature.
+        This is the deployment path for the 8GB local LineWright Core target, so
+        GGUF availability + quality is a FOUNDATION-CRITICAL open risk.
+    native_context: 262144   # 256K
+    fine_tuning_support:
+      toolchains: [mistral-finetune, transformers (Mistral3)]
+      caveat: fp8 base + multimodal complicates adapters; text-only fine-tune feasible
+    toolchain_support:
+      inference: [vLLM (native; library_name=vllm), transformers>=5.x (Mistral3)]
+      tokenizer: mistral-common / tekken.json / --tokenizer-mode mistral
+      gguf_llama_cpp: UNCERTAIN (surfaced as deployment risk)
+    deployment_risks:
+      - Multimodal model: vision tower loads unless explicitly text-only; extra resident memory for vision components.
+      - FP8 checkpoint: requires fp8-capable runtime/kernels (vLLM/transformers on Blackwell); not a plain bf16 load.
+      - GGUF/llama.cpp deployment path (8GB local target) is unproven for mistral3 — primary product risk.
+      - library_name=vllm signals vLLM is the intended/first-class runtime.
+    text_only_load_plan: >-
+      Load via Mistral3ForConditionalGeneration / AutoModelForImageTextToText or
+      vLLM with images omitted; record whether text+vision components load together
+      and the total resident memory. First-comparison precision = official FP8
+      (NOT an unofficial community quant).
+
+  qwen3_8b_non_thinking:
+    model: Qwen3-8B
+    organization: Alibaba / Qwen Team
+    exact_model_id: Qwen/Qwen3-8B
+    role: qwen3_8b_non_thinking
+    revision: b968826d9c46dd6066d109eabc6255188de91218
+    tokenizer_revision: b968826d9c46dd6066d109eabc6255188de91218
+    chat_template_revision: b968826d9c46dd6066d109eabc6255188de91218
+    chat_template_mechanism: embedded in tokenizer_config.json (Qwen2Tokenizer); enable_thinking toggle
+    release_family: Qwen3 (dense 8B, post-trained hybrid thinking/non-thinking)
+    architecture: Qwen3ForCausalLM
+    model_type: qwen3
+    modality: text_only
+    stack: {hidden_size: 4096, num_hidden_layers: 36, num_attention_heads: 32, vocab_size: 151936}
+    official_precision: bf16
+    license: apache-2.0
+    commercial_use: permitted
+    redistribution_of_weights: permitted (Apache-2.0; retain LICENSE + NOTICE)
+    derivative_model_rights: permitted (fine-tune and redistribute derivatives)
+    required_attribution: Apache-2.0 license/notice retention
+    usage_restrictions: none_beyond_apache_2_0
+    base_variant_available: yes (Qwen/Qwen3-8B-Base)   # do NOT substitute
+    instruct_variant_available: yes (this repo IS the post-trained chat model)
+    official_quantizations: Qwen ships official GGUF / AWQ / FP8 variants (Qwen3-8B-GGUF, -AWQ, -FP8)
+    community_quantizations: extensive (unsloth, bartowski GGUF, etc.) — mature llama.cpp support
+    native_context: 40960   # config max_position_embeddings; YaRN-extendable to 131072 per model card
+    default_generation_config: {do_sample: true, temperature: 0.6, top_p: 0.95, top_k: 20}   # THINKING defaults; must force non-thinking
+    fine_tuning_support:
+      toolchains: [transformers, peft, unsloth, LLaMA-Factory]
+      caveat: none material (plain bf16 Qwen3)
+    toolchain_support:
+      inference: [transformers, vLLM, SGLang, llama.cpp/GGUF, MLX]
+      gguf_llama_cpp: MATURE (official + community GGUF; primary 8GB deployment path is well-supported)
+    deployment_risks:
+      - Hybrid thinking model: reasoning traces (<think>...</think>) leak unless non-thinking is enforced; hidden reasoning tokens must NOT be counted as prose.
+      - Native context 40960 (not 128K by default) — YaRN required for longer contexts.
+    non_thinking_enforcement:
+      method: apply_chat_template(enable_thinking=False)  # and/or vLLM chat_template_kwargs={enable_thinking:false}
+      verification_required: no <think> block / reasoning trace present in any output
+
+comparison_integrity:
+  do_not_silently_substitute: [Qwen3-Base, Qwen3.5, AWQ/GGUF community build for first comparison,
+                               Ministral Base, Ministral Reasoning, unofficial Ministral quant]
+  first_quality_comparison_precision:
+    qwen3_8b: bf16 (official)
+    ministral_3_8b: FP8 (official — this repo ships FP8; not a community quant)
+    control_4b: bf16 (unpacked)
+  engine_note: >-
+    All roles decode greedily (deterministic argmax). Control 4B reuses HF-greedy
+    Dispatch-24 results for the Fast Battery; candidates run on their practical
+    runtime (HF for Qwen3; HF-Mistral3 or vLLM for Ministral FP8). Any engine
+    difference is documented; greedy argmax is semantically equivalent across engines.
+
+unresolved_conditions_surfaced_before_selection:
+  - id: ministral_gguf_uncertain
+    condition: mistral3 multimodal FP8 GGUF/llama.cpp support for the 8GB local target is unproven
+    blocks: foundation_selection_if_deployment_path_required
+  - id: ministral_multimodal_overhead
+    condition: vision components may inflate resident memory even when unused
+    action: measure text-only resident memory explicitly
+  - id: qwen3_native_context_40960
+    condition: default native context is 40960, not 128K; long-context profiles need YaRN
+    action: record realistic/long packet token bands against this limit

@@ -1,0 +1,120 @@
+# Dispatch 26 — Stronger-Base Extension Manifest (v1)
+#
+# A SEPARATE manifest that REFERENCES the frozen Fast Battery v1 and the new Packet-Family v1.
+# It does NOT modify fast-battery-v1.yaml (referenced by content hash below, unchanged). This
+# manifest, the packet family, the candidate record, and the generation plan are FROZEN and
+# committed BEFORE any candidate generation, in the Dispatch-25 discipline.
+
+battery: LineWright Diagnostic Battery — Stronger-Base Extension
+profile: fast+packet
+version: stronger-base-extension-v1
+dispatch: 26
+status: frozen
+production_approved: false
+experimental_use_only: true
+changes_only: base_model
+
+# ---- frozen thresholds (unchanged; recorded per dispatch requirement) ----
+frozen_thresholds:
+  research_continuation_sha256: 2be4fddb1aed87c6500dac2a5cdf11e6209b80d2a6d32fa35aa4d63bef131712
+  starter_model_acceptance_sha256: 98a57af32fff4d4349466f7877acb5c16ce0e4fae4f376570cfff4407fd1d8b7
+  lock: benchmarks/thresholds/threshold-lock-v0.json
+  lock_git_commit: a4451674ade954976ade3af550a39a61592c652a
+  thresholds_unchanged: true
+
+# ---- referenced (not modified) ----
+references:
+  fast_battery_v1:
+    manifest: benchmarks/manifests/fast-battery-v1.yaml
+    manifest_sha256: e906213df98c5b58d58a67f901b2de50f829e389fcf80e6915b231a6bdf8ab20
+    modified: false
+    item_count: 20
+  packet_family_v1:
+    dir: benchmarks/active-core/packet-family-v1/
+    composition: benchmarks/active-core/packet-family-v1/packet-composition.json
+    composition_sha256: 4104c78fed9c21d51dfc41f9efacdae390f77c6703de3f18bb86c841ff0f9b90
+    item_count: 18   # 3 tasks x 6 arms
+  candidate_record: training/reports/dispatch-26-model-candidate-record.yaml
+
+# ---- roles (three-model comparison) ----
+roles:
+  - role: target_base_4b
+    model_id: prism-ml/Ternary-Bonsai-4B-unpacked
+    precision: bf16_unpacked
+  - role: ministral_3_8b_instruct
+    model_id: mistralai/Ministral-3-8B-Instruct-2512
+    revision: 5b26027e7b19eeb4b7352e1fed3926375dd2cb4d
+    precision: fp8_official
+    modality: text_only   # vision disabled
+    reasoning_variant: false
+    model_variant: Instruct
+  - role: qwen3_8b_non_thinking
+    model_id: Qwen/Qwen3-8B
+    revision: b968826d9c46dd6066d109eabc6255188de91218
+    precision: bf16
+    thinking: disabled
+    reasoning_output_allowed: false
+    enforcement: apply_chat_template(enable_thinking=False); verify no <think> trace
+
+# ---- generation settings (frozen; identical semantics to Dispatch-24 for comparability) ----
+generation:
+  temperature: 0.0
+  top_p: 1.0
+  top_k: 0
+  repetition_penalty: 1.0
+  do_sample: false
+  decoding: greedy_argmax
+  seed: 20260722
+  max_new_tokens: 1024
+  stop_conditions: []
+  parameter_equivalence_note: >-
+    All roles decode greedily (argmax); greedy is engine-invariant. Control 4B reuses HF-greedy
+    Dispatch-24 Fast-Battery results. Candidates run in the transformers stack (Qwen3 via
+    AutoModelForCausalLM; Ministral FP8 via AutoModelForImageTextToText text-only, kernels==0.15.2
+    for the finegrained-fp8 kernel). Any residual engine difference is documented, not hidden;
+    no per-model tuning for a better score.
+
+# ---- job accounting ----
+jobs:
+  fast_battery:
+    items: 20
+    roles_run: [ministral_3_8b_instruct, qwen3_8b_non_thinking]   # 4B reused from Dispatch 24
+    control_4b: reuse_dispatch_24_fast_battery
+    new_jobs: 40
+  packet_family:
+    items: 18
+    roles_run: [target_base_4b, ministral_3_8b_instruct, qwen3_8b_non_thinking]  # 4B rerun: no comparable prior result
+    new_jobs: 54
+  total_new_jobs: 94
+
+# ---- packet-family arms + honest token-band status ----
+packet_family:
+  tasks: [scene_drafting, focused_revision, canon_sensitive_continuation]
+  arms: [bare, compact, realistic, long, long_noisy, long_salience_repaired]
+  noisy_repaired_identical_content: true   # differ only in ordering (verified in builder)
+  token_bands:
+    method: real per-model tokenizer counts recorded host-side in the run token-profile
+    target_bands: {bare: "150-300", compact: "500-1000", realistic: "2000-4000",
+                   long: "8000-12000", long_noisy: "8000-12000", long_salience_repaired: "~long_noisy"}
+    honest_status:
+      bare_compact_realistic: in_or_near_band
+      long_family: >-
+        LIMITATION — the authored project's full genuine compiled context is ~4.4-4.6K tokens
+        (char-estimate; real per-model counts recorded at run time). Reaching the 8-12K target
+        would require padding beyond the project's real material, which the dispatch prohibits.
+        The long/noisy/repaired arms therefore stress salience and dilution at the project's
+        TRUE full scale (~2x realistic), and the 8-12K long-context stress is explicitly NOT
+        achieved without prohibited filler. Recorded as a limitation, not smoothed over.
+
+# ---- execution topology ----
+topology:
+  wave_1: {gx10-9141: ministral_3_8b_instruct, gx10-5611: qwen3_8b_non_thinking}
+  wave_2: {note: "4B control on the NEW packet family (no comparable prior result)"}
+  host_assignment_excluded_from_reviewer_artifacts: true
+  image: linewright-ternary-train:d26   # run001 + kernels==0.15.2
+
+integrity_checks_required:
+  per_job: [exact_model_id, model_revision, tokenizer_revision, prompt_hash,
+            behavior_contract_hash, generation_settings_hash, output_hash, host_role,
+            completion_state, token_cap_state, reasoning_mode_state, result_schema]
+  missing_or_substituted_model_invalidates: true
