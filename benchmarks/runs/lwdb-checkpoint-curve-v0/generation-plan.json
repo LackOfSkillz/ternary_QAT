@@ -1,0 +1,315 @@
+{
+  "battery_version": "fast-v1-subset9",
+  "battery_profile": "calibration",
+  "execution_mode": "sequential_single_host",
+  "scheduling_policy": "model_sequential",
+  "item_ids": [
+    "lwdb-a-length-long",
+    "lwdb-a-length-short",
+    "lwdb-c-restraint-clean",
+    "lwdb-c-restraint-fix",
+    "lwdb-d-canon-apply",
+    "lwdb-e-scene-contract",
+    "lwdb-f-surface-bare",
+    "lwdb-f-surface-compiled",
+    "lwdb-i-stability-long"
+  ],
+  "item_hashes": {
+    "lwdb-a-length-short": "a9091a4ab09acab2174dfa78aa8f1ffd9d70091bd60dd59337167d40694047b0",
+    "lwdb-a-length-long": "1fe29fe3fb6f2fd721ee4a9929fd4eefb0fe24fa041b8a0ddc793f7bec96f47d",
+    "lwdb-f-surface-bare": "812204e2289dd47c0f9d3f80af5d02950d2446a419bd3c366bd92eb239882d39",
+    "lwdb-f-surface-compiled": "a58344adf32825eca2ce5eaefbf465a978546e32135228904680ce8566c67e3e",
+    "lwdb-c-restraint-clean": "8b38c0955c0e61a6574fb336152786f69fb6112c2553f1c96dad7093c4cb360f",
+    "lwdb-c-restraint-fix": "ec72e18708a0a86cfb3fc3b0faae4c6837ca3ad7c7f919fd89e219aeb166b41f",
+    "lwdb-d-canon-apply": "49fa33dc62a67bd6bcb7a60a48aa75264d2eaef9ac31660f1393843e753e891a",
+    "lwdb-e-scene-contract": "e79145cd1f41a37959e0a350e8f79db9e1593132d8fc30e44d0a91bb6d1ffe33",
+    "lwdb-i-stability-long": "e2663e21f2382346db6752a9e6296ee49f273774cb3888c9e56c6e8b37e8819c"
+  },
+  "behavior_contract_hashes": {
+    "lwdb-a-length-short": "767dc07cfac7ce1f4d33e3aa24857f538c6e1a419d3f274760676fcb61188f9b",
+    "lwdb-a-length-long": "12fb896996003c1704436e7509ae660a1a9392653e5d9c668caf272ff212546b",
+    "lwdb-f-surface-bare": "c228bf11e76c9816725e1a868de91a190c9f893129bce61d68f54077dbee655c",
+    "lwdb-f-surface-compiled": "c228bf11e76c9816725e1a868de91a190c9f893129bce61d68f54077dbee655c",
+    "lwdb-c-restraint-clean": "1bbc5b5d403e35ed529bd57c2a1867b253fe967da9d4d21715988e5f0697a5ca",
+    "lwdb-c-restraint-fix": "e8f3efecb0c05bb9f0402097b587d46fc2c62277ef0c40451826c301b6e9edba",
+    "lwdb-d-canon-apply": "f7993f58fc76e0e0bd72785445cd6b4ffe4f4d421552daa8e9c5caff91b17917",
+    "lwdb-e-scene-contract": "98e155bd817e8d8632dcb973e928fab22e0ed1ca9793ef4a1db6310d8ddd4286",
+    "lwdb-i-stability-long": "52cd903c9b9d2a32db4117ecb0dd5b67e1becf3ae5e24bbbd28303d5a0090bec"
+  },
+  "model_roles": [
+    "lora_10",
+    "lora_20",
+    "target_base"
+  ],
+  "model_descriptors": {
+    "target_base": {
+      "identity": "prism-ml/Ternary-Bonsai-4B-unpacked",
+      "revision": "4485fae7a00129467b9329b738110d88b2942a1a",
+      "tokenizer_revision": "4485fae7a00129467b9329b738110d88b2942a1a",
+      "adapter": null,
+      "endpoint_id": "ep-base"
+    },
+    "lora_10": {
+      "identity": "base + LoRA step-10",
+      "checkpoint": "training/runs/dataset-a-full-comparison-v1/lora/checkpoints/step-10",
+      "revision": "lora-step-10",
+      "endpoint_id": "ep-lora10"
+    },
+    "lora_20": {
+      "identity": "base + LoRA step-20",
+      "checkpoint": "training/runs/dataset-a-full-comparison-v1/lora/checkpoints/step-20",
+      "revision": "lora-step-20",
+      "endpoint_id": "ep-lora20"
+    }
+  },
+  "model_revisions": {
+    "lora_10": "lora-step-10",
+    "lora_20": "lora-step-20",
+    "target_base": "4485fae7a00129467b9329b738110d88b2942a1a"
+  },
+  "tokenizer_revisions": {
+    "lora_10": null,
+    "lora_20": null,
+    "target_base": "4485fae7a00129467b9329b738110d88b2942a1a"
+  },
+  "chat_templates": {
+    "lora_10": null,
+    "lora_20": null,
+    "target_base": null
+  },
+  "system_prompts": {
+    "lora_10": null,
+    "lora_20": null,
+    "target_base": null
+  },
+  "generation_settings": {
+    "temperature": 0.0,
+    "top_p": 1.0,
+    "seed": 20260722
+  },
+  "generation_settings_hash": "b42ebca72fd7519c15ade03d01dc23493ef144a8466c122ba4f7071171f2d5eb",
+  "seeds": {
+    "target_base": 20260722,
+    "lora_10": 20260722,
+    "lora_20": 20260722
+  },
+  "max_new_tokens": 1024,
+  "stop_sequences": [],
+  "retry_policy": "default",
+  "plan_hash": "6827096536e47e7a59c0eada0d035de5a0e21b3ac6ba5284a9783075201e63ec",
+  "plan_id": "lwdb-checkpoint-curve-v0",
+  "created_at": "2026-07-22",
+  "output_directory": "benchmarks/runs/lwdb-checkpoint-curve-v0/normalized-results",
+  "items": {
+    "lwdb-a-length-short": {
+      "prompt": "{\"system\": \"You are LineWright, a fiction-craft writing assistant. You serve the author and the task, not a house style. Obey the task authority; preserve canon; obey declared constraints; respect the invention budget; preserve the author's voice; revise only authorized elements; prefer no change when the passage is already right; reduce repetitive generic habits at the craft level; and do not explain your work unless asked. For structured tasks, return valid output in exactly the requested shape and nothing else.\", \"user\": \"Write this scene in about 130-180 words. A poacher named Cael at a frozen tollhouse before dawn. The narrator, Wick, must talk the tollkeeper into logging their cart as empty. Third person limited to Wick, wry and tense, short hard sentences when pressure spikes. The tollkeeper must not look under the tarp.\"}",
+      "behavior_contract": {
+        "contract_id": "c-len-short",
+        "output_schema_id": "prose-v1",
+        "expected_output_type": "prose",
+        "forbidden_failures": [
+          "empty_output",
+          "repeated_ngram",
+          "runaway_length",
+          "duplicate_sentence"
+        ],
+        "validation_expectations": {},
+        "no_change_case": false,
+        "refusal_expectation": null
+      },
+      "model_roles": [
+        "target_base",
+        "lora_10",
+        "lora_20"
+      ]
+    },
+    "lwdb-a-length-long": {
+      "prompt": "{\"system\": \"You are LineWright, a fiction-craft writing assistant. You serve the author and the task, not a house style. Obey the task authority; preserve canon; obey declared constraints; respect the invention budget; preserve the author's voice; revise only authorized elements; prefer no change when the passage is already right; reduce repetitive generic habits at the craft level; and do not explain your work unless asked. For structured tasks, return valid output in exactly the requested shape and nothing else.\", \"user\": \"Write this scene in about 650-820 words, sustaining tension without repetition or padding. A poacher named Cael at a frozen tollhouse before dawn. The narrator, Wick, must talk the tollkeeper into logging their cart as empty. Third person limited to Wick, wry and tense, short hard sentences when pressure spikes. The tollkeeper must not look under the tarp.\"}",
+      "behavior_contract": {
+        "contract_id": "c-len-long",
+        "output_schema_id": "prose-v1",
+        "expected_output_type": "prose",
+        "forbidden_failures": [
+          "empty_output",
+          "repeated_ngram",
+          "runaway_length",
+          "duplicate_sentence",
+          "low_lexical_diversity"
+        ],
+        "validation_expectations": {},
+        "no_change_case": false,
+        "refusal_expectation": null
+      },
+      "model_roles": [
+        "target_base",
+        "lora_10",
+        "lora_20"
+      ]
+    },
+    "lwdb-f-surface-bare": {
+      "prompt": "{\"system\": \"You are LineWright, a fiction-craft writing assistant. You serve the author and the task, not a house style. Obey the task authority; preserve canon; obey declared constraints; respect the invention budget; preserve the author's voice; revise only authorized elements; prefer no change when the passage is already right; reduce repetitive generic habits at the craft level; and do not explain your work unless asked. For structured tasks, return valid output in exactly the requested shape and nothing else.\", \"user\": \"Write a short scene (about 120-160 words). A lighthouse keeper, Moll, tells a young relief keeper the supply boat will not come this week, without frightening him. Quiet and character-centered, third person limited to Moll, dry and plain. End on a concrete action, not a summary.\"}",
+      "behavior_contract": {
+        "contract_id": "c-scene",
+        "output_schema_id": "prose-v1",
+        "expected_output_type": "prose",
+        "forbidden_failures": [
+          "empty_output",
+          "repeated_ngram",
+          "runaway_length",
+          "duplicate_sentence"
+        ],
+        "validation_expectations": {},
+        "no_change_case": false,
+        "refusal_expectation": null
+      },
+      "model_roles": [
+        "target_base",
+        "lora_10",
+        "lora_20"
+      ]
+    },
+    "lwdb-f-surface-compiled": {
+      "prompt": "{\"system\": \"You are LineWright, a fiction-craft writing assistant. You serve the author and the task, not a house style. Obey the task authority; preserve canon; obey declared constraints; respect the invention budget; preserve the author's voice; revise only authorized elements; prefer no change when the passage is already right; reduce repetitive generic habits at the craft level; and do not explain your work unless asked. For structured tasks, return valid output in exactly the requested shape and nothing else.\", \"user\": \"Write a short scene (about 120-160 words). A lighthouse keeper, Moll, tells a young relief keeper the supply boat will not come this week, without frightening him. Quiet and character-centered, third person limited to Moll, dry and plain. End on a concrete action, not a summary.\\n\\n[COMPILED PACKET]\\nVOICE: dry, plain, understated.\\nCANON: the lamp is lit by hand; the last boat came eleven days ago.\\nHARD CONSTRAINTS: Moll never lies to the boy; give no weather forecast.\\nFORBIDDEN INVENTION: no radio, no second boat.\\nREQUIRED BEATS: Moll states the fact plainly; the boy is reassured by an action.\"}",
+      "behavior_contract": {
+        "contract_id": "c-scene",
+        "output_schema_id": "prose-v1",
+        "expected_output_type": "prose",
+        "forbidden_failures": [
+          "empty_output",
+          "repeated_ngram",
+          "runaway_length",
+          "duplicate_sentence"
+        ],
+        "validation_expectations": {},
+        "no_change_case": false,
+        "refusal_expectation": null
+      },
+      "model_roles": [
+        "target_base",
+        "lora_10",
+        "lora_20"
+      ]
+    },
+    "lwdb-c-restraint-clean": {
+      "prompt": "{\"system\": \"You are LineWright, a fiction-craft writing assistant. You serve the author and the task, not a house style. Obey the task authority; preserve canon; obey declared constraints; respect the invention budget; preserve the author's voice; revise only authorized elements; prefer no change when the passage is already right; reduce repetitive generic habits at the craft level; and do not explain your work unless asked. For structured tasks, return valid output in exactly the requested shape and nothing else.\", \"user\": \"Perform a focused anti-slop pass. If the passage has no genuine defect, return it unchanged in the structured wrapper and say so.\\n\\nSOURCE:\\nThe kiln ran all night in the shed, ticking as it cooled like something learning to breathe. By dawn the glaze had set. Ada counted the finished bowls twice and did not write the number in the ledger.\"}",
+      "behavior_contract": {
+        "contract_id": "c-nochange",
+        "output_schema_id": "no-change-v1",
+        "expected_output_type": "json",
+        "forbidden_failures": [
+          "no_change_wrapper_missing",
+          "exact_preservation_failure",
+          "wrong_changed_flag"
+        ],
+        "validation_expectations": {
+          "changed": false,
+          "expects_no_change": true
+        },
+        "no_change_case": true,
+        "refusal_expectation": null
+      },
+      "model_roles": [
+        "target_base",
+        "lora_10",
+        "lora_20"
+      ]
+    },
+    "lwdb-c-restraint-fix": {
+      "prompt": "{\"system\": \"You are LineWright, a fiction-craft writing assistant. You serve the author and the task, not a house style. Obey the task authority; preserve canon; obey declared constraints; respect the invention budget; preserve the author's voice; revise only authorized elements; prefer no change when the passage is already right; reduce repetitive generic habits at the craft level; and do not explain your work unless asked. For structured tasks, return valid output in exactly the requested shape and nothing else.\", \"user\": \"This passage is built almost entirely from eye movement. Keep at most one meaningful look and let motivated action carry the rest. Preserve the power dynamic; do not explain the look.\\n\\nSOURCE:\\nTheir eyes met across the workshop. She looked away. His gaze followed her. Her eyes widened as he stepped nearer, and their eyes locked again. She watched him, and he watched her back, neither willing to look away first.\"}",
+      "behavior_contract": {
+        "contract_id": "c-revise",
+        "output_schema_id": "prose-revision-v1",
+        "expected_output_type": "prose",
+        "forbidden_failures": [
+          "empty_output",
+          "repeated_ngram",
+          "runaway_length",
+          "duplicate_sentence",
+          "omitted_required_change"
+        ],
+        "validation_expectations": {
+          "changed": true
+        },
+        "no_change_case": false,
+        "refusal_expectation": null
+      },
+      "model_roles": [
+        "target_base",
+        "lora_10",
+        "lora_20"
+      ]
+    },
+    "lwdb-d-canon-apply": {
+      "prompt": "{\"system\": \"You are LineWright, a fiction-craft writing assistant. You serve the author and the task, not a house style. Obey the task authority; preserve canon; obey declared constraints; respect the invention budget; preserve the author's voice; revise only authorized elements; prefer no change when the passage is already right; reduce repetitive generic habits at the craft level; and do not explain your work unless asked. For structured tasks, return valid output in exactly the requested shape and nothing else.\", \"user\": \"Write a 90-130 word continuation set an hour later at the same customs shed. Honor the canon exactly: the cutter's fate is DISPUTED (not settled), and the harbor dues doubled. Do not resolve the rumor or state that any hand drowned.\\n\\nSOURCE:\\nBy the customs shed the talk was all of the missing cutter. \\\"Foundered on the bar, every hand,\\\" said the netmender, who had it from a boy. A cooper swore he'd watched it warped safe into the north basin at dawn. The gulls wheeled. Everyone agreed only that the harbor dues had doubled overnight.\\n\\nCANON:\\n- the cutter's fate is disputed\\n- harbor dues doubled\\n\\nHARD CONSTRAINTS:\\n- do not resolve the rumor\\n- do not state that any hand drowned\"}",
+      "behavior_contract": {
+        "contract_id": "c-apply",
+        "output_schema_id": "prose-v1",
+        "expected_output_type": "prose",
+        "forbidden_failures": [
+          "empty_output",
+          "repeated_ngram",
+          "runaway_length",
+          "duplicate_sentence",
+          "invented_fact"
+        ],
+        "validation_expectations": {
+          "forbidden_inventions": [
+            "every hand drowned"
+          ]
+        },
+        "no_change_case": false,
+        "refusal_expectation": null
+      },
+      "model_roles": [
+        "target_base",
+        "lora_10",
+        "lora_20"
+      ]
+    },
+    "lwdb-e-scene-contract": {
+      "prompt": "{\"system\": \"You are LineWright, a fiction-craft writing assistant. You serve the author and the task, not a house style. Obey the task authority; preserve canon; obey declared constraints; respect the invention budget; preserve the author's voice; revise only authorized elements; prefer no change when the passage is already right; reduce repetitive generic habits at the craft level; and do not explain your work unless asked. For structured tasks, return valid output in exactly the requested shape and nothing else.\", \"user\": \"Given the writer's request, produce a STRUCTURED scene contract as a single YAML object with exactly these fields: viewpoint, location, scene_objective, required_outcome, prohibited_outcome, knowledge_boundary, protected_craft_or_tone. Fill each field only from what the writer stated.\\n\\nSOURCE:\\nThird limited on Run, a rooftop dovecote at dawn. Run must convince the old pigeon-keeper, Sefa, to carry a sealed message south without reading it. Required: Sefa agrees before the market bell. Hard rule: Sefa must not suspect the message is stolen. Run does not speak the hill dialect Sefa mutters. Keep it hushed and quick.\"}",
+      "behavior_contract": {
+        "contract_id": "c-scenec",
+        "output_schema_id": "scene-contract-v1",
+        "expected_output_type": "yaml",
+        "forbidden_failures": [
+          "alternate_key_names",
+          "missing_required_key",
+          "continued_after_task_complete"
+        ],
+        "validation_expectations": {},
+        "no_change_case": false,
+        "refusal_expectation": null
+      },
+      "model_roles": [
+        "target_base",
+        "lora_10",
+        "lora_20"
+      ]
+    },
+    "lwdb-i-stability-long": {
+      "prompt": "{\"system\": \"You are LineWright, a fiction-craft writing assistant. You serve the author and the task, not a house style. Obey the task authority; preserve canon; obey declared constraints; respect the invention budget; preserve the author's voice; revise only authorized elements; prefer no change when the passage is already right; reduce repetitive generic habits at the craft level; and do not explain your work unless asked. For structured tasks, return valid output in exactly the requested shape and nothing else.\", \"user\": \"Continue this reconciliation for about 500-650 words, deepening the thaw through motivated action and object interaction. Avoid repeated sentence openings, repeated emotional beats, and gaze-only choreography.\\n\\nSOURCE:\\nTheir eyes met across the workshop. She looked away. His gaze followed her. Her eyes widened as he stepped nearer, and their eyes locked again. She watched him, and he watched her back, neither willing to look away first.\"}",
+      "behavior_contract": {
+        "contract_id": "c-stab",
+        "output_schema_id": "prose-v1",
+        "expected_output_type": "prose",
+        "forbidden_failures": [
+          "empty_output",
+          "repeated_ngram",
+          "runaway_length",
+          "duplicate_sentence",
+          "low_lexical_diversity",
+          "repeated_paragraph_opening"
+        ],
+        "validation_expectations": {},
+        "no_change_case": false,
+        "refusal_expectation": null
+      },
+      "model_roles": [
+        "target_base",
+        "lora_10",
+        "lora_20"
+      ]
+    }
+  }
+}

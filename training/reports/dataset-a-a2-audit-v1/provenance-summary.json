@@ -1,0 +1,9 @@
+{
+  "dataset_a": {
+    "model_authored|claude-opus-4-8": 35
+  },
+  "dataset_a2": {
+    "model_authored|claude-opus-4-8": 33
+  },
+  "note": "provenance is reported as recorded; model_authored stays model_authored. No provenance is inferred."
+}

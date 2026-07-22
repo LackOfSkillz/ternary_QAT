@@ -1,0 +1,62 @@
+{
+  "run_id": "lwdb-checkpoint-curve-v0",
+  "dispatch": 25,
+  "threshold_lock": {
+    "git_commit": "a4451674ade954976ade3af550a39a61592c652a",
+    "research_sha256": "2be4fddb1aed87c6500dac2a5cdf11e6209b80d2a6d32fa35aa4d63bef131712"
+  },
+  "subset_size": 9,
+  "checkpoints": [
+    "target_base",
+    "lora_10",
+    "lora_20"
+  ],
+  "per_checkpoint": {
+    "target_base": {
+      "jobs": 9,
+      "mechanical_pass": 5,
+      "severe_slop": 0,
+      "token_cap_hits": 2
+    },
+    "lora_10": {
+      "jobs": 9,
+      "mechanical_pass": 5,
+      "severe_slop": 0,
+      "token_cap_hits": 2
+    },
+    "lora_20": {
+      "jobs": 9,
+      "mechanical_pass": 2,
+      "severe_slop": 6,
+      "token_cap_hits": 6
+    }
+  },
+  "mechanical_pass_curve": {
+    "target_base": 5,
+    "lora_10": 5,
+    "lora_20": 2
+  },
+  "severe_slop_curve": {
+    "target_base": 0,
+    "lora_10": 0,
+    "lora_20": 6
+  },
+  "token_cap_curve": {
+    "target_base": 2,
+    "lora_10": 2,
+    "lora_20": 6
+  },
+  "checkpoint_curve": {
+    "early_improvement": false,
+    "late_collapse": true,
+    "degeneration_onset": "step-20",
+    "best_observed_checkpoint": "target_base",
+    "monotone_worsening": true
+  },
+  "limitations": [
+    "9-item diagnostic subset (not the full battery)",
+    "only existing checkpoints (base, step-10, step-20); step-5/15 were not saved",
+    "greedy decoding; slop thresholds unvalidated"
+  ],
+  "no_winner_declared": true
+}

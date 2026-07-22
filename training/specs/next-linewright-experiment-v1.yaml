@@ -1,0 +1,43 @@
+next_experiment:
+  primary:
+    objective: stronger-base feasibility comparison on the frozen fast battery
+    hypothesis: core-prose weakness is base-capacity limited; a stronger base clears the floor
+    base_model: stronger candidate (e.g. 8B tier or stronger 4B) + current base as control
+    training_method: none            # evaluation only
+    dataset_version: unchanged
+    dataset_target_size: unchanged
+    task_mix: unchanged
+    token_mix: unchanged
+    learning_rate: n/a
+    lora_rank: n/a
+    lora_alpha: n/a
+    dropout: n/a
+    epochs_or_steps: n/a
+    checkpoint_interval: n/a
+    early_stop_rule: n/a
+    evaluation_schedule: one parallel run per base, blind absolute review after mechanical scoring
+    frozen_benchmark: fast-battery-v1
+    research_threshold: research-continuation-v0
+    starter_threshold: starter-model-acceptance-v0
+    critical_regression_rule: 0 critical regressions vs current base
+    controlled_variables: [base_model]
+    training_started: false
+  secondary_separately_authorized:
+    objective: test whether degeneration is over-exposure rather than method
+    training_method: LoRA (rank/alpha/dropout unchanged from full-comparison)
+    dataset_version: unchanged
+    dataset_target_size: unchanged
+    learning_rate: unchanged
+    epochs_or_steps: fewer than 20 (<=10)
+    checkpoint_interval: frequent (few steps)
+    early_stop_rule: stop before severe-slop / token-cap onset on a held-out probe
+    frozen_benchmark: fast-battery-v1
+    critical_regression_rule: 0 critical regressions vs base
+    controlled_variables: [training_steps]
+    training_started: false
+  dataset_scale_recommendation:
+    records: "200-500"
+    balance_by: token_mass_not_just_examples
+    add: [changed_true_no_change_coverage, stronger_structured_protocol_coverage]
+    status: recommendation_not_authorization
+  avoided_uncontrolled_changes: [dataset, learning_rate, rank, alpha, dropout, base_model_and_method_together, decoding]

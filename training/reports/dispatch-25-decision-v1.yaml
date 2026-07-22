@@ -1,0 +1,83 @@
+decision:
+  threshold_lock:
+    research_sha256: 2be4fddb1aed87c6500dac2a5cdf11e6209b80d2a6d32fa35aa4d63bef131712
+    starter_sha256: 98a57af32fff4d4349466f7877acb5c16ce0e4fae4f376570cfff4407fd1d8b7
+    git_commit: a4451674ade954976ade3af550a39a61592c652a
+    threshold_precommit_valid: true
+  base_feasible: false
+  feasibility_checks:
+  - floor: minimum_total_mechanical_pass_rate
+    op: ge
+    threshold: 0.4
+    value: 0.45
+    pass: true
+  - floor: minimum_core_prose_pass_rate
+    op: ge
+    threshold: 0.5
+    value: 0.286
+    pass: false
+  - floor: minimum_required_modules_with_at_least_one_usable_result
+    op: ge
+    threshold: 7
+    value: 7
+    pass: true
+  - floor: maximum_severe_slop_rate
+    op: le
+    threshold: 0.25
+    value: 0.05
+    pass: true
+  - floor: maximum_runaway_token_cap_rate
+    op: le
+    threshold: 0.25
+    value: 0.15
+    pass: true
+  - floor: minimum_bare_prompt_success_rate
+    op: ge
+    threshold: 0.4
+    value: 0.421
+    pass: true
+  - floor: minimum_realistic_packet_success_rate
+    op: ge
+    threshold: 0.35
+    value: 1.0
+    pass: true
+  improvements: 1
+  critical_regressions: 5
+  curve:
+    monotone_worsening: true
+    earlier_better: false
+    later_collapse: true
+  threshold_result: fail
+  branch: test_stronger_base
+  ambiguous_middle_action: run one bounded confirmation experiment; ambiguity is NOT
+    counted as improvement
+  evidence:
+    dispatch_24_base_rates:
+      mechanical_pass_rate: 0.45
+      core_prose_pass_rate: 0.286
+      modules_with_usable: 7
+      severe_slop_rate: 0.05
+      token_cap_rate: 0.15
+      bare_success_rate: 0.421
+      packet_success_rate: 1.0
+    improvements: 1
+    critical_regressions: 5
+    checkpoint_curve:
+      early_improvement: false
+      late_collapse: true
+      degeneration_onset: step-20
+      best_observed_checkpoint: target_base
+      monotone_worsening: true
+  rejected_branches:
+  - branch: continue_scaled_dataset
+    reason: no capability improves over base (improvements=1) and the checkpoint curve
+      is monotone-worsening
+  - branch: checkpoint_selection_only
+    reason: LoRA-10 is neutral (does not improve over base); there is no better earlier
+      checkpoint to select
+  - branch: pause_current_direction
+    reason: the base is feasible (not merely marginal), so pausing is not warranted
+  required_next_experiment: a token-balanced, protocol-strengthened dataset with an
+    EARLY-STOP / fewer-steps recipe (LoRA), holding base + method fixed, to test whether
+    degeneration is over-exposure rather than method — ONE controlled variable at
+    a time.

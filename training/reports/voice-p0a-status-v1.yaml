@@ -1,0 +1,18 @@
+# VOICE-P0A verification (Dispatch 25). Verified from authoritative repository artifacts,
+# not conversational references.
+voice_p0a:
+  found: true
+  authoritative_reference: "ROADMAP.md — Scheduling policy section (line ~60-72)"
+  secondary_reference: "training/reports/dataset-a-execution-hardening-v1.md (Queue-discipline note)"
+  status: "scheduling / prioritization gate that protects Gary's scarce manual-adjudication time; NOT a technical prerequisite"
+  completed: "n/a — it is a scheduling policy, not a task with a completion state"
+  blocked: false
+  superseded: "partially — the 'starter-model work is globally blocked behind VOICE-P0A' interpretation is EXPLICITLY retired in ROADMAP.md ('no longer globally blocked behind VOICE-P0A')"
+  relationship_to_dispatch_25: >
+    Dispatch 25 is automated evaluation/analysis (baseline evaluation, checkpoint evaluation,
+    automated reporting) — explicitly listed under 'Allowed in parallel' in the scheduling
+    policy. It uses NO protected human work (no taxonomy adjudication, no gold-example writing,
+    no Gary threshold selection — thresholds here are agent-proposed under delegated authority,
+    a distinct thing). Therefore Dispatch 25 is NOT blocked by VOICE-P0A and does not depend on
+    it. No unrelated VOICE-P0A work was started.
+  documentation_action: "no undefined-blocker citation exists to fix; the roadmap already scopes it correctly."

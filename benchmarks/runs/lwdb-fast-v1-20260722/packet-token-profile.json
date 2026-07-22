@@ -1,0 +1,61 @@
+{
+  "run_id": "lwdb-fast-v1-20260722",
+  "tokenizer_revision": "4485fae7a00129467b9329b738110d88b2942a1a",
+  "packet_realism": {
+    "realistic_product_packet": false,
+    "partial_product_packet": true,
+    "compact_compiled_packet": true,
+    "padded_prompt": false
+  },
+  "compiled_packet_components": {
+    "authority_or_constitution": false,
+    "task_instruction": true,
+    "scene_contract": false,
+    "canon": true,
+    "knowledge_boundaries": false,
+    "hard_constraints": true,
+    "invention_budget": false,
+    "voice_packet_or_placeholder": true,
+    "protected_elements": false,
+    "output_contract": false
+  },
+  "missing_components": [
+    "authority_or_constitution",
+    "scene_contract",
+    "knowledge_boundaries",
+    "invention_budget",
+    "protected_elements",
+    "output_contract"
+  ],
+  "packet_token_profile": {
+    "bare": {
+      "system_tokens": 99,
+      "task_tokens": 68,
+      "source_tokens": 0,
+      "total_prompt_tokens": 167
+    },
+    "compiled": {
+      "system_tokens": 99,
+      "task_tokens": 68,
+      "scene_contract_tokens": 0,
+      "canon_tokens": 15,
+      "voice_tokens": 7,
+      "constraint_tokens": 13,
+      "other_packet_tokens": 23,
+      "total_prompt_tokens": 225
+    },
+    "delta": {
+      "absolute_tokens": 58,
+      "ratio": 1.347
+    }
+  },
+  "future_packet_curve_required": [
+    "bare",
+    "compiled_compact",
+    "compiled_realistic",
+    "compiled_long",
+    "compiled_long_noisy",
+    "compiled_long_salience_repaired"
+  ],
+  "note": "the Dispatch-24 compiled arm is a COMPACT/PARTIAL product packet: it carries voice/canon/hard-constraints/forbidden-invention/required-beats but LACKS authority-constitution, scene-contract, knowledge-boundaries, invention-budget, protected-elements, and an explicit output-contract. A full packet-length family is required before any context-compiler diagnosis. Token counts use the real tokenizer (no whitespace approximation)."
+}

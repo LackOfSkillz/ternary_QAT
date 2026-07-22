@@ -1,0 +1,34 @@
+{
+  "dataset_a": {
+    "examples_by_task": {
+      "fiction_boundary": 2,
+      "canon_extraction": 5,
+      "constraint_check": 5,
+      "focused_revision": 20,
+      "scene_contract": 3
+    },
+    "tokens_by_task": {
+      "fiction_boundary": 254,
+      "canon_extraction": 1666,
+      "constraint_check": 824,
+      "focused_revision": 1295,
+      "scene_contract": 733
+    }
+  },
+  "dataset_a2": {
+    "examples_by_task": {
+      "focused_revision": 19,
+      "canon_extraction": 6,
+      "constraint_check": 4,
+      "scene_contract": 3,
+      "fiction_boundary": 1
+    },
+    "tokens_by_task": {
+      "focused_revision": 1103,
+      "canon_extraction": 1098,
+      "constraint_check": 324,
+      "scene_contract": 299,
+      "fiction_boundary": 74
+    }
+  }
+}

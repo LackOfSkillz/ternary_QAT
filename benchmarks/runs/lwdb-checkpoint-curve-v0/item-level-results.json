@@ -1,0 +1,340 @@
+[
+  {
+    "item_id": "lwdb-a-length-long",
+    "checkpoint": "target_base",
+    "mechanical_pass": false,
+    "failure_labels": [
+      "incomplete_output",
+      "low_lexical_diversity",
+      "repeated_ngram",
+      "runaway_length"
+    ],
+    "slop_severity": "high",
+    "hit_token_cap": true,
+    "output_tokens": 1024,
+    "output_hash": "c1e0a0d6bfd4b2b333cd81dcb1540480bd7ae7e5c64cb6120100b612b35f0f7c"
+  },
+  {
+    "item_id": "lwdb-a-length-long",
+    "checkpoint": "lora_10",
+    "mechanical_pass": false,
+    "failure_labels": [
+      "incomplete_output",
+      "low_lexical_diversity",
+      "repeated_ngram",
+      "runaway_length"
+    ],
+    "slop_severity": "high",
+    "hit_token_cap": true,
+    "output_tokens": 1024,
+    "output_hash": "0ce6eebee71473030f1d3bf55c969749142147e1d49a3ee70285fff578038bb5"
+  },
+  {
+    "item_id": "lwdb-a-length-long",
+    "checkpoint": "lora_20",
+    "mechanical_pass": false,
+    "failure_labels": [
+      "duplicate_sentence",
+      "incomplete_output",
+      "low_lexical_diversity",
+      "repeated_ngram",
+      "runaway_length"
+    ],
+    "slop_severity": "severe",
+    "hit_token_cap": true,
+    "output_tokens": 1024,
+    "output_hash": "66eadadf2d855036fcb3361789097dafb3c56bc086908aeebcd7c33a552afb54"
+  },
+  {
+    "item_id": "lwdb-a-length-short",
+    "checkpoint": "target_base",
+    "mechanical_pass": true,
+    "failure_labels": [],
+    "slop_severity": "none",
+    "hit_token_cap": false,
+    "output_tokens": 362,
+    "output_hash": "06e3fe1b360017aa2ce75e1cfb36df13a1be00644d56f931c1c125ce0ad78e59"
+  },
+  {
+    "item_id": "lwdb-a-length-short",
+    "checkpoint": "lora_10",
+    "mechanical_pass": true,
+    "failure_labels": [],
+    "slop_severity": "low",
+    "hit_token_cap": false,
+    "output_tokens": 329,
+    "output_hash": "45495f0bf3f86e68824eb131a6cad63a9b2c157dad3efe16c0f379fd74ef30e8"
+  },
+  {
+    "item_id": "lwdb-a-length-short",
+    "checkpoint": "lora_20",
+    "mechanical_pass": false,
+    "failure_labels": [
+      "duplicate_sentence",
+      "incomplete_output",
+      "low_lexical_diversity",
+      "repeated_ngram",
+      "runaway_length"
+    ],
+    "slop_severity": "severe",
+    "hit_token_cap": true,
+    "output_tokens": 1024,
+    "output_hash": "a95be8d2b0028e9ca4c5994637e03d477eb738a6a4f095fbe08f5ec7d82a7bc0"
+  },
+  {
+    "item_id": "lwdb-c-restraint-clean",
+    "checkpoint": "target_base",
+    "mechanical_pass": false,
+    "failure_labels": [
+      "invalid_json",
+      "no_change_wrapper_missing",
+      "prose_outside_structure"
+    ],
+    "slop_severity": "none",
+    "hit_token_cap": false,
+    "output_tokens": 67,
+    "output_hash": "8ee507a374dfa0a20702e70c6e429f442e7619dedb0e09d3046bdaa960c99511"
+  },
+  {
+    "item_id": "lwdb-c-restraint-clean",
+    "checkpoint": "lora_10",
+    "mechanical_pass": false,
+    "failure_labels": [
+      "invalid_json",
+      "no_change_wrapper_missing",
+      "prose_outside_structure"
+    ],
+    "slop_severity": "none",
+    "hit_token_cap": false,
+    "output_tokens": 51,
+    "output_hash": "c9c112e795ef6c33b1502ca63d73fba429f8754edbdc5b05625da6790b1a730c"
+  },
+  {
+    "item_id": "lwdb-c-restraint-clean",
+    "checkpoint": "lora_20",
+    "mechanical_pass": false,
+    "failure_labels": [
+      "invalid_json",
+      "no_change_wrapper_missing",
+      "prose_outside_structure"
+    ],
+    "slop_severity": "inconclusive",
+    "hit_token_cap": false,
+    "output_tokens": 45,
+    "output_hash": "564e9cbc0b3da504e89d63fe564a3d3550ad7b14c360f65b9f6785ab89f2afc7"
+  },
+  {
+    "item_id": "lwdb-c-restraint-fix",
+    "checkpoint": "target_base",
+    "mechanical_pass": false,
+    "failure_labels": [
+      "omitted_required_change"
+    ],
+    "slop_severity": "inconclusive",
+    "hit_token_cap": false,
+    "output_tokens": 48,
+    "output_hash": "dfd11f4d5d9683dda08127193a7626db3d92fdf43e835c58ac26d9ef78959e16"
+  },
+  {
+    "item_id": "lwdb-c-restraint-fix",
+    "checkpoint": "lora_10",
+    "mechanical_pass": false,
+    "failure_labels": [
+      "omitted_required_change"
+    ],
+    "slop_severity": "inconclusive",
+    "hit_token_cap": false,
+    "output_tokens": 48,
+    "output_hash": "dfd11f4d5d9683dda08127193a7626db3d92fdf43e835c58ac26d9ef78959e16"
+  },
+  {
+    "item_id": "lwdb-c-restraint-fix",
+    "checkpoint": "lora_20",
+    "mechanical_pass": true,
+    "failure_labels": [],
+    "slop_severity": "inconclusive",
+    "hit_token_cap": false,
+    "output_tokens": 26,
+    "output_hash": "d2dbe8add0e79d1a8aa33a0f33e36d697f1bbfb7e8c1fc574a5ec4a2e60186ec"
+  },
+  {
+    "item_id": "lwdb-d-canon-apply",
+    "checkpoint": "target_base",
+    "mechanical_pass": true,
+    "failure_labels": [],
+    "slop_severity": "none",
+    "hit_token_cap": false,
+    "output_tokens": 167,
+    "output_hash": "67f85e01daa06fc1ada0696bae28769aba1d94e4b1dc8f3c33c8a24061f37c5f"
+  },
+  {
+    "item_id": "lwdb-d-canon-apply",
+    "checkpoint": "lora_10",
+    "mechanical_pass": true,
+    "failure_labels": [],
+    "slop_severity": "none",
+    "hit_token_cap": false,
+    "output_tokens": 148,
+    "output_hash": "a3a7fb50d9cd666e08fe2abe33c4d386e89ba83c80c100ece1c9f6de30c12be7"
+  },
+  {
+    "item_id": "lwdb-d-canon-apply",
+    "checkpoint": "lora_20",
+    "mechanical_pass": false,
+    "failure_labels": [
+      "duplicate_sentence",
+      "incomplete_output",
+      "low_lexical_diversity",
+      "repeated_ngram",
+      "runaway_length"
+    ],
+    "slop_severity": "severe",
+    "hit_token_cap": true,
+    "output_tokens": 1024,
+    "output_hash": "217315fad70e94869d982543b0e26ddade83087995e51367a7fff9b58c48a490"
+  },
+  {
+    "item_id": "lwdb-e-scene-contract",
+    "checkpoint": "target_base",
+    "mechanical_pass": true,
+    "failure_labels": [],
+    "slop_severity": "none",
+    "hit_token_cap": false,
+    "output_tokens": 98,
+    "output_hash": "8278d0adfebba7356684f5a131a1fd7b55cddf0e9f9595b46c08848db7a236fa"
+  },
+  {
+    "item_id": "lwdb-e-scene-contract",
+    "checkpoint": "lora_10",
+    "mechanical_pass": true,
+    "failure_labels": [],
+    "slop_severity": "none",
+    "hit_token_cap": false,
+    "output_tokens": 94,
+    "output_hash": "ce05cb563802b6c779de6454808e86ec4115ee5d4abc2cc47e04c42c956646a4"
+  },
+  {
+    "item_id": "lwdb-e-scene-contract",
+    "checkpoint": "lora_20",
+    "mechanical_pass": true,
+    "failure_labels": [],
+    "slop_severity": "none",
+    "hit_token_cap": false,
+    "output_tokens": 79,
+    "output_hash": "62463809ba17e860b50002cb08fd020b8c4311b0a4d62be0f4ac43078b6ca80f"
+  },
+  {
+    "item_id": "lwdb-f-surface-bare",
+    "checkpoint": "target_base",
+    "mechanical_pass": true,
+    "failure_labels": [],
+    "slop_severity": "none",
+    "hit_token_cap": false,
+    "output_tokens": 274,
+    "output_hash": "952f8cba40af317b90e0354c3aaf2795d625784b9c03a901496fd24a20e89419"
+  },
+  {
+    "item_id": "lwdb-f-surface-bare",
+    "checkpoint": "lora_10",
+    "mechanical_pass": true,
+    "failure_labels": [],
+    "slop_severity": "none",
+    "hit_token_cap": false,
+    "output_tokens": 243,
+    "output_hash": "525de60731a3c94d9c2cb4c033454cff5cafaf6c16448f42057ed233af839217"
+  },
+  {
+    "item_id": "lwdb-f-surface-bare",
+    "checkpoint": "lora_20",
+    "mechanical_pass": false,
+    "failure_labels": [
+      "duplicate_sentence",
+      "incomplete_output",
+      "low_lexical_diversity",
+      "repeated_ngram",
+      "runaway_length"
+    ],
+    "slop_severity": "severe",
+    "hit_token_cap": true,
+    "output_tokens": 1024,
+    "output_hash": "3113921caa99f3a62623a4af3c0687a9544af92bde5113b8b08fd686d4e21cbf"
+  },
+  {
+    "item_id": "lwdb-f-surface-compiled",
+    "checkpoint": "target_base",
+    "mechanical_pass": true,
+    "failure_labels": [],
+    "slop_severity": "none",
+    "hit_token_cap": false,
+    "output_tokens": 216,
+    "output_hash": "539125c21680523e445c3704d92b46f3edbea2800c95a4576e8e47a25849d69a"
+  },
+  {
+    "item_id": "lwdb-f-surface-compiled",
+    "checkpoint": "lora_10",
+    "mechanical_pass": true,
+    "failure_labels": [],
+    "slop_severity": "low",
+    "hit_token_cap": false,
+    "output_tokens": 196,
+    "output_hash": "fbad8e0d669325d80161b5f1120a04f72e9e825e3be9e9b03af7fc0803c0480a"
+  },
+  {
+    "item_id": "lwdb-f-surface-compiled",
+    "checkpoint": "lora_20",
+    "mechanical_pass": false,
+    "failure_labels": [
+      "duplicate_sentence",
+      "incomplete_output",
+      "low_lexical_diversity",
+      "repeated_ngram",
+      "runaway_length"
+    ],
+    "slop_severity": "severe",
+    "hit_token_cap": true,
+    "output_tokens": 1024,
+    "output_hash": "e1fd4a6059133eebaee973c37bcb24af808885dd0e72cee87f971db439198243"
+  },
+  {
+    "item_id": "lwdb-i-stability-long",
+    "checkpoint": "target_base",
+    "mechanical_pass": false,
+    "failure_labels": [
+      "incomplete_output",
+      "runaway_length"
+    ],
+    "slop_severity": "low",
+    "hit_token_cap": true,
+    "output_tokens": 1024,
+    "output_hash": "187669354f31b66415eb4ca4efca3d250c4b62c5cf8d82af09c5cf397766a2cd"
+  },
+  {
+    "item_id": "lwdb-i-stability-long",
+    "checkpoint": "lora_10",
+    "mechanical_pass": false,
+    "failure_labels": [
+      "incomplete_output",
+      "runaway_length"
+    ],
+    "slop_severity": "moderate",
+    "hit_token_cap": true,
+    "output_tokens": 1024,
+    "output_hash": "b3615bafa8d3c23f24f0198b375c5508ce8e8e8bf575566672226f7353de4bdd"
+  },
+  {
+    "item_id": "lwdb-i-stability-long",
+    "checkpoint": "lora_20",
+    "mechanical_pass": false,
+    "failure_labels": [
+      "duplicate_sentence",
+      "incomplete_output",
+      "low_lexical_diversity",
+      "repeated_ngram",
+      "runaway_length"
+    ],
+    "slop_severity": "severe",
+    "hit_token_cap": true,
+    "output_tokens": 1024,
+    "output_hash": "743bfea7c51001bfc857826483bfaa4f36e65ac593b25c9fcded7680df07f8ef"
+  }
+]

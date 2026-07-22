@@ -1,0 +1,11 @@
+{
+  "dataset_a": {
+    "count_ge_0.5": 0,
+    "clusters": []
+  },
+  "dataset_a2": {
+    "count_ge_0.5": 0,
+    "clusters": []
+  },
+  "note": "surface shingle similarity; NOT called contamination without evidence"
+}

@@ -1,0 +1,10 @@
+{
+  "dataset_a": {
+    "exact_duplicate_responses": 0,
+    "approx_duplicate_responses": 0
+  },
+  "dataset_a2": {
+    "exact_duplicate_responses": 0,
+    "approx_duplicate_responses": 0
+  }
+}

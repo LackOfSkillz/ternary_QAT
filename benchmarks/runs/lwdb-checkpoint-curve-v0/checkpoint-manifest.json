@@ -1,0 +1,41 @@
+{
+  "run_id": "lwdb-checkpoint-curve-v0",
+  "dispatch": 25,
+  "subset_frozen_before_generation": true,
+  "subset_item_ids": [
+    "lwdb-a-length-short",
+    "lwdb-a-length-long",
+    "lwdb-f-surface-bare",
+    "lwdb-f-surface-compiled",
+    "lwdb-c-restraint-clean",
+    "lwdb-c-restraint-fix",
+    "lwdb-d-canon-apply",
+    "lwdb-e-scene-contract",
+    "lwdb-i-stability-long"
+  ],
+  "checkpoints": {
+    "target_base": {
+      "identity": "prism-ml/Ternary-Bonsai-4B-unpacked",
+      "revision": "4485fae7a00129467b9329b738110d88b2942a1a",
+      "tokenizer_revision": "4485fae7a00129467b9329b738110d88b2942a1a",
+      "adapter": null,
+      "endpoint_id": "ep-base",
+      "host": "gx10-9141"
+    },
+    "lora_10": {
+      "identity": "base + LoRA step-10",
+      "checkpoint": "training/runs/dataset-a-full-comparison-v1/lora/checkpoints/step-10",
+      "revision": "lora-step-10",
+      "endpoint_id": "ep-lora10",
+      "host": "gx10-9141"
+    },
+    "lora_20": {
+      "identity": "base + LoRA step-20",
+      "checkpoint": "training/runs/dataset-a-full-comparison-v1/lora/checkpoints/step-20",
+      "revision": "lora-step-20",
+      "endpoint_id": "ep-lora20",
+      "host": "gx10-9141"
+    }
+  },
+  "note": "existing LoRA checkpoints only (step-10, step-20) + untouched base; no invented checkpoints."
+}

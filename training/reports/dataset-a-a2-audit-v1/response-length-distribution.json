@@ -1,0 +1,14 @@
+{
+  "dataset_a": {
+    "min": 38,
+    "max": 403,
+    "mean": 136.3,
+    "total": 4772
+  },
+  "dataset_a2": {
+    "min": 34,
+    "max": 203,
+    "mean": 87.8,
+    "total": 2898
+  }
+}
