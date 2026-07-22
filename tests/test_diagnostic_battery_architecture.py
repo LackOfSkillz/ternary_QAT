@@ -39,7 +39,8 @@ def test_manifest_parses(manifest):
 
 
 def test_all_capability_modules_exist(manifest):
-    assert set(manifest["modules"]) == set("ABCDEFGHI")
+    # A-I are the Dispatch-22 modules; Dispatch 23 added J (slop). Require A-I present.
+    assert set("ABCDEFGHI").issubset(set(manifest["modules"]))
 
 
 def test_all_six_layers_exist(manifest):
@@ -182,8 +183,10 @@ def test_changelog_records_architecture_dispatch():
 # ---------------- no training / no prompts created ----------------
 
 def test_no_benchmark_prompts_or_run_artifacts_created(manifest):
-    # lifecycle item dirs are skeletons: only .gitkeep, no items/prompts/outputs
-    for d in ("development", "active-core", "rotating", "reserve", "calibration", "burned"):
+    # ordinary-item lifecycle dirs are skeletons: only .gitkeep. (Dispatch 23 legitimately
+    # populates benchmarks/calibration/ with the instrument-validation set — a distinct,
+    # permitted category, NOT the ordinary fast/full battery — so it is excluded here.)
+    for d in ("development", "active-core", "rotating", "reserve", "burned"):
         entries = [e for e in os.listdir(os.path.join(BENCH, d)) if e != ".gitkeep"]
         assert entries == [], f"unexpected files in benchmarks/{d}: {entries}"
     out = manifest["dispatch_22_outputs"]
