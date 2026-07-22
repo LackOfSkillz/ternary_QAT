@@ -69,8 +69,10 @@ qwen_confirmation:
 
   foundation_decision:
     branch: confirm_Qwen3_8B_foundation
-    status: RECOMMENDED_provisional_awaiting_gary_human_call
-    human_gate_satisfied: partial   # 2 diverse blind LM reviews returned; Gary's own human judgment is the deciding input
+    status: CONFIRMED_by_gary
+    human_gate_satisfied: true   # Gary made the human call after reviewing the two diverse blind LM reviews
+    gary_decision: "Confirm + run LoRA pilot — accept Qwen3-8B as the LineWright Core foundation; the ~0.20 base fatal rate / focused-revision gap becomes a TESTABLE success criterion for the Phase B LoRA pilot."
+    phase_b_entry_gate: PASSED
     q4_package_verdict: acceptable   # rules out retain_Qwen_but_reject_Q4_package and run_one_quantization_fix_confirmation
     recommendation: >-
       CONFIRM Qwen3-8B as the provisional foundation, WITH EYES OPEN. It is the best available base
