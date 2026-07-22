@@ -1,0 +1,778 @@
+{
+  "base_model_file_count": 51,
+  "base_model_root_hash": "890df375f933302e727564a174ebff3950decbc231af0f3a04eba4eb626243ed",
+  "base_model_unchanged": true,
+  "baseline_reproducibility": "exact_match",
+  "phases": {
+    "base_integrity": {
+      "lora": true,
+      "qat": true
+    },
+    "lora": {
+      "checkpoint_reloads": [
+        {
+          "ok": true,
+          "step": 10,
+          "type": "lora"
+        },
+        {
+          "ok": true,
+          "step": 20,
+          "type": "lora"
+        }
+      ],
+      "completed_steps": 20,
+      "diagnostics": {
+        "chat_template": true,
+        "device": "cuda",
+        "load_seconds": 0.89,
+        "lora_alpha": 32,
+        "lora_dropout": 0.05,
+        "lora_matched_names": [
+          "model.layers.0.mlp.down_proj",
+          "model.layers.0.mlp.gate_proj",
+          "model.layers.0.mlp.up_proj",
+          "model.layers.0.self_attn.k_proj",
+          "model.layers.0.self_attn.o_proj",
+          "model.layers.0.self_attn.q_proj",
+          "model.layers.0.self_attn.v_proj",
+          "model.layers.1.mlp.down_proj",
+          "model.layers.1.mlp.gate_proj",
+          "model.layers.1.mlp.up_proj",
+          "model.layers.1.self_attn.k_proj",
+          "model.layers.1.self_attn.o_proj",
+          "model.layers.1.self_attn.q_proj",
+          "model.layers.1.self_attn.v_proj",
+          "model.layers.10.mlp.down_proj",
+          "model.layers.10.mlp.gate_proj",
+          "model.layers.10.mlp.up_proj",
+          "model.layers.10.self_attn.k_proj",
+          "model.layers.10.self_attn.o_proj",
+          "model.layers.10.self_attn.q_proj"
+        ],
+        "lora_modules_matched": 252,
+        "lora_rank": 16,
+        "lora_target_modules": [
+          "q_proj",
+          "k_proj",
+          "v_proj",
+          "o_proj",
+          "gate_proj",
+          "up_proj",
+          "down_proj"
+        ],
+        "lora_total_params": 4054814720,
+        "lora_trainable_params": 33030144,
+        "lora_trainable_pct": 0.8146,
+        "mask_counts_first_batch": {
+          "input": 768,
+          "masked": 626,
+          "target": 142,
+          "truncated": 0
+        },
+        "model_class": "Qwen3ForCausalLM",
+        "model_src": "/workspace/hf-cache/prism-ml/Ternary-Bonsai-4B-unpacked",
+        "resolved_revision": "4485fae7a00129467b9329b738110d88b2942a1a",
+        "revision_check": "path_pinned",
+        "tokenizer_class": "Qwen2Tokenizer",
+        "total_params": 4021784576,
+        "train_batches": 28
+      },
+      "exit_code": 0,
+      "final_loss": 2.778305,
+      "gradient_warnings": 0,
+      "initial_loss": 4.403287,
+      "max_grad_norm": 3.628492,
+      "min_loss": 0.086233,
+      "peak_cuda_mb": 19259.4,
+      "repository_verification_ok": true,
+      "status": "completed",
+      "step_metrics": [
+        {
+          "backward_s": 0.3615,
+          "batch_ids": [
+            "dsa-boundary-002"
+          ],
+          "cuda_alloc_mb": 8575.9,
+          "cuda_peak_mb": 16152.2,
+          "cuda_reserved_mb": 16840.0,
+          "forward_s": 1.1602,
+          "grad_norm": 1.221653,
+          "input_tokens": 768,
+          "loss": 4.403287,
+          "lr": 0.0002,
+          "optimizer_s": 0.1816,
+          "prompt_tokens": 626,
+          "step": 1,
+          "step_s": 1.7033,
+          "target_tokens": 142
+        },
+        {
+          "backward_s": 0.4792,
+          "batch_ids": [
+            "dsa-canon-001"
+          ],
+          "cuda_alloc_mb": 8679.2,
+          "cuda_peak_mb": 18818.9,
+          "cuda_reserved_mb": 19420.0,
+          "forward_s": 0.3878,
+          "grad_norm": 0.533222,
+          "input_tokens": 989,
+          "loss": 0.700707,
+          "lr": 0.0002,
+          "optimizer_s": 0.0886,
+          "prompt_tokens": 640,
+          "step": 2,
+          "step_s": 0.9556,
+          "target_tokens": 349
+        },
+        {
+          "backward_s": 0.553,
+          "batch_ids": [
+            "dsa-canon-002"
+          ],
+          "cuda_alloc_mb": 8675.1,
+          "cuda_peak_mb": 18547.7,
+          "cuda_reserved_mb": 19424.0,
+          "forward_s": 0.2559,
+          "grad_norm": 0.546465,
+          "input_tokens": 962,
+          "loss": 0.599012,
+          "lr": 0.0002,
+          "optimizer_s": 0.0873,
+          "prompt_tokens": 611,
+          "step": 3,
+          "step_s": 0.8962,
+          "target_tokens": 351
+        },
+        {
+          "backward_s": 0.4806,
+          "batch_ids": [
+            "dsa-canon-004"
+          ],
+          "cuda_alloc_mb": 8620.4,
+          "cuda_peak_mb": 17236.4,
+          "cuda_reserved_mb": 19426.0,
+          "forward_s": 0.2212,
+          "grad_norm": 0.720046,
+          "input_tokens": 842,
+          "loss": 0.972188,
+          "lr": 0.0002,
+          "optimizer_s": 0.0767,
+          "prompt_tokens": 602,
+          "step": 4,
+          "step_s": 0.7786,
+          "target_tokens": 240
+        },
+        {
+          "backward_s": 0.5289,
+          "batch_ids": [
+            "dsa-canon-005"
+          ],
+          "cuda_alloc_mb": 8696.8,
+          "cuda_peak_mb": 19259.4,
+          "cuda_reserved_mb": 21214.0,
+          "forward_s": 0.356,
+          "grad_norm": 0.614008,
+          "input_tokens": 1028,
+          "loss": 0.7417,
+          "lr": 0.0002,
+          "optimizer_s": 0.0888,
+          "prompt_tokens": 623,
+          "step": 5,
+          "step_s": 0.9736,
+          "target_tokens": 405
+        },
+        {
+          "backward_s": 0.4754,
+          "batch_ids": [
+            "dsa-constraint-001"
+          ],
+          "cuda_alloc_mb": 8619.1,
+          "cuda_peak_mb": 17052.3,
+          "cuda_reserved_mb": 21214.0,
+          "forward_s": 0.2083,
+          "grad_norm": 1.257959,
+          "input_tokens": 823,
+          "loss": 1.381443,
+          "lr": 0.0002,
+          "optimizer_s": 0.0702,
+          "prompt_tokens": 722,
+          "step": 6,
+          "step_s": 0.754,
+          "target_tokens": 101
+        },
+        {
+          "backward_s": 0.5519,
+          "batch_ids": [
+            "dsa-constraint-003"
+          ],
+          "cuda_alloc_mb": 8674.3,
+          "cuda_peak_mb": 18422.4,
+          "cuda_reserved_mb": 21214.0,
+          "forward_s": 0.2442,
+          "grad_norm": 1.071292,
+          "input_tokens": 947,
+          "loss": 1.373602,
+          "lr": 0.0002,
+          "optimizer_s": 0.082,
+          "prompt_tokens": 750,
+          "step": 7,
+          "step_s": 0.8781,
+          "target_tokens": 197
+        },
+        {
+          "backward_s": 0.5494,
+          "batch_ids": [
+            "dsa-constraint-004"
+          ],
+          "cuda_alloc_mb": 8669.7,
+          "cuda_peak_mb": 18533.6,
+          "cuda_reserved_mb": 21214.0,
+          "forward_s": 0.2431,
+          "grad_norm": 1.444072,
+          "input_tokens": 960,
+          "loss": 1.697163,
+          "lr": 0.0002,
+          "optimizer_s": 0.0838,
+          "prompt_tokens": 768,
+          "step": 8,
+          "step_s": 0.8763,
+          "target_tokens": 192
+        },
+        {
+          "backward_s": 0.5593,
+          "batch_ids": [
+            "dsa-constraint-005"
+          ],
+          "cuda_alloc_mb": 8685.1,
+          "cuda_peak_mb": 18754.3,
+          "cuda_reserved_mb": 21214.0,
+          "forward_s": 0.2527,
+          "grad_norm": 1.109303,
+          "input_tokens": 980,
+          "loss": 1.578112,
+          "lr": 0.0002,
+          "optimizer_s": 0.0896,
+          "prompt_tokens": 788,
+          "step": 9,
+          "step_s": 0.9016,
+          "target_tokens": 192
+        },
+        {
+          "backward_s": 0.3364,
+          "batch_ids": [
+            "dsa-revision-001"
+          ],
+          "cuda_alloc_mb": 8511.4,
+          "cuda_peak_mb": 14733.0,
+          "cuda_reserved_mb": 21214.0,
+          "forward_s": 0.161,
+          "grad_norm": 1.354608,
+          "input_tokens": 608,
+          "loss": 1.261917,
+          "lr": 0.0002,
+          "optimizer_s": 0.0529,
+          "prompt_tokens": 536,
+          "step": 10,
+          "step_s": 0.5503,
+          "target_tokens": 72
+        },
+        {
+          "backward_s": 0.3272,
+          "batch_ids": [
+            "dsa-revision-003"
+          ],
+          "cuda_alloc_mb": 8507.0,
+          "cuda_peak_mb": 14506.3,
+          "cuda_reserved_mb": 21214.0,
+          "forward_s": 0.1565,
+          "grad_norm": 1.093044,
+          "input_tokens": 588,
+          "loss": 0.116915,
+          "lr": 0.0002,
+          "optimizer_s": 0.0491,
+          "prompt_tokens": 541,
+          "step": 11,
+          "step_s": 0.5328,
+          "target_tokens": 47
+        },
+        {
+          "backward_s": 0.3446,
+          "batch_ids": [
+            "dsa-revision-004"
+          ],
+          "cuda_alloc_mb": 8521.3,
+          "cuda_peak_mb": 14933.3,
+          "cuda_reserved_mb": 21214.0,
+          "forward_s": 0.1599,
+          "grad_norm": 2.016055,
+          "input_tokens": 619,
+          "loss": 1.279289,
+          "lr": 0.0002,
+          "optimizer_s": 0.051,
+          "prompt_tokens": 553,
+          "step": 12,
+          "step_s": 0.5555,
+          "target_tokens": 66
+        },
+        {
+          "backward_s": 0.3408,
+          "batch_ids": [
+            "dsa-revision-005"
+          ],
+          "cuda_alloc_mb": 8523.9,
+          "cuda_peak_mb": 14826.5,
+          "cuda_reserved_mb": 21214.0,
+          "forward_s": 0.1599,
+          "grad_norm": 2.427004,
+          "input_tokens": 615,
+          "loss": 1.495987,
+          "lr": 0.0002,
+          "optimizer_s": 0.0506,
+          "prompt_tokens": 546,
+          "step": 13,
+          "step_s": 0.5512,
+          "target_tokens": 69
+        },
+        {
+          "backward_s": 0.3383,
+          "batch_ids": [
+            "dsa-revision-006"
+          ],
+          "cuda_alloc_mb": 8509.4,
+          "cuda_peak_mb": 14654.2,
+          "cuda_reserved_mb": 21214.0,
+          "forward_s": 0.1539,
+          "grad_norm": 1.584186,
+          "input_tokens": 600,
+          "loss": 0.952328,
+          "lr": 0.0002,
+          "optimizer_s": 0.0519,
+          "prompt_tokens": 540,
+          "step": 14,
+          "step_s": 0.544,
+          "target_tokens": 60
+        },
+        {
+          "backward_s": 0.3427,
+          "batch_ids": [
+            "dsa-revision-008"
+          ],
+          "cuda_alloc_mb": 8522.4,
+          "cuda_peak_mb": 14875.0,
+          "cuda_reserved_mb": 21214.0,
+          "forward_s": 0.1589,
+          "grad_norm": 0.683516,
+          "input_tokens": 618,
+          "loss": 0.086233,
+          "lr": 0.0002,
+          "optimizer_s": 0.0527,
+          "prompt_tokens": 556,
+          "step": 15,
+          "step_s": 0.5543,
+          "target_tokens": 62
+        },
+        {
+          "backward_s": 0.3724,
+          "batch_ids": [
+            "dsa-revision-009"
+          ],
+          "cuda_alloc_mb": 8529.0,
+          "cuda_peak_mb": 15103.1,
+          "cuda_reserved_mb": 21214.0,
+          "forward_s": 0.1637,
+          "grad_norm": 2.397785,
+          "input_tokens": 643,
+          "loss": 2.414578,
+          "lr": 0.0002,
+          "optimizer_s": 0.054,
+          "prompt_tokens": 569,
+          "step": 16,
+          "step_s": 0.5901,
+          "target_tokens": 74
+        },
+        {
+          "backward_s": 0.3436,
+          "batch_ids": [
+            "dsa-revision-010"
+          ],
+          "cuda_alloc_mb": 8522.4,
+          "cuda_peak_mb": 14875.0,
+          "cuda_reserved_mb": 21214.0,
+          "forward_s": 0.1569,
+          "grad_norm": 1.475346,
+          "input_tokens": 618,
+          "loss": 0.253065,
+          "lr": 0.0002,
+          "optimizer_s": 0.0516,
+          "prompt_tokens": 550,
+          "step": 17,
+          "step_s": 0.5521,
+          "target_tokens": 68
+        },
+        {
+          "backward_s": 0.3536,
+          "batch_ids": [
+            "dsa-revision-011"
+          ],
+          "cuda_alloc_mb": 8510.6,
+          "cuda_peak_mb": 14755.4,
+          "cuda_reserved_mb": 21214.0,
+          "forward_s": 0.1549,
+          "grad_norm": 2.331702,
+          "input_tokens": 610,
+          "loss": 2.284544,
+          "lr": 0.0002,
+          "optimizer_s": 0.053,
+          "prompt_tokens": 535,
+          "step": 18,
+          "step_s": 0.5615,
+          "target_tokens": 75
+        },
+        {
+          "backward_s": 0.3056,
+          "batch_ids": [
+            "dsa-revision-012"
+          ],
+          "cuda_alloc_mb": 8487.0,
+          "cuda_peak_mb": 14119.4,
+          "cuda_reserved_mb": 21214.0,
+          "forward_s": 0.1425,
+          "grad_norm": 3.628492,
+          "input_tokens": 552,
+          "loss": 2.059971,
+          "lr": 0.0002,
+          "optimizer_s": 0.0478,
+          "prompt_tokens": 512,
+          "step": 19,
+          "step_s": 0.4959,
+          "target_tokens": 40
+        },
+        {
+          "backward_s": 0.3295,
+          "batch_ids": [
+            "dsa-revision-013"
+          ],
+          "cuda_alloc_mb": 8505.7,
+          "cuda_peak_mb": 14546.5,
+          "cuda_reserved_mb": 21214.0,
+          "forward_s": 0.1562,
+          "grad_norm": 2.878278,
+          "input_tokens": 589,
+          "loss": 2.778305,
+          "lr": 0.0002,
+          "optimizer_s": 0.0503,
+          "prompt_tokens": 535,
+          "step": 20,
+          "step_s": 0.5361,
+          "target_tokens": 54
+        }
+      ],
+      "stop_reason": "max_steps_reached"
+    },
+    "lora_eval": {
+      "format_valid": 5,
+      "path": "training/runs/dataset-a-smoke-v1/lora/eval.json",
+      "records": 7
+    },
+    "qat": {
+      "checkpoint_reloads": [
+        {
+          "ok": true,
+          "step": 10,
+          "type": "ternary-qat"
+        }
+      ],
+      "completed_steps": 13,
+      "diagnostics": {
+        "chat_template": true,
+        "device": "cuda",
+        "load_seconds": 0.73,
+        "mask_counts_first_batch": {
+          "input": 768,
+          "masked": 626,
+          "target": 142,
+          "truncated": 0
+        },
+        "model_class": "Qwen3ForCausalLM",
+        "model_src": "/workspace/hf-cache/prism-ml/Ternary-Bonsai-4B-unpacked",
+        "resolved_revision": "4485fae7a00129467b9329b738110d88b2942a1a",
+        "revision_check": "path_pinned",
+        "ternary_excluded_count": 0,
+        "ternary_excluded_remaining_linear": [],
+        "ternary_group_size": 128,
+        "ternary_linear_before": 253,
+        "ternary_modules_replaced": 254,
+        "ternary_trainable_params": 4021784576,
+        "tied_after": true,
+        "tied_before": true,
+        "tied_weight_result": "preserved",
+        "tokenizer_class": "Qwen2Tokenizer",
+        "total_params": 4021784576,
+        "train_batches": 28
+      },
+      "exit_code": 2,
+      "final_loss": 45.695248,
+      "gradient_warnings": 6,
+      "initial_loss": 4.394992,
+      "max_grad_norm": 149.0,
+      "min_loss": 4.394992,
+      "peak_cuda_mb": 48477.8,
+      "repository_verification_ok": true,
+      "status": "aborted",
+      "step_metrics": [
+        {
+          "backward_s": 0.5192,
+          "batch_ids": [
+            "dsa-boundary-002"
+          ],
+          "cuda_alloc_mb": 31264.1,
+          "cuda_peak_mb": 38989.1,
+          "cuda_reserved_mb": 39404.0,
+          "forward_s": 1.0707,
+          "grad_norm": 19.625,
+          "input_tokens": 768,
+          "loss": 4.394992,
+          "lr": 0.004,
+          "optimizer_s": 1.0544,
+          "prompt_tokens": 626,
+          "step": 1,
+          "step_s": 2.6442,
+          "target_tokens": 142
+        },
+        {
+          "backward_s": 0.5252,
+          "batch_ids": [
+            "dsa-canon-001"
+          ],
+          "cuda_alloc_mb": 31355.8,
+          "cuda_peak_mb": 48256.3,
+          "cuda_reserved_mb": 48810.0,
+          "forward_s": 1.1397,
+          "grad_norm": 125.5,
+          "input_tokens": 989,
+          "loss": 12.60961,
+          "lr": 0.004,
+          "optimizer_s": 0.6364,
+          "prompt_tokens": 640,
+          "step": 2,
+          "step_s": 2.3013,
+          "target_tokens": 349
+        },
+        {
+          "backward_s": 0.6799,
+          "batch_ids": [
+            "dsa-canon-002"
+          ],
+          "cuda_alloc_mb": 31355.2,
+          "cuda_peak_mb": 48105.4,
+          "cuda_reserved_mb": 49552.0,
+          "forward_s": 0.7543,
+          "grad_norm": 32.25,
+          "input_tokens": 962,
+          "loss": 13.664991,
+          "lr": 0.004,
+          "optimizer_s": 0.646,
+          "prompt_tokens": 611,
+          "step": 3,
+          "step_s": 2.0802,
+          "target_tokens": 351
+        },
+        {
+          "backward_s": 0.6985,
+          "batch_ids": [
+            "dsa-canon-004"
+          ],
+          "cuda_alloc_mb": 31287.0,
+          "cuda_peak_mb": 47401.9,
+          "cuda_reserved_mb": 49552.0,
+          "forward_s": 0.6489,
+          "grad_norm": 149.0,
+          "input_tokens": 842,
+          "loss": 36.203915,
+          "lr": 0.004,
+          "optimizer_s": 0.6348,
+          "prompt_tokens": 602,
+          "step": 4,
+          "step_s": 1.9822,
+          "target_tokens": 240
+        },
+        {
+          "backward_s": 0.7974,
+          "batch_ids": [
+            "dsa-canon-005"
+          ],
+          "cuda_alloc_mb": 31363.3,
+          "cuda_peak_mb": 48477.8,
+          "cuda_reserved_mb": 49552.0,
+          "forward_s": 0.6756,
+          "grad_norm": 87.5,
+          "input_tokens": 1028,
+          "loss": 23.796103,
+          "lr": 0.004,
+          "optimizer_s": 0.6478,
+          "prompt_tokens": 623,
+          "step": 5,
+          "step_s": 2.1208,
+          "target_tokens": 405
+        },
+        {
+          "backward_s": 0.7015,
+          "batch_ids": [
+            "dsa-constraint-001"
+          ],
+          "cuda_alloc_mb": 31275.2,
+          "cuda_peak_mb": 47294.5,
+          "cuda_reserved_mb": 49552.0,
+          "forward_s": 0.6419,
+          "grad_norm": 100.0,
+          "input_tokens": 823,
+          "loss": 33.707569,
+          "lr": 0.004,
+          "optimizer_s": 0.6307,
+          "prompt_tokens": 722,
+          "step": 6,
+          "step_s": 1.9741,
+          "target_tokens": 101
+        },
+        {
+          "backward_s": 0.7618,
+          "batch_ids": [
+            "dsa-constraint-003"
+          ],
+          "cuda_alloc_mb": 31327.0,
+          "cuda_peak_mb": 48007.7,
+          "cuda_reserved_mb": 49552.0,
+          "forward_s": 0.6672,
+          "grad_norm": 82.0,
+          "input_tokens": 947,
+          "loss": 32.38916,
+          "lr": 0.004,
+          "optimizer_s": 0.6381,
+          "prompt_tokens": 750,
+          "step": 7,
+          "step_s": 2.0671,
+          "target_tokens": 197
+        },
+        {
+          "backward_s": 0.7608,
+          "batch_ids": [
+            "dsa-constraint-004"
+          ],
+          "cuda_alloc_mb": 31331.2,
+          "cuda_peak_mb": 48083.2,
+          "cuda_reserved_mb": 49552.0,
+          "forward_s": 0.6581,
+          "grad_norm": 74.5,
+          "input_tokens": 960,
+          "loss": 31.423952,
+          "lr": 0.004,
+          "optimizer_s": 0.6437,
+          "prompt_tokens": 768,
+          "step": 8,
+          "step_s": 2.0626,
+          "target_tokens": 192
+        },
+        {
+          "backward_s": 0.7626,
+          "batch_ids": [
+            "dsa-constraint-005"
+          ],
+          "cuda_alloc_mb": 31339.9,
+          "cuda_peak_mb": 48193.7,
+          "cuda_reserved_mb": 49552.0,
+          "forward_s": 0.6757,
+          "grad_norm": 120.5,
+          "input_tokens": 980,
+          "loss": 39.922138,
+          "lr": 0.004,
+          "optimizer_s": 0.6437,
+          "prompt_tokens": 788,
+          "step": 9,
+          "step_s": 2.082,
+          "target_tokens": 192
+        },
+        {
+          "backward_s": 0.6106,
+          "batch_ids": [
+            "dsa-revision-001"
+          ],
+          "cuda_alloc_mb": 31180.8,
+          "cuda_peak_mb": 46018.5,
+          "cuda_reserved_mb": 49552.0,
+          "forward_s": 0.6193,
+          "grad_norm": 83.5,
+          "input_tokens": 608,
+          "loss": 49.797607,
+          "lr": 0.004,
+          "optimizer_s": 0.6136,
+          "prompt_tokens": 536,
+          "step": 10,
+          "step_s": 1.8435,
+          "target_tokens": 72
+        },
+        {
+          "backward_s": 0.5969,
+          "batch_ids": [
+            "dsa-revision-003"
+          ],
+          "cuda_alloc_mb": 31170.1,
+          "cuda_peak_mb": 45897.3,
+          "cuda_reserved_mb": 49552.0,
+          "forward_s": 0.623,
+          "grad_norm": 136.0,
+          "input_tokens": 588,
+          "loss": 50.717209,
+          "lr": 0.004,
+          "optimizer_s": 0.6186,
+          "prompt_tokens": 541,
+          "step": 11,
+          "step_s": 1.8385,
+          "target_tokens": 47
+        },
+        {
+          "backward_s": 0.6092,
+          "batch_ids": [
+            "dsa-revision-004"
+          ],
+          "cuda_alloc_mb": 31182.3,
+          "cuda_peak_mb": 46080.1,
+          "cuda_reserved_mb": 49552.0,
+          "forward_s": 0.6235,
+          "grad_norm": 89.5,
+          "input_tokens": 619,
+          "loss": 47.845276,
+          "lr": 0.004,
+          "optimizer_s": 0.6125,
+          "prompt_tokens": 553,
+          "step": 12,
+          "step_s": 1.8452,
+          "target_tokens": 66
+        },
+        {
+          "backward_s": 0.6179,
+          "batch_ids": [
+            "dsa-revision-005"
+          ],
+          "cuda_alloc_mb": 31184.4,
+          "cuda_peak_mb": 46062.1,
+          "cuda_reserved_mb": 49552.0,
+          "forward_s": 0.6227,
+          "grad_norm": 106.5,
+          "input_tokens": 615,
+          "loss": 45.695248,
+          "lr": 0.004,
+          "optimizer_s": 0.6111,
+          "prompt_tokens": 546,
+          "step": 13,
+          "step_s": 1.8517,
+          "target_tokens": 69
+        }
+      ],
+      "stop_reason": "gradient_explosion"
+    }
+  },
+  "repository_unchanged": true,
+  "stopped_at": "qat_failed"
+}

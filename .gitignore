@@ -66,3 +66,11 @@ training/runs/**/rehearsal/**
 training/runs/**/integrity-hf/base-model-before.json
 training/runs/**/integrity-hf/base-model-after-*.json
 training/runs/**/rehearsal-hf-*/
+
+# Dispatch 18B machine-specific raw run artifacts (regenerable; results are in
+# train-18b-summary.json, the eval JSONs, final-verification.json, and the report).
+training/runs/**/integrity-18b/base-model-*.json
+training/runs/**/integrity-18b/repository-*.json
+training/runs/**/lora/run-manifest.json
+training/runs/**/ternary-qat/run-manifest.json
+training/runs/**/ternary-qat/eval.json

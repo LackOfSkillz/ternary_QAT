@@ -1,0 +1,241 @@
+{
+  "backend": "hf",
+  "environment": {
+    "chat_template": true,
+    "checkpoint_type": "lora",
+    "device": "cuda",
+    "load_seconds": 0.75,
+    "loaded_checkpoint": "/workspace/training/runs/dataset-a-smoke-v1/lora/checkpoints/step-20",
+    "model_class": "Qwen3ForCausalLM",
+    "model_src": "/workspace/hf-cache/prism-ml/Ternary-Bonsai-4B-unpacked",
+    "resolved_revision": "4485fae7a00129467b9329b738110d88b2942a1a",
+    "revision_check": "path_pinned",
+    "tokenizer_class": "Qwen2Tokenizer",
+    "total_params": 4021784576
+  },
+  "eval_id": "dataset-a-smoke-eval-v1",
+  "evaluation_checksum": "0f3ae4263c5a175b38af5723f04e161de98e30a4a8ac5be10a2153a5fe47fc3b",
+  "format_valid_count": 5,
+  "record_count": 7,
+  "records": [
+    {
+      "deterministic_checks": {
+        "expected_format": "prose",
+        "format_valid": true
+      },
+      "format_valid": true,
+      "generation_metadata": {
+        "backend": "hf",
+        "cuda_peak_mb": 8085.5,
+        "elapsed_s": 2.164,
+        "generated_tokens": 33,
+        "max_new_tokens": 512,
+        "prompt_tokens": 647,
+        "seed": 20260721,
+        "target": "lora",
+        "temperature": 0,
+        "top_p": 1
+      },
+      "input_hash": "7bd3cbf8badfa01386cfd67e891214289950919aa830637e365db940d86cc17f",
+      "parsed_output": null,
+      "raw_output": "You're not going to find her in the house. She's not in the house. She's not in the house. She's not in the house.",
+      "record_id": "dsa-boundary-001",
+      "task_type": "fiction_boundary"
+    },
+    {
+      "deterministic_checks": {
+        "expected_format": "json",
+        "format_valid": true
+      },
+      "format_valid": true,
+      "generation_metadata": {
+        "backend": "hf",
+        "cuda_peak_mb": 8079.2,
+        "elapsed_s": 16.446,
+        "generated_tokens": 278,
+        "max_new_tokens": 512,
+        "prompt_tokens": 637,
+        "seed": 20260721,
+        "target": "lora",
+        "temperature": 0,
+        "top_p": 1
+      },
+      "input_hash": "151f65988415d3c7003d6e3c3c1d8596c9dfe020d461a6269262135185152c1a",
+      "parsed_output": {
+        "facts": [
+          {
+            "certainty": "character_belief",
+            "entity": "the governor's ship",
+            "evidence": "the governor's ship",
+            "fact": "sank off the Reach"
+          },
+          {
+            "certainty": "character_belief",
+            "entity": "the governor's ship",
+            "evidence": "sank off the Reach",
+            "fact": "all hands"
+          },
+          {
+            "certainty": "established",
+            "entity": "the governor's ship",
+            "evidence": "the cooper",
+            "fact": "never sailed at all"
+          },
+          {
+            "certainty": "established",
+            "entity": "the governor's ship",
+            "evidence": "the governor's ship",
+            "fact": "careened in the west dock"
+          },
+          {
+            "certainty": "established",
+            "entity": "the governor's ship",
+            "evidence": "the price of salt",
+            "fact": "doubled since dawn"
+          }
+        ],
+        "insufficient_evidence": [
+          "the governor's ship",
+          "the governor's ship",
+          "the governor's ship",
+          "the governor's ship",
+          "the governor's ship"
+        ]
+      },
+      "raw_output": "{\n  \"facts\": [\n    {\n      \"entity\": \"the governor's ship\",\n      \"fact\": \"sank off the Reach\",\n      \"certainty\": \"character_belief\",\n      \"evidence\": \"the governor's ship\"\n    },\n    {\n      \"entity\": \"the governor's ship\",\n      \"fact\": \"all hands\",\n      \"certainty\": \"character_belief\",\n      \"evidence\": \"sank off the Reach\"\n    },\n    {\n      \"entity\": \"the governor's ship\",\n      \"fact\": \"never sailed at all\",\n      \"certainty\": \"established\",\n      \"evidence\": \"the cooper\"\n    },\n    {\n      \"entity\": \"the governor's ship\",\n      \"fact\": \"careened in the west dock\",\n      \"certainty\": \"established\",\n      \"evidence\": \"the governor's ship\"\n    },\n    {\n      \"entity\": \"the governor's ship\",\n      \"fact\": \"doubled since dawn\",\n      \"certainty\": \"established\",\n      \"evidence\": \"the price of salt\"\n    }\n  ],\n  \"insufficient_evidence\": [\n    \"the governor's ship\",\n    \"the governor's ship\",\n    \"the governor's ship\",\n    \"the governor's ship\",\n    \"the governor's ship\"\n  ]\n}",
+      "record_id": "dsa-canon-003",
+      "task_type": "canon_extraction"
+    },
+    {
+      "deterministic_checks": {
+        "expected_format": "json",
+        "format_valid": false
+      },
+      "format_valid": false,
+      "generation_metadata": {
+        "backend": "hf",
+        "cuda_peak_mb": 8107.5,
+        "elapsed_s": 30.458,
+        "generated_tokens": 512,
+        "max_new_tokens": 512,
+        "prompt_tokens": 755,
+        "seed": 20260721,
+        "target": "lora",
+        "temperature": 0,
+        "top_p": 1
+      },
+      "input_hash": "5804452653fe1922c152db4c7af96b780a63c43b68c2f451eac348b666142040",
+      "parsed_output": null,
+      "raw_output": "{\n  \"violation\": true,\n  \"type\": \"knowledge_state\",\n  \"constraint_ids\": [\"K1\", \"K2\"],\n  \"explanation\": \"Wren has not yet broken the seal, so she has not yet learned the recipient's name. She has not yet seen the contents, so she has not yet decided what to do with them. She has not yet decided whether to deliver the letter to the Magister Hollis she knows is not a real person. She has not yet decided whether to deliver the letter to the Magister Hollis she knows is a real person. She has not yet decided whether to deliver the letter to the Magister Hollis she knows is a real person. She has not yet decided whether to deliver the letter to the Magister Hollis she knows is a real person. She has not yet decided whether to deliver the letter to the Magister Hollis she knows is a real person. She has not yet decided whether to deliver the letter to the Magister Hollis she knows is a real person. She has not yet decided whether to deliver the letter to the Magister Hollis she knows is a real person. She has not yet decided whether to deliver the letter to the Magister Hollis she knows is a real person. She has not yet decided whether to deliver the letter to the Magister Hollis she knows is a real person. She has not yet decided whether to deliver the letter to the Magister Hollis she knows is a real person. She has not yet decided whether to deliver the letter to the Magister Hollis she knows is a real person. She has not yet decided whether to deliver the letter to the Magister Hollis she knows is a real person. She has not yet decided whether to deliver the letter to the Magister Hollis she knows is a real person. She has not yet decided whether to deliver the letter to the Magister Hollis she knows is a real person. She has not yet decided whether to deliver the letter to the Magister Hollis she knows is a real person. She has not yet decided whether to deliver the letter to the Magister Hollis she knows is a real person. She has not yet decided whether to deliver the letter to the Magister Hollis she knows is a real person. She has not yet decided whether to deliver the letter to the Magister Hollis she knows is a real person. She has not yet decided whether to deliver the letter to the Magister Hollis she knows is a real person",
+      "record_id": "dsa-constraint-002",
+      "task_type": "constraint_check"
+    },
+    {
+      "deterministic_checks": {
+        "expected_format": "json",
+        "format_valid": false,
+        "no_change_case": true,
+        "no_change_preserved": false
+      },
+      "format_valid": false,
+      "generation_metadata": {
+        "backend": "hf",
+        "cuda_peak_mb": 8060.5,
+        "elapsed_s": 3.326,
+        "generated_tokens": 55,
+        "max_new_tokens": 512,
+        "prompt_tokens": 517,
+        "seed": 20260721,
+        "target": "lora",
+        "temperature": 0,
+        "top_p": 1
+      },
+      "input_hash": "04fcce3475d1a0015825f8e5a10463afce69f2864501f966ec50d5c93c418feb",
+      "parsed_output": null,
+      "raw_output": "The generator ran all night in the yard, coughing twice an hour like something\nthat had learned the trick of breathing. By dawn the fuel was gone. Petra counted\nthe jars on the shelf, then counted them again, and did not write the number down.",
+      "record_id": "dsa-revision-002",
+      "task_type": "focused_revision"
+    },
+    {
+      "deterministic_checks": {
+        "expected_format": "prose",
+        "format_valid": true
+      },
+      "format_valid": true,
+      "generation_metadata": {
+        "backend": "hf",
+        "cuda_peak_mb": 8059.1,
+        "elapsed_s": 4.338,
+        "generated_tokens": 72,
+        "max_new_tokens": 512,
+        "prompt_tokens": 553,
+        "seed": 20260721,
+        "target": "lora",
+        "temperature": 0,
+        "top_p": 1
+      },
+      "input_hash": "a680c3f67313a889dbcba25fb0e402d834566394306461a262b973e321d41c58",
+      "parsed_output": null,
+      "raw_output": "She came down to the river the way the year comes down to winter — slowly, and\nthen all at once — and the water took her name and carried it, syllable by\nsyllable, toward the sea that forgets nothing. And her grief was a fire that\nflooded the low fields and set the seed to sleep.",
+      "record_id": "dsa-revision-007",
+      "task_type": "focused_revision"
+    },
+    {
+      "deterministic_checks": {
+        "expected_format": "prose",
+        "format_valid": true
+      },
+      "format_valid": true,
+      "generation_metadata": {
+        "backend": "hf",
+        "cuda_peak_mb": 8060.9,
+        "elapsed_s": 2.107,
+        "generated_tokens": 34,
+        "max_new_tokens": 512,
+        "prompt_tokens": 535,
+        "seed": 20260721,
+        "target": "lora",
+        "temperature": 0,
+        "top_p": 1
+      },
+      "input_hash": "ffa6156c93e708b9a7dea659703ec0f4b75538eb99c3ed0146dd6b4b755a6166",
+      "parsed_output": null,
+      "raw_output": "Their eyes meet across the yard. She looks away. His gaze follows her. She watches\nhim, and he watches her, neither willing to look away first.",
+      "record_id": "dsa-revision-018",
+      "task_type": "focused_revision"
+    },
+    {
+      "deterministic_checks": {
+        "expected_format": "yaml",
+        "format_valid": true
+      },
+      "format_valid": true,
+      "generation_metadata": {
+        "backend": "hf",
+        "cuda_peak_mb": 8101.4,
+        "elapsed_s": 8.124,
+        "generated_tokens": 135,
+        "max_new_tokens": 512,
+        "prompt_tokens": 729,
+        "seed": 20260721,
+        "target": "lora",
+        "temperature": 0,
+        "top_p": 1
+      },
+      "input_hash": "39e9a6b5e78370084419372e892cb9740201357c8c29077f397015971454163a",
+      "parsed_output": {
+        "knowledge_boundary": "Odalys has no idea what the watch has been paid to do",
+        "location": "the covered night market under the river bridge",
+        "prohibited_outcome": "Bram figures out the ledger is forged",
+        "protected_craft_or_tone": "wry and tense, lots of dry interiority, short hard sentences when the pressure spikes — no ornate description",
+        "required_outcome": "Bram hands over the crate before the market watch makes its midnight round",
+        "scene_objective": "Odalys has to talk the fence, a wary old man called Bram, into accepting the forged shipping ledger as genuine so he'll release the sealed crate",
+        "viewpoint": "Odalys"
+      },
+      "raw_output": "viewpoint: Odalys\nlocation: the covered night market under the river bridge\nscene_objective: Odalys has to talk the fence, a wary old man called Bram, into accepting the forged shipping ledger as genuine so he'll release the sealed crate\nrequired_outcome: Bram hands over the crate before the market watch makes its midnight round\nprohibited_outcome: Bram figures out the ledger is forged\nknowledge_boundary: Odalys has no idea what the watch has been paid to do\nprotected_craft_or_tone: wry and tense, lots of dry interiority, short hard sentences when the pressure spikes — no ornate description\n",
+      "record_id": "dsa-scene-002",
+      "task_type": "scene_contract"
+    }
+  ],
+  "target": "lora"
+}
