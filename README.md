@@ -196,9 +196,20 @@ improves over it (step-10 neutral, step-20 collapses), and a dataset cannot fix 
 **No training, no dataset change, no winner, no ship claim.** See
 `training/reports/dispatch-25-decision-v1.md`.
 
-**Status:** fast battery v1 frozen; first live dual-GX10 run completed (instrument-valid);
-Dispatch-25 branch = **test a stronger base** (threshold-bound, provisional, reversible); no
-training, no dataset change, no empirical ship thresholds.
+**Dispatch 26** executed that branch as a controlled three-model comparison (base = only changed
+variable): Qwen3-8B (non-thinking) and Ministral-3-8B-Instruct-2512 (FP8, text-only) vs the 4B
+control, 94 real GX10 jobs (0 integrity problems, replay identical). Applying the **frozen**
+core-prose floor unchanged: **Qwen3 0.857 and Ministral 0.714 both clear 0.50 — the 4B failed at
+0.286**, confirming base capacity was the bottleneck. **Qwen3 clears every frozen floor**;
+Ministral fails module-coverage. Blind, calibrated reviewers marginally prefer Ministral's raw
+prose while Qwen leads instruction-compliance; Qwen has the mature 8GB GGUF path. Branch:
+**`run_one_bounded_confirmation`**, presumptive foundation **Qwen3-8B** (confirm prose before
+committing). See `training/reports/dispatch-26-foundation-decision.md`.
+
+**Status:** fast battery v1 frozen; live dual-GX10 run + stronger-base comparison completed
+(instrument-valid); Dispatch-26 branch = **run one bounded confirmation, presumptive foundation
+Qwen3-8B** (threshold-bound, provisional). No training, no dataset change, no empirical ship
+thresholds, no published weights.
 
 ## Install
 

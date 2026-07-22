@@ -165,3 +165,17 @@ Battery** (LWDB). Architecture:
   continued.** The next experiment (a stronger-base comparison, one controlled variable) is in
   `training/specs/next-linewright-experiment-v1.md` but not launched. Full-battery prose quality
   remains a blind-reviewer judgement that is still pending.
+
+### Dispatch 26 stronger-base comparison (base = only changed variable)
+
+- Ran the `test_stronger_base` branch as a controlled three-model comparison — **Qwen3-8B**
+  (non-thinking) and **Ministral-3-8B-Instruct-2512** (FP8, text-only) vs the 4B control, 94 real
+  GX10 jobs (0 integrity problems, mechanical replay identical). **No training, no dataset change,
+  no threshold change.** Applying the frozen 0.50 core-prose floor unchanged: **Qwen3 0.857 and
+  Ministral 0.714 both clear it; the 4B failed (0.286)** — confirming base capacity was the
+  bottleneck. Qwen3 clears every frozen floor; Ministral fails module-coverage.
+- Blind, calibrated reviewers marginally prefer Ministral's raw prose (3.07 vs Qwen 2.79) while
+  Qwen leads instruction-compliance; Qwen has the mature 8GB GGUF path (Ministral's unverified).
+  Branch: **`run_one_bounded_confirmation`, presumptive foundation Qwen3-8B** — a bounded
+  human/quantized blind prose confirmation precedes any foundation commit. Voice-preservation is
+  weak across ALL bases (~2.7–2.9/5) and becomes a fine-tune target once the base is fixed.

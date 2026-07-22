@@ -120,6 +120,22 @@ refuses before scores are locked. The first decision (`training/reports/dispatch
 branched to **test a stronger base** — threshold-bound, provisional, reversible; no training,
 no dataset change, no ship claim.
 
+## Stronger-base comparison (Dispatch 26)
+
+The `test_stronger_base` branch ran as a controlled three-model comparison (base = only changed
+variable): **Qwen3-8B** (non-thinking, verified zero `<think>` leakage) and
+**Ministral-3-8B-Instruct-2512** (FP8, text-only via `kernels`) vs the 4B control, 94 real GX10
+jobs (0 integrity problems, replay identical). The **frozen** core-prose floor (0.50) applied
+unchanged: **Qwen3 0.857 and Ministral 0.714 both clear it; the 4B failed (0.286)** — base
+capacity was the bottleneck, as Dispatch 25 predicted. **Qwen3 clears every frozen floor**;
+Ministral fails module-coverage (5/9). A new **6-arm × 3-task packet family** (`packet-family-v1`)
+tests compiled-packet handling with real per-model tokenizer counts (noisy/repaired identical
+content; the 8–12K long-context band is honestly not reached without prohibited padding).
+Two genuinely-blind, calibrated sub-agent reviewers marginally prefer Ministral's raw prose while
+Qwen leads instruction-compliance (human reviewers pending). Branch:
+**`run_one_bounded_confirmation`**, presumptive foundation **Qwen3-8B** — see
+`training/reports/dispatch-26-foundation-decision.md`. No training, no dataset change, no ship claim.
+
 ## Relationship to Dispatch 21
 
 The battery **builds on** the Dispatch-21 components, it does not recreate them: the nine

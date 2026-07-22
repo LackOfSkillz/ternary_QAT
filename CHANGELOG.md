@@ -5,6 +5,32 @@ Notable changes to this LineWright research fork. Dates are absolute; the active
 
 ## [Unreleased]
 
+### Dispatch 26 — Controlled stronger-base comparison for LineWright Core (2026-07-22)
+
+Executed the Dispatch-25 `test_stronger_base` branch as a controlled three-model comparison —
+base model the ONLY changed variable. **No training, no dataset change, no threshold change, no
+weights published, no ship certification, `master` untouched.**
+
+- **Candidates (real, verified on the GX10):** Qwen3-8B (`b968826d`, Apache-2.0, non-thinking
+  enforced) and Ministral-3-8B-Instruct-2512 (`5b26027e`, Apache-2.0, **FP8 multimodal**, run
+  text-only via `kernels==0.15.2`), vs the Ternary-Bonsai 4B control. Frozen-before-generation:
+  candidate/licensing record, a realistic **6-arm × 3-task packet family** (authored project
+  world; noisy/repaired identical-content; long arm honestly capped at ~5K tokens since padding
+  is prohibited), extension manifest (references Fast Battery v1 unchanged by hash), and a frozen
+  94-job plan (`plan_hash d45a04a9`).
+- **Phase A run:** 94/94 real jobs, **0 integrity problems, mechanical replay identical**; Qwen
+  produced **zero `<think>` traces**. **Core-prose (frozen 0.50 floor): Qwen3 0.857, Ministral
+  0.714 — both clear the floor the 4B failed (0.286)**, confirming the bottleneck was base
+  capacity. **Qwen3 clears every frozen floor; Ministral fails module-coverage (5/9).**
+- **Blind prose** (2 genuinely-blind, perfectly-calibrated sub-agent reviewers; humans Gary/ChatGPT
+  pending): Ministral 3.07 > 4B 3.0 > Qwen 2.79 raw prose, but Qwen leads instruction-compliance
+  (4.36); zero fatal rejections. **Deployment:** measured resident memory; official GGUFs exist for
+  both; Qwen Q4_K_M (~4.7GB) fits 8GB (mature), Ministral's 8GB path unverified.
+- **Foundation decision: `run_one_bounded_confirmation`**, presumptive foundation **Qwen3-8B** —
+  the only model clearing the frozen threshold with a viable 8GB path, but marginally lowest blind
+  prose is a genuine unresolved distinction to confirm (human/quantized blind pass) before
+  committing. 16 new tests; Gate 0 zero drift.
+
 ### Dispatch 25 — Provisional threshold lock, diagnostic validation, branch decision (2026-07-22)
 
 Converted the Dispatch-24 live run into a threshold-bound branch decision. **No training, no
