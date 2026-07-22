@@ -5,6 +5,26 @@ Notable changes to this LineWright research fork. Dates are absolute; the active
 
 ## [Unreleased]
 
+### Dispatch 27 Phase A — Qwen3-8B bounded prose + Q4 deployment confirmation (2026-07-22)
+
+Executed the bounded Qwen confirmation before any LoRA work. **No training, no dataset change, no
+threshold change, no weights published, `master` untouched.**
+
+- **Frozen-before-scoring:** a 15-task confirmation set (reusing D26 frozen prompts) + an
+  Aedan-authored Q4-preservation floor (`qwen-q4-confirmation-floor-v0`, delegated authority) +
+  the `qwen-prose-confirmation-v1` manifest — committed before generation.
+- **Official Q4_K_M** (`Qwen/Qwen3-8B-GGUF` rev `7c41481f`, sha `d98cdcbd…`, exact size, complete)
+  generated via llama.cpp `llama-server --reasoning-budget 0` (**non-thinking verified, zero
+  reasoning traces**). **Q4 preserves BF16**: mechanical identical (0.933 = 0.933), zero severe
+  slop / token-cap / reasoning leak; two blind calibrated LM reviewers (supporting only) find BF16
+  and Q4 **indistinguishable** (prose Δ −0.03, voice Δ −0.10, 0 new fatal — all within the 0.35
+  floor). 0 identity leaks; scores locked before unblinding.
+- **Branch = `confirm_Qwen3_8B_foundation`, PROVISIONAL** — the Q4 package is acceptable and the
+  reference clears every frozen threshold with zero fatal prose failures, but the dispatch requires
+  the final prose confirmation to include **Gary + an independent human** (not only LM graders).
+  That human gate is open, so **Phase B (Dataset A.3 + LoRA) is BLOCKED** until it passes. 5 tests;
+  Gate 0 zero drift.
+
 ### Dispatch 26 — Controlled stronger-base comparison for LineWright Core (2026-07-22)
 
 Executed the Dispatch-25 `test_stronger_base` branch as a controlled three-model comparison —

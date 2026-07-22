@@ -613,7 +613,8 @@ model-training sequence and does **not** displace broader LineWright application
 | 24 | fast battery construction & first live dual-GX10 execution (40/40, instrument-valid) | done |
 | 25 | provisional threshold lock, diagnostic validation, branch decision → **test_stronger_base** | done |
 | 26 | controlled stronger-base comparison → **run_one_bounded_confirmation, presumptive foundation Qwen3-8B** | done |
-| 27 | bounded prose confirmation on Qwen3-8B (human/quantized blind pass), then foundation commit | next |
+| 27A | Qwen3-8B prose + Q4 confirmation → **provisional `confirm_Qwen3_8B_foundation`** (Q4 preserves quality; human blind gate open) | done (human gate pending) |
+| 27B | conservative Qwen3-8B LoRA feasibility pilot (Dataset A.3) | blocked on human confirmation |
 | 25 | fast battery validation & diagnostic engine | planned |
 | 26 | full battery construction | planned |
 | 27 | full battery baseline & certification | planned |
