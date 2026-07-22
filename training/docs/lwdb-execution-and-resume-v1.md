@@ -115,6 +115,19 @@ Two workers (`base_worker → target_base`, `candidate_worker → new_candidate`
 queues simultaneously against the same frozen plan. Partial completion on either worker
 remains resumable.
 
+**First-run topology (Dispatch 24, `benchmarks/runs/lwdb-fast-v1-20260722/`):**
+
+```
+GX10 A (gx10-9141, 100.92.130.112) → target_base    (prism-ml/Ternary-Bonsai-4B-unpacked)
+GX10 B (gx10-5611, 100.97.81.71)   → new_candidate  (base + LoRA step-20 adapter)
+```
+
+Both endpoints are `local_huggingface` (in-process HF generation per node — no HTTP server,
+no serialized secrets). The base host is fully provisioned; the candidate host has Python +
+torch and needs the base model (transfer over the 192.168.10.0/24 jumbo link), the adapter,
+`transformers`/`peft`, and the code. If a node is unavailable, pause and resume or fall back
+to `sequential_single_host` — the `plan_hash` is unchanged.
+
 ## 17. Limitations of mid-generation recovery
 
 Recovery is **item-level, not token-level**. We do NOT claim arbitrary inference backends

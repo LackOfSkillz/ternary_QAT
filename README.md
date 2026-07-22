@@ -170,8 +170,19 @@ See [`lwdb-execution-and-resume-v1.md`](training/docs/lwdb-execution-and-resume-
 [`lwdb-slop-report-v1.md`](training/docs/lwdb-slop-report-v1.md), and
 [`slop-detection-research-review-v1.md`](training/docs/slop-detection-research-review-v1.md).
 
-**Status:** `architecture_only` + Dispatch-23 execution/calibration/slop **foundations**;
-no benchmark prompts, model runs, or empirical thresholds yet.
+**Dispatch 24** built and froze the first **fast battery v1** (20 items across modules A–J
+with 7 controlled pairs, locked contracts, provenance, hashed manifest) and the full run
+pipeline (generation-plan freeze, dual-GX10 worker routing, mechanical + Module-J slop
+scoring, blind reviewer packets with calibration seeding and zero identity leaks). The first
+execution is configured as a **dual-GX10 parallel run** — untouched base on one ASUS GX10,
+tuned LoRA-20 candidate on the other, against one frozen plan. The pipeline is proven
+end-to-end with deterministic stubs; the real dual-GX10 generation is execution-ready
+(`benchmarks/runs/lwdb-fast-v1-20260722/`). **No model-quality finding is made** — with no
+trusted run completed, the verdict is `insufficient_evidence` and advancement is deferred to
+Dispatch 25.
+
+**Status:** fast battery v1 **frozen + validated + execution-ready**; pipeline proven; real
+dual-GX10 generation pending; no empirical thresholds, no winner declared, no training.
 
 ## Install
 

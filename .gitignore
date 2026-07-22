@@ -83,6 +83,17 @@ training/runs/**/lr-*/integrity/
 training/runs/dataset-a-qat-calibration-v1/integrity/base-model-*.json
 training/runs/dataset-a-qat-calibration-v1/integrity/repository-*.json
 
+# Dispatch 24 LWDB battery run outputs: commit the frozen plan/manifests/preflight/report;
+# ignore bulky generated model outputs and per-run ledger dbs (regenerable from the plan).
+benchmarks/runs/**/normalized-results/
+benchmarks/runs/**/mechanical-results/
+benchmarks/runs/**/slop-reports/
+benchmarks/runs/**/corpus-summaries/
+benchmarks/runs/**/reviewer-packets/
+benchmarks/runs/**/calibration-key/
+benchmarks/runs/**/logs/
+benchmarks/runs/**/*.sqlite
+
 # Dispatch 20 full-comparison machine-specific raw artifacts. Checkpoints, integrity/**
 # (base-model-*/repository-* inventories, whose verdicts are echoed in the tracked
 # full-comparison-summary.json), and run-manifest.json are already covered by the

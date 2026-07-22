@@ -609,8 +609,8 @@ model-training sequence and does **not** displace broader LineWright application
 | dispatch | title | status |
 |---|---|---|
 | 22 | architecture & specification | done |
-| **23** | **instrument calibration, hardware-agnostic execution, durable pause/resume, slop-detection foundation** | **← current** |
-| 24 | fast battery construction & first execution | planned |
+| 23 | instrument calibration, hardware-agnostic execution, durable pause/resume, slop-detection foundation | done |
+| **24** | **fast battery construction & first dual-GX10 execution** | **← current** |
 | 25 | fast battery validation & diagnostic engine | planned |
 | 26 | full battery construction | planned |
 | 27 | full battery baseline & certification | planned |

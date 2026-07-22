@@ -133,3 +133,19 @@ Battery** (LWDB). Architecture:
 - **Instrument-first:** a run produces trusted findings only after the instrument validates
   (mechanical replay + calibration set + ≥1 calibrated reviewer); otherwise the verdict is
   `insufficient_evidence` and findings are quarantined.
+
+### First fast-battery execution (Dispatch 24)
+
+- The **first execution is a dual-GX10 parallel run**: the untouched base on one ASUS GX10
+  (`gx10-9141`) and the tuned LoRA-20 candidate on the other (`gx10-5611`), both consuming
+  the **same frozen generation plan** (`benchmarks/runs/lwdb-fast-v1-20260722/`).
+- **Sequential single-host remains the fallback** if a GX10 or endpoint is unavailable; the
+  `plan_hash` is unchanged across modes (execution mode is not benchmark semantics).
+- **Pause/resume is supported during the real run**; completed jobs are durably persisted and
+  never rerun.
+- **Fast-battery results do not automatically trigger dataset changes**, and no item is burned
+  merely by being measured — burning requires an item to directly inform a change.
+- **Reviewer results precede model advancement**: a candidate advances only via the blind
+  three-reviewer pass + Gary and the Dispatch-21 advancement rule, never on loss or parse
+  rate. QAT-20 is excluded as a candidate (catastrophically degenerate); the first candidate
+  is LoRA-20.

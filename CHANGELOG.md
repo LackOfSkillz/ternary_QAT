@@ -5,6 +5,32 @@ Notable changes to this LineWright research fork. Dates are absolute; the active
 
 ## [Unreleased]
 
+### Dispatch 24 — Fast battery construction & first dual-GX10 execution setup (2026-07-22)
+
+Built and froze the first fast diagnostic battery and the full run pipeline; configured the
+first execution as a dual-GX10 parallel run (base vs tuned candidate). **No model training,
+no dataset change, no empirical thresholds, no winner declared.** The real dual-GX10 model
+generation is execution-ready but was not run in this dispatch, so the verdict is
+`insufficient_evidence` and advancement is deferred to Dispatch 25.
+
+- **Fast battery v1** (`benchmarks/active-core/fast-v1/`): 20 benchmark items + 4 hidden
+  grader-calibration seeds across modules A–J (J embedded), 7 controlled pair families
+  (surface/restraint/canon/voice/length/constraint/turn), a locked behavior contract +
+  provenance per item, and a frozen hashed manifest (`benchmarks/manifests/fast-battery-v1.yaml`).
+  Synthetic, distributable, `benchmark_only`, excluded from training. Pre-run validation
+  passes (max Dataset A/A.2 source overlap 51 chars).
+- **Run pipeline** (`linewright/evaluation/battery/`): generation-plan builder (base +
+  candidate share every benchmark-semantic hash), endpoint descriptors (secrets referenced,
+  never serialized), mechanical + Module-J slop scoring per output + per-role corpus
+  summaries, and blind reviewer packets (absolute-first, calibration-seeded, identity-stripped,
+  content-shuffled — zero identity leaks).
+- **First-run artifacts** (`benchmarks/runs/lwdb-fast-v1-20260722/`): frozen generation plan
+  (40 jobs), endpoint manifest, run manifest (candidate = LoRA-20; QAT-20 excluded), real
+  preflight health-check (both GX10s reachable; base host provisioned; candidate host has
+  Python/torch, needs base+adapter+transformers/peft), and the preliminary report.
+- **Added** the fast-battery manifest schema and 20 tests (construction, plan freezing,
+  dual-GX10 routing, scoring, packets, invariants); `.gitignore` for bulky run outputs.
+
 ### Dispatch 23 — Instrument calibration, hardware-agnostic execution, durable pause/resume, slop foundation (2026-07-22)
 
 Foundations that make the diagnostic battery trustworthy, portable, resumable, and

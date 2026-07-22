@@ -89,6 +89,21 @@ rerunning completed jobs. See
 [`lwdb-execution-and-resume-v1.md`](../training/docs/lwdb-execution-and-resume-v1.md).
 Mid-generation recovery is item-level, not token-level.
 
+## Fast battery v1 & first execution (Dispatch 24)
+
+The first **fast battery** (`benchmarks/active-core/fast-v1/`) is 20 items across modules A–J
+with 7 controlled pairs (surface/restraint/canon/voice/length/constraint/turn), a locked
+behavior contract + provenance per item, and a frozen hashed manifest. The run pipeline
+(`linewright/evaluation/battery/`) freezes a generation plan, routes jobs by role (base vs
+candidate) across two GX10s, scores each output with the mechanical gates + Module-J slop,
+and builds **blind reviewer packets**: absolute scoring first, each output a standalone
+identity-free unit with the 4 grader-calibration items seeded in indistinguishably, then
+pairwise base-vs-candidate with content-shuffled candidate labels. Reviewer fatal flaws and
+positive slop findings must cite exact spans — never "feels AI". Interpreting a **preliminary**
+first run: report completion, instrument validity, mechanical failures, and preliminary slop
+patterns — but declare no winner, no capability floor, no release readiness (those await
+Dispatch 25). See the first-run report at `benchmarks/runs/lwdb-fast-v1-20260722/`.
+
 ## Relationship to Dispatch 21
 
 The battery **builds on** the Dispatch-21 components, it does not recreate them: the nine

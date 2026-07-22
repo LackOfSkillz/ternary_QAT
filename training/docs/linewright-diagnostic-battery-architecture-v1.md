@@ -344,3 +344,27 @@ No fast/full benchmark items, no real model generation or scoring, no empirical 
 floors, no validated slop thresholds, no dataset expansion, no training, no checkpoint
 selection. The calibration records test the instrument; they are not the general fast
 battery.
+
+---
+
+# Dispatch 24 addendum — fast battery v1 & first execution
+
+The first **fast battery** (`benchmarks/active-core/fast-v1/`, manifest
+`benchmarks/manifests/fast-battery-v1.yaml`): 20 items across modules A–I with **J embedded**
+(slop analysis on every prose output), 7 controlled pair families (surface, restraint, canon,
+voice, length, constraint, turn), a locked behavior contract + provenance per item, and a
+frozen hashed manifest. Difficulty 20/45/30/5% (easy/moderate/hard/adversarial). 4 hidden
+grader-calibration items are seeded blind into reviewer packets at run time.
+
+**Run pipeline** (`linewright/evaluation/battery/`): a frozen generation plan (base +
+candidate share every benchmark-semantic hash; execution mode excluded from the hash), the
+mechanical gates + Module-J slop per output + per-role corpus summaries, and **blind reviewer
+packets** — absolute-first, identity-free, calibration-seeded, content-shuffled candidate
+order, zero identity leaks. **First-run topology**: base on gx10-9141, candidate (LoRA-20;
+QAT-20 excluded) on gx10-5611, `parallel_multi_host`, one frozen plan
+(`benchmarks/runs/lwdb-fast-v1-20260722/`).
+
+**Preliminary vs certified.** A first fast run may report completion, instrument validity,
+mechanical failures, and preliminary slop patterns — but never a winner, capability floor, or
+release readiness. With no trusted run completed, the verdict is `insufficient_evidence`;
+advancement is decided after a real run + blind review in Dispatch 25.
