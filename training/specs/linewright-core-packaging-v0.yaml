@@ -1,0 +1,85 @@
+# LineWright Core — Packaging Recommendation (v0, Dispatch 26, Deliverable 8)
+#
+# Design for how a selected foundation model ships as a local "LineWright Core" package.
+# Foundation-AGNOSTIC: describes the deployment tiers and installer behaviour for whichever
+# base Phase A selects. Does NOT publish or redistribute weights. Provisional; the concrete
+# quantization numbers are filled from the Deliverable-6 quantization study once a foundation
+# is chosen.
+
+status: provisional
+dispatch: 26
+publishes_weights: false
+final_commercial_ship_certification: false
+foundation_selected: pending_phase_a
+
+principles:
+  - The product target is: usable on an 8GB system at a well-tested 4-bit profile; better on
+    12-16GB / 24GB unified memory; scalable into larger future context WITHOUT replacing the
+    foundation.
+  - Do not optimise only for today's 8GB constraint, and do not hard-code LineWright to one
+    inference engine.
+  - Prefer a base whose GGUF/llama.cpp path is mature (the primary local deployment path).
+
+# ---- deployment tiers ----
+linewright_core:
+  minimum:
+    quantization: Q4_K_M (or nearest supported high-quality 4-bit)
+    expected_vram: 8GB
+    expected_system_ram: 16GB+
+    default_context: 8K
+    cpu_offload_fallback: true
+    limitations: >-
+      Reduced quality vs higher tiers; long realistic project packets (>8K) may exceed the
+      default context and require the recommended tier or context trimming by the compiler.
+  recommended:
+    quantization: Q5_K_M or Q6_K
+    expected_vram_or_unified_memory: 12-16GB VRAM or 24GB unified
+    default_context: 16K-32K
+    expected_quality: near-full-precision for craft tasks
+  high_quality:
+    precision: bf16 (Qwen3) or official FP8 (Ministral)
+    expected_memory: 24-32GB+ unified / VRAM
+    default_context: model native (Qwen3 40960 w/ YaRN to 131072; Ministral 262144)
+    expected_quality: reference
+  external_provider:
+    supported: optional
+    purpose: >-
+      Bring-your-own-key fallback to a hosted larger model for users who want it; never
+      required, never the default, and never a substitute for the bundled local model.
+
+# ---- per-candidate packaging outlook (from the candidate record; concrete sizes pending study) ----
+candidate_packaging_outlook:
+  qwen3_8b:
+    gguf_path: MATURE (official Qwen3-8B-GGUF + community bartowski/unsloth); llama.cpp well-supported
+    est_q4_k_m_size_gb: "~4.7-5.1"
+    est_q5_k_m_size_gb: "~5.6-6.0"
+    est_bf16_size_gb: "~16"
+    packaging_complexity: LOW
+    risk: thinking-mode must be disabled in the shipped default; verify no <think> leakage
+  ministral_3_8b:
+    gguf_path: UNCERTAIN (mistral3 multimodal FP8; llama.cpp support unverified) — FOUNDATION RISK
+    native_runtime: vLLM (library_name=vllm); transformers text-only needs kernels==0.15.2
+    est_fp8_resident_gb: "~26.8 (measured, text-only, incl. vision tower)"
+    packaging_complexity: HIGH (multimodal + FP8 + tokenizer-mode mistral; 8GB GGUF path unproven)
+    risk: >-
+      If no high-quality mistral3 GGUF exists, the 8GB local target is not reachable with the
+      current toolchain — a decisive packaging strike against selecting Ministral as the local
+      foundation regardless of prose quality.
+
+installer:
+  artifact_sizes: {q4_k_m: "~5GB", q5_k_m: "~6GB", full: "~16GB bf16 / ~9GB fp8"}
+  download_strategy: >-
+    On first run, detect GPU/unified-memory and system RAM, recommend a tier, and download only
+    the selected artifact. Downloads are hash-verified against a signed version manifest.
+  model_storage_location: platform cache dir (documented), overridable
+  version_manifest: {file: linewright-core-models.json, fields: [model_id, revision, quant, sha256, license]}
+  hash_verification: sha256 per artifact, checked before first load
+  license_and_notices: Apache-2.0 LICENSE + NOTICE bundled (both candidates are Apache-2.0)
+  optional_vs_required_download: model download is optional at install, required before first generation
+  hardware_detection: [gpu_vram, unified_memory, system_ram] -> tier recommendation
+  context_profile_selection: choose default context by tier; compiler trims packets to fit
+  cpu_offload_fallback: llama.cpp partial-offload when VRAM < model
+  failure_messaging: clear, specific errors (insufficient memory, missing artifact, hash mismatch)
+  upgrade_path: new quant/version installs side-by-side; manifest pins the active one
+  future_model_replacement: foundation swap is a manifest + download change, not a code rewrite
+  engine_neutrality: primary llama.cpp/GGUF; optional transformers/vLLM backends behind one interface
