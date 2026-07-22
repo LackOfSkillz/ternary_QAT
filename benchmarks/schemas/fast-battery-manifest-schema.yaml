@@ -1,0 +1,34 @@
+# LineWright Diagnostic Battery — fast-battery manifest schema (v1, Dispatch 24)
+#
+# The frozen manifest for a fast-profile battery build. Hashed so a run references an
+# immutable item set. Reuses benchmark-item / pair-family / behavior-contract /
+# benchmark-provenance schemas for the per-record shapes.
+
+schema: fast-battery-manifest
+schema_version: 1
+status: frozen_capable
+
+fields:
+  battery:            {type: string, required: true}
+  profile:            {type: const, required: true, const: fast}
+  version:            {type: string, required: true}
+  dispatch:           {type: int, required: true}
+  status:             {type: enum, required: true, enum: [development, frozen]}
+  production_approved: {type: const, required: true, const: false}
+  experimental_use_only: {type: const, required: true, const: true}
+  item_count:         {type: int, required: true}
+  hidden_grader_calibration_seeded: {type: int, required: true, desc: "seeded blind at run time, not stored as items"}
+  counts:             {type: map, required: true, desc: "by_module/task_family/difficulty/prompt_surface/output_type/paired/standalone"}
+  pair_families:      {type: list, required: true}
+  modules_covered:    {type: list, required: true, desc: "A-J; J may be embedded (slop analysis on prose outputs)"}
+  item_ids:           {type: list, required: true}
+  items_sha256:       {type: string, required: true}
+  contracts_sha256:   {type: string, required: true}
+  families_sha256:    {type: string, required: true}
+  provenance_sha256:  {type: string, required: true}
+  battery_hash:       {type: string, required: true, desc: "hash over the component digests + version"}
+
+rules:
+  - "the manifest is frozen + hashed before generation; a changed item set is a new version + battery_hash."
+  - "every item is benchmark_only + excluded_from_training; grader-calibration items are seeded blind at run time."
+  - "no numeric capability/slop threshold is embedded; contracts carry behaviors and forbidden failures, not score floors."

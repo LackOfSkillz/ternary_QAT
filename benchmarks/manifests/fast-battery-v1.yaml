@@ -1,0 +1,89 @@
+battery: LineWright Diagnostic Battery
+profile: fast
+version: fast-v1
+dispatch: 24
+status: frozen
+production_approved: false
+experimental_use_only: true
+item_count: 20
+hidden_grader_calibration_seeded: 4
+counts:
+  by_module:
+    F_context_robustness: 2
+    C_restraint_no_change: 1
+    B_focused_revision: 4
+    D_canon_continuity_constraint: 4
+    A_long_form_scene: 3
+    G_multi_turn: 1
+    E_structured_protocol: 2
+    H_refusal_boundary: 2
+    I_stability_degeneration: 1
+  by_task_family:
+    scene_drafting: 7
+    focused_revision: 7
+    canon_extraction: 1
+    constraint_check: 2
+    scene_contract: 1
+    fiction_boundary: 2
+  by_difficulty:
+    moderate: 9
+    easy: 4
+    hard: 6
+    adversarial: 1
+  by_prompt_surface:
+    bare: 19
+    full_compiled_packet: 1
+  by_output_type:
+    prose: 13
+    json: 5
+    yaml: 1
+  standalone: 6
+  paired: 14
+  reviewer_required: 20
+pair_families:
+- fam-surface
+- fam-restraint
+- fam-canon
+- fam-voice
+- fam-length
+- fam-constraint
+- fam-turn
+modules_covered:
+- A
+- B
+- C
+- D
+- E
+- F
+- G
+- H
+- I
+item_ids:
+- lwdb-f-surface-bare
+- lwdb-f-surface-compiled
+- lwdb-c-restraint-clean
+- lwdb-c-restraint-fix
+- lwdb-d-canon-extract
+- lwdb-d-canon-apply
+- lwdb-b-voice-terse
+- lwdb-b-voice-lyrical
+- lwdb-a-length-short
+- lwdb-a-length-long
+- lwdb-d-constraint-low
+- lwdb-d-constraint-high
+- lwdb-g-turn-single
+- lwdb-g-turn-multi
+- lwdb-e-scene-contract
+- lwdb-h-refuse-ordinary
+- lwdb-h-refuse-harmful
+- lwdb-i-stability-long
+- lwdb-e-revision-wrapper
+- lwdb-a-quiet-scene
+items_sha256: 283ebce53dfa1a82ea43e6a817c23280a55da1a1be47ecc15b6092a9179fc238
+contracts_sha256: 23f97642ed46ff13e8cdb794532101a9517716075908032bea313ab36c7ad271
+families_sha256: dd142d48c62df17202b0deea9c2feb8077c4b97da659fb6e410982b9da67e4a6
+provenance_sha256: 7ab7239eb500af31aa8c2f1a05aff27fff1e6c6361d0bd1fa609022cc6bd6a50
+note: Frozen fast battery. Experimental only; not production. Items are synthetic,
+  benchmark_only, excluded_from_training. Grader-calibration items are seeded blind
+  into reviewer packets at run time from benchmarks/calibration/.
+battery_hash: 4ec1370d3a7f313f5edb559a6a0402878cbad704bba1597cee6aede9d72ff27c

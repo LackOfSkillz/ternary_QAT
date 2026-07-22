@@ -1,0 +1,33 @@
+{
+  "dispatch": 24,
+  "phase": "pre-run validation",
+  "battery": "fast-v1",
+  "stats": {
+    "items": 20,
+    "contracts": 19,
+    "families": 7,
+    "modules": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E",
+      "F",
+      "G",
+      "H",
+      "I"
+    ],
+    "family_types": [
+      "canon_pair",
+      "constraint_pair",
+      "length_pair",
+      "restraint_pair",
+      "surface_pair",
+      "turn_pair",
+      "voice_pair"
+    ],
+    "max_dataset_overlap_chars": 51
+  },
+  "problems": [],
+  "valid": true
+}
