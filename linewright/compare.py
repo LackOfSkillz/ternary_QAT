@@ -52,7 +52,7 @@ def main():
     args = ap.parse_args()
     md = build_md(_load(args.base), _load(args.lora), _load(args.ternary_qat))
     writer = runtime.AuthorizedWriter([os.path.join(C.REPO_ROOT, r) for r in C.AUTHORIZED_OUTPUT_ROOTS])
-    with writer.open(C.abs_repo(args.out), "w") as fh:
+    with writer.open(C.abs_repo(args.out), "w", encoding="utf-8", newline="\n") as fh:
         fh.write(md)
     print(f"comparison -> {args.out}")
 
