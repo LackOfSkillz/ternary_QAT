@@ -1,0 +1,42 @@
+{
+  "endpoints": [
+    {
+      "endpoint_id": "ep-base",
+      "endpoint_type": "local_huggingface",
+      "model_name": "prism-ml/Ternary-Bonsai-4B-unpacked",
+      "host_metadata": {
+        "host_id": "gx10-9141",
+        "model_roles": [
+          "target_base"
+        ]
+      },
+      "supported_parameters": [
+        "temperature",
+        "top_p",
+        "max_new_tokens",
+        "seed",
+        "stop"
+      ],
+      "unsupported_parameters": []
+    },
+    {
+      "endpoint_id": "ep-candidate",
+      "endpoint_type": "local_huggingface",
+      "model_name": "Ternary-Bonsai-4B-unpacked+lora-step-20",
+      "host_metadata": {
+        "host_id": "gx10-5611",
+        "model_roles": [
+          "new_candidate"
+        ]
+      },
+      "supported_parameters": [
+        "temperature",
+        "top_p",
+        "max_new_tokens",
+        "seed",
+        "stop"
+      ],
+      "unsupported_parameters": []
+    }
+  ]
+}

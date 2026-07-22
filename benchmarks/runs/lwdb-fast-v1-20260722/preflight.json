@@ -1,0 +1,41 @@
+{
+  "run_id": "lwdb-fast-v1-20260722",
+  "checked_at": "2026-07-22",
+  "base_gx10": {
+    "host": "gx10-9141",
+    "tailscale_ip": "100.92.130.112",
+    "gpu": "NVIDIA GB10",
+    "reachable": true,
+    "base_model_present": "7.6G",
+    "docker_image": "linewright-ternary-train:run001",
+    "provisioned": true
+  },
+  "candidate_gx10": {
+    "host": "gx10-5611",
+    "tailscale_ip": "100.97.81.71",
+    "gpu": "NVIDIA GB10",
+    "reachable": true,
+    "ram_gb": 121,
+    "python": "3.12.3",
+    "torch": "2.11.0+cu130",
+    "base_model_present": false,
+    "adapter_present": false,
+    "transformers_peft_present": "pending",
+    "code_present": false,
+    "provisioned": false,
+    "provisioning_needed": [
+      "base model (transfer over 192.168.10.x)",
+      "LoRA-20 adapter",
+      "transformers + peft",
+      "linewright/ternary code"
+    ]
+  },
+  "inter_node_link": {
+    "subnet": "192.168.10.0/24",
+    "mtu": 9000,
+    "base": "192.168.10.1",
+    "candidate": "192.168.10.2"
+  },
+  "model_serving_endpoints_running": false,
+  "endpoint_type_planned": "local_huggingface (in-process HF generation per node)"
+}

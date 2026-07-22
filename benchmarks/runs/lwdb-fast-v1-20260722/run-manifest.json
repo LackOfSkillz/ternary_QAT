@@ -1,0 +1,25 @@
+{
+  "run_id": "lwdb-fast-v1-20260722",
+  "battery_version": "fast-v1",
+  "dispatch": 24,
+  "execution_mode": "parallel_multi_host",
+  "production_approved": false,
+  "candidate": {
+    "model_name": "Ternary-Bonsai-4B-unpacked + LoRA adapter",
+    "checkpoint_path": "training/runs/dataset-a-full-comparison-v1/lora/checkpoints/step-20",
+    "checkpoint_fraction": 1.0,
+    "training_method": "LoRA (rank 16) on ternary base",
+    "training_run_id": "dataset-a-full-comparison-v1",
+    "model_revision": "lora-step-20",
+    "tokenizer_revision": "4485fae7a00129467b9329b738110d88b2942a1a",
+    "quantization": "ternary base (unpacked) + fp LoRA adapter",
+    "merge_status": "unmerged (adapter applied at load)",
+    "endpoint_id": "ep-candidate",
+    "selection_basis": "Dispatch-24 selection rule: most recent technically-valid, non-catastrophic checkpoint with complete provenance. QAT-20 excluded (Dispatch-20/23 evidence: catastrophically degenerate, 0/7 mechanical). LoRA-20 is the best available non-excluded candidate (4/7 mechanical; partially degenerate but not catastrophic) and runs the fast path (base+adapter, no fake-quant). Experimental smoke checkpoint; not a quality claim."
+  },
+  "target_base": {
+    "model_name": "prism-ml/Ternary-Bonsai-4B-unpacked",
+    "model_revision": "4485fae7a00129467b9329b738110d88b2942a1a",
+    "endpoint_id": "ep-base"
+  }
+}
