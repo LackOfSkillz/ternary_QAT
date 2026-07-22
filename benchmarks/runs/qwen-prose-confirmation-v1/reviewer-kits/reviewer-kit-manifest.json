@@ -1,0 +1,28 @@
+{
+ "review_id": "prose-confirmation-v1",
+ "source_run": "qwen-prose-confirmation-v1",
+ "source_commit": "e1d00f6802e85cf790eb40938be1b517a066ce97",
+ "anonymous_unit_count": 36,
+ "identity_key_included": false,
+ "private_data_included": false,
+ "chatgpt": {
+  "zip": "benchmarks/runs/qwen-prose-confirmation-v1/reviewer-kits/prose-review-chatgpt-v1.zip",
+  "zip_sha256": "e3dc89358ccd104fea7f9f7ca277fe338a7519efdf2e48005ff17c2288166987",
+  "zip_size_bytes": 244879,
+  "file_count": 7,
+  "unit_order_sha256": "d7e13c02c1b08630f2b8b97f69774c9e5748b4bed14044cfcb05646d7504810b",
+  "reviewer_id": "chatgpt",
+  "reviewer_type": "supplemental_language_model"
+ },
+ "claude": {
+  "zip": "benchmarks/runs/qwen-prose-confirmation-v1/reviewer-kits/prose-review-claude-v1.zip",
+  "zip_sha256": "cf93081ec2fbec501a86fc0289eccd2060e10f36d6d98046ce976c3c429e0fe0",
+  "zip_size_bytes": 244863,
+  "file_count": 7,
+  "unit_order_sha256": "5926c8d6bd305cdeb4d61fc126345dd21a46bdb23845c32b565392055742b2c9",
+  "reviewer_id": "claude",
+  "reviewer_type": "supplemental_language_model"
+ },
+ "validation_status": "pass",
+ "forbidden_scan_hits": 0
+}
