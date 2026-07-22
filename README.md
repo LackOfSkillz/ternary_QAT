@@ -125,6 +125,35 @@ Weights are ternarized to `{-1, 0, 1}` per group of (128/64/user-defined) consec
 
 Based on Prism-ML's whitepaper: https://github.com/PrismML-Eng/Bonsai-demo/blob/main/ternary-bonsai-8b-whitepaper.pdf
 
+## LineWright Diagnostic Battery (LWDB)
+
+The **LineWright Model Capability, Reliability, and Tuning Diagnostic Battery** is the
+permanent evaluation instrument run after every meaningful model-tuning experiment. It is a
+**diagnostic instrument, not a ranking test**: it reports which capability changed, in which
+direction, with what effect size, on what evidence, and with what confidence — and names a
+likely bottleneck (dataset, training, quantization, context compilation, decoding, or
+base-model capacity) only when a controlled comparison supports it.
+
+- **Fast battery** (~24–30 items) runs after meaningful checkpoints to catch catastrophic
+  regressions, spot early overfitting, and gate the full battery. **Full battery** (~60–80)
+  runs for dataset-version, base-model, quantization, and release decisions. Both share one
+  architecture (same schemas, taxonomy, scoring, confidence, and provenance).
+- **Mechanical evidence** (schema, no-change preservation, repetition, memorization,
+  truncation, negative-space damage) and **reviewer evidence** (prose quality, voice,
+  coherence, usefulness) stay separate. A strong subjective score never cancels a mechanical
+  fatal flaw.
+- **Benchmark items are excluded from training by construction** and never enter gradients;
+  items that inform a change become *burned* and stop counting as independent evidence for it.
+- Builds on the Dispatch-21 hardened evaluation gates in
+  [`linewright/evaluation/`](linewright/evaluation/).
+
+Full specification:
+[`training/docs/linewright-diagnostic-battery-architecture-v1.md`](training/docs/linewright-diagnostic-battery-architecture-v1.md).
+Machine-readable manifest and schemas live in [`benchmarks/`](benchmarks/).
+
+**Status:** `architecture_only` (Dispatch 22 — architecture, schemas, and docs; no
+benchmark prompts, model runs, or thresholds yet).
+
 ## Install
 
 Have your preferred torch version installed first so that this doesn't install the CPU version (which you probably don't want)

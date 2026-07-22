@@ -93,3 +93,27 @@ Run 1 must pass (pipeline completes) before Run 2. Run 2 establishes the
 conventional-LoRA baseline that Run 3 is measured against. No run proceeds to
 scaled data before a PASS or qualifying PARTIAL feasibility result, per
 `ROADMAP.md`.
+
+## Diagnostic battery — training workflow
+
+Every meaningful tuning experiment is evaluated with the **LineWright Diagnostic
+Battery** (LWDB). Architecture:
+[`training/docs/linewright-diagnostic-battery-architecture-v1.md`](training/docs/linewright-diagnostic-battery-architecture-v1.md)
+(status `architecture_only` — no prompts or thresholds exist yet).
+
+- **When the fast battery runs:** after each meaningful checkpoint, and across the
+  25/50/75/100% checkpoint curve of a run, to catch catastrophic regressions and early
+  overfitting and to decide whether a candidate earns the full battery.
+- **When the full battery runs:** major dataset-version decisions, base-model selection,
+  quantization changes, release candidates, and final checkpoint certification.
+- **Checkpoint-curve expectations:** report earliest meaningful improvement, peak
+  checkpoint, onset of regression, and capability-specific peaks — as **fractions**, never
+  a fixed step count. Long-form prose and protocol compliance may peak at different points.
+- **Evaluation → dataset changes:** findings feed dataset revision (coverage/balance) via
+  the Dispatch-21 pilot workflow. When a benchmark item **directly informs** a dataset or
+  training change it becomes **burned**: it may stay a regression check but no longer counts
+  as independent evidence of improvement for the change it inspired.
+- **Benchmark records never enter gradients:** every item is `benchmark_only: true` and is
+  excluded from training by construction. Author content is likewise never a gradient input
+  (inference-time context only). A model may not advance on lower loss or a higher parse
+  rate — only on the battery's confidence-tagged findings and the reviewer advancement rule.

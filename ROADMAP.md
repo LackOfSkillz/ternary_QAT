@@ -596,6 +596,25 @@ implementation now.
 That belongs in the Model Studio / provider-routing horizon backlog — do not
 design or implement it now.
 
+### Evaluation workstream — LineWright Diagnostic Battery
+
+The **LineWright Model Capability, Reliability, and Tuning Diagnostic Battery** (LWDB) is
+the permanent instrument that evaluates every meaningful tuning experiment: a diagnostic
+system (which capability changed, direction, effect size, evidence, confidence, likely
+bottleneck), not a ranking test. It builds on the Dispatch-21 hardened gates. Spec:
+[`training/docs/linewright-diagnostic-battery-architecture-v1.md`](training/docs/linewright-diagnostic-battery-architecture-v1.md);
+manifest + schemas in [`benchmarks/`](benchmarks/). This workstream runs within the existing
+model-training sequence and does **not** displace broader LineWright application milestones.
+
+| dispatch | title | status |
+|---|---|---|
+| **22** | **architecture & specification** | **← current** |
+| 23 | instrument calibration & grader validation | planned |
+| 24 | fast battery construction & first execution | planned |
+| 25 | fast battery validation & diagnostic engine | planned |
+| 26 | full battery construction | planned |
+| 27 | full battery baseline & certification | planned |
+
 ## Immediate next steps
 
 1. Finish and commit the local baseline environment files.
