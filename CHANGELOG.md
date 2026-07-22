@@ -5,6 +5,25 @@ Notable changes to this LineWright research fork. Dates are absolute; the active
 
 ## [Unreleased]
 
+### Dispatch 24 continuation — first LIVE dual-GX10 execution completed (2026-07-22)
+
+Ran the real base-vs-candidate fast battery on the two GX10 systems. **No training, no dataset
+change, no empirical thresholds, no winner declared.**
+
+- Provisioned `gx10-5611` over the jumbo inter-node link (image 19.7 GB, base model 7.6 GB,
+  LoRA-20 adapter hash-verified); both endpoints passed a non-benchmark `READY` health check.
+- Executed the frozen plan `lwdb-fast-v1-20260722` in `parallel_multi_host` (base @ gx10-9141,
+  LoRA-20 candidate @ gx10-5611): **40/40 jobs, 0 integrity problems, mechanical replay
+  identical → instrument-valid.**
+- Scored all outputs (mechanical gates + Module-J slop + 2 corpus summaries) and built blind
+  reviewer packets (44 identity-free absolute units incl. 4 hidden calibration seeds; 20
+  pairwise; **0 identity leaks**). Preliminary signal: candidate degenerates far more than base
+  (severe slop 9 vs 1; token-cap 9 vs 3; both surface arms fail → model/training, not compiler).
+  **Advancement deferred to Dispatch 25.**
+- Added the real HF generation worker + finalize pipeline; committed the completed run report,
+  summary, compact item-level verdicts, corpus summaries, and provisioning record (raw outputs
+  git-ignored). Superseded the preliminary report.
+
 ### Dispatch 24 — Fast battery construction & first dual-GX10 execution setup (2026-07-22)
 
 Built and froze the first fast diagnostic battery and the full run pipeline; configured the

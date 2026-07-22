@@ -123,10 +123,11 @@ GX10 B (gx10-5611, 100.97.81.71)   → new_candidate  (base + LoRA step-20 adapt
 ```
 
 Both endpoints are `local_huggingface` (in-process HF generation per node — no HTTP server,
-no serialized secrets). The base host is fully provisioned; the candidate host has Python +
-torch and needs the base model (transfer over the 192.168.10.0/24 jumbo link), the adapter,
-`transformers`/`peft`, and the code. If a node is unavailable, pause and resume or fall back
-to `sequential_single_host` — the `plan_hash` is unchanged.
+no serialized secrets). **This run completed live** (2026-07-22): the candidate host was
+provisioned over the jumbo link (image + base model + hash-verified adapter), both endpoints
+passed a `READY` health check, and both workers ran the same frozen plan concurrently —
+**40/40 jobs, 0 integrity problems, mechanical replay identical**. If a node is unavailable,
+pause and resume or fall back to `sequential_single_host` — the `plan_hash` is unchanged.
 
 ## 17. Limitations of mid-generation recovery
 

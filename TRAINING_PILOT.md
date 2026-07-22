@@ -136,9 +136,12 @@ Battery** (LWDB). Architecture:
 
 ### First fast-battery execution (Dispatch 24)
 
-- The **first execution is a dual-GX10 parallel run**: the untouched base on one ASUS GX10
-  (`gx10-9141`) and the tuned LoRA-20 candidate on the other (`gx10-5611`), both consuming
-  the **same frozen generation plan** (`benchmarks/runs/lwdb-fast-v1-20260722/`).
+- The **first execution ran as a live dual-GX10 parallel run**: the untouched base on
+  `gx10-9141` and the tuned LoRA-20 candidate on `gx10-5611`, both consuming the **same frozen
+  generation plan** (`benchmarks/runs/lwdb-fast-v1-20260722/`) — 40/40 jobs completed,
+  0 integrity problems, mechanical replay identical (instrument-valid). Preliminary signal
+  (not a verdict, deferred to Dispatch 25): the candidate degenerates markedly more than the
+  base; both share a structured-protocol weakness.
 - **Sequential single-host remains the fallback** if a GX10 or endpoint is unavailable; the
   `plan_hash` is unchanged across modes (execution mode is not benchmark semantics).
 - **Pause/resume is supported during the real run**; completed jobs are durably persisted and

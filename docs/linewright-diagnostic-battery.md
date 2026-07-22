@@ -102,7 +102,9 @@ pairwise base-vs-candidate with content-shuffled candidate labels. Reviewer fata
 positive slop findings must cite exact spans — never "feels AI". Interpreting a **preliminary**
 first run: report completion, instrument validity, mechanical failures, and preliminary slop
 patterns — but declare no winner, no capability floor, no release readiness (those await
-Dispatch 25). See the first-run report at `benchmarks/runs/lwdb-fast-v1-20260722/`.
+Dispatch 25). The **first live dual-GX10 run completed** (40/40 jobs, instrument-valid; base
+degrades less than the LoRA-20 candidate, which degenerates on 9/20) — see
+`benchmarks/runs/lwdb-fast-v1-20260722/completed-run-report.md`.
 
 ## Relationship to Dispatch 21
 

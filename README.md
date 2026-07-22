@@ -174,15 +174,19 @@ See [`lwdb-execution-and-resume-v1.md`](training/docs/lwdb-execution-and-resume-
 with 7 controlled pairs, locked contracts, provenance, hashed manifest) and the full run
 pipeline (generation-plan freeze, dual-GX10 worker routing, mechanical + Module-J slop
 scoring, blind reviewer packets with calibration seeding and zero identity leaks). The first
-execution is configured as a **dual-GX10 parallel run** — untouched base on one ASUS GX10,
-tuned LoRA-20 candidate on the other, against one frozen plan. The pipeline is proven
-end-to-end with deterministic stubs; the real dual-GX10 generation is execution-ready
-(`benchmarks/runs/lwdb-fast-v1-20260722/`). **No model-quality finding is made** — with no
-trusted run completed, the verdict is `insufficient_evidence` and advancement is deferred to
-Dispatch 25.
+execution **ran as a live dual-GX10 parallel run** — untouched base on `gx10-9141`, tuned
+LoRA-20 candidate on `gx10-5611`, both against one frozen plan (`plan_hash a726365a`):
+**40 / 40 jobs completed, 0 integrity problems, mechanical replay identical → instrument-valid.**
+Preliminary, instrument-valid signal (not a verdict): the LoRA-20 candidate **degenerates
+markedly more** than the base (severe slop on 9/20 outputs vs 1; token-cap hits 9 vs 3; it
+fails both surface-pair arms, so the fault is model/training, not the context compiler), while
+both share a structured-protocol weakness. **No winner, capability floor, or release claim is
+made** — advancement is **deferred to Dispatch 25**; blind human/independent review is future
+work (44 identity-free units + 4 hidden calibration seeds prepared). See
+`benchmarks/runs/lwdb-fast-v1-20260722/completed-run-report.md`.
 
-**Status:** fast battery v1 **frozen + validated + execution-ready**; pipeline proven; real
-dual-GX10 generation pending; no empirical thresholds, no winner declared, no training.
+**Status:** fast battery v1 **frozen + validated**; **first live dual-GX10 run completed**
+(instrument-valid); no empirical thresholds, no winner declared, no training.
 
 ## Install
 
