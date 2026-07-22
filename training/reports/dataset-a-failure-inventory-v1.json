@@ -1,0 +1,707 @@
+{
+  "summary": {
+    "dispatch": 21,
+    "phase": "A",
+    "note": "Experimental failure inventory over the frozen 7 held-out records. NOT a quality verdict; 7 records prove nothing about general quality.",
+    "old_parse_only_format_valid": {
+      "base": 6,
+      "lora_20": 4,
+      "qat_10": 6,
+      "qat_20": 3
+    },
+    "mechanical_pass_all_decidable_gates": {
+      "base": 4,
+      "lora_20": 4,
+      "qat_20": 0,
+      "qat_10": "not_computable (raw outputs not persisted)"
+    },
+    "dominant_failure_mode": "degeneration / runaway repetition under 20-step overfitting, invisible to the parse-only gate",
+    "corrected_prior_claim": "The Dispatch-20 report's 'memorized revision-007 verbatim' was a 130-char-truncation artifact: the shared opening is the SOURCE passage being preserved in a focused-revision task; full outputs diverge after it.",
+    "failure_cause_categories": {
+      "dataset": [
+        "no-change protocol taught by only 2 records; zero changed:true structured golds",
+        "no rejected examples teach degeneration/repetition avoidance",
+        "causal-set minimality under-taught (base over-includes constraint ids)",
+        "few records per structured family (canon 5, constraint 5, scene 3)"
+      ],
+      "evaluator": [
+        "parse-only format_valid passes catastrophic repetition",
+        "no schema-key / alternate-key check",
+        "no exact-preservation gate",
+        "no scope / did-it-change check",
+        "constraint_ids set-equality not gated at eval"
+      ],
+      "model": [
+        "20 steps at eff-batch 8 over 28 rows (~5 epochs) drives degeneration",
+        "ternary-QAT degrades faster into loops than LoRA at equal steps"
+      ],
+      "uncertainty": [
+        "behavioral prose quality is reviewer-assisted, not decided here",
+        "qat_10 non-format dimensions not computable (raw outputs not persisted)"
+      ]
+    }
+  },
+  "records": [
+    {
+      "record_id": "dsa-boundary-001",
+      "task_family": "fiction_boundary",
+      "source_family": "boundary-in-scene-craft",
+      "story_world": "interrogation-room-antagonist-threat",
+      "expected_output_type": "prose",
+      "expected_schema": null,
+      "exact_preservation_required": false,
+      "base": {
+        "format_valid": true,
+        "schema_valid": true,
+        "protocol_valid": true,
+        "constraint_valid": null,
+        "source_fidelity": null,
+        "no_change_valid": null,
+        "repetition_valid": true,
+        "memorization_valid": true,
+        "behavioral_valid": null,
+        "failure_labels": [],
+        "_evidence": {
+          "max_exact_sentence_repeat": 1,
+          "worst_ngram_repeat": 1,
+          "type_token_ratio": 0.6822,
+          "mechanical_pass": true
+        }
+      },
+      "lora_20": {
+        "format_valid": true,
+        "schema_valid": true,
+        "protocol_valid": true,
+        "constraint_valid": null,
+        "source_fidelity": null,
+        "no_change_valid": null,
+        "repetition_valid": true,
+        "memorization_valid": true,
+        "behavioral_valid": null,
+        "failure_labels": [],
+        "_evidence": {
+          "max_exact_sentence_repeat": 2,
+          "worst_ngram_repeat": 3,
+          "type_token_ratio": 0.5,
+          "mechanical_pass": true
+        }
+      },
+      "qat_10": {
+        "format_valid": true,
+        "schema_valid": null,
+        "protocol_valid": null,
+        "constraint_valid": null,
+        "source_fidelity": null,
+        "no_change_valid": null,
+        "repetition_valid": null,
+        "memorization_valid": null,
+        "behavioral_valid": null,
+        "_evidence": "only format_valid persisted for the contextual 10-step checkpoint",
+        "failure_labels": []
+      },
+      "qat_20": {
+        "format_valid": true,
+        "schema_valid": true,
+        "protocol_valid": true,
+        "constraint_valid": null,
+        "source_fidelity": null,
+        "no_change_valid": null,
+        "repetition_valid": false,
+        "memorization_valid": true,
+        "behavioral_valid": null,
+        "failure_labels": [
+          "incomplete_output",
+          "low_lexical_diversity",
+          "repeated_ngram",
+          "runaway_length"
+        ],
+        "_evidence": {
+          "max_exact_sentence_repeat": 1,
+          "worst_ngram_repeat": 45,
+          "type_token_ratio": 0.2182,
+          "mechanical_pass": false
+        }
+      },
+      "shared_failure": "degeneration_under_training",
+      "likely_dataset_gap": "no rejected examples teach repetition/degeneration avoidance; single boundary record",
+      "likely_evaluator_gap": "parse-only format_valid scored the 45x 'the door creaks' loop VALID",
+      "corrective_record_types": [
+        "repetition_control",
+        "boundary_in_scene_prose"
+      ],
+      "priority": "high"
+    },
+    {
+      "record_id": "dsa-canon-003",
+      "task_family": "canon_extraction",
+      "source_family": "canon-overheard-market",
+      "story_world": "harbor-ship-rumor-conflict",
+      "expected_output_type": "json",
+      "expected_schema": "canon-facts-v1",
+      "exact_preservation_required": false,
+      "base": {
+        "format_valid": true,
+        "schema_valid": true,
+        "protocol_valid": true,
+        "constraint_valid": null,
+        "source_fidelity": null,
+        "no_change_valid": null,
+        "repetition_valid": true,
+        "memorization_valid": true,
+        "behavioral_valid": null,
+        "failure_labels": [],
+        "_evidence": {
+          "max_exact_sentence_repeat": 1,
+          "worst_ngram_repeat": 2,
+          "type_token_ratio": 0.4531,
+          "mechanical_pass": true
+        }
+      },
+      "lora_20": {
+        "format_valid": false,
+        "schema_valid": false,
+        "protocol_valid": false,
+        "constraint_valid": null,
+        "source_fidelity": null,
+        "no_change_valid": null,
+        "repetition_valid": false,
+        "memorization_valid": true,
+        "behavioral_valid": null,
+        "failure_labels": [
+          "duplicate_sentence",
+          "invalid_json",
+          "low_lexical_diversity",
+          "prose_outside_structure",
+          "repeated_ngram",
+          "truncated_structure"
+        ],
+        "_evidence": {
+          "max_exact_sentence_repeat": 12,
+          "worst_ngram_repeat": 12,
+          "type_token_ratio": 0.1569,
+          "mechanical_pass": false
+        }
+      },
+      "qat_10": {
+        "format_valid": true,
+        "schema_valid": null,
+        "protocol_valid": null,
+        "constraint_valid": null,
+        "source_fidelity": null,
+        "no_change_valid": null,
+        "repetition_valid": null,
+        "memorization_valid": null,
+        "behavioral_valid": null,
+        "_evidence": "only format_valid persisted for the contextual 10-step checkpoint",
+        "failure_labels": []
+      },
+      "qat_20": {
+        "format_valid": false,
+        "schema_valid": false,
+        "protocol_valid": false,
+        "constraint_valid": null,
+        "source_fidelity": null,
+        "no_change_valid": null,
+        "repetition_valid": false,
+        "memorization_valid": true,
+        "behavioral_valid": null,
+        "failure_labels": [
+          "duplicate_sentence",
+          "invalid_json",
+          "low_lexical_diversity",
+          "prose_outside_structure",
+          "repeated_ngram",
+          "truncated_structure"
+        ],
+        "_evidence": {
+          "max_exact_sentence_repeat": 3,
+          "worst_ngram_repeat": 4,
+          "type_token_ratio": 0.2203,
+          "mechanical_pass": false
+        }
+      },
+      "shared_failure": "schema_drift_and_degeneration",
+      "likely_dataset_gap": "only 5 canon records; no rejected examples showing alternate-key drift (speaker/claim)",
+      "likely_evaluator_gap": "no schema-key or repetition check; alternate keys + repeated note blocks undetected",
+      "corrective_record_types": [
+        "schema_adherence",
+        "canon_extraction_hearsay"
+      ],
+      "priority": "high"
+    },
+    {
+      "record_id": "dsa-constraint-002",
+      "task_family": "constraint_check",
+      "source_family": "constraint-knowledge-gate",
+      "story_world": "courier-sealed-letter-name",
+      "expected_output_type": "json",
+      "expected_schema": "constraint-verdict-v1",
+      "exact_preservation_required": false,
+      "base": {
+        "format_valid": true,
+        "schema_valid": true,
+        "protocol_valid": true,
+        "constraint_valid": false,
+        "source_fidelity": null,
+        "no_change_valid": null,
+        "repetition_valid": true,
+        "memorization_valid": true,
+        "behavioral_valid": null,
+        "failure_labels": [
+          "constraint_ignored"
+        ],
+        "_evidence": {
+          "max_exact_sentence_repeat": 1,
+          "worst_ngram_repeat": 2,
+          "type_token_ratio": 0.4706,
+          "mechanical_pass": false
+        }
+      },
+      "lora_20": {
+        "format_valid": false,
+        "schema_valid": false,
+        "protocol_valid": false,
+        "constraint_valid": false,
+        "source_fidelity": null,
+        "no_change_valid": null,
+        "repetition_valid": false,
+        "memorization_valid": true,
+        "behavioral_valid": null,
+        "failure_labels": [
+          "constraint_ignored",
+          "duplicate_sentence",
+          "invalid_json",
+          "low_lexical_diversity",
+          "prose_outside_structure",
+          "repeated_ngram",
+          "truncated_structure"
+        ],
+        "_evidence": {
+          "max_exact_sentence_repeat": 19,
+          "worst_ngram_repeat": 21,
+          "type_token_ratio": 0.07,
+          "mechanical_pass": false
+        }
+      },
+      "qat_10": {
+        "format_valid": true,
+        "schema_valid": null,
+        "protocol_valid": null,
+        "constraint_valid": null,
+        "source_fidelity": null,
+        "no_change_valid": null,
+        "repetition_valid": null,
+        "memorization_valid": null,
+        "behavioral_valid": null,
+        "_evidence": "only format_valid persisted for the contextual 10-step checkpoint",
+        "failure_labels": []
+      },
+      "qat_20": {
+        "format_valid": false,
+        "schema_valid": false,
+        "protocol_valid": false,
+        "constraint_valid": false,
+        "source_fidelity": null,
+        "no_change_valid": null,
+        "repetition_valid": false,
+        "memorization_valid": true,
+        "behavioral_valid": null,
+        "failure_labels": [
+          "constraint_ignored",
+          "continued_after_task_complete",
+          "duplicate_sentence",
+          "low_lexical_diversity",
+          "prose_outside_structure",
+          "repeated_ngram",
+          "truncated_structure"
+        ],
+        "_evidence": {
+          "max_exact_sentence_repeat": 7,
+          "worst_ngram_repeat": 16,
+          "type_token_ratio": 0.25,
+          "mechanical_pass": false
+        }
+      },
+      "shared_failure": "causal_set_overinclusion_and_degeneration",
+      "likely_dataset_gap": "few constraint records; base already over-includes (K1,K2,T1) vs gold (K1) -- causal-set discrimination under-taught",
+      "likely_evaluator_gap": "constraint_ids set-equality not enforced at eval time; repetition undetected",
+      "corrective_record_types": [
+        "hard_constraint_fidelity",
+        "causal_set_minimality"
+      ],
+      "priority": "high"
+    },
+    {
+      "record_id": "dsa-revision-002",
+      "task_family": "focused_revision",
+      "source_family": "revision-restraint-no-change",
+      "story_world": "clean-dark-passage-leave-alone",
+      "expected_output_type": "json",
+      "expected_schema": "no-change-v1",
+      "exact_preservation_required": true,
+      "base": {
+        "format_valid": false,
+        "schema_valid": false,
+        "protocol_valid": false,
+        "constraint_valid": null,
+        "source_fidelity": false,
+        "no_change_valid": false,
+        "repetition_valid": true,
+        "memorization_valid": true,
+        "behavioral_valid": null,
+        "failure_labels": [
+          "invalid_json",
+          "no_change_wrapper_missing",
+          "prose_outside_structure"
+        ],
+        "_evidence": {
+          "max_exact_sentence_repeat": 1,
+          "worst_ngram_repeat": 1,
+          "type_token_ratio": 0.8444,
+          "mechanical_pass": false
+        }
+      },
+      "lora_20": {
+        "format_valid": false,
+        "schema_valid": false,
+        "protocol_valid": false,
+        "constraint_valid": null,
+        "source_fidelity": false,
+        "no_change_valid": false,
+        "repetition_valid": true,
+        "memorization_valid": true,
+        "behavioral_valid": null,
+        "failure_labels": [
+          "invalid_json",
+          "no_change_wrapper_missing",
+          "prose_outside_structure"
+        ],
+        "_evidence": {
+          "max_exact_sentence_repeat": 1,
+          "worst_ngram_repeat": 1,
+          "type_token_ratio": 0.8444,
+          "mechanical_pass": false
+        }
+      },
+      "qat_10": {
+        "format_valid": false,
+        "schema_valid": null,
+        "protocol_valid": null,
+        "constraint_valid": null,
+        "source_fidelity": null,
+        "no_change_valid": null,
+        "repetition_valid": null,
+        "memorization_valid": null,
+        "behavioral_valid": null,
+        "_evidence": "only format_valid persisted for the contextual 10-step checkpoint",
+        "failure_labels": []
+      },
+      "qat_20": {
+        "format_valid": false,
+        "schema_valid": false,
+        "protocol_valid": false,
+        "constraint_valid": null,
+        "source_fidelity": false,
+        "no_change_valid": false,
+        "repetition_valid": false,
+        "memorization_valid": true,
+        "behavioral_valid": null,
+        "failure_labels": [
+          "duplicate_sentence",
+          "invalid_json",
+          "low_lexical_diversity",
+          "no_change_wrapper_missing",
+          "prose_outside_structure",
+          "repeated_ngram"
+        ],
+        "_evidence": {
+          "max_exact_sentence_repeat": 10,
+          "worst_ngram_repeat": 10,
+          "type_token_ratio": 0.0907,
+          "mechanical_pass": false
+        }
+      },
+      "shared_failure": "no_change_protocol_absent",
+      "likely_dataset_gap": "only 2 no-change golds in all of Dataset A and ZERO changed:true structured golds -- the wrapper is essentially untaught",
+      "likely_evaluator_gap": "no_change_preserved sub-check existed but no exact-preservation gate; bare prose scored only via json-parse",
+      "corrective_record_types": [
+        "no_change_restraint",
+        "exact_preservation"
+      ],
+      "priority": "critical"
+    },
+    {
+      "record_id": "dsa-revision-007",
+      "task_family": "focused_revision",
+      "source_family": "revision-mixed-metaphor-lyrical",
+      "story_world": "river-goddess-invocation-ornate",
+      "expected_output_type": "prose",
+      "expected_schema": null,
+      "exact_preservation_required": false,
+      "base": {
+        "format_valid": true,
+        "schema_valid": true,
+        "protocol_valid": true,
+        "constraint_valid": null,
+        "source_fidelity": true,
+        "no_change_valid": null,
+        "repetition_valid": true,
+        "memorization_valid": true,
+        "behavioral_valid": null,
+        "failure_labels": [],
+        "_evidence": {
+          "max_exact_sentence_repeat": 1,
+          "worst_ngram_repeat": 1,
+          "type_token_ratio": 0.7167,
+          "mechanical_pass": true
+        }
+      },
+      "lora_20": {
+        "format_valid": true,
+        "schema_valid": true,
+        "protocol_valid": true,
+        "constraint_valid": null,
+        "source_fidelity": true,
+        "no_change_valid": null,
+        "repetition_valid": true,
+        "memorization_valid": true,
+        "behavioral_valid": null,
+        "failure_labels": [],
+        "_evidence": {
+          "max_exact_sentence_repeat": 1,
+          "worst_ngram_repeat": 1,
+          "type_token_ratio": 0.7222,
+          "mechanical_pass": true
+        }
+      },
+      "qat_10": {
+        "format_valid": true,
+        "schema_valid": null,
+        "protocol_valid": null,
+        "constraint_valid": null,
+        "source_fidelity": null,
+        "no_change_valid": null,
+        "repetition_valid": null,
+        "memorization_valid": null,
+        "behavioral_valid": null,
+        "_evidence": "only format_valid persisted for the contextual 10-step checkpoint",
+        "failure_labels": []
+      },
+      "qat_20": {
+        "format_valid": true,
+        "schema_valid": true,
+        "protocol_valid": true,
+        "constraint_valid": null,
+        "source_fidelity": false,
+        "no_change_valid": null,
+        "repetition_valid": false,
+        "memorization_valid": true,
+        "behavioral_valid": null,
+        "failure_labels": [
+          "duplicate_sentence",
+          "excessive_expansion",
+          "incomplete_output",
+          "low_lexical_diversity",
+          "repeated_ngram",
+          "repeated_paragraph_opening",
+          "runaway_length"
+        ],
+        "_evidence": {
+          "max_exact_sentence_repeat": 6,
+          "worst_ngram_repeat": 7,
+          "type_token_ratio": 0.1457,
+          "mechanical_pass": false
+        }
+      },
+      "shared_failure": "degeneration_under_training",
+      "likely_dataset_gap": "voice-preserving single-defect revision under-represented; no degeneration-rejected examples",
+      "likely_evaluator_gap": "the QAT-20 lyrical loop scored format_valid VALID; no repetition or source-fidelity gate",
+      "corrective_record_types": [
+        "voice_preserving_revision",
+        "repetition_control"
+      ],
+      "priority": "high"
+    },
+    {
+      "record_id": "dsa-revision-018",
+      "task_family": "focused_revision",
+      "source_family": "revision-gaze-choreography-romantic",
+      "story_world": "fence-line-thaw",
+      "expected_output_type": "prose",
+      "expected_schema": null,
+      "exact_preservation_required": false,
+      "base": {
+        "format_valid": true,
+        "schema_valid": true,
+        "protocol_valid": true,
+        "constraint_valid": null,
+        "source_fidelity": false,
+        "no_change_valid": null,
+        "repetition_valid": true,
+        "memorization_valid": true,
+        "behavioral_valid": null,
+        "failure_labels": [
+          "omitted_required_change"
+        ],
+        "_evidence": {
+          "max_exact_sentence_repeat": 1,
+          "worst_ngram_repeat": 1,
+          "type_token_ratio": 0.7368,
+          "mechanical_pass": false
+        }
+      },
+      "lora_20": {
+        "format_valid": true,
+        "schema_valid": true,
+        "protocol_valid": true,
+        "constraint_valid": null,
+        "source_fidelity": true,
+        "no_change_valid": null,
+        "repetition_valid": true,
+        "memorization_valid": true,
+        "behavioral_valid": null,
+        "failure_labels": [],
+        "_evidence": {
+          "max_exact_sentence_repeat": 1,
+          "worst_ngram_repeat": 1,
+          "type_token_ratio": 0.8462,
+          "mechanical_pass": true
+        }
+      },
+      "qat_10": {
+        "format_valid": true,
+        "schema_valid": null,
+        "protocol_valid": null,
+        "constraint_valid": null,
+        "source_fidelity": null,
+        "no_change_valid": null,
+        "repetition_valid": null,
+        "memorization_valid": null,
+        "behavioral_valid": null,
+        "_evidence": "only format_valid persisted for the contextual 10-step checkpoint",
+        "failure_labels": []
+      },
+      "qat_20": {
+        "format_valid": true,
+        "schema_valid": true,
+        "protocol_valid": true,
+        "constraint_valid": null,
+        "source_fidelity": false,
+        "no_change_valid": null,
+        "repetition_valid": false,
+        "memorization_valid": true,
+        "behavioral_valid": null,
+        "failure_labels": [
+          "duplicate_sentence",
+          "excessive_expansion",
+          "incomplete_output",
+          "low_lexical_diversity",
+          "repeated_ngram",
+          "runaway_length"
+        ],
+        "_evidence": {
+          "max_exact_sentence_repeat": 12,
+          "worst_ngram_repeat": 14,
+          "type_token_ratio": 0.0867,
+          "mechanical_pass": false
+        }
+      },
+      "shared_failure": "omitted_change_or_degeneration",
+      "likely_dataset_gap": "few 'transform-this-technique' revisions; base echoed the source unchanged (task not done)",
+      "likely_evaluator_gap": "parse-only gate scored base's verbatim-source echo VALID (no did-it-change check)",
+      "corrective_record_types": [
+        "voice_preserving_revision",
+        "scope_control"
+      ],
+      "priority": "medium"
+    },
+    {
+      "record_id": "dsa-scene-002",
+      "task_family": "scene_contract",
+      "source_family": "scene-thirdlimited-heist-negotiation",
+      "story_world": "night-market-forged-ledger-standoff",
+      "expected_output_type": "yaml",
+      "expected_schema": "scene-contract-v1",
+      "exact_preservation_required": false,
+      "base": {
+        "format_valid": true,
+        "schema_valid": true,
+        "protocol_valid": true,
+        "constraint_valid": null,
+        "source_fidelity": null,
+        "no_change_valid": null,
+        "repetition_valid": true,
+        "memorization_valid": true,
+        "behavioral_valid": null,
+        "failure_labels": [],
+        "_evidence": {
+          "max_exact_sentence_repeat": 1,
+          "worst_ngram_repeat": 1,
+          "type_token_ratio": 0.7823,
+          "mechanical_pass": true
+        }
+      },
+      "lora_20": {
+        "format_valid": true,
+        "schema_valid": true,
+        "protocol_valid": true,
+        "constraint_valid": null,
+        "source_fidelity": null,
+        "no_change_valid": null,
+        "repetition_valid": true,
+        "memorization_valid": true,
+        "behavioral_valid": null,
+        "failure_labels": [],
+        "_evidence": {
+          "max_exact_sentence_repeat": 1,
+          "worst_ngram_repeat": 1,
+          "type_token_ratio": 0.764,
+          "mechanical_pass": true
+        }
+      },
+      "qat_10": {
+        "format_valid": true,
+        "schema_valid": null,
+        "protocol_valid": null,
+        "constraint_valid": null,
+        "source_fidelity": null,
+        "no_change_valid": null,
+        "repetition_valid": null,
+        "memorization_valid": null,
+        "behavioral_valid": null,
+        "_evidence": "only format_valid persisted for the contextual 10-step checkpoint",
+        "failure_labels": []
+      },
+      "qat_20": {
+        "format_valid": false,
+        "schema_valid": false,
+        "protocol_valid": false,
+        "constraint_valid": null,
+        "source_fidelity": null,
+        "no_change_valid": null,
+        "repetition_valid": false,
+        "memorization_valid": true,
+        "behavioral_valid": null,
+        "failure_labels": [
+          "invalid_yaml",
+          "low_lexical_diversity",
+          "truncated_structure"
+        ],
+        "_evidence": {
+          "max_exact_sentence_repeat": 1,
+          "worst_ngram_repeat": 3,
+          "type_token_ratio": 0.2886,
+          "mechanical_pass": false
+        }
+      },
+      "shared_failure": "schema_field_ambiguity_and_degeneration",
+      "likely_dataset_gap": "INSTRUCTION says fields viewpoint/... but GOLD uses viewpoint_character+narrative_perspective -- the target contradicts its own field spec (dataset defect)",
+      "likely_evaluator_gap": "yaml parse-only; appended JSON dump after the YAML went undetected",
+      "corrective_record_types": [
+        "schema_adherence",
+        "scene_contract_field_exact"
+      ],
+      "priority": "high"
+    }
+  ]
+}

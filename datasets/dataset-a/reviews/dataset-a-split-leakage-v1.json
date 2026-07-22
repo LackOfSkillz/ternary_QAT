@@ -1,0 +1,28 @@
+{
+  "dispatch": 21,
+  "phase": "D",
+  "policy": "Split complete source clusters, never individual records. The existing (template_family, semantic_cluster) uniqueness already enforces this; A.2 formalizes explicit group_key split-restriction and automates the check.",
+  "exact_duplicates": [],
+  "near_duplicates": [],
+  "shared_source_families": [],
+  "shared_story_worlds": [],
+  "longest_cross_split_character_overlap": {
+    "chars": 66,
+    "pair": [
+      "dsa-canon-003",
+      "dsa-canon-001"
+    ]
+  },
+  "longest_cross_split_token_overlap": 7,
+  "highest_cross_split_gold_similarity": {
+    "ratio": 0.549,
+    "pair": [
+      "dsa-canon-003",
+      "dsa-canon-002"
+    ]
+  },
+  "shared_gold_openings": [],
+  "shared_response_templates": [],
+  "violations": [],
+  "verdict": "clean"
+}
