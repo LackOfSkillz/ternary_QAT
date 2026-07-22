@@ -1,0 +1,72 @@
+qwen_confirmation:
+  dispatch: 27
+  phase: A
+  provisional: true
+  final_commercial_ship_certification: false
+
+  frozen_thresholds:
+    research_continuation_sha256: 2be4fddb1aed87c6500dac2a5cdf11e6209b80d2a6d32fa35aa4d63bef131712
+    starter_model_acceptance_sha256: 98a57af32fff4d4349466f7877acb5c16ce0e4fae4f376570cfff4407fd1d8b7
+    confirmation_floor: benchmarks/thresholds/qwen-q4-confirmation-floor-v0.yaml
+    unchanged: true
+
+  qwen_reference:
+    model_id: Qwen/Qwen3-8B
+    revision: b968826d9c46dd6066d109eabc6255188de91218
+    precision: bf16
+    thinking_disabled: true
+    frozen_thresholds_pass: true   # established Dispatch 26 (clears every floor)
+
+  qwen_q4:
+    repository: Qwen/Qwen3-8B-GGUF
+    revision: 7c41481f57cb95916b40956ab2f0b139b296d974
+    filename: Qwen3-8B-Q4_K_M.gguf
+    artifact_size_bytes: 5027783488
+    sha256: d98cdcbd03e17ce47681435b5150e34c1417f50b5c0019dd560e4882c5745785
+    official_artifact: true
+    runtime: llama.cpp llama-server b9518 (7c158fbb4), greedy, --reasoning-budget 0
+    thinking_disabled: true
+
+  q4_preservation:            # Aedan-measurable half — PASSES the frozen floor cleanly
+    mechanical_pass: {bf16: 0.933, q4: 0.933, drop: 0.0}
+    severe_slop: {bf16: 0.0, q4: 0.0, increase: 0.0}
+    token_cap: {bf16: 0.0, q4: 0.0, increase: 0.0}
+    reasoning_trace_leak_q4: 0.0
+    all_mechanical_floor_checks_pass: true
+
+  blind_confirmation:         # LM sub-agents = SUPPORTING; humans = DECIDING (pending)
+    reviewers: {lm_subagents: [A, B], external_humans_pending: [Gary, at_least_one_independent]}
+    calibration: {A: 1.0, B: 0.8}
+    reference_prose: {prose_quality: 2.733, voice_preservation: 2.633, instruction_compliance: 4.667, sentence_naturalness: 3.167}
+    q4_prose: {prose_quality: 2.767, voice_preservation: 2.733, instruction_compliance: 4.667, sentence_naturalness: 3.133}
+    prose_delta_bf16_to_q4: {prose_quality: -0.034, voice_preservation: -0.1, instruction_compliance: 0.0, sentence_naturalness: 0.034}
+    q4_new_fatal_rejections: 0
+    reference_fatal_prose_failure_rate: 0.0   # all 4 flagged fatals were hidden control items, not Qwen outputs
+    identity_leaks: 0
+    q4_blind_prose_preservation_pass_lm_only: true
+
+  foundation_decision:
+    branch: confirm_Qwen3_8B_foundation
+    status: PROVISIONAL_pending_required_human_review
+    human_gate_satisfied: false
+    rationale: >-
+      Every AUTOMATABLE and LM-supported criterion points to confirming Qwen3-8B: it clears every
+      frozen threshold (Dispatch 26), the official Q4_K_M deployment artifact PRESERVES the
+      reference on both mechanical (identical 0.933, zero severe slop / token-cap / reasoning leak)
+      and blind-LM prose (deltas within +/-0.1, zero new fatal), and the reference has zero fatal
+      prose failures on the confirmation set. HOWEVER, per the dispatch and the frozen confirmation
+      floor, the FINAL prose confirmation must NOT rely only on correlated LM graders — it requires
+      Gary plus at least one independent human blind reviewer. That human gate is NOT yet satisfied,
+      so this branch is PROVISIONAL and Phase B (LoRA) MUST NOT begin until the gate passes.
+    q4_package_verdict: acceptable   # rules out retain_Qwen_but_reject_Q4_package and run_one_quantization_fix_confirmation
+    rejected_branches:
+      - {branch: retain_Qwen_but_reject_Q4_package, reason: "Q4 preserves quality on every measured axis"}
+      - {branch: run_one_quantization_fix_confirmation, reason: "no Q4 defect to fix"}
+      - {branch: reopen_foundation_selection, reason: "no evidence of materially unacceptable full-quality prose; frozen thresholds pass, zero fatal prose failures"}
+      - {branch: insufficient_evidence, reason: "mechanical + Q4 preservation evidence is clean and decisive; only the human prose sign-off is outstanding"}
+    unresolved_risks:
+      - "reference blind prose ~2.7/5 (competent, not outstanding) and voice-preservation ~2.6/5 weak across the board — the intended target of a LineWright LoRA, but Gary must confirm the base is acceptable to build on"
+      - "LM graders are correlated; human blind review is required before final confirmation and before Phase B"
+
+  human_review_packet: benchmarks/runs/qwen-prose-confirmation-v1/review/human-review-packet.md   # blind, gitignored
+  phase_b_entry_gate: BLOCKED_until_human_confirmation
