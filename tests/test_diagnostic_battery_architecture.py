@@ -183,10 +183,10 @@ def test_changelog_records_architecture_dispatch():
 # ---------------- no training / no prompts created ----------------
 
 def test_no_benchmark_prompts_or_run_artifacts_created(manifest):
-    # ordinary-item lifecycle dirs are skeletons: only .gitkeep. (Dispatch 23 legitimately
-    # populates benchmarks/calibration/ with the instrument-validation set — a distinct,
-    # permitted category, NOT the ordinary fast/full battery — so it is excluded here.)
-    for d in ("development", "active-core", "rotating", "reserve", "burned"):
+    # ordinary-item lifecycle dirs are skeletons: only .gitkeep. (Dispatch 23 populates
+    # benchmarks/calibration/ and Dispatch 24 populates benchmarks/active-core/ with the
+    # frozen fast battery — both distinct, permitted categories — so they are excluded here.)
+    for d in ("development", "rotating", "reserve", "burned"):
         entries = [e for e in os.listdir(os.path.join(BENCH, d)) if e != ".gitkeep"]
         assert entries == [], f"unexpected files in benchmarks/{d}: {entries}"
     out = manifest["dispatch_22_outputs"]

@@ -138,7 +138,8 @@ def test_no_sqlite_run_artifacts_committed():
 
 
 def test_benchmark_lifecycle_dirs_have_no_ordinary_items():
-    for d in ("development", "active-core", "rotating", "reserve", "burned"):
+    # active-core is populated by Dispatch 24 (the frozen fast battery); other item dirs stay empty
+    for d in ("development", "rotating", "reserve", "burned"):
         entries = [e for e in os.listdir(os.path.join(BENCH, d)) if e != ".gitkeep"]
         assert entries == [], f"unexpected items in benchmarks/{d}: {entries}"
 
