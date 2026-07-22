@@ -151,8 +151,27 @@ Full specification:
 [`training/docs/linewright-diagnostic-battery-architecture-v1.md`](training/docs/linewright-diagnostic-battery-architecture-v1.md).
 Machine-readable manifest and schemas live in [`benchmarks/`](benchmarks/).
 
-**Status:** `architecture_only` (Dispatch 22 — architecture, schemas, and docs; no
-benchmark prompts, model runs, or thresholds yet).
+**Dispatch 23** added the instrument's foundations (still no benchmark prompts, model runs,
+or thresholds):
+
+- **Hardware-agnostic execution** — parallel (dual-GX10) and sequential (single-machine)
+  runs are semantically equivalent, consuming one frozen, hashed generation plan.
+- **Durable pause/resume** — a SQLite run ledger survives graceful/immediate pause,
+  controller restart, network changes, and worker loss, resuming without rerunning
+  completed jobs (mid-generation recovery is item-level, not token-level).
+- **Instrument calibration** — hidden known-good/known-broken grader records that dogfood
+  the gates, mechanical replay, and reviewer-reliability classification; a failed
+  calibration quarantines findings (`insufficient_evidence`).
+- **Module J — slop detection** (not an AI-authorship detector): a hybrid of deterministic
+  measures, interface-only semantic detectors, and a reviewer checklist, producing a valid
+  slop report with separate evidence families and **unvalidated** thresholds.
+
+See [`lwdb-execution-and-resume-v1.md`](training/docs/lwdb-execution-and-resume-v1.md),
+[`lwdb-slop-report-v1.md`](training/docs/lwdb-slop-report-v1.md), and
+[`slop-detection-research-review-v1.md`](training/docs/slop-detection-research-review-v1.md).
+
+**Status:** `architecture_only` + Dispatch-23 execution/calibration/slop **foundations**;
+no benchmark prompts, model runs, or empirical thresholds yet.
 
 ## Install
 

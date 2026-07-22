@@ -608,12 +608,18 @@ model-training sequence and does **not** displace broader LineWright application
 
 | dispatch | title | status |
 |---|---|---|
-| **22** | **architecture & specification** | **← current** |
-| 23 | instrument calibration & grader validation | planned |
+| 22 | architecture & specification | done |
+| **23** | **instrument calibration, hardware-agnostic execution, durable pause/resume, slop-detection foundation** | **← current** |
 | 24 | fast battery construction & first execution | planned |
 | 25 | fast battery validation & diagnostic engine | planned |
 | 26 | full battery construction | planned |
 | 27 | full battery baseline & certification | planned |
+
+**Dispatch 23** (current) covers: instrument calibration, grader validation,
+hardware-agnostic execution, parallel and sequential generation, durable pause/resume,
+worker recovery, slop-detection research, slop-report architecture, and slop calibration.
+Dispatches 24–27 are **not renumbered**; Dispatch 24 remains *Fast Battery Construction and
+First Execution*.
 
 ## Immediate next steps
 

@@ -117,3 +117,19 @@ Battery** (LWDB). Architecture:
   excluded from training by construction. Author content is likewise never a gradient input
   (inference-time context only). A model may not advance on lower loss or a higher parse
   rate — only on the battery's confidence-tagged findings and the reviewer advancement rule.
+
+### Slop reports, checkpoint curves, and execution (Dispatch 23)
+
+- **Fast and full runs require slop reports** (Module J): a per-output slop report plus a
+  per-run corpus summary. Slop reports **never enter gradients**, and the grader/slop
+  calibration items remain excluded from training.
+- **Checkpoint-curve evaluation includes slop trends.** A checkpoint may improve protocol
+  compliance while *worsening* slop; the curve reports both. Slop findings can implicate
+  dataset coverage/balance, training duration, context compilation, decoding, or base-model
+  capacity — but a causal cause still requires matched (pair/surface) evidence.
+- **Parallel and sequential runs use the same frozen plan** and produce the same normalized
+  results; pause/resume does not alter benchmark semantics (the `plan_hash` is verified on
+  resume). See [`lwdb-execution-and-resume-v1.md`](training/docs/lwdb-execution-and-resume-v1.md).
+- **Instrument-first:** a run produces trusted findings only after the instrument validates
+  (mechanical replay + calibration set + ≥1 calibrated reviewer); otherwise the verdict is
+  `insufficient_evidence` and findings are quarantined.

@@ -60,6 +60,35 @@ next test/change. Advancement uses the Dispatch-21 rule
 mechanical gates pass, zero regressions, all reviewers prefer over base, zero fatal flags —
 a single fatal flag blocks advancement, and disagreement is investigated, not averaged.
 
+## Slop reports (Module J, Dispatch 23)
+
+Slop = undesirable writing behaviours (repetition, semantic redundancy, stock-phrase
+concentration, voice flattening, generic endings, corpus sameness). Read a **slop report**
+([`lwdb-slop-report-v1.md`](../training/docs/lwdb-slop-report-v1.md)) as **four separate
+evidence families** — deterministic, semantic, lexical/style, reviewer — each with evidence
+spans and its own confidence. There is **no single opaque score**. All numeric thresholds
+are unvalidated until calibration; the only escalation used now reuses the justified
+Dispatch-21 repetition gate.
+
+**False-positive risks the detector is built to avoid**: deliberate rhetorical repetition,
+motif recurrence with progression, concise low-diversity prose, lyrical/unusual syntax,
+character-specific diction, intentional fragmentation, a genre-appropriate stock phrase used
+once. The slop calibration set proves these known-good cases are not flagged.
+
+**Reference profiles** are not universally interchangeable: a lyrical passage is not judged
+against a terse-noir rhythm profile. **Corpus-level** sameness (repeated openings, template
+reuse, voice convergence) is measured per-run and compared across model roles only after
+blind per-output scoring is locked.
+
+## Execution-mode neutrality & pause/resume (Dispatch 23)
+
+Parallel and sequential runs are semantically equivalent: same frozen plan, same normalized
+results, only scheduling differs. Runs are durable (SQLite ledger) and survive graceful or
+immediate pause, controller restart, network changes, and worker loss — resuming without
+rerunning completed jobs. See
+[`lwdb-execution-and-resume-v1.md`](../training/docs/lwdb-execution-and-resume-v1.md).
+Mid-generation recovery is item-level, not token-level.
+
 ## Relationship to Dispatch 21
 
 The battery **builds on** the Dispatch-21 components, it does not recreate them: the nine

@@ -277,3 +277,70 @@ without inventing new concepts during implementation.
 - The exact strong/weak reference models for the calibration lineup.
 - Aggregation rules turning per-reviewer scores + mechanical results into a single finding
   (without averaging away a fatal flaw).
+
+---
+
+# Dispatch 23 addendum — calibration, execution, resume, Module J
+
+This addendum extends v1 (nothing above is removed). It records the foundations added in
+Dispatch 23. Companion docs:
+[`lwdb-execution-and-resume-v1.md`](lwdb-execution-and-resume-v1.md),
+[`lwdb-slop-report-v1.md`](lwdb-slop-report-v1.md),
+[`slop-detection-research-review-v1.md`](slop-detection-research-review-v1.md).
+
+## Module J — Slop Detection and Stylistic Degradation
+
+A tenth capability module (`benchmark-item-schema` module enum `J_slop_detection`;
+manifest `modules.J`). **Not** an AI-authorship detector. Hybrid three-layer detection:
+deterministic measures (implemented, versioned — repetition, lexical diversity MATTR/MTLD/
+HD-D, sentence rhythm), semantic detectors (**interface-only**, thresholds unvalidated,
+offline-safe `NullSemanticDetector` default), and a decomposed reviewer checklist. Output is
+a per-output `slop-report` (never one opaque score) plus a per-run `slop-corpus-summary`.
+Deliberate repetition, concise prose, and lyrical/unusual syntax are **not** flagged; every
+finding retains evidence spans. Implemented in `linewright/evaluation/slop/`.
+
+## Instrument calibration (Layer 1, concretized)
+
+Hidden grader-calibration set (`benchmarks/calibration/grader-calibration-set-v1.jsonl`, 12
+kinds) that **dogfoods** against the Dispatch-21 gates — the instrument must recognize
+obvious success and failure. Reviewer classification (`calibrated` /
+`conditionally_usable` / `unreliable_for_run`) with **provisional, unvalidated** cutoffs.
+Mechanical replay: every deterministic scorer run ≥2× on identical input must produce
+identical results; a mismatch invalidates the run. Instrument-valid rule (A5): mechanical
+replay passed AND calibration set valid AND ≥1 calibrated reviewer — else `overall:
+insufficient_evidence`, findings **quarantined** (never averaged through).
+`linewright/evaluation/calibration/`.
+
+## Hardware-agnostic execution & parallel/sequential equivalence
+
+Parallel and sequential modes consume one **frozen, hashed generation plan** and produce
+the same normalized results; only scheduling and wall-clock differ (`plan_hash` excludes
+`execution_mode`/`scheduling_policy`/timing). Endpoints are normalized
+(`openai_compatible_http` / `local_huggingface` / `local_subprocess` / `test_stub`); secrets
+are referenced, never serialized. `linewright/evaluation/execution/plan.py`, `worker.py`.
+
+## Durable run ledger, pause/resume, worker recovery
+
+A SQLite ledger (`runs`/`jobs`/`workers`/`events`, versioned migrations) persists each
+completed job immediately. Graceful and immediate pause; resume verifies the plan hash,
+skips integrity-verified completed jobs, and requeues interrupted ones; controller restart
+recovers from durable state; expired worker leases become recoverable
+(`running → interrupted → pending`); output integrity is verified before any skip.
+Controller modes: `persistent_remote` and `local_resumable`. Mid-generation recovery is
+**item-level, not token-level** — no false KV-cache-restore promise. `execution/ledger.py`,
+`scheduler.py`, `recovery.py`, `integrity.py`, `retry.py`, `cli.py`.
+
+## New schemas (Dispatch 23)
+
+`execution-plan`, `endpoint-descriptor`, `run-state`, `job-state`, `worker-descriptor`,
+`worker-lease`, `retry-policy`, `pause-policy`, `normalized-generation-result`,
+`instrument-replay-result`, `slop-report`, `slop-detector-manifest`,
+`slop-reference-profile`, `slop-corpus-summary` (+ additive updates to `anonymous-output`,
+`reviewer-calibration`, `benchmark-item`).
+
+## What Dispatch 23 did NOT do
+
+No fast/full benchmark items, no real model generation or scoring, no empirical capability
+floors, no validated slop thresholds, no dataset expansion, no training, no checkpoint
+selection. The calibration records test the instrument; they are not the general fast
+battery.

@@ -5,6 +5,41 @@ Notable changes to this LineWright research fork. Dates are absolute; the active
 
 ## [Unreleased]
 
+### Dispatch 23 — Instrument calibration, hardware-agnostic execution, durable pause/resume, slop foundation (2026-07-22)
+
+Foundations that make the diagnostic battery trustworthy, portable, resumable, and
+slop-aware. **No model training, no real model generation, no fast/full benchmark run, no
+empirical capability floors, no validated slop thresholds, no Dataset A / A.2 change.**
+
+- **Instrument calibration** (`linewright/evaluation/calibration/`): a hidden 12-kind
+  grader-calibration set (`benchmarks/calibration/grader-calibration-set-v1.jsonl`) that
+  dogfoods the Dispatch-21 gates; reviewer-reliability classification
+  (`calibrated`/`conditionally_usable`/`unreliable_for_run`, **provisional/unvalidated**
+  cutoffs); deterministic mechanical replay; and the instrument-valid rule (failed
+  calibration → `insufficient_evidence`, findings quarantined).
+- **Hardware-agnostic execution** (`linewright/evaluation/execution/`): frozen, hashed
+  generation plan; normalized endpoint descriptors (secrets referenced, never serialized);
+  deterministic stub workers; parallel and sequential modes proven to produce identical
+  normalized results from one plan.
+- **Durable pause/resume**: a versioned SQLite run ledger (runs/jobs/workers/events);
+  graceful + immediate pause; controller-restart recovery; expired-lease recovery;
+  output-integrity verification before skip; retry policy; `lwdb` CLI foundation.
+- **Module J — slop detection** (`linewright/evaluation/slop/`): NOT an AI-authorship
+  detector. Deterministic metrics (repetition, MATTR/MTLD/HD-D, sentence rhythm) implemented
+  and versioned; semantic detectors **interface-only** (offline `NullSemanticDetector`,
+  thresholds unvalidated); reviewer checklist; per-output slop report and per-run corpus
+  summary that keep evidence families separate and never collapse to one score. A slop
+  calibration set proves deliberate repetition / concise / lyrical known-good prose is not
+  flagged.
+- **Added** 14 schemas (execution-plan, endpoint-descriptor, run-state, job-state,
+  worker-descriptor, worker-lease, retry-policy, pause-policy, normalized-generation-result,
+  instrument-replay-result, slop-report, slop-detector-manifest, slop-reference-profile,
+  slop-corpus-summary) + additive updates (anonymous-output, reviewer-calibration,
+  benchmark-item Module J); **added** docs (research review, execution/resume, slop report)
+  and updated README/ROADMAP/TRAINING_PILOT/architecture/evaluation guide; **added** 4 test
+  files (slop, calibration, execution incl. pause/resume integration, docs invariants).
+
+
 ### Dispatch 22 — LineWright Diagnostic Battery architecture (2026-07-22)
 
 Added the permanent evaluation-instrument **architecture** — the LineWright Model
