@@ -1,0 +1,51 @@
+{
+ "expected_roles": 9,
+ "roles_present": 9,
+ "expected_items_per_role": 14,
+ "items_per_role": {
+  "lora_final": 14,
+  "lora_step-12": 14,
+  "lora_step-15": 14,
+  "lora_step-18": 14,
+  "lora_step-21": 14,
+  "lora_step-3": 14,
+  "lora_step-6": 14,
+  "lora_step-9": 14,
+  "qwen3_8b_base": 14
+ },
+ "total_results": 126,
+ "reasoning_trace_findings": {
+  "qwen3_8b_base": 0.0,
+  "lora_step-3": 0.0,
+  "lora_step-6": 0.0,
+  "lora_step-9": 0.0,
+  "lora_step-12": 0.0,
+  "lora_step-15": 0.0,
+  "lora_step-18": 0.0,
+  "lora_step-21": 0.0,
+  "lora_final": 0.0
+ },
+ "token_cap_findings": {
+  "qwen3_8b_base": 0.0,
+  "lora_step-3": 0.0,
+  "lora_step-6": 0.0,
+  "lora_step-9": 0.0,
+  "lora_step-12": 0.0,
+  "lora_step-15": 0.0,
+  "lora_step-18": 0.0,
+  "lora_step-21": 0.0,
+  "lora_final": 0.0
+ },
+ "severe_slop_findings": {
+  "qwen3_8b_base": 0.0,
+  "lora_step-3": 0.0,
+  "lora_step-6": 0.0,
+  "lora_step-9": 0.0,
+  "lora_step-12": 0.0,
+  "lora_step-15": 0.0,
+  "lora_step-18": 0.0,
+  "lora_step-21": 0.0,
+  "lora_final": 0.0
+ },
+ "all_roles_14_items": true
+}

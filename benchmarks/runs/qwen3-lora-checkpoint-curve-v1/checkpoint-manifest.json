@@ -1,0 +1,52 @@
+{
+ "run_id": "qwen3-lora-checkpoint-curve-v1",
+ "base": {
+  "model_id": "Qwen/Qwen3-8B",
+  "revision": "b968826d9c46dd6066d109eabc6255188de91218",
+  "adapter": null
+ },
+ "checkpoints": [
+  {
+   "role": "lora_step-3",
+   "optimizer_step": 3,
+   "adapter_sha256": "5a550c7231191146bdaa4398f377b2cee690a1280782a9b50bfeb02fe96096f5"
+  },
+  {
+   "role": "lora_step-6",
+   "optimizer_step": 6,
+   "adapter_sha256": "39bf8323c7d34162228014ad7b2e1a683bf69bc4df9e62caa7285a1d2c99785a"
+  },
+  {
+   "role": "lora_step-9",
+   "optimizer_step": 9,
+   "adapter_sha256": "1b0b0491c794ece4d3d0c820547978611ff5e657a756915af3a285dcde307ea8"
+  },
+  {
+   "role": "lora_step-12",
+   "optimizer_step": 12,
+   "adapter_sha256": "09c3ff0ea504f7a89600538078eeabad0af92ab47d4aeaaa4ad8c25c784fa0f9"
+  },
+  {
+   "role": "lora_step-15",
+   "optimizer_step": 15,
+   "adapter_sha256": "afbee4c815a27f5ce3b3f86803a9223539b753385d5f8c61c67d10ce56a973ee"
+  },
+  {
+   "role": "lora_step-18",
+   "optimizer_step": 18,
+   "adapter_sha256": "c3498c4d1eb9194a9a0b63f15ec4d74cf0f49ee43a3a6148b330b715f6749afb"
+  },
+  {
+   "role": "lora_step-21",
+   "optimizer_step": 21,
+   "adapter_sha256": "164fd379ae0f32412e02d69a388581498713a3a9a0becc2fe19ec7bfac816652"
+  },
+  {
+   "role": "lora_final",
+   "adapter_sha256": "164fd379ae0f32412e02d69a388581498713a3a9a0becc2fe19ec7bfac816652",
+   "note": "== step-21"
+  }
+ ],
+ "eval_subset": "benchmarks/manifests/qwen3-lora-eval-subset-v1.yaml (frozen, 14 items)",
+ "note": "base + every LoRA checkpoint + final adapter evaluated on the SAME frozen 14-item subset"
+}

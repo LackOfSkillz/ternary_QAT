@@ -1,0 +1,776 @@
+{
+ "lora_final": {
+  "lwdb-a-length-long": {
+   "mechanical_pass": false,
+   "slop_severity": "high",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-a-length-short": {
+   "mechanical_pass": true,
+   "slop_severity": "none",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-b-voice-lyrical": {
+   "mechanical_pass": true,
+   "slop_severity": "none",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-b-voice-terse": {
+   "mechanical_pass": true,
+   "slop_severity": "inconclusive",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-c-restraint-clean": {
+   "mechanical_pass": false,
+   "slop_severity": "none",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-c-restraint-fix": {
+   "mechanical_pass": true,
+   "slop_severity": "inconclusive",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-d-canon-apply": {
+   "mechanical_pass": true,
+   "slop_severity": "none",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-d-constraint-low": {
+   "mechanical_pass": true,
+   "slop_severity": "none",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-e-scene-contract": {
+   "mechanical_pass": true,
+   "slop_severity": "none",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-f-surface-bare": {
+   "mechanical_pass": true,
+   "slop_severity": "none",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-g-turn-multi": {
+   "mechanical_pass": true,
+   "slop_severity": "inconclusive",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-g-turn-single": {
+   "mechanical_pass": true,
+   "slop_severity": "inconclusive",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-i-stability-long": {
+   "mechanical_pass": false,
+   "slop_severity": "low",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "pf-scene_drafting-realistic": {
+   "mechanical_pass": true,
+   "slop_severity": "none",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  }
+ },
+ "lora_step-12": {
+  "lwdb-a-length-long": {
+   "mechanical_pass": false,
+   "slop_severity": "high",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-a-length-short": {
+   "mechanical_pass": true,
+   "slop_severity": "none",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-b-voice-lyrical": {
+   "mechanical_pass": true,
+   "slop_severity": "none",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-b-voice-terse": {
+   "mechanical_pass": true,
+   "slop_severity": "inconclusive",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-c-restraint-clean": {
+   "mechanical_pass": false,
+   "slop_severity": "none",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-c-restraint-fix": {
+   "mechanical_pass": true,
+   "slop_severity": "inconclusive",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-d-canon-apply": {
+   "mechanical_pass": true,
+   "slop_severity": "none",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-d-constraint-low": {
+   "mechanical_pass": true,
+   "slop_severity": "none",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-e-scene-contract": {
+   "mechanical_pass": true,
+   "slop_severity": "none",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-f-surface-bare": {
+   "mechanical_pass": true,
+   "slop_severity": "none",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-g-turn-multi": {
+   "mechanical_pass": true,
+   "slop_severity": "inconclusive",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-g-turn-single": {
+   "mechanical_pass": true,
+   "slop_severity": "inconclusive",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-i-stability-long": {
+   "mechanical_pass": false,
+   "slop_severity": "none",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "pf-scene_drafting-realistic": {
+   "mechanical_pass": true,
+   "slop_severity": "none",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  }
+ },
+ "lora_step-15": {
+  "lwdb-a-length-long": {
+   "mechanical_pass": false,
+   "slop_severity": "high",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-a-length-short": {
+   "mechanical_pass": true,
+   "slop_severity": "none",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-b-voice-lyrical": {
+   "mechanical_pass": true,
+   "slop_severity": "none",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-b-voice-terse": {
+   "mechanical_pass": true,
+   "slop_severity": "inconclusive",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-c-restraint-clean": {
+   "mechanical_pass": false,
+   "slop_severity": "none",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-c-restraint-fix": {
+   "mechanical_pass": true,
+   "slop_severity": "inconclusive",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-d-canon-apply": {
+   "mechanical_pass": true,
+   "slop_severity": "none",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-d-constraint-low": {
+   "mechanical_pass": true,
+   "slop_severity": "none",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-e-scene-contract": {
+   "mechanical_pass": true,
+   "slop_severity": "none",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-f-surface-bare": {
+   "mechanical_pass": true,
+   "slop_severity": "none",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-g-turn-multi": {
+   "mechanical_pass": true,
+   "slop_severity": "inconclusive",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-g-turn-single": {
+   "mechanical_pass": true,
+   "slop_severity": "inconclusive",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-i-stability-long": {
+   "mechanical_pass": false,
+   "slop_severity": "low",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "pf-scene_drafting-realistic": {
+   "mechanical_pass": true,
+   "slop_severity": "none",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  }
+ },
+ "lora_step-18": {
+  "lwdb-a-length-long": {
+   "mechanical_pass": false,
+   "slop_severity": "moderate",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-a-length-short": {
+   "mechanical_pass": true,
+   "slop_severity": "none",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-b-voice-lyrical": {
+   "mechanical_pass": true,
+   "slop_severity": "none",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-b-voice-terse": {
+   "mechanical_pass": true,
+   "slop_severity": "inconclusive",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-c-restraint-clean": {
+   "mechanical_pass": false,
+   "slop_severity": "none",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-c-restraint-fix": {
+   "mechanical_pass": true,
+   "slop_severity": "inconclusive",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-d-canon-apply": {
+   "mechanical_pass": true,
+   "slop_severity": "none",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-d-constraint-low": {
+   "mechanical_pass": true,
+   "slop_severity": "none",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-e-scene-contract": {
+   "mechanical_pass": true,
+   "slop_severity": "none",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-f-surface-bare": {
+   "mechanical_pass": true,
+   "slop_severity": "none",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-g-turn-multi": {
+   "mechanical_pass": true,
+   "slop_severity": "inconclusive",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-g-turn-single": {
+   "mechanical_pass": true,
+   "slop_severity": "inconclusive",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-i-stability-long": {
+   "mechanical_pass": false,
+   "slop_severity": "low",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "pf-scene_drafting-realistic": {
+   "mechanical_pass": true,
+   "slop_severity": "none",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  }
+ },
+ "lora_step-21": {
+  "lwdb-a-length-long": {
+   "mechanical_pass": false,
+   "slop_severity": "high",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-a-length-short": {
+   "mechanical_pass": true,
+   "slop_severity": "none",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-b-voice-lyrical": {
+   "mechanical_pass": true,
+   "slop_severity": "none",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-b-voice-terse": {
+   "mechanical_pass": true,
+   "slop_severity": "inconclusive",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-c-restraint-clean": {
+   "mechanical_pass": false,
+   "slop_severity": "none",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-c-restraint-fix": {
+   "mechanical_pass": true,
+   "slop_severity": "inconclusive",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-d-canon-apply": {
+   "mechanical_pass": true,
+   "slop_severity": "none",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-d-constraint-low": {
+   "mechanical_pass": true,
+   "slop_severity": "none",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-e-scene-contract": {
+   "mechanical_pass": true,
+   "slop_severity": "none",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-f-surface-bare": {
+   "mechanical_pass": true,
+   "slop_severity": "none",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-g-turn-multi": {
+   "mechanical_pass": true,
+   "slop_severity": "inconclusive",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-g-turn-single": {
+   "mechanical_pass": true,
+   "slop_severity": "inconclusive",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-i-stability-long": {
+   "mechanical_pass": false,
+   "slop_severity": "low",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "pf-scene_drafting-realistic": {
+   "mechanical_pass": true,
+   "slop_severity": "none",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  }
+ },
+ "lora_step-3": {
+  "lwdb-a-length-long": {
+   "mechanical_pass": false,
+   "slop_severity": "high",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-a-length-short": {
+   "mechanical_pass": true,
+   "slop_severity": "none",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-b-voice-lyrical": {
+   "mechanical_pass": true,
+   "slop_severity": "none",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-b-voice-terse": {
+   "mechanical_pass": true,
+   "slop_severity": "inconclusive",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-c-restraint-clean": {
+   "mechanical_pass": false,
+   "slop_severity": "none",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-c-restraint-fix": {
+   "mechanical_pass": true,
+   "slop_severity": "inconclusive",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-d-canon-apply": {
+   "mechanical_pass": true,
+   "slop_severity": "none",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-d-constraint-low": {
+   "mechanical_pass": true,
+   "slop_severity": "none",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-e-scene-contract": {
+   "mechanical_pass": true,
+   "slop_severity": "none",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-f-surface-bare": {
+   "mechanical_pass": true,
+   "slop_severity": "none",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-g-turn-multi": {
+   "mechanical_pass": true,
+   "slop_severity": "inconclusive",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-g-turn-single": {
+   "mechanical_pass": true,
+   "slop_severity": "inconclusive",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-i-stability-long": {
+   "mechanical_pass": false,
+   "slop_severity": "none",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "pf-scene_drafting-realistic": {
+   "mechanical_pass": true,
+   "slop_severity": "none",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  }
+ },
+ "lora_step-6": {
+  "lwdb-a-length-long": {
+   "mechanical_pass": false,
+   "slop_severity": "moderate",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-a-length-short": {
+   "mechanical_pass": true,
+   "slop_severity": "none",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-b-voice-lyrical": {
+   "mechanical_pass": true,
+   "slop_severity": "none",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-b-voice-terse": {
+   "mechanical_pass": true,
+   "slop_severity": "inconclusive",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-c-restraint-clean": {
+   "mechanical_pass": false,
+   "slop_severity": "none",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-c-restraint-fix": {
+   "mechanical_pass": true,
+   "slop_severity": "inconclusive",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-d-canon-apply": {
+   "mechanical_pass": true,
+   "slop_severity": "none",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-d-constraint-low": {
+   "mechanical_pass": true,
+   "slop_severity": "none",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-e-scene-contract": {
+   "mechanical_pass": true,
+   "slop_severity": "none",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-f-surface-bare": {
+   "mechanical_pass": true,
+   "slop_severity": "none",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-g-turn-multi": {
+   "mechanical_pass": true,
+   "slop_severity": "inconclusive",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-g-turn-single": {
+   "mechanical_pass": true,
+   "slop_severity": "inconclusive",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-i-stability-long": {
+   "mechanical_pass": false,
+   "slop_severity": "low",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "pf-scene_drafting-realistic": {
+   "mechanical_pass": true,
+   "slop_severity": "none",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  }
+ },
+ "lora_step-9": {
+  "lwdb-a-length-long": {
+   "mechanical_pass": false,
+   "slop_severity": "high",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-a-length-short": {
+   "mechanical_pass": true,
+   "slop_severity": "none",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-b-voice-lyrical": {
+   "mechanical_pass": true,
+   "slop_severity": "none",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-b-voice-terse": {
+   "mechanical_pass": true,
+   "slop_severity": "inconclusive",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-c-restraint-clean": {
+   "mechanical_pass": false,
+   "slop_severity": "none",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-c-restraint-fix": {
+   "mechanical_pass": true,
+   "slop_severity": "inconclusive",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-d-canon-apply": {
+   "mechanical_pass": true,
+   "slop_severity": "none",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-d-constraint-low": {
+   "mechanical_pass": true,
+   "slop_severity": "none",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-e-scene-contract": {
+   "mechanical_pass": true,
+   "slop_severity": "none",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-f-surface-bare": {
+   "mechanical_pass": true,
+   "slop_severity": "none",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-g-turn-multi": {
+   "mechanical_pass": true,
+   "slop_severity": "inconclusive",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-g-turn-single": {
+   "mechanical_pass": true,
+   "slop_severity": "inconclusive",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-i-stability-long": {
+   "mechanical_pass": false,
+   "slop_severity": "moderate",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "pf-scene_drafting-realistic": {
+   "mechanical_pass": true,
+   "slop_severity": "none",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  }
+ },
+ "qwen3_8b_base": {
+  "lwdb-a-length-long": {
+   "mechanical_pass": false,
+   "slop_severity": "high",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-a-length-short": {
+   "mechanical_pass": true,
+   "slop_severity": "none",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-b-voice-lyrical": {
+   "mechanical_pass": true,
+   "slop_severity": "none",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-b-voice-terse": {
+   "mechanical_pass": true,
+   "slop_severity": "inconclusive",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-c-restraint-clean": {
+   "mechanical_pass": false,
+   "slop_severity": "none",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-c-restraint-fix": {
+   "mechanical_pass": true,
+   "slop_severity": "inconclusive",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-d-canon-apply": {
+   "mechanical_pass": true,
+   "slop_severity": "none",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-d-constraint-low": {
+   "mechanical_pass": true,
+   "slop_severity": "none",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-e-scene-contract": {
+   "mechanical_pass": true,
+   "slop_severity": "none",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-f-surface-bare": {
+   "mechanical_pass": true,
+   "slop_severity": "none",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-g-turn-multi": {
+   "mechanical_pass": true,
+   "slop_severity": "inconclusive",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-g-turn-single": {
+   "mechanical_pass": true,
+   "slop_severity": "inconclusive",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "lwdb-i-stability-long": {
+   "mechanical_pass": false,
+   "slop_severity": "none",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  },
+  "pf-scene_drafting-realistic": {
+   "mechanical_pass": true,
+   "slop_severity": "none",
+   "hit_token_cap": false,
+   "reasoning_trace": false
+  }
+ }
+}

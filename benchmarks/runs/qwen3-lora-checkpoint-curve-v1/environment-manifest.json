@@ -1,0 +1,18 @@
+{
+ "run_id": "qwen3-lora-checkpoint-curve-v1",
+ "image": "linewright-ternary-train:d26",
+ "torch": "2.10.0a0+nv25.11",
+ "transformers": "5.14.1",
+ "peft": "0.19.1",
+ "host": "gx10-9141 (GB10)",
+ "generation": {
+  "temperature": 0.0,
+  "do_sample": false,
+  "seed": 20260722,
+  "max_new_tokens": 1024,
+  "non_thinking": true,
+  "decoding": "greedy_argmax"
+ },
+ "prompts_source": "benchmarks/runs/lwdb-stronger-base-v1/generation-plan.json (frozen D26 prompts)",
+ "identical_across_base_and_all_checkpoints": true
+}
