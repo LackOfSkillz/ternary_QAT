@@ -1,0 +1,124 @@
+# LineWright — Provisional Research-Continuation Threshold (v0, Dispatch 25)
+#
+# Answers ONE question: is the current base-model + training direction promising enough to
+# justify a larger, more expensive controlled experiment? It is NOT a ship threshold.
+#
+# HONESTY NOTE: Dispatch 24's results were already visible when these numbers were authored,
+# so they are NOT precommitted with respect to Dispatch 24 (see limitation below). They ARE
+# prospective for the branch decision and all FUTURE runs, and were frozen before Dispatch-25
+# analysis artifacts. They were set by principled reasoning, not reverse-engineered to make
+# LoRA-20 pass or fail.
+
+threshold_id: research-continuation-v0
+authorship: agent_proposed
+authority: delegated_by_gary
+status: provisional
+created_before_dispatch_25_analysis: true
+applies_to:
+  - dispatch_24_evidence_interpretation
+  - checkpoint_curve
+  - next_scaled_experiment_authorization
+may_change_during_analysis: false
+final_product_ship_threshold: false
+limitation: >
+  Dispatch 24 outputs were already known; these thresholds are post-hoc with respect to that
+  run and prospective for the branch decision and future runs. Do not represent them as
+  precommitted before Dispatch 24.
+
+research_continuation:
+
+  base_feasibility:
+    minimum_total_mechanical_pass_rate:
+      value: 0.40
+      rationale: "below ~40% mechanical pass the untouched base is too weak a substrate to teach from; scaling data cannot fix a base that fails the majority of basic contracts."
+      evidence_basis: "Dispatch-24 base 9/20 = 0.45 (marginal pass)."
+      risk_if_too_strict: "reject a base that structured-protocol prompting could unlock."
+      risk_if_too_lenient: "spend a large dataset on a base that cannot follow contracts."
+      status: provisional
+    minimum_core_prose_pass_rate:
+      value: 0.50
+      rationale: "prose (scene/revision) is LineWright's core product; the base must produce usable prose at least half the time to be worth scaling."
+      evidence_basis: "base prose items pass more often than structured; ~0.5 is a reasonable floor."
+      risk_if_too_strict: "reject a base weak on structure but fine on prose."
+      risk_if_too_lenient: "scale on a base whose prose is unreliable."
+      status: provisional
+    minimum_required_modules_with_at_least_one_usable_result:
+      value: 7
+      rationale: "of the 9 capability modules A-I, at least 7 should show >=1 usable (mechanical-pass, non-severe) result, else coverage is too narrow to scale."
+      risk_if_too_strict: "reject over a couple of hard modules."
+      risk_if_too_lenient: "scale despite broad capability gaps."
+      status: provisional
+    maximum_severe_slop_rate:
+      value: 0.25
+      rationale: ">25% severe slop is a degenerate model; the justified Dispatch-21 repetition gate makes severe unambiguous."
+      evidence_basis: "base 0.05 (ok); LoRA-20 0.45 (degenerate)."
+      risk_if_too_strict: "reject over long-form outliers."
+      risk_if_too_lenient: "accept a visibly looping model."
+      status: provisional
+    maximum_runaway_token_cap_rate:
+      value: 0.25
+      rationale: ">25% of outputs hitting the token cap by degeneration indicates non-terminating generation."
+      evidence_basis: "base 3/20=0.15 (ok); LoRA-20 9/20=0.45 (runaway)."
+      status: provisional
+    minimum_bare_prompt_success_rate:
+      value: 0.40
+      rationale: "bare-prompt success isolates raw model capability from the compiler."
+      status: provisional
+    minimum_realistic_packet_success_rate:
+      value: 0.35
+      rationale: "realistic compiled packets are harder; a lower floor than bare, but not zero."
+      status: provisional
+
+  trainability_signal:
+    minimum_number_of_target_capabilities_showing_improvement:
+      value: 2
+      rationale: "at least two capabilities must improve over base to justify continuing THIS training approach; one could be noise."
+      status: provisional
+    maximum_number_of_critical_regressions:
+      value: 0
+      rationale: "a critical regression = tuning introduces severe degeneration or a fatal failure on a capability the base handled cleanly. Zero tolerance for the research-continuation decision."
+      status: provisional
+    maximum_severe_regression_rate:
+      value: 0.10
+      rationale: "beyond incidental; >10% of items regressing to severe is a broken training run."
+      status: provisional
+    minimum_effect_size_required_to_call_improvement:
+      value: "consistent advantage on >=2 items OR >=1 full controlled pair, not a single-item difference"
+      rationale: "a 20-item battery is noisy; require corroboration before calling improvement."
+      status: provisional
+    ambiguous_middle_action:
+      value: "run one bounded confirmation experiment; ambiguity is NOT counted as improvement"
+      rationale: "prevents ambiguous evidence from licensing indefinite scaling."
+      status: provisional
+
+  context_feasibility:
+    bare_success_compiled_failure_action:
+      value: "investigate the context compiler / packet salience / length BEFORE scaling data"
+      status: provisional
+    bare_and_compiled_failure_action:
+      value: "attribute to base capability / training / decoding; do NOT blame the compiler"
+      status: provisional
+    compiled_packet_token_limit_warning:
+      value: 2048
+      rationale: "warn if a realistic compiled packet approaches the model's practical context budget; long-packet collapse is then a length effect, not a capability verdict."
+      status: provisional
+    long_packet_collapse_action:
+      value: "add a packet-length controlled family (bare -> compact -> realistic -> long -> long+noisy) before scaling"
+      status: provisional
+
+  branch_rules:
+    continue_scaled_dataset:
+      value: "base passes ALL base_feasibility floors AND >=2 capabilities improve AND 0 critical regressions AND the checkpoint curve is not simply monotone-worsening"
+      status: provisional
+    evaluate_earlier_checkpoints:
+      value: "an earlier checkpoint improves over base on >=1 capability while a later checkpoint collapses (non-monotone curve) -> earlier stopping / fewer steps"
+      status: provisional
+    test_stronger_base:
+      value: "base FAILS base_feasibility on core prose or total mechanical floors (a data problem cannot fix a base-capacity problem)"
+      status: provisional
+    pause_training_direction:
+      value: "every checkpoint is worse than base on the target capabilities AND the base is only marginal"
+      status: provisional
+    revise_training_objective:
+      value: "base is feasible but the tuned checkpoints regress broadly (severe slop / runaway) -> fix training recipe (steps, LR, task balance) before scaling"
+      status: provisional
