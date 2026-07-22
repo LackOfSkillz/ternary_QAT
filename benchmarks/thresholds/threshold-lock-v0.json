@@ -1,0 +1,10 @@
+{
+  "research_threshold_path": "benchmarks/thresholds/research-continuation-v0.yaml",
+  "research_threshold_sha256": "2be4fddb1aed87c6500dac2a5cdf11e6209b80d2a6d32fa35aa4d63bef131712",
+  "starter_threshold_path": "benchmarks/thresholds/starter-model-acceptance-v0.yaml",
+  "starter_threshold_sha256": "98a57af32fff4d4349466f7877acb5c16ce0e4fae4f376570cfff4407fd1d8b7",
+  "git_commit": "a4451674ade954976ade3af550a39a61592c652a",
+  "locked_at": "2026-07-22",
+  "locked_before_analysis": true,
+  "modified_after_lock": false
+}
