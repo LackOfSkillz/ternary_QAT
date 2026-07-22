@@ -1,0 +1,62 @@
+# Dispatch 27 Phase A — Provisional Qwen BF16-vs-Q4 Confirmation Floor (v0)
+#
+# Aedan-authored FIRST-PASS floor under Gary's delegated authority. Defines "material regression"
+# for the Q4 deployment artifact BEFORE any scoring / unblinding, so the confirmation cannot be
+# reverse-engineered from results. This is NOT the frozen research/starter threshold (those are
+# reused unchanged) and NOT a final ship gate.
+#
+# It governs ONE narrow question: does the official Q4_K_M artifact preserve Qwen3-8B's
+# full-quality behaviour? The human-acceptability half of Phase A ("is Qwen's prose acceptable")
+# is decided by Gary + an independent blind reviewer and is NOT covered by this mechanical floor.
+
+threshold_id: qwen-q4-confirmation-floor-v0
+authorship: agent_proposed
+authority: delegated_by_gary
+status: provisional
+created_before_scoring: true
+frozen_before_unblinding: true
+may_change_after_unblinding: false
+final_product_ship_threshold: false
+
+frozen_thresholds_referenced:
+  research_continuation_sha256: 2be4fddb1aed87c6500dac2a5cdf11e6209b80d2a6d32fa35aa4d63bef131712
+  starter_model_acceptance_sha256: 98a57af32fff4d4349466f7877acb5c16ce0e4fae4f376570cfff4407fd1d8b7
+  reused_unchanged: true
+
+# ---- Q4 deployment-artifact preservation (mechanical + blind, measurable by Aedan) ----
+q4_preservation:
+  max_mean_prose_drop_5pt:
+    value: 0.35
+    rationale: "a >0.35 mean drop on a 5-point blind scale is a material prose regression from quantization."
+  max_mean_voice_preservation_drop_5pt:
+    value: 0.35
+    rationale: "voice is LineWright's core; a >0.35 voice drop from Q4 is material."
+  max_instruction_compliance_drop_5pt:
+    value: 0.35
+    rationale: "Q4 must not materially reduce instruction-following."
+  max_new_fatal_rejections:
+    value: 0
+    rationale: "Q4 must introduce zero new fatal prose failures (degeneration, refusal, wrong task)."
+  max_severe_slop_rate_increase:
+    value: 0.05
+    rationale: "Q4 must not introduce meaningful new severe slop vs the BF16 reference."
+  max_token_cap_rate_increase:
+    value: 0.05
+    rationale: "Q4 must not introduce runaway/non-terminating generation."
+  reasoning_trace_leak_allowed:
+    value: 0
+    rationale: "no <think>/reasoning trace may appear in Q4 outputs (non-thinking enforced)."
+  max_mechanical_pass_rate_drop:
+    value: 0.10
+    rationale: "Q4 must not materially reduce the deterministic mechanical pass rate."
+
+# ---- foundation confirmation (the reference-Qwen half) — HUMAN-GATED, not decided here ----
+reference_qwen_confirmation:
+  frozen_thresholds_pass: true   # already established in Dispatch 26 (Qwen clears every floor)
+  human_acceptance_required: true
+  human_reviewers_required: [gary, at_least_one_independent_blind_reviewer]
+  note: >-
+    LM-grader (sub-agent) blind scores are recorded as SUPPORTING evidence only. Per the dispatch,
+    the final prose confirmation must not rely only on correlated language-model graders. Aedan
+    does NOT declare confirm_Qwen3_8B_foundation on LM evidence alone.
+  fatal_prose_failure_rate_max: 0.10   # provisional: >10% fatal on the reference is unacceptable

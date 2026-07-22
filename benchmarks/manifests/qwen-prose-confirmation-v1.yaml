@@ -1,0 +1,85 @@
+# Dispatch 27 Phase A — Qwen BF16-vs-Q4 Prose Confirmation Manifest (v1)
+#
+# Frozen BEFORE generation/scoring. Answers ONE narrow question: does the official Q4_K_M
+# deployment artifact preserve Qwen3-8B's full-quality prose/protocol behaviour? Reuses EXISTING
+# frozen prose tasks (Fast Battery core-prose + selected packet-family prose); adds no new models
+# beyond the two Qwen precisions and does not reopen the Ministral comparison.
+
+battery: LineWright — Qwen Prose Confirmation
+version: qwen-prose-confirmation-v1
+dispatch: 27
+phase: A
+status: frozen
+production_approved: false
+
+frozen_thresholds:
+  research_continuation_sha256: 2be4fddb1aed87c6500dac2a5cdf11e6209b80d2a6d32fa35aa4d63bef131712
+  starter_model_acceptance_sha256: 98a57af32fff4d4349466f7877acb5c16ce0e4fae4f376570cfff4407fd1d8b7
+  confirmation_floor: benchmarks/thresholds/qwen-q4-confirmation-floor-v0.yaml
+  thresholds_unchanged: true
+
+roles:
+  - role: qwen3_8b_reference
+    model_id: Qwen/Qwen3-8B
+    revision: b968826d9c46dd6066d109eabc6255188de91218
+    precision: bf16
+    source: reuse_dispatch_26_qwen3_8b_non_thinking_outputs   # same model, same frozen prompts
+    engine: transformers (HF), greedy, enable_thinking=False
+    thinking_disabled: true
+  - role: qwen3_8b_q4_k_m
+    model_id: Qwen/Qwen3-8B-GGUF
+    gguf_revision: 7c41481f57cb95916b40956ab2f0b139b296d974
+    gguf_filename: Qwen3-8B-Q4_K_M.gguf
+    artifact_size_bytes: 5027783488
+    artifact_sha256: d98cdcbd03e17ce47681435b5150e34c1417f50b5c0019dd560e4882c5745785
+    official_artifact: true
+    precision: q4_k_m
+    engine: llama.cpp llama-server b9518 (7c158fbb4), greedy, --reasoning-budget 0
+    thinking_disabled: true
+
+engine_difference_note: >-
+  BF16 reference decodes with HF transformers greedy (enable_thinking=False at the chat-template
+  level). Q4 decodes with llama.cpp llama-server greedy and non-thinking enforced via
+  --reasoning-budget 0 + chat_template_kwargs enable_thinking=false. Both are argmax/greedy and
+  both produce zero reasoning traces; the engine differs (HF vs llama.cpp) because the deployment
+  artifact IS a llama.cpp GGUF. This difference is recorded, not hidden; Q4 is NOT tuned separately.
+
+generation:
+  temperature: 0.0
+  top_p: 1.0
+  top_k: 0
+  seed: 20260722
+  max_new_tokens: 1024
+  stop_conditions: []
+  decoding: greedy_argmax
+  non_thinking: enforced_both_roles
+
+# ---- frozen confirmation set (15 prose tasks; identical prompts across both precisions) ----
+confirmation_set:
+  source_prompts: benchmarks/runs/lwdb-stronger-base-v1/generation-plan.json  # frozen D26 prompts
+  fast_battery_core_prose:
+    - lwdb-a-length-short
+    - lwdb-a-length-long
+    - lwdb-a-quiet-scene
+    - lwdb-c-restraint-fix
+    - lwdb-b-voice-terse
+    - lwdb-b-voice-lyrical
+    - lwdb-g-turn-single
+  packet_family_prose:
+    - pf-scene_drafting-bare
+    - pf-scene_drafting-realistic
+    - pf-scene_drafting-long
+    - pf-focused_revision-compact
+    - pf-focused_revision-realistic
+    - pf-focused_revision-long_salience_repaired
+    - pf-canon_sensitive_continuation-realistic
+    - pf-canon_sensitive_continuation-long
+  total_tasks: 15
+  outputs: 30   # 15 tasks x 2 precisions
+
+human_review_gate:
+  required_reviewers: [gary, at_least_one_independent_blind_reviewer]
+  lm_graders: supporting_only
+  note: >-
+    The final foundation confirmation requires human blind review and must not rely only on
+    correlated LM graders. LM sub-agent blind scores are recorded as supporting evidence.
