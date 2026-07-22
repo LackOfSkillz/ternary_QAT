@@ -1,0 +1,28 @@
+# LineWright Diagnostic Battery — generation manifest schema (v1, Dispatch 22)
+#
+# Records HOW outputs were generated so a run is reproducible and decoding can be treated
+# as a diagnosable variable. Deterministic where possible; the manifest is the provenance
+# for every anonymous output record.
+
+schema: generation-manifest
+schema_version: 1
+status: architecture_only
+
+fields:
+  run_id:             {type: string, required: true}
+  battery_version:    {type: string, required: true}
+  model_role_manifest_id: {type: ref, required: true}
+  backend:            {type: enum, required: true, enum: [hf, gguf, stub]}
+  decoding:           {type: map, required: true, desc: "{temperature, top_p, seed, max_new_tokens, ...}"}
+  deterministic:      {type: bool, required: true}
+  seed:               {type: int, required: true}
+  checkpoint_curve:   {type: list, required: false,
+                       desc: "checkpoint fractions evaluated, e.g. [0.25, 0.5, 0.75, 1.0] where they exist"}
+  item_ids:           {type: list, required: true}
+  environment:        {type: map, required: false, desc: "torch/cuda/transformers versions, device"}
+  generated_output_ids: {type: list, required: true, desc: "anonymous-output record ids produced"}
+
+rules:
+  - "decoding parameters are recorded so 'decoding' can be isolated as a bottleneck cause."
+  - "checkpoint_curve is expressed as fractions (0.25/0.5/0.75/1.0), never fixed step counts."
+  - "no gradient step is performed by generation; this manifest never references training."

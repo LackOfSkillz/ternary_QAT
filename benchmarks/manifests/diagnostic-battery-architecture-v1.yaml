@@ -1,0 +1,184 @@
+# LineWright Model Capability, Reliability, and Tuning Diagnostic Battery
+# Machine-readable architecture manifest (v1). Dispatch 22 — architecture only.
+#
+# This manifest defines the permanent structure the later dispatches implement and
+# calibrate. It contains NO fabricated numeric performance thresholds: capability floors
+# are set empirically (Dispatch 23+), not invented here. Item-count ranges below are the
+# dispatch's provisional battery SIZES, not performance floors.
+
+name: LineWright Model Capability, Reliability, and Tuning Diagnostic Battery
+short_names: [LineWright Diagnostic Battery, LWDB]
+version: 1
+status: architecture_only          # architecture defined; instrument not yet calibrated
+dispatch: 22
+branch: linewright-experiments
+builds_on:
+  dispatch_21_validators: linewright/evaluation           # hardened mechanical gates
+  dispatch_21_reviewer_packets: linewright/evaluation/reviewer_packet.py
+  dispatch_21_advancement: linewright/evaluation/advancement.py
+
+# ---- objective the instrument must answer (dispatch objective list) ----
+diagnostic_questions:
+  - base_model_capable_enough
+  - did_tuning_improve
+  - did_tuning_regress
+  - which_capabilities_changed
+  - likely_bottleneck
+  - what_to_change_before_next_run
+  - how_confident_per_diagnosis
+
+# ---- six architecture layers ----
+layers:
+  layer_1_instrument_validation:
+    components: [grader_calibration_items, mechanical_reproducibility, reviewer_reliability]
+  layer_2_capability_modules:
+    modules: [A, B, C, D, E, F, G, H, I]
+  layer_3_controlled_families:
+    family_types: [voice_pair, surface_pair, length_pair, canon_pair, restraint_pair,
+                   context_pair, turn_pair, constraint_pair, difficulty_family]
+  layer_4_comparison_lineup:
+    routine_minimum: [target_base, previous_best, new_candidate]
+    initial_calibration_lineup: [untouched_base, lora_20, qat_10, qat_20, strong_reference]
+  layer_5_confidence_aware_diagnosis:
+    evidence_types_ref: evidence_types
+    confidence_levels_ref: confidence_levels
+  layer_6_benchmark_lifecycle:
+    lifecycle_states_ref: lifecycle_states
+
+# ---- capability modules (Layer 2) ----
+modules:
+  A: {name: long_form_scene_drafting, standalone_ok: false}
+  B: {name: focused_revision, standalone_ok: false}
+  C: {name: restraint_and_no_change_judgment, standalone_ok: true}
+  D: {name: canon_continuity_constraint_reasoning, standalone_ok: false}
+  E: {name: structured_output_protocol_compliance, standalone_ok: false}
+  F: {name: context_and_robustness, standalone_ok: false}
+  G: {name: multi_turn_authoring, standalone_ok: false}
+  H: {name: refusal_and_fiction_boundary_calibration, standalone_ok: true}
+  I: {name: stability_and_degeneration, standalone_ok: true,
+      note: "partly standalone, partly embedded across all modules"}
+
+# ---- battery profiles (fast + full share ONE architecture) ----
+battery_profiles:
+  shared:
+    schemas: same
+    capability_taxonomy: same
+    scoring_model: same
+    confidence_model: same
+    provenance_rules: same
+    diagnosis_engine: same
+    differ_only_in: [depth, sample_size, difficulty, cost]
+  fast:
+    purpose: [post_checkpoint_regression_scan, early_overfitting_detection,
+              gate_to_full_battery, checkpoint_curve_25_50_75_100]
+    target_item_count: {min: 24, max: 30, note: provisional_size_not_a_threshold}
+    provisional_composition:      # counts may overlap (paired items cover several modules)
+      scene_drafting: 4
+      focused_revision: 4
+      restraint_no_change: 4
+      canon_constraint: 4
+      structured_protocol: 3
+      bare_compiled_pairs: 3
+      multi_turn: 2
+      refusal_boundary: 2
+      grader_calibration: 4
+  full:
+    purpose: [major_dataset_version_decision, base_model_selection, quantization_change,
+              release_candidate_certification, ambiguous_fast_result_diagnosis]
+    target_item_count: {min: 60, max: 80, note: provisional_size_not_a_threshold}
+    adds: [long_form_scenes, more_voices_and_genres, longer_context, adversarial_context,
+           short_vs_long_pairs, deeper_multi_turn, negative_space_damage_tests,
+           harder_refusal_boundary, reserve_items, additional_calibration_controls]
+
+# ---- comparison model roles (Layer 4) ----
+model_roles:
+  routine: [target_base, previous_best, new_candidate]
+  optional: [alternate_method, strong_reference, weak_reference]
+  notes:
+    strong_reference: "calibrates task difficulty and score range; NOT automatically the deployment target"
+
+# ---- prompt surfaces (controlled variable) ----
+prompt_surfaces: [bare, compact_packet, full_compiled_packet, noisy_compiled_packet]
+
+# ---- evaluation modes ----
+evaluation_modes:
+  absolute: {locked_first: true, blind: true}
+  pairwise: {after_absolute_locked: true, never_replaces_absolute: true}
+
+# ---- scoring dimensions ----
+scoring:
+  mechanical_dimensions: [format_valid, schema_valid, protocol_valid, constraint_valid,
+                          source_fidelity, no_change_valid, repetition_valid,
+                          memorization_valid, completion_valid, negative_space_valid]
+  reviewer_dimensions: [instruction_compliance, scope_control, canon_fidelity,
+                        constraint_fidelity, voice_preservation, scene_coherence,
+                        characterization, dialogue, pacing, emotional_progression,
+                        prose_quality, usefulness_to_author]
+  rule: "no single universal score; module-specific failures are never hidden; a subjective score never cancels a mechanical fatal flaw."
+
+# ---- confidence-aware diagnosis (Layer 5) ----
+evidence_types: [mechanical, matched_pair_mechanical, reviewer_consensus, matched_pair_consensus,
+                 reviewer_split, single_reviewer, mixed_mechanical_and_reviewer]
+confidence_levels: [high, moderate, low, inconclusive]
+bottleneck_cause_space: [dataset_coverage, dataset_balance, training_duration, learning_rate,
+                         training_method, quantization, context_compilation, decoding,
+                         base_model_capacity]
+
+# ---- benchmark lifecycle (Layer 6) ----
+lifecycle_states: [development, candidate, active, used_for_measurement, used_for_diagnosis,
+                   influenced_training_change, burned, retired]
+lifecycle_directories: [development, active-core, rotating, reserve, calibration, burned]
+burned_item_policy:
+  excluded_from_training_by_construction: true
+  influencing_a_change_burns_the_item: true
+  burned_items_may_remain_regression_checks: true
+  burned_items_not_independent_evidence_for_the_change_they_inspired: true
+  reserve_items_hidden_during_routine_dataset_development: true
+
+# ---- capability floors: method defined, VALUES UNSET (empirical) ----
+capability_floor_policy:
+  method: calibrate_against_lineup
+  calibration_lineup: [untouched_target_base, current_tuned_checkpoints, strong_reference_model, optional_weak_reference]
+  numeric_values: unset          # set in a later dispatch from real calibration data
+  fabricated_thresholds_present: false
+
+# ---- checkpoint-curve evaluation ----
+checkpoint_curve:
+  fractions: [0.25, 0.5, 0.75, 1.0]
+  reports: [earliest_meaningful_improvement, peak_checkpoint, onset_of_regression,
+            capability_specific_peak, prose_vs_protocol_peak_divergence]
+  tied_to_fixed_step_count: false
+
+# ---- required schemas (benchmarks/schemas/) ----
+required_schemas:
+  - benchmark-item-schema
+  - pair-family-schema
+  - behavior-contract-schema
+  - model-role-manifest-schema
+  - generation-manifest-schema
+  - anonymous-output-schema
+  - mechanical-result-schema
+  - reviewer-score-schema
+  - reviewer-calibration-schema
+  - diagnostic-finding-schema
+  - battery-run-summary-schema
+  - benchmark-provenance-schema
+
+# ---- this dispatch produced NO items, generations, thresholds, or training ----
+dispatch_22_outputs:
+  benchmark_items_created: 0
+  model_generations: 0
+  numeric_thresholds_set: 0
+  training_runs: 0
+  dataset_a_changed: false
+
+# ---- evaluation workstream roadmap ----
+future_dispatches:
+  22: {title: architecture_and_specification, status: current}
+  23: {title: instrument_calibration_and_grader_validation, status: planned}
+  24: {title: fast_battery_construction_and_first_execution, status: planned}
+  25: {title: fast_battery_validation_and_diagnostic_engine, status: planned}
+  26: {title: full_battery_construction, status: planned}
+  27: {title: full_battery_baseline_and_certification, status: planned}
+
+primary_specification: training/docs/linewright-diagnostic-battery-architecture-v1.md

@@ -1,0 +1,38 @@
+# LineWright Diagnostic Battery — paired-family metadata schema (v1, Dispatch 22)
+#
+# A controlled diagnostic family holds two (or more) items that change ONE meaningful
+# variable while holding the rest invariant. Pairs are the primary diagnostic structure:
+# no causal diagnosis may be emitted without a controlled comparison supporting it.
+
+schema: pair-family
+schema_version: 1
+status: architecture_only
+
+fields:
+  family_id:          {type: string, required: true}
+  family_type:        {type: enum, required: true, enum: family_type}
+  controlled_variable: {type: string, required: true, desc: "the single variable that differs"}
+  invariant_features: {type: list, required: true, desc: "everything held constant across the arms"}
+  arms:               {type: map, required: true, desc: "named arm -> item_id (e.g. {terse: id, lyrical: id})"}
+  expected_diagnostic_if_split: {type: string, required: true,
+                        desc: "the causal inference licensed when the arms diverge"}
+  competing_explanations: {type: list, required: false,
+                        desc: "alternative causes to rule out before emitting the diagnosis"}
+  module:             {type: enum, required: false, desc: "primary capability module the family probes"}
+
+# The mandatory family types (Layer 3). Each names its two canonical arms.
+family_type:
+  voice_pair:       {arms: [terse, lyrical]}
+  surface_pair:     {arms: [bare, compiled]}
+  length_pair:      {arms: [short, long]}
+  canon_pair:       {arms: [extract, apply]}
+  restraint_pair:   {arms: [needs_change, already_correct]}
+  context_pair:     {arms: [clean, noisy]}
+  turn_pair:        {arms: [single_turn, multi_turn]}
+  constraint_pair:  {arms: [low_load, high_load]}
+  difficulty_family: {arms: [easy, moderate, hard, adversarial]}
+
+rules:
+  - "arms must reference existing benchmark item_ids that share invariant_features."
+  - "controlled_variable must differ across arms; invariant_features must not."
+  - "a surface_pair diagnosis about the context compiler requires the matched bare/compiled arms (no context-compiler diagnosis without a matched surface comparison)."

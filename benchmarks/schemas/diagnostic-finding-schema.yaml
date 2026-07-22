@@ -1,0 +1,57 @@
+# LineWright Diagnostic Battery — diagnostic finding schema (v1, Dispatch 22)
+#
+# The core diagnostic unit: a confidence-aware statement about ONE capability, backed by a
+# specific evidence type. The engine may — and must be able to — emit "insufficient
+# evidence". A causal cause may be named only when a controlled comparison supports it.
+
+schema: diagnostic-finding
+schema_version: 1
+status: architecture_only
+
+fields:
+  finding_id:         {type: string, required: true}
+  capability:         {type: string, required: true, desc: "module or capability probed"}
+  comparison:         {type: string, required: true, desc: "e.g. new_candidate vs previous_best"}
+  direction:          {type: enum, required: true, enum: [improved, regressed, unchanged, mixed]}
+  effect_size:        {type: string, required: true, desc: "magnitude descriptor or measured delta; not a fabricated threshold"}
+  sample_size:        {type: int, required: true}
+  evidence_type:      {type: enum, required: true, enum: evidence_type}
+  reviewer_agreement: {type: string, required: false, desc: "consensus | split | single | n/a"}
+  mechanical_support: {type: string, required: false, desc: "mechanical corroboration, if any"}
+  confidence:         {type: enum, required: true, enum: confidence_level}
+  likely_causes:      {type: list, required: true, desc: "subset of the bottleneck cause space"}
+  competing_explanations: {type: list, required: true, desc: "alternatives not yet ruled out"}
+  recommended_next_test: {type: string, required: false}
+  recommended_change: {type: string, required: false}
+
+evidence_type:
+  - mechanical
+  - matched_pair_mechanical
+  - reviewer_consensus
+  - matched_pair_consensus
+  - reviewer_split
+  - single_reviewer
+  - mixed_mechanical_and_reviewer
+
+confidence_level:
+  - high
+  - moderate
+  - low
+  - inconclusive
+
+# The bottleneck cause space the engine chooses likely_causes from (dispatch objective #5).
+cause_space:
+  - dataset_coverage
+  - dataset_balance
+  - training_duration
+  - learning_rate
+  - training_method
+  - quantization
+  - context_compilation
+  - decoding
+  - base_model_capacity
+
+rules:
+  - "a causal cause (e.g. context_compilation) requires a controlled comparison (a matched surface/pair) supporting it; otherwise the finding is capability-level only."
+  - "confidence inconclusive is a valid, first-class outcome (effect below floor, sample too small, calibration failed, or mechanical and reviewer evidence conflict)."
+  - "a reviewer_consensus finding never overrides a mechanical fatal flaw."

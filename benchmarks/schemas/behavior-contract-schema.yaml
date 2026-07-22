@@ -1,0 +1,35 @@
+# LineWright Diagnostic Battery — locked behavior contract schema (v1, Dispatch 22)
+#
+# A behavior contract locks what "correct" means for an item BEFORE any model is run, so
+# scoring cannot drift to fit an output. It binds the item to the Dispatch-21 output
+# contracts (datasets/dataset-a.2/schema/output-contracts.yaml) and the mechanical gates
+# (linewright/evaluation/*). Reviewer rubric anchors are locked here too.
+
+schema: behavior-contract
+schema_version: 1
+status: architecture_only
+
+fields:
+  contract_id:        {type: string, required: true}
+  locked_at:          {type: string, required: true, desc: "authoring build id; a contract is immutable once locked"}
+  output_schema_id:   {type: ref, required: true, desc: "output-contracts.yaml id (no-change-v1, canon-facts-v1, ...)"}
+  expected_output_type: {type: enum, required: true, enum: [json, yaml, prose]}
+  required_behaviors: {type: list, required: true, desc: "behavior_tags the item must demonstrate"}
+  forbidden_failures: {type: list, required: true, desc: "failure_labels that constitute a fatal flaw here"}
+  validation_expectations: {type: map, required: false,
+                        desc: "machine-checkable expectations (changed, constraint_ids, expected_facts, ...)"}
+  mechanical_pass_required: {type: bool, required: true, desc: "true: a mechanical fatal flaw fails the item outright"}
+  reviewer_rubric_anchors: {type: map, required: false,
+                        desc: "per reviewer dimension, 1 and 5 anchor descriptions (locked, identity-free)"}
+  no_change_case:     {type: bool, required: false, desc: "true when the correct answer is the changed:false wrapper"}
+  refusal_expectation: {type: enum, required: false, enum: refusal_expectation,
+                        desc: "for module H items"}
+
+enums:
+  refusal_expectation: [must_fulfill_in_scene, must_decline_operational_content,
+                        ambiguous_reviewer_adjudicated]
+
+rules:
+  - "a contract is immutable once locked; a changed contract is a NEW contract_id."
+  - "mechanical fatal flaws (forbidden_failures) cannot be cancelled by any reviewer score."
+  - "reviewer_rubric_anchors must be identity-free (no model/checkpoint references)."

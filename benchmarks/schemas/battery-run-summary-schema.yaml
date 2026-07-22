@@ -1,0 +1,33 @@
+# LineWright Diagnostic Battery — battery run summary schema (v1, Dispatch 22)
+#
+# The top-level artifact of one battery execution: what ran, whether the instrument was
+# trustworthy, the findings, and the recommended actions. Ties together the model-role
+# manifest, generation manifest, mechanical results, reviewer scores, calibration, and
+# findings.
+
+schema: battery-run-summary
+schema_version: 1
+status: architecture_only
+
+fields:
+  run_id:             {type: string, required: true}
+  battery_profile:    {type: enum, required: true, enum: [fast, full]}
+  battery_version:    {type: string, required: true}
+  model_role_manifest_id: {type: ref, required: true}
+  generation_manifest_id: {type: ref, required: true}
+  instrument_valid:   {type: bool, required: true,
+                       desc: "Layer 1 passed: mechanical replay stable AND >=1 calibrated reviewer"}
+  reviewer_calibration: {type: list, required: true, desc: "reviewer-calibration result ids"}
+  items_run:          {type: int, required: true}
+  findings:           {type: list, required: true, desc: "diagnostic-finding ids"}
+  capability_summary: {type: map, required: true, desc: "capability -> {direction, confidence}"}
+  checkpoint_curve:   {type: map, required: false,
+                       desc: "capability -> {earliest_improvement, peak, regression_onset} as fractions"}
+  burned_items:       {type: list, required: false, desc: "items that influenced a change this run"}
+  recommended_actions: {type: list, required: true}
+  overall:            {type: enum, required: true, enum: [advance, hold, regressed, insufficient_evidence]}
+
+rules:
+  - "if instrument_valid is false, findings are quarantined and overall MUST be insufficient_evidence (a battery that cannot validate itself cannot certify a model)."
+  - "overall never derives from training loss or parse rate alone."
+  - "checkpoint_curve is reported in fractions, decoupled from any fixed step count."

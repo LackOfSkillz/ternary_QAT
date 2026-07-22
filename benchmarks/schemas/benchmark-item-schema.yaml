@@ -1,0 +1,78 @@
+# LineWright Diagnostic Battery — benchmark item schema (v1, Dispatch 22)
+#
+# Field contract for one diagnostic benchmark item. Documentation-style (parsed with
+# PyYAML; no external validator dependency), matching the dataset-a record-schema.yaml
+# convention. Dispatch 22 defines the SHAPE only; item prompts are authored in Dispatch 23+.
+#
+# type notes: enum = value drawn from the manifest / this file's `enums`; ref = id that
+# resolves in another schema/registry; const = fixed value.
+
+schema: benchmark-item
+schema_version: 1
+status: architecture_only
+
+fields:
+  item_id:            {type: string, required: true, desc: "stable kebab id, e.g. lwdb-scene-terse-001"}
+  name:               {type: string, required: true}
+  battery_version:    {type: string, required: true, desc: "battery build this item belongs to"}
+  module:             {type: enum, required: true, enum: module, desc: "capability module A..I"}
+  battery_profiles:   {type: list, required: true, desc: "subset of [fast, full]"}
+  difficulty:         {type: enum, required: true, enum: difficulty}
+  prompt_surface:     {type: enum, required: true, enum: prompt_surface}
+  task_family:        {type: enum, required: true, desc: "dataset task family (canon_extraction, ...)"}
+  behavior_contract_id: {type: ref, required: true, desc: "locked behavior contract (behavior-contract-schema)"}
+  output_contract:    {type: map, required: true, desc: "{schema_id: <output-contracts.yaml id>, overrides...}"}
+
+  # HARD RULE: every benchmark item is excluded from training by construction.
+  benchmark_only:     {type: const, required: true, const: true, desc: "MUST be true; never a gradient input"}
+
+  # controlled-pair metadata (Layer 3). standalone items set is_standalone: true and omit
+  # the paired_item_ids, but must justify standalone_reason.
+  pair_id:            {type: string, required: false, desc: "id shared by the two/more items of a pair"}
+  family_id:          {type: string, required: false, desc: "controlled diagnostic family id"}
+  controlled_variable: {type: string, required: false, desc: "the single variable that differs across the pair"}
+  invariant_features: {type: list,   required: false, desc: "features held constant across the pair"}
+  expected_diagnostic_if_split: {type: string, required: false, desc: "the inference licensed if the pair splits"}
+  paired_item_ids:    {type: list,   required: false, desc: "other item_ids in this pair/family"}
+  is_standalone:      {type: bool,   required: false, desc: "true only when pairing adds no diagnostic value"}
+  standalone_reason:  {type: string, required: false, desc: "required when is_standalone is true"}
+
+  # scoring surface (per-module weighting lives in the module definition, not a global score)
+  mechanical_dimensions: {type: list, required: true, desc: "mechanical gate dimensions scored for this item"}
+  reviewer_dimensions:   {type: list, required: false, desc: "reviewer dimensions scored for this item"}
+
+  # negative-space damage contract (revision / multi-turn items)
+  negative_space:     {type: map, required: false, desc: "see negative_space block below"}
+
+  # provenance + lifecycle
+  provenance_id:      {type: ref, required: true, desc: "benchmark-provenance record id"}
+  lifecycle_status:   {type: enum, required: true, enum: lifecycle_status}
+  source_material_class: {type: enum, required: true, enum: source_material_class,
+                          desc: "distributability class; author content is never permitted"}
+
+  # authored content (SHAPE ONLY in Dispatch 22 — left empty here)
+  input:              {type: map, required: false, desc: "{system_instruction, task_instruction, source, context, canon, hard_constraints}"}
+  reference_expectations: {type: map, required: false, desc: "machine-checkable expectations (validation_expectations shape)"}
+
+negative_space_block:
+  authorized_spans:        {type: list}
+  protected_spans:         {type: list}
+  protected_facts:         {type: list}
+  protected_voice_features: {type: list}
+  allowed_diff_budget:     {type: map, desc: "e.g. {max_changed_sentences: N} — set during calibration, not now"}
+
+enums:
+  module: [A_long_form_scene, B_focused_revision, C_restraint_no_change,
+           D_canon_continuity_constraint, E_structured_protocol, F_context_robustness,
+           G_multi_turn, H_refusal_boundary, I_stability_degeneration]
+  difficulty: [easy, moderate, hard, adversarial]
+  prompt_surface: [bare, compact_packet, full_compiled_packet, noisy_compiled_packet]
+  lifecycle_status: [development, candidate, active, used_for_measurement,
+                     used_for_diagnosis, influenced_training_change, burned, retired]
+  source_material_class: [synthetic, licensed, public_domain, otherwise_distributable]
+
+rules:
+  - "benchmark_only MUST be present and true; an item without it is invalid."
+  - "an item is either paired (pair_id + controlled_variable + paired_item_ids) or is_standalone with a standalone_reason."
+  - "source_material_class never includes author content (author manuscripts are inference-time context only; see README author-content policy)."
+  - "no numeric capability floor or score threshold is stored on an item; scoring floors are calibrated empirically in a later dispatch."

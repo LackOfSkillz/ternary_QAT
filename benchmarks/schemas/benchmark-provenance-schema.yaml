@@ -1,0 +1,35 @@
+# LineWright Diagnostic Battery — benchmark provenance + lifecycle schema (v1, Dispatch 22)
+#
+# Every benchmark item has a provenance + usage history record. This is how the burned-item
+# policy is enforced: an item that influenced a dataset/training change stops counting as
+# independent evidence of improvement for that change.
+
+schema: benchmark-provenance
+schema_version: 1
+status: architecture_only
+
+fields:
+  provenance_id:      {type: string, required: true}
+  item_id:            {type: ref, required: true}
+  origin:             {type: enum, required: true, enum: [synthetic, licensed, public_domain, derived]}
+  author:             {type: string, required: false, desc: "authoring model / person; author manuscripts never permitted"}
+  source_material_class: {type: enum, required: true, enum: [synthetic, licensed, public_domain, otherwise_distributable]}
+  created_at:         {type: string, required: true, desc: "authoring build id"}
+  benchmark_only:     {type: const, required: true, const: true, desc: "excluded from training by construction"}
+
+  # lifecycle status flags (dispatch objective #6) — usage history, monotonic where noted
+  lifecycle:
+    never_used:               {type: bool, required: true}
+    used_for_measurement:     {type: bool, required: true}
+    used_for_diagnosis:       {type: bool, required: true}
+    influenced_training_change: {type: bool, required: true}
+    burned:                   {type: bool, required: true}
+    retired:                  {type: bool, required: true}
+  usage_history:      {type: list, required: true, desc: "append-only [{run_id, role, outcome}]"}
+  burned_by:          {type: string, required: false, desc: "the dataset/training change this item informed"}
+
+rules:
+  - "benchmark_only MUST be true; an item is never a gradient input."
+  - "when influenced_training_change becomes true, burned MUST become true; a burned item may remain a regression check but is NOT independent evidence for the change it inspired."
+  - "reserve items are not surfaced during routine dataset development."
+  - "usage_history is append-only; provenance is never rewritten to hide a burn."

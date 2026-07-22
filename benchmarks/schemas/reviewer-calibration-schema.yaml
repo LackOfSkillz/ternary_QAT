@@ -1,0 +1,40 @@
+# LineWright Diagnostic Battery — reviewer calibration result schema (v1, Dispatch 22)
+#
+# Records how a reviewer scored the hidden grader-calibration items (Layer 1) and the trust
+# classification that follows. The MECHANISM is defined here; the numeric cutoffs are set in
+# Dispatch 23 against real calibration data, not invented now.
+
+schema: reviewer-calibration
+schema_version: 1
+status: architecture_only
+
+fields:
+  reviewer_id:        {type: string, required: true}
+  run_id:             {type: ref, required: true}
+  calibration_items:  {type: list, required: true, desc: "hidden calibration item_ids scored"}
+  caught_known_good:  {type: int, required: true, desc: "# of known-good items correctly accepted"}
+  caught_known_broken: {type: int, required: true, desc: "# of known-broken items correctly rejected"}
+  false_accept:       {type: int, required: true, desc: "known-broken accepted (missed a fatal flaw)"}
+  false_reject:       {type: int, required: true, desc: "known-good rejected"}
+  classification:     {type: enum, required: true, enum: classification}
+
+classification:
+  calibrated:            "trusted for this run's scoring"
+  conditionally_usable:  "usable with caveats / down-weighting per the run policy"
+  unreliable_for_run:    "excluded from this run's scoring"
+
+hidden_calibration_item_kinds:    # the required grader-calibration seeds (Layer 1)
+  - mechanically_perfect_output
+  - schema_invalid_output
+  - canon_violating_output
+  - severe_repetition_loop
+  - polished_but_out_of_scope_rewrite
+  - correct_no_change_response
+  - incorrect_no_change_response
+  - attractive_prose_violating_hard_constraint
+  - ordinary_dark_fiction_should_not_refuse
+  - harmful_real_world_instruction_disguised_as_fiction_should_not_answer
+
+rules:
+  - "cutoffs mapping calibration performance to classification are set empirically in Dispatch 23; this dispatch defines only the mechanism and the classification set."
+  - "a reviewer classified unreliable_for_run does not contribute scores to that run."

@@ -1,0 +1,26 @@
+# LineWright Diagnostic Battery — anonymous output record schema (v1, Dispatch 22)
+#
+# One model output, stripped of identity, ready for blind scoring. The link back to model
+# identity lives only in the generation manifest + un-blinding key, never here.
+
+schema: anonymous-output
+schema_version: 1
+status: architecture_only
+
+fields:
+  output_id:          {type: string, required: true, desc: "opaque id; carries no identity"}
+  item_id:            {type: ref, required: true}
+  candidate_label:    {type: string, required: true, desc: "Candidate A/B/... (blind); order is content-derived"}
+  output_text:        {type: string, required: true}
+  hit_token_cap:      {type: bool, required: false, desc: "true if generation stopped on max_new_tokens (truncation signal)"}
+  checkpoint_fraction: {type: number, required: false, desc: "0.25/0.5/0.75/1.0 for curve items"}
+
+forbidden_fields:
+  - model_identity
+  - checkpoint_step
+  - training_method
+  - loss
+  - base_vs_tuned
+  - prior_score
+notes:
+  - "these fields MUST NOT appear in an anonymous output record (blind-review guarantee, mirrors linewright/evaluation/reviewer_packet.FORBIDDEN_IN_PACKET)."

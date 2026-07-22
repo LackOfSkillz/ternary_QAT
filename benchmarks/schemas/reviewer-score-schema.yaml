@@ -1,0 +1,39 @@
+# LineWright Diagnostic Battery — reviewer score schema (v1, Dispatch 22)
+#
+# One reviewer's blind score for one anonymous output. Absolute scoring is locked before
+# any pairwise comparison. A reviewer never sees model identity, checkpoint, method, loss,
+# base-vs-tuned, or prior scores.
+
+schema: reviewer-score
+schema_version: 1
+status: architecture_only
+
+fields:
+  output_id:          {type: ref, required: true}
+  item_id:            {type: ref, required: true}
+  reviewer_id:        {type: string, required: true, desc: "aedan | claude | chatgpt | ..."}
+  mode:               {type: enum, required: true, enum: [absolute, pairwise]}
+  scores:             {type: map, required: true, desc: "reviewer dimension -> 1..5 (see dimensions)"}
+  overall_preference: {type: string, required: false, desc: "pairwise only: a candidate label or 'none'"}
+  fatal_flaw:         {type: bool, required: true}
+  fatal_flaw_reason:  {type: string, required: false}
+  submitted_independently: {type: bool, required: true, desc: "must be true before any discussion"}
+
+reviewer_dimensions:
+  - instruction_compliance
+  - scope_control
+  - canon_fidelity
+  - constraint_fidelity
+  - voice_preservation
+  - scene_coherence
+  - characterization
+  - dialogue
+  - pacing
+  - emotional_progression
+  - prose_quality
+  - usefulness_to_author
+
+rules:
+  - "absolute scoring is locked BEFORE any pairwise comparison; pairwise never replaces absolute scoring."
+  - "a reviewer fatal_flaw is never cancelled by high dimension scores."
+  - "scores are blind; a packet that leaks identity invalidates the score."

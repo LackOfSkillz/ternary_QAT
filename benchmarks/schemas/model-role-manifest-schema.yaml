@@ -1,0 +1,33 @@
+# LineWright Diagnostic Battery — model-role manifest schema (v1, Dispatch 22)
+#
+# Declares which models fill which comparison roles for a battery run. Identity is recorded
+# HERE (outside reviewer packets) so packets stay blind. Not every run uses every role;
+# the routine minimum is target_base + previous_best + new_candidate.
+
+schema: model-role-manifest
+schema_version: 1
+status: architecture_only
+
+fields:
+  run_id:             {type: string, required: true}
+  battery_profile:    {type: enum, required: true, enum: [fast, full]}
+  roles:              {type: map, required: true, desc: "role -> model descriptor (see roles below)"}
+
+# The supported comparison roles. A role's value is a model descriptor:
+#   {identity, checkpoint, method, quantization, revision, notes}
+roles:
+  target_base:        {required_in_routine: true, desc: "the untouched official base candidate"}
+  previous_best:      {required_in_routine: true, desc: "prior accepted checkpoint"}
+  new_candidate:      {required_in_routine: true, desc: "the checkpoint under test"}
+  alternate_method:   {required_in_routine: false, desc: "e.g. QAT when the candidate is LoRA"}
+  strong_reference:   {required_in_routine: false,
+                       desc: "a stronger known-good model that calibrates task difficulty and score range; NOT automatically the deployment target"}
+  weak_reference:     {required_in_routine: false, desc: "optional weaker model to bracket the range"}
+
+routine_minimum: [target_base, previous_best, new_candidate]
+initial_calibration_lineup: [untouched_base, lora_20, qat_10, qat_20, strong_reference]
+
+rules:
+  - "model identity lives only in this manifest and the un-blinding key, never in a reviewer packet or anonymous output record."
+  - "strong_reference calibrates difficulty/range; it is not automatically the deployment target and its win does not by itself advance a candidate."
+  - "no numeric capability floor is stored here; floors are calibrated empirically later."

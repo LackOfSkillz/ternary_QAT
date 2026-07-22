@@ -1,0 +1,50 @@
+# LineWright Diagnostic Battery — mechanical result schema (v1, Dispatch 22)
+#
+# The deterministic gate result for one anonymous output, produced by the Dispatch-21
+# validators (linewright/evaluation/gates.evaluate_response). Every dimension is separate;
+# they are never collapsed into one boolean. Results are reproducible: identical input ->
+# identical booleans, failure_labels, and evidence values.
+
+schema: mechanical-result
+schema_version: 1
+status: architecture_only
+
+fields:
+  output_id:          {type: ref, required: true}
+  item_id:            {type: ref, required: true}
+  gates:              {type: map, required: true, desc: "each dimension below -> true|false|null"}
+  failure_labels:     {type: list, required: true}
+  evidence:           {type: map, required: true, desc: "measured quantities per validator (repetition counts, spans, ...)"}
+  negative_space:     {type: map, required: false, desc: "collateral-damage measurements (see below)"}
+  mechanical_pass:    {type: bool, required: true, desc: "all decidable gates true (excludes legacy format_valid)"}
+
+gate_dimensions:      # the ten mechanical dimensions (behavioral_valid is reviewer-only)
+  - format_valid
+  - schema_valid
+  - protocol_valid
+  - constraint_valid
+  - source_fidelity
+  - no_change_valid
+  - repetition_valid
+  - memorization_valid
+  - completion_valid
+  - negative_space_valid
+
+negative_space_measurements:
+  - unauthorized_character_change_ratio
+  - protected_span_changes
+  - protected_fact_changes
+  - new_proper_nouns
+  - unrelated_sentence_rewrites
+  - paragraph_reordering
+  - collateral_damage_detected
+
+reproducibility_invariants:
+  same_boolean_results: true
+  same_failure_labels: true
+  same_evidence_values: true
+  same_ordering_where_order_is_defined: true
+
+rules:
+  - "a null gate means not-applicable or reviewer-assisted; null is never a silent pass."
+  - "mechanical results are deterministic and replayable; a differing replay is an instrument failure (Layer 1)."
