@@ -1,0 +1,110 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "dataset-a.2/record-schema-v1",
+  "title": "Dataset A.2 training/evaluation record",
+  "description": "One JSONL record. Supports preferred + rejected responses, exact-preservation tasks, machine-checkable output contracts, source-family and story-world split grouping, behavior tags, failure labels, provenance, and per-record validation expectations. Builds on the Dataset A Markdown record schema (datasets/dataset-a/schema/record-schema.yaml); failure labels reuse that enum plus the Dispatch-21 mechanical extensions (linewright/evaluation MECHANICAL_FAILURE_LABELS).",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "record_id", "dataset_version", "task_family", "behavior_tags",
+    "failure_labels_targeted", "source_family", "story_world", "provenance",
+    "split_restrictions", "input", "output_contract", "preferred_response",
+    "validation_expectations", "review_status"
+  ],
+  "properties": {
+    "record_id": {"type": "string", "pattern": "^dsa2-[a-z0-9]+(-[a-z0-9]+)*$"},
+    "dataset_version": {"type": "string", "const": "dataset-a.2-pilot-v1"},
+    "split": {"type": "string", "enum": ["unassigned", "train", "evaluation"]},
+    "task_family": {"type": "string", "enum": [
+      "canon_extraction", "constraint_check", "focused_revision",
+      "scene_contract", "fiction_boundary"]},
+    "behavior_tags": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+    "failure_labels_targeted": {"type": "array", "items": {"type": "string"}},
+    "source_family": {"type": "string", "minLength": 1},
+    "story_world": {"type": "string", "minLength": 1},
+    "provenance": {
+      "type": "object", "additionalProperties": false,
+      "required": ["origin", "source_id", "teacher_model"],
+      "properties": {
+        "origin": {"type": "string", "enum": [
+          "synthetic", "licensed", "user-authored", "derived",
+          "human_authored", "model_authored", "mixed_origin"]},
+        "source_id": {"type": "string"},
+        "author": {"type": ["string", "null"]},
+        "teacher_model": {"type": "string"}
+      }
+    },
+    "split_restrictions": {
+      "type": "object", "additionalProperties": false,
+      "required": ["group_key", "must_not_share_group_across_splits"],
+      "properties": {
+        "group_key": {"type": "string", "minLength": 1},
+        "must_not_share_group_across_splits": {"type": "boolean"}
+      }
+    },
+    "input": {
+      "type": "object", "additionalProperties": false,
+      "required": ["system_instruction", "task_instruction"],
+      "properties": {
+        "system_instruction": {"type": "string", "minLength": 1},
+        "task_instruction": {"type": "string", "minLength": 1},
+        "source": {"type": "string"},
+        "context": {"type": "string"},
+        "canon": {"type": "array"},
+        "hard_constraints": {"type": "array"}
+      }
+    },
+    "output_contract": {
+      "type": "object", "additionalProperties": false,
+      "required": ["type", "schema_id"],
+      "properties": {
+        "type": {"type": "string", "enum": ["json", "yaml", "prose"]},
+        "schema_id": {"type": "string"},
+        "required_keys": {"type": "array", "items": {"type": "string"}},
+        "forbidden_keys": {"type": "array", "items": {"type": "string"}},
+        "allow_prose_outside_structure": {"type": "boolean"},
+        "exact_source_preservation_required": {"type": "boolean"},
+        "expects_no_change": {"type": "boolean"},
+        "expects_change": {"type": "boolean"},
+        "max_output_ratio": {"type": "number"},
+        "max_output_tokens": {"type": "integer", "minimum": 1},
+        "max_output_chars": {"type": "integer", "minimum": 1}
+      }
+    },
+    "preferred_response": {"type": "string", "minLength": 1},
+    "rejected_responses": {
+      "type": "array",
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["response", "failure_labels", "explanation"],
+        "properties": {
+          "response": {"type": "string", "minLength": 1},
+          "failure_labels": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+          "explanation": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "validation_expectations": {
+      "type": "object", "additionalProperties": false,
+      "properties": {
+        "changed": {"type": "boolean"},
+        "expects_no_change": {"type": "boolean"},
+        "expected_facts": {"type": "array", "items": {"type": "string"}},
+        "forbidden_inventions": {"type": "array", "items": {"type": "string"}},
+        "constraint_ids": {"type": "array", "items": {"type": "string"}},
+        "required_constraints": {"type": "array", "items": {"type": "string"}},
+        "reviewer_assisted": {"type": "boolean"}
+      }
+    },
+    "review_status": {
+      "type": "object", "additionalProperties": false,
+      "required": ["static_validated", "aedan_approved", "claude_approved", "chatgpt_approved"],
+      "properties": {
+        "static_validated": {"type": "boolean"},
+        "aedan_approved": {"type": "boolean"},
+        "claude_approved": {"type": "boolean"},
+        "chatgpt_approved": {"type": "boolean"}
+      }
+    }
+  }
+}

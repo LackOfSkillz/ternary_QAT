@@ -1,0 +1,31 @@
+# Dataset A.2 — behavior tags (Dispatch 21, Phase C)
+#
+# behavior_tags name the required behaviors a record TEACHES; failure_labels_targeted name
+# the specific defects its rejected_responses demonstrate. Tags drive the coverage matrix
+# (Phase B) and the pilot coverage minimums (Phase F). failure labels reuse the Dataset A
+# enum (datasets/dataset-a/schema/enums.yaml) plus the Dispatch-21 mechanical extensions
+# (linewright/evaluation MECHANICAL_FAILURE_LABELS).
+
+behavior_tags:
+  no_change_restraint:       "return already-clean prose unchanged via the changed:false wrapper"
+  exact_preservation:        "return the source faithfully (whitespace-normalized or byte-exact)"
+  changed_true_protocol:     "when a genuine defect exists, emit changed:true with the revised text"
+  schema_adherence:          "valid structured output in the EXACT requested shape; no alternate keys"
+  repetition_control:        "no runaway repetition / degeneration / low-information continuation"
+  hard_constraint_fidelity:  "obey declared hard constraints; minimal causal set, no over-inclusion"
+  canon_fidelity:            "distinguish established / character_belief; no promoted rumor or invented fact"
+  voice_preservation:        "preserve a distinctive author voice; never normalize to house style"
+  scope_control:             "perform only the authorized operation; leave protected elements exactly"
+  boundary_classification:   "fulfill ordinary in-scene fiction without moralizing or invalid refusal"
+  memorization_resistance:   "generalize; do not reproduce a training target verbatim"
+
+# Behaviors that were ABSENT or CRITICAL in Dataset A (Phase B) and therefore MUST be
+# carried by multiple pilot records, each with at least one rejected example:
+pilot_priority:
+  - no_change_restraint
+  - exact_preservation
+  - changed_true_protocol
+  - repetition_control
+  - schema_adherence
+  - hard_constraint_fidelity
+  - voice_preservation

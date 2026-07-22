@@ -1,0 +1,76 @@
+# Dataset A.2 — output-contract registry (Dispatch 21, Phase C)
+#
+# Maps a stable schema_id to the machine-checkable output contract consumed by the
+# Phase-E validators (linewright/evaluation/*). A record references a schema_id in its
+# output_contract; linewright.evaluation.contracts.resolve() merges these defaults with
+# any per-record overrides. Keeping the contract here (not duplicated per record) means
+# every record in a family is judged by exactly the same gate.
+#
+# type:            json | yaml | prose
+# required_keys:   keys that MUST be present (order-free)
+# forbidden_keys:  keys that must be ABSENT (e.g. an explanation when output-only)
+# strict_keys:     reject keys that are neither required nor forbidden (alternate-key drift)
+# key_types:       per-key type contract; "null-ok:TYPE" permits null
+# container:       object | array  (top-level shape)
+# item_required_keys: for array containers / list-valued keys, keys each item must carry
+# expects_no_change / exact_source_preservation_required: drive the preservation gate
+# max_output_ratio / max_output_chars: drive the scope + completion gates
+
+contracts:
+
+  # focused_revision structured wrapper — teaches BOTH halves of the protocol.
+  # A record sets validation_expectations.changed to false (no-change) or true (revised);
+  # when false the preservation gate enforces text == source.
+  no-change-v1:
+    type: json
+    container: object
+    required_keys: [changed, reason, text]
+    forbidden_keys: []
+    strict_keys: true
+    key_types: {changed: bool, reason: str, text: str}
+    exact_source_preservation_required: false   # normalized whitespace equality (per Dataset A rule)
+
+  # canon_extraction — conflicting-hearsay fact extraction.
+  canon-facts-v1:
+    type: json
+    container: object
+    required_keys: [facts, insufficient_evidence]
+    forbidden_keys: []
+    strict_keys: true
+    key_types: {facts: list, insufficient_evidence: list}
+    item_required_keys:            # each element of facts[]
+      facts: [entity, fact, certainty, evidence]
+    allowed_certainties: [established, character_belief]
+
+  # constraint_check — continuity verdict with a MINIMAL causal set.
+  constraint-verdict-v1:
+    type: json
+    container: object
+    required_keys: [violation, type, constraint_ids, explanation, evidence]
+    forbidden_keys: []
+    strict_keys: true
+    key_types: {violation: bool, type: str, constraint_ids: list, explanation: str, evidence: str}
+    allowed_types: [factual_contradiction, knowledge_state, chronology, object_state, none]
+
+  # scene_contract — RESOLVES the Dataset A field ambiguity by committing to the exact
+  # field names the INSTRUCTION states. A.2 scene records use these keys in both the
+  # instruction and the gold (the Dataset A gold used viewpoint_character +
+  # narrative_perspective, contradicting its own instruction — see Phase A).
+  scene-contract-v1:
+    type: yaml
+    container: object
+    required_keys: [viewpoint, location, scene_objective, required_outcome,
+                    prohibited_outcome, knowledge_boundary, protected_craft_or_tone]
+    forbidden_keys: [problems]     # omitted when the request is complete
+    strict_keys: true
+
+  # fiction_boundary and prose revisions — non-empty prose, bounded length, no wrapper.
+  prose-v1:
+    type: prose
+    max_output_chars: 1600
+
+  prose-revision-v1:
+    type: prose
+    expects_change: true
+    max_output_ratio: 1.6
+    max_output_chars: 1200

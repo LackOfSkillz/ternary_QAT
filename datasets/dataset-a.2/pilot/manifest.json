@@ -1,0 +1,87 @@
+{
+  "dataset_version": "dataset-a.2-pilot-v1",
+  "dispatch": 21,
+  "phase": "F",
+  "production_approved": false,
+  "experimental_use_only": true,
+  "counts": {
+    "train": 23,
+    "evaluation": 10
+  },
+  "train_by_task": {
+    "focused_revision": 14,
+    "canon_extraction": 4,
+    "constraint_check": 3,
+    "scene_contract": 2
+  },
+  "evaluation_by_task": {
+    "focused_revision": 5,
+    "canon_extraction": 2,
+    "constraint_check": 1,
+    "scene_contract": 1,
+    "fiction_boundary": 1
+  },
+  "behavior_coverage_train": {
+    "no_change_restraint": 6,
+    "exact_preservation": 6,
+    "schema_adherence": 18,
+    "changed_true_protocol": 3,
+    "scope_control": 10,
+    "voice_preservation": 5,
+    "repetition_control": 5,
+    "canon_fidelity": 4,
+    "hard_constraint_fidelity": 3
+  },
+  "behavior_coverage_eval": {
+    "no_change_restraint": 2,
+    "exact_preservation": 2,
+    "schema_adherence": 7,
+    "changed_true_protocol": 1,
+    "scope_control": 4,
+    "voice_preservation": 2,
+    "repetition_control": 3,
+    "canon_fidelity": 2,
+    "hard_constraint_fidelity": 1,
+    "boundary_classification": 1
+  },
+  "train_group_keys": [
+    "world:asylum-records",
+    "world:beekeeper-swarm",
+    "world:bell-foundry",
+    "world:cannery-late-shift",
+    "world:clockmaker",
+    "world:coal-town",
+    "world:courier-pass",
+    "world:desert-well",
+    "world:glassblower",
+    "world:lighthouse-keeper",
+    "world:marsh-ferry",
+    "world:night-harbor",
+    "world:orchard-frost-night",
+    "world:printing-press-strike",
+    "world:quarry-echo",
+    "world:river-lock",
+    "world:salt-flats",
+    "world:sealed-vault",
+    "world:snow-station",
+    "world:telegraph-office",
+    "world:tide-pools",
+    "world:tram-depot-rain",
+    "world:windmill-drought"
+  ],
+  "evaluation_group_keys": [
+    "world:border-crossing",
+    "world:cliff-lighthouse-storm",
+    "world:duel-second",
+    "world:estuary-ferry",
+    "world:fairground",
+    "world:greenhouse",
+    "world:miners-canary-shaft",
+    "world:monastery",
+    "world:observatory",
+    "world:poisoned-well"
+  ],
+  "train_sha256": "2c7255806980cfe3c021470f833fb498c3025ea79a0e15b68b6d30eb1946b391",
+  "evaluation_sha256": "19dc57677f5b8b2aff6eadfd1a9bdca52bbc08af91a707178475695f08565876",
+  "note": "Corrective pilot. Experimental only; not production. Golds pass the Phase-E gates; rejected examples fail their declared labels; train/eval story worlds are disjoint (Phase D)."
+}
