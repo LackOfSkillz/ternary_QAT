@@ -1,0 +1,48 @@
+{
+ "dispatch": 27,
+ "phase": "A",
+ "reviewers": {
+  "lm_subagents": [
+   "A",
+   "B"
+  ],
+  "external_humans_pending": [
+   "Gary",
+   "at_least_one_independent"
+  ],
+  "role": "supporting_only (humans are the deciding gate)"
+ },
+ "blind_means": {
+  "bf16": {
+   "prose_quality": 2.733,
+   "voice_preservation": 2.633,
+   "instruction_compliance": 4.667,
+   "sentence_naturalness": 3.167
+  },
+  "q4": {
+   "prose_quality": 2.767,
+   "voice_preservation": 2.733,
+   "instruction_compliance": 4.667,
+   "sentence_naturalness": 3.133
+  }
+ },
+ "bf16_to_q4_deltas": {
+  "prose_quality": -0.034,
+  "voice_preservation": -0.1,
+  "instruction_compliance": 0.0,
+  "sentence_naturalness": 0.034
+ },
+ "q4_new_fatal_rejections": 0,
+ "floor_checks": {
+  "prose_drop_ok": true,
+  "voice_drop_ok": true,
+  "instruction_drop_ok": true,
+  "new_fatal_ok": true
+ },
+ "q4_blind_prose_preservation_pass_LM_only": true,
+ "reviewer_calibration": {
+  "A": 1.0,
+  "B": 0.8
+ },
+ "scores_locked_before_unblinding": true
+}

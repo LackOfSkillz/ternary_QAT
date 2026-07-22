@@ -1,0 +1,275 @@
+{
+ "dispatch": 27,
+ "phase": "A",
+ "confirmation_set_size": 15,
+ "bf16_reference": {
+  "n": 15,
+  "mechanical_pass_rate": 0.933,
+  "severe_slop_rate": 0.0,
+  "token_cap_rate": 0.0,
+  "reasoning_trace_rate": 0.0
+ },
+ "q4_k_m": {
+  "n": 15,
+  "mechanical_pass_rate": 0.933,
+  "severe_slop_rate": 0.0,
+  "token_cap_rate": 0.0,
+  "reasoning_trace_rate": 0.0
+ },
+ "deltas_q4_vs_bf16": {
+  "mechanical_pass_drop": 0.0,
+  "severe_slop_increase": 0.0,
+  "token_cap_increase": 0.0,
+  "q4_reasoning_leak": 0.0
+ },
+ "mechanical_floor_checks": {
+  "mechanical_pass_drop_ok": true,
+  "severe_slop_increase_ok": true,
+  "token_cap_increase_ok": true,
+  "no_reasoning_leak": true
+ },
+ "mechanical_preservation_pass": true,
+ "note": "Mechanical/deterministic Q4-preservation only. Blind PROSE preservation is scored separately (LM sub-agents = supporting; Gary + independent human = the deciding gate).",
+ "per_item": {
+  "lwdb-a-length-short": {
+   "bf16": {
+    "mechanical_pass": true,
+    "slop_severity": "none",
+    "hit_token_cap": false,
+    "reasoning_trace": false,
+    "output_tokens": 171
+   },
+   "q4": {
+    "mechanical_pass": true,
+    "slop_severity": "none",
+    "hit_token_cap": false,
+    "reasoning_trace": false,
+    "output_tokens": 161
+   }
+  },
+  "lwdb-a-length-long": {
+   "bf16": {
+    "mechanical_pass": false,
+    "slop_severity": "high",
+    "hit_token_cap": false,
+    "reasoning_trace": false,
+    "output_tokens": 981
+   },
+   "q4": {
+    "mechanical_pass": false,
+    "slop_severity": "moderate",
+    "hit_token_cap": false,
+    "reasoning_trace": false,
+    "output_tokens": 745
+   }
+  },
+  "lwdb-a-quiet-scene": {
+   "bf16": {
+    "mechanical_pass": true,
+    "slop_severity": "none",
+    "hit_token_cap": false,
+    "reasoning_trace": false,
+    "output_tokens": 242
+   },
+   "q4": {
+    "mechanical_pass": true,
+    "slop_severity": "none",
+    "hit_token_cap": false,
+    "reasoning_trace": false,
+    "output_tokens": 211
+   }
+  },
+  "lwdb-c-restraint-fix": {
+   "bf16": {
+    "mechanical_pass": true,
+    "slop_severity": "inconclusive",
+    "hit_token_cap": false,
+    "reasoning_trace": false,
+    "output_tokens": 26
+   },
+   "q4": {
+    "mechanical_pass": true,
+    "slop_severity": "inconclusive",
+    "hit_token_cap": false,
+    "reasoning_trace": false,
+    "output_tokens": 26
+   }
+  },
+  "lwdb-b-voice-terse": {
+   "bf16": {
+    "mechanical_pass": true,
+    "slop_severity": "inconclusive",
+    "hit_token_cap": false,
+    "reasoning_trace": false,
+    "output_tokens": 16
+   },
+   "q4": {
+    "mechanical_pass": true,
+    "slop_severity": "inconclusive",
+    "hit_token_cap": false,
+    "reasoning_trace": false,
+    "output_tokens": 16
+   }
+  },
+  "lwdb-b-voice-lyrical": {
+   "bf16": {
+    "mechanical_pass": true,
+    "slop_severity": "none",
+    "hit_token_cap": false,
+    "reasoning_trace": false,
+    "output_tokens": 57
+   },
+   "q4": {
+    "mechanical_pass": true,
+    "slop_severity": "none",
+    "hit_token_cap": false,
+    "reasoning_trace": false,
+    "output_tokens": 56
+   }
+  },
+  "lwdb-g-turn-single": {
+   "bf16": {
+    "mechanical_pass": true,
+    "slop_severity": "inconclusive",
+    "hit_token_cap": false,
+    "reasoning_trace": false,
+    "output_tokens": 33
+   },
+   "q4": {
+    "mechanical_pass": true,
+    "slop_severity": "inconclusive",
+    "hit_token_cap": false,
+    "reasoning_trace": false,
+    "output_tokens": 43
+   }
+  },
+  "pf-scene_drafting-bare": {
+   "bf16": {
+    "mechanical_pass": true,
+    "slop_severity": "none",
+    "hit_token_cap": false,
+    "reasoning_trace": false,
+    "output_tokens": 195
+   },
+   "q4": {
+    "mechanical_pass": true,
+    "slop_severity": "none",
+    "hit_token_cap": false,
+    "reasoning_trace": false,
+    "output_tokens": 182
+   }
+  },
+  "pf-scene_drafting-realistic": {
+   "bf16": {
+    "mechanical_pass": true,
+    "slop_severity": "none",
+    "hit_token_cap": false,
+    "reasoning_trace": false,
+    "output_tokens": 130
+   },
+   "q4": {
+    "mechanical_pass": true,
+    "slop_severity": "none",
+    "hit_token_cap": false,
+    "reasoning_trace": false,
+    "output_tokens": 130
+   }
+  },
+  "pf-scene_drafting-long": {
+   "bf16": {
+    "mechanical_pass": true,
+    "slop_severity": "none",
+    "hit_token_cap": false,
+    "reasoning_trace": false,
+    "output_tokens": 136
+   },
+   "q4": {
+    "mechanical_pass": true,
+    "slop_severity": "none",
+    "hit_token_cap": false,
+    "reasoning_trace": false,
+    "output_tokens": 129
+   }
+  },
+  "pf-focused_revision-compact": {
+   "bf16": {
+    "mechanical_pass": true,
+    "slop_severity": "none",
+    "hit_token_cap": false,
+    "reasoning_trace": false,
+    "output_tokens": 81
+   },
+   "q4": {
+    "mechanical_pass": true,
+    "slop_severity": "none",
+    "hit_token_cap": false,
+    "reasoning_trace": false,
+    "output_tokens": 81
+   }
+  },
+  "pf-focused_revision-realistic": {
+   "bf16": {
+    "mechanical_pass": true,
+    "slop_severity": "none",
+    "hit_token_cap": false,
+    "reasoning_trace": false,
+    "output_tokens": 81
+   },
+   "q4": {
+    "mechanical_pass": true,
+    "slop_severity": "none",
+    "hit_token_cap": false,
+    "reasoning_trace": false,
+    "output_tokens": 81
+   }
+  },
+  "pf-focused_revision-long_salience_repaired": {
+   "bf16": {
+    "mechanical_pass": true,
+    "slop_severity": "none",
+    "hit_token_cap": false,
+    "reasoning_trace": false,
+    "output_tokens": 81
+   },
+   "q4": {
+    "mechanical_pass": true,
+    "slop_severity": "none",
+    "hit_token_cap": false,
+    "reasoning_trace": false,
+    "output_tokens": 81
+   }
+  },
+  "pf-canon_sensitive_continuation-realistic": {
+   "bf16": {
+    "mechanical_pass": true,
+    "slop_severity": "none",
+    "hit_token_cap": false,
+    "reasoning_trace": false,
+    "output_tokens": 166
+   },
+   "q4": {
+    "mechanical_pass": true,
+    "slop_severity": "none",
+    "hit_token_cap": false,
+    "reasoning_trace": false,
+    "output_tokens": 138
+   }
+  },
+  "pf-canon_sensitive_continuation-long": {
+   "bf16": {
+    "mechanical_pass": true,
+    "slop_severity": "none",
+    "hit_token_cap": false,
+    "reasoning_trace": false,
+    "output_tokens": 144
+   },
+   "q4": {
+    "mechanical_pass": true,
+    "slop_severity": "none",
+    "hit_token_cap": false,
+    "reasoning_trace": false,
+    "output_tokens": 180
+   }
+  }
+ }
+}
