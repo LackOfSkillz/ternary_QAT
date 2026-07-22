@@ -107,7 +107,8 @@ def main():
 
     try:
         for tag, cfg_path in CANDIDATES:
-            manifest, code = train.run(C.abs_repo(cfg_path), backend_name="hf")
+            manifest, code = train.run(C.abs_repo(cfg_path), backend_name="hf",
+                                       capture_base_integrity=False)
             after = integrity.capture_inventory(base_dir)
             bv = integrity.verify_inventory(base_before, after)
             repo_after = integrity.capture_repository(C.REPO_ROOT, PROTECTED)

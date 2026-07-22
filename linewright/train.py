@@ -30,7 +30,8 @@ def _load_and_validate(cfg_path, overrides):
 
 
 def run(cfg_path, validate_only=False, dry_run=False, max_steps_override=None,
-        backend_name="stub", inject=None, base_model_dir=None):
+        backend_name="stub", inject=None, base_model_dir=None,
+        capture_base_integrity=True):
     overrides = {}
     if max_steps_override is not None:
         overrides["max_steps"] = int(max_steps_override)
@@ -57,8 +58,10 @@ def run(cfg_path, validate_only=False, dry_run=False, max_steps_override=None,
     else:
         target = "lora"
     out_dir = C.abs_repo(cfg["paths"]["output_dir"])
-    writer = runtime.AuthorizedWriter([C.abs_repo(RUN_ROOT)])
-    integ_dir = C.abs_repo(os.path.join(RUN_ROOT, "integrity"))
+    # authorize every declared run root; per-run integrity lives under this run's
+    # own output_dir so smoke and calibration runs never collide.
+    writer = runtime.AuthorizedWriter([C.abs_repo(r) for r in C.AUTHORIZED_OUTPUT_ROOTS])
+    integ_dir = os.path.join(out_dir, "integrity")
 
     # ---- integrity: capture BEFORE ----
     repo_before = integrity.capture_repository(C.REPO_ROOT, PROTECTED_GLOBS)
@@ -66,6 +69,8 @@ def run(cfg_path, validate_only=False, dry_run=False, max_steps_override=None,
                          repo_before)
     base_before = None
     base_dir = base_model_dir or cfg.get("model", {}).get("base_model_path")
+    if not capture_base_integrity:
+        base_dir = None                        # orchestrator handles base integrity
     if base_dir and os.path.isdir(base_dir):
         base_before = integrity.capture_inventory(base_dir)
         integrity.write_json(writer.resolve(os.path.join(integ_dir, "base-model-before.json")),
@@ -167,7 +172,8 @@ def _finish(manifest, writer, out_dir, integ_dir, base_before, base_dir, repo_be
     integrity.write_json(writer.resolve(os.path.join(integ_dir, "repository-after.json")),
                          repo_after)
     repo_verify = integrity.verify_repository(
-        repo_before, repo_after, authorized_prefixes=[RUN_ROOT.replace("\\", "/")])
+        repo_before, repo_after,
+        authorized_prefixes=[r.replace("\\", "/") for r in C.AUTHORIZED_OUTPUT_ROOTS])
     integrity.write_json(writer.resolve(os.path.join(integ_dir, "repository-verification.json")),
                          repo_verify)
     manifest["repository_verification"] = repo_verify

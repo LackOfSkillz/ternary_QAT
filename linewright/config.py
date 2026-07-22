@@ -7,8 +7,12 @@ import yaml
 
 REPO_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 
-# Only training-run outputs may be written here (Part 5).
-AUTHORIZED_OUTPUT_ROOTS = [os.path.join("training", "runs", "dataset-a-smoke-v1")]
+# Only training-run outputs may be written here (Part 5). The QAT calibration
+# (Dispatch 19) writes under its own dedicated run root.
+AUTHORIZED_OUTPUT_ROOTS = [
+    os.path.join("training", "runs", "dataset-a-smoke-v1"),
+    os.path.join("training", "runs", "dataset-a-qat-calibration-v1"),
+]
 
 # Fields that LoRA and ternary-QAT smoke configs MUST share for an interpretable
 # comparison. Anything else that differs must be a documented QAT-only field.
