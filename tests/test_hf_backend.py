@@ -271,3 +271,82 @@ def test_qat_config_policy_matches_swap_implementation():
     assert isinstance(m.lm_head, TernaryLinear)             # lm_head ternary
     assert isinstance(m.q_proj, TernaryLinear)              # attention ternary
     assert not isinstance(m.input_norm, TernaryLinear)      # norm full precision
+
+
+# ---- Dispatch 19: calibration configs, warmup, clipping, stability gate ----
+
+CAL = {tag: os.path.join(_ROOT, "training", "configs",
+                         f"dataset-a-ternary-qat-calibration-{tag}-v1.yaml")
+       for tag in ("2e-4", "5e-5", "5e-4")}
+
+
+def _strip(cfg):
+    import copy
+    c = copy.deepcopy(cfg)
+    c.pop("experiment_id", None)
+    c.get("optimization", {}).pop("learning_rate", None)
+    c.get("paths", {}).pop("output_dir", None)
+    c.get("paths", {}).pop("logging_dir", None)
+    return c
+
+
+def test_calibration_configs_differ_only_in_allowed_fields():
+    cfgs = {t: C.load_config(p) for t, p in CAL.items()}
+    stripped = [_strip(c) for c in cfgs.values()]
+    assert stripped[0] == stripped[1] == stripped[2]
+    lrs = {cfgs[t]["optimization"]["learning_rate"] for t in cfgs}
+    assert lrs == {2.0e-4, 5.0e-5, 5.0e-4}
+
+
+def test_calibration_config_invariants():
+    for t, p in CAL.items():
+        c = C.load_config(p)
+        assert c["optimization"]["max_steps"] == 10
+        assert c["warmup_steps"] == 3
+        assert c["gradient_clipping"]["enabled"] is True
+        assert c["gradient_clipping"]["max_norm"] == 1.0
+        assert c["gradient_monitor"] == {"max_global_norm": 100.0, "consecutive_step_limit": 2}
+        assert c["dataset"]["train_checksum"].startswith("97778f2a")
+        assert c["dataset"]["evaluation_checksum"].startswith("0f3ae426")
+        assert c["optimization"]["learning_rate"] != 4.0e-3
+
+
+def test_warmup_validation():
+    c = C.load_config(CAL["2e-4"])
+    c["warmup_steps"] = -1
+    assert any("warmup_steps" in p for p in C.validate_config(c, "x").problems)
+    c2 = C.load_config(CAL["2e-4"])
+    c2["warmup_steps"] = 10                        # == max_steps
+    assert any("must be < max_steps" in p for p in C.validate_config(c2, "x").problems)
+    c3 = C.load_config(CAL["2e-4"])
+    c3["optimization"]["warmup_ratio"] = 0.1       # both without precedence
+    assert any("warmup_precedence" in p for p in C.validate_config(c3, "x").problems)
+
+
+def test_gradient_clipping_math():
+    m = nn.Linear(4, 4)
+    for p in m.parameters():
+        p.grad = torch.ones_like(p) * 100.0        # huge grad
+    raw = float(torch.nn.utils.clip_grad_norm_(m.parameters(), max_norm=1.0).item())
+    post = float(torch.nn.utils.clip_grad_norm_(m.parameters(), max_norm=1e9).item())
+    assert raw > 1.0                               # raw norm preserved (large)
+    assert post <= 1.0001                          # after clip, norm ~ 1.0
+
+
+def test_stability_gate_pass_and_fail():
+    from linewright.qat_calibrate import stability_gate
+
+    def mani(losses, grads):
+        return {"completed_steps": 10, "status": "completed",
+                "gradient_warnings": [],
+                "checkpoint_reload_results": [{"step": 5, "ok": True}, {"step": 10, "ok": True}],
+                "step_metrics": [{"loss": l, "raw_gradient_norm": g,
+                                  "clipped_gradient_norm": min(g, 1.0),
+                                  "gradient_was_clipped": g > 1.0}
+                                 for l, g in zip(losses, grads)]}
+    stable = stability_gate(mani([4.0, 3.5, 3.0, 2.8, 2.6, 2.5, 2.4, 2.3, 2.2, 2.1],
+                                 [8.0] * 10), True, True)
+    assert stable["passed"] is True and stable["ratio_ok"] is True
+    diverged = stability_gate(mani([4.0, 8.0, 16.0, 30.0, 45.0, 46, 47, 48, 49, 50.0],
+                                   [8.0] * 10), True, True)
+    assert diverged["passed"] is False and diverged["ratio_ok"] is False  # final/init > 3
