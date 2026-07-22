@@ -1,0 +1,87 @@
+{
+  "record_id": "dsa2-eval-prose-001",
+  "task_family": "focused_revision",
+  "task_instruction": "Ornate by intent. It contains one mixed metaphor (a fire that 'drowned' and 'salted fields'). Repair only that so the fire image stays coherent; keep the lyricism.",
+  "source_material": "The storm came to the cliff the way grief comes to a house — first at the windows, then in the walls — and the light turned and turned against it and was a fire that drowned the dark and salted the fields of the sky.",
+  "context": "",
+  "canon": [],
+  "hard_constraints": [],
+  "expected_output_contract": {
+    "type": "prose",
+    "schema_id": "prose-revision-v1",
+    "required_keys": []
+  },
+  "candidates": [
+    {
+      "label": "Candidate A",
+      "output": "The storm came to the cliff the way grief comes to a house — first at the windows, then in the walls — and the light turned and turned against it and was a fire that drowned the dark and salted the fields of the sky."
+    },
+    {
+      "label": "Candidate B",
+      "output": "The storm came to the cliff the way grief comes to a house — first at the windows, then in the walls — and the light turned and turned against it and was a fire that held the dark off the edge of the world."
+    },
+    {
+      "label": "Candidate C",
+      "output": "The storm came to the cliff the way grief comes to a house — first at the windows, then in the walls — and the light turned and turned against it and was a fire that held the dark off the edge of the world.\n\nThe storm came to the cliff the way grief comes to a house — first at the windows, then in the walls — and the light turned and turned against it and was a fire that held the dark off the edge of the world.\n\nThe storm came to the cliff the way grief comes to a house — first at the windows, then in the walls — and the light turned and turned against it and was a fire that held the dark off the edge of the world.\n\nThe storm came to the cliff the way grief comes to a house — first at the windows, then in the walls — and the light turned and turned against it and was a fire that held the dark off the edge of the world.\n\nThe storm came to the cliff the way grief comes to a house — first at the windows, then in the walls — and the light turned and turned against it and was a fire that held the dark off the edge of the world.\n\nThe storm came to the cliff the way grief comes to a house — first at the windows, then in the walls — and the light turned and turned against it and was a fire that held the dark off the edge of the world."
+    }
+  ],
+  "review_form": {
+    "instructions": "Score each candidate 1-5 on every dimension, choose an overall preference, and flag any fatal flaw. Submit independently BEFORE any discussion. Do not average away a fatal flaw.",
+    "fatal_flaw_catalog": [
+      "invented_canon",
+      "contradiction",
+      "ignored_hard_constraint",
+      "severe_repetition",
+      "incorrect_no_change_behavior",
+      "unusable_schema",
+      "major_voice_destruction",
+      "copied_training_target",
+      "truncated_output",
+      "unrelated_response"
+    ],
+    "per_candidate": {
+      "Candidate A": {
+        "instruction_compliance": null,
+        "canon_fidelity": null,
+        "constraint_fidelity": null,
+        "scope_control": null,
+        "voice_preservation": null,
+        "prose_quality": null,
+        "repetition_control": null,
+        "schema_or_protocol_compliance": null,
+        "usefulness_to_author": null,
+        "overall_preference": null,
+        "fatal_flaw": null,
+        "fatal_flaw_reason": null
+      },
+      "Candidate B": {
+        "instruction_compliance": null,
+        "canon_fidelity": null,
+        "constraint_fidelity": null,
+        "scope_control": null,
+        "voice_preservation": null,
+        "prose_quality": null,
+        "repetition_control": null,
+        "schema_or_protocol_compliance": null,
+        "usefulness_to_author": null,
+        "overall_preference": null,
+        "fatal_flaw": null,
+        "fatal_flaw_reason": null
+      },
+      "Candidate C": {
+        "instruction_compliance": null,
+        "canon_fidelity": null,
+        "constraint_fidelity": null,
+        "scope_control": null,
+        "voice_preservation": null,
+        "prose_quality": null,
+        "repetition_control": null,
+        "schema_or_protocol_compliance": null,
+        "usefulness_to_author": null,
+        "overall_preference": null,
+        "fatal_flaw": null,
+        "fatal_flaw_reason": null
+      }
+    }
+  }
+}

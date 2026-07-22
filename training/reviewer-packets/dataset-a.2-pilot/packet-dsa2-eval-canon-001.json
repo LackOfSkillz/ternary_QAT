@@ -1,0 +1,69 @@
+{
+  "record_id": "dsa2-eval-canon-001",
+  "task_family": "canon_extraction",
+  "task_instruction": "Extract the passage's factual content as JSON {\"facts\": [...], \"insufficient_evidence\": [...]}. Record each speaker's claim as a separate fact with certainty character_belief; use established only for what the narration presents as observed. Quote a short evidence span.",
+  "source_material": "The theft of the prize ram was the fair's only news. The auctioneer swore he'd sold it at noon and been paid in coin. A shepherd said the same ram was back in its pen by dusk, chewing. The pen was empty now. The rain, all agreed, had ruined the bunting.",
+  "context": "",
+  "canon": [],
+  "hard_constraints": [],
+  "expected_output_contract": {
+    "type": "json",
+    "schema_id": "canon-facts-v1",
+    "required_keys": []
+  },
+  "candidates": [
+    {
+      "label": "Candidate A",
+      "output": "{\"facts\": [{\"speaker\": \"the ram (auctioneer's claim)\", \"claim\": \"The auctioneer claims he sold the ram at noon and was paid in coin.\"}, {\"speaker\": \"the ram (shepherd's claim)\", \"claim\": \"A shepherd claims the same ram was back in its pen by dusk.\"}, {\"speaker\": \"the bunting\", \"claim\": \"The rain ruined the bunting.\"}]}"
+    },
+    {
+      "label": "Candidate B",
+      "output": "{\"facts\": [{\"entity\": \"the ram (auctioneer's claim)\", \"fact\": \"The auctioneer claims he sold the ram at noon and was paid in coin.\", \"certainty\": \"character_belief\", \"evidence\": \"he'd sold it at noon and been paid in coin\"}, {\"entity\": \"the ram (shepherd's claim)\", \"fact\": \"A shepherd claims the same ram was back in its pen by dusk.\", \"certainty\": \"character_belief\", \"evidence\": \"the same ram was back in its pen by dusk, chewing\"}, {\"entity\": \"the bunting\", \"fact\": \"The rain ruined the bunting.\", \"certainty\": \"established\", \"evidence\": \"The rain, all agreed, had ruined the bunting\"}], \"insufficient_evidence\": [\"Whether the ram was actually sold\", \"Who took the ram from the pen\"]}"
+    }
+  ],
+  "review_form": {
+    "instructions": "Score each candidate 1-5 on every dimension, choose an overall preference, and flag any fatal flaw. Submit independently BEFORE any discussion. Do not average away a fatal flaw.",
+    "fatal_flaw_catalog": [
+      "invented_canon",
+      "contradiction",
+      "ignored_hard_constraint",
+      "severe_repetition",
+      "incorrect_no_change_behavior",
+      "unusable_schema",
+      "major_voice_destruction",
+      "copied_training_target",
+      "truncated_output",
+      "unrelated_response"
+    ],
+    "per_candidate": {
+      "Candidate A": {
+        "instruction_compliance": null,
+        "canon_fidelity": null,
+        "constraint_fidelity": null,
+        "scope_control": null,
+        "voice_preservation": null,
+        "prose_quality": null,
+        "repetition_control": null,
+        "schema_or_protocol_compliance": null,
+        "usefulness_to_author": null,
+        "overall_preference": null,
+        "fatal_flaw": null,
+        "fatal_flaw_reason": null
+      },
+      "Candidate B": {
+        "instruction_compliance": null,
+        "canon_fidelity": null,
+        "constraint_fidelity": null,
+        "scope_control": null,
+        "voice_preservation": null,
+        "prose_quality": null,
+        "repetition_control": null,
+        "schema_or_protocol_compliance": null,
+        "usefulness_to_author": null,
+        "overall_preference": null,
+        "fatal_flaw": null,
+        "fatal_flaw_reason": null
+      }
+    }
+  }
+}

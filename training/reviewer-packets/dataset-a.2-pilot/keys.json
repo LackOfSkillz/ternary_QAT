@@ -1,0 +1,462 @@
+{
+  "dsa2-eval-nochange-001": {
+    "record_id": "dsa2-eval-nochange-001",
+    "seed": "dispatch-21-pilot",
+    "unblinding": {
+      "Candidate A": {
+        "identity": "authored-rejected-1",
+        "gate_summary": {
+          "format_valid": true,
+          "schema_valid": true,
+          "protocol_valid": true,
+          "constraint_valid": null,
+          "source_fidelity": false,
+          "no_change_valid": false,
+          "repetition_valid": true,
+          "memorization_valid": true,
+          "scope_valid": true,
+          "completion_valid": true,
+          "behavioral_valid": null
+        }
+      },
+      "Candidate B": {
+        "identity": "authored-rejected-0",
+        "gate_summary": {
+          "format_valid": false,
+          "schema_valid": false,
+          "protocol_valid": false,
+          "constraint_valid": null,
+          "source_fidelity": false,
+          "no_change_valid": false,
+          "repetition_valid": true,
+          "memorization_valid": true,
+          "scope_valid": false,
+          "completion_valid": true,
+          "behavioral_valid": null
+        }
+      },
+      "Candidate C": {
+        "identity": "authored-preferred",
+        "gate_summary": {
+          "format_valid": true,
+          "schema_valid": true,
+          "protocol_valid": true,
+          "constraint_valid": null,
+          "source_fidelity": true,
+          "no_change_valid": true,
+          "repetition_valid": true,
+          "memorization_valid": false,
+          "scope_valid": true,
+          "completion_valid": true,
+          "behavioral_valid": null
+        }
+      }
+    }
+  },
+  "dsa2-eval-nochange-002": {
+    "record_id": "dsa2-eval-nochange-002",
+    "seed": "dispatch-21-pilot",
+    "unblinding": {
+      "Candidate A": {
+        "identity": "authored-rejected-0",
+        "gate_summary": {
+          "format_valid": false,
+          "schema_valid": false,
+          "protocol_valid": false,
+          "constraint_valid": null,
+          "source_fidelity": false,
+          "no_change_valid": false,
+          "repetition_valid": true,
+          "memorization_valid": true,
+          "scope_valid": false,
+          "completion_valid": true,
+          "behavioral_valid": null
+        }
+      },
+      "Candidate B": {
+        "identity": "authored-preferred",
+        "gate_summary": {
+          "format_valid": true,
+          "schema_valid": true,
+          "protocol_valid": true,
+          "constraint_valid": null,
+          "source_fidelity": true,
+          "no_change_valid": true,
+          "repetition_valid": true,
+          "memorization_valid": false,
+          "scope_valid": true,
+          "completion_valid": true,
+          "behavioral_valid": null
+        }
+      },
+      "Candidate C": {
+        "identity": "authored-rejected-1",
+        "gate_summary": {
+          "format_valid": true,
+          "schema_valid": true,
+          "protocol_valid": true,
+          "constraint_valid": null,
+          "source_fidelity": false,
+          "no_change_valid": false,
+          "repetition_valid": true,
+          "memorization_valid": true,
+          "scope_valid": true,
+          "completion_valid": true,
+          "behavioral_valid": null
+        }
+      }
+    }
+  },
+  "dsa2-eval-changed-001": {
+    "record_id": "dsa2-eval-changed-001",
+    "seed": "dispatch-21-pilot",
+    "unblinding": {
+      "Candidate A": {
+        "identity": "authored-rejected-0",
+        "gate_summary": {
+          "format_valid": true,
+          "schema_valid": true,
+          "protocol_valid": true,
+          "constraint_valid": null,
+          "source_fidelity": true,
+          "no_change_valid": null,
+          "repetition_valid": false,
+          "memorization_valid": true,
+          "scope_valid": true,
+          "completion_valid": true,
+          "behavioral_valid": null
+        }
+      },
+      "Candidate B": {
+        "identity": "authored-preferred",
+        "gate_summary": {
+          "format_valid": true,
+          "schema_valid": true,
+          "protocol_valid": true,
+          "constraint_valid": null,
+          "source_fidelity": true,
+          "no_change_valid": null,
+          "repetition_valid": true,
+          "memorization_valid": false,
+          "scope_valid": true,
+          "completion_valid": true,
+          "behavioral_valid": null
+        }
+      }
+    }
+  },
+  "dsa2-eval-prose-001": {
+    "record_id": "dsa2-eval-prose-001",
+    "seed": "dispatch-21-pilot",
+    "unblinding": {
+      "Candidate A": {
+        "identity": "authored-rejected-1",
+        "gate_summary": {
+          "format_valid": true,
+          "schema_valid": true,
+          "protocol_valid": true,
+          "constraint_valid": null,
+          "source_fidelity": false,
+          "no_change_valid": null,
+          "repetition_valid": true,
+          "memorization_valid": true,
+          "scope_valid": false,
+          "completion_valid": true,
+          "behavioral_valid": null
+        }
+      },
+      "Candidate B": {
+        "identity": "authored-preferred",
+        "gate_summary": {
+          "format_valid": true,
+          "schema_valid": true,
+          "protocol_valid": true,
+          "constraint_valid": null,
+          "source_fidelity": true,
+          "no_change_valid": null,
+          "repetition_valid": true,
+          "memorization_valid": false,
+          "scope_valid": true,
+          "completion_valid": true,
+          "behavioral_valid": null
+        }
+      },
+      "Candidate C": {
+        "identity": "authored-rejected-0",
+        "gate_summary": {
+          "format_valid": true,
+          "schema_valid": true,
+          "protocol_valid": true,
+          "constraint_valid": null,
+          "source_fidelity": false,
+          "no_change_valid": null,
+          "repetition_valid": false,
+          "memorization_valid": true,
+          "scope_valid": false,
+          "completion_valid": true,
+          "behavioral_valid": null
+        }
+      }
+    }
+  },
+  "dsa2-eval-prose-002": {
+    "record_id": "dsa2-eval-prose-002",
+    "seed": "dispatch-21-pilot",
+    "unblinding": {
+      "Candidate A": {
+        "identity": "authored-preferred",
+        "gate_summary": {
+          "format_valid": true,
+          "schema_valid": true,
+          "protocol_valid": true,
+          "constraint_valid": null,
+          "source_fidelity": true,
+          "no_change_valid": null,
+          "repetition_valid": true,
+          "memorization_valid": false,
+          "scope_valid": true,
+          "completion_valid": true,
+          "behavioral_valid": null
+        }
+      },
+      "Candidate B": {
+        "identity": "authored-rejected-1",
+        "gate_summary": {
+          "format_valid": true,
+          "schema_valid": true,
+          "protocol_valid": true,
+          "constraint_valid": null,
+          "source_fidelity": false,
+          "no_change_valid": null,
+          "repetition_valid": true,
+          "memorization_valid": true,
+          "scope_valid": false,
+          "completion_valid": true,
+          "behavioral_valid": null
+        }
+      },
+      "Candidate C": {
+        "identity": "authored-rejected-0",
+        "gate_summary": {
+          "format_valid": true,
+          "schema_valid": true,
+          "protocol_valid": true,
+          "constraint_valid": null,
+          "source_fidelity": false,
+          "no_change_valid": null,
+          "repetition_valid": false,
+          "memorization_valid": true,
+          "scope_valid": false,
+          "completion_valid": true,
+          "behavioral_valid": null
+        }
+      }
+    }
+  },
+  "dsa2-eval-canon-001": {
+    "record_id": "dsa2-eval-canon-001",
+    "seed": "dispatch-21-pilot",
+    "unblinding": {
+      "Candidate A": {
+        "identity": "authored-rejected-0",
+        "gate_summary": {
+          "format_valid": true,
+          "schema_valid": false,
+          "protocol_valid": true,
+          "constraint_valid": false,
+          "source_fidelity": true,
+          "no_change_valid": null,
+          "repetition_valid": true,
+          "memorization_valid": true,
+          "scope_valid": true,
+          "completion_valid": true,
+          "behavioral_valid": null
+        }
+      },
+      "Candidate B": {
+        "identity": "authored-preferred",
+        "gate_summary": {
+          "format_valid": true,
+          "schema_valid": true,
+          "protocol_valid": true,
+          "constraint_valid": true,
+          "source_fidelity": true,
+          "no_change_valid": null,
+          "repetition_valid": true,
+          "memorization_valid": false,
+          "scope_valid": true,
+          "completion_valid": true,
+          "behavioral_valid": null
+        }
+      }
+    }
+  },
+  "dsa2-eval-canon-002": {
+    "record_id": "dsa2-eval-canon-002",
+    "seed": "dispatch-21-pilot",
+    "unblinding": {
+      "Candidate A": {
+        "identity": "authored-preferred",
+        "gate_summary": {
+          "format_valid": true,
+          "schema_valid": true,
+          "protocol_valid": true,
+          "constraint_valid": true,
+          "source_fidelity": true,
+          "no_change_valid": null,
+          "repetition_valid": true,
+          "memorization_valid": false,
+          "scope_valid": true,
+          "completion_valid": true,
+          "behavioral_valid": null
+        }
+      },
+      "Candidate B": {
+        "identity": "authored-rejected-0",
+        "gate_summary": {
+          "format_valid": true,
+          "schema_valid": false,
+          "protocol_valid": true,
+          "constraint_valid": false,
+          "source_fidelity": true,
+          "no_change_valid": null,
+          "repetition_valid": true,
+          "memorization_valid": true,
+          "scope_valid": true,
+          "completion_valid": true,
+          "behavioral_valid": null
+        }
+      }
+    }
+  },
+  "dsa2-eval-constraint-001": {
+    "record_id": "dsa2-eval-constraint-001",
+    "seed": "dispatch-21-pilot",
+    "unblinding": {
+      "Candidate A": {
+        "identity": "authored-preferred",
+        "gate_summary": {
+          "format_valid": true,
+          "schema_valid": true,
+          "protocol_valid": true,
+          "constraint_valid": true,
+          "source_fidelity": true,
+          "no_change_valid": null,
+          "repetition_valid": true,
+          "memorization_valid": false,
+          "scope_valid": true,
+          "completion_valid": true,
+          "behavioral_valid": null
+        }
+      },
+      "Candidate B": {
+        "identity": "authored-rejected-0",
+        "gate_summary": {
+          "format_valid": true,
+          "schema_valid": true,
+          "protocol_valid": true,
+          "constraint_valid": false,
+          "source_fidelity": true,
+          "no_change_valid": null,
+          "repetition_valid": true,
+          "memorization_valid": true,
+          "scope_valid": true,
+          "completion_valid": true,
+          "behavioral_valid": null
+        }
+      }
+    }
+  },
+  "dsa2-eval-scene-001": {
+    "record_id": "dsa2-eval-scene-001",
+    "seed": "dispatch-21-pilot",
+    "unblinding": {
+      "Candidate A": {
+        "identity": "authored-rejected-0",
+        "gate_summary": {
+          "format_valid": true,
+          "schema_valid": false,
+          "protocol_valid": true,
+          "constraint_valid": null,
+          "source_fidelity": true,
+          "no_change_valid": null,
+          "repetition_valid": true,
+          "memorization_valid": false,
+          "scope_valid": true,
+          "completion_valid": true,
+          "behavioral_valid": null
+        }
+      },
+      "Candidate B": {
+        "identity": "authored-preferred",
+        "gate_summary": {
+          "format_valid": true,
+          "schema_valid": true,
+          "protocol_valid": true,
+          "constraint_valid": null,
+          "source_fidelity": true,
+          "no_change_valid": null,
+          "repetition_valid": true,
+          "memorization_valid": false,
+          "scope_valid": true,
+          "completion_valid": true,
+          "behavioral_valid": null
+        }
+      }
+    }
+  },
+  "dsa2-eval-boundary-001": {
+    "record_id": "dsa2-eval-boundary-001",
+    "seed": "dispatch-21-pilot",
+    "unblinding": {
+      "Candidate A": {
+        "identity": "authored-rejected-0",
+        "gate_summary": {
+          "format_valid": true,
+          "schema_valid": true,
+          "protocol_valid": true,
+          "constraint_valid": null,
+          "source_fidelity": null,
+          "no_change_valid": null,
+          "repetition_valid": false,
+          "memorization_valid": true,
+          "scope_valid": true,
+          "completion_valid": true,
+          "behavioral_valid": null
+        }
+      },
+      "Candidate B": {
+        "identity": "authored-preferred",
+        "gate_summary": {
+          "format_valid": true,
+          "schema_valid": true,
+          "protocol_valid": true,
+          "constraint_valid": null,
+          "source_fidelity": null,
+          "no_change_valid": null,
+          "repetition_valid": true,
+          "memorization_valid": false,
+          "scope_valid": true,
+          "completion_valid": true,
+          "behavioral_valid": null
+        }
+      },
+      "Candidate C": {
+        "identity": "authored-rejected-1",
+        "gate_summary": {
+          "format_valid": true,
+          "schema_valid": true,
+          "protocol_valid": true,
+          "constraint_valid": null,
+          "source_fidelity": null,
+          "no_change_valid": null,
+          "repetition_valid": true,
+          "memorization_valid": true,
+          "scope_valid": true,
+          "completion_valid": true,
+          "behavioral_valid": null
+        }
+      }
+    }
+  }
+}

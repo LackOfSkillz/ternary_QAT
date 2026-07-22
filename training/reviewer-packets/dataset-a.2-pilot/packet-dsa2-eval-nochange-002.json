@@ -1,0 +1,87 @@
+{
+  "record_id": "dsa2-eval-nochange-002",
+  "task_family": "focused_revision",
+  "task_instruction": "Perform a focused anti-slop pass. If the passage has no genuine slop or error, return it unchanged in the structured wrapper and say so.",
+  "source_material": "She did not ring the bell as she crossed, though the rule said to ring it in fog. The rule was for strangers. The estuary was not a stranger to her, and she was not a stranger to it.",
+  "context": "",
+  "canon": [],
+  "hard_constraints": [],
+  "expected_output_contract": {
+    "type": "json",
+    "schema_id": "no-change-v1",
+    "required_keys": []
+  },
+  "candidates": [
+    {
+      "label": "Candidate A",
+      "output": "She did not ring the bell as she crossed, though the rule said to ring it in fog. The rule was for strangers. The estuary was not a stranger to her, and she was not a stranger to it."
+    },
+    {
+      "label": "Candidate B",
+      "output": "{\"changed\": false, \"reason\": \"Clean prose; the broken rule is intentional and earned.\", \"text\": \"She did not ring the bell as she crossed, though the rule said to ring it in fog. The rule was for strangers. The estuary was not a stranger to her, and she was not a stranger to it.\"}"
+    },
+    {
+      "label": "Candidate C",
+      "output": "{\"changed\": false, \"reason\": \"Clean prose; the broken rule is intentional and earned.\", \"text\": \"She did not ring the bell as she crossed, though the rule said to ring it in fog. The rule was for strangers. The estuary was not a stranger to her, and she was not a stranger to it. The lamp guttered and did not go out.\"}"
+    }
+  ],
+  "review_form": {
+    "instructions": "Score each candidate 1-5 on every dimension, choose an overall preference, and flag any fatal flaw. Submit independently BEFORE any discussion. Do not average away a fatal flaw.",
+    "fatal_flaw_catalog": [
+      "invented_canon",
+      "contradiction",
+      "ignored_hard_constraint",
+      "severe_repetition",
+      "incorrect_no_change_behavior",
+      "unusable_schema",
+      "major_voice_destruction",
+      "copied_training_target",
+      "truncated_output",
+      "unrelated_response"
+    ],
+    "per_candidate": {
+      "Candidate A": {
+        "instruction_compliance": null,
+        "canon_fidelity": null,
+        "constraint_fidelity": null,
+        "scope_control": null,
+        "voice_preservation": null,
+        "prose_quality": null,
+        "repetition_control": null,
+        "schema_or_protocol_compliance": null,
+        "usefulness_to_author": null,
+        "overall_preference": null,
+        "fatal_flaw": null,
+        "fatal_flaw_reason": null
+      },
+      "Candidate B": {
+        "instruction_compliance": null,
+        "canon_fidelity": null,
+        "constraint_fidelity": null,
+        "scope_control": null,
+        "voice_preservation": null,
+        "prose_quality": null,
+        "repetition_control": null,
+        "schema_or_protocol_compliance": null,
+        "usefulness_to_author": null,
+        "overall_preference": null,
+        "fatal_flaw": null,
+        "fatal_flaw_reason": null
+      },
+      "Candidate C": {
+        "instruction_compliance": null,
+        "canon_fidelity": null,
+        "constraint_fidelity": null,
+        "scope_control": null,
+        "voice_preservation": null,
+        "prose_quality": null,
+        "repetition_control": null,
+        "schema_or_protocol_compliance": null,
+        "usefulness_to_author": null,
+        "overall_preference": null,
+        "fatal_flaw": null,
+        "fatal_flaw_reason": null
+      }
+    }
+  }
+}

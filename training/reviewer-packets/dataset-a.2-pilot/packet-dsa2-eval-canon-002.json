@@ -1,0 +1,69 @@
+{
+  "record_id": "dsa2-eval-canon-002",
+  "task_family": "canon_extraction",
+  "task_instruction": "Extract the passage's factual content as JSON {\"facts\": [...], \"insufficient_evidence\": [...]}. Record each speaker's claim as a separate fact with certainty character_belief; use established only for what the narration presents as observed. Quote a short evidence span.",
+  "source_material": "The relic's absence split the order. The prior said it had been sent to the capital for safekeeping. A novice whispered he'd seen it in the abbot's own cell that morning. The reliquary stood open. The bell for lauds, all noted, had rung late.",
+  "context": "",
+  "canon": [],
+  "hard_constraints": [],
+  "expected_output_contract": {
+    "type": "json",
+    "schema_id": "canon-facts-v1",
+    "required_keys": []
+  },
+  "candidates": [
+    {
+      "label": "Candidate A",
+      "output": "{\"facts\": [{\"entity\": \"the relic (prior's claim)\", \"fact\": \"The prior claims the relic was sent to the capital for safekeeping.\", \"certainty\": \"character_belief\", \"evidence\": \"it had been sent to the capital for safekeeping\"}, {\"entity\": \"the relic (novice's claim)\", \"fact\": \"A novice claims he saw the relic in the abbot's cell that morning.\", \"certainty\": \"character_belief\", \"evidence\": \"he'd seen it in the abbot's own cell that morning\"}, {\"entity\": \"the lauds bell\", \"fact\": \"The bell for lauds rang late.\", \"certainty\": \"established\", \"evidence\": \"The bell for lauds, all noted, had rung late\"}], \"insufficient_evidence\": [\"Where the relic actually is\", \"Whether the prior or the novice is right\"]}"
+    },
+    {
+      "label": "Candidate B",
+      "output": "{\"facts\": [{\"speaker\": \"the relic (prior's claim)\", \"claim\": \"The prior claims the relic was sent to the capital for safekeeping.\"}, {\"speaker\": \"the relic (novice's claim)\", \"claim\": \"A novice claims he saw the relic in the abbot's cell that morning.\"}, {\"speaker\": \"the lauds bell\", \"claim\": \"The bell for lauds rang late.\"}]}"
+    }
+  ],
+  "review_form": {
+    "instructions": "Score each candidate 1-5 on every dimension, choose an overall preference, and flag any fatal flaw. Submit independently BEFORE any discussion. Do not average away a fatal flaw.",
+    "fatal_flaw_catalog": [
+      "invented_canon",
+      "contradiction",
+      "ignored_hard_constraint",
+      "severe_repetition",
+      "incorrect_no_change_behavior",
+      "unusable_schema",
+      "major_voice_destruction",
+      "copied_training_target",
+      "truncated_output",
+      "unrelated_response"
+    ],
+    "per_candidate": {
+      "Candidate A": {
+        "instruction_compliance": null,
+        "canon_fidelity": null,
+        "constraint_fidelity": null,
+        "scope_control": null,
+        "voice_preservation": null,
+        "prose_quality": null,
+        "repetition_control": null,
+        "schema_or_protocol_compliance": null,
+        "usefulness_to_author": null,
+        "overall_preference": null,
+        "fatal_flaw": null,
+        "fatal_flaw_reason": null
+      },
+      "Candidate B": {
+        "instruction_compliance": null,
+        "canon_fidelity": null,
+        "constraint_fidelity": null,
+        "scope_control": null,
+        "voice_preservation": null,
+        "prose_quality": null,
+        "repetition_control": null,
+        "schema_or_protocol_compliance": null,
+        "usefulness_to_author": null,
+        "overall_preference": null,
+        "fatal_flaw": null,
+        "fatal_flaw_reason": null
+      }
+    }
+  }
+}

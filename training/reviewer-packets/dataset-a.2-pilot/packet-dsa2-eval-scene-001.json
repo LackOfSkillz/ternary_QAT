@@ -1,0 +1,69 @@
+{
+  "record_id": "dsa2-eval-scene-001",
+  "task_family": "scene_contract",
+  "task_instruction": "Given the writer's scene request, produce a STRUCTURED scene contract as a single YAML object with exactly these fields: viewpoint, location, scene_objective, required_outcome, prohibited_outcome, knowledge_boundary, protected_craft_or_tone. Fill each field only from what the writer stated.",
+  "source_material": "Scene contract. Third limited on Yusuf, never leave him. Place: a mountain border post at dusk, one bored guard. Yusuf has to get his sister's papers stamped without the guard seeing the second name inked under the first. Result needed: stamped before the shift changes. Hard rule: the guard must not spot the second name. Yusuf doesn't speak the guard's dialect. Keep it tight and tense.",
+  "context": "Scene contract. Third limited on Yusuf, never leave him. Place: a mountain border post at dusk, one bored guard. Yusuf has to get his sister's papers stamped without the guard seeing the second name inked under the first. Result needed: stamped before the shift changes. Hard rule: the guard must not spot the second name. Yusuf doesn't speak the guard's dialect. Keep it tight and tense.",
+  "canon": [],
+  "hard_constraints": [],
+  "expected_output_contract": {
+    "type": "yaml",
+    "schema_id": "scene-contract-v1",
+    "required_keys": []
+  },
+  "candidates": [
+    {
+      "label": "Candidate A",
+      "output": "viewpoint_character: Third person limited, never leaving Yusuf.\nlocation: A mountain border post at dusk, staffed by one bored guard.\nscene_objective: Yusuf must get his sister's papers stamped.\nrequired_outcome: The papers are stamped before the shift changes.\nprohibited_outcome: The guard must not spot the second name inked under the first.\nknowledge_boundary: Yusuf does not speak the guard's dialect.\nprotected_craft_or_tone: Tight and tense."
+    },
+    {
+      "label": "Candidate B",
+      "output": "viewpoint: Third person limited, never leaving Yusuf.\nlocation: A mountain border post at dusk, staffed by one bored guard.\nscene_objective: Yusuf must get his sister's papers stamped.\nrequired_outcome: The papers are stamped before the shift changes.\nprohibited_outcome: The guard must not spot the second name inked under the first.\nknowledge_boundary: Yusuf does not speak the guard's dialect.\nprotected_craft_or_tone: Tight and tense."
+    }
+  ],
+  "review_form": {
+    "instructions": "Score each candidate 1-5 on every dimension, choose an overall preference, and flag any fatal flaw. Submit independently BEFORE any discussion. Do not average away a fatal flaw.",
+    "fatal_flaw_catalog": [
+      "invented_canon",
+      "contradiction",
+      "ignored_hard_constraint",
+      "severe_repetition",
+      "incorrect_no_change_behavior",
+      "unusable_schema",
+      "major_voice_destruction",
+      "copied_training_target",
+      "truncated_output",
+      "unrelated_response"
+    ],
+    "per_candidate": {
+      "Candidate A": {
+        "instruction_compliance": null,
+        "canon_fidelity": null,
+        "constraint_fidelity": null,
+        "scope_control": null,
+        "voice_preservation": null,
+        "prose_quality": null,
+        "repetition_control": null,
+        "schema_or_protocol_compliance": null,
+        "usefulness_to_author": null,
+        "overall_preference": null,
+        "fatal_flaw": null,
+        "fatal_flaw_reason": null
+      },
+      "Candidate B": {
+        "instruction_compliance": null,
+        "canon_fidelity": null,
+        "constraint_fidelity": null,
+        "scope_control": null,
+        "voice_preservation": null,
+        "prose_quality": null,
+        "repetition_control": null,
+        "schema_or_protocol_compliance": null,
+        "usefulness_to_author": null,
+        "overall_preference": null,
+        "fatal_flaw": null,
+        "fatal_flaw_reason": null
+      }
+    }
+  }
+}

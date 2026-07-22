@@ -1,0 +1,73 @@
+{
+  "record_id": "dsa2-eval-constraint-001",
+  "task_family": "constraint_check",
+  "task_instruction": "You are a continuity checker. Decide whether the draft lets a character act on knowledge they could not yet have. Respond with one JSON object {violation, type, constraint_ids, explanation, evidence}. List every load-bearing constraint id, and ONLY those.",
+  "source_material": "In Scene 4 Ovid leaned over the grave and murmured, 'Rest now, Calla,' as if he had always known her.",
+  "context": "K1 (knowledge gate): Detective Ovid does not learn the victim's true name, 'Calla', until the exhumation in Scene 8.\nK2 (knowledge gate): The coroner's note is sealed until Scene 6.\nT1 (timeline): This passage is Scene 4.",
+  "canon": [
+    "K1 (knowledge gate): Detective Ovid does not learn the victim's true name, 'Calla', until the exhumation in Scene 8.",
+    "K2 (knowledge gate): The coroner's note is sealed until Scene 6.",
+    "T1 (timeline): This passage is Scene 4."
+  ],
+  "hard_constraints": [],
+  "expected_output_contract": {
+    "type": "json",
+    "schema_id": "constraint-verdict-v1",
+    "required_keys": []
+  },
+  "candidates": [
+    {
+      "label": "Candidate A",
+      "output": "{\"violation\": true, \"type\": \"knowledge_state\", \"constraint_ids\": [\"K1\"], \"explanation\": \"K1 says Ovid does not learn the name 'Calla' until Scene 8, yet in Scene 4 he uses it. K2 and T1 are respected context, not the causal set.\", \"evidence\": \"Rest now, Calla\"}"
+    },
+    {
+      "label": "Candidate B",
+      "output": "{\"violation\": true, \"type\": \"knowledge_state\", \"constraint_ids\": [\"K1\", \"K2\", \"T1\", \"C2\"], \"explanation\": \"K1 says Ovid does not learn the name 'Calla' until Scene 8, yet in Scene 4 he uses it. K2 and T1 are respected context, not the causal set.\", \"evidence\": \"Rest now, Calla\"}"
+    }
+  ],
+  "review_form": {
+    "instructions": "Score each candidate 1-5 on every dimension, choose an overall preference, and flag any fatal flaw. Submit independently BEFORE any discussion. Do not average away a fatal flaw.",
+    "fatal_flaw_catalog": [
+      "invented_canon",
+      "contradiction",
+      "ignored_hard_constraint",
+      "severe_repetition",
+      "incorrect_no_change_behavior",
+      "unusable_schema",
+      "major_voice_destruction",
+      "copied_training_target",
+      "truncated_output",
+      "unrelated_response"
+    ],
+    "per_candidate": {
+      "Candidate A": {
+        "instruction_compliance": null,
+        "canon_fidelity": null,
+        "constraint_fidelity": null,
+        "scope_control": null,
+        "voice_preservation": null,
+        "prose_quality": null,
+        "repetition_control": null,
+        "schema_or_protocol_compliance": null,
+        "usefulness_to_author": null,
+        "overall_preference": null,
+        "fatal_flaw": null,
+        "fatal_flaw_reason": null
+      },
+      "Candidate B": {
+        "instruction_compliance": null,
+        "canon_fidelity": null,
+        "constraint_fidelity": null,
+        "scope_control": null,
+        "voice_preservation": null,
+        "prose_quality": null,
+        "repetition_control": null,
+        "schema_or_protocol_compliance": null,
+        "usefulness_to_author": null,
+        "overall_preference": null,
+        "fatal_flaw": null,
+        "fatal_flaw_reason": null
+      }
+    }
+  }
+}
