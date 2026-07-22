@@ -25,6 +25,22 @@ threshold change, no weights published, `master` untouched.**
   That human gate is open, so **Phase B (Dataset A.3 + LoRA) is BLOCKED** until it passes. 5 tests;
   Gate 0 zero drift.
 
+### Dispatch 27A — Blind prose review kits for external reviewers (2026-07-22)
+
+Packaged the frozen Phase A blind materials into two self-contained reviewer ZIP kits so the human
+gate can be completed. **No new outputs; no unblinding; no training.**
+
+- `benchmarks/runs/qwen-prose-confirmation-v1/reviewer-kits/` → `prose-review-chatgpt-v1.zip`,
+  `prose-review-claude-v1.zip` (+ private manifest + validation report). Each kit: README, scoring
+  instructions, 1–5 rubric (10 dimensions + fatal-failure rules), 36 anonymous review units,
+  YAML+JSON score templates (no prefilled scores), submission checklist.
+- **Fully blind:** reviewer-salted randomized order (different per kit), no identity key / private
+  paths / prior scores / deployment or model manifests, all scores null, output text preserved
+  verbatim (hash-checked). **Forbidden-term scan = 0** — kit dir/zip/`review_id` were **neutralized**
+  (`prose-review-*`, `prose-confirmation-v1`) rather than the dispatch's illustrative `qwen-*` names,
+  which would have announced the model to the blind reviewer (blindness overrides the sample name;
+  the private manifest keeps the true run id). 8 tests enforce the invariants.
+
 ### Dispatch 27 Phase B prep — Dataset A.3 + frozen LoRA config (training HELD) (2026-07-22)
 
 Per Gary's choice at the gate ("prep A.3, hold training"), prepared Phase B **without training**.
