@@ -121,8 +121,11 @@ def run(cfg_path, validate_only=False, dry_run=False, max_steps_override=None,
             batch_ids = getattr(backend, "last_batch_ids", None) or ["<stub-batch>"]
             runtime.check_loss_finite(loss, step=step, lr=cfg["optimization"].get("learning_rate"),
                                       batch_ids=batch_ids)
-            grad_mon.observe(grad_norm, step=step)
+            grad_mon.observe(grad_norm, step=step)     # raw-norm rail (abort BEFORE step)
             stall.observe(step, loss_available=True)
+            # all rails passed on the RAW gradient -> apply the (clipped) optimizer step
+            if hasattr(backend, "optimizer_step"):
+                backend.optimizer_step()
             entry = {"step": step, "loss": round(float(loss), 6),
                      "grad_norm": round(float(grad_norm), 6), "batch_ids": batch_ids}
             entry.update(getattr(backend, "last_step_meta", {}) or {})

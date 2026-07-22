@@ -63,6 +63,9 @@ class StubBackend:
         self.step = step
         return loss, grad_norm
 
+    def optimizer_step(self):
+        pass                                    # stub has no optimizer
+
     def save_checkpoint(self, path, writer=None):
         target = writer.resolve(path) if writer else os.path.abspath(path)
         os.makedirs(target, exist_ok=True)
@@ -100,6 +103,8 @@ class HFBackend:
         self._batch_ptr = 0
         self.last_batch_ids = []
         self.diagnostics = {}
+        self.last_step_meta = None
+        self.last_gen_meta = {}
 
     # ---- loading ----
     @classmethod
@@ -289,9 +294,20 @@ class HFBackend:
         lr = float(o.get("learning_rate", 2e-4))
         params = [p for p in self.model.parameters() if p.requires_grad]
         self.optimizer = torch.optim.AdamW(params, lr=lr)
-        max_steps = o.get("max_steps", 1)
-        self.scheduler = torch.optim.lr_scheduler.LambdaLR(
-            self.optimizer, lambda s: 1.0)
+        # gradient clipping config (raw norm stays visible; clip is applied before step)
+        gc = self.cfg.get("gradient_clipping") or {}
+        self.clip_enabled = bool(gc.get("enabled"))
+        self.clip_max_norm = float(gc.get("max_norm", 1.0))
+        self.clip_norm_type = float(gc.get("norm_type", 2.0))
+        # explicit integer warmup (precedence over warmup_ratio)
+        warmup = int(self.cfg.get("warmup_steps") or 0)
+        self.diagnostics["warmup_steps"] = warmup
+
+        def lr_lambda(step_idx):               # 0-indexed optimizer-step count
+            if warmup > 0 and step_idx < warmup:
+                return float(step_idx + 1) / float(warmup)
+            return 1.0
+        self.scheduler = torch.optim.lr_scheduler.LambdaLR(self.optimizer, lr_lambda)
         train_file = C.abs_repo(self.cfg["dataset"]["train_file"])
         rows = [json.loads(l) for l in open(train_file, encoding="utf-8") if l.strip()]
         max_len = self.cfg.get("sequence", {}).get("max_sequence_length", 2048)
@@ -314,6 +330,10 @@ class HFBackend:
             "truncated": examples[0]["truncated_token_count"]}
 
     def train_step(self, step, inject=None):
+        """Compute phase ONLY: forward, loss, backward, record RAW global grad norm,
+        then clip. Returns (loss, RAW grad norm) so the caller's rails see the raw
+        value BEFORE any optimizer step. optimizer_step() applies the (clipped) step
+        only after the rails pass."""
         import time
         import torch
         batch, ids = self._batches[self._batch_ptr % len(self._batches)]
@@ -330,25 +350,42 @@ class HFBackend:
         loss.backward()
         tb = time.time()
         params = [p for p in self.model.parameters() if p.requires_grad and p.grad is not None]
-        grad_norm = torch.nn.utils.clip_grad_norm_(params, max_norm=1e9).item()
+        n_nonfinite = sum(1 for p in params if not torch.isfinite(p.grad).all())
+        max_norm = self.clip_max_norm if getattr(self, "clip_enabled", False) else 1e9
+        tc0 = time.time()
+        raw = float(torch.nn.utils.clip_grad_norm_(
+            params, max_norm=max_norm, norm_type=getattr(self, "clip_norm_type", 2.0)).item())
+        tc1 = time.time()
+        clipped = (min(raw, self.clip_max_norm) if getattr(self, "clip_enabled", False) else raw)
+        was_clipped = bool(getattr(self, "clip_enabled", False) and raw > self.clip_max_norm)
         lr = self.optimizer.param_groups[0]["lr"]
-        self.optimizer.step()
-        self.scheduler.step()
-        to = time.time()
         target_tokens = int((batch["labels"] != -100).sum().item())
         input_tokens = int(batch["attention_mask"].sum().item())
         self.last_step_meta = {
-            "lr": lr, "prompt_tokens": input_tokens - target_tokens,
-            "target_tokens": target_tokens, "input_tokens": input_tokens,
+            "lr": lr, "raw_gradient_norm": round(raw, 6),
+            "clipped_gradient_norm": round(clipped, 6), "gradient_was_clipped": was_clipped,
+            "params_with_grad": len(params), "nonfinite_grads": n_nonfinite,
+            "prompt_tokens": input_tokens - target_tokens, "target_tokens": target_tokens,
+            "input_tokens": input_tokens, "truncated": 0,
             "forward_s": round(tf - t0, 4), "backward_s": round(tb - tf, 4),
-            "optimizer_s": round(to - tb, 4), "step_s": round(to - t0, 4),
+            "clip_s": round(tc1 - tc0, 4), "step_s": round(tc1 - t0, 4),
             "cuda_alloc_mb": (round(torch.cuda.memory_allocated() / 2**20, 1)
                               if self.device == "cuda" else None),
             "cuda_reserved_mb": (round(torch.cuda.memory_reserved() / 2**20, 1)
                                  if self.device == "cuda" else None),
             "cuda_peak_mb": (round(torch.cuda.max_memory_allocated() / 2**20, 1)
                              if self.device == "cuda" else None)}
-        return float(loss.item()), float(grad_norm)
+        return float(loss.item()), raw
+
+    def optimizer_step(self):
+        """Apply the (already-clipped) optimizer + scheduler step. Called only after
+        the caller's stop-condition rails pass."""
+        import time
+        t = time.time()
+        self.optimizer.step()
+        self.scheduler.step()
+        if self.last_step_meta is not None:
+            self.last_step_meta["optimizer_s"] = round(time.time() - t, 4)
 
     # ---- generation ----
     def generate(self, messages, gen=None):

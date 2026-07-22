@@ -108,6 +108,24 @@ def validate_config(cfg, cfg_path, require_hashes=True, check_overrides=None):
     if ebs <= 0:
         r.fail(f"effective batch size invalid ({ebs})")
 
+    # warmup steps (explicit integer; precedence over warmup_ratio)
+    ws = cfg.get("warmup_steps")
+    if ws is not None:
+        if not isinstance(ws, int) or ws < 0:
+            r.fail(f"warmup_steps must be a non-negative integer (got {ws!r})")
+        elif isinstance(ms, int) and ws >= ms:
+            r.fail(f"warmup_steps ({ws}) must be < max_steps ({ms})")
+        if o.get("warmup_ratio") not in (None, 0) and not cfg.get("warmup_precedence"):
+            r.fail("both warmup_steps and warmup_ratio are set without a documented "
+                   "warmup_precedence; warmup_steps takes precedence — declare it")
+
+    # gradient clipping shape (when present)
+    gc = cfg.get("gradient_clipping")
+    if gc is not None:
+        if gc.get("enabled") and not (isinstance(gc.get("max_norm"), (int, float))
+                                      and gc["max_norm"] > 0):
+            r.fail("gradient_clipping.enabled requires a positive max_norm")
+
     # production flags
     if cfg.get("production_approved") is not False:
         r.fail("production_approved must be false (experimental only)")
