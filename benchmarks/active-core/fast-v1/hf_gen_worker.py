@@ -27,7 +27,8 @@ def _sha(s):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--plan", required=True)
-    ap.add_argument("--role", required=True, choices=["target_base", "new_candidate"])
+    ap.add_argument("--role", required=True,
+                    help="model role key in the plan (target_base, new_candidate, lora_10, ...)")
     ap.add_argument("--base-model", required=True)
     ap.add_argument("--adapter", default=None)
     ap.add_argument("--out", required=True)
