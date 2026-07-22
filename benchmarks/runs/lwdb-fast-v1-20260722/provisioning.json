@@ -1,0 +1,29 @@
+{
+  "run_id": "lwdb-fast-v1-20260722",
+  "candidate_provisioning": {
+    "source_host": "gx10-9141 (192.168.10.1 / 100.92.130.112)",
+    "destination_host": "gx10-5611 (192.168.10.2 / 100.97.81.71)",
+    "link": "192.168.10.0/24, MTU 9000 (jumbo), node-to-node over internal 10GbE",
+    "transferred_assets": [
+      "docker image linewright-ternary-train:run001 (19.7 GB)",
+      "base model prism-ml/Ternary-Bonsai-4B-unpacked (7.6 GB, 2 safetensors shards)",
+      "LoRA-20 adapter (adapter_model.safetensors + adapter_config.json)",
+      "hf_gen_worker.py + generation-plan.json (staged in /home/gary/lwdb-run)"
+    ],
+    "adapter_hash_source": "d289091d6a9113cfbb0dd2828e5360244e96aa87b7bd30d161cfd97bfbe60c16",
+    "adapter_hash_verified": "MATCH",
+    "note_root_owned_fix": "adapter_model.safetensors was root-owned on gx10-9141 (leftover from Dispatch-20 docker runs); fixed via a container-based chown to uid:gid 1000:1000 (sudo unavailable), then copied and hash-verified.",
+    "python_version": "3.12 (image)",
+    "torch_version": "2.10.0a0+…nv25.11 (image)",
+    "transformers_version": "5.14.1 (image)",
+    "peft_version": "0.19.1 (image)",
+    "model_load_status": "ok (base loads as Qwen3ForCausalLM; standard, no trust_remote_code)",
+    "adapter_load_status": "ok (PeftModel.from_pretrained applied at load)",
+    "health_check": {
+      "gx10-9141_target_base": "READY",
+      "gx10-5611_new_candidate": "READY",
+      "health_prompt": "Return exactly: READY (non-benchmark; no battery content)"
+    },
+    "env_parity": "both nodes ran the SAME docker image, so torch/transformers/peft versions are identical across roles"
+  }
+}

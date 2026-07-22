@@ -1,0 +1,94 @@
+{
+  "schema": "slop-corpus-summary",
+  "schema_version": 1,
+  "version": "slop-corpus-v1",
+  "run_id": "unset",
+  "model_role": "target_base",
+  "output_ids": [
+    "target_base:lwdb-a-length-long",
+    "target_base:lwdb-a-length-short",
+    "target_base:lwdb-a-quiet-scene",
+    "target_base:lwdb-b-voice-lyrical",
+    "target_base:lwdb-b-voice-terse",
+    "target_base:lwdb-c-restraint-fix",
+    "target_base:lwdb-d-canon-apply",
+    "target_base:lwdb-f-surface-bare",
+    "target_base:lwdb-f-surface-compiled",
+    "target_base:lwdb-g-turn-multi",
+    "target_base:lwdb-g-turn-single",
+    "target_base:lwdb-h-refuse-harmful",
+    "target_base:lwdb-h-refuse-ordinary",
+    "target_base:lwdb-i-stability-long"
+  ],
+  "cross_output_similarity": {
+    "pairs": [
+      {
+        "a": "target_base:lwdb-c-restraint-fix",
+        "b": "target_base:lwdb-g-turn-single",
+        "similarity": 1.0
+      }
+    ],
+    "threshold": 0.4,
+    "threshold_status": "unvalidated"
+  },
+  "opening_pattern_clusters": [
+    {
+      "pattern": "the wind bites through the tarp",
+      "output_ids": [
+        "target_base:lwdb-a-length-long",
+        "target_base:lwdb-a-length-short"
+      ]
+    },
+    {
+      "pattern": "their eyes met across the workshop",
+      "output_ids": [
+        "target_base:lwdb-c-restraint-fix",
+        "target_base:lwdb-g-turn-single"
+      ]
+    }
+  ],
+  "ending_pattern_clusters": [
+    {
+      "pattern": "neither willing to look away first",
+      "output_ids": [
+        "target_base:lwdb-c-restraint-fix",
+        "target_base:lwdb-g-turn-multi",
+        "target_base:lwdb-g-turn-single"
+      ]
+    }
+  ],
+  "image_family_clusters": [],
+  "scene_solution_clusters": [],
+  "voice_convergence": {
+    "note": "requires pinned embeddings; interface-only"
+  },
+  "genre_separation": {},
+  "dominant_templates": [
+    {
+      "pattern": "the wind bites through the tarp",
+      "output_ids": [
+        "target_base:lwdb-a-length-long",
+        "target_base:lwdb-a-length-short"
+      ]
+    },
+    {
+      "pattern": "their eyes met across the workshop",
+      "output_ids": [
+        "target_base:lwdb-c-restraint-fix",
+        "target_base:lwdb-g-turn-single"
+      ]
+    }
+  ],
+  "evidence_output_ids": [
+    "target_base:lwdb-a-length-long",
+    "target_base:lwdb-a-length-short",
+    "target_base:lwdb-c-restraint-fix",
+    "target_base:lwdb-g-turn-multi",
+    "target_base:lwdb-g-turn-single"
+  ],
+  "confidence": "moderate",
+  "limitations": [
+    "deterministic overlap only; semantic image/voice convergence is interface-only",
+    "similarity threshold is unvalidated"
+  ]
+}

@@ -1,0 +1,88 @@
+{
+  "schema": "slop-corpus-summary",
+  "schema_version": 1,
+  "version": "slop-corpus-v1",
+  "run_id": "unset",
+  "model_role": "new_candidate",
+  "output_ids": [
+    "new_candidate:lwdb-a-length-long",
+    "new_candidate:lwdb-a-length-short",
+    "new_candidate:lwdb-a-quiet-scene",
+    "new_candidate:lwdb-b-voice-lyrical",
+    "new_candidate:lwdb-b-voice-terse",
+    "new_candidate:lwdb-c-restraint-fix",
+    "new_candidate:lwdb-d-canon-apply",
+    "new_candidate:lwdb-f-surface-bare",
+    "new_candidate:lwdb-f-surface-compiled",
+    "new_candidate:lwdb-g-turn-multi",
+    "new_candidate:lwdb-g-turn-single",
+    "new_candidate:lwdb-h-refuse-harmful",
+    "new_candidate:lwdb-h-refuse-ordinary",
+    "new_candidate:lwdb-i-stability-long"
+  ],
+  "cross_output_similarity": {
+    "pairs": [],
+    "threshold": 0.4,
+    "threshold_status": "unvalidated"
+  },
+  "opening_pattern_clusters": [
+    {
+      "pattern": "cael stands at the tollhouse a",
+      "output_ids": [
+        "new_candidate:lwdb-a-length-long",
+        "new_candidate:lwdb-a-length-short"
+      ]
+    },
+    {
+      "pattern": "moll stands at the door her",
+      "output_ids": [
+        "new_candidate:lwdb-f-surface-bare",
+        "new_candidate:lwdb-f-surface-compiled"
+      ]
+    }
+  ],
+  "ending_pattern_clusters": [
+    {
+      "pattern": "neither willing to look away first",
+      "output_ids": [
+        "new_candidate:lwdb-g-turn-multi",
+        "new_candidate:lwdb-g-turn-single"
+      ]
+    }
+  ],
+  "image_family_clusters": [],
+  "scene_solution_clusters": [],
+  "voice_convergence": {
+    "note": "requires pinned embeddings; interface-only"
+  },
+  "genre_separation": {},
+  "dominant_templates": [
+    {
+      "pattern": "cael stands at the tollhouse a",
+      "output_ids": [
+        "new_candidate:lwdb-a-length-long",
+        "new_candidate:lwdb-a-length-short"
+      ]
+    },
+    {
+      "pattern": "moll stands at the door her",
+      "output_ids": [
+        "new_candidate:lwdb-f-surface-bare",
+        "new_candidate:lwdb-f-surface-compiled"
+      ]
+    }
+  ],
+  "evidence_output_ids": [
+    "new_candidate:lwdb-a-length-long",
+    "new_candidate:lwdb-a-length-short",
+    "new_candidate:lwdb-f-surface-bare",
+    "new_candidate:lwdb-f-surface-compiled",
+    "new_candidate:lwdb-g-turn-multi",
+    "new_candidate:lwdb-g-turn-single"
+  ],
+  "confidence": "moderate",
+  "limitations": [
+    "deterministic overlap only; semantic image/voice convergence is interface-only",
+    "similarity threshold is unvalidated"
+  ]
+}

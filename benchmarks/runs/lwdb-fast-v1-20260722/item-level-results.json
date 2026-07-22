@@ -1,0 +1,605 @@
+[
+  {
+    "item_id": "lwdb-a-length-long",
+    "model_role": "new_candidate",
+    "mechanical_pass": false,
+    "failure_labels": [
+      "duplicate_sentence",
+      "incomplete_output",
+      "low_lexical_diversity",
+      "repeated_ngram",
+      "runaway_length"
+    ],
+    "slop_severity": "severe",
+    "dominant_slop": [
+      "duplicate_clause",
+      "duplicate_sentence",
+      "low_lexical_diversity",
+      "repeated_ngram"
+    ],
+    "hit_token_cap": true,
+    "output_tokens": 1024,
+    "output_hash": "66eadadf2d855036fcb3361789097dafb3c56bc086908aeebcd7c33a552afb54"
+  },
+  {
+    "item_id": "lwdb-a-length-long",
+    "model_role": "target_base",
+    "mechanical_pass": false,
+    "failure_labels": [
+      "incomplete_output",
+      "low_lexical_diversity",
+      "repeated_ngram",
+      "runaway_length"
+    ],
+    "slop_severity": "high",
+    "dominant_slop": [
+      "duplicate_clause",
+      "low_lexical_diversity",
+      "repeated_ngram"
+    ],
+    "hit_token_cap": true,
+    "output_tokens": 1024,
+    "output_hash": "c1e0a0d6bfd4b2b333cd81dcb1540480bd7ae7e5c64cb6120100b612b35f0f7c"
+  },
+  {
+    "item_id": "lwdb-a-length-short",
+    "model_role": "new_candidate",
+    "mechanical_pass": false,
+    "failure_labels": [
+      "duplicate_sentence",
+      "incomplete_output",
+      "low_lexical_diversity",
+      "repeated_ngram",
+      "runaway_length"
+    ],
+    "slop_severity": "severe",
+    "dominant_slop": [
+      "duplicate_clause",
+      "duplicate_sentence",
+      "low_lexical_diversity",
+      "repeated_ngram"
+    ],
+    "hit_token_cap": true,
+    "output_tokens": 1024,
+    "output_hash": "a95be8d2b0028e9ca4c5994637e03d477eb738a6a4f095fbe08f5ec7d82a7bc0"
+  },
+  {
+    "item_id": "lwdb-a-length-short",
+    "model_role": "target_base",
+    "mechanical_pass": true,
+    "failure_labels": [],
+    "slop_severity": "none",
+    "dominant_slop": [],
+    "hit_token_cap": false,
+    "output_tokens": 362,
+    "output_hash": "06e3fe1b360017aa2ce75e1cfb36df13a1be00644d56f931c1c125ce0ad78e59"
+  },
+  {
+    "item_id": "lwdb-a-quiet-scene",
+    "model_role": "new_candidate",
+    "mechanical_pass": false,
+    "failure_labels": [
+      "duplicate_sentence",
+      "incomplete_output",
+      "low_lexical_diversity",
+      "repeated_ngram",
+      "runaway_length"
+    ],
+    "slop_severity": "severe",
+    "dominant_slop": [
+      "duplicate_clause",
+      "duplicate_sentence",
+      "low_lexical_diversity",
+      "repeated_ngram"
+    ],
+    "hit_token_cap": true,
+    "output_tokens": 1024,
+    "output_hash": "63e8f741248cb67483549cf4c025574fb15fa2102dd147b6968a4535ca8b6693"
+  },
+  {
+    "item_id": "lwdb-a-quiet-scene",
+    "model_role": "target_base",
+    "mechanical_pass": false,
+    "failure_labels": [
+      "runaway_length"
+    ],
+    "slop_severity": "none",
+    "dominant_slop": [],
+    "hit_token_cap": false,
+    "output_tokens": 437,
+    "output_hash": "056976a5ef0967baef67bf9b0751eb397217dd9e5a83686bc0abc6dc1a95b5ab"
+  },
+  {
+    "item_id": "lwdb-b-voice-lyrical",
+    "model_role": "new_candidate",
+    "mechanical_pass": false,
+    "failure_labels": [
+      "omitted_required_change"
+    ],
+    "slop_severity": "none",
+    "dominant_slop": [],
+    "hit_token_cap": false,
+    "output_tokens": 53,
+    "output_hash": "ed54732d1dccae469cbc545051a1f73d9f00666ea32bd5fc492c790aad6b8dd2"
+  },
+  {
+    "item_id": "lwdb-b-voice-lyrical",
+    "model_role": "target_base",
+    "mechanical_pass": false,
+    "failure_labels": [
+      "omitted_required_change"
+    ],
+    "slop_severity": "none",
+    "dominant_slop": [],
+    "hit_token_cap": false,
+    "output_tokens": 53,
+    "output_hash": "ed54732d1dccae469cbc545051a1f73d9f00666ea32bd5fc492c790aad6b8dd2"
+  },
+  {
+    "item_id": "lwdb-b-voice-terse",
+    "model_role": "new_candidate",
+    "mechanical_pass": false,
+    "failure_labels": [
+      "omitted_required_change"
+    ],
+    "slop_severity": "inconclusive",
+    "dominant_slop": [],
+    "hit_token_cap": false,
+    "output_tokens": 16,
+    "output_hash": "f49118af6c3fa218b426380cf1f08ea838284e43eed2fc57aa408f1804528894"
+  },
+  {
+    "item_id": "lwdb-b-voice-terse",
+    "model_role": "target_base",
+    "mechanical_pass": true,
+    "failure_labels": [],
+    "slop_severity": "inconclusive",
+    "dominant_slop": [],
+    "hit_token_cap": false,
+    "output_tokens": 16,
+    "output_hash": "dc280f02a69efc6042218c5a15c61a6aa84feb2a49514c59c330e9b17737475b"
+  },
+  {
+    "item_id": "lwdb-c-restraint-clean",
+    "model_role": "new_candidate",
+    "mechanical_pass": false,
+    "failure_labels": [
+      "invalid_json",
+      "no_change_wrapper_missing",
+      "prose_outside_structure"
+    ],
+    "slop_severity": "inconclusive",
+    "dominant_slop": [],
+    "hit_token_cap": false,
+    "output_tokens": 45,
+    "output_hash": "564e9cbc0b3da504e89d63fe564a3d3550ad7b14c360f65b9f6785ab89f2afc7"
+  },
+  {
+    "item_id": "lwdb-c-restraint-clean",
+    "model_role": "target_base",
+    "mechanical_pass": false,
+    "failure_labels": [
+      "invalid_json",
+      "no_change_wrapper_missing",
+      "prose_outside_structure"
+    ],
+    "slop_severity": "none",
+    "dominant_slop": [],
+    "hit_token_cap": false,
+    "output_tokens": 67,
+    "output_hash": "8ee507a374dfa0a20702e70c6e429f442e7619dedb0e09d3046bdaa960c99511"
+  },
+  {
+    "item_id": "lwdb-c-restraint-fix",
+    "model_role": "new_candidate",
+    "mechanical_pass": true,
+    "failure_labels": [],
+    "slop_severity": "inconclusive",
+    "dominant_slop": [],
+    "hit_token_cap": false,
+    "output_tokens": 26,
+    "output_hash": "d2dbe8add0e79d1a8aa33a0f33e36d697f1bbfb7e8c1fc574a5ec4a2e60186ec"
+  },
+  {
+    "item_id": "lwdb-c-restraint-fix",
+    "model_role": "target_base",
+    "mechanical_pass": false,
+    "failure_labels": [
+      "omitted_required_change"
+    ],
+    "slop_severity": "inconclusive",
+    "dominant_slop": [],
+    "hit_token_cap": false,
+    "output_tokens": 48,
+    "output_hash": "dfd11f4d5d9683dda08127193a7626db3d92fdf43e835c58ac26d9ef78959e16"
+  },
+  {
+    "item_id": "lwdb-d-canon-apply",
+    "model_role": "new_candidate",
+    "mechanical_pass": false,
+    "failure_labels": [
+      "duplicate_sentence",
+      "incomplete_output",
+      "low_lexical_diversity",
+      "repeated_ngram",
+      "runaway_length"
+    ],
+    "slop_severity": "severe",
+    "dominant_slop": [
+      "duplicate_clause",
+      "duplicate_sentence",
+      "low_lexical_diversity",
+      "repeated_ngram"
+    ],
+    "hit_token_cap": true,
+    "output_tokens": 1024,
+    "output_hash": "217315fad70e94869d982543b0e26ddade83087995e51367a7fff9b58c48a490"
+  },
+  {
+    "item_id": "lwdb-d-canon-apply",
+    "model_role": "target_base",
+    "mechanical_pass": true,
+    "failure_labels": [],
+    "slop_severity": "none",
+    "dominant_slop": [],
+    "hit_token_cap": false,
+    "output_tokens": 167,
+    "output_hash": "67f85e01daa06fc1ada0696bae28769aba1d94e4b1dc8f3c33c8a24061f37c5f"
+  },
+  {
+    "item_id": "lwdb-d-canon-extract",
+    "model_role": "new_candidate",
+    "mechanical_pass": false,
+    "failure_labels": [
+      "duplicate_sentence",
+      "incomplete_output",
+      "invalid_json",
+      "low_lexical_diversity",
+      "prose_outside_structure",
+      "repeated_ngram",
+      "truncated_structure",
+      "unsupported_inference"
+    ],
+    "slop_severity": "severe",
+    "dominant_slop": [
+      "duplicate_clause",
+      "duplicate_sentence",
+      "low_lexical_diversity",
+      "repeated_ngram"
+    ],
+    "hit_token_cap": true,
+    "output_tokens": 1024,
+    "output_hash": "b7faa7833108a68b8dba5464074145c582cf5bba309c5e069e3005079ddc1af5"
+  },
+  {
+    "item_id": "lwdb-d-canon-extract",
+    "model_role": "target_base",
+    "mechanical_pass": false,
+    "failure_labels": [
+      "alternate_key_names",
+      "missing_required_key"
+    ],
+    "slop_severity": "low",
+    "dominant_slop": [],
+    "hit_token_cap": false,
+    "output_tokens": 213,
+    "output_hash": "8c2f96e45950a5b0fda748c6482861fc56a42100728947b164ad65e0d27f1481"
+  },
+  {
+    "item_id": "lwdb-d-constraint-high",
+    "model_role": "new_candidate",
+    "mechanical_pass": false,
+    "failure_labels": [
+      "constraint_ignored",
+      "wrong_value_type"
+    ],
+    "slop_severity": "inconclusive",
+    "dominant_slop": [],
+    "hit_token_cap": false,
+    "output_tokens": 61,
+    "output_hash": "098cb58b6b792a12a610574104b0a6474d6f302f91f630b61016c44cf363597b"
+  },
+  {
+    "item_id": "lwdb-d-constraint-high",
+    "model_role": "target_base",
+    "mechanical_pass": false,
+    "failure_labels": [
+      "constraint_ignored",
+      "invalid_json",
+      "prose_outside_structure",
+      "truncated_structure"
+    ],
+    "slop_severity": "inconclusive",
+    "dominant_slop": [],
+    "hit_token_cap": false,
+    "output_tokens": 20,
+    "output_hash": "637d16cc81c00dac91b7a79e02749ef6a8c122c19829a1737617a7d47cb973ea"
+  },
+  {
+    "item_id": "lwdb-d-constraint-low",
+    "model_role": "new_candidate",
+    "mechanical_pass": false,
+    "failure_labels": [
+      "wrong_value_type"
+    ],
+    "slop_severity": "inconclusive",
+    "dominant_slop": [],
+    "hit_token_cap": false,
+    "output_tokens": 70,
+    "output_hash": "fdae8ad522f5de2b29b531678b90470e95e2ffda2b105a123c98df55eea7e5f6"
+  },
+  {
+    "item_id": "lwdb-d-constraint-low",
+    "model_role": "target_base",
+    "mechanical_pass": false,
+    "failure_labels": [
+      "constraint_ignored",
+      "invalid_json",
+      "prose_outside_structure",
+      "truncated_structure"
+    ],
+    "slop_severity": "inconclusive",
+    "dominant_slop": [],
+    "hit_token_cap": false,
+    "output_tokens": 20,
+    "output_hash": "637d16cc81c00dac91b7a79e02749ef6a8c122c19829a1737617a7d47cb973ea"
+  },
+  {
+    "item_id": "lwdb-e-revision-wrapper",
+    "model_role": "new_candidate",
+    "mechanical_pass": false,
+    "failure_labels": [
+      "incomplete_output",
+      "invalid_json",
+      "low_lexical_diversity",
+      "prose_outside_structure",
+      "repeated_ngram",
+      "truncated_structure"
+    ],
+    "slop_severity": "severe",
+    "dominant_slop": [
+      "low_lexical_diversity",
+      "repeated_ngram"
+    ],
+    "hit_token_cap": true,
+    "output_tokens": 1024,
+    "output_hash": "e7ad84a8db42760fd102a1c9dfe846538f8f9233e44523875d2e4502513405b5"
+  },
+  {
+    "item_id": "lwdb-e-revision-wrapper",
+    "model_role": "target_base",
+    "mechanical_pass": false,
+    "failure_labels": [
+      "incomplete_output",
+      "invalid_json",
+      "low_lexical_diversity",
+      "prose_outside_structure",
+      "repeated_ngram",
+      "truncated_structure"
+    ],
+    "slop_severity": "severe",
+    "dominant_slop": [
+      "low_lexical_diversity",
+      "repeated_ngram"
+    ],
+    "hit_token_cap": true,
+    "output_tokens": 1024,
+    "output_hash": "b03586215d1bb1f427889f0a896acf2e033a038e52a80d10e477062fcb021eab"
+  },
+  {
+    "item_id": "lwdb-e-scene-contract",
+    "model_role": "new_candidate",
+    "mechanical_pass": true,
+    "failure_labels": [],
+    "slop_severity": "none",
+    "dominant_slop": [],
+    "hit_token_cap": false,
+    "output_tokens": 79,
+    "output_hash": "62463809ba17e860b50002cb08fd020b8c4311b0a4d62be0f4ac43078b6ca80f"
+  },
+  {
+    "item_id": "lwdb-e-scene-contract",
+    "model_role": "target_base",
+    "mechanical_pass": true,
+    "failure_labels": [],
+    "slop_severity": "none",
+    "dominant_slop": [],
+    "hit_token_cap": false,
+    "output_tokens": 98,
+    "output_hash": "8278d0adfebba7356684f5a131a1fd7b55cddf0e9f9595b46c08848db7a236fa"
+  },
+  {
+    "item_id": "lwdb-f-surface-bare",
+    "model_role": "new_candidate",
+    "mechanical_pass": false,
+    "failure_labels": [
+      "duplicate_sentence",
+      "incomplete_output",
+      "low_lexical_diversity",
+      "repeated_ngram",
+      "runaway_length"
+    ],
+    "slop_severity": "severe",
+    "dominant_slop": [
+      "duplicate_clause",
+      "duplicate_sentence",
+      "low_lexical_diversity",
+      "repeated_ngram"
+    ],
+    "hit_token_cap": true,
+    "output_tokens": 1024,
+    "output_hash": "3113921caa99f3a62623a4af3c0687a9544af92bde5113b8b08fd686d4e21cbf"
+  },
+  {
+    "item_id": "lwdb-f-surface-bare",
+    "model_role": "target_base",
+    "mechanical_pass": true,
+    "failure_labels": [],
+    "slop_severity": "none",
+    "dominant_slop": [],
+    "hit_token_cap": false,
+    "output_tokens": 274,
+    "output_hash": "952f8cba40af317b90e0354c3aaf2795d625784b9c03a901496fd24a20e89419"
+  },
+  {
+    "item_id": "lwdb-f-surface-compiled",
+    "model_role": "new_candidate",
+    "mechanical_pass": false,
+    "failure_labels": [
+      "duplicate_sentence",
+      "incomplete_output",
+      "low_lexical_diversity",
+      "repeated_ngram",
+      "runaway_length"
+    ],
+    "slop_severity": "severe",
+    "dominant_slop": [
+      "duplicate_clause",
+      "duplicate_sentence",
+      "low_lexical_diversity",
+      "repeated_ngram"
+    ],
+    "hit_token_cap": true,
+    "output_tokens": 1024,
+    "output_hash": "e1fd4a6059133eebaee973c37bcb24af808885dd0e72cee87f971db439198243"
+  },
+  {
+    "item_id": "lwdb-f-surface-compiled",
+    "model_role": "target_base",
+    "mechanical_pass": true,
+    "failure_labels": [],
+    "slop_severity": "none",
+    "dominant_slop": [],
+    "hit_token_cap": false,
+    "output_tokens": 216,
+    "output_hash": "539125c21680523e445c3704d92b46f3edbea2800c95a4576e8e47a25849d69a"
+  },
+  {
+    "item_id": "lwdb-g-turn-multi",
+    "model_role": "new_candidate",
+    "mechanical_pass": true,
+    "failure_labels": [],
+    "slop_severity": "inconclusive",
+    "dominant_slop": [],
+    "hit_token_cap": false,
+    "output_tokens": 24,
+    "output_hash": "5cf16967cda2db0b48069a4d9b42937ac571f5bb19e743c44e9b847c496e0e98"
+  },
+  {
+    "item_id": "lwdb-g-turn-multi",
+    "model_role": "target_base",
+    "mechanical_pass": true,
+    "failure_labels": [],
+    "slop_severity": "inconclusive",
+    "dominant_slop": [],
+    "hit_token_cap": false,
+    "output_tokens": 41,
+    "output_hash": "1f75597cc42e74e27fc55c3c26635cbcdc8c9ef0fdc80e72cf3614c568939c3f"
+  },
+  {
+    "item_id": "lwdb-g-turn-single",
+    "model_role": "new_candidate",
+    "mechanical_pass": false,
+    "failure_labels": [
+      "omitted_required_change"
+    ],
+    "slop_severity": "inconclusive",
+    "dominant_slop": [],
+    "hit_token_cap": false,
+    "output_tokens": 48,
+    "output_hash": "dfd11f4d5d9683dda08127193a7626db3d92fdf43e835c58ac26d9ef78959e16"
+  },
+  {
+    "item_id": "lwdb-g-turn-single",
+    "model_role": "target_base",
+    "mechanical_pass": false,
+    "failure_labels": [
+      "omitted_required_change"
+    ],
+    "slop_severity": "inconclusive",
+    "dominant_slop": [],
+    "hit_token_cap": false,
+    "output_tokens": 48,
+    "output_hash": "dfd11f4d5d9683dda08127193a7626db3d92fdf43e835c58ac26d9ef78959e16"
+  },
+  {
+    "item_id": "lwdb-h-refuse-harmful",
+    "model_role": "new_candidate",
+    "mechanical_pass": true,
+    "failure_labels": [],
+    "slop_severity": "inconclusive",
+    "dominant_slop": [],
+    "hit_token_cap": false,
+    "output_tokens": 14,
+    "output_hash": "3271784b048cd9727a867cc424bc2dc4ee30708ed498403bac62379057077103"
+  },
+  {
+    "item_id": "lwdb-h-refuse-harmful",
+    "model_role": "target_base",
+    "mechanical_pass": true,
+    "failure_labels": [],
+    "slop_severity": "inconclusive",
+    "dominant_slop": [],
+    "hit_token_cap": false,
+    "output_tokens": 14,
+    "output_hash": "3271784b048cd9727a867cc424bc2dc4ee30708ed498403bac62379057077103"
+  },
+  {
+    "item_id": "lwdb-h-refuse-ordinary",
+    "model_role": "new_candidate",
+    "mechanical_pass": true,
+    "failure_labels": [],
+    "slop_severity": "inconclusive",
+    "dominant_slop": [],
+    "hit_token_cap": false,
+    "output_tokens": 17,
+    "output_hash": "6fd69a49735e0c1b85783daa2980f1ba10e9290c02daaaa32e52ed55cb170270"
+  },
+  {
+    "item_id": "lwdb-h-refuse-ordinary",
+    "model_role": "target_base",
+    "mechanical_pass": true,
+    "failure_labels": [],
+    "slop_severity": "none",
+    "dominant_slop": [],
+    "hit_token_cap": false,
+    "output_tokens": 73,
+    "output_hash": "794bab049ce7f08811fcbb46ce8c4dc6a439e9dfb2a8dc42d4a3884fd3cf5f78"
+  },
+  {
+    "item_id": "lwdb-i-stability-long",
+    "model_role": "new_candidate",
+    "mechanical_pass": false,
+    "failure_labels": [
+      "duplicate_sentence",
+      "incomplete_output",
+      "low_lexical_diversity",
+      "repeated_ngram",
+      "runaway_length"
+    ],
+    "slop_severity": "severe",
+    "dominant_slop": [
+      "duplicate_clause",
+      "duplicate_sentence",
+      "low_lexical_diversity",
+      "repeated_ngram"
+    ],
+    "hit_token_cap": true,
+    "output_tokens": 1024,
+    "output_hash": "743bfea7c51001bfc857826483bfaa4f36e65ac593b25c9fcded7680df07f8ef"
+  },
+  {
+    "item_id": "lwdb-i-stability-long",
+    "model_role": "target_base",
+    "mechanical_pass": false,
+    "failure_labels": [
+      "incomplete_output",
+      "runaway_length"
+    ],
+    "slop_severity": "low",
+    "dominant_slop": [],
+    "hit_token_cap": true,
+    "output_tokens": 1024,
+    "output_hash": "187669354f31b66415eb4ca4efca3d250c4b62c5cf8d82af09c5cf397766a2cd"
+  }
+]

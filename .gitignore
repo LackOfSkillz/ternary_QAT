@@ -85,12 +85,12 @@ training/runs/dataset-a-qat-calibration-v1/integrity/repository-*.json
 
 # Dispatch 24 LWDB battery run outputs: commit the frozen plan/manifests/preflight/report;
 # ignore bulky generated model outputs and per-run ledger dbs (regenerable from the plan).
+# bulky/raw model-output dirs stay out of git; small summaries (corpus, run summary,
+# item-level verdicts, report) are committed as durable evidence + hashes.
 benchmarks/runs/**/normalized-results/
 benchmarks/runs/**/mechanical-results/
 benchmarks/runs/**/slop-reports/
-benchmarks/runs/**/corpus-summaries/
 benchmarks/runs/**/reviewer-packets/
-benchmarks/runs/**/calibration-key/
 benchmarks/runs/**/logs/
 benchmarks/runs/**/*.sqlite
 

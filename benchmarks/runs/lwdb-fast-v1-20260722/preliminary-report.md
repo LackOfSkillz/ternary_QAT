@@ -1,5 +1,10 @@
 # Fast Battery v1 — First Execution: Preliminary Report (Dispatch 24)
 
+> **SUPERSEDED (2026-07-22).** The live dual-GX10 base-vs-candidate run has since completed
+> (40/40 jobs, instrument-valid). See [`completed-run-report.md`](completed-run-report.md).
+> This preliminary report is retained for provenance only.
+
+
 Status: **battery frozen + validated; pipeline proven; real dual-GX10 generation
 execution-ready and pending.** No model-quality finding is made — by construction, no
 trusted run has completed, so the verdict is `insufficient_evidence` and advancement is

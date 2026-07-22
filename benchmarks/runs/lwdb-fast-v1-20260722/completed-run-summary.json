@@ -1,0 +1,78 @@
+{
+  "run_id": "lwdb-fast-v1-20260722",
+  "plan_hash": "a726365ad640875d5e1ebbcf0828dbc18434878927e3728960113471b8a469a7",
+  "execution_mode": "parallel_multi_host",
+  "base_host": "gx10-9141",
+  "candidate_host": "gx10-5611",
+  "completion": {
+    "job_counts": {
+      "completed": 40
+    },
+    "expected": 40,
+    "got": 40,
+    "missing": 0
+  },
+  "integrity_problems": [],
+  "instrument": {
+    "mechanical_replay_identical": true,
+    "instrument_valid": true,
+    "overall": "ok"
+  },
+  "mechanical": {
+    "target_base": {
+      "outputs": 20,
+      "mechanical_pass": 9,
+      "mechanical_fail": 11,
+      "top_failure_labels": {
+        "invalid_json": 4,
+        "prose_outside_structure": 4,
+        "incomplete_output": 3,
+        "runaway_length": 3,
+        "omitted_required_change": 3,
+        "truncated_structure": 3
+      },
+      "slop_severity": {
+        "high": 1,
+        "none": 9,
+        "inconclusive": 7,
+        "low": 2,
+        "severe": 1
+      }
+    },
+    "new_candidate": {
+      "outputs": 20,
+      "mechanical_pass": 5,
+      "mechanical_fail": 15,
+      "top_failure_labels": {
+        "incomplete_output": 9,
+        "low_lexical_diversity": 9,
+        "repeated_ngram": 9,
+        "duplicate_sentence": 8,
+        "runaway_length": 7,
+        "omitted_required_change": 3
+      },
+      "slop_severity": {
+        "severe": 9,
+        "none": 2,
+        "inconclusive": 9
+      }
+    }
+  },
+  "slop": {
+    "per_output_reports": 40,
+    "corpus_summaries": [
+      "new_candidate",
+      "target_base"
+    ],
+    "thresholds_status": "unvalidated",
+    "semantic_detector_status": "interface_only"
+  },
+  "review": {
+    "absolute_units": 44,
+    "pairwise_packets": 20,
+    "calibration_items_seeded": 4,
+    "identity_leaks": [],
+    "independent_review_status": "pending (implementation agent is not a blind reviewer)"
+  },
+  "advancement_decision_deferred_to_dispatch_25": true
+}
