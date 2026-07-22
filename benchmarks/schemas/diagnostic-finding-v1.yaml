@@ -1,0 +1,52 @@
+# LineWright Diagnostic Battery — diagnostic finding schema (v1, Dispatch 25, D4)
+#
+# Prevents measurement confidence from laundering causal speculation. A finding has THREE
+# separate layers, each with its OWN confidence: what was observed, what might explain it, and
+# what to do. Mechanical certainty applies ONLY to the observation. No causal claim inherits
+# observation confidence; no intervention inherits causal confidence. "therefore add examples"
+# is invalid without a separately justified intervention.
+
+schema: diagnostic-finding
+schema_version: 1
+status: active
+
+fields:
+  finding_id: {type: string, required: true}
+  capability: {type: string, required: true}
+
+  observation:
+    required: true
+    claim:                  {type: string, required: true}
+    evidence:               {type: string, required: true}
+    item_ids:               {type: list, required: true}
+    metric:                 {type: string, required: true}
+    observed_value:         {type: any, required: true}
+    comparator_value:       {type: any, required: false}
+    observation_confidence: {type: enum, required: true, enum: [mechanical, high, moderate, low, inconclusive]}
+
+  causal_hypotheses:        # zero or more; each with INDEPENDENT confidence + a disambiguating test
+    type: list
+    item:
+      hypothesis:              {type: string, required: true}
+      confidence:              {type: enum, required: true, enum: [high, moderate, low, speculative]}
+      supporting_evidence:     {type: string, required: true}
+      contradicting_evidence:  {type: string, required: false}
+      competing_explanations:  {type: list, required: true}
+      required_disambiguating_test: {type: string, required: true}
+
+  proposed_interventions:   # zero or more; each with INDEPENDENT confidence + a validation plan
+    type: list
+    item:
+      intervention:            {type: string, required: true}
+      confidence:              {type: enum, required: true, enum: [high, moderate, low, speculative]}
+      expected_effect:         {type: string, required: true}
+      risk:                    {type: string, required: true}
+      cost:                    {type: string, required: true}
+      validation_plan:         {type: string, required: true}
+      benchmark_items_that_would_be_burned: {type: list, required: true}
+
+rules:
+  - "observation_confidence 'mechanical' certifies the measurement ONLY; it never propagates to a cause or an intervention."
+  - "every causal_hypothesis must name a required_disambiguating_test and its competing_explanations."
+  - "every proposed_intervention must carry a validation_plan and the benchmark items it would burn."
+  - "a high-confidence observation may (and often should) yield low/speculative causes and remedies."
