@@ -123,9 +123,10 @@ def run(cfg_path, validate_only=False, dry_run=False, max_steps_override=None,
                                       batch_ids=batch_ids)
             grad_mon.observe(grad_norm, step=step)
             stall.observe(step, loss_available=True)
-            step_metrics.append({"step": step, "loss": round(float(loss), 6),
-                                 "grad_norm": round(float(grad_norm), 6),
-                                 "batch_ids": batch_ids})
+            entry = {"step": step, "loss": round(float(loss), 6),
+                     "grad_norm": round(float(grad_norm), 6), "batch_ids": batch_ids}
+            entry.update(getattr(backend, "last_step_meta", {}) or {})
+            step_metrics.append(entry)
             manifest["step_metrics"] = step_metrics
             completed = step
             if step % ckpt_int == 0 or step == max_steps:

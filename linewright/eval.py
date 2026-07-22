@@ -69,7 +69,7 @@ def structural_check(task_type, gold, output):
     return checks, parsed
 
 
-def evaluate(harness_path, target, out_path, backend_name="stub"):
+def evaluate(harness_path, target, out_path, backend_name="stub", checkpoint_dir=None):
     harness = yaml.safe_load(open(harness_path, encoding="utf-8"))
     ds = harness["dataset"]
     eval_file = C.abs_repo(ds["evaluation_file"])
@@ -91,7 +91,8 @@ def evaluate(harness_path, target, out_path, backend_name="stub"):
                "paths": {"cache_dir": model_cfg.get("cache_dir")},
                "reproducibility": {"seed": gen.get("seed", 0)},
                "sequence": {"max_sequence_length": harness.get("max_sequence_length", 2048)}}
-        backend = get_backend("hf").from_config(cfg, target=target, for_training=False)
+        backend = get_backend("hf").from_config(cfg, target=target, for_training=False,
+                                                checkpoint_dir=checkpoint_dir)
         env_meta = dict(backend.diagnostics)
     else:
         backend = get_backend(backend_name).from_config(
@@ -149,8 +150,13 @@ def main():
     ap.add_argument("--target", required=True, choices=["base", "lora", "ternary-qat"])
     ap.add_argument("--out", required=True)
     ap.add_argument("--backend", default="stub")
+    ap.add_argument("--checkpoint", help="trained checkpoint dir for lora/ternary-qat targets")
     args = ap.parse_args()
-    report, path = evaluate(args.harness, args.target, args.out, args.backend)
+    ckpt = args.checkpoint
+    if args.backend == "hf" and args.target in ("lora", "ternary-qat") and not ckpt:
+        ckpt = f"training/runs/dataset-a-smoke-v1/{args.target}/checkpoints/step-20"
+    report, path = evaluate(args.harness, args.target, args.out, args.backend,
+                            checkpoint_dir=(C.abs_repo(ckpt) if ckpt else None))
     print(f"eval target={args.target} records={report['record_count']} "
           f"format_valid={report['format_valid_count']} -> {os.path.relpath(path, C.REPO_ROOT)}")
 

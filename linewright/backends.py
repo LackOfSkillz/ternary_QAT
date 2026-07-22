@@ -103,7 +103,8 @@ class HFBackend:
 
     # ---- loading ----
     @classmethod
-    def from_config(cls, cfg, target="base", for_training=False, device=None, **_):
+    def from_config(cls, cfg, target="base", for_training=False, device=None,
+                    checkpoint_dir=None, **_):
         import time
         import torch
         from transformers import AutoModelForCausalLM, AutoTokenizer
@@ -147,9 +148,15 @@ class HFBackend:
         }
 
         if target == "lora":
-            self._attach_lora()
+            if checkpoint_dir:
+                self._load_lora_checkpoint(checkpoint_dir)
+            else:
+                self._attach_lora()
         elif target == "ternary-qat":
-            self._attach_ternary()
+            if checkpoint_dir:
+                self._load_qat_checkpoint(checkpoint_dir)
+            else:
+                self._attach_ternary()
 
         if for_training:
             self._build_optimizer_and_data()
@@ -213,6 +220,23 @@ class HFBackend:
                                                   for t in targets):
                 matched.add(name)
         return matched
+
+    def _load_lora_checkpoint(self, checkpoint_dir):
+        from peft import PeftModel
+        self.model = PeftModel.from_pretrained(self.model, checkpoint_dir)
+        self.diagnostics["loaded_checkpoint"] = checkpoint_dir
+        self.diagnostics["checkpoint_type"] = "lora"
+
+    def _load_qat_checkpoint(self, checkpoint_dir):
+        import os
+        import torch
+        self._attach_ternary()               # rebuild the swapped layout
+        state = torch.load(os.path.join(checkpoint_dir, "qat_state.pt"), map_location="cpu")
+        res = self.model.load_state_dict(state, strict=False)
+        self.diagnostics["loaded_checkpoint"] = checkpoint_dir
+        self.diagnostics["checkpoint_type"] = "ternary-qat"
+        self.diagnostics["reload_missing_keys"] = len(res.missing_keys)
+        self.diagnostics["reload_unexpected_keys"] = len(res.unexpected_keys)
 
     def _attach_ternary(self):
         import torch.nn as nn
@@ -290,19 +314,40 @@ class HFBackend:
             "truncated": examples[0]["truncated_token_count"]}
 
     def train_step(self, step, inject=None):
+        import time
         import torch
         batch, ids = self._batches[self._batch_ptr % len(self._batches)]
         self._batch_ptr += 1
         self.last_batch_ids = ids
         batch = {k: v.to(self.device) for k, v in batch.items()}
+        if self.device == "cuda":
+            torch.cuda.reset_peak_memory_stats()
+        t0 = time.time()
         out = self.model(**batch)
         loss = out.loss
         self.optimizer.zero_grad()
+        tf = time.time()
         loss.backward()
+        tb = time.time()
         params = [p for p in self.model.parameters() if p.requires_grad and p.grad is not None]
         grad_norm = torch.nn.utils.clip_grad_norm_(params, max_norm=1e9).item()
+        lr = self.optimizer.param_groups[0]["lr"]
         self.optimizer.step()
         self.scheduler.step()
+        to = time.time()
+        target_tokens = int((batch["labels"] != -100).sum().item())
+        input_tokens = int(batch["attention_mask"].sum().item())
+        self.last_step_meta = {
+            "lr": lr, "prompt_tokens": input_tokens - target_tokens,
+            "target_tokens": target_tokens, "input_tokens": input_tokens,
+            "forward_s": round(tf - t0, 4), "backward_s": round(tb - tf, 4),
+            "optimizer_s": round(to - tb, 4), "step_s": round(to - t0, 4),
+            "cuda_alloc_mb": (round(torch.cuda.memory_allocated() / 2**20, 1)
+                              if self.device == "cuda" else None),
+            "cuda_reserved_mb": (round(torch.cuda.memory_reserved() / 2**20, 1)
+                                 if self.device == "cuda" else None),
+            "cuda_peak_mb": (round(torch.cuda.max_memory_allocated() / 2**20, 1)
+                             if self.device == "cuda" else None)}
         return float(loss.item()), float(grad_norm)
 
     # ---- generation ----
