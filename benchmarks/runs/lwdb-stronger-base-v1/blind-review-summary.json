@@ -1,0 +1,55 @@
+{
+ "reviewers": {
+  "blind_subagents": [
+   "A",
+   "B"
+  ],
+  "external_humans_pending": [
+   "Gary",
+   "ChatGPT"
+  ],
+  "note": "sub-agent reviewers are genuinely blind (never saw the identity key); the implementation agent's own non-blind judgment is NOT counted."
+ },
+ "n_candidate_units_reviewed": 16,
+ "calibration_units": 6,
+ "per_model": {
+  "ministral_3_8b_instruct": {
+   "n_reviews": 14,
+   "mean_prose_quality": 3.071,
+   "mean_instruction_compliance": 4.214,
+   "mean_voice_preservation": 2.929,
+   "mean_scene_coherence": 3.571,
+   "fatal_rejection_rate": 0.0,
+   "acceptance_rate": 1.0
+  },
+  "qwen3_8b_non_thinking": {
+   "n_reviews": 14,
+   "mean_prose_quality": 2.786,
+   "mean_instruction_compliance": 4.357,
+   "mean_voice_preservation": 2.714,
+   "mean_scene_coherence": 3.214,
+   "fatal_rejection_rate": 0.0,
+   "acceptance_rate": 1.0
+  },
+  "target_base_4b": {
+   "n_reviews": 4,
+   "mean_prose_quality": 3.0,
+   "mean_instruction_compliance": 4.5,
+   "mean_voice_preservation": 2.25,
+   "mean_scene_coherence": 3.25,
+   "fatal_rejection_rate": 0.0,
+   "acceptance_rate": 1.0
+  }
+ },
+ "preferred_model": "ministral_3_8b_instruct",
+ "reviewer_calibration": {
+  "A": 1.0,
+  "B": 1.0
+ },
+ "inter_reviewer_agreement": {
+  "mean_abs_prose_diff": 0.25,
+  "n_shared_units": 16
+ },
+ "scores_locked_before_unblinding": true,
+ "pairwise_preference_cannot_override_fatal": true
+}
