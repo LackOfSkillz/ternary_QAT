@@ -25,6 +25,24 @@ threshold change, no weights published, `master` untouched.**
   That human gate is open, so **Phase B (Dataset A.3 + LoRA) is BLOCKED** until it passes. 5 tests;
   Gate 0 zero drift.
 
+### Dispatch 27 Phase B prep — Dataset A.3 + frozen LoRA config (training HELD) (2026-07-22)
+
+Per Gary's choice at the gate ("prep A.3, hold training"), prepared Phase B **without training**.
+**No LoRA/QAT launched; Dataset A and A.2 unchanged; Fast Battery v1 + thresholds unchanged.**
+
+- **Dataset A.3 design contract** (task mix, token balance, provenance discipline, holdout pools,
+  overlap checks, teacher-concentration limits) + a **48-record pilot corpus** — genuinely diverse
+  original fiction across all 8 task families in the target mix, single-teacher (documented,
+  `review_status: draft`, Gate-3 pending). Audit: mix on target, **changed_true 17 / changed_false 4**
+  (fixes the prior audit gap), **benchmark overlap CLEAN (0.0)**, **template Jaccard 0.0** (no
+  templating), frozen `train_sha256 91e57242…`. 48 < the 300–500 production target is the
+  **documented justified exception** (the remainder needs human curation + teacher diversification).
+- **Frozen conservative LoRA config** (`qwen3-8b-lora-pilot-v1`): Qwen3-8B @ `b968826d` non-thinking,
+  rank 16 / α16 / dropout 0.05, LR 1e-5, targets q/k/v/o+gate/up/down, ~1 epoch, early stopping,
+  frequent checkpoints — deliberately inverting the 4B over-exposure that collapsed by step 20.
+  **Frozen checkpoint-eval subset** (14 items) committed before training. 7 more tests.
+- **Training is HELD** pending Gary's human foundation confirmation (Phase A gate).
+
 ### Dispatch 26 — Controlled stronger-base comparison for LineWright Core (2026-07-22)
 
 Executed the Dispatch-25 `test_stronger_base` branch as a controlled three-model comparison —

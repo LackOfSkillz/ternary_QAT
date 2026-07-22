@@ -68,3 +68,77 @@ def test_q4_outputs_present_and_non_thinking():
     assert len(recs) == 15
     assert all(r["reasoning_trace_detected"] is False for r in recs)
     assert all(r["reasoning_mode"] == "non_thinking" for r in recs)
+
+
+# ---- Phase B prep: Dataset A.3 + LoRA spec + eval subset (training HELD) ------
+
+A3 = os.path.join(REPO, "datasets", "dataset-a.3")
+AUDIT = os.path.join(REPO, "training", "reports", "dataset-a3-audit-v1")
+
+
+def _a3_records():
+    p = os.path.join(A3, "records", "a3-pilot.jsonl")
+    return [json.loads(l) for l in open(p, encoding="utf-8") if l.strip()]
+
+
+def test_a3_records_unique_ids_and_clusters():
+    recs = _a3_records()
+    assert len({r["record_id"] for r in recs}) == len(recs)
+    clusters = [(r["template_family"], r["semantic_cluster"]) for r in recs]
+    assert len(set(clusters)) == len(clusters)  # anti-template uniqueness
+
+
+def test_a3_covers_all_task_families_and_changed_both():
+    recs = _a3_records()
+    fams = {r["task_family"] for r in recs}
+    assert fams == {"scene_drafting", "focused_revision", "voice_preservation",
+                    "no_change_and_restraint", "canon_application", "structured_protocol",
+                    "multi_turn_revision", "anti_repetition_and_slop"}
+    assert any(r.get("changed") is True for r in recs)
+    assert any(r.get("changed") is False for r in recs)
+
+
+def test_a3_provenance_and_training_flags():
+    recs = _a3_records()
+    for r in recs:
+        assert r["author_origin"] in ("model_authored", "human_authored", "human_model_collaborative",
+                                      "public_domain_transformed", "licensed", "unknown")
+        assert r["teacher_model"] and r["teacher_model"] != "none"  # model_authored names its teacher
+        assert r["training_only"] is True and r["benchmark_overlap_checked"] is True
+        assert r["review_status"] == "draft"  # Gate-3 pending; not auto-approved
+
+
+def test_a3_benchmark_overlap_clean():
+    p = os.path.join(AUDIT, "benchmark-overlap-report.json")
+    if not os.path.exists(p):
+        import pytest
+        pytest.skip("audit not run in this environment")
+    rep = json.load(open(p, encoding="utf-8"))
+    assert rep["clean"] is True and rep["max_overlap"] < 0.10
+
+
+def test_dataset_a_and_a2_unchanged_and_a3_is_new():
+    # A.3 lives in its own directory; A and A.2 dirs exist and are untouched by this work
+    assert os.path.isdir(os.path.join(REPO, "datasets", "dataset-a"))
+    assert os.path.isdir(os.path.join(REPO, "datasets", "dataset-a.2"))
+    assert os.path.isdir(A3)
+
+
+def test_lora_spec_pins_base_and_holds_training():
+    s = _load(os.path.join(REPO, "training", "specs", "qwen3-8b-lora-pilot-v1.yaml"))
+    assert s["training_started"] is False
+    assert s["base"]["revision"] == "b968826d9c46dd6066d109eabc6255188de91218"
+    assert s["base"]["thinking"] == "disabled"
+    assert s["method"] == "LoRA"
+    assert 5e-6 <= s["optimizer"]["learning_rate"] <= 2e-5   # conservative range
+    assert set(s["lora"]["target_modules"]) == {"q_proj", "k_proj", "v_proj", "o_proj",
+                                                "gate_proj", "up_proj", "down_proj"}
+
+
+def test_eval_subset_frozen_before_training():
+    s = _load(os.path.join(REPO, "benchmarks", "manifests", "qwen3-lora-eval-subset-v1.yaml"))
+    assert s["training_started"] is False
+    cats = {x["category"] for x in s["subset"]}
+    for need in ("short_scene", "no_change_clean", "structured_output", "constraint_verdict",
+                 "realistic_compiled_packet", "long_stability", "multi_turn_revision"):
+        assert need in cats
