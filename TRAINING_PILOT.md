@@ -152,3 +152,16 @@ Battery** (LWDB). Architecture:
   three-reviewer pass + Gary and the Dispatch-21 advancement rule, never on loss or parse
   rate. QAT-20 is excluded as a candidate (catastrophically degenerate); the first candidate
   is LoRA-20.
+
+### Dispatch 25 branch decision (thresholds frozen first)
+
+- Provisional research thresholds are **authored and committed before any interpretation**
+  (agent-proposed under Gary's delegated authority, immutably locked; not a final ship gate).
+  A decision is stamped with the locked threshold hashes and invalidated by any post-lock change.
+- Applying the frozen threshold to the live run + an existing-checkpoint curve + a dataset audit,
+  the branch is **`test_stronger_base`**: the untouched base fails the core-prose feasibility
+  floor, no LoRA checkpoint improves over it (step-10 neutral, step-20 collapses), and a dataset
+  cannot fix base capacity. **No training was started; Dataset A / A.2 unchanged; LoRA-20 not
+  continued.** The next experiment (a stronger-base comparison, one controlled variable) is in
+  `training/specs/next-linewright-experiment-v1.md` but not launched. Full-battery prose quality
+  remains a blind-reviewer judgement that is still pending.

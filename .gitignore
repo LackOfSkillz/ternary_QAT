@@ -93,6 +93,10 @@ benchmarks/runs/**/slop-reports/
 benchmarks/runs/**/reviewer-packets/
 benchmarks/runs/**/logs/
 benchmarks/runs/**/*.sqlite
+# Dispatch 25: blind-review access separation — anonymous units and the private identity key
+# are raw run artifacts (never committed); the enforcement code + tests + README are committed.
+benchmarks/runs/**/review/
+benchmarks/runs/**/private-unblinding/
 
 # Dispatch 20 full-comparison machine-specific raw artifacts. Checkpoints, integrity/**
 # (base-model-*/repository-* inventories, whose verdicts are echoed in the tracked

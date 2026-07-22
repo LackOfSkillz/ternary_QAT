@@ -611,7 +611,8 @@ model-training sequence and does **not** displace broader LineWright application
 | 22 | architecture & specification | done |
 | 23 | instrument calibration, hardware-agnostic execution, durable pause/resume, slop-detection foundation | done |
 | 24 | fast battery construction & first live dual-GX10 execution (40/40, instrument-valid) | done |
-| 25 | fast battery validation & diagnostic engine (uses the live run evidence) | next |
+| 25 | provisional threshold lock, diagnostic validation, branch decision → **test_stronger_base** | done |
+| 26 | stronger-base comparison / next controlled experiment (per the Dispatch-25 spec) | next |
 | 25 | fast battery validation & diagnostic engine | planned |
 | 26 | full battery construction | planned |
 | 27 | full battery baseline & certification | planned |

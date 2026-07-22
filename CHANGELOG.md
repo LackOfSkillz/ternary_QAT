@@ -5,6 +5,36 @@ Notable changes to this LineWright research fork. Dates are absolute; the active
 
 ## [Unreleased]
 
+### Dispatch 25 — Provisional threshold lock, diagnostic validation, branch decision (2026-07-22)
+
+Converted the Dispatch-24 live run into a threshold-bound branch decision. **No training, no
+dataset change, no broad sweep, no winner or ship claim; LoRA-20 not continued.**
+
+- **Threshold-first, enforced:** authored two provisional threshold files
+  (`benchmarks/thresholds/research-continuation-v0.yaml`, `starter-model-acceptance-v0.yaml` —
+  agent-proposed under delegated authority, NOT final ship gates), **committed them before any
+  analysis**, then wrote `threshold-lock-v0.json`. `linewright/evaluation/thresholds/` refuses
+  analysis unless the lock verifies; any post-lock threshold change invalidates the decision.
+- **Diagnostic-finding-v1 schema** separates observation / causal hypothesis / intervention,
+  each with independent confidence (mechanical certainty never propagates). Analyzed all 7
+  Dispatch-24 controlled pairs (`diagnostic-findings.json`) — incl. the surface pair ruling out
+  the context compiler for the candidate (both arms fail on a **compact** packet; a full
+  packet-length family is still required).
+- **Real packet token profile** (real tokenizer, no whitespace): bare 167 / compiled 225
+  (ratio 1.35), classified **partial/compact**.
+- **Blind access separation** (`battery/blind.py`): anonymous `review/` vs `private-unblinding/`;
+  scoring cannot open the identity key; unblinding refuses before score-locks.
+- **Existing-checkpoint curve** (real run, base + LoRA-10 + LoRA-20 on a frozen 9-item subset):
+  mechanical pass 5/5/2, severe slop 0/0/6 — **step-10 neutral, step-20 collapses**, monotone
+  worsening, best = base.
+- **Dataset A + A.2 audit** (unchanged): example-balance ≠ token-balance (canon dominates
+  tokens); no-change protocol half-taught in Dataset A (2 `changed:false`, 0 `changed:true`);
+  zero template concentration; single-teacher (opus) provenance.
+- **Decision** (`dispatch-25-decision-v1.md`): applying the frozen threshold → **`test_stronger_base`**
+  (base fails the 0.50 core-prose floor at 0.286). Next-experiment spec authored (stronger-base
+  comparison, one controlled variable; not started). VOICE-P0A verified: a scheduling gate, not a
+  blocker. 12 new tests.
+
 ### Dispatch 24 continuation — first LIVE dual-GX10 execution completed (2026-07-22)
 
 Ran the real base-vs-candidate fast battery on the two GX10 systems. **No training, no dataset

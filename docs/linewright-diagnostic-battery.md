@@ -106,6 +106,20 @@ Dispatch 25). The **first live dual-GX10 run completed** (40/40 jobs, instrument
 degrades less than the LoRA-20 candidate, which degenerates on 9/20) — see
 `benchmarks/runs/lwdb-fast-v1-20260722/completed-run-report.md`.
 
+## Thresholds & decisions (Dispatch 25)
+
+Turning a run into a decision follows a **threshold-first** discipline: provisional thresholds
+(`benchmarks/thresholds/`) are authored and **committed before any interpretation**, then locked
+(`linewright/evaluation/thresholds/`) — analysis and the decision engine refuse to run unless the
+lock verifies, and any post-lock threshold change invalidates the decision. Findings use the
+`diagnostic-finding-v1` schema: **observation, causal hypothesis, and intervention each carry
+their own confidence**, and mechanical certainty never propagates to a cause or a remedy. Blind
+scoring is enforced by **access separation** (`battery/blind.py`): anonymous review artifacts and
+the private identity key live in separate directories; scoring cannot open the key, and unblinding
+refuses before scores are locked. The first decision (`training/reports/dispatch-25-decision-v1.md`)
+branched to **test a stronger base** — threshold-bound, provisional, reversible; no training,
+no dataset change, no ship claim.
+
 ## Relationship to Dispatch 21
 
 The battery **builds on** the Dispatch-21 components, it does not recreate them: the nine

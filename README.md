@@ -185,8 +185,20 @@ made** — advancement is **deferred to Dispatch 25**; blind human/independent r
 work (44 identity-free units + 4 hidden calibration seeds prepared). See
 `benchmarks/runs/lwdb-fast-v1-20260722/completed-run-report.md`.
 
-**Status:** fast battery v1 **frozen + validated**; **first live dual-GX10 run completed**
-(instrument-valid); no empirical thresholds, no winner declared, no training.
+**Dispatch 25** converted that run into a disciplined branch decision. Provisional research
+thresholds were **authored and frozen/committed before any interpretation** (agent-proposed
+under Gary's delegated authority; not a final ship gate), and a lock makes them immutable — any
+post-lock change invalidates the decision. Applying the frozen threshold to the evidence (the
+live run, an existing-checkpoint curve, a dataset audit, and a real packet token profile), with
+observation/cause/intervention confidence kept separate, the branch is **`test_stronger_base`**:
+the untouched base fails the core-prose feasibility floor (0.286 < 0.50), no LoRA checkpoint
+improves over it (step-10 neutral, step-20 collapses), and a dataset cannot fix base capacity.
+**No training, no dataset change, no winner, no ship claim.** See
+`training/reports/dispatch-25-decision-v1.md`.
+
+**Status:** fast battery v1 frozen; first live dual-GX10 run completed (instrument-valid);
+Dispatch-25 branch = **test a stronger base** (threshold-bound, provisional, reversible); no
+training, no dataset change, no empirical ship thresholds.
 
 ## Install
 
