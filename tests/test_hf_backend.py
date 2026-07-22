@@ -350,3 +350,38 @@ def test_stability_gate_pass_and_fail():
     diverged = stability_gate(mani([4.0, 8.0, 16.0, 30.0, 45.0, 46, 47, 48, 49, 50.0],
                                    [8.0] * 10), True, True)
     assert diverged["passed"] is False and diverged["ratio_ok"] is False  # final/init > 3
+
+
+# ---- Dispatch 20: full-comparison configs ----
+
+FULL_LORA = os.path.join(_ROOT, "training", "configs", "dataset-a-lora-full-comparison-v1.yaml")
+FULL_QAT = os.path.join(_ROOT, "training", "configs", "dataset-a-ternary-qat-full-comparison-v1.yaml")
+
+
+def test_full_comparison_configs_share_training_critical_fields():
+    lo, qa = C.load_config(FULL_LORA), C.load_config(FULL_QAT)
+    # shared fields must match exactly (fair race)
+    assert lo["model"]["base_model"] == qa["model"]["base_model"]
+    assert lo["model"]["base_model_revision"] == qa["model"]["base_model_revision"]
+    for k in ("train_file", "evaluation_file", "system_prompt_file",
+              "train_checksum", "evaluation_checksum", "system_prompt_checksum"):
+        assert lo["dataset"][k] == qa["dataset"][k], k
+    assert lo["reproducibility"]["seed"] == qa["reproducibility"]["seed"] == 20260721
+    assert lo["sequence"]["max_sequence_length"] == qa["sequence"]["max_sequence_length"]
+    for k in ("micro_batch_size", "gradient_accumulation_steps", "max_steps", "learning_rate"):
+        assert lo["optimization"][k] == qa["optimization"][k], k
+    assert lo["optimization"]["max_steps"] == 20
+    assert lo["intervals"]["checkpoint_interval_steps"] == qa["intervals"]["checkpoint_interval_steps"] == 10
+    # PERMITTED differences (documented): method blocks + warmup + clipping
+    assert "lora" in lo and "lora" not in qa
+    assert "ternary_qat" in qa and "ternary_qat" not in lo
+    assert lo.get("warmup_steps", 0) == 0 and qa["warmup_steps"] == 3
+    assert qa["gradient_clipping"]["enabled"] is True and "gradient_clipping" not in lo
+    assert qa["gradient_monitor"]["max_global_norm"] == 100.0
+    assert qa["optimization"]["learning_rate"] != 4.0e-3
+
+
+def test_full_comparison_output_dirs_disjoint():
+    lo, qa = C.load_config(FULL_LORA), C.load_config(FULL_QAT)
+    assert lo["paths"]["output_dir"] == "training/runs/dataset-a-full-comparison-v1/lora"
+    assert qa["paths"]["output_dir"] == "training/runs/dataset-a-full-comparison-v1/ternary-qat"
