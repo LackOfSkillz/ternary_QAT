@@ -194,3 +194,25 @@ Battery** (LWDB). Architecture:
 - Lesson reinforced: a LoRA advances only on a blind-confirmed behavioural gain with zero critical
   regressions — training completing and loss falling is not sufficient. A neutral pilot is a valid,
   honest outcome that points at the dataset, not the recipe or the base.
+
+### Dispatch 28 — LineWright Prompt Effect Pilot (result: prioritize requirement elicitation; A.3 stays paused)
+
+- **No training and no QAT this dispatch.** Before spending any more weight-training effort on the
+  focused-revision failure, tested whether the *prompt engine* already fixes it. Frozen-first: 30
+  benchmark-only tasks with deterministic grounded machine checks, four information-controlled prompt
+  arms (P0-Realistic casual / P0-Maximal every-requirement-unstructured / P1-Contract same-info-structured
+  / P3-Ideal hand-built ceiling on 10 tasks; P0-Maximal ≡ P1-Contract equivalence verified), 100 Qwen3-8B
+  non-thinking outputs, mechanical scoring, then an arm-hidden blind soft review.
+- **Result:** focused-revision all-required-completed rose from **0.083 (casual) → 0.50–0.75
+  (structured/ideal)** and returned-unchanged fell **0.167 → 0.0** — whereas the Dispatch-27 LoRA moved
+  this same target by **0.0**. Structure at equal information adds no *completion* (P1−P0-Maximal −0.067)
+  but makes the arm mechanically spotless (scope discipline). Blind reviewers rated the fuller packet the
+  best arm on every dimension, so the pre-registered rigidity/over-editing worry did not hold.
+- **Decision: `prioritize_requirement_elicitation`.** The near-term lever is the prompt engine
+  (eliciting the requirements authors omit + scope-controlled contracts + verbatim protected-span
+  locking), not weight tuning. **Dataset A.3 expansion REMAINS PAUSED**; a Phase-2 100-task multimodel
+  benchmark is authorized to size the effect first. If A.3 is later expanded, redesign it around packet
+  execution, not universal prose. No commercial ship certification.
+- Lesson: when a cheap prompt-side intervention beats a LoRA on the exact target failure, spend there
+  before scaling the training set — and prove it with frozen, information-controlled arms rather than
+  anecdote.

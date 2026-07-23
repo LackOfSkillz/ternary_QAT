@@ -1,0 +1,73 @@
+{
+ "dispatch": 28,
+ "reviewers": {
+  "type": "two blind LM sub-agents",
+  "human_review_submitted": false,
+  "waived_for_pilot": true,
+  "evidence_status": "model_review_only",
+  "independently_human_confirmed": false
+ },
+ "per_arm_means": {
+  "P0-Realistic": {
+   "prose_quality": 2.8,
+   "voice_preservation": 2.8,
+   "scope_control": 2.9,
+   "over_editing": 2.85,
+   "rigidity": 3.3,
+   "author_usefulness": 2.55,
+   "fatal": 5
+  },
+  "P1-Contract": {
+   "prose_quality": 2.95,
+   "voice_preservation": 3.3,
+   "scope_control": 3.45,
+   "over_editing": 3.7,
+   "rigidity": 3.5,
+   "author_usefulness": 2.8,
+   "fatal": 2
+  },
+  "P3-Ideal": {
+   "prose_quality": 3.889,
+   "voice_preservation": 4.167,
+   "scope_control": 4.222,
+   "over_editing": 4.333,
+   "rigidity": 4.111,
+   "author_usefulness": 3.778,
+   "fatal": 2
+  }
+ },
+ "calibration_controls_excluded_from_arm_means": true,
+ "reviewer_calibration": {
+  "A": {
+   "broken_caught": 3,
+   "broken_total": 3
+  },
+  "B": {
+   "broken_caught": 3,
+   "broken_total": 3
+  }
+ },
+ "reads": {
+  "prose_quality_by_arm": {
+   "P0-Realistic": 2.8,
+   "P1-Contract": 2.95,
+   "P3-Ideal": 3.889
+  },
+  "rigidity_by_arm": {
+   "P0-Realistic": 3.3,
+   "P1-Contract": 3.5,
+   "P3-Ideal": 4.111
+  },
+  "over_editing_by_arm": {
+   "P0-Realistic": 2.85,
+   "P1-Contract": 3.7,
+   "P3-Ideal": 4.333
+  },
+  "scope_control_by_arm": {
+   "P0-Realistic": 2.9,
+   "P1-Contract": 3.45,
+   "P3-Ideal": 4.222
+  }
+ },
+ "scores_locked_before_unblinding": true
+}

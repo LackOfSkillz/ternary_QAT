@@ -206,10 +206,31 @@ prose while Qwen leads instruction-compliance; Qwen has the mature 8GB GGUF path
 **`run_one_bounded_confirmation`**, presumptive foundation **Qwen3-8B** (confirm prose before
 committing). See `training/reports/dispatch-26-foundation-decision.md`.
 
-**Status:** fast battery v1 frozen; live dual-GX10 run + stronger-base comparison completed
-(instrument-valid); Dispatch-26 branch = **run one bounded confirmation, presumptive foundation
-Qwen3-8B** (threshold-bound, provisional). No training, no dataset change, no empirical ship
-thresholds, no published weights.
+**Dispatch 27** confirmed the Qwen3-8B foundation (bounded prose + official Q4_K_M deployment,
+Q4 indistinguishable from BF16) and ran the first conservative LineWright LoRA feasibility pilot on
+the frozen Dataset A.3. The pilot was **valid but mechanically neutral** — identical to base on
+every metric with zero critical regressions, and it did not touch the focused-revision target
+(unchanged-return 0.667 for base and every checkpoint; blind prose gain 0.0). Branch:
+**`revise_Dataset_A3`** (42 records too thin); **QAT denied**. See
+`training/reports/dispatch-27-lora-decision.md`.
+
+**Dispatch 28** paused training to test LineWright's product thesis directly: a frozen,
+information-controlled **prompt-effect pilot** (30 benchmark-only tasks, deterministic grounded
+checks, 4 arms, 100 Qwen3-8B outputs, arm-hidden blind soft review). Compiling an author's request
+into a structured packet fixed the multi-constraint focused-revision failure far more than the
+Dispatch-27 LoRA on the same target: all-required-completed **0.083 casual → 0.50–0.75
+structured/ideal**, returned-unchanged **0.167 → 0.0**, while the LoRA gave 0.0. The dominant lever
+is **eliciting the requirements authors omit**; structure adds scope discipline; blind reviewers
+rated the fuller packet the best arm on every dimension. Branch:
+**`prioritize_requirement_elicitation`**; **Phase-2 100-task multimodel benchmark authorized;
+Dataset A.3 expansion stays paused**. Product thesis **supported (provisional)**. See
+`training/reports/dispatch-28-prompt-effect-decision.md`.
+
+**Status:** Qwen3-8B foundation confirmed; the neutral Dispatch-27 LoRA pointed at the dataset, and
+Dispatch 28's prompt-effect pilot showed the near-term lever is the **prompt engine, not weight
+tuning** (branch `prioritize_requirement_elicitation`, Phase-2 authorized, Dataset A.3 paused). No
+training or QAT in Dispatch 28, no dataset change, no empirical ship thresholds, no published
+weights, `master` untouched.
 
 ## Install
 

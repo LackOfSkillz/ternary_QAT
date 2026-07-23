@@ -1,0 +1,106 @@
+prompt_effect_decision:
+  dispatch: 28
+  provisional: true
+  final_commercial_ship_certification: false
+  primary_branch: prioritize_requirement_elicitation
+  primary_rationale: P1 beats P0-Realistic (+0.200) but NOT P0-Maximal (-0.067) —
+    the product value is ELICITING and organizing the requirements users do not naturally
+    provide, not structure per se. On focused revision, spelling out the defects lifts
+    all-required-completed from 0.083 (casual) to 0.667/0.500 (P0-Maximal/P1).
+  secondary_findings:
+  - finding: structure's realized value is SCOPE DISCIPLINE, not completion
+    evidence: P1-Contract has 0 returned-unchanged / 0 unauthorized / 0 protected-corruption
+      vs P0-Maximal (1 unauthorized) and P0-Realistic (2/2); P1-P0max completion -0.067.
+  - finding: the fuller packet adds completion (+0.300 over P1) with a narrow EXACT-preservation
+      gap, NOT holistic over-editing
+    evidence: P3-Ideal trips 2 exact protected-span checks and 2 exact unaffected-span
+      checks (vs P1 0/0). BUT blind reviewers rated P3-Ideal HIGHEST on scope_control
+      (4.222) and over_editing (4.333=most disciplined) and least rigid (4.111) ->
+      the mechanical flags are brittle exact-match artifacts (benign rephrasing of
+      protected/unaffected spans), not holistic scope failure. The real, narrow compiler
+      task is LOCKING protected spans verbatim, not curbing over-editing.
+    branch: improve_compiler_quality
+  - finding: prompt architecture >> the Dispatch-27 LoRA on the SAME failure
+    evidence: focused-revision all-required 0.083(casual)->0.5-0.75(structured/ideal),
+      returned-unchanged 0.167->0.0; the LoRA gave 0.0. -> near-term lever is the
+      prompt engine, not weight tuning.
+    branch: shift_training_to_packet_executor
+  effect_floor_results:
+    compilation_success:
+      p1_minus_p0max_gain>=0.15: false
+      value: -0.067
+      PASS: false
+    practical_product_success:
+      p1_minus_p0realistic_gain>=0.20: true
+      returned_unchanged_reduction>=0.25: false
+      value_gain: 0.2
+      value_ru_reduction: 0.167
+      PASS: false
+    full_packet_success:
+      p3ideal_minus_p1_gain>=0.08: true
+      new_scope_regressions==0: false
+      value_gain: 0.3
+      PASS: false
+  p3_ideal_anti_result_triggered: true
+  mechanical_vs_soft_reconciliation: 'H7 (fuller packet -> rigidity/over-editing)
+    is NOT supported by blind soft review. Mechanically P3-Ideal trips a few EXACT
+    protected/unaffected-span checks, but blind reviewers rated it the BEST arm on
+    prose (3.889), voice (4.167), scope_control (4.222), over_editing (4.333, most
+    disciplined), rigidity (4.111, most natural), and author_usefulness (3.778). The
+    mechanical anti-result is therefore a brittle exact-match artifact (benign rephrasing),
+    not holistic over-editing. Net: the fuller packet improves BOTH compliance and
+    prose; the only real fix is verbatim protected-span locking.'
+  soft_review:
+    P0-Realistic:
+      prose_quality: 2.8
+      voice_preservation: 2.8
+      scope_control: 2.9
+      over_editing: 2.85
+      rigidity: 3.3
+      author_usefulness: 2.55
+      fatal: 5
+    P1-Contract:
+      prose_quality: 2.95
+      voice_preservation: 3.3
+      scope_control: 3.45
+      over_editing: 3.7
+      rigidity: 3.5
+      author_usefulness: 2.8
+      fatal: 2
+    P3-Ideal:
+      prose_quality: 3.889
+      voice_preservation: 4.167
+      scope_control: 4.222
+      over_editing: 4.333
+      rigidity: 4.111
+      author_usefulness: 3.778
+      fatal: 2
+  soft_review_status: model_review_only (human waived); reviewer calibration 3/3 &
+    3/3
+  product_thesis_supported: true
+  product_thesis_nuance: 'SUPPORTED via requirement elicitation: LineWright''s value
+    is turning vague author intent into explicit, checkable requirements. Structure
+    adds SCOPE DISCIPLINE (0 over-edits at equal information). The fuller ideal packet
+    is the BEST arm on every blind soft dimension AND completes the most required
+    changes; its only mechanical gap is exact protected-span preservation (a verbatim-locking
+    fix, not an over-editing problem). This is a far larger, real gain than the neutral
+    Dispatch-27 LoRA.'
+  training_target: reliable LineWright packet execution + requirement elicitation,
+    NOT universal prose taste
+  phase_2_gate:
+    meaningful_prompt_signal_detected: true
+    task_instrument_valid: true
+    no_unresolved_scoring_bias: true
+    no_major_information_equivalence_failure: true
+  full_benchmark_authorized: true
+  phase_2_scope: 100-task multimodel benchmark (existing 4B + Qwen3-8B + a frontier
+    capability reference) with P0-Realistic/P0-Maximal/P1-Contract/P2-Context/P3-Compiled
+    — only if a real compiler is available for P3-Compiled.
+  dataset_a3_expansion_authorized: false
+  dataset_a3_note: REMAINS PAUSED. The dominant near-term lever is the PROMPT ENGINE
+    (requirement elicitation + scope-controlled contracts), not weight training; the
+    LoRA was neutral on this exact failure while prompting was not. If A.3 is later
+    expanded, redesign it around packet execution, not universal prose.
+  next_step: Invest in requirement elicitation + a scope-controlled contract compiler;
+    run the Phase-2 100-task multimodel benchmark to confirm and size the effect before
+    any Dataset A.3 expansion or further training.

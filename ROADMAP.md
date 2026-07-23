@@ -292,6 +292,17 @@ Three packet profiles are defined:
 Final context budgets must not be locked until the Voice Lab packet format exists
 and representative packets have been measured.
 
+**Empirical support (Dispatch 28, provisional).** A frozen, information-controlled
+prompt-effect pilot found that structuring an author's request as a compiled packet
+fixes the multi-constraint focused-revision failure far more than the neutral
+Dispatch-27 LoRA on the same target (all-required-completed 0.083 casual → 0.50–0.75
+structured/ideal; returned-unchanged 0.167 → 0.0; the LoRA gave 0.0). The dominant lever
+is **eliciting the requirements authors omit**; structure at equal information adds scope
+discipline (no unauthorized edits). This validates the compiled-context requirement as a
+product mechanism, not only a measurement convention. A Phase-2 100-task multimodel
+benchmark is authorized to confirm and size the effect; Dataset A.3 weight-training
+expansion stays paused. See `training/reports/dispatch-28-prompt-effect-decision.md`.
+
 ## Measurement-authority rule
 
 - Aedan may gather evidence, run scripts, quote source definitions, validate

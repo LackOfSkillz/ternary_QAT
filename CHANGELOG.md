@@ -5,6 +5,40 @@ Notable changes to this LineWright research fork. Dates are absolute; the active
 
 ## [Unreleased]
 
+### Dispatch 28 — LineWright Prompt Effect Pilot (2026-07-22)
+
+Tested LineWright's product thesis directly: does compiling ordinary author intent into a
+structured fiction-writing packet fix the multi-constraint focused-revision failure better than
+the neutral Dispatch-27 LoRA? **No training, no QAT, no dataset change, no threshold change, no
+weights published, `master` untouched.** Frozen-first: 30 benchmark-only tasks (deterministic
+grounded machine checks) → freeze → 4 prompt arms → freeze (P0-Maximal ≡ P1-Contract
+information-equivalence verified) → generation → mechanical scoring → blind soft review →
+decision, each stage committed before the next.
+
+- **Arms** (Qwen3-8B non-thinking, greedy, seed 20260722, 100 outputs, 0 reasoning leaks / 0 token
+  caps): P0-Realistic (casual), P0-Maximal (every requirement, unstructured), P1-Contract (same
+  info, structured), P3-Ideal (hand-built ceiling, 10 tasks). P3-Compiled dropped — no real
+  compiler in this fork.
+- **Mechanical (focused-revision, all-required-completed):** P0-Realistic **0.083** → P0-Maximal
+  0.667 → P1-Contract 0.500 → P3-Ideal **0.750**. Headline: **P1−P0-Realistic +0.20** (whole
+  product), **P1−P0-Maximal −0.067** (structure alone at equal info adds no *completion*),
+  **P3-Ideal−P1 +0.30**. Returned-unchanged 0.167→0.0. **The Dispatch-27 LoRA gave 0.0 on this
+  exact failure** — prompt architecture ≫ weight tuning here.
+- **Structure's realized value = scope discipline:** P1-Contract is the only mechanically spotless
+  arm (0 returned-unchanged / 0 unauthorized / 0 protected-corruption).
+- **Blind soft review** (arm-hidden, two calibrated LM reviewers 3/3 & 3/3; human waived →
+  model-review-only, NOT human-confirmed): P3-Ideal is the **best arm on every dimension** — prose
+  3.89, voice 4.17, scope_control 4.22, over_editing 4.33 (most disciplined), rigidity 4.11 (most
+  natural), usefulness 3.78. **The H7 anti-result (packet → rigidity/over-editing) does not hold**;
+  P3-Ideal's mechanical protected/unaffected-span flags are brittle exact-match artifacts (benign
+  rephrasing), not holistic over-editing. The one real fix is verbatim protected-span locking.
+- **Decision: `prioritize_requirement_elicitation`** — the product value is eliciting/organizing the
+  requirements authors don't state, not structure per se; structure adds scope discipline; the
+  fuller packet improves both compliance and prose. **Product thesis SUPPORTED (provisional).**
+  **Phase-2 100-task multimodel benchmark AUTHORIZED; Dataset A.3 expansion REMAINS PAUSED** (prompt
+  engine is the near-term lever, not weight training). No commercial ship certification. 9 Dispatch-28
+  tests; Gate 0 zero drift.
+
 ### Dispatch 27 Phase A — Qwen3-8B bounded prose + Q4 deployment confirmation (2026-07-22)
 
 Executed the bounded Qwen confirmation before any LoRA work. **No training, no dataset change, no
