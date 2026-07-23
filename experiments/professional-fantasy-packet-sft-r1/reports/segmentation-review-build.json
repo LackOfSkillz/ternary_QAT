@@ -1,0 +1,37 @@
+{
+ "mode": "calibration",
+ "app": "private-data\\review-app\\index.html",
+ "candidates_in_app": 3,
+ "calibration": [
+  {
+   "passage_id": "abercrombe-p09",
+   "source_filename": "abercrombe.txt",
+   "role": "dialogue_heavy",
+   "word_count": 1198,
+   "boundary_method": "length+soft",
+   "boundary_confidence": "low",
+   "dialogue_ratio": 0.42,
+   "action_density": 0.33
+  },
+  {
+   "passage_id": "lies-p16",
+   "source_filename": "lies.txt",
+   "role": "action_heavy",
+   "word_count": 824,
+   "boundary_method": "chapter+eof",
+   "boundary_confidence": "medium",
+   "dialogue_ratio": 0.36,
+   "action_density": 0.61
+  },
+  {
+   "passage_id": "lor-p01",
+   "source_filename": "lor.txt",
+   "role": "exposition_or_discovery",
+   "word_count": 985,
+   "boundary_method": "chapter+chapter",
+   "boundary_confidence": "high",
+   "dialogue_ratio": 0.0,
+   "action_density": 0.0
+  }
+ ]
+}

@@ -1,0 +1,22 @@
+{
+ "dispatch": "30A-R1",
+ "candidates": 172,
+ "sources": 11,
+ "per_source": {
+  "abercrombe.txt": 16,
+  "sanderson.txt": 12,
+  "gord.txt": 16,
+  "mouser.txt": 16,
+  "wot.txt": 16,
+  "pawn.txt": 16,
+  "streams.txt": 16,
+  "lies.txt": 16,
+  "lor.txt": 16,
+  "HP.txt": 16,
+  "got.txt": 16
+ },
+ "all_11_sources": true,
+ "errors": [],
+ "error_count": 0,
+ "valid": true
+}
