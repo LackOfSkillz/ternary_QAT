@@ -1,0 +1,66 @@
+{
+ "dispatch": 27,
+ "phase": "B",
+ "reviewers": {
+  "type": "two independent blind LM graders (sub-agents)",
+  "human_review_submitted": false,
+  "human_gate_waived_this_round": true,
+  "evidence_status": "model_review_only",
+  "independently_human_confirmed": false
+ },
+ "roles_compared": [
+  "qwen3_8b_base",
+  "lora_step-18"
+ ],
+ "per_role_means": {
+  "lora_step-18": {
+   "prose_quality": 3.455,
+   "instruction_compliance": 3.182,
+   "voice_preservation": 4.0,
+   "scene_coherence": 3.909,
+   "pacing": 3.455,
+   "sentence_naturalness": 3.727,
+   "scope_control": 3.864,
+   "canon_fidelity": 5.0,
+   "protected_text_preservation": 5.0,
+   "author_usefulness": 3.0,
+   "fatal": 4
+  },
+  "qwen3_8b_base": {
+   "prose_quality": 3.455,
+   "instruction_compliance": 3.182,
+   "voice_preservation": 4.045,
+   "scene_coherence": 3.864,
+   "pacing": 3.455,
+   "sentence_naturalness": 3.682,
+   "scope_control": 3.864,
+   "canon_fidelity": 5.0,
+   "protected_text_preservation": 5.0,
+   "author_usefulness": 3.0,
+   "fatal": 4
+  }
+ },
+ "prose_gain": 0.0,
+ "voice_gain": -0.045,
+ "instruction_drop": 0.0,
+ "new_fatal_best_vs_base": 0,
+ "advancement_floor": {
+  "min_prose_gain": 0.25,
+  "min_voice_gain": 0.25,
+  "max_instruction_drop": 0.15,
+  "max_new_fatal": 0
+ },
+ "effect_floor_passed": false,
+ "reviewer_calibration": {
+  "A": {
+   "broken_caught": 4,
+   "broken_total": 4
+  },
+  "B": {
+   "broken_caught": 4,
+   "broken_total": 4
+  }
+ },
+ "inter_reviewer_agreement_mean_abs_prose_diff": 0.0,
+ "scores_locked_before_unblinding": true
+}
