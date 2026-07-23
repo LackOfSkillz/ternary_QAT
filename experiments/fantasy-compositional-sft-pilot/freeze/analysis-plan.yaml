@@ -1,0 +1,72 @@
+analysis_plan:
+  dispatch: 30A
+  frozen_at: "2026-07-23"
+  pre_registered: true
+  note: frozen in Phase 0, before any training or eval generation.
+
+  units:
+    packet: the primary analysis unit (paired across all arms)
+    constraint: co-primary unit (~150-250 observations across the packet set)
+
+  primary_binary_joint_success:
+    subset: original_world
+    method: McNemar exact (or mid-p) on paired packets
+    report_discordant_counts: true          # comp-wins-base-fails, base-wins-comp-fails, both-pass, both-fail
+    forbidden: relying only on unpaired percentages
+
+  constraint_level:
+    report: [passed_required, total_required, delta_by_constraint_type]
+    intervals: packet-clustered bootstrap (constraints within a packet NOT treated as independent);
+      if bootstrap impractical, state the approximation explicitly
+
+  confidence_intervals:
+    required_for: every major rate
+    report_raw_counts: true
+    forbidden: reducing the experiment to whether a single 10-point threshold was crossed
+
+  quality:
+    absolute_gate: score in {3,4} (required for joint success)
+    prose_sensitivity: blind pairwise (ties allowed); preferred sensitivity measure
+
+  arm_comparisons_of_record:
+    - base_vs_compositional            # headline
+    - atomic_vs_compositional          # the single-variable causal test (constraint density)
+    - compositional_vs_replay          # does replay preserve prose range
+
+  transfer_interpretation:
+    original_world_gain: general packet execution (the claim)
+    same_world_gain_only: likely world/voice memorization -> Path_D_or_redesign
+    non_fantasy_gain_equal: general instruction-following rather than fantasy-specific execution
+
+  checkpoint_selection:
+    rule: frozen BEFORE unblinding prose review
+    evaluate: midpoint + final on full primary benchmark; early on a fixed frozen subset if compute-bound
+    best_adapter_may_precede_final: true
+    do_not_declare_arm_failed_before_curve_inspected: true
+
+  positive_result_pattern:                 # a coherent pattern, not a single number
+    - more packets rescued than harmed (paired)
+    - improved constraint-level pass rate
+    - no decline in manuscript quality
+    - transfer to original worlds
+    - no material memorization
+
+  strong_success_requires:
+    - original_world_joint_success improves
+    - paired rescues clearly exceed regressions
+    - constraint-level pass rate improves
+    - beats atomic control
+    - manuscript quality not degraded
+    - memorization gate passed
+    - checkpoint curve supports the result
+    - profile_adherence NOT required in this pilot
+
+  invalidating_conditions:                 # -> failure_or_invalid
+    - gains only on same-world packets
+    - compositional does not beat atomic
+    - quality declines materially
+    - improvement disappears on original-world packets
+    - substantial target memorization
+    - benchmark floored (<0.25) or ceilinged (>0.65) at base
+    - comparison not exposure-matched
+    - verifier errors dominate scoring

@@ -1,0 +1,12 @@
+{
+  "dispatch": "30A",
+  "base_model": "Qwen/Qwen3-8B",
+  "exact_revision": "b968826d9c46dd6066d109eabc6255188de91218",
+  "tokenizer_revision": "b968826d9c46dd6066d109eabc6255188de91218",
+  "thinking_mode": "disabled",
+  "chat_template": "qwen3 default (enable_thinking=false), pinned by tokenizer revision",
+  "quantization_for_training": "bf16 (no QAT)",
+  "container_image": "linewright-ternary-train:d26",
+  "note": "Same frozen foundation confirmed in Dispatch 27 and used in Dispatch 28B generation. No thinking traces permitted in training targets or eval outputs.",
+  "frozen_at": "2026-07-23"
+}

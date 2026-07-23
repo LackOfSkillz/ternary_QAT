@@ -1,0 +1,41 @@
+{
+  "dispatch": "30A",
+  "role": "instrumentation_and_calibration_corpus_only",
+  "note": "These eleven third-party, in-copyright files establish the professional reference space. They are NEVER SFT targets. Prose and scene structures are never copied into training data. Kept locally under 'training text/' (git-ignored); referenced here by hash only.",
+  "filename_mapping_note": "The Dispatch-30A text lists 'HP(1).txt' and 'got(1).txt'; the actual local files are 'HP.txt' and 'got.txt'. This manifest binds to the real files present on disk by sha256.",
+  "authorized_uses": [
+    "professional_prose_reference_bands",
+    "anti_slop_null_distribution",
+    "detector_calibration",
+    "profile_range_measurement",
+    "blind_review_professional_controls",
+    "abstract_craft_analysis",
+    "sentence_and_punctuation_statistics",
+    "memorization_and_overlap_screening"
+  ],
+  "prohibited_uses": {
+    "professional_scene_as_gold_target": "prohibited",
+    "professional_scene_packet_to_original_scene": "prohibited",
+    "professional_scene_packet_to_rewritten_scene": "prohibited",
+    "professional_scene_specific_beats_in_training_data": "prohibited",
+    "professional_names_places_magic_or_canon_in_training_data": "prohibited",
+    "renamed_or_paraphrased_reconstruction_of_professional_scene": "prohibited"
+  },
+  "local_corpus_root": "training text/",
+  "git_status": "ignored (never committed)",
+  "files": [
+    {"file": "abercrombe.txt", "work": "The Blade Itself (First Law)", "author": "Joe Abercrombie", "bytes": 1169489, "sha256": "fd53f47ceae7aaf904dfdc7d470f16c8a47cf9bdb79dfe4cb9b7f01cde68f962"},
+    {"file": "sanderson.txt", "work": "Brandon Sanderson (short sci-fi work)", "author": "Brandon Sanderson", "bytes": 87371, "sha256": "f4b331859dc41c38d92db3f4f1942d361ee3c46d38d3558ff4b97d3cc63cafd0"},
+    {"file": "gord.txt", "work": "Gord the Rogue (Greyhawk)", "author": "Gary Gygax", "bytes": 694265, "sha256": "461f997f7974c8488133bce915a53370c2ccf670313aa6cdba7d18f438dec541"},
+    {"file": "mouser.txt", "work": "Fafhrd and the Gray Mouser", "author": "Fritz Leiber", "bytes": 499597, "sha256": "a082f48185085e1aa91a0ae348eee33ea3951d64523981a996d760ef1495aada"},
+    {"file": "wot.txt", "work": "The Wheel of Time", "author": "Robert Jordan", "bytes": 690805, "sha256": "7f6e667fba61a727fc6e1b0c2237d4e1a6cdf1fe6e6ebcd71e5ffbbdd4e07584"},
+    {"file": "pawn.txt", "work": "Pawn of Prophecy (Belgariad)", "author": "David Eddings", "bytes": 525824, "sha256": "2648c19e0ab012b8b4b1a03949c20581e0ff7b4b0cf04f39a457a763524a6779"},
+    {"file": "streams.txt", "work": "Streams of Silver (Icewind Dale)", "author": "R.A. Salvatore", "bytes": 620150, "sha256": "9ea36e0a96e9337e1a17a283cf75ce4740b930c26a260a9eb93b66264ae27768"},
+    {"file": "lies.txt", "work": "The Lies of Locke Lamora", "author": "Scott Lynch", "bytes": 1140574, "sha256": "af7d05f151a5fff331882c1daac0428025fd7e5db4f3d05d697014472636e81b"},
+    {"file": "lor.txt", "work": "The Lord of the Rings", "author": "J.R.R. Tolkien", "bytes": 2775914, "sha256": "6c3b8fe38340d1075505d633891537d429f258023ce5c12a82878d496391a142"},
+    {"file": "HP.txt", "work": "Harry Potter and the Sorcerer's Stone", "author": "J.K. Rowling", "bytes": 6614949, "sha256": "77b853df10df5d622b611be2b918fe35701476105b6c1ec13f31f0ea841bd539"},
+    {"file": "got.txt", "work": "A Game of Thrones", "author": "George R.R. Martin", "bytes": 1654175, "sha256": "d4c28c73f39df4074b359cb01c1c38fb3ad39b5fe3c5772798ff1e89b24a94d5"}
+  ],
+  "file_count": 11,
+  "overlap_screening_baseline": "This exact hash set is the frozen source corpus for the Section 11.1 professional-overlap checks (exact 8-gram, 13-gram, LCS, rare-phrase, proper-name, distinctive-collocation)."
+}

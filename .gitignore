@@ -12,6 +12,21 @@ dist/
 # Must never enter git history or any redistributable artifact.
 training text/
 
+# --- Dispatch 30A fantasy-compositional-sft-pilot: private data-bearing paths ---
+# Gary's manuscript-derived records, model outputs, checkpoints, reviews, and any
+# manifest that embeds manuscript or same-world content NEVER enter git. Design
+# scaffolding (schemas/, freeze/, configs/, scripts/, reports/, professional-reference
+# manifest with hashes only) IS committed.
+experiments/fantasy-compositional-sft-pilot/datasets/
+experiments/fantasy-compositional-sft-pilot/outputs/
+experiments/fantasy-compositional-sft-pilot/checkpoints/
+experiments/fantasy-compositional-sft-pilot/reviews/
+experiments/fantasy-compositional-sft-pilot/manifests/manuscript-source-scenes.jsonl
+experiments/fantasy-compositional-sft-pilot/manifests/atomic-records.jsonl
+experiments/fantasy-compositional-sft-pilot/manifests/compositional-records.jsonl
+experiments/fantasy-compositional-sft-pilot/manifests/replay-records.jsonl
+experiments/fantasy-compositional-sft-pilot/manifests/eval-same-world.jsonl
+
 # --- Model weights / checkpoints (never source-controlled) ---
 *.safetensors
 *.bin

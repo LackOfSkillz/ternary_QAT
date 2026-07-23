@@ -1,0 +1,42 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "fantasy-compositional-sft-pilot/scene-packet.schema.json",
+  "title": "LineWright scene packet (Dispatch 30A)",
+  "description": "Production-shaped LineWright scene packet: constraints in -> full prose scene out. The same schema serves atomic (1-2 load-bearing constraints) and compositional (5-8) arms; arms differ only in constraint density, never task type.",
+  "type": "object",
+  "required": ["packet_id", "schema_version", "arm", "viewpoint", "tense", "required_beats",
+               "scene_boundary", "ending_state", "output_contract"],
+  "additionalProperties": false,
+  "properties": {
+    "packet_id": {"type": "string"},
+    "schema_version": {"type": "string"},
+    "arm": {"type": "string", "enum": ["atomic", "compositional"]},
+    "viewpoint": {"type": "string", "description": "e.g. close_third_<name>, first_person_<name>, omniscient"},
+    "tense": {"type": "string", "enum": ["past", "present"]},
+    "scene_purpose": {"type": "string"},
+    "opening_state": {"type": "string"},
+    "required_beats": {"type": "array", "items": {"type": "string"},
+      "description": "load-bearing plot/emotional beats the scene must hit"},
+    "canon_facts": {"type": "array", "items": {"type": "string"}},
+    "character_goals": {"type": "array", "items": {"type": "string"}},
+    "knowledge_limits": {"type": "array", "items": {"type": "string"},
+      "description": "what a viewpoint/character may NOT know at this point"},
+    "forbidden_developments": {"type": "array", "items": {"type": "string"},
+      "description": "events/reveals that must NOT occur in this scene"},
+    "scene_boundary": {"type": "string", "description": "where the scene starts and stops"},
+    "ending_state": {"type": "string", "description": "required situation at scene end"},
+    "craft_profile": {"type": ["object", "null"],
+      "description": "diagnostic-only in this pilot; retained for production serialization parity",
+      "additionalProperties": true},
+    "output_contract": {"type": "string", "enum": ["prose_scene"]},
+    "constraint_accounting": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "meaningful_constraints": {"type": "integer"},
+        "load_bearing_constraints": {"type": "integer"},
+        "formatting_or_trivial_excluded": {"type": "boolean"}
+      }
+    }
+  }
+}

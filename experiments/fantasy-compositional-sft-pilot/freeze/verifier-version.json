@@ -1,0 +1,14 @@
+{
+  "dispatch": "30A",
+  "status": "planned_not_yet_frozen",
+  "freezes_at_phase": 3,
+  "note": "The mechanical + advisory-semantic verifier is a REQUIRED deliverable and must be validated against a manually-labeled fixture set (clear passes, clear failures, ambiguous, protected false positives, dialogue-heavy, varied punctuation, short/long scenes) BEFORE any arm comparison. Its version + hash are frozen here at Phase 3.",
+  "planned_deterministic_checks": ["viewpoint", "tense", "required_names_and_facts", "protected_text",
+    "forbidden_events", "scene_boundary", "ending_state", "required_object_presence",
+    "knowledge_boundary_lexical", "signature_stacking", "profile_surface_metrics"],
+  "planned_semantic_checks": ["meaningful_beat_completion", "scene_purpose_fulfillment", "reveal_timing",
+    "canon_inference", "knowledge_boundary_meaning", "natural_exposition", "emotional_reversal"],
+  "verifier_version": null,
+  "verifier_hash": null,
+  "fixture_accuracy": null
+}

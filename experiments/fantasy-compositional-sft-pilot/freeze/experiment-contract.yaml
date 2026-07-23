@@ -1,0 +1,128 @@
+experiment_contract:
+  dispatch: 30A
+  name: fantasy-compositional-sft-pilot
+  owner: Aedan
+  branch: linewright-experiments
+  status: phase_0_frozen
+  frozen_at: "2026-07-23"
+  authorized: true                      # training authorized; this is not research-only
+  master_untouched_required: true
+
+  primary_question: >
+    Does compositional packet-to-scene SFT improve useful fantasy prose on ENTIRELY NEW worlds
+    more than an atomic packet-to-scene control, without reducing prose quality or memorizing the
+    manuscript targets?
+
+  core_hypothesis: >
+    Training on full LineWright scene packets with several simultaneous load-bearing constraints
+    improves held-out packet execution more than token-matched training on the same
+    scene-generation task with only one or two constraints. The tested variable is CONSTRAINT
+    DENSITY, not task type. Both arms perform: scene packet -> full prose scene.
+
+  model:
+    base_model: Qwen/Qwen3-8B
+    exact_revision: b968826d9c46dd6066d109eabc6255188de91218
+    thinking: disabled
+    frozen: true
+
+  # shared LoRA recipe held CONSTANT across arms B/C/D (the established conservative LineWright
+  # recipe). Final per-arm exposure-matched configs are frozen at Phase 6 before training.
+  training_recipe:
+    method: LoRA
+    lora_rank: 16
+    lora_alpha: 16
+    lora_dropout: 0.05
+    lora_target_modules: [q_proj, k_proj, v_proj, o_proj, gate_proj, up_proj, down_proj]
+    optimizer: adamw
+    learning_rate: 1.0e-5
+    scheduler: cosine
+    warmup_ratio: 0.03
+    weight_decay: 0.0
+    gradient_clipping: 1.0
+    precision: bf16
+    max_sequence_length: 2048
+    epochs_or_steps: ~1 epoch, shuffled, early-stopping on val loss
+    packing: false
+    seed_policy: single fixed seed 20260723 across arms
+    checkpoint_schedule: [~33%, ~66%, final]   # >=3 checkpoints per trained arm
+
+  arms:
+    A: {id: A, name: frozen_base, training: none, role: baseline + paired comparator}
+    B:
+      id: B
+      name: atomic_packet_to_scene
+      task: reduced scene packet -> full Gary-authored scene
+      load_bearing_constraints: 1_to_2
+      note: SAME full-scene targets as Arm C; NOT a micro-edit dataset
+    C:
+      id: C
+      name: compositional_packet_to_scene
+      task: full LineWright packet -> full Gary-authored scene
+      meaningful_constraints_preferred: 5_to_8
+      meaningful_constraints_acceptable: 4_to_10
+      load_bearing_constraints_minimum: 4
+    D:
+      id: D
+      name: compositional_plus_prose_replay
+      mixture: {compositional_packet_records: 0.70, gary_authored_fiction_replay: 0.25, general_instruction_anchor: 0.05}
+      note: replay is Gary-authored fiction ONLY; never the 11 professional files
+
+  single_variable_comparison:
+    core_causal_test: Arm_B_vs_Arm_C
+    matched: [task, target_prose, source_scene_distribution, approx_output_tokens, model, optimizer]
+    differs_only: explicit_constraint_density   # B 1-2 vs C 5-8
+    deviation_policy: any deviation reported BEFORE training
+
+  source_roles:
+    gary_manuscripts:
+      role: only authorized SFT gold targets
+      projects: [AoS (~28 scenes), Norse (~23 units)]
+      transformation: gary_scene -> back-translated packet -> verified constraints -> same gary scene as gold
+      target_predates_packet: true
+      teacher_rewriting: prohibited
+      privacy: manuscript text never enters a public repository (STOP condition)
+    professional_reference_corpus:
+      role: instrumentation + calibration ONLY (see manifests/professional-reference-files.json)
+      as_sft_target: prohibited
+      files: 11 (hashes frozen)
+
+  scope:
+    source_manuscript_scenes: 20_to_30
+    accepted_training_records: 50_to_100
+    maximum_records_per_source_scene: 2
+    eval_original_world_packets: 22_to_28   # PRIMARY benchmark; new worlds only
+    eval_same_world_packets: 8_to_12        # held-out AoS/Norse; reported separately
+    eval_non_fantasy_control_packets: 6_to_10
+    pad_to_upper_limit: prohibited          # a clean 55-record set beats 100 redundant
+
+  metrics:
+    primary: joint_success_original_world   # all required hard constraints pass AND quality review passes (3-4)
+    co_primary: constraint_level_pass_rate  # passed_required / total_required, broken down by type
+    quality_gate: absolute_quality in {3,4}
+    prose_sensitivity: blind pairwise comparison (base/atomic/compositional/replay)
+    profile_adherence: DIAGNOSTIC ONLY (not a strong-success requirement in this pilot)
+    resemblance_to_gary_scene: prohibited as a scoring signal
+
+  gates:
+    eval_headroom_preflight:
+      required: true
+      subset: original_world
+      base_joint_success_band: [0.25, 0.65]   # <0.25 review; >0.65 add difficulty; else proceed
+      note: this is THE gate into training, not optional analysis
+    verifier_validated_before_arm_comparison: true
+    datasets_and_exposure_matched_before_training: true
+
+  memorization_and_leakage:
+    professional_overlap_checks: [exact_8gram, exact_13gram, longest_common_substring, rare_phrase, proper_name, distinctive_collocation]
+    gary_target_memorization_probes: [exact_8gram, exact_13gram, lcs, percent_target_reproduced, proper_name_and_phrase]
+    train_eval_separation: [target_hash, packet_hash, exact_dup, near_dup, shared_structure, shared_canon, semantic_world_overlap]
+    substantial_reproduction: fails the gate even if eval score improves
+
+  deferred_not_authorized: [bare_DPO, ORPO, KTO, anchored_preference_training, QAT, learned_critic,
+    RLHF, direct_training_on_professional_books, author_imitation_profiles, thousands_of_records,
+    production_model_replacement]
+
+  blocked_on_gary:
+    - AoS/Norse manuscript scenes (Phases 1-2 source selection + back-translation)
+    - human load-bearing audit (Phase 2 Step 4-5)
+    - final record approval, same-world eval authoring, blind-review + adjudication time

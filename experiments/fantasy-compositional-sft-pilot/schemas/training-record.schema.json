@@ -1,0 +1,73 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "fantasy-compositional-sft-pilot/training-record.schema.json",
+  "title": "SFT training record (Dispatch 30A)",
+  "description": "One packet-to-scene SFT record. The gold target is a Gary-authored manuscript scene that PREDATES the packet and is never teacher-rewritten. Records that embed manuscript prose live only in git-ignored manifests/datasets.",
+  "type": "object",
+  "required": ["record_id", "arm", "scene_packet", "target", "validation"],
+  "additionalProperties": false,
+  "properties": {
+    "record_id": {"type": "string"},
+    "arm": {"type": "string", "enum": ["atomic", "compositional", "replay", "instruction_anchor"]},
+    "scene_packet": {"$ref": "scene-packet.schema.json"},
+    "target": {
+      "type": "object",
+      "required": ["source_project", "source_manuscript", "source_scene_id", "source_hash",
+                   "target_hash", "target_word_count", "target_predates_packet", "teacher_rewritten"],
+      "additionalProperties": false,
+      "properties": {
+        "source_project": {"type": "string", "enum": ["AoS", "Norse", "other_approved"]},
+        "source_manuscript": {"type": "string"},
+        "source_scene_id": {"type": "string"},
+        "source_hash": {"type": "string"},
+        "source_version": {"type": "string"},
+        "target_hash": {"type": "string"},
+        "target_word_count": {"type": "integer"},
+        "local_private_path": {"type": "string", "description": "local only; never committed"},
+        "target_predates_packet": {"const": true},
+        "teacher_rewritten": {"const": false},
+        "normalizations_applied": {"type": "array", "items": {"type": "string",
+          "enum": ["line_endings", "encoding_cleanup", "page_header_removal",
+                   "extraction_artifact_removal", "spacing"]}}
+      }
+    },
+    "pairing": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "matched_record_id": {"type": "string", "description": "atomic<->compositional twin sharing the same target"},
+        "same_target_as_matched": {"type": "boolean"}
+      }
+    },
+    "constraint_accounting": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "meaningful_constraints": {"type": "integer"},
+        "load_bearing_constraints": {"type": "integer"}
+      }
+    },
+    "validation": {
+      "type": "object",
+      "required": ["schema_valid", "source_scene_hash_present", "target_hash_present",
+                   "packet_verified_against_target", "load_bearing_audit_complete",
+                   "ambiguous_required_constraints", "contradicted_required_constraints",
+                   "train_eval_overlap", "near_duplicate_record", "target_teacher_rewritten",
+                   "source_scene_record_cap_respected"],
+      "additionalProperties": false,
+      "properties": {
+        "schema_valid": {"const": true},
+        "source_scene_hash_present": {"const": true},
+        "target_hash_present": {"const": true},
+        "packet_verified_against_target": {"const": true},
+        "load_bearing_audit_complete": {"const": true},
+        "ambiguous_required_constraints": {"const": 0},
+        "contradicted_required_constraints": {"const": 0},
+        "train_eval_overlap": {"const": false},
+        "near_duplicate_record": {"const": false},
+        "target_teacher_rewritten": {"const": false},
+        "source_scene_record_cap_respected": {"const": true}
+      }
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "dispatch": "30A",
+  "packet_schema_version": "scene-packet.schema.json@1",
+  "system_prompt_version": "lw-scene-executor-v1",
+  "scene_packet_wrapper": "LineWright production scene-packet serializer (not a simplified NL summary)",
+  "craft_profile_wrapper": "retained for production parity; diagnostic-only in this pilot",
+  "output_contract": "prose_scene",
+  "stop_conditions": "model turn end; no thinking block permitted",
+  "principle": "The model must learn the exact form it will receive in production. Do not substitute a simplified natural-language summary unless production uses the same serializer.",
+  "generation_settings": {
+    "temperature": 0.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": "default",
+    "seed_policy": "fixed 20260723 across all arms and checkpoints",
+    "thinking_mode": "disabled",
+    "note": "identical decoding for every arm and checkpoint; no arm gets custom decoding. max_output_tokens set per eval-packet scene-length band at Phase 4 freeze."
+  },
+  "frozen_at": "2026-07-23"
+}
