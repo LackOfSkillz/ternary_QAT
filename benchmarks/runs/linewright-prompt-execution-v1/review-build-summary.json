@@ -1,0 +1,16 @@
+{
+ "units": 61,
+ "candidate": 56,
+ "calibration": 5,
+ "broken_controls": 4,
+ "good_controls": 1,
+ "id_leaks": 0,
+ "text_leaks": 0,
+ "arm_distribution": {
+  "P1-Contract": 21,
+  "P3-Ideal": 10,
+  "P0-Maximal": 9,
+  "P0-Realistic": 16,
+  "calibration": 5
+ }
+}

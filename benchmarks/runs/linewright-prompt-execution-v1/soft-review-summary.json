@@ -1,0 +1,102 @@
+{
+ "dispatch": "28B",
+ "reviewers": {
+  "type": "two blind LM sub-agents",
+  "human_review_submitted": false,
+  "waived_for_pilot": true,
+  "evidence_status": "model_review_only",
+  "independently_human_confirmed": false
+ },
+ "per_arm_means": {
+  "P0-Realistic": {
+   "prose_quality": 3.688,
+   "voice_preservation": 4.219,
+   "naturalness": 4.0,
+   "scene_coherence": 4.281,
+   "pacing": 3.938,
+   "scope_control": 4.031,
+   "author_usefulness": 3.312,
+   "rigidity": 4.062,
+   "over_editing": 4.5,
+   "repetition_or_slop": 4.062,
+   "fatal": 9,
+   "units": 16
+  },
+  "P0-Maximal": {
+   "prose_quality": 3.778,
+   "voice_preservation": 4.056,
+   "naturalness": 3.944,
+   "scene_coherence": 4.056,
+   "pacing": 3.722,
+   "scope_control": 3.556,
+   "author_usefulness": 3.556,
+   "rigidity": 4.0,
+   "over_editing": 4.167,
+   "repetition_or_slop": 4.111,
+   "fatal": 2,
+   "units": 9
+  },
+  "P1-Contract": {
+   "prose_quality": 3.81,
+   "voice_preservation": 4.095,
+   "naturalness": 3.976,
+   "scene_coherence": 4.095,
+   "pacing": 3.929,
+   "scope_control": 3.405,
+   "author_usefulness": 3.69,
+   "rigidity": 4.048,
+   "over_editing": 4.095,
+   "repetition_or_slop": 4.024,
+   "fatal": 3,
+   "units": 21
+  },
+  "P3-Ideal": {
+   "prose_quality": 3.65,
+   "voice_preservation": 3.95,
+   "naturalness": 3.65,
+   "scene_coherence": 3.8,
+   "pacing": 3.65,
+   "scope_control": 3.1,
+   "author_usefulness": 3.25,
+   "rigidity": 3.75,
+   "over_editing": 3.9,
+   "repetition_or_slop": 3.55,
+   "fatal": 5,
+   "units": 10
+  }
+ },
+ "reviewer_calibration": {
+  "A": {
+   "broken_caught": 4,
+   "broken_total": 4,
+   "good_flagged_fatal": 0,
+   "good_total": 1
+  },
+  "B": {
+   "broken_caught": 4,
+   "broken_total": 4,
+   "good_flagged_fatal": 0,
+   "good_total": 1
+  }
+ },
+ "reviewer_agreement": {
+  "prose_quality_mean_abs_diff": 0.304,
+  "n": 56
+ },
+ "soft_anti_results": {
+  "p1_vs_p0max": {
+   "prose_quality": 0.032,
+   "voice_preservation": 0.039,
+   "rigidity": 0.048,
+   "over_editing": -0.072
+  },
+  "p3ideal_vs_p1": {
+   "prose_quality": -0.16,
+   "voice_preservation": -0.145,
+   "rigidity": -0.298,
+   "over_editing": -0.195
+  }
+ },
+ "calibration_controls_excluded_from_arm_means": true,
+ "scores_locked_before_unblinding": true
+}

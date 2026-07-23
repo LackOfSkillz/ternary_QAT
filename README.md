@@ -234,12 +234,24 @@ truth to prevent answer leakage to a future compiled arm, and 100 prompts across
 P0-Maximal / P1-Contract / P3-Ideal (P3-Compiled deferred), with P0-Maximal ≡ P1-Contract verified
 30/30. **Construction + freeze only — no generation, scoring, review, training, or QAT.**
 
-**Status:** Qwen3-8B foundation confirmed; the neutral Dispatch-27 LoRA pointed at the dataset, and
-Dispatch 28's prompt-effect pilot showed the near-term lever is the **prompt engine, not weight
-tuning** (branch `prioritize_requirement_elicitation`, Phase-2 authorized, Dataset A.3 paused).
-Dispatch 28A froze the trustworthy Prompt-Execution instrument for that Phase-2 run; generation is
-deferred to a separately-authorized dispatch. No training or QAT since Dispatch 27, no dataset
-change, no empirical ship thresholds, no published weights, `master` untouched.
+**Dispatch 28B** ran the frozen Prompt-Execution instrument end to end on Qwen3-8B (100 outputs,
+integrity valid) and made the strategic call. Clean-execution: P0-Realistic 0.40, P0-Maximal 0.63,
+P1-Contract 0.57, P3-Ideal 0.60 — **all three precommitted floors fail**. Contract *structure* does
+not beat equivalent maximal natural language (P1 − P0-Maximal −0.066) and is prose-neutral in blind
+review; the richer ideal packet regresses. Comprehension probes pass 6/6 while execution fails 4/6,
+so the headline focused-revision failure is **execution discipline at a model-capability ceiling**,
+not something a better prompt fixes. Branch: **`model_capability_is_primary_bottleneck`**; thesis
+**partially_supported** (requirement elicitation helps, contract structure does not); **full 100-task
+multimodel benchmark authorized**, Dataset A.3 deferred (model ceiling), training/QAT held. See
+`training/reports/dispatch-28b-prompt-execution-decision.md`.
+
+**Status:** Qwen3-8B foundation confirmed. Dispatch 28's prompt-effect pilot favored requirement
+elicitation; Dispatch 28A froze a stronger audit-grade instrument; **Dispatch 28B's cleaner run shows
+LineWright contract structure does not improve execution reliability over equivalent prose, and the
+target multi-constraint focused-revision failure is model-capability-bound** (branch
+`model_capability_is_primary_bottleneck`, multimodel benchmark authorized, A.3 deferred). No training
+or QAT since Dispatch 27, no dataset change, no empirical ship thresholds, no published weights,
+`master` untouched.
 
 ## Install
 

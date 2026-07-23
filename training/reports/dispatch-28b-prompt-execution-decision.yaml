@@ -1,0 +1,170 @@
+prompt_execution_decision:
+  dispatch: 28B
+  provisional: true
+  final_commercial_ship_certification: false
+  generation_integrity: valid
+  instrument_valid: true
+  primary_branch: model_capability_is_primary_bottleneck
+  primary_rationale: 'On the headline multi-constraint focused-revision failure every
+    structured arm plateaus (all-required completed: P0-Maximal 0.250, P1-Contract
+    0.250, P3-Ideal 0.000) although the model COMPREHENDS the contracts (6/6 comprehension
+    pass, 4/6 execution fail). No prompt representation — exhaustive NL, structured
+    contract, or hand-built ideal packet — cracks the ceiling; contract structure
+    is a mechanical and soft wash (P1 - P0-Maximal clean -0.066), and the richer packet
+    regresses. The residual is execution discipline bound by model capability, not
+    a comprehension/representation gap a better prompt could close.'
+  secondary_findings:
+  - finding: requirement ELICITATION (not contract structure) is the real cross-family
+      lever
+    evidence: 'P0-Realistic -> P0-Maximal: clean 0.400 -> 0.633; focused-revision
+      mean changes 1.00 -> 2.25; canon clean 0.0 -> 1.0; no-change accuracy 0.75 ->
+      1.0. Achievable in plain prose; it does not require the LineWright contract
+      format.'
+    branch: prioritize_requirement_elicitation
+  - finding: contract STRUCTURE adds no reliability and mildly hurts scope
+    evidence: P1 - P0-Maximal clean -0.066; P1 introduces 1 new protected corruption
+      + 2 forbidden violations and drops canon clean 1.0 -> 0.667; soft prose/voice/rigidity
+      deltas vs P0-Maximal are ~0 (within noise).
+  - finding: the richer ideal packet is a NET NEGATIVE
+    evidence: P3-Ideal - P1 clean 0.000 and it under-executes focused revision (mean
+      changes 1.25 vs 2.08); blind review scores it softly WORSE on the same 10 tasks
+      (rigidity -0.298, prose -0.160, over_editing -0.195) -> a soft anti-result.
+  - finding: comprehension is saturated while execution fails -> a trainable execution-discipline
+      gap
+    evidence: comprehension probes 6/6 pass, execution 4/6 pass_fail. If a stronger
+      model still shows the gap, the lever is training a reliable packet EXECUTOR,
+      not prompt engineering.
+    branch: shift_training_to_packet_executor
+  product_thesis: partially_supported
+  product_thesis_note: The product thesis as stated — that LineWright CONTRACT STRUCTURE
+    makes the model more reliable — is NOT supported (all three floors fail; P1 does
+    not beat equal-information NL mechanically or softly; the ideal packet regresses).
+    The weaker claim that CLEAR REQUIREMENT SPECIFICATION helps IS supported, but
+    that is requirement elicitation, achievable in plain prose, and the headline focused-revision
+    failure is capability-bound.
+  effect_floors:
+    structure_success: false
+    practical_product_success: false
+    ideal_packet_signal: false
+  precommitted_comparisons:
+    p1_minus_p0_maximal:
+      clean_execution_gain: -0.066
+      focused_revision_all_required_gain: 0.0
+      invalid_unchanged_reduction: 0.0
+    p1_minus_p0_realistic:
+      clean_execution_gain: 0.167
+      invalid_unchanged_reduction: 0.15
+    p3ideal_minus_p1:
+      clean_execution_gain: 0.0
+      canon_gain: 0.0
+      voice_gain: 0.0
+  soft_review:
+    per_arm_means:
+      P0-Realistic:
+        prose_quality: 3.688
+        voice_preservation: 4.219
+        naturalness: 4.0
+        scene_coherence: 4.281
+        pacing: 3.938
+        scope_control: 4.031
+        author_usefulness: 3.312
+        rigidity: 4.062
+        over_editing: 4.5
+        repetition_or_slop: 4.062
+        fatal: 9
+        units: 16
+      P0-Maximal:
+        prose_quality: 3.778
+        voice_preservation: 4.056
+        naturalness: 3.944
+        scene_coherence: 4.056
+        pacing: 3.722
+        scope_control: 3.556
+        author_usefulness: 3.556
+        rigidity: 4.0
+        over_editing: 4.167
+        repetition_or_slop: 4.111
+        fatal: 2
+        units: 9
+      P1-Contract:
+        prose_quality: 3.81
+        voice_preservation: 4.095
+        naturalness: 3.976
+        scene_coherence: 4.095
+        pacing: 3.929
+        scope_control: 3.405
+        author_usefulness: 3.69
+        rigidity: 4.048
+        over_editing: 4.095
+        repetition_or_slop: 4.024
+        fatal: 3
+        units: 21
+      P3-Ideal:
+        prose_quality: 3.65
+        voice_preservation: 3.95
+        naturalness: 3.65
+        scene_coherence: 3.8
+        pacing: 3.65
+        scope_control: 3.1
+        author_usefulness: 3.25
+        rigidity: 3.75
+        over_editing: 3.9
+        repetition_or_slop: 3.55
+        fatal: 5
+        units: 10
+    soft_anti_results:
+      p1_vs_p0max:
+        prose_quality: 0.032
+        voice_preservation: 0.039
+        rigidity: 0.048
+        over_editing: -0.072
+      p3ideal_vs_p1:
+        prose_quality: -0.16
+        voice_preservation: -0.145
+        rigidity: -0.298
+        over_editing: -0.195
+    reviewer_calibration:
+      A:
+        broken_caught: 4
+        broken_total: 4
+        good_flagged_fatal: 0
+        good_total: 1
+      B:
+        broken_caught: 4
+        broken_total: 4
+        good_flagged_fatal: 0
+        good_total: 1
+    status: model_review_only (human waived); calibration 4/4 & 4/4 broken caught
+  comprehension_execution:
+    pass_pass: 2
+    fail_fail: 0
+    pass_fail: 4
+    fail_pass: 0
+  anti_results:
+    new_protected_text_corruption: 1
+    unauthorized_edit_rate_increase: true
+    no_change_accuracy_drop: 0.0
+    new_critical_failures_p1_vs_p0max: 1
+    forbidden_violations_by_arm:
+      P0-Realistic: 0
+      P0-Maximal: 0
+      P1-Contract: 2
+      P3-Ideal: 0
+  future_training_target: no_custom_training_yet
+  training_note: HOLD training. The comprehension/execution split hints a packet-executor
+    LoRA COULD help, but only after the multimodel benchmark shows the ceiling is
+    model-specific and the failure is trainable without collapsing prose. No LoRA/QAT
+    now.
+  full_multimodel_benchmark_authorized: true
+  real_product_compiler_test_required: false
+  real_product_compiler_note: 'Lower priority: the hand-built ideal ceiling REGRESSED
+    (under-executed + more rigid), so richer compiled context is unlikely to fix focused
+    revision on this model. Revisit only if a more capable model shows the ceiling
+    is representation-bound.'
+  dataset_a3_minimum: 500
+  dataset_a3_generation_authorized: false
+  dataset_a3_composition_status: deferred_due_to_model_ceiling
+  next_step: Run the 100-task multimodel benchmark (existing 4B + Qwen3-8B + a stronger
+    capability reference) on this instrument to test whether the focused-revision
+    EXECUTION ceiling is model-specific. Hold the contract compiler, Dataset A.3 expansion,
+    and any training until that resolves capability vs representation.

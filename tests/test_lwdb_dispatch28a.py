@@ -160,8 +160,9 @@ def test_no_generation_authorized_and_no_outputs_exist():
     assert plan["prompt_counts"]["p3_compiled"] == 0
     for d in ("outputs", "normalized-results", "raw-outputs", "generations"):
         assert not os.path.isdir(os.path.join(BENCH, d)), f"generation output dir {d} must not exist"
-    # no run directory for this instrument yet
-    assert not os.path.isdir(os.path.join(REPO, "benchmarks", "runs", "linewright-prompt-execution-v1"))
+    # the FROZEN instrument itself embeds no generation outputs and never authorized generation.
+    # (Generation is a separate, later dispatch — Dispatch 28B — which writes to benchmarks/runs/;
+    # its existence is expected and does not violate the 28A construction invariant.)
 
 
 def test_prompt_freeze_before_generation():

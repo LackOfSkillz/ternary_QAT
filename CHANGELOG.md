@@ -5,6 +5,37 @@ Notable changes to this LineWright research fork. Dates are absolute; the active
 
 ## [Unreleased]
 
+### Dispatch 28B — Generate, score, review, and decide the Prompt-Execution pilot (2026-07-23)
+
+Ran the frozen `linewright-prompt-execution-v1` instrument end to end on Qwen3-8B and made the
+strategic call. **No training, no QAT, no dataset change, no threshold change, `master` untouched.**
+Frozen instrument verified unchanged (4 hashes MATCH, validation valid, equivalence 30/30) before
+generation.
+
+- **Generation (integrity VALID):** Qwen3-8B @ `b968826d`, non-thinking, greedy, seed 20260723 —
+  100/100 outputs + 6 comprehension probes, 0 missing/duplicate/hash-mismatch, 0 token caps, 0
+  reasoning traces, 0 technical failures (GB10, torch 2.10, transformers 5.14.1). Raw/normalized
+  outputs + private-unblinding gitignored; summaries/reports/hashes committed.
+- **Mechanical (clean_execution primary):** P0-Realistic 0.400, P0-Maximal **0.633**, P1-Contract
+  0.567, P3-Ideal 0.600. **P1 − P0-Maximal −0.066** (structure alone adds nothing), P1 − P0-Realistic
+  +0.167, **P3-Ideal − P1 0.000**. **All three precommitted floors FAIL.** Contract structure mildly
+  hurts scope (1 protected corruption, 2 forbidden violations, canon clean 1.0→0.667); the ideal
+  packet under-executes focused revision (mean changes 1.25 vs 2.08).
+- **Comprehension vs execution:** 6/6 comprehension pass, **4/6 execution fail** (`pass_fail`) — the
+  residual multi-constraint focused-revision failure is EXECUTION DISCIPLINE at a model-capability
+  ceiling, not a comprehension gap a better prompt could close.
+- **Blind review** (arm-hidden, two LM reviewers, both caught 4/4 broken calibration controls, 0
+  false positives, agreement 0.30; human waived → model-review-only): structure is prose-neutral vs
+  P0-Maximal (deltas ~0); the ideal packet is softly WORSE than P1 on the same tasks (rigidity
+  −0.30 — a soft anti-result).
+- **Decision: `model_capability_is_primary_bottleneck`.** Product thesis **`partially_supported`** —
+  requirement *elicitation* helps (P0-Realistic→P0-Maximal), but LineWright contract *structure* does
+  not improve reliability over equivalent natural language, and the headline failure is capability-bound.
+  **Full 100-task multimodel benchmark AUTHORIZED**; **Dataset A.3 expansion DEFERRED (model ceiling)**;
+  training/QAT held; real-compiler test lower priority (the ideal ceiling regressed). No ship
+  certification. 12 Dispatch-28B tests; full suite 405 passed / 1 skipped / 1 pre-existing peft-env
+  failure; Gate 0 zero drift.
+
 ### Dispatch 28A — Build + freeze the LineWright Prompt-Execution pilot instrument (2026-07-23)
 
 Constructed and froze a new, audit-grade pilot instrument that tests whether a structured

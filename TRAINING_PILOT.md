@@ -216,3 +216,24 @@ Battery** (LWDB). Architecture:
 - Lesson: when a cheap prompt-side intervention beats a LoRA on the exact target failure, spend there
   before scaling the training set — and prove it with frozen, information-controlled arms rather than
   anecdote.
+
+### Dispatch 28B — Prompt-Execution pilot run (result: model-capability bottleneck; training held)
+
+- **No training and no QAT.** Ran the frozen `linewright-prompt-execution-v1` instrument on Qwen3-8B
+  (non-thinking, greedy, seed 20260723; 100 outputs, integrity valid) with four information-controlled
+  arms, then a blind soft review and comprehension probes.
+- **Result:** clean-execution P0-Realistic 0.40, P0-Maximal 0.63, P1-Contract 0.57, P3-Ideal 0.60;
+  **all three precommitted floors fail.** Requirement *elicitation* helps (casual→maximal lifts clean
+  0.40→0.63 and focused-revision mean changes 1.0→2.25), but contract *structure* does not beat
+  equivalent maximal prose (P1 − P0-Maximal −0.066) and is prose-neutral in blind review; the richer
+  ideal packet regresses (under-executes, softly more rigid). Crucially, comprehension probes pass
+  6/6 while execution fails 4/6 — the residual multi-constraint failure is **execution discipline at a
+  model-capability ceiling**, not a comprehension/representation gap.
+- **Decision: `model_capability_is_primary_bottleneck`.** A packet-executor LoRA could in principle
+  teach the discipline the model already comprehends, but training is **held** until a 100-task
+  multimodel benchmark shows the ceiling is model-specific and the failure is trainable without
+  collapsing prose. Dataset A.3 expansion **deferred (model ceiling)**; future training target
+  `no_custom_training_yet`.
+- Lesson: a saturated-comprehension / failed-execution split means neither a better prompt nor more
+  of the same data is the lever — check whether a more capable base breaks the ceiling before
+  spending on weights.
