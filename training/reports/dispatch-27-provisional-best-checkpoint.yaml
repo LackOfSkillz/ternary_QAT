@@ -1,0 +1,40 @@
+provisional_best:
+  checkpoint: lora_step-18
+  optimizer_step: 18
+  adapter_sha256: c3498c4d1eb9194a9a0b63f15ec4d74cf0f49ee43a3a6148b330b715f6749afb
+  selected_before_blind_review: true
+  focused_revision_gain_unchanged_return_reduction: 0.0
+  mechanical_result:
+    n: 14
+    mechanical_pass: 11
+    mechanical_total: 14
+    mechanical_pass_rate: 0.786
+    core_prose_pass_rate: 0.857
+    focused_revision_pass_rate: 1.0
+    structured_output_validity: 1.0
+    no_change_accuracy: 0.0
+    canon_fidelity: 1.0
+    constraint_fidelity: 1.0
+    realistic_packet_pass_rate: 1.0
+    long_stability_pass_rate: 0.0
+    severe_slop_rate: 0.0
+    token_cap_rate: 0.0
+    reasoning_trace_rate: 0.0
+  critical_regressions: 0
+  validation_loss: 4.378345012664795
+  selection_rationale: All checkpoints are mechanically eligible (zero regressions/leaks)
+    and TIE on every metric (the LoRA is neutral), and the focused-revision audit
+    shows no checkpoint reduces the unchanged-return rate. With all ranking keys tied,
+    the EARLIEST eligible checkpoint wins (lowest exposure) — step-3. The final/step-21
+    checkpoint is NOT privileged.
+  eligible_alternatives:
+  - lora_step-3
+  - lora_step-6
+  - lora_step-9
+  - lora_step-12
+  - lora_step-15
+  - lora_step-18
+  - lora_step-21
+  - lora_final
+  rejected_checkpoints: []
+  focused_revision_audit_present: true
