@@ -226,11 +226,20 @@ rated the fuller packet the best arm on every dimension. Branch:
 Dataset A.3 expansion stays paused**. Product thesis **supported (provisional)**. See
 `training/reports/dispatch-28-prompt-effect-decision.md`.
 
+**Dispatch 28A** built and froze a new audit-grade instrument,
+[benchmarks/linewright-prompt-execution-v1/](benchmarks/linewright-prompt-execution-v1/), to test
+the same thesis rigorously before the authorized Phase-2 run: 30 fresh machine-checkable tasks
+(zero overlap with the datasets or the Dispatch-28 pilot), `compiler_inputs` separated from ground
+truth to prevent answer leakage to a future compiled arm, and 100 prompts across P0-Realistic /
+P0-Maximal / P1-Contract / P3-Ideal (P3-Compiled deferred), with P0-Maximal ≡ P1-Contract verified
+30/30. **Construction + freeze only — no generation, scoring, review, training, or QAT.**
+
 **Status:** Qwen3-8B foundation confirmed; the neutral Dispatch-27 LoRA pointed at the dataset, and
 Dispatch 28's prompt-effect pilot showed the near-term lever is the **prompt engine, not weight
-tuning** (branch `prioritize_requirement_elicitation`, Phase-2 authorized, Dataset A.3 paused). No
-training or QAT in Dispatch 28, no dataset change, no empirical ship thresholds, no published
-weights, `master` untouched.
+tuning** (branch `prioritize_requirement_elicitation`, Phase-2 authorized, Dataset A.3 paused).
+Dispatch 28A froze the trustworthy Prompt-Execution instrument for that Phase-2 run; generation is
+deferred to a separately-authorized dispatch. No training or QAT since Dispatch 27, no dataset
+change, no empirical ship thresholds, no published weights, `master` untouched.
 
 ## Install
 

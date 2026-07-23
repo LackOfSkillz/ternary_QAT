@@ -5,6 +5,36 @@ Notable changes to this LineWright research fork. Dates are absolute; the active
 
 ## [Unreleased]
 
+### Dispatch 28A — Build + freeze the LineWright Prompt-Execution pilot instrument (2026-07-23)
+
+Constructed and froze a new, audit-grade pilot instrument that tests whether a structured
+LineWright contract makes a small model execute fiction-writing instructions more reliably than
+strong natural-language prompting. **Construction + freeze ONLY** — no generation, no scoring, no
+review, no decision, no training, no QAT, no Dataset A.3 expansion, `master` untouched. Built in its
+own directory `benchmarks/linewright-prompt-execution-v1/`; the Dispatch-28
+`linewright-prompt-effect-v1` pilot is preserved unchanged as provisional evidence-of-record.
+
+- **Frozen-first sequence** (each committed before the next): author + validate + freeze the task
+  layer (`98048fa`) → render + validate + freeze the prompt layer (`c7af6c3`).
+- **30 FRESH tasks** (12 focused-revision / 5 protected-text / 4 no-change / 3 canon / 3 voice / 2
+  scene / 1 structured), original to this instrument — validated to have **zero overlap** with
+  Dataset A/A.2/A.3 **or** the Dispatch-28 benchmark (10-gram shingle scan). Focused-revision
+  instruction positions **4 early / 4 middle / 4 late**, critical-instruction type rotated 4×3.
+  Every required change / protected element / unaffected span keys on an **exact substring**; a
+  deterministic typed check evaluator is the single source of truth (no LLM grader for primary
+  correctness). 6 comprehension probes.
+- **Leakage separation:** each task splits `compiler_inputs` (the only block a future application
+  compiler may receive) from `evaluation_ground_truth` + `machine_checks`, asserted by the validator
+  — so a later P3-Compiled arm cannot see the answers.
+- **100 prompts:** P0-Realistic 30 (casual, with omission inventory), P0-Maximal 30 (exhaustive NL),
+  P1-Contract 30 (canonical contract), P3-Ideal 10 (hand-built theoretical ceiling, labeled
+  non-product). **P3-Compiled deferred** (the real compiler lives in the application project; no
+  re-implementation or simulation permitted). **P0-Maximal ≡ P1-Contract information equivalence
+  verified 30/30.** Every record `generation_authorized: false`.
+- 17 Dispatch-28A tests (task layer, prompt layer, no-generation/no-outputs, repo invariants); full
+  suite 393 passed / 1 skipped / 1 pre-existing peft-env failure; Gate 0 zero drift. Future
+  generation (30×3 + 10 = 100 outputs) requires a new, separately-authorized dispatch.
+
 ### Dispatch 28 — LineWright Prompt Effect Pilot (2026-07-22)
 
 Tested LineWright's product thesis directly: does compiling ordinary author intent into a
