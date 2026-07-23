@@ -1,0 +1,40 @@
+lora_decision:
+  dispatch: 27
+  phase: B
+  provisional: true
+  final_commercial_ship_certification: false
+  advancement_floors:
+    min_prose_gain: 0.25
+    min_voice_gain: 0.25
+    max_instruction_drop: 0.15
+    max_new_fatal: 0
+  mechanical_preconditions:
+    provisional_best_checkpoint: lora_step-18
+    critical_regressions_at_best: 0
+    reasoning_leak_at_best: 0.0
+    core_prose_not_worse: true
+    structured_not_worse: true
+  blind_prose:
+    prose_gain: 0.0
+    voice_gain: -0.045
+    instruction_drop: 0.0
+    new_fatal: 0
+  branch: revise_Dataset_A3
+  lora_advances: false
+  selected_checkpoint: null
+  rationale:
+  - 'the conservative pilot is NON-DESTRUCTIVE (no critical regression, no degeneration)
+    but the blind prose gain is below the effect floor (prose gain 0.0 < 0.25, voice
+    gain -0.045 < 0.25). At 42 training records this is the expected feasibility signal:
+    the pipeline works and the recipe is safe, but the dataset is too small/thin to
+    move prose — scale + curate Dataset A.3 (toward the 200-500 target, teacher-diversified,
+    Gate-3 reviewed) before retraining. NOT retain_Qwen_base, because the lever to
+    pull is the dataset, not abandoning tuning.'
+  rejected_branches:
+  - select_LoRA_checkpoint
+  - retain_Qwen_base
+  - revise_LoRA_recipe
+  - run_one_bounded_confirmation
+  - stop_Qwen_tuning_direction
+  qat_authorized: false
+  qat_started: false
