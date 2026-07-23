@@ -1,0 +1,18 @@
+{
+ "dispatch": "30A-R1",
+ "note": "counts only; per-passage reasons kept private (structurally identifying)",
+ "passages": 11,
+ "lexical_identifier_risk": {
+  "low": 11
+ },
+ "structural_reconstruction_risk": {
+  "medium": 5,
+  "high": 3,
+  "low": 3
+ },
+ "recommendations": {
+  "abstract_further": 6,
+  "accept": 3,
+  "accept_with_medium_retrieval_risk": 2
+ }
+}

@@ -40,7 +40,10 @@ experiment_contract:
     weight_decay: 0.0
     gradient_clipping: 1.0
     precision: bf16
-    max_sequence_length: 2048
+    max_sequence_length: 8192   # corrected from 2048 after exact Qwen counts: the 11 accepted
+      # records total 3430-5632 tokens (max lor-c01-C 5632). 6144 fits all 22 current records but is
+      # too tight for the corpus 4500-word hard cap (~6600 tokens); 8192 fits current + headroom for
+      # the remaining harvest. Targets are NEVER truncated. See reports/token-fit-report.json.
     epochs: low (memorization monitored early; final checkpoint not assumed best)
     seed_policy: single fixed seed 20260723 across arms
     checkpoint_schedule: [~25-33%, ~50-66%, final]

@@ -1,0 +1,244 @@
+{
+ "dispatch": "30A-R1",
+ "note": "exact Qwen3-8B counts (non-thinking chat template); counts only, no text",
+ "records": {
+  "abercrombe-c01-C": {
+   "arm": "compositional",
+   "source_filename": "abercrombe.txt",
+   "input_tokens": 584,
+   "target_tokens": 3175,
+   "total_tokens": 3759,
+   "fits_4096": true,
+   "fits_6144": true,
+   "fits_8192": true
+  },
+  "sanderson-c01-C": {
+   "arm": "compositional",
+   "source_filename": "sanderson.txt",
+   "input_tokens": 609,
+   "target_tokens": 4038,
+   "total_tokens": 4647,
+   "fits_4096": false,
+   "fits_6144": true,
+   "fits_8192": true
+  },
+  "gord-c01-C": {
+   "arm": "compositional",
+   "source_filename": "gord.txt",
+   "input_tokens": 561,
+   "target_tokens": 3564,
+   "total_tokens": 4125,
+   "fits_4096": false,
+   "fits_6144": true,
+   "fits_8192": true
+  },
+  "mouser-c01-C": {
+   "arm": "compositional",
+   "source_filename": "mouser.txt",
+   "input_tokens": 606,
+   "target_tokens": 3402,
+   "total_tokens": 4008,
+   "fits_4096": true,
+   "fits_6144": true,
+   "fits_8192": true
+  },
+  "wot-c01-C": {
+   "arm": "compositional",
+   "source_filename": "wot.txt",
+   "input_tokens": 579,
+   "target_tokens": 4139,
+   "total_tokens": 4718,
+   "fits_4096": false,
+   "fits_6144": true,
+   "fits_8192": true
+  },
+  "pawn-c01-C": {
+   "arm": "compositional",
+   "source_filename": "pawn.txt",
+   "input_tokens": 566,
+   "target_tokens": 3380,
+   "total_tokens": 3946,
+   "fits_4096": true,
+   "fits_6144": true,
+   "fits_8192": true
+  },
+  "streams-c01-C": {
+   "arm": "compositional",
+   "source_filename": "streams.txt",
+   "input_tokens": 556,
+   "target_tokens": 3295,
+   "total_tokens": 3851,
+   "fits_4096": true,
+   "fits_6144": true,
+   "fits_8192": true
+  },
+  "lies-c01-C": {
+   "arm": "compositional",
+   "source_filename": "lies.txt",
+   "input_tokens": 551,
+   "target_tokens": 3052,
+   "total_tokens": 3603,
+   "fits_4096": true,
+   "fits_6144": true,
+   "fits_8192": true
+  },
+  "lor-c01-C": {
+   "arm": "compositional",
+   "source_filename": "lor.txt",
+   "input_tokens": 591,
+   "target_tokens": 5041,
+   "total_tokens": 5632,
+   "fits_4096": false,
+   "fits_6144": true,
+   "fits_8192": true
+  },
+  "HP-c01-C": {
+   "arm": "compositional",
+   "source_filename": "HP.txt",
+   "input_tokens": 565,
+   "target_tokens": 3637,
+   "total_tokens": 4202,
+   "fits_4096": false,
+   "fits_6144": true,
+   "fits_8192": true
+  },
+  "got-c01-C": {
+   "arm": "compositional",
+   "source_filename": "got.txt",
+   "input_tokens": 542,
+   "target_tokens": 3190,
+   "total_tokens": 3732,
+   "fits_4096": true,
+   "fits_6144": true,
+   "fits_8192": true
+  },
+  "abercrombe-c01-A": {
+   "arm": "atomic",
+   "source_filename": "abercrombe.txt",
+   "input_tokens": 384,
+   "target_tokens": 3175,
+   "total_tokens": 3559,
+   "fits_4096": true,
+   "fits_6144": true,
+   "fits_8192": true
+  },
+  "sanderson-c01-A": {
+   "arm": "atomic",
+   "source_filename": "sanderson.txt",
+   "input_tokens": 408,
+   "target_tokens": 4038,
+   "total_tokens": 4446,
+   "fits_4096": false,
+   "fits_6144": true,
+   "fits_8192": true
+  },
+  "gord-c01-A": {
+   "arm": "atomic",
+   "source_filename": "gord.txt",
+   "input_tokens": 373,
+   "target_tokens": 3564,
+   "total_tokens": 3937,
+   "fits_4096": true,
+   "fits_6144": true,
+   "fits_8192": true
+  },
+  "mouser-c01-A": {
+   "arm": "atomic",
+   "source_filename": "mouser.txt",
+   "input_tokens": 403,
+   "target_tokens": 3402,
+   "total_tokens": 3805,
+   "fits_4096": true,
+   "fits_6144": true,
+   "fits_8192": true
+  },
+  "wot-c01-A": {
+   "arm": "atomic",
+   "source_filename": "wot.txt",
+   "input_tokens": 396,
+   "target_tokens": 4139,
+   "total_tokens": 4535,
+   "fits_4096": false,
+   "fits_6144": true,
+   "fits_8192": true
+  },
+  "pawn-c01-A": {
+   "arm": "atomic",
+   "source_filename": "pawn.txt",
+   "input_tokens": 366,
+   "target_tokens": 3380,
+   "total_tokens": 3746,
+   "fits_4096": true,
+   "fits_6144": true,
+   "fits_8192": true
+  },
+  "streams-c01-A": {
+   "arm": "atomic",
+   "source_filename": "streams.txt",
+   "input_tokens": 370,
+   "target_tokens": 3295,
+   "total_tokens": 3665,
+   "fits_4096": true,
+   "fits_6144": true,
+   "fits_8192": true
+  },
+  "lies-c01-A": {
+   "arm": "atomic",
+   "source_filename": "lies.txt",
+   "input_tokens": 378,
+   "target_tokens": 3052,
+   "total_tokens": 3430,
+   "fits_4096": true,
+   "fits_6144": true,
+   "fits_8192": true
+  },
+  "lor-c01-A": {
+   "arm": "atomic",
+   "source_filename": "lor.txt",
+   "input_tokens": 395,
+   "target_tokens": 5041,
+   "total_tokens": 5436,
+   "fits_4096": false,
+   "fits_6144": true,
+   "fits_8192": true
+  },
+  "HP-c01-A": {
+   "arm": "atomic",
+   "source_filename": "HP.txt",
+   "input_tokens": 376,
+   "target_tokens": 3637,
+   "total_tokens": 4013,
+   "fits_4096": true,
+   "fits_6144": true,
+   "fits_8192": true
+  },
+  "got-c01-A": {
+   "arm": "atomic",
+   "source_filename": "got.txt",
+   "input_tokens": 376,
+   "target_tokens": 3190,
+   "total_tokens": 3566,
+   "fits_4096": true,
+   "fits_6144": true,
+   "fits_8192": true
+  }
+ },
+ "summary": {
+  "atomic_total_range": {
+   "min": 3430,
+   "median": 3805,
+   "max": 5436
+  },
+  "compositional_total_range": {
+   "min": 3603,
+   "median": 4008,
+   "max": 5632
+  },
+  "fits_4096": "14/22",
+  "fits_6144": "22/22",
+  "fits_8192": "22/22",
+  "smallest_candidate_fitting_all_current": 6144,
+  "recommended_max_sequence_length": 8192,
+  "recommendation_reason": "6144 fits all 11 current records (max 5632) but the corpus 4500-word hard cap implies future targets ~6000-6600 tokens that exceed 6144; 8192 fits current with headroom. Targets are never truncated."
+ }
+}
