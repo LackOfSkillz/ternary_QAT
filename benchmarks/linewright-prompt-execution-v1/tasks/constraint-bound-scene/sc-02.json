@@ -1,0 +1,176 @@
+{
+ "task_id": "sc-02",
+ "task_family": "constraint_bound_scene",
+ "title": "The letter she can't send",
+ "source_passage": "",
+ "user_context": "Write a short scene (4-6 sentences): a woman drafts and destroys a letter. Hard constraints: the entire scene takes place in ONE room; no other character appears or is spoken to; and you must NOT state what the letter is about — the reader should only infer its weight.",
+ "compiler_inputs": {
+  "user_request": "Write a short scene (4-6 sentences): a woman drafts and destroys a letter. Hard constraints: the entire scene takes place in ONE room; no other character appears or is spoken to; and you must NOT state what the letter is about — the reader should only infer its weight.",
+  "source_passage": "",
+  "project_context": "interior character study",
+  "scene_context": "a single room at night, one woman, an unfinished letter",
+  "canon_records": [],
+  "voice_profile": "close third, past tense, oblique",
+  "character_state": "she has something she cannot say and cannot keep",
+  "invention_budget": "moderate: room detail and gesture only, within the constraints"
+ },
+ "evaluation_ground_truth": {
+  "required_changes": [
+   {
+    "id": "rc1",
+    "desc": "the scene may not leave the room",
+    "defect_type": "constraint_single_room",
+    "check": {
+     "t": "absent",
+     "v": "she went outside"
+    }
+   },
+   {
+    "id": "rc2",
+    "desc": "no other character speaks or appears",
+    "defect_type": "constraint_no_second_character",
+    "check": {
+     "t": "absent_re",
+     "v": "\\bhe said\\b|\\bthey said\\b"
+    }
+   },
+   {
+    "id": "rc3",
+    "desc": "keep the focus on the act of writing/destroying, not a stated subject",
+    "defect_type": "constraint_withhold_subject",
+    "check": {
+     "t": "present_re",
+     "v": "letter|page|paper|words|ink"
+    }
+   }
+  ],
+  "protected_elements": [],
+  "forbidden_changes": [
+   {
+    "id": "f1",
+    "desc": "do not name what the letter concerns",
+    "check": {
+     "t": "absent",
+     "v": "the affair"
+    }
+   },
+   {
+    "id": "f2",
+    "desc": "no second character enters",
+    "check": {
+     "t": "absent",
+     "v": "the door opened and"
+    }
+   }
+  ],
+  "authorized_spans": [
+   {
+    "id": "a1",
+    "desc": "the whole scene is authored under the stated constraints"
+   }
+  ],
+  "unaffected_spans": [],
+  "required_facts": [
+   "one room",
+   "no second character",
+   "subject withheld"
+  ],
+  "forbidden_facts": [
+   "an explicit statement of the letter's subject"
+  ],
+  "expected_output_shape": "prose",
+  "valid_no_change_case": false
+ },
+ "machine_checks": {
+  "required_change_checks": [
+   {
+    "id": "rc1",
+    "kind": "constraint_single_room",
+    "check": {
+     "t": "absent",
+     "v": "she went outside"
+    }
+   },
+   {
+    "id": "rc2",
+    "kind": "constraint_no_second_character",
+    "check": {
+     "t": "absent_re",
+     "v": "\\bhe said\\b|\\bthey said\\b"
+    }
+   },
+   {
+    "id": "rc3",
+    "kind": "constraint_withhold_subject",
+    "check": {
+     "t": "present_re",
+     "v": "letter|page|paper|words|ink"
+    }
+   }
+  ],
+  "protected_text_checks": [],
+  "forbidden_change_checks": [
+   {
+    "id": "f1",
+    "kind": "forbidden_guard",
+    "check": {
+     "t": "absent",
+     "v": "the affair"
+    }
+   },
+   {
+    "id": "f2",
+    "kind": "forbidden_guard",
+    "check": {
+     "t": "absent",
+     "v": "the door opened and"
+    }
+   }
+  ],
+  "output_shape_checks": [],
+  "returned_unchanged_check": {
+   "normalization": {
+    "trim_outer_whitespace": true,
+    "normalize_line_endings": true
+   },
+   "comparison": "exact_after_normalization"
+  },
+  "partial_fix_checks": [
+   "rc1",
+   "rc2",
+   "rc3"
+  ],
+  "unauthorized_edit_checks": []
+ },
+ "diagnostics": {
+  "instruction_position": null,
+  "critical_instruction_type": "constraint_binding",
+  "critical_instruction_ordinal": 3,
+  "defect_count": 3,
+  "difficulty": "high",
+  "context_length_class": "short",
+  "voice_dependency": false,
+  "canon_dependency": false
+ },
+ "gold_acceptance_requirements": {
+  "contract_execution_required": true,
+  "manuscript_quality_required": true,
+  "acceptable_output_properties": [
+   "confined to one room",
+   "no second character",
+   "subject stays implied",
+   "weight carried by gesture and restraint"
+  ]
+ },
+ "benchmark_policy": {
+  "benchmark_only": true,
+  "excluded_from_training": true,
+  "excluded_from_teacher_examples": true,
+  "excluded_from_dataset_revision_examples": true,
+  "excluded_from_preference_data": true,
+  "immutable_after_freeze": true
+ },
+ "comprehension_probe": {
+  "enabled": false
+ }
+}

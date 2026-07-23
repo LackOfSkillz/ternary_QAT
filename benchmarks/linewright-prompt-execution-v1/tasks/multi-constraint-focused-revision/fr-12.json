@@ -1,0 +1,209 @@
+{
+ "task_id": "fr-12",
+ "task_family": "multi_constraint_focused_revision",
+ "title": "Field hospital — buried canon and format",
+ "source_passage": "Nurse Okonkwo moved between the cots by candlelight. She reached for the antibiotics on the high shelf. 'We lost three tonight,' she told the surgeon, and her voice did not shake. The tent breathed with the wind. It was the best of times, it was the worst of times.",
+ "user_context": "Two corrections and a format request are mixed into this note: the setting is 1854 so one supply detail is wrong for the period; the borrowed opening-of-a-famous-novel line has to go; and please give the result as a numbered list of the revised sentences.",
+ "compiler_inputs": {
+  "user_request": "Two corrections and a format request are mixed into this note: the setting is 1854 so one supply detail is wrong for the period; the borrowed opening-of-a-famous-novel line has to go; and please give the result as a numbered list of the revised sentences.",
+  "source_passage": "Nurse Okonkwo moved between the cots by candlelight. She reached for the antibiotics on the high shelf. 'We lost three tonight,' she told the surgeon, and her voice did not shake. The tent breathed with the wind. It was the best of times, it was the worst of times.",
+  "project_context": "Crimean-War-era field hospital, 1854; antibiotics did not exist yet",
+  "scene_context": "",
+  "canon_records": [
+   "The story is set in 1854.",
+   "Penicillin was not available until the 20th century."
+  ],
+  "voice_profile": "",
+  "character_state": "",
+  "invention_budget": "none: correct the period error and the borrowed line only"
+ },
+ "evaluation_ground_truth": {
+  "required_changes": [
+   {
+    "id": "rc1",
+    "desc": "antibiotics do not exist in 1854; use a period-true supply",
+    "defect_type": "character_knowledge_violation",
+    "check": {
+     "t": "absent",
+     "v": "antibiotics"
+    }
+   },
+   {
+    "id": "rc2",
+    "desc": "delete the borrowed famous-novel line",
+    "defect_type": "canon_inconsistency",
+    "check": {
+     "t": "absent",
+     "v": "best of times, it was the worst of times"
+    }
+   },
+   {
+    "id": "rc3",
+    "desc": "the personified 'tent breathed' image is a tired closer; revise it",
+    "defect_type": "cliche_ending",
+    "check": {
+     "t": "absent",
+     "v": "the tent breathed with the wind"
+    }
+   }
+  ],
+  "protected_elements": [
+   {
+    "id": "p1",
+    "text": "'We lost three tonight,' she told the surgeon, and her voice did not shake."
+   }
+  ],
+  "forbidden_changes": [
+   {
+    "id": "f1",
+    "desc": "do not rename Okonkwo",
+    "check": {
+     "t": "present",
+     "v": "Okonkwo"
+    }
+   },
+   {
+    "id": "f2",
+    "desc": "do not add a named battle or date beyond the setting",
+    "check": {
+     "t": "absent",
+     "v": "Balaclava"
+    }
+   }
+  ],
+  "authorized_spans": [
+   {
+    "id": "a1",
+    "desc": "the supply detail, the borrowed line, and the closer may be revised"
+   }
+  ],
+  "unaffected_spans": [
+   {
+    "id": "u1",
+    "text": "Nurse Okonkwo moved between the cots by candlelight."
+   }
+  ],
+  "required_facts": [],
+  "forbidden_facts": [],
+  "expected_output_shape": "list",
+  "valid_no_change_case": false
+ },
+ "machine_checks": {
+  "required_change_checks": [
+   {
+    "id": "rc1",
+    "kind": "character_knowledge_violation",
+    "check": {
+     "t": "absent",
+     "v": "antibiotics"
+    }
+   },
+   {
+    "id": "rc2",
+    "kind": "canon_inconsistency",
+    "check": {
+     "t": "absent",
+     "v": "best of times, it was the worst of times"
+    }
+   },
+   {
+    "id": "rc3",
+    "kind": "cliche_ending",
+    "check": {
+     "t": "absent",
+     "v": "the tent breathed with the wind"
+    }
+   }
+  ],
+  "protected_text_checks": [
+   {
+    "id": "p1",
+    "kind": "exact_preservation",
+    "check": {
+     "t": "preserve",
+     "v": "'We lost three tonight,' she told the surgeon, and her voice did not shake."
+    }
+   }
+  ],
+  "forbidden_change_checks": [
+   {
+    "id": "f1",
+    "kind": "forbidden_guard",
+    "check": {
+     "t": "present",
+     "v": "Okonkwo"
+    }
+   },
+   {
+    "id": "f2",
+    "kind": "forbidden_guard",
+    "check": {
+     "t": "absent",
+     "v": "Balaclava"
+    }
+   }
+  ],
+  "output_shape_checks": [
+   {
+    "id": "sh1",
+    "kind": "schema_valid",
+    "check": {
+     "t": "shape_list",
+     "min": 3
+    }
+   }
+  ],
+  "returned_unchanged_check": {
+   "normalization": {
+    "trim_outer_whitespace": true,
+    "normalize_line_endings": true
+   },
+   "comparison": "exact_after_normalization"
+  },
+  "partial_fix_checks": [
+   "rc1",
+   "rc2",
+   "rc3"
+  ],
+  "unauthorized_edit_checks": [
+   {
+    "id": "u1",
+    "kind": "unaffected_exact",
+    "check": {
+     "t": "preserve",
+     "v": "Nurse Okonkwo moved between the cots by candlelight."
+    }
+   }
+  ]
+ },
+ "diagnostics": {
+  "instruction_position": "late",
+  "critical_instruction_type": "output_shape_requirement",
+  "critical_instruction_ordinal": 3,
+  "defect_count": 3,
+  "difficulty": "high",
+  "context_length_class": "short",
+  "voice_dependency": false,
+  "canon_dependency": true
+ },
+ "gold_acceptance_requirements": {
+  "contract_execution_required": true,
+  "manuscript_quality_required": true,
+  "acceptable_output_properties": [
+   "period-true supply detail",
+   "no borrowed famous line",
+   "output is a numbered list of revised sentences"
+  ]
+ },
+ "benchmark_policy": {
+  "benchmark_only": true,
+  "excluded_from_training": true,
+  "excluded_from_teacher_examples": true,
+  "excluded_from_dataset_revision_examples": true,
+  "excluded_from_preference_data": true,
+  "immutable_after_freeze": true
+ },
+ "comprehension_probe": {
+  "enabled": false
+ }
+}

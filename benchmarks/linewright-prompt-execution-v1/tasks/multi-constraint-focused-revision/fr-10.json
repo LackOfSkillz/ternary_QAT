@@ -1,0 +1,199 @@
+{
+ "task_id": "fr-10",
+ "task_family": "multi_constraint_focused_revision",
+ "title": "Nursery — keep the lullaby line",
+ "source_passage": "Iris rocked the cradle in the lamplight. Iris hummed the tune her grandmother taught her. Iris checked her smartwatch and sighed. She felt a love so deep it hurt to hold. 'Sleep now, little tide,' she whispered, the way she always did.",
+ "user_context": "Fix this up. The whispered line at the end is a recurring motif in the book, so keep it exactly.",
+ "compiler_inputs": {
+  "user_request": "Fix this up. The whispered line at the end is a recurring motif in the book, so keep it exactly.",
+  "source_passage": "Iris rocked the cradle in the lamplight. Iris hummed the tune her grandmother taught her. Iris checked her smartwatch and sighed. She felt a love so deep it hurt to hold. 'Sleep now, little tide,' she whispered, the way she always did.",
+  "project_context": "contemporary-set but the room is deliberately timeless; still, no anachronism error should stand",
+  "scene_context": "",
+  "canon_records": [],
+  "voice_profile": "tender, close third, past tense",
+  "character_state": "",
+  "invention_budget": "none"
+ },
+ "evaluation_ground_truth": {
+  "required_changes": [
+   {
+    "id": "rc1",
+    "desc": "three sentences in a row open with 'Iris'; vary them",
+    "defect_type": "repetitive_openers",
+    "check": {
+     "t": "max_openers",
+     "o": "Iris",
+     "max": 2
+    }
+   },
+   {
+    "id": "rc2",
+    "desc": "the smartwatch detail clashes with the timeless framing; remove it",
+    "defect_type": "anachronism",
+    "check": {
+     "t": "absent",
+     "v": "smartwatch"
+    }
+   },
+   {
+    "id": "rc3",
+    "desc": "replace the 'love so deep' telling with a shown gesture",
+    "defect_type": "emotional_explanation",
+    "check": {
+     "t": "absent",
+     "v": "a love so deep it hurt to hold"
+    }
+   }
+  ],
+  "protected_elements": [
+   {
+    "id": "p1",
+    "text": "'Sleep now, little tide,' she whispered, the way she always did."
+   }
+  ],
+  "forbidden_changes": [
+   {
+    "id": "f1",
+    "desc": "do not rename Iris",
+    "check": {
+     "t": "present",
+     "v": "Iris"
+    }
+   },
+   {
+    "id": "f2",
+    "desc": "do not add a second child or partner",
+    "check": {
+     "t": "absent",
+     "v": "husband"
+    }
+   }
+  ],
+  "authorized_spans": [
+   {
+    "id": "a1",
+    "desc": "the openers, the device detail, and the telling line may be revised"
+   }
+  ],
+  "unaffected_spans": [
+   {
+    "id": "u1",
+    "text": "Iris hummed the tune her grandmother taught her."
+   }
+  ],
+  "required_facts": [],
+  "forbidden_facts": [],
+  "expected_output_shape": "prose",
+  "valid_no_change_case": false
+ },
+ "machine_checks": {
+  "required_change_checks": [
+   {
+    "id": "rc1",
+    "kind": "repetitive_openers",
+    "check": {
+     "t": "max_openers",
+     "o": "Iris",
+     "max": 2
+    }
+   },
+   {
+    "id": "rc2",
+    "kind": "anachronism",
+    "check": {
+     "t": "absent",
+     "v": "smartwatch"
+    }
+   },
+   {
+    "id": "rc3",
+    "kind": "emotional_explanation",
+    "check": {
+     "t": "absent",
+     "v": "a love so deep it hurt to hold"
+    }
+   }
+  ],
+  "protected_text_checks": [
+   {
+    "id": "p1",
+    "kind": "exact_preservation",
+    "check": {
+     "t": "preserve",
+     "v": "'Sleep now, little tide,' she whispered, the way she always did."
+    }
+   }
+  ],
+  "forbidden_change_checks": [
+   {
+    "id": "f1",
+    "kind": "forbidden_guard",
+    "check": {
+     "t": "present",
+     "v": "Iris"
+    }
+   },
+   {
+    "id": "f2",
+    "kind": "forbidden_guard",
+    "check": {
+     "t": "absent",
+     "v": "husband"
+    }
+   }
+  ],
+  "output_shape_checks": [],
+  "returned_unchanged_check": {
+   "normalization": {
+    "trim_outer_whitespace": true,
+    "normalize_line_endings": true
+   },
+   "comparison": "exact_after_normalization"
+  },
+  "partial_fix_checks": [
+   "rc1",
+   "rc2",
+   "rc3"
+  ],
+  "unauthorized_edit_checks": [
+   {
+    "id": "u1",
+    "kind": "unaffected_exact",
+    "check": {
+     "t": "preserve",
+     "v": "Iris hummed the tune her grandmother taught her."
+    }
+   }
+  ]
+ },
+ "diagnostics": {
+  "instruction_position": "late",
+  "critical_instruction_type": "protected_text_rule",
+  "critical_instruction_ordinal": 4,
+  "defect_count": 3,
+  "difficulty": "medium",
+  "context_length_class": "short",
+  "voice_dependency": true,
+  "canon_dependency": false
+ },
+ "gold_acceptance_requirements": {
+  "contract_execution_required": true,
+  "manuscript_quality_required": true,
+  "acceptable_output_properties": [
+   "varied openings",
+   "love shown through gesture",
+   "the lullaby motif line is untouched"
+  ]
+ },
+ "benchmark_policy": {
+  "benchmark_only": true,
+  "excluded_from_training": true,
+  "excluded_from_teacher_examples": true,
+  "excluded_from_dataset_revision_examples": true,
+  "excluded_from_preference_data": true,
+  "immutable_after_freeze": true
+ },
+ "comprehension_probe": {
+  "enabled": false
+ }
+}

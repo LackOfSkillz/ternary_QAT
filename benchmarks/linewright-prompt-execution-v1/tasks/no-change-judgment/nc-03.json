@@ -1,0 +1,140 @@
+{
+ "task_id": "nc-03",
+ "task_family": "no_change_judgment",
+ "title": "Deliberate fragment style",
+ "source_passage": "Cold. The kind that gets into the teeth. Nobody moving on the platform. Just steam and the smell of iron and the long wait for a train that might not come.",
+ "user_context": "Tidy this up into complete sentences if it reads awkwardly.",
+ "compiler_inputs": {
+  "user_request": "Tidy this up into complete sentences if it reads awkwardly.",
+  "source_passage": "Cold. The kind that gets into the teeth. Nobody moving on the platform. Just steam and the smell of iron and the long wait for a train that might not come.",
+  "project_context": "",
+  "scene_context": "",
+  "canon_records": [],
+  "voice_profile": "intentional sentence fragments for rhythm; a deliberate stylistic choice",
+  "character_state": "",
+  "invention_budget": "none: the fragments are intentional"
+ },
+ "evaluation_ground_truth": {
+  "required_changes": [],
+  "protected_elements": [
+   {
+    "id": "p1",
+    "text": "Just steam and the smell of iron and the long wait for a train that might not come."
+   }
+  ],
+  "forbidden_changes": [
+   {
+    "id": "f1",
+    "desc": "do not splice the fragments into full sentences",
+    "check": {
+     "t": "present",
+     "v": "Cold. The kind that gets into the teeth."
+    }
+   },
+   {
+    "id": "f2",
+    "desc": "do not add a subject to the last fragment",
+    "check": {
+     "t": "absent",
+     "v": "There was just steam"
+    }
+   }
+  ],
+  "authorized_spans": [
+   {
+    "id": "a1",
+    "desc": "no span is authorized for change"
+   }
+  ],
+  "unaffected_spans": [
+   {
+    "id": "u1",
+    "text": "Nobody moving on the platform."
+   }
+  ],
+  "required_facts": [],
+  "forbidden_facts": [],
+  "expected_output_shape": "prose",
+  "valid_no_change_case": true
+ },
+ "machine_checks": {
+  "required_change_checks": [],
+  "protected_text_checks": [
+   {
+    "id": "p1",
+    "kind": "exact_preservation",
+    "check": {
+     "t": "preserve",
+     "v": "Just steam and the smell of iron and the long wait for a train that might not come."
+    }
+   }
+  ],
+  "forbidden_change_checks": [
+   {
+    "id": "f1",
+    "kind": "forbidden_guard",
+    "check": {
+     "t": "present",
+     "v": "Cold. The kind that gets into the teeth."
+    }
+   },
+   {
+    "id": "f2",
+    "kind": "forbidden_guard",
+    "check": {
+     "t": "absent",
+     "v": "There was just steam"
+    }
+   }
+  ],
+  "output_shape_checks": [],
+  "returned_unchanged_check": {
+   "normalization": {
+    "trim_outer_whitespace": true,
+    "normalize_line_endings": true
+   },
+   "comparison": "exact_after_normalization"
+  },
+  "partial_fix_checks": [],
+  "unauthorized_edit_checks": [
+   {
+    "id": "u1",
+    "kind": "unaffected_exact",
+    "check": {
+     "t": "preserve",
+     "v": "Nobody moving on the platform."
+    }
+   }
+  ]
+ },
+ "diagnostics": {
+  "instruction_position": null,
+  "critical_instruction_type": "no_change_judgment",
+  "critical_instruction_ordinal": null,
+  "defect_count": 0,
+  "difficulty": "medium",
+  "context_length_class": "short",
+  "voice_dependency": false,
+  "canon_dependency": false
+ },
+ "gold_acceptance_requirements": {
+  "contract_execution_required": true,
+  "manuscript_quality_required": true,
+  "acceptable_output_properties": [
+   "recognises the fragments are a deliberate style",
+   "preserves the staccato rhythm",
+   "returns the passage unchanged"
+  ]
+ },
+ "benchmark_policy": {
+  "benchmark_only": true,
+  "excluded_from_training": true,
+  "excluded_from_teacher_examples": true,
+  "excluded_from_dataset_revision_examples": true,
+  "excluded_from_preference_data": true,
+  "immutable_after_freeze": true
+ },
+ "comprehension_probe": {
+  "enabled": false
+ }
+}

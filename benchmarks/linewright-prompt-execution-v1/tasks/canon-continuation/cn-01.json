@@ -1,0 +1,165 @@
+{
+ "task_id": "cn-01",
+ "task_family": "canon_continuation",
+ "title": "Continue — the sister is dead",
+ "source_passage": "Corin pushed open the door to the workshop. Dust hung in the light. He had not been back since the funeral.",
+ "user_context": "Write the next two or three sentences. Stay consistent with the canon notes.",
+ "compiler_inputs": {
+  "user_request": "Write the next two or three sentences. Stay consistent with the canon notes.",
+  "source_passage": "Corin pushed open the door to the workshop. Dust hung in the light. He had not been back since the funeral.",
+  "project_context": "canon: Corin's sister Vaela died last winter; her workshop is untouched since",
+  "scene_context": "",
+  "canon_records": [
+   "Vaela is Corin's sister.",
+   "Vaela died last winter.",
+   "The workshop has been sealed since her death."
+  ],
+  "voice_profile": "",
+  "character_state": "grieving, returning for the first time",
+  "invention_budget": "low: you may add sensory detail consistent with a sealed, dusty workshop; introduce no living new characters"
+ },
+ "evaluation_ground_truth": {
+  "required_changes": [
+   {
+    "id": "rc1",
+    "desc": "the continuation must name his late sister Vaela",
+    "defect_type": "canon_fact_inclusion",
+    "check": {
+     "t": "present_re",
+     "v": "\\bVaela\\b"
+    }
+   },
+   {
+    "id": "rc2",
+    "desc": "the continuation must reflect that she is dead and the room untouched",
+    "defect_type": "canon_fact_inclusion",
+    "check": {
+     "t": "present_re",
+     "v": "her death|the grave|\\bgone\\b|untouched|her tools|her things|sealed|she left"
+    }
+   }
+  ],
+  "protected_elements": [],
+  "forbidden_changes": [
+   {
+    "id": "f1",
+    "desc": "do not resurrect or speak-to a living Vaela",
+    "check": {
+     "t": "absent",
+     "v": "Vaela smiled"
+    }
+   },
+   {
+    "id": "f2",
+    "desc": "do not introduce a living new character",
+    "check": {
+     "t": "absent",
+     "v": "a voice called"
+    }
+   }
+  ],
+  "authorized_spans": [
+   {
+    "id": "a1",
+    "desc": "the continuation is authored fresh, consistent with canon"
+   }
+  ],
+  "unaffected_spans": [],
+  "required_facts": [
+   "Vaela",
+   "the room is untouched/sealed since the death"
+  ],
+  "forbidden_facts": [
+   "Vaela is alive",
+   "a new living character appears"
+  ],
+  "expected_output_shape": "prose",
+  "valid_no_change_case": false
+ },
+ "machine_checks": {
+  "required_change_checks": [
+   {
+    "id": "rc1",
+    "kind": "canon_fact_inclusion",
+    "check": {
+     "t": "present_re",
+     "v": "\\bVaela\\b"
+    }
+   },
+   {
+    "id": "rc2",
+    "kind": "canon_fact_inclusion",
+    "check": {
+     "t": "present_re",
+     "v": "her death|the grave|\\bgone\\b|untouched|her tools|her things|sealed|she left"
+    }
+   }
+  ],
+  "protected_text_checks": [],
+  "forbidden_change_checks": [
+   {
+    "id": "f1",
+    "kind": "forbidden_guard",
+    "check": {
+     "t": "absent",
+     "v": "Vaela smiled"
+    }
+   },
+   {
+    "id": "f2",
+    "kind": "forbidden_guard",
+    "check": {
+     "t": "absent",
+     "v": "a voice called"
+    }
+   }
+  ],
+  "output_shape_checks": [],
+  "returned_unchanged_check": {
+   "normalization": {
+    "trim_outer_whitespace": true,
+    "normalize_line_endings": true
+   },
+   "comparison": "exact_after_normalization"
+  },
+  "partial_fix_checks": [
+   "rc1",
+   "rc2"
+  ],
+  "unauthorized_edit_checks": []
+ },
+ "diagnostics": {
+  "instruction_position": null,
+  "critical_instruction_type": "canon_fidelity",
+  "critical_instruction_ordinal": null,
+  "defect_count": 2,
+  "difficulty": "medium",
+  "context_length_class": "short",
+  "voice_dependency": false,
+  "canon_dependency": true
+ },
+ "gold_acceptance_requirements": {
+  "contract_execution_required": true,
+  "manuscript_quality_required": true,
+  "acceptable_output_properties": [
+   "names Vaela consistent with her death",
+   "honours the sealed room",
+   "grief carried by restraint, not exposition"
+  ]
+ },
+ "benchmark_policy": {
+  "benchmark_only": true,
+  "excluded_from_training": true,
+  "excluded_from_teacher_examples": true,
+  "excluded_from_dataset_revision_examples": true,
+  "excluded_from_preference_data": true,
+  "immutable_after_freeze": true
+ },
+ "comprehension_probe": {
+  "enabled": true,
+  "expected_required_changes": 2,
+  "expected_protected_elements": 0,
+  "expected_forbidden_operations": 2,
+  "expected_output_contract": "prose"
+ }
+}

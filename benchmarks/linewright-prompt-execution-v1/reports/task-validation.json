@@ -1,0 +1,45 @@
+{
+ "dispatch": "28A",
+ "instrument": "linewright-prompt-execution-v1",
+ "task_count": 30,
+ "family_distribution": {
+  "multi_constraint_focused_revision": 12,
+  "protected_text_revision": 5,
+  "no_change_judgment": 4,
+  "canon_continuation": 3,
+  "voice_preserving_revision": 3,
+  "constraint_bound_scene": 2,
+  "structured_protocol": 1
+ },
+ "instruction_positions": {
+  "early": 4,
+  "middle": 4,
+  "late": 4
+ },
+ "critical_instruction_types": {
+  "required_correction": 3,
+  "protected_text_rule": 3,
+  "unauthorized_rewrite_prohibition": 3,
+  "output_shape_requirement": 3
+ },
+ "comprehension_probes": [
+  "fr-01",
+  "fr-04",
+  "fr-07",
+  "pt-01",
+  "cn-01",
+  "sp-01"
+ ],
+ "machine_checks_complete": true,
+ "dataset_overlap": [],
+ "dataset_overlap_checked_roots": [
+  "datasets\\dataset-a",
+  "datasets\\dataset-a.2",
+  "datasets\\dataset-a.3",
+  "benchmarks\\linewright-prompt-effect-v1"
+ ],
+ "corpus_shingle_count": 75877,
+ "errors": [],
+ "warnings": [],
+ "outcome": "valid"
+}

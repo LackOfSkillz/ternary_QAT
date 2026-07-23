@@ -1,0 +1,173 @@
+{
+ "task_id": "vp-02",
+ "task_family": "voice_preserving_revision",
+ "title": "Whimsical fabulist — trim one abstraction",
+ "source_passage": "The clockmaker kept every hour he had ever wasted in a jar on the high shelf, and on Sundays he let a few of them out to stretch their legs. It was, in a very real sense, a form of temporal stewardship. The smallest hour liked to hide inside the teapot.",
+ "user_context": "Cut the dry academic sentence in the middle — it breaks the spell. Keep the playful fairy-tale voice everywhere else.",
+ "compiler_inputs": {
+  "user_request": "Cut the dry academic sentence in the middle — it breaks the spell. Keep the playful fairy-tale voice everywhere else.",
+  "source_passage": "The clockmaker kept every hour he had ever wasted in a jar on the high shelf, and on Sundays he let a few of them out to stretch their legs. It was, in a very real sense, a form of temporal stewardship. The smallest hour liked to hide inside the teapot.",
+  "project_context": "literary fabulism; whimsical, matter-of-fact-about-the-impossible voice",
+  "scene_context": "",
+  "canon_records": [],
+  "voice_profile": "whimsical, deadpan-magical, long lyrical sentences",
+  "character_state": "",
+  "invention_budget": "none: remove the flat line, keep the voice"
+ },
+ "evaluation_ground_truth": {
+  "required_changes": [
+   {
+    "id": "rc1",
+    "desc": "cut the dry 'temporal stewardship' sentence",
+    "defect_type": "excessive_abstraction",
+    "check": {
+     "t": "absent",
+     "v": "in a very real sense, a form of temporal stewardship"
+    }
+   }
+  ],
+  "protected_elements": [
+   {
+    "id": "p1",
+    "text": "The clockmaker kept every hour he had ever wasted in a jar on the high shelf, and on Sundays he let a few of them out to stretch their legs."
+   },
+   {
+    "id": "p2",
+    "text": "The smallest hour liked to hide inside the teapot."
+   }
+  ],
+  "forbidden_changes": [
+   {
+    "id": "f1",
+    "desc": "do not explain or literalise the magic",
+    "check": {
+     "t": "absent",
+     "v": "metaphor for"
+    }
+   },
+   {
+    "id": "f2",
+    "desc": "keep the whimsical concrete imagery",
+    "check": {
+     "t": "present",
+     "v": "hide inside the teapot"
+    }
+   }
+  ],
+  "authorized_spans": [
+   {
+    "id": "a1",
+    "desc": "only the flat middle sentence may be removed"
+   }
+  ],
+  "unaffected_spans": [
+   {
+    "id": "u1",
+    "text": "The smallest hour liked to hide inside the teapot."
+   }
+  ],
+  "required_facts": [],
+  "forbidden_facts": [],
+  "expected_output_shape": "prose",
+  "valid_no_change_case": false
+ },
+ "machine_checks": {
+  "required_change_checks": [
+   {
+    "id": "rc1",
+    "kind": "excessive_abstraction",
+    "check": {
+     "t": "absent",
+     "v": "in a very real sense, a form of temporal stewardship"
+    }
+   }
+  ],
+  "protected_text_checks": [
+   {
+    "id": "p1",
+    "kind": "exact_preservation",
+    "check": {
+     "t": "preserve",
+     "v": "The clockmaker kept every hour he had ever wasted in a jar on the high shelf, and on Sundays he let a few of them out to stretch their legs."
+    }
+   },
+   {
+    "id": "p2",
+    "kind": "exact_preservation",
+    "check": {
+     "t": "preserve",
+     "v": "The smallest hour liked to hide inside the teapot."
+    }
+   }
+  ],
+  "forbidden_change_checks": [
+   {
+    "id": "f1",
+    "kind": "forbidden_guard",
+    "check": {
+     "t": "absent",
+     "v": "metaphor for"
+    }
+   },
+   {
+    "id": "f2",
+    "kind": "forbidden_guard",
+    "check": {
+     "t": "present",
+     "v": "hide inside the teapot"
+    }
+   }
+  ],
+  "output_shape_checks": [],
+  "returned_unchanged_check": {
+   "normalization": {
+    "trim_outer_whitespace": true,
+    "normalize_line_endings": true
+   },
+   "comparison": "exact_after_normalization"
+  },
+  "partial_fix_checks": [
+   "rc1"
+  ],
+  "unauthorized_edit_checks": [
+   {
+    "id": "u1",
+    "kind": "unaffected_exact",
+    "check": {
+     "t": "preserve",
+     "v": "The smallest hour liked to hide inside the teapot."
+    }
+   }
+  ]
+ },
+ "diagnostics": {
+  "instruction_position": null,
+  "critical_instruction_type": "voice_preservation",
+  "critical_instruction_ordinal": 2,
+  "defect_count": 1,
+  "difficulty": "medium",
+  "context_length_class": "short",
+  "voice_dependency": true,
+  "canon_dependency": false
+ },
+ "gold_acceptance_requirements": {
+  "contract_execution_required": true,
+  "manuscript_quality_required": true,
+  "acceptable_output_properties": [
+   "the flat academic line is gone",
+   "whimsical voice and imagery preserved",
+   "spell unbroken"
+  ]
+ },
+ "benchmark_policy": {
+  "benchmark_only": true,
+  "excluded_from_training": true,
+  "excluded_from_teacher_examples": true,
+  "excluded_from_dataset_revision_examples": true,
+  "excluded_from_preference_data": true,
+  "immutable_after_freeze": true
+ },
+ "comprehension_probe": {
+  "enabled": false
+ }
+}

@@ -1,0 +1,144 @@
+{
+ "task_id": "cn-02",
+ "task_family": "canon_continuation",
+ "title": "Continue — the city has no sun",
+ "source_passage": "Mira climbed the last stair to the observation deck. The great lamps of the undercity burned far below.",
+ "user_context": "Continue for two or three sentences, true to the world.",
+ "compiler_inputs": {
+  "user_request": "Continue for two or three sentences, true to the world.",
+  "source_passage": "Mira climbed the last stair to the observation deck. The great lamps of the undercity burned far below.",
+  "project_context": "canon: the city lies underground; there is no sun, sky, or daylight; time is kept by the great lamps",
+  "scene_context": "",
+  "canon_records": [
+   "The city is underground.",
+   "There is no sun or sky.",
+   "Time is measured by the great lamps."
+  ],
+  "voice_profile": "",
+  "character_state": "",
+  "invention_budget": "low: sensory detail consistent with a lamplit underground city only"
+ },
+ "evaluation_ground_truth": {
+  "required_changes": [
+   {
+    "id": "rc1",
+    "desc": "the continuation must reinforce the enclosed, skyless underground world",
+    "defect_type": "canon_fact_inclusion",
+    "check": {
+     "t": "present_re",
+     "v": "no sky|no sun|no stars|\\brock\\b|\\bstone\\b|ceiling|the deep|the dark"
+    }
+   }
+  ],
+  "protected_elements": [],
+  "forbidden_changes": [
+   {
+    "id": "f1",
+    "desc": "no sun",
+    "check": {
+     "t": "absent",
+     "v": "the sun"
+    }
+   },
+   {
+    "id": "f2",
+    "desc": "no sky or daylight",
+    "check": {
+     "t": "absent",
+     "v": "the sky"
+    }
+   }
+  ],
+  "authorized_spans": [
+   {
+    "id": "a1",
+    "desc": "the continuation is authored fresh, consistent with canon"
+   }
+  ],
+  "unaffected_spans": [],
+  "required_facts": [
+   "lamplit underground setting",
+   "Mira"
+  ],
+  "forbidden_facts": [
+   "the sun",
+   "the sky",
+   "daylight"
+  ],
+  "expected_output_shape": "prose",
+  "valid_no_change_case": false
+ },
+ "machine_checks": {
+  "required_change_checks": [
+   {
+    "id": "rc1",
+    "kind": "canon_fact_inclusion",
+    "check": {
+     "t": "present_re",
+     "v": "no sky|no sun|no stars|\\brock\\b|\\bstone\\b|ceiling|the deep|the dark"
+    }
+   }
+  ],
+  "protected_text_checks": [],
+  "forbidden_change_checks": [
+   {
+    "id": "f1",
+    "kind": "forbidden_guard",
+    "check": {
+     "t": "absent",
+     "v": "the sun"
+    }
+   },
+   {
+    "id": "f2",
+    "kind": "forbidden_guard",
+    "check": {
+     "t": "absent",
+     "v": "the sky"
+    }
+   }
+  ],
+  "output_shape_checks": [],
+  "returned_unchanged_check": {
+   "normalization": {
+    "trim_outer_whitespace": true,
+    "normalize_line_endings": true
+   },
+   "comparison": "exact_after_normalization"
+  },
+  "partial_fix_checks": [
+   "rc1"
+  ],
+  "unauthorized_edit_checks": []
+ },
+ "diagnostics": {
+  "instruction_position": null,
+  "critical_instruction_type": "canon_fidelity",
+  "critical_instruction_ordinal": null,
+  "defect_count": 1,
+  "difficulty": "medium",
+  "context_length_class": "short",
+  "voice_dependency": false,
+  "canon_dependency": true
+ },
+ "gold_acceptance_requirements": {
+  "contract_execution_required": true,
+  "manuscript_quality_required": true,
+  "acceptable_output_properties": [
+   "no sun or sky appears",
+   "detail stays underground and lamplit",
+   "Mira remains the anchor"
+  ]
+ },
+ "benchmark_policy": {
+  "benchmark_only": true,
+  "excluded_from_training": true,
+  "excluded_from_teacher_examples": true,
+  "excluded_from_dataset_revision_examples": true,
+  "excluded_from_preference_data": true,
+  "immutable_after_freeze": true
+ },
+ "comprehension_probe": {
+  "enabled": false
+ }
+}

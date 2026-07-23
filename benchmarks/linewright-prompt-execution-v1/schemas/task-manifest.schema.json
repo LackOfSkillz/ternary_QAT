@@ -1,0 +1,221 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "linewright-prompt-execution-v1/task-manifest.schema.json",
+  "title": "LineWright Prompt-Execution v1 task manifest",
+  "description": "One fiction-writing execution task. compiler_inputs is the ONLY block a future LineWright application compiler may receive; evaluation_ground_truth and machine_checks must never be shown to any model.",
+  "type": "object",
+  "required": [
+    "task_id", "task_family", "title", "source_passage", "user_context",
+    "compiler_inputs", "evaluation_ground_truth", "machine_checks", "diagnostics",
+    "gold_acceptance_requirements", "benchmark_policy"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "task_id": {"type": "string", "pattern": "^[a-z]{2}-[0-9]{2}$"},
+    "task_family": {
+      "type": "string",
+      "enum": ["multi_constraint_focused_revision", "protected_text_revision",
+               "no_change_judgment", "canon_continuation", "voice_preserving_revision",
+               "constraint_bound_scene", "structured_protocol"]
+    },
+    "title": {"type": "string", "minLength": 3},
+    "source_passage": {"type": "string"},
+    "user_context": {"type": "string"},
+    "compiler_inputs": {
+      "type": "object",
+      "required": ["user_request", "source_passage", "project_context", "scene_context",
+                   "canon_records", "voice_profile", "character_state", "invention_budget"],
+      "additionalProperties": false,
+      "properties": {
+        "user_request": {"type": "string"},
+        "source_passage": {"type": "string"},
+        "project_context": {"type": "string"},
+        "scene_context": {"type": "string"},
+        "canon_records": {"type": "array", "items": {"type": "string"}},
+        "voice_profile": {"type": "string"},
+        "character_state": {"type": "string"},
+        "invention_budget": {"type": "string"}
+      }
+    },
+    "evaluation_ground_truth": {
+      "type": "object",
+      "required": ["required_changes", "protected_elements", "forbidden_changes",
+                   "authorized_spans", "unaffected_spans", "required_facts", "forbidden_facts",
+                   "expected_output_shape", "valid_no_change_case"],
+      "additionalProperties": false,
+      "properties": {
+        "required_changes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "desc", "defect_type", "check"],
+            "additionalProperties": false,
+            "properties": {
+              "id": {"type": "string"},
+              "desc": {"type": "string"},
+              "defect_type": {"type": "string"},
+              "check": {"$ref": "#/definitions/check"}
+            }
+          }
+        },
+        "protected_elements": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "text"],
+            "additionalProperties": false,
+            "properties": {"id": {"type": "string"}, "text": {"type": "string"}}
+          }
+        },
+        "forbidden_changes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "desc", "check"],
+            "additionalProperties": false,
+            "properties": {
+              "id": {"type": "string"}, "desc": {"type": "string"},
+              "check": {"$ref": "#/definitions/check"}
+            }
+          }
+        },
+        "authorized_spans": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "desc"],
+            "additionalProperties": false,
+            "properties": {"id": {"type": "string"}, "desc": {"type": "string"}}
+          }
+        },
+        "unaffected_spans": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "text"],
+            "additionalProperties": false,
+            "properties": {"id": {"type": "string"}, "text": {"type": "string"}}
+          }
+        },
+        "required_facts": {"type": "array", "items": {"type": "string"}},
+        "forbidden_facts": {"type": "array", "items": {"type": "string"}},
+        "expected_output_shape": {"type": "string", "enum": ["prose", "json", "list"]},
+        "valid_no_change_case": {"type": "boolean"}
+      }
+    },
+    "machine_checks": {
+      "type": "object",
+      "required": ["required_change_checks", "protected_text_checks", "forbidden_change_checks",
+                   "output_shape_checks", "returned_unchanged_check", "partial_fix_checks",
+                   "unauthorized_edit_checks"],
+      "additionalProperties": false,
+      "properties": {
+        "required_change_checks": {"type": "array", "items": {"$ref": "#/definitions/named_check"}},
+        "protected_text_checks": {"type": "array", "items": {"$ref": "#/definitions/named_check"}},
+        "forbidden_change_checks": {"type": "array", "items": {"$ref": "#/definitions/named_check"}},
+        "output_shape_checks": {"type": "array", "items": {"$ref": "#/definitions/named_check"}},
+        "returned_unchanged_check": {
+          "type": "object",
+          "required": ["normalization", "comparison"],
+          "additionalProperties": false,
+          "properties": {
+            "normalization": {
+              "type": "object",
+              "required": ["trim_outer_whitespace", "normalize_line_endings"],
+              "additionalProperties": false,
+              "properties": {
+                "trim_outer_whitespace": {"type": "boolean"},
+                "normalize_line_endings": {"type": "boolean"}
+              }
+            },
+            "comparison": {"type": "string", "enum": ["exact_after_normalization"]}
+          }
+        },
+        "partial_fix_checks": {"type": "array", "items": {"type": "string"}},
+        "unauthorized_edit_checks": {"type": "array", "items": {"$ref": "#/definitions/named_check"}}
+      }
+    },
+    "diagnostics": {
+      "type": "object",
+      "required": ["instruction_position", "critical_instruction_type", "critical_instruction_ordinal",
+                   "defect_count", "difficulty", "context_length_class", "voice_dependency",
+                   "canon_dependency"],
+      "additionalProperties": false,
+      "properties": {
+        "instruction_position": {"type": ["string", "null"], "enum": ["early", "middle", "late", null]},
+        "critical_instruction_type": {"type": ["string", "null"]},
+        "critical_instruction_ordinal": {"type": ["integer", "null"]},
+        "defect_count": {"type": "integer"},
+        "difficulty": {"type": "string", "enum": ["low", "medium", "high"]},
+        "context_length_class": {"type": "string", "enum": ["short", "medium", "long"]},
+        "voice_dependency": {"type": "boolean"},
+        "canon_dependency": {"type": "boolean"}
+      }
+    },
+    "gold_acceptance_requirements": {
+      "type": "object",
+      "required": ["contract_execution_required", "manuscript_quality_required",
+                   "acceptable_output_properties"],
+      "additionalProperties": false,
+      "properties": {
+        "contract_execution_required": {"type": "boolean"},
+        "manuscript_quality_required": {"type": "boolean"},
+        "acceptable_output_properties": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "comprehension_probe": {
+      "type": "object",
+      "required": ["enabled"],
+      "additionalProperties": false,
+      "properties": {
+        "enabled": {"type": "boolean"},
+        "expected_required_changes": {"type": "integer"},
+        "expected_protected_elements": {"type": "integer"},
+        "expected_forbidden_operations": {"type": "integer"},
+        "expected_output_contract": {"type": "string"}
+      }
+    },
+    "benchmark_policy": {
+      "type": "object",
+      "required": ["benchmark_only", "excluded_from_training", "excluded_from_teacher_examples",
+                   "excluded_from_dataset_revision_examples", "excluded_from_preference_data",
+                   "immutable_after_freeze"],
+      "additionalProperties": false,
+      "properties": {
+        "benchmark_only": {"const": true},
+        "excluded_from_training": {"const": true},
+        "excluded_from_teacher_examples": {"const": true},
+        "excluded_from_dataset_revision_examples": {"const": true},
+        "excluded_from_preference_data": {"const": true},
+        "immutable_after_freeze": {"const": true}
+      }
+    }
+  },
+  "definitions": {
+    "check": {
+      "type": "object",
+      "required": ["t"],
+      "properties": {
+        "t": {"type": "string",
+              "enum": ["absent", "present", "preserve", "absent_re", "present_re",
+                       "max_openers", "shape_json", "shape_list"]},
+        "v": {"type": "string"},
+        "o": {"type": "string"},
+        "max": {"type": "integer"},
+        "min": {"type": "integer"},
+        "keys": {"type": "array", "items": {"type": "string"}}
+      },
+      "additionalProperties": false
+    },
+    "named_check": {
+      "type": "object",
+      "required": ["id", "kind", "check"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {"type": "string"},
+        "kind": {"type": "string"},
+        "check": {"$ref": "#/definitions/check"}
+      }
+    }
+  }
+}

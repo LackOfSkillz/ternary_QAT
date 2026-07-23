@@ -1,0 +1,140 @@
+{
+ "task_id": "nc-01",
+ "task_family": "no_change_judgment",
+ "title": "Already clean — resist the itch",
+ "source_passage": "The ferry cut across the still water. Gulls tilted in the wake. On the far shore, the town lights came up one by one. He did not look back.",
+ "user_context": "Have a look at this and fix anything that needs fixing.",
+ "compiler_inputs": {
+  "user_request": "Have a look at this and fix anything that needs fixing.",
+  "source_passage": "The ferry cut across the still water. Gulls tilted in the wake. On the far shore, the town lights came up one by one. He did not look back.",
+  "project_context": "",
+  "scene_context": "",
+  "canon_records": [],
+  "voice_profile": "spare, past tense, imagistic",
+  "character_state": "",
+  "invention_budget": "none: the passage is finished; change nothing unless something is actually wrong"
+ },
+ "evaluation_ground_truth": {
+  "required_changes": [],
+  "protected_elements": [
+   {
+    "id": "p1",
+    "text": "He did not look back."
+   }
+  ],
+  "forbidden_changes": [
+   {
+    "id": "f1",
+    "desc": "do not add drama or a twist",
+    "check": {
+     "t": "absent",
+     "v": "suddenly"
+    }
+   },
+   {
+    "id": "f2",
+    "desc": "do not add dialogue",
+    "check": {
+     "t": "absent",
+     "v": "he said"
+    }
+   }
+  ],
+  "authorized_spans": [
+   {
+    "id": "a1",
+    "desc": "no span is authorized for change"
+   }
+  ],
+  "unaffected_spans": [
+   {
+    "id": "u1",
+    "text": "The ferry cut across the still water."
+   }
+  ],
+  "required_facts": [],
+  "forbidden_facts": [],
+  "expected_output_shape": "prose",
+  "valid_no_change_case": true
+ },
+ "machine_checks": {
+  "required_change_checks": [],
+  "protected_text_checks": [
+   {
+    "id": "p1",
+    "kind": "exact_preservation",
+    "check": {
+     "t": "preserve",
+     "v": "He did not look back."
+    }
+   }
+  ],
+  "forbidden_change_checks": [
+   {
+    "id": "f1",
+    "kind": "forbidden_guard",
+    "check": {
+     "t": "absent",
+     "v": "suddenly"
+    }
+   },
+   {
+    "id": "f2",
+    "kind": "forbidden_guard",
+    "check": {
+     "t": "absent",
+     "v": "he said"
+    }
+   }
+  ],
+  "output_shape_checks": [],
+  "returned_unchanged_check": {
+   "normalization": {
+    "trim_outer_whitespace": true,
+    "normalize_line_endings": true
+   },
+   "comparison": "exact_after_normalization"
+  },
+  "partial_fix_checks": [],
+  "unauthorized_edit_checks": [
+   {
+    "id": "u1",
+    "kind": "unaffected_exact",
+    "check": {
+     "t": "preserve",
+     "v": "The ferry cut across the still water."
+    }
+   }
+  ]
+ },
+ "diagnostics": {
+  "instruction_position": null,
+  "critical_instruction_type": "no_change_judgment",
+  "critical_instruction_ordinal": null,
+  "defect_count": 0,
+  "difficulty": "medium",
+  "context_length_class": "short",
+  "voice_dependency": false,
+  "canon_dependency": false
+ },
+ "gold_acceptance_requirements": {
+  "contract_execution_required": true,
+  "manuscript_quality_required": true,
+  "acceptable_output_properties": [
+   "recognises the passage needs no change",
+   "returns it unchanged (or states no change is needed)",
+   "does not invent problems to fix"
+  ]
+ },
+ "benchmark_policy": {
+  "benchmark_only": true,
+  "excluded_from_training": true,
+  "excluded_from_teacher_examples": true,
+  "excluded_from_dataset_revision_examples": true,
+  "excluded_from_preference_data": true,
+  "immutable_after_freeze": true
+ },
+ "comprehension_probe": {
+  "enabled": false
+ }
+}

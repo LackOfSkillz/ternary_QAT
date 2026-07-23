@@ -1,0 +1,203 @@
+{
+ "task_id": "fr-07",
+ "task_family": "multi_constraint_focused_revision",
+ "title": "Departure platform — do not expand the scene",
+ "source_passage": "Nadia stood on the platform and did not cry. Nadia held the ticket in her gloved hand. Nadia watched the train slide in. She felt an overwhelming sadness wash over her entire body. The conductor called the final boarding. (Note: keep this the same length — do not add backstory, new characters, or a flashback.) The whistle blew twice.",
+ "user_context": "Tighten it. Watch the repetition at the start.",
+ "compiler_inputs": {
+  "user_request": "Tighten it. Watch the repetition at the start.",
+  "source_passage": "Nadia stood on the platform and did not cry. Nadia held the ticket in her gloved hand. Nadia watched the train slide in. She felt an overwhelming sadness wash over her entire body. The conductor called the final boarding. (Note: keep this the same length — do not add backstory, new characters, or a flashback.) The whistle blew twice.",
+  "project_context": "",
+  "scene_context": "",
+  "canon_records": [],
+  "voice_profile": "restrained, close third, past tense",
+  "character_state": "Nadia is leaving someone behind",
+  "invention_budget": "zero: same length, no backstory, no new characters, no flashback"
+ },
+ "evaluation_ground_truth": {
+  "required_changes": [
+   {
+    "id": "rc1",
+    "desc": "three sentences in a row open with 'Nadia'; vary them",
+    "defect_type": "repetitive_openers",
+    "check": {
+     "t": "max_openers",
+     "o": "Nadia",
+     "max": 2
+    }
+   },
+   {
+    "id": "rc2",
+    "desc": "replace the 'overwhelming sadness' telling with restraint",
+    "defect_type": "emotional_explanation",
+    "check": {
+     "t": "absent",
+     "v": "overwhelming sadness wash over her entire body"
+    }
+   },
+   {
+    "id": "rc3",
+    "desc": "remove the parenthetical author note from the prose",
+    "defect_type": "unauthorized_expansion",
+    "check": {
+     "t": "absent",
+     "v": "(Note: keep this the same length"
+    }
+   }
+  ],
+  "protected_elements": [
+   {
+    "id": "p1",
+    "text": "The whistle blew twice."
+   }
+  ],
+  "forbidden_changes": [
+   {
+    "id": "f1",
+    "desc": "do not add backstory or a flashback",
+    "check": {
+     "t": "absent",
+     "v": "years earlier"
+    }
+   },
+   {
+    "id": "f2",
+    "desc": "do not add a new character",
+    "check": {
+     "t": "absent",
+     "v": "her mother"
+    }
+   }
+  ],
+  "authorized_spans": [
+   {
+    "id": "a1",
+    "desc": "the repeated openers, the telling line, and the stray note may be revised"
+   }
+  ],
+  "unaffected_spans": [
+   {
+    "id": "u1",
+    "text": "The conductor called the final boarding."
+   }
+  ],
+  "required_facts": [],
+  "forbidden_facts": [],
+  "expected_output_shape": "prose",
+  "valid_no_change_case": false
+ },
+ "machine_checks": {
+  "required_change_checks": [
+   {
+    "id": "rc1",
+    "kind": "repetitive_openers",
+    "check": {
+     "t": "max_openers",
+     "o": "Nadia",
+     "max": 2
+    }
+   },
+   {
+    "id": "rc2",
+    "kind": "emotional_explanation",
+    "check": {
+     "t": "absent",
+     "v": "overwhelming sadness wash over her entire body"
+    }
+   },
+   {
+    "id": "rc3",
+    "kind": "unauthorized_expansion",
+    "check": {
+     "t": "absent",
+     "v": "(Note: keep this the same length"
+    }
+   }
+  ],
+  "protected_text_checks": [
+   {
+    "id": "p1",
+    "kind": "exact_preservation",
+    "check": {
+     "t": "preserve",
+     "v": "The whistle blew twice."
+    }
+   }
+  ],
+  "forbidden_change_checks": [
+   {
+    "id": "f1",
+    "kind": "forbidden_guard",
+    "check": {
+     "t": "absent",
+     "v": "years earlier"
+    }
+   },
+   {
+    "id": "f2",
+    "kind": "forbidden_guard",
+    "check": {
+     "t": "absent",
+     "v": "her mother"
+    }
+   }
+  ],
+  "output_shape_checks": [],
+  "returned_unchanged_check": {
+   "normalization": {
+    "trim_outer_whitespace": true,
+    "normalize_line_endings": true
+   },
+   "comparison": "exact_after_normalization"
+  },
+  "partial_fix_checks": [
+   "rc1",
+   "rc2",
+   "rc3"
+  ],
+  "unauthorized_edit_checks": [
+   {
+    "id": "u1",
+    "kind": "unaffected_exact",
+    "check": {
+     "t": "preserve",
+     "v": "The conductor called the final boarding."
+    }
+   }
+  ]
+ },
+ "diagnostics": {
+  "instruction_position": "middle",
+  "critical_instruction_type": "unauthorized_rewrite_prohibition",
+  "critical_instruction_ordinal": 6,
+  "defect_count": 3,
+  "difficulty": "medium",
+  "context_length_class": "medium",
+  "voice_dependency": false,
+  "canon_dependency": false
+ },
+ "gold_acceptance_requirements": {
+  "contract_execution_required": true,
+  "manuscript_quality_required": true,
+  "acceptable_output_properties": [
+   "varied openings",
+   "sorrow shown through restraint",
+   "no added length, backstory, or characters"
+  ]
+ },
+ "benchmark_policy": {
+  "benchmark_only": true,
+  "excluded_from_training": true,
+  "excluded_from_teacher_examples": true,
+  "excluded_from_dataset_revision_examples": true,
+  "excluded_from_preference_data": true,
+  "immutable_after_freeze": true
+ },
+ "comprehension_probe": {
+  "enabled": true,
+  "expected_required_changes": 3,
+  "expected_protected_elements": 1,
+  "expected_forbidden_operations": 2,
+  "expected_output_contract": "prose"
+ }
+}

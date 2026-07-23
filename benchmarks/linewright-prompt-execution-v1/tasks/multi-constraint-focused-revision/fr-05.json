@@ -1,0 +1,215 @@
+{
+ "task_id": "fr-05",
+ "task_family": "multi_constraint_focused_revision",
+ "title": "Interrogation — what the detective can't know",
+ "source_passage": "Detective Reyes studied the suspect across the table. The man's alibi was, in the final analysis, a function of pure contingency. Reyes knew the victim had been poisoned at exactly 9:14, though the coroner's report would not arrive until morning. The fluorescent light hummed overhead. It was a truth universally acknowledged that the guilty always talk first. The room held its breath, waiting for the confession that would change all of their lives forever.",
+ "user_context": "Clean this up. One line has the detective knowing something he has no way of knowing yet — catch that. Trim the philosophy too.",
+ "compiler_inputs": {
+  "user_request": "Clean this up. One line has the detective knowing something he has no way of knowing yet — catch that. Trim the philosophy too.",
+  "source_passage": "Detective Reyes studied the suspect across the table. The man's alibi was, in the final analysis, a function of pure contingency. Reyes knew the victim had been poisoned at exactly 9:14, though the coroner's report would not arrive until morning. The fluorescent light hummed overhead. It was a truth universally acknowledged that the guilty always talk first. The room held its breath, waiting for the confession that would change all of their lives forever.",
+  "project_context": "procedural mystery; the detective only knows what he has observed or been told",
+  "scene_context": "",
+  "canon_records": [],
+  "voice_profile": "",
+  "character_state": "Reyes has not yet seen the coroner's report",
+  "invention_budget": "none: fix defects, invent no new facts"
+ },
+ "evaluation_ground_truth": {
+  "required_changes": [
+   {
+    "id": "rc1",
+    "desc": "Reyes cannot know the exact time before the report arrives",
+    "defect_type": "character_knowledge_violation",
+    "check": {
+     "t": "absent",
+     "v": "poisoned at exactly 9:14"
+    }
+   },
+   {
+    "id": "rc2",
+    "desc": "cut the abstract 'function of pure contingency'",
+    "defect_type": "excessive_abstraction",
+    "check": {
+     "t": "absent",
+     "v": "a function of pure contingency"
+    }
+   },
+   {
+    "id": "rc3",
+    "desc": "remove the borrowed 'truth universally acknowledged' cliche",
+    "defect_type": "cliche_ending",
+    "check": {
+     "t": "absent",
+     "v": "truth universally acknowledged"
+    }
+   },
+   {
+    "id": "rc4",
+    "desc": "delete the melodramatic summary tail",
+    "defect_type": "redundant_summary",
+    "check": {
+     "t": "absent",
+     "v": "change all of their lives forever"
+    }
+   }
+  ],
+  "protected_elements": [
+   {
+    "id": "p1",
+    "text": "The fluorescent light hummed overhead."
+   }
+  ],
+  "forbidden_changes": [
+   {
+    "id": "f1",
+    "desc": "do not rename Reyes",
+    "check": {
+     "t": "present",
+     "v": "Reyes"
+    }
+   },
+   {
+    "id": "f2",
+    "desc": "do not name the poison or invent evidence",
+    "check": {
+     "t": "absent",
+     "v": "cyanide"
+    }
+   }
+  ],
+  "authorized_spans": [
+   {
+    "id": "a1",
+    "desc": "the knowledge slip, the abstraction, the cliche, and the tail may be rewritten"
+   }
+  ],
+  "unaffected_spans": [
+   {
+    "id": "u1",
+    "text": "Detective Reyes studied the suspect across the table."
+   }
+  ],
+  "required_facts": [],
+  "forbidden_facts": [],
+  "expected_output_shape": "prose",
+  "valid_no_change_case": false
+ },
+ "machine_checks": {
+  "required_change_checks": [
+   {
+    "id": "rc1",
+    "kind": "character_knowledge_violation",
+    "check": {
+     "t": "absent",
+     "v": "poisoned at exactly 9:14"
+    }
+   },
+   {
+    "id": "rc2",
+    "kind": "excessive_abstraction",
+    "check": {
+     "t": "absent",
+     "v": "a function of pure contingency"
+    }
+   },
+   {
+    "id": "rc3",
+    "kind": "cliche_ending",
+    "check": {
+     "t": "absent",
+     "v": "truth universally acknowledged"
+    }
+   },
+   {
+    "id": "rc4",
+    "kind": "redundant_summary",
+    "check": {
+     "t": "absent",
+     "v": "change all of their lives forever"
+    }
+   }
+  ],
+  "protected_text_checks": [
+   {
+    "id": "p1",
+    "kind": "exact_preservation",
+    "check": {
+     "t": "preserve",
+     "v": "The fluorescent light hummed overhead."
+    }
+   }
+  ],
+  "forbidden_change_checks": [
+   {
+    "id": "f1",
+    "kind": "forbidden_guard",
+    "check": {
+     "t": "present",
+     "v": "Reyes"
+    }
+   },
+   {
+    "id": "f2",
+    "kind": "forbidden_guard",
+    "check": {
+     "t": "absent",
+     "v": "cyanide"
+    }
+   }
+  ],
+  "output_shape_checks": [],
+  "returned_unchanged_check": {
+   "normalization": {
+    "trim_outer_whitespace": true,
+    "normalize_line_endings": true
+   },
+   "comparison": "exact_after_normalization"
+  },
+  "partial_fix_checks": [
+   "rc1",
+   "rc2",
+   "rc3",
+   "rc4"
+  ],
+  "unauthorized_edit_checks": [
+   {
+    "id": "u1",
+    "kind": "unaffected_exact",
+    "check": {
+     "t": "preserve",
+     "v": "Detective Reyes studied the suspect across the table."
+    }
+   }
+  ]
+ },
+ "diagnostics": {
+  "instruction_position": "early",
+  "critical_instruction_type": "required_correction",
+  "critical_instruction_ordinal": 2,
+  "defect_count": 4,
+  "difficulty": "high",
+  "context_length_class": "medium",
+  "voice_dependency": false,
+  "canon_dependency": false
+ },
+ "gold_acceptance_requirements": {
+  "contract_execution_required": true,
+  "manuscript_quality_required": true,
+  "acceptable_output_properties": [
+   "Reyes's knowledge stays consistent with what he has seen",
+   "no invented forensic facts",
+   "restrained, procedural register"
+  ]
+ },
+ "benchmark_policy": {
+  "benchmark_only": true,
+  "excluded_from_training": true,
+  "excluded_from_teacher_examples": true,
+  "excluded_from_dataset_revision_examples": true,
+  "excluded_from_preference_data": true,
+  "immutable_after_freeze": true
+ },
+ "comprehension_probe": {
+  "enabled": false
+ }
+}

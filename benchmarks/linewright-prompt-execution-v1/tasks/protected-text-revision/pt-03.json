@@ -1,0 +1,161 @@
+{
+ "task_id": "pt-03",
+ "task_family": "protected_text_revision",
+ "title": "Letter home — one anachronism, keep the closing",
+ "source_passage": "Dearest Mother, the trenches are quieter tonight. I emailed the lieutenant about my leave, but I expect nothing will come of it. Whatever happens, know that I remain, as ever, your loving son.",
+ "user_context": "This is a WWI letter. One line has a modern impossibility — fix that. Keep the final sentence, the sign-off, exactly.",
+ "compiler_inputs": {
+  "user_request": "This is a WWI letter. One line has a modern impossibility — fix that. Keep the final sentence, the sign-off, exactly.",
+  "source_passage": "Dearest Mother, the trenches are quieter tonight. I emailed the lieutenant about my leave, but I expect nothing will come of it. Whatever happens, know that I remain, as ever, your loving son.",
+  "project_context": "First World War epistolary fiction; no electronic communication exists",
+  "scene_context": "",
+  "canon_records": [],
+  "voice_profile": "",
+  "character_state": "",
+  "invention_budget": "none: correct the anachronism only"
+ },
+ "evaluation_ground_truth": {
+  "required_changes": [
+   {
+    "id": "rc1",
+    "desc": "soldiers in WWI could not email; use a period-true means",
+    "defect_type": "anachronism",
+    "check": {
+     "t": "absent",
+     "v": "emailed the lieutenant"
+    }
+   }
+  ],
+  "protected_elements": [
+   {
+    "id": "p1",
+    "text": "Whatever happens, know that I remain, as ever, your loving son."
+   }
+  ],
+  "forbidden_changes": [
+   {
+    "id": "f1",
+    "desc": "keep the sign-off",
+    "check": {
+     "t": "present",
+     "v": "I remain, as ever, your loving son"
+    }
+   },
+   {
+    "id": "f2",
+    "desc": "do not add the soldier's death",
+    "check": {
+     "t": "absent",
+     "v": "killed"
+    }
+   }
+  ],
+  "authorized_spans": [
+   {
+    "id": "a1",
+    "desc": "only the anachronistic line may change"
+   }
+  ],
+  "unaffected_spans": [
+   {
+    "id": "u1",
+    "text": "Dearest Mother, the trenches are quieter tonight."
+   }
+  ],
+  "required_facts": [],
+  "forbidden_facts": [],
+  "expected_output_shape": "prose",
+  "valid_no_change_case": false
+ },
+ "machine_checks": {
+  "required_change_checks": [
+   {
+    "id": "rc1",
+    "kind": "anachronism",
+    "check": {
+     "t": "absent",
+     "v": "emailed the lieutenant"
+    }
+   }
+  ],
+  "protected_text_checks": [
+   {
+    "id": "p1",
+    "kind": "exact_preservation",
+    "check": {
+     "t": "preserve",
+     "v": "Whatever happens, know that I remain, as ever, your loving son."
+    }
+   }
+  ],
+  "forbidden_change_checks": [
+   {
+    "id": "f1",
+    "kind": "forbidden_guard",
+    "check": {
+     "t": "present",
+     "v": "I remain, as ever, your loving son"
+    }
+   },
+   {
+    "id": "f2",
+    "kind": "forbidden_guard",
+    "check": {
+     "t": "absent",
+     "v": "killed"
+    }
+   }
+  ],
+  "output_shape_checks": [],
+  "returned_unchanged_check": {
+   "normalization": {
+    "trim_outer_whitespace": true,
+    "normalize_line_endings": true
+   },
+   "comparison": "exact_after_normalization"
+  },
+  "partial_fix_checks": [
+   "rc1"
+  ],
+  "unauthorized_edit_checks": [
+   {
+    "id": "u1",
+    "kind": "unaffected_exact",
+    "check": {
+     "t": "preserve",
+     "v": "Dearest Mother, the trenches are quieter tonight."
+    }
+   }
+  ]
+ },
+ "diagnostics": {
+  "instruction_position": null,
+  "critical_instruction_type": "protected_text_rule",
+  "critical_instruction_ordinal": 2,
+  "defect_count": 1,
+  "difficulty": "medium",
+  "context_length_class": "short",
+  "voice_dependency": false,
+  "canon_dependency": true
+ },
+ "gold_acceptance_requirements": {
+  "contract_execution_required": true,
+  "manuscript_quality_required": true,
+  "acceptable_output_properties": [
+   "period-true correspondence replaces email",
+   "sign-off verbatim",
+   "quiet elegiac tone intact"
+  ]
+ },
+ "benchmark_policy": {
+  "benchmark_only": true,
+  "excluded_from_training": true,
+  "excluded_from_teacher_examples": true,
+  "excluded_from_dataset_revision_examples": true,
+  "excluded_from_preference_data": true,
+  "immutable_after_freeze": true
+ },
+ "comprehension_probe": {
+  "enabled": false
+ }
+}

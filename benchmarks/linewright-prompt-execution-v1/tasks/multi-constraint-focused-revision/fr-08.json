@@ -1,0 +1,216 @@
+{
+ "task_id": "fr-08",
+ "task_family": "multi_constraint_focused_revision",
+ "title": "Return to the keep — canon says grey eyes",
+ "source_passage": "The rain begins as Aldous rides through the gate. The steward met him with a lantern and a bow. 'Your green eyes are your mother's,' the steward said, and Aldous almost smiled. The hall was cold. And in that moment, he knew he was finally home.",
+ "user_context": "Revise for continuity and register. Return your answer as a JSON object with keys \"revision\" and \"changes\".",
+ "compiler_inputs": {
+  "user_request": "Revise for continuity and register. Return your answer as a JSON object with keys \"revision\" and \"changes\".",
+  "source_passage": "The rain begins as Aldous rides through the gate. The steward met him with a lantern and a bow. 'Your green eyes are your mother's,' the steward said, and Aldous almost smiled. The hall was cold. And in that moment, he knew he was finally home.",
+  "project_context": "series canon: Aldous has grey eyes, established in book one",
+  "scene_context": "",
+  "canon_records": [
+   "Aldous's eyes are grey.",
+   "Aldous's mother died when he was nine."
+  ],
+  "voice_profile": "past tense, measured",
+  "character_state": "",
+  "invention_budget": "none: correct to canon, invent nothing"
+ },
+ "evaluation_ground_truth": {
+  "required_changes": [
+   {
+    "id": "rc1",
+    "desc": "canon says Aldous has grey eyes, not green",
+    "defect_type": "canon_inconsistency",
+    "check": {
+     "t": "absent",
+     "v": "green eyes"
+    }
+   },
+   {
+    "id": "rc2",
+    "desc": "opening slipped to present tense; make it past",
+    "defect_type": "tense_drift",
+    "check": {
+     "t": "absent",
+     "v": "The rain begins as Aldous rides"
+    }
+   },
+   {
+    "id": "rc3",
+    "desc": "cut the 'finally home' cliche",
+    "defect_type": "cliche_ending",
+    "check": {
+     "t": "absent",
+     "v": "he knew he was finally home"
+    }
+   }
+  ],
+  "protected_elements": [
+   {
+    "id": "p1",
+    "text": "The hall was cold."
+   }
+  ],
+  "forbidden_changes": [
+   {
+    "id": "f1",
+    "desc": "keep the mother reference",
+    "check": {
+     "t": "present",
+     "v": "mother"
+    }
+   },
+   {
+    "id": "f2",
+    "desc": "do not kill or introduce a character",
+    "check": {
+     "t": "absent",
+     "v": "died"
+    }
+   }
+  ],
+  "authorized_spans": [
+   {
+    "id": "a1",
+    "desc": "the eye colour, the tense slip, and the closing may be rewritten"
+   }
+  ],
+  "unaffected_spans": [
+   {
+    "id": "u1",
+    "text": "The steward met him with a lantern and a bow."
+   }
+  ],
+  "required_facts": [
+   "grey eyes"
+  ],
+  "forbidden_facts": [
+   "green eyes"
+  ],
+  "expected_output_shape": "json",
+  "valid_no_change_case": false
+ },
+ "machine_checks": {
+  "required_change_checks": [
+   {
+    "id": "rc1",
+    "kind": "canon_inconsistency",
+    "check": {
+     "t": "absent",
+     "v": "green eyes"
+    }
+   },
+   {
+    "id": "rc2",
+    "kind": "tense_drift",
+    "check": {
+     "t": "absent",
+     "v": "The rain begins as Aldous rides"
+    }
+   },
+   {
+    "id": "rc3",
+    "kind": "cliche_ending",
+    "check": {
+     "t": "absent",
+     "v": "he knew he was finally home"
+    }
+   }
+  ],
+  "protected_text_checks": [
+   {
+    "id": "p1",
+    "kind": "exact_preservation",
+    "check": {
+     "t": "preserve",
+     "v": "The hall was cold."
+    }
+   }
+  ],
+  "forbidden_change_checks": [
+   {
+    "id": "f1",
+    "kind": "forbidden_guard",
+    "check": {
+     "t": "present",
+     "v": "mother"
+    }
+   },
+   {
+    "id": "f2",
+    "kind": "forbidden_guard",
+    "check": {
+     "t": "absent",
+     "v": "died"
+    }
+   }
+  ],
+  "output_shape_checks": [
+   {
+    "id": "sh1",
+    "kind": "schema_valid",
+    "check": {
+     "t": "shape_json",
+     "keys": [
+      "revision",
+      "changes"
+     ]
+    }
+   }
+  ],
+  "returned_unchanged_check": {
+   "normalization": {
+    "trim_outer_whitespace": true,
+    "normalize_line_endings": true
+   },
+   "comparison": "exact_after_normalization"
+  },
+  "partial_fix_checks": [
+   "rc1",
+   "rc2",
+   "rc3"
+  ],
+  "unauthorized_edit_checks": [
+   {
+    "id": "u1",
+    "kind": "unaffected_exact",
+    "check": {
+     "t": "preserve",
+     "v": "The steward met him with a lantern and a bow."
+    }
+   }
+  ]
+ },
+ "diagnostics": {
+  "instruction_position": "late",
+  "critical_instruction_type": "output_shape_requirement",
+  "critical_instruction_ordinal": 2,
+  "defect_count": 3,
+  "difficulty": "high",
+  "context_length_class": "short",
+  "voice_dependency": false,
+  "canon_dependency": true
+ },
+ "gold_acceptance_requirements": {
+  "contract_execution_required": true,
+  "manuscript_quality_required": true,
+  "acceptable_output_properties": [
+   "eye colour matches canon",
+   "uniform past tense",
+   "valid JSON with revision and changes keys"
+  ]
+ },
+ "benchmark_policy": {
+  "benchmark_only": true,
+  "excluded_from_training": true,
+  "excluded_from_teacher_examples": true,
+  "excluded_from_dataset_revision_examples": true,
+  "excluded_from_preference_data": true,
+  "immutable_after_freeze": true
+ },
+ "comprehension_probe": {
+  "enabled": false
+ }
+}

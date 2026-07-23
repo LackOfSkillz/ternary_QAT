@@ -1,0 +1,222 @@
+{
+ "task_id": "fr-01",
+ "task_family": "multi_constraint_focused_revision",
+ "title": "Harbor pier — trim the tells",
+ "source_passage": "Marla walked to the end of the pier and looked at the water. Marla counted the gulls wheeling over the masts. Marla felt terrified of what the tide would bring. The lamp at the harbor office was still lit. The harbor was a wound in the coastline that bled ships into the grey and hungry infinite. In the end, it all came down to this.",
+ "user_context": "Can you tighten this a little? It feels repetitive and a bit overwritten. Keep the gull line exactly as it is — I love it.",
+ "compiler_inputs": {
+  "user_request": "Can you tighten this a little? It feels repetitive and a bit overwritten. Keep the gull line exactly as it is — I love it.",
+  "source_passage": "Marla walked to the end of the pier and looked at the water. Marla counted the gulls wheeling over the masts. Marla felt terrified of what the tide would bring. The lamp at the harbor office was still lit. The harbor was a wound in the coastline that bled ships into the grey and hungry infinite. In the end, it all came down to this.",
+  "project_context": "",
+  "scene_context": "",
+  "canon_records": [],
+  "voice_profile": "close third, plain declaratives, concrete nouns, dread carried by image not label",
+  "character_state": "Marla is waiting for a ship that may not come.",
+  "invention_budget": "none: no new events, weather, or characters"
+ },
+ "evaluation_ground_truth": {
+  "required_changes": [
+   {
+    "id": "rc1",
+    "desc": "three sentences in a row open with 'Marla'; vary them",
+    "defect_type": "repetitive_openers",
+    "check": {
+     "t": "max_openers",
+     "o": "Marla",
+     "max": 2
+    }
+   },
+   {
+    "id": "rc2",
+    "desc": "cut the purple 'wound in the coastline' metaphor",
+    "defect_type": "overwritten_metaphor",
+    "check": {
+     "t": "absent",
+     "v": "a wound in the coastline"
+    }
+   },
+   {
+    "id": "rc3",
+    "desc": "replace the 'felt terrified' telling with shown dread",
+    "defect_type": "emotional_explanation",
+    "check": {
+     "t": "absent",
+     "v": "felt terrified"
+    }
+   },
+   {
+    "id": "rc4",
+    "desc": "delete the redundant summary sentence",
+    "defect_type": "redundant_summary",
+    "check": {
+     "t": "absent",
+     "v": "it all came down to this"
+    }
+   }
+  ],
+  "protected_elements": [
+   {
+    "id": "p1",
+    "text": "Marla counted the gulls wheeling over the masts."
+   }
+  ],
+  "forbidden_changes": [
+   {
+    "id": "f1",
+    "desc": "do not rename Marla",
+    "check": {
+     "t": "present",
+     "v": "Marla"
+    }
+   },
+   {
+    "id": "f2",
+    "desc": "do not invent a storm or weather event",
+    "check": {
+     "t": "absent",
+     "v": "storm"
+    }
+   }
+  ],
+  "authorized_spans": [
+   {
+    "id": "a1",
+    "desc": "the opening, dread, metaphor, and closing sentences may be rewritten"
+   }
+  ],
+  "unaffected_spans": [
+   {
+    "id": "u1",
+    "text": "The lamp at the harbor office was still lit."
+   }
+  ],
+  "required_facts": [],
+  "forbidden_facts": [],
+  "expected_output_shape": "prose",
+  "valid_no_change_case": false
+ },
+ "machine_checks": {
+  "required_change_checks": [
+   {
+    "id": "rc1",
+    "kind": "repetitive_openers",
+    "check": {
+     "t": "max_openers",
+     "o": "Marla",
+     "max": 2
+    }
+   },
+   {
+    "id": "rc2",
+    "kind": "overwritten_metaphor",
+    "check": {
+     "t": "absent",
+     "v": "a wound in the coastline"
+    }
+   },
+   {
+    "id": "rc3",
+    "kind": "emotional_explanation",
+    "check": {
+     "t": "absent",
+     "v": "felt terrified"
+    }
+   },
+   {
+    "id": "rc4",
+    "kind": "redundant_summary",
+    "check": {
+     "t": "absent",
+     "v": "it all came down to this"
+    }
+   }
+  ],
+  "protected_text_checks": [
+   {
+    "id": "p1",
+    "kind": "exact_preservation",
+    "check": {
+     "t": "preserve",
+     "v": "Marla counted the gulls wheeling over the masts."
+    }
+   }
+  ],
+  "forbidden_change_checks": [
+   {
+    "id": "f1",
+    "kind": "forbidden_guard",
+    "check": {
+     "t": "present",
+     "v": "Marla"
+    }
+   },
+   {
+    "id": "f2",
+    "kind": "forbidden_guard",
+    "check": {
+     "t": "absent",
+     "v": "storm"
+    }
+   }
+  ],
+  "output_shape_checks": [],
+  "returned_unchanged_check": {
+   "normalization": {
+    "trim_outer_whitespace": true,
+    "normalize_line_endings": true
+   },
+   "comparison": "exact_after_normalization"
+  },
+  "partial_fix_checks": [
+   "rc1",
+   "rc2",
+   "rc3",
+   "rc4"
+  ],
+  "unauthorized_edit_checks": [
+   {
+    "id": "u1",
+    "kind": "unaffected_exact",
+    "check": {
+     "t": "preserve",
+     "v": "The lamp at the harbor office was still lit."
+    }
+   }
+  ]
+ },
+ "diagnostics": {
+  "instruction_position": "early",
+  "critical_instruction_type": "required_correction",
+  "critical_instruction_ordinal": 1,
+  "defect_count": 4,
+  "difficulty": "medium",
+  "context_length_class": "medium",
+  "voice_dependency": true,
+  "canon_dependency": false
+ },
+ "gold_acceptance_requirements": {
+  "contract_execution_required": true,
+  "manuscript_quality_required": true,
+  "acceptable_output_properties": [
+   "varied openings without mechanical rephrasing",
+   "dread shown through image or action, not a 'felt' label",
+   "keeps Marla's plain observational voice",
+   "no new events or weather"
+  ]
+ },
+ "benchmark_policy": {
+  "benchmark_only": true,
+  "excluded_from_training": true,
+  "excluded_from_teacher_examples": true,
+  "excluded_from_dataset_revision_examples": true,
+  "excluded_from_preference_data": true,
+  "immutable_after_freeze": true
+ },
+ "comprehension_probe": {
+  "enabled": true,
+  "expected_required_changes": 4,
+  "expected_protected_elements": 1,
+  "expected_forbidden_operations": 2,
+  "expected_output_contract": "prose"
+ }
+}
