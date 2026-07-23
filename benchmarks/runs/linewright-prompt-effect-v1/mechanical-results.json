@@ -1,0 +1,2044 @@
+{
+ "run_id": "linewright-prompt-effect-v1",
+ "generation_integrity": {
+  "expected_outputs": 100,
+  "actual_outputs": 100,
+  "reasoning_trace_count": 0,
+  "token_cap_count": 0
+ },
+ "overall_by_arm": {
+  "P0-Realistic": {
+   "n": 30,
+   "all_required_completed": {
+    "count": 13,
+    "total": 30,
+    "rate": 0.433
+   },
+   "mean_required_completion": 0.578,
+   "returned_unchanged": {
+    "count": 4,
+    "total": 30,
+    "rate": 0.133
+   },
+   "protected_accuracy": 0.913,
+   "protected_corruption_count": 2,
+   "unauthorized_edit_rate": 0.067,
+   "output_shape_validity": 1.0,
+   "clean_success_rate": 0.4
+  },
+  "P0-Maximal": {
+   "n": 30,
+   "all_required_completed": {
+    "count": 21,
+    "total": 30,
+    "rate": 0.7
+   },
+   "mean_required_completion": 0.767,
+   "returned_unchanged": {
+    "count": 3,
+    "total": 30,
+    "rate": 0.1
+   },
+   "protected_accuracy": 1.0,
+   "protected_corruption_count": 0,
+   "unauthorized_edit_rate": 0.033,
+   "output_shape_validity": 1.0,
+   "clean_success_rate": 0.7
+  },
+  "P1-Contract": {
+   "n": 30,
+   "all_required_completed": {
+    "count": 19,
+    "total": 30,
+    "rate": 0.633
+   },
+   "mean_required_completion": 0.767,
+   "returned_unchanged": {
+    "count": 3,
+    "total": 30,
+    "rate": 0.1
+   },
+   "protected_accuracy": 1.0,
+   "protected_corruption_count": 0,
+   "unauthorized_edit_rate": 0.0,
+   "output_shape_validity": 1.0,
+   "clean_success_rate": 0.633
+  },
+  "P3-Ideal": {
+   "n": 10,
+   "all_required_completed": {
+    "count": 9,
+    "total": 10,
+    "rate": 0.9
+   },
+   "mean_required_completion": 0.967,
+   "returned_unchanged": {
+    "count": 0,
+    "total": 10,
+    "rate": 0.0
+   },
+   "protected_accuracy": 0.75,
+   "protected_corruption_count": 2,
+   "unauthorized_edit_rate": 0.2,
+   "output_shape_validity": 1.0,
+   "clean_success_rate": 0.7
+  }
+ },
+ "family_by_arm": {
+  "P0-Realistic": {
+   "no_change_judgment": {
+    "n": 4,
+    "all_required_completed": {
+     "count": 2,
+     "total": 4,
+     "rate": 0.5
+    },
+    "mean_required_completion": 0.5,
+    "returned_unchanged": {
+     "count": 0,
+     "total": 4,
+     "rate": 0.0
+    },
+    "protected_accuracy": 0.333,
+    "protected_corruption_count": 2,
+    "unauthorized_edit_rate": 0.5,
+    "output_shape_validity": 1.0,
+    "clean_success_rate": 0.25
+   },
+   "protected_text_revision": {
+    "n": 5,
+    "all_required_completed": {
+     "count": 4,
+     "total": 5,
+     "rate": 0.8
+    },
+    "mean_required_completion": 0.8,
+    "returned_unchanged": {
+     "count": 1,
+     "total": 5,
+     "rate": 0.2
+    },
+    "protected_accuracy": 1.0,
+    "protected_corruption_count": 0,
+    "unauthorized_edit_rate": 0.0,
+    "output_shape_validity": 1.0,
+    "clean_success_rate": 0.8
+   },
+   "voice_preserving_revision": {
+    "n": 3,
+    "all_required_completed": {
+     "count": 1,
+     "total": 3,
+     "rate": 0.333
+    },
+    "mean_required_completion": 0.5,
+    "returned_unchanged": {
+     "count": 1,
+     "total": 3,
+     "rate": 0.333
+    },
+    "protected_accuracy": 1.0,
+    "protected_corruption_count": 0,
+    "unauthorized_edit_rate": 0.0,
+    "output_shape_validity": 1.0,
+    "clean_success_rate": 0.333
+   },
+   "canon_continuation": {
+    "n": 3,
+    "all_required_completed": {
+     "count": 3,
+     "total": 3,
+     "rate": 1.0
+    },
+    "mean_required_completion": 1.0,
+    "returned_unchanged": {
+     "count": 0,
+     "total": 3,
+     "rate": 0.0
+    },
+    "protected_accuracy": null,
+    "protected_corruption_count": 0,
+    "unauthorized_edit_rate": 0.0,
+    "output_shape_validity": 1.0,
+    "clean_success_rate": 1.0
+   },
+   "multi_constraint_focused_revision": {
+    "n": 12,
+    "all_required_completed": {
+     "count": 1,
+     "total": 12,
+     "rate": 0.083
+    },
+    "mean_required_completion": 0.403,
+    "returned_unchanged": {
+     "count": 2,
+     "total": 12,
+     "rate": 0.167
+    },
+    "protected_accuracy": 1.0,
+    "protected_corruption_count": 0,
+    "unauthorized_edit_rate": 0.0,
+    "output_shape_validity": 1.0,
+    "clean_success_rate": 0.083
+   },
+   "structured_protocol": {
+    "n": 1,
+    "all_required_completed": {
+     "count": 1,
+     "total": 1,
+     "rate": 1.0
+    },
+    "mean_required_completion": 1.0,
+    "returned_unchanged": {
+     "count": 0,
+     "total": 1,
+     "rate": 0.0
+    },
+    "protected_accuracy": null,
+    "protected_corruption_count": 0,
+    "unauthorized_edit_rate": 0.0,
+    "output_shape_validity": 1.0,
+    "clean_success_rate": 1.0
+   },
+   "constraint_bound_scene": {
+    "n": 2,
+    "all_required_completed": {
+     "count": 1,
+     "total": 2,
+     "rate": 0.5
+    },
+    "mean_required_completion": 0.5,
+    "returned_unchanged": {
+     "count": 0,
+     "total": 2,
+     "rate": 0.0
+    },
+    "protected_accuracy": null,
+    "protected_corruption_count": 0,
+    "unauthorized_edit_rate": 0.0,
+    "output_shape_validity": 1.0,
+    "clean_success_rate": 0.5
+   }
+  },
+  "P0-Maximal": {
+   "no_change_judgment": {
+    "n": 4,
+    "all_required_completed": {
+     "count": 3,
+     "total": 4,
+     "rate": 0.75
+    },
+    "mean_required_completion": 0.75,
+    "returned_unchanged": {
+     "count": 0,
+     "total": 4,
+     "rate": 0.0
+    },
+    "protected_accuracy": 1.0,
+    "protected_corruption_count": 0,
+    "unauthorized_edit_rate": 0.0,
+    "output_shape_validity": 1.0,
+    "clean_success_rate": 0.75
+   },
+   "protected_text_revision": {
+    "n": 5,
+    "all_required_completed": {
+     "count": 4,
+     "total": 5,
+     "rate": 0.8
+    },
+    "mean_required_completion": 0.8,
+    "returned_unchanged": {
+     "count": 1,
+     "total": 5,
+     "rate": 0.2
+    },
+    "protected_accuracy": 1.0,
+    "protected_corruption_count": 0,
+    "unauthorized_edit_rate": 0.2,
+    "output_shape_validity": 1.0,
+    "clean_success_rate": 0.8
+   },
+   "voice_preserving_revision": {
+    "n": 3,
+    "all_required_completed": {
+     "count": 2,
+     "total": 3,
+     "rate": 0.667
+    },
+    "mean_required_completion": 0.667,
+    "returned_unchanged": {
+     "count": 1,
+     "total": 3,
+     "rate": 0.333
+    },
+    "protected_accuracy": 1.0,
+    "protected_corruption_count": 0,
+    "unauthorized_edit_rate": 0.0,
+    "output_shape_validity": 1.0,
+    "clean_success_rate": 0.667
+   },
+   "canon_continuation": {
+    "n": 3,
+    "all_required_completed": {
+     "count": 2,
+     "total": 3,
+     "rate": 0.667
+    },
+    "mean_required_completion": 0.833,
+    "returned_unchanged": {
+     "count": 0,
+     "total": 3,
+     "rate": 0.0
+    },
+    "protected_accuracy": null,
+    "protected_corruption_count": 0,
+    "unauthorized_edit_rate": 0.0,
+    "output_shape_validity": 1.0,
+    "clean_success_rate": 0.667
+   },
+   "multi_constraint_focused_revision": {
+    "n": 12,
+    "all_required_completed": {
+     "count": 8,
+     "total": 12,
+     "rate": 0.667
+    },
+    "mean_required_completion": 0.792,
+    "returned_unchanged": {
+     "count": 1,
+     "total": 12,
+     "rate": 0.083
+    },
+    "protected_accuracy": 1.0,
+    "protected_corruption_count": 0,
+    "unauthorized_edit_rate": 0.0,
+    "output_shape_validity": 1.0,
+    "clean_success_rate": 0.667
+   },
+   "structured_protocol": {
+    "n": 1,
+    "all_required_completed": {
+     "count": 1,
+     "total": 1,
+     "rate": 1.0
+    },
+    "mean_required_completion": 1.0,
+    "returned_unchanged": {
+     "count": 0,
+     "total": 1,
+     "rate": 0.0
+    },
+    "protected_accuracy": null,
+    "protected_corruption_count": 0,
+    "unauthorized_edit_rate": 0.0,
+    "output_shape_validity": 1.0,
+    "clean_success_rate": 1.0
+   },
+   "constraint_bound_scene": {
+    "n": 2,
+    "all_required_completed": {
+     "count": 1,
+     "total": 2,
+     "rate": 0.5
+    },
+    "mean_required_completion": 0.5,
+    "returned_unchanged": {
+     "count": 0,
+     "total": 2,
+     "rate": 0.0
+    },
+    "protected_accuracy": null,
+    "protected_corruption_count": 0,
+    "unauthorized_edit_rate": 0.0,
+    "output_shape_validity": 1.0,
+    "clean_success_rate": 0.5
+   }
+  },
+  "P1-Contract": {
+   "no_change_judgment": {
+    "n": 4,
+    "all_required_completed": {
+     "count": 3,
+     "total": 4,
+     "rate": 0.75
+    },
+    "mean_required_completion": 0.75,
+    "returned_unchanged": {
+     "count": 0,
+     "total": 4,
+     "rate": 0.0
+    },
+    "protected_accuracy": 1.0,
+    "protected_corruption_count": 0,
+    "unauthorized_edit_rate": 0.0,
+    "output_shape_validity": 1.0,
+    "clean_success_rate": 0.75
+   },
+   "protected_text_revision": {
+    "n": 5,
+    "all_required_completed": {
+     "count": 3,
+     "total": 5,
+     "rate": 0.6
+    },
+    "mean_required_completion": 0.6,
+    "returned_unchanged": {
+     "count": 2,
+     "total": 5,
+     "rate": 0.4
+    },
+    "protected_accuracy": 1.0,
+    "protected_corruption_count": 0,
+    "unauthorized_edit_rate": 0.0,
+    "output_shape_validity": 1.0,
+    "clean_success_rate": 0.6
+   },
+   "voice_preserving_revision": {
+    "n": 3,
+    "all_required_completed": {
+     "count": 2,
+     "total": 3,
+     "rate": 0.667
+    },
+    "mean_required_completion": 0.667,
+    "returned_unchanged": {
+     "count": 1,
+     "total": 3,
+     "rate": 0.333
+    },
+    "protected_accuracy": 1.0,
+    "protected_corruption_count": 0,
+    "unauthorized_edit_rate": 0.0,
+    "output_shape_validity": 1.0,
+    "clean_success_rate": 0.667
+   },
+   "canon_continuation": {
+    "n": 3,
+    "all_required_completed": {
+     "count": 2,
+     "total": 3,
+     "rate": 0.667
+    },
+    "mean_required_completion": 0.833,
+    "returned_unchanged": {
+     "count": 0,
+     "total": 3,
+     "rate": 0.0
+    },
+    "protected_accuracy": null,
+    "protected_corruption_count": 0,
+    "unauthorized_edit_rate": 0.0,
+    "output_shape_validity": 1.0,
+    "clean_success_rate": 0.667
+   },
+   "multi_constraint_focused_revision": {
+    "n": 12,
+    "all_required_completed": {
+     "count": 6,
+     "total": 12,
+     "rate": 0.5
+    },
+    "mean_required_completion": 0.792,
+    "returned_unchanged": {
+     "count": 0,
+     "total": 12,
+     "rate": 0.0
+    },
+    "protected_accuracy": 1.0,
+    "protected_corruption_count": 0,
+    "unauthorized_edit_rate": 0.0,
+    "output_shape_validity": 1.0,
+    "clean_success_rate": 0.5
+   },
+   "structured_protocol": {
+    "n": 1,
+    "all_required_completed": {
+     "count": 1,
+     "total": 1,
+     "rate": 1.0
+    },
+    "mean_required_completion": 1.0,
+    "returned_unchanged": {
+     "count": 0,
+     "total": 1,
+     "rate": 0.0
+    },
+    "protected_accuracy": null,
+    "protected_corruption_count": 0,
+    "unauthorized_edit_rate": 0.0,
+    "output_shape_validity": 1.0,
+    "clean_success_rate": 1.0
+   },
+   "constraint_bound_scene": {
+    "n": 2,
+    "all_required_completed": {
+     "count": 2,
+     "total": 2,
+     "rate": 1.0
+    },
+    "mean_required_completion": 1.0,
+    "returned_unchanged": {
+     "count": 0,
+     "total": 2,
+     "rate": 0.0
+    },
+    "protected_accuracy": null,
+    "protected_corruption_count": 0,
+    "unauthorized_edit_rate": 0.0,
+    "output_shape_validity": 1.0,
+    "clean_success_rate": 1.0
+   }
+  },
+  "P3-Ideal": {
+   "no_change_judgment": {
+    "n": 1,
+    "all_required_completed": {
+     "count": 1,
+     "total": 1,
+     "rate": 1.0
+    },
+    "mean_required_completion": 1.0,
+    "returned_unchanged": {
+     "count": 0,
+     "total": 1,
+     "rate": 0.0
+    },
+    "protected_accuracy": 1.0,
+    "protected_corruption_count": 0,
+    "unauthorized_edit_rate": 0.0,
+    "output_shape_validity": 1.0,
+    "clean_success_rate": 1.0
+   },
+   "protected_text_revision": {
+    "n": 2,
+    "all_required_completed": {
+     "count": 2,
+     "total": 2,
+     "rate": 1.0
+    },
+    "mean_required_completion": 1.0,
+    "returned_unchanged": {
+     "count": 0,
+     "total": 2,
+     "rate": 0.0
+    },
+    "protected_accuracy": 0.5,
+    "protected_corruption_count": 1,
+    "unauthorized_edit_rate": 0.5,
+    "output_shape_validity": 1.0,
+    "clean_success_rate": 0.5
+   },
+   "voice_preserving_revision": {
+    "n": 1,
+    "all_required_completed": {
+     "count": 1,
+     "total": 1,
+     "rate": 1.0
+    },
+    "mean_required_completion": 1.0,
+    "returned_unchanged": {
+     "count": 0,
+     "total": 1,
+     "rate": 0.0
+    },
+    "protected_accuracy": 1.0,
+    "protected_corruption_count": 0,
+    "unauthorized_edit_rate": 0.0,
+    "output_shape_validity": 1.0,
+    "clean_success_rate": 1.0
+   },
+   "canon_continuation": {
+    "n": 1,
+    "all_required_completed": {
+     "count": 1,
+     "total": 1,
+     "rate": 1.0
+    },
+    "mean_required_completion": 1.0,
+    "returned_unchanged": {
+     "count": 0,
+     "total": 1,
+     "rate": 0.0
+    },
+    "protected_accuracy": null,
+    "protected_corruption_count": 0,
+    "unauthorized_edit_rate": 0.0,
+    "output_shape_validity": 1.0,
+    "clean_success_rate": 1.0
+   },
+   "multi_constraint_focused_revision": {
+    "n": 4,
+    "all_required_completed": {
+     "count": 3,
+     "total": 4,
+     "rate": 0.75
+    },
+    "mean_required_completion": 0.917,
+    "returned_unchanged": {
+     "count": 0,
+     "total": 4,
+     "rate": 0.0
+    },
+    "protected_accuracy": 0.75,
+    "protected_corruption_count": 1,
+    "unauthorized_edit_rate": 0.25,
+    "output_shape_validity": 1.0,
+    "clean_success_rate": 0.5
+   },
+   "constraint_bound_scene": {
+    "n": 1,
+    "all_required_completed": {
+     "count": 1,
+     "total": 1,
+     "rate": 1.0
+    },
+    "mean_required_completion": 1.0,
+    "returned_unchanged": {
+     "count": 0,
+     "total": 1,
+     "rate": 0.0
+    },
+    "protected_accuracy": null,
+    "protected_corruption_count": 0,
+    "unauthorized_edit_rate": 0.0,
+    "output_shape_validity": 1.0,
+    "clean_success_rate": 1.0
+   }
+  }
+ },
+ "focused_revision_by_arm": {
+  "P0-Realistic": {
+   "n": 12,
+   "all_required_completed": {
+    "count": 1,
+    "total": 12,
+    "rate": 0.083
+   },
+   "mean_required_completion": 0.403,
+   "returned_unchanged": {
+    "count": 2,
+    "total": 12,
+    "rate": 0.167
+   },
+   "protected_accuracy": 1.0,
+   "protected_corruption_count": 0,
+   "unauthorized_edit_rate": 0.0,
+   "output_shape_validity": 1.0,
+   "clean_success_rate": 0.083
+  },
+  "P0-Maximal": {
+   "n": 12,
+   "all_required_completed": {
+    "count": 8,
+    "total": 12,
+    "rate": 0.667
+   },
+   "mean_required_completion": 0.792,
+   "returned_unchanged": {
+    "count": 1,
+    "total": 12,
+    "rate": 0.083
+   },
+   "protected_accuracy": 1.0,
+   "protected_corruption_count": 0,
+   "unauthorized_edit_rate": 0.0,
+   "output_shape_validity": 1.0,
+   "clean_success_rate": 0.667
+  },
+  "P1-Contract": {
+   "n": 12,
+   "all_required_completed": {
+    "count": 6,
+    "total": 12,
+    "rate": 0.5
+   },
+   "mean_required_completion": 0.792,
+   "returned_unchanged": {
+    "count": 0,
+    "total": 12,
+    "rate": 0.0
+   },
+   "protected_accuracy": 1.0,
+   "protected_corruption_count": 0,
+   "unauthorized_edit_rate": 0.0,
+   "output_shape_validity": 1.0,
+   "clean_success_rate": 0.5
+  },
+  "P3-Ideal": {
+   "n": 4,
+   "all_required_completed": {
+    "count": 3,
+    "total": 4,
+    "rate": 0.75
+   },
+   "mean_required_completion": 0.917,
+   "returned_unchanged": {
+    "count": 0,
+    "total": 4,
+    "rate": 0.0
+   },
+   "protected_accuracy": 0.75,
+   "protected_corruption_count": 1,
+   "unauthorized_edit_rate": 0.25,
+   "output_shape_validity": 1.0,
+   "clean_success_rate": 0.5
+  }
+ },
+ "partial_fix_by_arm": {
+  "P0-Realistic": {
+   "0": 2,
+   "1": 7,
+   "2": 2,
+   "3": 1,
+   "4+": 0,
+   "all": 1
+  },
+  "P0-Maximal": {
+   "0": 1,
+   "1": 3,
+   "2": 2,
+   "3": 6,
+   "4+": 0,
+   "all": 8
+  },
+  "P1-Contract": {
+   "0": 0,
+   "1": 3,
+   "2": 5,
+   "3": 4,
+   "4+": 0,
+   "all": 6
+  },
+  "P3-Ideal": {
+   "0": 0,
+   "1": 1,
+   "2": 2,
+   "3": 1,
+   "4+": 0,
+   "all": 3
+  }
+ },
+ "instruction_position_by_arm": {
+  "P0-Realistic": {
+   "early": {
+    "all_required_completed": 0.0,
+    "returned_unchanged": 0.0,
+    "protected_accuracy": 1.0,
+    "unauthorized_edit_rate": 0.0
+   },
+   "middle": {
+    "all_required_completed": 0.0,
+    "returned_unchanged": 0.25,
+    "protected_accuracy": 1.0,
+    "unauthorized_edit_rate": 0.0
+   },
+   "late": {
+    "all_required_completed": 0.25,
+    "returned_unchanged": 0.25,
+    "protected_accuracy": 1.0,
+    "unauthorized_edit_rate": 0.0
+   }
+  },
+  "P0-Maximal": {
+   "early": {
+    "all_required_completed": 0.5,
+    "returned_unchanged": 0.25,
+    "protected_accuracy": 1.0,
+    "unauthorized_edit_rate": 0.0
+   },
+   "middle": {
+    "all_required_completed": 1.0,
+    "returned_unchanged": 0.0,
+    "protected_accuracy": 1.0,
+    "unauthorized_edit_rate": 0.0
+   },
+   "late": {
+    "all_required_completed": 0.5,
+    "returned_unchanged": 0.0,
+    "protected_accuracy": 1.0,
+    "unauthorized_edit_rate": 0.0
+   }
+  },
+  "P1-Contract": {
+   "early": {
+    "all_required_completed": 0.25,
+    "returned_unchanged": 0.0,
+    "protected_accuracy": 1.0,
+    "unauthorized_edit_rate": 0.0
+   },
+   "middle": {
+    "all_required_completed": 0.75,
+    "returned_unchanged": 0.0,
+    "protected_accuracy": 1.0,
+    "unauthorized_edit_rate": 0.0
+   },
+   "late": {
+    "all_required_completed": 0.5,
+    "returned_unchanged": 0.0,
+    "protected_accuracy": 1.0,
+    "unauthorized_edit_rate": 0.0
+   }
+  },
+  "P3-Ideal": {
+   "early": null,
+   "middle": {
+    "all_required_completed": 0.667,
+    "returned_unchanged": 0.0,
+    "protected_accuracy": 0.667,
+    "unauthorized_edit_rate": 0.333
+   },
+   "late": {
+    "all_required_completed": 1.0,
+    "returned_unchanged": 0.0,
+    "protected_accuracy": 1.0,
+    "unauthorized_edit_rate": 0.0
+   }
+  }
+ },
+ "headline_effects": {
+  "p1_minus_p0_maximal": {
+   "all_required_completed": -0.067,
+   "returned_unchanged": 0.0
+  },
+  "p1_minus_p0_realistic": {
+   "all_required_completed": 0.2,
+   "returned_unchanged": -0.033
+  },
+  "p3ideal_minus_p1": {
+   "all_required_completed": 0.3,
+   "returned_unchanged": -0.1
+  },
+  "p3ideal_minus_p0_realistic": {
+   "all_required_completed": 0.5
+  }
+ },
+ "anti_result_by_arm": {
+  "P0-Realistic": {
+   "protected_corruption": 2,
+   "unauthorized_edit": 2,
+   "reasoning_trace": 0,
+   "token_cap": 0
+  },
+  "P0-Maximal": {
+   "protected_corruption": 0,
+   "unauthorized_edit": 1,
+   "reasoning_trace": 0,
+   "token_cap": 0
+  },
+  "P1-Contract": {
+   "protected_corruption": 0,
+   "unauthorized_edit": 0,
+   "reasoning_trace": 0,
+   "token_cap": 0
+  },
+  "P3-Ideal": {
+   "protected_corruption": 2,
+   "unauthorized_edit": 2,
+   "reasoning_trace": 0,
+   "token_cap": 0
+  }
+ },
+ "per_output": [
+  {
+   "task_id": "cn-01",
+   "arm": "P0-Maximal",
+   "task_family": "canon_continuation",
+   "all_required_completed": false,
+   "required_completed": 1,
+   "required_total": 2,
+   "returned_unchanged": false,
+   "protected_ok": true,
+   "unauthorized_edit": false,
+   "clean_success": false
+  },
+  {
+   "task_id": "cn-01",
+   "arm": "P0-Realistic",
+   "task_family": "canon_continuation",
+   "all_required_completed": true,
+   "required_completed": 2,
+   "required_total": 2,
+   "returned_unchanged": false,
+   "protected_ok": true,
+   "unauthorized_edit": false,
+   "clean_success": true
+  },
+  {
+   "task_id": "cn-01",
+   "arm": "P1-Contract",
+   "task_family": "canon_continuation",
+   "all_required_completed": false,
+   "required_completed": 1,
+   "required_total": 2,
+   "returned_unchanged": false,
+   "protected_ok": true,
+   "unauthorized_edit": false,
+   "clean_success": false
+  },
+  {
+   "task_id": "cn-01",
+   "arm": "P3-Ideal",
+   "task_family": "canon_continuation",
+   "all_required_completed": true,
+   "required_completed": 2,
+   "required_total": 2,
+   "returned_unchanged": false,
+   "protected_ok": true,
+   "unauthorized_edit": false,
+   "clean_success": true
+  },
+  {
+   "task_id": "cn-02",
+   "arm": "P0-Maximal",
+   "task_family": "canon_continuation",
+   "all_required_completed": true,
+   "required_completed": 1,
+   "required_total": 1,
+   "returned_unchanged": false,
+   "protected_ok": true,
+   "unauthorized_edit": false,
+   "clean_success": true
+  },
+  {
+   "task_id": "cn-02",
+   "arm": "P0-Realistic",
+   "task_family": "canon_continuation",
+   "all_required_completed": true,
+   "required_completed": 1,
+   "required_total": 1,
+   "returned_unchanged": false,
+   "protected_ok": true,
+   "unauthorized_edit": false,
+   "clean_success": true
+  },
+  {
+   "task_id": "cn-02",
+   "arm": "P1-Contract",
+   "task_family": "canon_continuation",
+   "all_required_completed": true,
+   "required_completed": 1,
+   "required_total": 1,
+   "returned_unchanged": false,
+   "protected_ok": true,
+   "unauthorized_edit": false,
+   "clean_success": true
+  },
+  {
+   "task_id": "cn-03",
+   "arm": "P0-Maximal",
+   "task_family": "canon_continuation",
+   "all_required_completed": true,
+   "required_completed": 1,
+   "required_total": 1,
+   "returned_unchanged": false,
+   "protected_ok": true,
+   "unauthorized_edit": false,
+   "clean_success": true
+  },
+  {
+   "task_id": "cn-03",
+   "arm": "P0-Realistic",
+   "task_family": "canon_continuation",
+   "all_required_completed": true,
+   "required_completed": 1,
+   "required_total": 1,
+   "returned_unchanged": false,
+   "protected_ok": true,
+   "unauthorized_edit": false,
+   "clean_success": true
+  },
+  {
+   "task_id": "cn-03",
+   "arm": "P1-Contract",
+   "task_family": "canon_continuation",
+   "all_required_completed": true,
+   "required_completed": 1,
+   "required_total": 1,
+   "returned_unchanged": false,
+   "protected_ok": true,
+   "unauthorized_edit": false,
+   "clean_success": true
+  },
+  {
+   "task_id": "fr-01",
+   "arm": "P0-Maximal",
+   "task_family": "multi_constraint_focused_revision",
+   "all_required_completed": true,
+   "required_completed": 3,
+   "required_total": 3,
+   "returned_unchanged": false,
+   "protected_ok": true,
+   "unauthorized_edit": false,
+   "clean_success": true
+  },
+  {
+   "task_id": "fr-01",
+   "arm": "P0-Realistic",
+   "task_family": "multi_constraint_focused_revision",
+   "all_required_completed": false,
+   "required_completed": 1,
+   "required_total": 3,
+   "returned_unchanged": false,
+   "protected_ok": true,
+   "unauthorized_edit": false,
+   "clean_success": false
+  },
+  {
+   "task_id": "fr-01",
+   "arm": "P1-Contract",
+   "task_family": "multi_constraint_focused_revision",
+   "all_required_completed": true,
+   "required_completed": 3,
+   "required_total": 3,
+   "returned_unchanged": false,
+   "protected_ok": true,
+   "unauthorized_edit": false,
+   "clean_success": true
+  },
+  {
+   "task_id": "fr-01",
+   "arm": "P3-Ideal",
+   "task_family": "multi_constraint_focused_revision",
+   "all_required_completed": false,
+   "required_completed": 2,
+   "required_total": 3,
+   "returned_unchanged": false,
+   "protected_ok": true,
+   "unauthorized_edit": false,
+   "clean_success": false
+  },
+  {
+   "task_id": "fr-02",
+   "arm": "P0-Maximal",
+   "task_family": "multi_constraint_focused_revision",
+   "all_required_completed": true,
+   "required_completed": 3,
+   "required_total": 3,
+   "returned_unchanged": false,
+   "protected_ok": true,
+   "unauthorized_edit": false,
+   "clean_success": true
+  },
+  {
+   "task_id": "fr-02",
+   "arm": "P0-Realistic",
+   "task_family": "multi_constraint_focused_revision",
+   "all_required_completed": false,
+   "required_completed": 1,
+   "required_total": 3,
+   "returned_unchanged": false,
+   "protected_ok": true,
+   "unauthorized_edit": false,
+   "clean_success": false
+  },
+  {
+   "task_id": "fr-02",
+   "arm": "P1-Contract",
+   "task_family": "multi_constraint_focused_revision",
+   "all_required_completed": true,
+   "required_completed": 3,
+   "required_total": 3,
+   "returned_unchanged": false,
+   "protected_ok": true,
+   "unauthorized_edit": false,
+   "clean_success": true
+  },
+  {
+   "task_id": "fr-03",
+   "arm": "P0-Maximal",
+   "task_family": "multi_constraint_focused_revision",
+   "all_required_completed": false,
+   "required_completed": 1,
+   "required_total": 3,
+   "returned_unchanged": false,
+   "protected_ok": true,
+   "unauthorized_edit": false,
+   "clean_success": false
+  },
+  {
+   "task_id": "fr-03",
+   "arm": "P0-Realistic",
+   "task_family": "multi_constraint_focused_revision",
+   "all_required_completed": true,
+   "required_completed": 3,
+   "required_total": 3,
+   "returned_unchanged": false,
+   "protected_ok": true,
+   "unauthorized_edit": false,
+   "clean_success": true
+  },
+  {
+   "task_id": "fr-03",
+   "arm": "P1-Contract",
+   "task_family": "multi_constraint_focused_revision",
+   "all_required_completed": false,
+   "required_completed": 2,
+   "required_total": 3,
+   "returned_unchanged": false,
+   "protected_ok": true,
+   "unauthorized_edit": false,
+   "clean_success": false
+  },
+  {
+   "task_id": "fr-04",
+   "arm": "P0-Maximal",
+   "task_family": "multi_constraint_focused_revision",
+   "all_required_completed": true,
+   "required_completed": 3,
+   "required_total": 3,
+   "returned_unchanged": false,
+   "protected_ok": true,
+   "unauthorized_edit": false,
+   "clean_success": true
+  },
+  {
+   "task_id": "fr-04",
+   "arm": "P0-Realistic",
+   "task_family": "multi_constraint_focused_revision",
+   "all_required_completed": false,
+   "required_completed": 2,
+   "required_total": 3,
+   "returned_unchanged": false,
+   "protected_ok": true,
+   "unauthorized_edit": false,
+   "clean_success": false
+  },
+  {
+   "task_id": "fr-04",
+   "arm": "P1-Contract",
+   "task_family": "multi_constraint_focused_revision",
+   "all_required_completed": false,
+   "required_completed": 2,
+   "required_total": 3,
+   "returned_unchanged": false,
+   "protected_ok": true,
+   "unauthorized_edit": false,
+   "clean_success": false
+  },
+  {
+   "task_id": "fr-05",
+   "arm": "P0-Maximal",
+   "task_family": "multi_constraint_focused_revision",
+   "all_required_completed": true,
+   "required_completed": 3,
+   "required_total": 3,
+   "returned_unchanged": false,
+   "protected_ok": true,
+   "unauthorized_edit": false,
+   "clean_success": true
+  },
+  {
+   "task_id": "fr-05",
+   "arm": "P0-Realistic",
+   "task_family": "multi_constraint_focused_revision",
+   "all_required_completed": false,
+   "required_completed": 1,
+   "required_total": 3,
+   "returned_unchanged": false,
+   "protected_ok": true,
+   "unauthorized_edit": false,
+   "clean_success": false
+  },
+  {
+   "task_id": "fr-05",
+   "arm": "P1-Contract",
+   "task_family": "multi_constraint_focused_revision",
+   "all_required_completed": false,
+   "required_completed": 1,
+   "required_total": 3,
+   "returned_unchanged": false,
+   "protected_ok": true,
+   "unauthorized_edit": false,
+   "clean_success": false
+  },
+  {
+   "task_id": "fr-05",
+   "arm": "P3-Ideal",
+   "task_family": "multi_constraint_focused_revision",
+   "all_required_completed": true,
+   "required_completed": 3,
+   "required_total": 3,
+   "returned_unchanged": false,
+   "protected_ok": true,
+   "unauthorized_edit": false,
+   "clean_success": true
+  },
+  {
+   "task_id": "fr-06",
+   "arm": "P0-Maximal",
+   "task_family": "multi_constraint_focused_revision",
+   "all_required_completed": false,
+   "required_completed": 2,
+   "required_total": 3,
+   "returned_unchanged": false,
+   "protected_ok": true,
+   "unauthorized_edit": false,
+   "clean_success": false
+  },
+  {
+   "task_id": "fr-06",
+   "arm": "P0-Realistic",
+   "task_family": "multi_constraint_focused_revision",
+   "all_required_completed": false,
+   "required_completed": 1,
+   "required_total": 3,
+   "returned_unchanged": false,
+   "protected_ok": true,
+   "unauthorized_edit": false,
+   "clean_success": false
+  },
+  {
+   "task_id": "fr-06",
+   "arm": "P1-Contract",
+   "task_family": "multi_constraint_focused_revision",
+   "all_required_completed": false,
+   "required_completed": 2,
+   "required_total": 3,
+   "returned_unchanged": false,
+   "protected_ok": true,
+   "unauthorized_edit": false,
+   "clean_success": false
+  },
+  {
+   "task_id": "fr-07",
+   "arm": "P0-Maximal",
+   "task_family": "multi_constraint_focused_revision",
+   "all_required_completed": true,
+   "required_completed": 1,
+   "required_total": 1,
+   "returned_unchanged": false,
+   "protected_ok": true,
+   "unauthorized_edit": false,
+   "clean_success": true
+  },
+  {
+   "task_id": "fr-07",
+   "arm": "P0-Realistic",
+   "task_family": "multi_constraint_focused_revision",
+   "all_required_completed": false,
+   "required_completed": 0,
+   "required_total": 1,
+   "returned_unchanged": true,
+   "protected_ok": true,
+   "unauthorized_edit": false,
+   "clean_success": false
+  },
+  {
+   "task_id": "fr-07",
+   "arm": "P1-Contract",
+   "task_family": "multi_constraint_focused_revision",
+   "all_required_completed": true,
+   "required_completed": 1,
+   "required_total": 1,
+   "returned_unchanged": false,
+   "protected_ok": true,
+   "unauthorized_edit": false,
+   "clean_success": true
+  },
+  {
+   "task_id": "fr-07",
+   "arm": "P3-Ideal",
+   "task_family": "multi_constraint_focused_revision",
+   "all_required_completed": true,
+   "required_completed": 1,
+   "required_total": 1,
+   "returned_unchanged": false,
+   "protected_ok": false,
+   "unauthorized_edit": true,
+   "clean_success": false
+  },
+  {
+   "task_id": "fr-08",
+   "arm": "P0-Maximal",
+   "task_family": "multi_constraint_focused_revision",
+   "all_required_completed": false,
+   "required_completed": 0,
+   "required_total": 3,
+   "returned_unchanged": true,
+   "protected_ok": true,
+   "unauthorized_edit": false,
+   "clean_success": false
+  },
+  {
+   "task_id": "fr-08",
+   "arm": "P0-Realistic",
+   "task_family": "multi_constraint_focused_revision",
+   "all_required_completed": false,
+   "required_completed": 1,
+   "required_total": 3,
+   "returned_unchanged": false,
+   "protected_ok": true,
+   "unauthorized_edit": false,
+   "clean_success": false
+  },
+  {
+   "task_id": "fr-08",
+   "arm": "P1-Contract",
+   "task_family": "multi_constraint_focused_revision",
+   "all_required_completed": false,
+   "required_completed": 2,
+   "required_total": 3,
+   "returned_unchanged": false,
+   "protected_ok": true,
+   "unauthorized_edit": false,
+   "clean_success": false
+  },
+  {
+   "task_id": "fr-09",
+   "arm": "P0-Maximal",
+   "task_family": "multi_constraint_focused_revision",
+   "all_required_completed": false,
+   "required_completed": 1,
+   "required_total": 2,
+   "returned_unchanged": false,
+   "protected_ok": true,
+   "unauthorized_edit": false,
+   "clean_success": false
+  },
+  {
+   "task_id": "fr-09",
+   "arm": "P0-Realistic",
+   "task_family": "multi_constraint_focused_revision",
+   "all_required_completed": false,
+   "required_completed": 0,
+   "required_total": 2,
+   "returned_unchanged": true,
+   "protected_ok": true,
+   "unauthorized_edit": false,
+   "clean_success": false
+  },
+  {
+   "task_id": "fr-09",
+   "arm": "P1-Contract",
+   "task_family": "multi_constraint_focused_revision",
+   "all_required_completed": false,
+   "required_completed": 1,
+   "required_total": 2,
+   "returned_unchanged": false,
+   "protected_ok": true,
+   "unauthorized_edit": false,
+   "clean_success": false
+  },
+  {
+   "task_id": "fr-09",
+   "arm": "P3-Ideal",
+   "task_family": "multi_constraint_focused_revision",
+   "all_required_completed": true,
+   "required_completed": 2,
+   "required_total": 2,
+   "returned_unchanged": false,
+   "protected_ok": true,
+   "unauthorized_edit": false,
+   "clean_success": true
+  },
+  {
+   "task_id": "fr-10",
+   "arm": "P0-Maximal",
+   "task_family": "multi_constraint_focused_revision",
+   "all_required_completed": true,
+   "required_completed": 2,
+   "required_total": 2,
+   "returned_unchanged": false,
+   "protected_ok": true,
+   "unauthorized_edit": false,
+   "clean_success": true
+  },
+  {
+   "task_id": "fr-10",
+   "arm": "P0-Realistic",
+   "task_family": "multi_constraint_focused_revision",
+   "all_required_completed": false,
+   "required_completed": 1,
+   "required_total": 2,
+   "returned_unchanged": false,
+   "protected_ok": true,
+   "unauthorized_edit": false,
+   "clean_success": false
+  },
+  {
+   "task_id": "fr-10",
+   "arm": "P1-Contract",
+   "task_family": "multi_constraint_focused_revision",
+   "all_required_completed": true,
+   "required_completed": 2,
+   "required_total": 2,
+   "returned_unchanged": false,
+   "protected_ok": true,
+   "unauthorized_edit": false,
+   "clean_success": true
+  },
+  {
+   "task_id": "fr-11",
+   "arm": "P0-Maximal",
+   "task_family": "multi_constraint_focused_revision",
+   "all_required_completed": true,
+   "required_completed": 3,
+   "required_total": 3,
+   "returned_unchanged": false,
+   "protected_ok": true,
+   "unauthorized_edit": false,
+   "clean_success": true
+  },
+  {
+   "task_id": "fr-11",
+   "arm": "P0-Realistic",
+   "task_family": "multi_constraint_focused_revision",
+   "all_required_completed": false,
+   "required_completed": 1,
+   "required_total": 3,
+   "returned_unchanged": false,
+   "protected_ok": true,
+   "unauthorized_edit": false,
+   "clean_success": false
+  },
+  {
+   "task_id": "fr-11",
+   "arm": "P1-Contract",
+   "task_family": "multi_constraint_focused_revision",
+   "all_required_completed": true,
+   "required_completed": 3,
+   "required_total": 3,
+   "returned_unchanged": false,
+   "protected_ok": true,
+   "unauthorized_edit": false,
+   "clean_success": true
+  },
+  {
+   "task_id": "fr-12",
+   "arm": "P0-Maximal",
+   "task_family": "multi_constraint_focused_revision",
+   "all_required_completed": true,
+   "required_completed": 3,
+   "required_total": 3,
+   "returned_unchanged": false,
+   "protected_ok": true,
+   "unauthorized_edit": false,
+   "clean_success": true
+  },
+  {
+   "task_id": "fr-12",
+   "arm": "P0-Realistic",
+   "task_family": "multi_constraint_focused_revision",
+   "all_required_completed": false,
+   "required_completed": 2,
+   "required_total": 3,
+   "returned_unchanged": false,
+   "protected_ok": true,
+   "unauthorized_edit": false,
+   "clean_success": false
+  },
+  {
+   "task_id": "fr-12",
+   "arm": "P1-Contract",
+   "task_family": "multi_constraint_focused_revision",
+   "all_required_completed": true,
+   "required_completed": 3,
+   "required_total": 3,
+   "returned_unchanged": false,
+   "protected_ok": true,
+   "unauthorized_edit": false,
+   "clean_success": true
+  },
+  {
+   "task_id": "nc-01",
+   "arm": "P0-Maximal",
+   "task_family": "no_change_judgment",
+   "all_required_completed": true,
+   "required_completed": 1,
+   "required_total": 1,
+   "returned_unchanged": false,
+   "protected_ok": true,
+   "unauthorized_edit": false,
+   "clean_success": true
+  },
+  {
+   "task_id": "nc-01",
+   "arm": "P0-Realistic",
+   "task_family": "no_change_judgment",
+   "all_required_completed": true,
+   "required_completed": 1,
+   "required_total": 1,
+   "returned_unchanged": false,
+   "protected_ok": false,
+   "unauthorized_edit": true,
+   "clean_success": false
+  },
+  {
+   "task_id": "nc-01",
+   "arm": "P1-Contract",
+   "task_family": "no_change_judgment",
+   "all_required_completed": true,
+   "required_completed": 1,
+   "required_total": 1,
+   "returned_unchanged": false,
+   "protected_ok": true,
+   "unauthorized_edit": false,
+   "clean_success": true
+  },
+  {
+   "task_id": "nc-02",
+   "arm": "P0-Maximal",
+   "task_family": "no_change_judgment",
+   "all_required_completed": true,
+   "required_completed": 1,
+   "required_total": 1,
+   "returned_unchanged": false,
+   "protected_ok": true,
+   "unauthorized_edit": false,
+   "clean_success": true
+  },
+  {
+   "task_id": "nc-02",
+   "arm": "P0-Realistic",
+   "task_family": "no_change_judgment",
+   "all_required_completed": true,
+   "required_completed": 1,
+   "required_total": 1,
+   "returned_unchanged": false,
+   "protected_ok": true,
+   "unauthorized_edit": false,
+   "clean_success": true
+  },
+  {
+   "task_id": "nc-02",
+   "arm": "P1-Contract",
+   "task_family": "no_change_judgment",
+   "all_required_completed": true,
+   "required_completed": 1,
+   "required_total": 1,
+   "returned_unchanged": false,
+   "protected_ok": true,
+   "unauthorized_edit": false,
+   "clean_success": true
+  },
+  {
+   "task_id": "nc-03",
+   "arm": "P0-Maximal",
+   "task_family": "no_change_judgment",
+   "all_required_completed": false,
+   "required_completed": 0,
+   "required_total": 1,
+   "returned_unchanged": false,
+   "protected_ok": true,
+   "unauthorized_edit": false,
+   "clean_success": false
+  },
+  {
+   "task_id": "nc-03",
+   "arm": "P0-Realistic",
+   "task_family": "no_change_judgment",
+   "all_required_completed": false,
+   "required_completed": 0,
+   "required_total": 1,
+   "returned_unchanged": false,
+   "protected_ok": true,
+   "unauthorized_edit": false,
+   "clean_success": false
+  },
+  {
+   "task_id": "nc-03",
+   "arm": "P1-Contract",
+   "task_family": "no_change_judgment",
+   "all_required_completed": false,
+   "required_completed": 0,
+   "required_total": 1,
+   "returned_unchanged": false,
+   "protected_ok": true,
+   "unauthorized_edit": false,
+   "clean_success": false
+  },
+  {
+   "task_id": "nc-04",
+   "arm": "P0-Maximal",
+   "task_family": "no_change_judgment",
+   "all_required_completed": true,
+   "required_completed": 1,
+   "required_total": 1,
+   "returned_unchanged": false,
+   "protected_ok": true,
+   "unauthorized_edit": false,
+   "clean_success": true
+  },
+  {
+   "task_id": "nc-04",
+   "arm": "P0-Realistic",
+   "task_family": "no_change_judgment",
+   "all_required_completed": false,
+   "required_completed": 0,
+   "required_total": 1,
+   "returned_unchanged": false,
+   "protected_ok": false,
+   "unauthorized_edit": true,
+   "clean_success": false
+  },
+  {
+   "task_id": "nc-04",
+   "arm": "P1-Contract",
+   "task_family": "no_change_judgment",
+   "all_required_completed": true,
+   "required_completed": 1,
+   "required_total": 1,
+   "returned_unchanged": false,
+   "protected_ok": true,
+   "unauthorized_edit": false,
+   "clean_success": true
+  },
+  {
+   "task_id": "nc-04",
+   "arm": "P3-Ideal",
+   "task_family": "no_change_judgment",
+   "all_required_completed": true,
+   "required_completed": 1,
+   "required_total": 1,
+   "returned_unchanged": false,
+   "protected_ok": true,
+   "unauthorized_edit": false,
+   "clean_success": true
+  },
+  {
+   "task_id": "pt-01",
+   "arm": "P0-Maximal",
+   "task_family": "protected_text_revision",
+   "all_required_completed": true,
+   "required_completed": 1,
+   "required_total": 1,
+   "returned_unchanged": false,
+   "protected_ok": true,
+   "unauthorized_edit": false,
+   "clean_success": true
+  },
+  {
+   "task_id": "pt-01",
+   "arm": "P0-Realistic",
+   "task_family": "protected_text_revision",
+   "all_required_completed": false,
+   "required_completed": 0,
+   "required_total": 1,
+   "returned_unchanged": true,
+   "protected_ok": true,
+   "unauthorized_edit": false,
+   "clean_success": false
+  },
+  {
+   "task_id": "pt-01",
+   "arm": "P1-Contract",
+   "task_family": "protected_text_revision",
+   "all_required_completed": false,
+   "required_completed": 0,
+   "required_total": 1,
+   "returned_unchanged": true,
+   "protected_ok": true,
+   "unauthorized_edit": false,
+   "clean_success": false
+  },
+  {
+   "task_id": "pt-01",
+   "arm": "P3-Ideal",
+   "task_family": "protected_text_revision",
+   "all_required_completed": true,
+   "required_completed": 1,
+   "required_total": 1,
+   "returned_unchanged": false,
+   "protected_ok": false,
+   "unauthorized_edit": true,
+   "clean_success": false
+  },
+  {
+   "task_id": "pt-02",
+   "arm": "P0-Maximal",
+   "task_family": "protected_text_revision",
+   "all_required_completed": false,
+   "required_completed": 0,
+   "required_total": 1,
+   "returned_unchanged": true,
+   "protected_ok": true,
+   "unauthorized_edit": true,
+   "clean_success": false
+  },
+  {
+   "task_id": "pt-02",
+   "arm": "P0-Realistic",
+   "task_family": "protected_text_revision",
+   "all_required_completed": true,
+   "required_completed": 1,
+   "required_total": 1,
+   "returned_unchanged": false,
+   "protected_ok": true,
+   "unauthorized_edit": false,
+   "clean_success": true
+  },
+  {
+   "task_id": "pt-02",
+   "arm": "P1-Contract",
+   "task_family": "protected_text_revision",
+   "all_required_completed": true,
+   "required_completed": 1,
+   "required_total": 1,
+   "returned_unchanged": false,
+   "protected_ok": true,
+   "unauthorized_edit": false,
+   "clean_success": true
+  },
+  {
+   "task_id": "pt-03",
+   "arm": "P0-Maximal",
+   "task_family": "protected_text_revision",
+   "all_required_completed": true,
+   "required_completed": 1,
+   "required_total": 1,
+   "returned_unchanged": false,
+   "protected_ok": true,
+   "unauthorized_edit": false,
+   "clean_success": true
+  },
+  {
+   "task_id": "pt-03",
+   "arm": "P0-Realistic",
+   "task_family": "protected_text_revision",
+   "all_required_completed": true,
+   "required_completed": 1,
+   "required_total": 1,
+   "returned_unchanged": false,
+   "protected_ok": true,
+   "unauthorized_edit": false,
+   "clean_success": true
+  },
+  {
+   "task_id": "pt-03",
+   "arm": "P1-Contract",
+   "task_family": "protected_text_revision",
+   "all_required_completed": true,
+   "required_completed": 1,
+   "required_total": 1,
+   "returned_unchanged": false,
+   "protected_ok": true,
+   "unauthorized_edit": false,
+   "clean_success": true
+  },
+  {
+   "task_id": "pt-04",
+   "arm": "P0-Maximal",
+   "task_family": "protected_text_revision",
+   "all_required_completed": true,
+   "required_completed": 1,
+   "required_total": 1,
+   "returned_unchanged": false,
+   "protected_ok": true,
+   "unauthorized_edit": false,
+   "clean_success": true
+  },
+  {
+   "task_id": "pt-04",
+   "arm": "P0-Realistic",
+   "task_family": "protected_text_revision",
+   "all_required_completed": true,
+   "required_completed": 1,
+   "required_total": 1,
+   "returned_unchanged": false,
+   "protected_ok": true,
+   "unauthorized_edit": false,
+   "clean_success": true
+  },
+  {
+   "task_id": "pt-04",
+   "arm": "P1-Contract",
+   "task_family": "protected_text_revision",
+   "all_required_completed": false,
+   "required_completed": 0,
+   "required_total": 1,
+   "returned_unchanged": true,
+   "protected_ok": true,
+   "unauthorized_edit": false,
+   "clean_success": false
+  },
+  {
+   "task_id": "pt-05",
+   "arm": "P0-Maximal",
+   "task_family": "protected_text_revision",
+   "all_required_completed": true,
+   "required_completed": 2,
+   "required_total": 2,
+   "returned_unchanged": false,
+   "protected_ok": true,
+   "unauthorized_edit": false,
+   "clean_success": true
+  },
+  {
+   "task_id": "pt-05",
+   "arm": "P0-Realistic",
+   "task_family": "protected_text_revision",
+   "all_required_completed": true,
+   "required_completed": 2,
+   "required_total": 2,
+   "returned_unchanged": false,
+   "protected_ok": true,
+   "unauthorized_edit": false,
+   "clean_success": true
+  },
+  {
+   "task_id": "pt-05",
+   "arm": "P1-Contract",
+   "task_family": "protected_text_revision",
+   "all_required_completed": true,
+   "required_completed": 2,
+   "required_total": 2,
+   "returned_unchanged": false,
+   "protected_ok": true,
+   "unauthorized_edit": false,
+   "clean_success": true
+  },
+  {
+   "task_id": "pt-05",
+   "arm": "P3-Ideal",
+   "task_family": "protected_text_revision",
+   "all_required_completed": true,
+   "required_completed": 2,
+   "required_total": 2,
+   "returned_unchanged": false,
+   "protected_ok": true,
+   "unauthorized_edit": false,
+   "clean_success": true
+  },
+  {
+   "task_id": "sd-01",
+   "arm": "P0-Maximal",
+   "task_family": "constraint_bound_scene",
+   "all_required_completed": true,
+   "required_completed": 2,
+   "required_total": 2,
+   "returned_unchanged": false,
+   "protected_ok": true,
+   "unauthorized_edit": false,
+   "clean_success": true
+  },
+  {
+   "task_id": "sd-01",
+   "arm": "P0-Realistic",
+   "task_family": "constraint_bound_scene",
+   "all_required_completed": true,
+   "required_completed": 2,
+   "required_total": 2,
+   "returned_unchanged": false,
+   "protected_ok": true,
+   "unauthorized_edit": false,
+   "clean_success": true
+  },
+  {
+   "task_id": "sd-01",
+   "arm": "P1-Contract",
+   "task_family": "constraint_bound_scene",
+   "all_required_completed": true,
+   "required_completed": 2,
+   "required_total": 2,
+   "returned_unchanged": false,
+   "protected_ok": true,
+   "unauthorized_edit": false,
+   "clean_success": true
+  },
+  {
+   "task_id": "sd-01",
+   "arm": "P3-Ideal",
+   "task_family": "constraint_bound_scene",
+   "all_required_completed": true,
+   "required_completed": 2,
+   "required_total": 2,
+   "returned_unchanged": false,
+   "protected_ok": true,
+   "unauthorized_edit": false,
+   "clean_success": true
+  },
+  {
+   "task_id": "sd-02",
+   "arm": "P0-Maximal",
+   "task_family": "constraint_bound_scene",
+   "all_required_completed": false,
+   "required_completed": 0,
+   "required_total": 1,
+   "returned_unchanged": false,
+   "protected_ok": true,
+   "unauthorized_edit": false,
+   "clean_success": false
+  },
+  {
+   "task_id": "sd-02",
+   "arm": "P0-Realistic",
+   "task_family": "constraint_bound_scene",
+   "all_required_completed": false,
+   "required_completed": 0,
+   "required_total": 1,
+   "returned_unchanged": false,
+   "protected_ok": true,
+   "unauthorized_edit": false,
+   "clean_success": false
+  },
+  {
+   "task_id": "sd-02",
+   "arm": "P1-Contract",
+   "task_family": "constraint_bound_scene",
+   "all_required_completed": true,
+   "required_completed": 1,
+   "required_total": 1,
+   "returned_unchanged": false,
+   "protected_ok": true,
+   "unauthorized_edit": false,
+   "clean_success": true
+  },
+  {
+   "task_id": "sp-01",
+   "arm": "P0-Maximal",
+   "task_family": "structured_protocol",
+   "all_required_completed": true,
+   "required_completed": 2,
+   "required_total": 2,
+   "returned_unchanged": false,
+   "protected_ok": true,
+   "unauthorized_edit": false,
+   "clean_success": true
+  },
+  {
+   "task_id": "sp-01",
+   "arm": "P0-Realistic",
+   "task_family": "structured_protocol",
+   "all_required_completed": true,
+   "required_completed": 2,
+   "required_total": 2,
+   "returned_unchanged": false,
+   "protected_ok": true,
+   "unauthorized_edit": false,
+   "clean_success": true
+  },
+  {
+   "task_id": "sp-01",
+   "arm": "P1-Contract",
+   "task_family": "structured_protocol",
+   "all_required_completed": true,
+   "required_completed": 2,
+   "required_total": 2,
+   "returned_unchanged": false,
+   "protected_ok": true,
+   "unauthorized_edit": false,
+   "clean_success": true
+  },
+  {
+   "task_id": "vp-01",
+   "arm": "P0-Maximal",
+   "task_family": "voice_preserving_revision",
+   "all_required_completed": false,
+   "required_completed": 0,
+   "required_total": 1,
+   "returned_unchanged": true,
+   "protected_ok": true,
+   "unauthorized_edit": false,
+   "clean_success": false
+  },
+  {
+   "task_id": "vp-01",
+   "arm": "P0-Realistic",
+   "task_family": "voice_preserving_revision",
+   "all_required_completed": false,
+   "required_completed": 0,
+   "required_total": 1,
+   "returned_unchanged": true,
+   "protected_ok": true,
+   "unauthorized_edit": false,
+   "clean_success": false
+  },
+  {
+   "task_id": "vp-01",
+   "arm": "P1-Contract",
+   "task_family": "voice_preserving_revision",
+   "all_required_completed": false,
+   "required_completed": 0,
+   "required_total": 1,
+   "returned_unchanged": true,
+   "protected_ok": true,
+   "unauthorized_edit": false,
+   "clean_success": false
+  },
+  {
+   "task_id": "vp-02",
+   "arm": "P0-Maximal",
+   "task_family": "voice_preserving_revision",
+   "all_required_completed": true,
+   "required_completed": 1,
+   "required_total": 1,
+   "returned_unchanged": false,
+   "protected_ok": true,
+   "unauthorized_edit": false,
+   "clean_success": true
+  },
+  {
+   "task_id": "vp-02",
+   "arm": "P0-Realistic",
+   "task_family": "voice_preserving_revision",
+   "all_required_completed": true,
+   "required_completed": 1,
+   "required_total": 1,
+   "returned_unchanged": false,
+   "protected_ok": true,
+   "unauthorized_edit": false,
+   "clean_success": true
+  },
+  {
+   "task_id": "vp-02",
+   "arm": "P1-Contract",
+   "task_family": "voice_preserving_revision",
+   "all_required_completed": true,
+   "required_completed": 1,
+   "required_total": 1,
+   "returned_unchanged": false,
+   "protected_ok": true,
+   "unauthorized_edit": false,
+   "clean_success": true
+  },
+  {
+   "task_id": "vp-02",
+   "arm": "P3-Ideal",
+   "task_family": "voice_preserving_revision",
+   "all_required_completed": true,
+   "required_completed": 1,
+   "required_total": 1,
+   "returned_unchanged": false,
+   "protected_ok": true,
+   "unauthorized_edit": false,
+   "clean_success": true
+  },
+  {
+   "task_id": "vp-03",
+   "arm": "P0-Maximal",
+   "task_family": "voice_preserving_revision",
+   "all_required_completed": true,
+   "required_completed": 2,
+   "required_total": 2,
+   "returned_unchanged": false,
+   "protected_ok": true,
+   "unauthorized_edit": false,
+   "clean_success": true
+  },
+  {
+   "task_id": "vp-03",
+   "arm": "P0-Realistic",
+   "task_family": "voice_preserving_revision",
+   "all_required_completed": false,
+   "required_completed": 1,
+   "required_total": 2,
+   "returned_unchanged": false,
+   "protected_ok": true,
+   "unauthorized_edit": false,
+   "clean_success": false
+  },
+  {
+   "task_id": "vp-03",
+   "arm": "P1-Contract",
+   "task_family": "voice_preserving_revision",
+   "all_required_completed": true,
+   "required_completed": 2,
+   "required_total": 2,
+   "returned_unchanged": false,
+   "protected_ok": true,
+   "unauthorized_edit": false,
+   "clean_success": true
+  }
+ ]
+}
