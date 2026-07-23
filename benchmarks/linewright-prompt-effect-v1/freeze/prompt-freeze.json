@@ -1,0 +1,14 @@
+{
+ "expected_prompts": 100,
+ "actual_prompts": 100,
+ "p0_realistic_count": 30,
+ "p0_maximal_count": 30,
+ "p1_contract_count": 30,
+ "p3_ideal_count": 10,
+ "p0max_p1_information_equivalence": true,
+ "equivalence_problems": [],
+ "prompt_tree_sha256": "bced757ea62d3ba79d19f8dcaaee82b5a8bde9dccd23fcfa4df603d0da3be5ff",
+ "system_constant_across_arms": true,
+ "p3_compiled_dropped": "per Gary — no real compiler in this fork",
+ "frozen_before_generation": true
+}

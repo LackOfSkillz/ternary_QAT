@@ -1,0 +1,2231 @@
+{
+ "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+ "arms": [
+  "P0-Realistic",
+  "P0-Maximal",
+  "P1-Contract",
+  "P3-Ideal"
+ ],
+ "ideal_subset": [
+  "fr-01",
+  "fr-05",
+  "fr-07",
+  "fr-09",
+  "pt-01",
+  "pt-05",
+  "cn-01",
+  "vp-02",
+  "nc-04",
+  "sd-01"
+ ],
+ "prompts": [
+  {
+   "task_id": "fr-01",
+   "arm": "P0-Realistic",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "This is set in 1998 and I want it kept in her plain voice. Fix the clunky bits in the middle and end but keep my first line exactly.\n\nPASSAGE:\nThe stairs went up in the dark the way she remembered, ninety-nine of them, and she counted every one. The lamp room waited at the top like a held breath in the throat of a sleeping giant, vast and terrible and infinitely sad. She checked her phone for the time. She found the switch. She saw the great dark eye of the lens, and it saw nothing back.",
+   "prompt_sha256": "aeb37cca80f989c2c3bcdb1320ba20274ee2b6bd14d05a16bcc8456fed0a8d51",
+   "information_inventory": "arm-specific",
+   "instruction_position": "middle",
+   "max_new_tokens": 512,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": null,
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "fr-01",
+   "arm": "P0-Maximal",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "Complete the writing task below precisely.\n\nPASSAGE:\nThe stairs went up in the dark the way she remembered, ninety-nine of them, and she counted every one. The lamp room waited at the top like a held breath in the throat of a sleeping giant, vast and terrible and infinitely sad. She checked her phone for the time. She found the switch. She saw the great dark eye of the lens, and it saw nothing back.\n\nMake exactly these changes and no others:\n- remove the phone anachronism\n- remove/repair the sleeping-giant simile\n- reduce the run of 'She' sentence-openers\n\nPreserve these exactly, word for word:\n- The stairs went up in the dark the way she remembered, ninety-nine of them, and she counted every one.\n\nDo NOT do any of the following:\n- no new named characters\n- do not light the lamp\n\nReturn only the revised/written prose. No preamble, no commentary.",
+   "prompt_sha256": "4e4e883962c868198d5c2b500bd8aed331a831158731ef76461523700b0c3bc5",
+   "information_inventory": {
+    "required": [
+     "remove the phone anachronism",
+     "remove/repair the sleeping-giant simile",
+     "reduce the run of 'She' sentence-openers"
+    ],
+    "protected": [
+     "The stairs went up in the dark the way she remembered, ninety-nine of them, and she counted every one."
+    ],
+    "forbidden": [
+     "no new named characters",
+     "do not light the lamp"
+    ],
+    "shape": "prose",
+    "no_change": false
+   },
+   "instruction_position": "middle",
+   "max_new_tokens": 512,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": null,
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "fr-01",
+   "arm": "P1-Contract",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "[TASK]\nmode: focused_revision\nauthority: perform every required change; preserve every protected element; change nothing else.\n\n[SOURCE]\nThe stairs went up in the dark the way she remembered, ninety-nine of them, and she counted every one. The lamp room waited at the top like a held breath in the throat of a sleeping giant, vast and terrible and infinitely sad. She checked her phone for the time. She found the switch. She saw the great dark eye of the lens, and it saw nothing back.\n\n[REQUIRED CHANGES]\n- remove the phone anachronism\n- remove/repair the sleeping-giant simile\n- reduce the run of 'She' sentence-openers\n\n[PROTECTED ELEMENTS — reproduce verbatim]\n- The stairs went up in the dark the way she remembered, ninety-nine of them, and she counted every one.\n\n[FORBIDDEN CHANGES]\n- no new named characters\n- do not light the lamp\n\n[AUTHORIZED SCOPE]\nOnly the required changes above. All other material is out of scope and must be preserved.\n\n[OUTPUT CONTRACT]\nReturn only the revised/written prose. No preamble, no commentary.",
+   "prompt_sha256": "2de7d97b2cfc44191914cb4dc8d39a9b368f3775379dac8f5a2cb141b54a36f9",
+   "information_inventory": {
+    "required": [
+     "remove the phone anachronism",
+     "remove/repair the sleeping-giant simile",
+     "reduce the run of 'She' sentence-openers"
+    ],
+    "protected": [
+     "The stairs went up in the dark the way she remembered, ninety-nine of them, and she counted every one."
+    ],
+    "forbidden": [
+     "no new named characters",
+     "do not light the lamp"
+    ],
+    "shape": "prose",
+    "no_change": false
+   },
+   "instruction_position": "middle",
+   "max_new_tokens": 512,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": null,
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "fr-01",
+   "arm": "P3-Ideal",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "[PROJECT] literary fiction; register: dry, plain, observational; period: 1998 (no post-1998 tech).\n[VOICE PACKET] short declaratives, concrete nouns over adjectives, emotion shown through action, no purple simile.\n[TASK] focused revision. authority: obey required changes; preserve protected sentence verbatim; change nothing else.\n\n[SOURCE]\nThe stairs went up in the dark the way she remembered, ninety-nine of them, and she counted every one. The lamp room waited at the top like a held breath in the throat of a sleeping giant, vast and terrible and infinitely sad. She checked her phone for the time. She found the switch. She saw the great dark eye of the lens, and it saw nothing back.\n\n[REQUIRED CHANGES]\n- Remove the anachronistic 'phone' (1998, and she'd use a watch or the clock).\n- Replace/cut the overwritten 'sleeping giant' simile with something plain and concrete.\n- Break the run of three sentences opening with 'She' (vary the syntax).\n\n[PROTECTED — reproduce EXACTLY]\n- The stairs went up in the dark the way she remembered, ninety-nine of them, and she counted every one.\n\n[INVENTION BUDGET] minor sensory detail only. No new named characters. Do not depict the lamp lit.\n[AUTHORIZED SCOPE] only sentences 2-3; sentence 1 is protected.\n[OUTPUT] revised prose only.",
+   "prompt_sha256": "00f59d0227d4769dd0e1e2a3be711c81fcadd0af204a2e598792db33e15e5552",
+   "information_inventory": "arm-specific",
+   "instruction_position": "middle",
+   "max_new_tokens": 512,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": "ideal",
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "fr-02",
+   "arm": "P0-Realistic",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "Tighten this. The ending is too neat, there's a doubled word, and cut the throwaway adverb. Leave the gull line alone.\n\nPASSAGE:\nThe market emptied by dusk. The boy swept the stalls quietly, quietly, hoping for coins. A gull picked at a crushed plum. In the end, he learned that hope is just love with nowhere to go.",
+   "prompt_sha256": "38f0e5fabfa4a9cb983971d848533091c7504ef620d6118eba7314708fd5c266",
+   "information_inventory": "arm-specific",
+   "instruction_position": "early",
+   "max_new_tokens": 512,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": null,
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "fr-02",
+   "arm": "P0-Maximal",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "Complete the writing task below precisely.\n\nPASSAGE:\nThe market emptied by dusk. The boy swept the stalls quietly, quietly, hoping for coins. A gull picked at a crushed plum. In the end, he learned that hope is just love with nowhere to go.\n\nMake exactly these changes and no others:\n- remove the generic aphoristic ending\n- remove the doubled 'quietly, quietly'\n- remove the 'he learned that' summary frame\n\nPreserve these exactly, word for word:\n- A gull picked at a crushed plum.\n\nDo NOT do any of the following:\n- keep the market/boy\n- no new moral tacked on\n\nReturn only the revised/written prose. No preamble, no commentary.",
+   "prompt_sha256": "b70d49acdeb4f2cdcfb190b4f15ed43ce754b86b8b11f205e8c01297259e81c6",
+   "information_inventory": {
+    "required": [
+     "remove the generic aphoristic ending",
+     "remove the doubled 'quietly, quietly'",
+     "remove the 'he learned that' summary frame"
+    ],
+    "protected": [
+     "A gull picked at a crushed plum."
+    ],
+    "forbidden": [
+     "keep the market/boy",
+     "no new moral tacked on"
+    ],
+    "shape": "prose",
+    "no_change": false
+   },
+   "instruction_position": "early",
+   "max_new_tokens": 512,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": null,
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "fr-02",
+   "arm": "P1-Contract",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "[TASK]\nmode: focused_revision\nauthority: perform every required change; preserve every protected element; change nothing else.\n\n[SOURCE]\nThe market emptied by dusk. The boy swept the stalls quietly, quietly, hoping for coins. A gull picked at a crushed plum. In the end, he learned that hope is just love with nowhere to go.\n\n[REQUIRED CHANGES]\n- remove the generic aphoristic ending\n- remove the doubled 'quietly, quietly'\n- remove the 'he learned that' summary frame\n\n[PROTECTED ELEMENTS — reproduce verbatim]\n- A gull picked at a crushed plum.\n\n[FORBIDDEN CHANGES]\n- keep the market/boy\n- no new moral tacked on\n\n[AUTHORIZED SCOPE]\nOnly the required changes above. All other material is out of scope and must be preserved.\n\n[OUTPUT CONTRACT]\nReturn only the revised/written prose. No preamble, no commentary.",
+   "prompt_sha256": "84f53cb23507d3330ce364d73700aded6a7a48d6b800f33b9eb9025d54d9a639",
+   "information_inventory": {
+    "required": [
+     "remove the generic aphoristic ending",
+     "remove the doubled 'quietly, quietly'",
+     "remove the 'he learned that' summary frame"
+    ],
+    "protected": [
+     "A gull picked at a crushed plum."
+    ],
+    "forbidden": [
+     "keep the market/boy",
+     "no new moral tacked on"
+    ],
+    "shape": "prose",
+    "no_change": false
+   },
+   "instruction_position": "early",
+   "max_new_tokens": 512,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": null,
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "fr-03",
+   "arm": "P0-Realistic",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "Past tense throughout, and keep it strictly in his head — we shouldn't cut to his sister. Also the pulse-as-hammer bit is a cliché.\n\nPASSAGE:\nAdeyemi crossed the empty warehouse and stopped under the broken skylight. Rain drips through the gap and the concrete darkens in a slow ring. Across the city his sister wakes, certain he is in danger. His pulse was a hammer against his ribs.",
+   "prompt_sha256": "5e3e992080e4fba41fd0295bf817a9cf3eb7f62cbd718bbc85e33cf1cdec2ff2",
+   "information_inventory": "arm-specific",
+   "instruction_position": "late",
+   "max_new_tokens": 512,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": null,
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "fr-03",
+   "arm": "P0-Maximal",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "Complete the writing task below precisely.\n\nPASSAGE:\nAdeyemi crossed the empty warehouse and stopped under the broken skylight. Rain drips through the gap and the concrete darkens in a slow ring. Across the city his sister wakes, certain he is in danger. His pulse was a hammer against his ribs.\n\nMake exactly these changes and no others:\n- sentence 2 to past tense\n- remove the jump into the sister's head\n- remove the pulse-as-hammer cliché\n\nPreserve these exactly, word for word:\n- Adeyemi crossed the empty warehouse and stopped under the broken skylight.\n\nDo NOT do any of the following:\n- stay in the warehouse\n- no new dialogue\n\nReturn only the revised/written prose. No preamble, no commentary.",
+   "prompt_sha256": "783cf38e64a9001fdd46d55de2f831331cec232401871d0bb109a8b2ce6f8ae6",
+   "information_inventory": {
+    "required": [
+     "sentence 2 to past tense",
+     "remove the jump into the sister's head",
+     "remove the pulse-as-hammer cliché"
+    ],
+    "protected": [
+     "Adeyemi crossed the empty warehouse and stopped under the broken skylight."
+    ],
+    "forbidden": [
+     "stay in the warehouse",
+     "no new dialogue"
+    ],
+    "shape": "prose",
+    "no_change": false
+   },
+   "instruction_position": "late",
+   "max_new_tokens": 512,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": null,
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "fr-03",
+   "arm": "P1-Contract",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "[TASK]\nmode: focused_revision\nauthority: perform every required change; preserve every protected element; change nothing else.\n\n[SOURCE]\nAdeyemi crossed the empty warehouse and stopped under the broken skylight. Rain drips through the gap and the concrete darkens in a slow ring. Across the city his sister wakes, certain he is in danger. His pulse was a hammer against his ribs.\n\n[REQUIRED CHANGES]\n- sentence 2 to past tense\n- remove the jump into the sister's head\n- remove the pulse-as-hammer cliché\n\n[PROTECTED ELEMENTS — reproduce verbatim]\n- Adeyemi crossed the empty warehouse and stopped under the broken skylight.\n\n[FORBIDDEN CHANGES]\n- stay in the warehouse\n- no new dialogue\n\n[AUTHORIZED SCOPE]\nOnly the required changes above. All other material is out of scope and must be preserved.\n\n[OUTPUT CONTRACT]\nReturn only the revised/written prose. No preamble, no commentary.",
+   "prompt_sha256": "563a17d5c99b057f71bef16790f887ff3142b982032572e2a71ce5ac3747cf6e",
+   "information_inventory": {
+    "required": [
+     "sentence 2 to past tense",
+     "remove the jump into the sister's head",
+     "remove the pulse-as-hammer cliché"
+    ],
+    "protected": [
+     "Adeyemi crossed the empty warehouse and stopped under the broken skylight."
+    ],
+    "forbidden": [
+     "stay in the warehouse",
+     "no new dialogue"
+    ],
+    "shape": "prose",
+    "no_change": false
+   },
+   "instruction_position": "late",
+   "max_new_tokens": 512,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": null,
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "fr-04",
+   "arm": "P0-Realistic",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "Kill the repeated shrug, swap that vague 'indescribable tension' line for something concrete, and drop the 'basically' summary. Keep her line of dialogue.\n\nPASSAGE:\nMara set the kettle down. She shrugged. \"It's fine,\" she said, and shrugged again, and shrugged once more at the window. The whole situation was full of an overwhelming and indescribable tension. Basically, nobody in that kitchen was happy.",
+   "prompt_sha256": "a4a895fcae06985f4823b72663a4cad12fa6f440375dcf21551cc0303ff913cf",
+   "information_inventory": "arm-specific",
+   "instruction_position": "early",
+   "max_new_tokens": 512,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": null,
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "fr-04",
+   "arm": "P0-Maximal",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "Complete the writing task below precisely.\n\nPASSAGE:\nMara set the kettle down. She shrugged. \"It's fine,\" she said, and shrugged again, and shrugged once more at the window. The whole situation was full of an overwhelming and indescribable tension. Basically, nobody in that kitchen was happy.\n\nMake exactly these changes and no others:\n- remove the repetitive shrug tic\n- remove the abstract 'indescribable tension' clause\n- remove the 'Basically' summary sentence\n\nPreserve these exactly, word for word:\n- \"It's fine,\" she said\n\nDo NOT do any of the following:\n- keep Mara + kettle\n- no invented backstory\n\nReturn only the revised/written prose. No preamble, no commentary.",
+   "prompt_sha256": "34a3ea13831c8a915d1abe085329239cb79684d1d9f85f61d89c0799c64f5a7d",
+   "information_inventory": {
+    "required": [
+     "remove the repetitive shrug tic",
+     "remove the abstract 'indescribable tension' clause",
+     "remove the 'Basically' summary sentence"
+    ],
+    "protected": [
+     "\"It's fine,\" she said"
+    ],
+    "forbidden": [
+     "keep Mara + kettle",
+     "no invented backstory"
+    ],
+    "shape": "prose",
+    "no_change": false
+   },
+   "instruction_position": "early",
+   "max_new_tokens": 512,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": null,
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "fr-04",
+   "arm": "P1-Contract",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "[TASK]\nmode: focused_revision\nauthority: perform every required change; preserve every protected element; change nothing else.\n\n[SOURCE]\nMara set the kettle down. She shrugged. \"It's fine,\" she said, and shrugged again, and shrugged once more at the window. The whole situation was full of an overwhelming and indescribable tension. Basically, nobody in that kitchen was happy.\n\n[REQUIRED CHANGES]\n- remove the repetitive shrug tic\n- remove the abstract 'indescribable tension' clause\n- remove the 'Basically' summary sentence\n\n[PROTECTED ELEMENTS — reproduce verbatim]\n- \"It's fine,\" she said\n\n[FORBIDDEN CHANGES]\n- keep Mara + kettle\n- no invented backstory\n\n[AUTHORIZED SCOPE]\nOnly the required changes above. All other material is out of scope and must be preserved.\n\n[OUTPUT CONTRACT]\nReturn only the revised/written prose. No preamble, no commentary.",
+   "prompt_sha256": "d1e6fb6f572eac550e6e0514245e8d61a048299a89ff43a50c166ea4dffd7d0a",
+   "information_inventory": {
+    "required": [
+     "remove the repetitive shrug tic",
+     "remove the abstract 'indescribable tension' clause",
+     "remove the 'Basically' summary sentence"
+    ],
+    "protected": [
+     "\"It's fine,\" she said"
+    ],
+    "forbidden": [
+     "keep Mara + kettle",
+     "no invented backstory"
+    ],
+    "shape": "prose",
+    "no_change": false
+   },
+   "instruction_position": "early",
+   "max_new_tokens": 512,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": null,
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "fr-05",
+   "arm": "P0-Realistic",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "This is 1953. Three problems buried in here: an anachronism, a lazy 'literal eternity', and that final on-the-nose 'metaphor for their marriage' line. Fix just those. Keep the opening image and the dog.\n\nPASSAGE:\nThe morning came up hard and clear over the ridge and the whole valley lay open below them, every field and hedge and the thin bright wire of the river, and the air had that scoured coldness that comes after a night of frost, and somewhere a dog was barking, and the two of them stood at the gate not speaking. Elin adjusted her phone in her coat pocket. The barley had been cut and the stubble went on for what seemed like a literal eternity. He said the thing he always said, which was nothing. It was, when you really thought about it, a metaphor for their entire marriage.",
+   "prompt_sha256": "64b569b26dce3c658b0ed0d292904901c4a7d127237e48049c8a684e6c019a68",
+   "information_inventory": "arm-specific",
+   "instruction_position": "middle",
+   "max_new_tokens": 512,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": null,
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "fr-05",
+   "arm": "P0-Maximal",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "Complete the writing task below precisely.\n\nPASSAGE:\nThe morning came up hard and clear over the ridge and the whole valley lay open below them, every field and hedge and the thin bright wire of the river, and the air had that scoured coldness that comes after a night of frost, and somewhere a dog was barking, and the two of them stood at the gate not speaking. Elin adjusted her phone in her coat pocket. The barley had been cut and the stubble went on for what seemed like a literal eternity. He said the thing he always said, which was nothing. It was, when you really thought about it, a metaphor for their entire marriage.\n\nMake exactly these changes and no others:\n- remove the anachronistic phone (1953)\n- remove 'literal eternity'\n- remove the on-the-nose 'metaphor for their entire marriage'\n\nPreserve these exactly, word for word:\n- somewhere a dog was barking\n\nDo NOT do any of the following:\n- keep the ridge/valley opening\n- no new named characters beyond Elin\n\nReturn only the revised/written prose. No preamble, no commentary.",
+   "prompt_sha256": "33d99fd7d7aa3a5ee15ed061ea2d99789b9cb79ef0f5490b673b7369c16150ff",
+   "information_inventory": {
+    "required": [
+     "remove the anachronistic phone (1953)",
+     "remove 'literal eternity'",
+     "remove the on-the-nose 'metaphor for their entire marriage'"
+    ],
+    "protected": [
+     "somewhere a dog was barking"
+    ],
+    "forbidden": [
+     "keep the ridge/valley opening",
+     "no new named characters beyond Elin"
+    ],
+    "shape": "prose",
+    "no_change": false
+   },
+   "instruction_position": "middle",
+   "max_new_tokens": 512,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": null,
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "fr-05",
+   "arm": "P1-Contract",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "[TASK]\nmode: focused_revision\nauthority: perform every required change; preserve every protected element; change nothing else.\n\n[SOURCE]\nThe morning came up hard and clear over the ridge and the whole valley lay open below them, every field and hedge and the thin bright wire of the river, and the air had that scoured coldness that comes after a night of frost, and somewhere a dog was barking, and the two of them stood at the gate not speaking. Elin adjusted her phone in her coat pocket. The barley had been cut and the stubble went on for what seemed like a literal eternity. He said the thing he always said, which was nothing. It was, when you really thought about it, a metaphor for their entire marriage.\n\n[REQUIRED CHANGES]\n- remove the anachronistic phone (1953)\n- remove 'literal eternity'\n- remove the on-the-nose 'metaphor for their entire marriage'\n\n[PROTECTED ELEMENTS — reproduce verbatim]\n- somewhere a dog was barking\n\n[FORBIDDEN CHANGES]\n- keep the ridge/valley opening\n- no new named characters beyond Elin\n\n[AUTHORIZED SCOPE]\nOnly the required changes above. All other material is out of scope and must be preserved.\n\n[OUTPUT CONTRACT]\nReturn only the revised/written prose. No preamble, no commentary.",
+   "prompt_sha256": "1a53acdcb8f4fd06a4fe06a02a296c53e5625ca6e6dd52a4cad84db254698363",
+   "information_inventory": {
+    "required": [
+     "remove the anachronistic phone (1953)",
+     "remove 'literal eternity'",
+     "remove the on-the-nose 'metaphor for their entire marriage'"
+    ],
+    "protected": [
+     "somewhere a dog was barking"
+    ],
+    "forbidden": [
+     "keep the ridge/valley opening",
+     "no new named characters beyond Elin"
+    ],
+    "shape": "prose",
+    "no_change": false
+   },
+   "instruction_position": "middle",
+   "max_new_tokens": 512,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": null,
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "fr-05",
+   "arm": "P3-Ideal",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "[PROJECT] literary fiction; period 1953 (no anachronisms); dry restrained voice.\n[TASK] focused revision of buried defects in a long passage. authority: fix ONLY the three named defects.\n\n[SOURCE]\nThe morning came up hard and clear over the ridge and the whole valley lay open below them, every field and hedge and the thin bright wire of the river, and the air had that scoured coldness that comes after a night of frost, and somewhere a dog was barking, and the two of them stood at the gate not speaking. Elin adjusted her phone in her coat pocket. The barley had been cut and the stubble went on for what seemed like a literal eternity. He said the thing he always said, which was nothing. It was, when you really thought about it, a metaphor for their entire marriage.\n\n[REQUIRED CHANGES]\n- Remove the anachronistic 'phone' (1953).\n- Remove 'literal eternity'.\n- Remove the on-the-nose 'metaphor for their entire marriage' line.\n\n[PROTECTED] the ridge/valley opening image and 'somewhere a dog was barking' remain.\n[INVENTION BUDGET] none — remove only. No new named characters beyond Elin.\n[OUTPUT] revised prose only.",
+   "prompt_sha256": "c99067af518b938819c806826e4c13804e6062f4828104db2995f9935c166f6e",
+   "information_inventory": "arm-specific",
+   "instruction_position": "middle",
+   "max_new_tokens": 512,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": "ideal",
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "fr-06",
+   "arm": "P0-Realistic",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "Cut the redundant restated line, fix the silly 'asked interrogatively', and vary those three 'She' openers. Keep the detective's question.\n\nPASSAGE:\n\"Where were you?\" the detective asked interrogatively. \"I told you where I was. I was at the pub. I already said I was at the pub.\" She stared at him. She waited. She let the silence do the work.",
+   "prompt_sha256": "0d78244d12d34f58e7aa4fcee5a5921523e9998b4097f0b01651659bf5aeb3cb",
+   "information_inventory": "arm-specific",
+   "instruction_position": "early",
+   "max_new_tokens": 512,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": null,
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "fr-06",
+   "arm": "P0-Maximal",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "Complete the writing task below precisely.\n\nPASSAGE:\n\"Where were you?\" the detective asked interrogatively. \"I told you where I was. I was at the pub. I already said I was at the pub.\" She stared at him. She waited. She let the silence do the work.\n\nMake exactly these changes and no others:\n- remove the redundant restated pub line\n- remove 'asked interrogatively'\n- vary the 'She' openers\n\nPreserve these exactly, word for word:\n- \"Where were you?\"\n\nDo NOT do any of the following:\n- keep the pub answer\n- no new accusation invented\n\nReturn only the revised/written prose. No preamble, no commentary.",
+   "prompt_sha256": "ba0054c787a66fb0d55f0bab947296f718bc20b0f34dc5937e8db93bb5020c12",
+   "information_inventory": {
+    "required": [
+     "remove the redundant restated pub line",
+     "remove 'asked interrogatively'",
+     "vary the 'She' openers"
+    ],
+    "protected": [
+     "\"Where were you?\""
+    ],
+    "forbidden": [
+     "keep the pub answer",
+     "no new accusation invented"
+    ],
+    "shape": "prose",
+    "no_change": false
+   },
+   "instruction_position": "early",
+   "max_new_tokens": 512,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": null,
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "fr-06",
+   "arm": "P1-Contract",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "[TASK]\nmode: focused_revision\nauthority: perform every required change; preserve every protected element; change nothing else.\n\n[SOURCE]\n\"Where were you?\" the detective asked interrogatively. \"I told you where I was. I was at the pub. I already said I was at the pub.\" She stared at him. She waited. She let the silence do the work.\n\n[REQUIRED CHANGES]\n- remove the redundant restated pub line\n- remove 'asked interrogatively'\n- vary the 'She' openers\n\n[PROTECTED ELEMENTS — reproduce verbatim]\n- \"Where were you?\"\n\n[FORBIDDEN CHANGES]\n- keep the pub answer\n- no new accusation invented\n\n[AUTHORIZED SCOPE]\nOnly the required changes above. All other material is out of scope and must be preserved.\n\n[OUTPUT CONTRACT]\nReturn only the revised/written prose. No preamble, no commentary.",
+   "prompt_sha256": "a7234c9079dea1108ea28ed2672ac8cab16ed8c7aaa4e59c0c1987c63a1a1c1e",
+   "information_inventory": {
+    "required": [
+     "remove the redundant restated pub line",
+     "remove 'asked interrogatively'",
+     "vary the 'She' openers"
+    ],
+    "protected": [
+     "\"Where were you?\""
+    ],
+    "forbidden": [
+     "keep the pub answer",
+     "no new accusation invented"
+    ],
+    "shape": "prose",
+    "no_change": false
+   },
+   "instruction_position": "early",
+   "max_new_tokens": 512,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": null,
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "fr-07",
+   "arm": "P0-Realistic",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "There's exactly one overwritten sentence in here (the middle one). Fix only that. The rest is deliberately plain — do NOT touch it.\n\nPASSAGE:\nThe train pulled out on time. She found her seat and put her bag on the rack and sat down. It was, in that instant, the single most devastatingly beautiful and soul-shattering departure in the history of human longing. The window was cold against her arm.",
+   "prompt_sha256": "75ee5835711b3259716c75842ba6e1a64a18268a5511b7ce1800cbdcdfc7f8c9",
+   "information_inventory": "arm-specific",
+   "instruction_position": "middle",
+   "max_new_tokens": 512,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": null,
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "fr-07",
+   "arm": "P0-Maximal",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "Complete the writing task below precisely.\n\nPASSAGE:\nThe train pulled out on time. She found her seat and put her bag on the rack and sat down. It was, in that instant, the single most devastatingly beautiful and soul-shattering departure in the history of human longing. The window was cold against her arm.\n\nMake exactly these changes and no others:\n- remove the overwritten 'soul-shattering departure' sentence\n\nPreserve these exactly, word for word:\n- The train pulled out on time.\n- The window was cold against her arm.\n\nDo NOT do any of the following:\n- do not rewrite the plain first sentence\n- do not rewrite the plain last sentence\n- no added lyricism\n\nReturn only the revised/written prose. No preamble, no commentary.",
+   "prompt_sha256": "f6ae426b67039de25808ea6d1eab1ff473fdfddfcf58036c3cdac137aa18c8c5",
+   "information_inventory": {
+    "required": [
+     "remove the overwritten 'soul-shattering departure' sentence"
+    ],
+    "protected": [
+     "The train pulled out on time.",
+     "The window was cold against her arm."
+    ],
+    "forbidden": [
+     "do not rewrite the plain first sentence",
+     "do not rewrite the plain last sentence",
+     "no added lyricism"
+    ],
+    "shape": "prose",
+    "no_change": false
+   },
+   "instruction_position": "middle",
+   "max_new_tokens": 512,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": null,
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "fr-07",
+   "arm": "P1-Contract",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "[TASK]\nmode: focused_revision\nauthority: perform every required change; preserve every protected element; change nothing else.\n\n[SOURCE]\nThe train pulled out on time. She found her seat and put her bag on the rack and sat down. It was, in that instant, the single most devastatingly beautiful and soul-shattering departure in the history of human longing. The window was cold against her arm.\n\n[REQUIRED CHANGES]\n- remove the overwritten 'soul-shattering departure' sentence\n\n[PROTECTED ELEMENTS — reproduce verbatim]\n- The train pulled out on time.\n- The window was cold against her arm.\n\n[FORBIDDEN CHANGES]\n- do not rewrite the plain first sentence\n- do not rewrite the plain last sentence\n- no added lyricism\n\n[AUTHORIZED SCOPE]\nOnly the required changes above. All other material is out of scope and must be preserved.\n\n[OUTPUT CONTRACT]\nReturn only the revised/written prose. No preamble, no commentary.",
+   "prompt_sha256": "66b59a0e651b6bea862d70d59d8b0d5058cfb6883310b7f22bc92686f81f83fd",
+   "information_inventory": {
+    "required": [
+     "remove the overwritten 'soul-shattering departure' sentence"
+    ],
+    "protected": [
+     "The train pulled out on time.",
+     "The window was cold against her arm."
+    ],
+    "forbidden": [
+     "do not rewrite the plain first sentence",
+     "do not rewrite the plain last sentence",
+     "no added lyricism"
+    ],
+    "shape": "prose",
+    "no_change": false
+   },
+   "instruction_position": "middle",
+   "max_new_tokens": 512,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": null,
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "fr-07",
+   "arm": "P3-Ideal",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "[TASK] focused revision — ONE defect only; strong scope discipline required.\n[VOICE] the surrounding prose is deliberately plain; do not add lyricism.\n\n[SOURCE]\nThe train pulled out on time. She found her seat and put her bag on the rack and sat down. It was, in that instant, the single most devastatingly beautiful and soul-shattering departure in the history of human longing. The window was cold against her arm.\n\n[REQUIRED CHANGES]\n- Repair/cut ONLY the overwritten middle sentence ('soul-shattering departure...').\n\n[PROTECTED — reproduce EXACTLY]\n- The train pulled out on time.\n- The window was cold against her arm.\n\n[AUTHORIZED SCOPE] the middle sentence only. Do not touch the two plain sentences.\n[OUTPUT] revised prose only.",
+   "prompt_sha256": "9e65c495757c5329638f2a91ff2e584d06021c80b1827ab1460cc2de14a64001",
+   "information_inventory": "arm-specific",
+   "instruction_position": "middle",
+   "max_new_tokens": 512,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": "ideal",
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "fr-08",
+   "arm": "P0-Realistic",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "Continuity problem: she can't read a name off a sealed, unseen letter — cut that. Also fix the tired 'pale as a sheet' simile and the 'She' opener run. Keep the first sentence.\n\nPASSAGE:\nSela had never seen the letter. She read the name on it aloud, though the seal was still unbroken. Her face was as pale as a sheet of the finest imported paper. She turned. She left. She did not look back.",
+   "prompt_sha256": "ffc50b6ea7997c40219a6ea4e583d2e8d5bd919fb98f62694dc583c2b43b144d",
+   "information_inventory": "arm-specific",
+   "instruction_position": "early",
+   "max_new_tokens": 512,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": null,
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "fr-08",
+   "arm": "P0-Maximal",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "Complete the writing task below precisely.\n\nPASSAGE:\nSela had never seen the letter. She read the name on it aloud, though the seal was still unbroken. Her face was as pale as a sheet of the finest imported paper. She turned. She left. She did not look back.\n\nMake exactly these changes and no others:\n- remove reading the name off the sealed letter\n- remove the 'pale as a sheet' simile\n- vary the 'She' openers\n\nPreserve these exactly, word for word:\n- Sela had never seen the letter.\n\nDo NOT do any of the following:\n- the seal stays unbroken\n- no invented contents\n\nReturn only the revised/written prose. No preamble, no commentary.",
+   "prompt_sha256": "4cf0c282761f5f346e5b4488b017ba9fd5868a905ba9425e3998a066d8b3d2b5",
+   "information_inventory": {
+    "required": [
+     "remove reading the name off the sealed letter",
+     "remove the 'pale as a sheet' simile",
+     "vary the 'She' openers"
+    ],
+    "protected": [
+     "Sela had never seen the letter."
+    ],
+    "forbidden": [
+     "the seal stays unbroken",
+     "no invented contents"
+    ],
+    "shape": "prose",
+    "no_change": false
+   },
+   "instruction_position": "early",
+   "max_new_tokens": 512,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": null,
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "fr-08",
+   "arm": "P1-Contract",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "[TASK]\nmode: focused_revision\nauthority: perform every required change; preserve every protected element; change nothing else.\n\n[SOURCE]\nSela had never seen the letter. She read the name on it aloud, though the seal was still unbroken. Her face was as pale as a sheet of the finest imported paper. She turned. She left. She did not look back.\n\n[REQUIRED CHANGES]\n- remove reading the name off the sealed letter\n- remove the 'pale as a sheet' simile\n- vary the 'She' openers\n\n[PROTECTED ELEMENTS — reproduce verbatim]\n- Sela had never seen the letter.\n\n[FORBIDDEN CHANGES]\n- the seal stays unbroken\n- no invented contents\n\n[AUTHORIZED SCOPE]\nOnly the required changes above. All other material is out of scope and must be preserved.\n\n[OUTPUT CONTRACT]\nReturn only the revised/written prose. No preamble, no commentary.",
+   "prompt_sha256": "6544e6e510ded429f36958edd23fc8cb868c86ae789e3fcf0f400356559ca5a3",
+   "information_inventory": {
+    "required": [
+     "remove reading the name off the sealed letter",
+     "remove the 'pale as a sheet' simile",
+     "vary the 'She' openers"
+    ],
+    "protected": [
+     "Sela had never seen the letter."
+    ],
+    "forbidden": [
+     "the seal stays unbroken",
+     "no invented contents"
+    ],
+    "shape": "prose",
+    "no_change": false
+   },
+   "instruction_position": "early",
+   "max_new_tokens": 512,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": null,
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "fr-09",
+   "arm": "P0-Realistic",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "Regency period piece. It reads well but there's one anachronism right at the end you need to remove. Also drop 'truer than the truth'. Keep the opening coach sentence exactly.\n\nPASSAGE:\nThe coach came in off the moor road at dusk, the horses lathered and blowing, and the yard boys ran out with lanterns. Inside, a woman drew her shawl tighter and watched the inn come up out of the dark. She had money sewn into her hem and a name that was not her own. The whole long day she had rehearsed the lie until it felt truer than the truth. She checked her wristwatch and stepped down into the mud.",
+   "prompt_sha256": "ab07269f910d093baa23c4e653c3372ddc18b5b09ea706d7bc0f7216a4417c50",
+   "information_inventory": "arm-specific",
+   "instruction_position": "late",
+   "max_new_tokens": 512,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": null,
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "fr-09",
+   "arm": "P0-Maximal",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "Complete the writing task below precisely.\n\nPASSAGE:\nThe coach came in off the moor road at dusk, the horses lathered and blowing, and the yard boys ran out with lanterns. Inside, a woman drew her shawl tighter and watched the inn come up out of the dark. She had money sewn into her hem and a name that was not her own. The whole long day she had rehearsed the lie until it felt truer than the truth. She checked her wristwatch and stepped down into the mud.\n\nMake exactly these changes and no others:\n- remove the anachronistic wristwatch at the end\n- remove 'truer than the truth'\n\nPreserve these exactly, word for word:\n- The coach came in off the moor road at dusk, the horses lathered and blowing, and the yard boys ran out with lanterns.\n\nDo NOT do any of the following:\n- keep the disguised woman\n- no reveal of her real name\n\nReturn only the revised/written prose. No preamble, no commentary.",
+   "prompt_sha256": "674fa863cc9dffd38a804b70d1e6815876481924b8f2367977c155cbeb66352c",
+   "information_inventory": {
+    "required": [
+     "remove the anachronistic wristwatch at the end",
+     "remove 'truer than the truth'"
+    ],
+    "protected": [
+     "The coach came in off the moor road at dusk, the horses lathered and blowing, and the yard boys ran out with lanterns."
+    ],
+    "forbidden": [
+     "keep the disguised woman",
+     "no reveal of her real name"
+    ],
+    "shape": "prose",
+    "no_change": false
+   },
+   "instruction_position": "late",
+   "max_new_tokens": 512,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": null,
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "fr-09",
+   "arm": "P1-Contract",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "[TASK]\nmode: focused_revision\nauthority: perform every required change; preserve every protected element; change nothing else.\n\n[SOURCE]\nThe coach came in off the moor road at dusk, the horses lathered and blowing, and the yard boys ran out with lanterns. Inside, a woman drew her shawl tighter and watched the inn come up out of the dark. She had money sewn into her hem and a name that was not her own. The whole long day she had rehearsed the lie until it felt truer than the truth. She checked her wristwatch and stepped down into the mud.\n\n[REQUIRED CHANGES]\n- remove the anachronistic wristwatch at the end\n- remove 'truer than the truth'\n\n[PROTECTED ELEMENTS — reproduce verbatim]\n- The coach came in off the moor road at dusk, the horses lathered and blowing, and the yard boys ran out with lanterns.\n\n[FORBIDDEN CHANGES]\n- keep the disguised woman\n- no reveal of her real name\n\n[AUTHORIZED SCOPE]\nOnly the required changes above. All other material is out of scope and must be preserved.\n\n[OUTPUT CONTRACT]\nReturn only the revised/written prose. No preamble, no commentary.",
+   "prompt_sha256": "d68fbfe7c18d7b07e1da465275189c99dfce37cee59325cf0377abc641e74863",
+   "information_inventory": {
+    "required": [
+     "remove the anachronistic wristwatch at the end",
+     "remove 'truer than the truth'"
+    ],
+    "protected": [
+     "The coach came in off the moor road at dusk, the horses lathered and blowing, and the yard boys ran out with lanterns."
+    ],
+    "forbidden": [
+     "keep the disguised woman",
+     "no reveal of her real name"
+    ],
+    "shape": "prose",
+    "no_change": false
+   },
+   "instruction_position": "late",
+   "max_new_tokens": 512,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": null,
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "fr-09",
+   "arm": "P3-Ideal",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "[PROJECT] Regency period piece; no anachronisms; the critical fix is at the END.\n[TASK] focused revision. authority: two named fixes only; preserve the opening sentence verbatim.\n\n[SOURCE]\nThe coach came in off the moor road at dusk, the horses lathered and blowing, and the yard boys ran out with lanterns. Inside, a woman drew her shawl tighter and watched the inn come up out of the dark. She had money sewn into her hem and a name that was not her own. The whole long day she had rehearsed the lie until it felt truer than the truth. She checked her wristwatch and stepped down into the mud.\n\n[REQUIRED CHANGES]\n- Remove the anachronistic 'wristwatch' (end of passage).\n- Remove 'truer than the truth'.\n\n[PROTECTED — reproduce EXACTLY]\n- The coach came in off the moor road at dusk, the horses lathered and blowing, and the yard boys ran out with lanterns.\n\n[INVENTION BUDGET] none. Do not reveal her real name.\n[OUTPUT] revised prose only.",
+   "prompt_sha256": "88c396534b6dde0abcd32337d5389b422d5eaa6d4236c8210978341edea7af4d",
+   "information_inventory": "arm-specific",
+   "instruction_position": "late",
+   "max_new_tokens": 512,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": "ideal",
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "fr-10",
+   "arm": "P0-Realistic",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "Two fixes only: trim that piled-up 'nothing/nothing whatsoever/absolutely nothing', and the narration says closed but the sign says open — make the narration consistent by cutting the contradiction clause 'though the sign still said open'. Do not add any new action or dialogue; end where it ends.\n\nPASSAGE:\nThe bell over the door rang and Femi looked up from the till. \"We're closed,\" he said, though the sign still said open. The stranger just stood there, dripping, saying nothing at all, nothing whatsoever, absolutely nothing.",
+   "prompt_sha256": "88c465bd94242f3652fd743028d47df1b4615aa439f344fb4f97533968b57626",
+   "information_inventory": "arm-specific",
+   "instruction_position": "middle",
+   "max_new_tokens": 512,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": null,
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "fr-10",
+   "arm": "P0-Maximal",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "Complete the writing task below precisely.\n\nPASSAGE:\nThe bell over the door rang and Femi looked up from the till. \"We're closed,\" he said, though the sign still said open. The stranger just stood there, dripping, saying nothing at all, nothing whatsoever, absolutely nothing.\n\nMake exactly these changes and no others:\n- trim the 'nothing whatsoever, absolutely nothing' pile-up\n- cut the 'though the sign still said open' clause\n\nPreserve these exactly, word for word:\n- \"We're closed,\" he said\n\nDo NOT do any of the following:\n- no new dialogue from the stranger\n- no continued action after the ending\n\nReturn only the revised/written prose. No preamble, no commentary.",
+   "prompt_sha256": "6303a679d566c03c8b21ba4dfef5b223637ad1c2859f1ef00363b1f9e00776bf",
+   "information_inventory": {
+    "required": [
+     "trim the 'nothing whatsoever, absolutely nothing' pile-up",
+     "cut the 'though the sign still said open' clause"
+    ],
+    "protected": [
+     "\"We're closed,\" he said"
+    ],
+    "forbidden": [
+     "no new dialogue from the stranger",
+     "no continued action after the ending"
+    ],
+    "shape": "prose",
+    "no_change": false
+   },
+   "instruction_position": "middle",
+   "max_new_tokens": 512,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": null,
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "fr-10",
+   "arm": "P1-Contract",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "[TASK]\nmode: focused_revision\nauthority: perform every required change; preserve every protected element; change nothing else.\n\n[SOURCE]\nThe bell over the door rang and Femi looked up from the till. \"We're closed,\" he said, though the sign still said open. The stranger just stood there, dripping, saying nothing at all, nothing whatsoever, absolutely nothing.\n\n[REQUIRED CHANGES]\n- trim the 'nothing whatsoever, absolutely nothing' pile-up\n- cut the 'though the sign still said open' clause\n\n[PROTECTED ELEMENTS — reproduce verbatim]\n- \"We're closed,\" he said\n\n[FORBIDDEN CHANGES]\n- no new dialogue from the stranger\n- no continued action after the ending\n\n[AUTHORIZED SCOPE]\nOnly the required changes above. All other material is out of scope and must be preserved.\n\n[OUTPUT CONTRACT]\nReturn only the revised/written prose. No preamble, no commentary.",
+   "prompt_sha256": "104f9e5f05d6b928988e9cecd46fb3b3bc7e2a0870a3726a919f33e037b5480e",
+   "information_inventory": {
+    "required": [
+     "trim the 'nothing whatsoever, absolutely nothing' pile-up",
+     "cut the 'though the sign still said open' clause"
+    ],
+    "protected": [
+     "\"We're closed,\" he said"
+    ],
+    "forbidden": [
+     "no new dialogue from the stranger",
+     "no continued action after the ending"
+    ],
+    "shape": "prose",
+    "no_change": false
+   },
+   "instruction_position": "middle",
+   "max_new_tokens": 512,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": null,
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "fr-11",
+   "arm": "P0-Realistic",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "Show, don't tell — cut that named-and-amplified grief sentence. Also two verbs slipped into present tense in the last lines; make them past. Keep the stopped-clock detail.\n\nPASSAGE:\nYusuf sat in the corridor. The clock on the wall had stopped. He was feeling an enormous, crushing, overwhelming grief that consumed his entire being. A nurse walks past without looking at him. He does not move.",
+   "prompt_sha256": "efc5d2b4ecf267adc9059e1aa5b0a4b90b226f5a584bd559becbc09235dc34e6",
+   "information_inventory": "arm-specific",
+   "instruction_position": "late",
+   "max_new_tokens": 512,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": null,
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "fr-11",
+   "arm": "P0-Maximal",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "Complete the writing task below precisely.\n\nPASSAGE:\nYusuf sat in the corridor. The clock on the wall had stopped. He was feeling an enormous, crushing, overwhelming grief that consumed his entire being. A nurse walks past without looking at him. He does not move.\n\nMake exactly these changes and no others:\n- remove the over-explained grief sentence\n- 'walks' -> past\n- 'does not move' -> past\n\nPreserve these exactly, word for word:\n- The clock on the wall had stopped.\n\nDo NOT do any of the following:\n- keep Yusuf in the corridor\n- do not state what happened to whom he waits for\n\nReturn only the revised/written prose. No preamble, no commentary.",
+   "prompt_sha256": "7b49a8552c5c4650f61aa1c2e9dfe23553c89b1dda06c0b7c8e90f1054d7c3ec",
+   "information_inventory": {
+    "required": [
+     "remove the over-explained grief sentence",
+     "'walks' -> past",
+     "'does not move' -> past"
+    ],
+    "protected": [
+     "The clock on the wall had stopped."
+    ],
+    "forbidden": [
+     "keep Yusuf in the corridor",
+     "do not state what happened to whom he waits for"
+    ],
+    "shape": "prose",
+    "no_change": false
+   },
+   "instruction_position": "late",
+   "max_new_tokens": 512,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": null,
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "fr-11",
+   "arm": "P1-Contract",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "[TASK]\nmode: focused_revision\nauthority: perform every required change; preserve every protected element; change nothing else.\n\n[SOURCE]\nYusuf sat in the corridor. The clock on the wall had stopped. He was feeling an enormous, crushing, overwhelming grief that consumed his entire being. A nurse walks past without looking at him. He does not move.\n\n[REQUIRED CHANGES]\n- remove the over-explained grief sentence\n- 'walks' -> past\n- 'does not move' -> past\n\n[PROTECTED ELEMENTS — reproduce verbatim]\n- The clock on the wall had stopped.\n\n[FORBIDDEN CHANGES]\n- keep Yusuf in the corridor\n- do not state what happened to whom he waits for\n\n[AUTHORIZED SCOPE]\nOnly the required changes above. All other material is out of scope and must be preserved.\n\n[OUTPUT CONTRACT]\nReturn only the revised/written prose. No preamble, no commentary.",
+   "prompt_sha256": "1185c1201d8d1c5b56b98ec4935e3a2989dc3224bf4f6e81c3d94c452031ef85",
+   "information_inventory": {
+    "required": [
+     "remove the over-explained grief sentence",
+     "'walks' -> past",
+     "'does not move' -> past"
+    ],
+    "protected": [
+     "The clock on the wall had stopped."
+    ],
+    "forbidden": [
+     "keep Yusuf in the corridor",
+     "do not state what happened to whom he waits for"
+    ],
+    "shape": "prose",
+    "no_change": false
+   },
+   "instruction_position": "late",
+   "max_new_tokens": 512,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": null,
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "fr-12",
+   "arm": "P0-Realistic",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "Cut the repeated 'smiled coldly', lose the adverb on 'said menacingly', and drop the 'The point is' summary. Keep his line of dialogue verbatim.\n\nPASSAGE:\nThe negotiation was over and everyone knew it. Kerr smiled coldly. He smiled coldly again as he gathered his papers. \"We'll be in touch,\" he said menacingly. The point is, the deal was dead and had been dead for an hour.",
+   "prompt_sha256": "508ee90d9ee39cac598b4269f354811241f12bd2ca79a041f7efcd6aa6e48185",
+   "information_inventory": "arm-specific",
+   "instruction_position": "late",
+   "max_new_tokens": 512,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": null,
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "fr-12",
+   "arm": "P0-Maximal",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "Complete the writing task below precisely.\n\nPASSAGE:\nThe negotiation was over and everyone knew it. Kerr smiled coldly. He smiled coldly again as he gathered his papers. \"We'll be in touch,\" he said menacingly. The point is, the deal was dead and had been dead for an hour.\n\nMake exactly these changes and no others:\n- remove the repeated 'smiled coldly'\n- remove 'menacingly'\n- remove the 'The point is' summary\n\nPreserve these exactly, word for word:\n- \"We'll be in touch,\" he said\n\nDo NOT do any of the following:\n- keep Kerr\n- no invented deal terms\n\nReturn only the revised/written prose. No preamble, no commentary.",
+   "prompt_sha256": "5a5a54b504e0c88bc96e1c96556b72554a1438590cc76ee8bee7d6ddf4480b46",
+   "information_inventory": {
+    "required": [
+     "remove the repeated 'smiled coldly'",
+     "remove 'menacingly'",
+     "remove the 'The point is' summary"
+    ],
+    "protected": [
+     "\"We'll be in touch,\" he said"
+    ],
+    "forbidden": [
+     "keep Kerr",
+     "no invented deal terms"
+    ],
+    "shape": "prose",
+    "no_change": false
+   },
+   "instruction_position": "late",
+   "max_new_tokens": 512,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": null,
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "fr-12",
+   "arm": "P1-Contract",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "[TASK]\nmode: focused_revision\nauthority: perform every required change; preserve every protected element; change nothing else.\n\n[SOURCE]\nThe negotiation was over and everyone knew it. Kerr smiled coldly. He smiled coldly again as he gathered his papers. \"We'll be in touch,\" he said menacingly. The point is, the deal was dead and had been dead for an hour.\n\n[REQUIRED CHANGES]\n- remove the repeated 'smiled coldly'\n- remove 'menacingly'\n- remove the 'The point is' summary\n\n[PROTECTED ELEMENTS — reproduce verbatim]\n- \"We'll be in touch,\" he said\n\n[FORBIDDEN CHANGES]\n- keep Kerr\n- no invented deal terms\n\n[AUTHORIZED SCOPE]\nOnly the required changes above. All other material is out of scope and must be preserved.\n\n[OUTPUT CONTRACT]\nReturn only the revised/written prose. No preamble, no commentary.",
+   "prompt_sha256": "7c44d389ae62d968162464076e18282f2cbf3bdf673035c894e94dc588431806",
+   "information_inventory": {
+    "required": [
+     "remove the repeated 'smiled coldly'",
+     "remove 'menacingly'",
+     "remove the 'The point is' summary"
+    ],
+    "protected": [
+     "\"We'll be in touch,\" he said"
+    ],
+    "forbidden": [
+     "keep Kerr",
+     "no invented deal terms"
+    ],
+    "shape": "prose",
+    "no_change": false
+   },
+   "instruction_position": "late",
+   "max_new_tokens": 512,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": null,
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "pt-01",
+   "arm": "P0-Realistic",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "Fix the overwrought middle sentence, but the first and last sentences must survive word for word.\n\nPASSAGE:\nShe received the news standing up. The room, honestly, was just so incredibly sad and full of despair. She stayed standing.",
+   "prompt_sha256": "daef6aa8b5acaa0870d0e09127e12795fc0791ff56a0415963bd33ddf507fb8e",
+   "information_inventory": "arm-specific",
+   "instruction_position": "early",
+   "max_new_tokens": 512,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": null,
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "pt-01",
+   "arm": "P0-Maximal",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "Complete the writing task below precisely.\n\nPASSAGE:\nShe received the news standing up. The room, honestly, was just so incredibly sad and full of despair. She stayed standing.\n\nMake exactly these changes and no others:\n- fix the overwrought middle sentence\n\nPreserve these exactly, word for word:\n- She received the news standing up.\n- She stayed standing.\n\nDo NOT do any of the following:\n- first sentence exact\n- last sentence exact\n\nReturn only the revised/written prose. No preamble, no commentary.",
+   "prompt_sha256": "2a3c8a2a4c0223a4a19b4f034ecbaa142d1f2fe2e62a6cb2ce7c9852a2b186f8",
+   "information_inventory": {
+    "required": [
+     "fix the overwrought middle sentence"
+    ],
+    "protected": [
+     "She received the news standing up.",
+     "She stayed standing."
+    ],
+    "forbidden": [
+     "first sentence exact",
+     "last sentence exact"
+    ],
+    "shape": "prose",
+    "no_change": false
+   },
+   "instruction_position": "early",
+   "max_new_tokens": 512,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": null,
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "pt-01",
+   "arm": "P1-Contract",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "[TASK]\nmode: focused_revision\nauthority: perform every required change; preserve every protected element; change nothing else.\n\n[SOURCE]\nShe received the news standing up. The room, honestly, was just so incredibly sad and full of despair. She stayed standing.\n\n[REQUIRED CHANGES]\n- fix the overwrought middle sentence\n\n[PROTECTED ELEMENTS — reproduce verbatim]\n- She received the news standing up.\n- She stayed standing.\n\n[FORBIDDEN CHANGES]\n- first sentence exact\n- last sentence exact\n\n[AUTHORIZED SCOPE]\nOnly the required changes above. All other material is out of scope and must be preserved.\n\n[OUTPUT CONTRACT]\nReturn only the revised/written prose. No preamble, no commentary.",
+   "prompt_sha256": "9c40d2bd16494b0cbe63b99a24c2b0e155104951389c0b2be948d661f2cf2688",
+   "information_inventory": {
+    "required": [
+     "fix the overwrought middle sentence"
+    ],
+    "protected": [
+     "She received the news standing up.",
+     "She stayed standing."
+    ],
+    "forbidden": [
+     "first sentence exact",
+     "last sentence exact"
+    ],
+    "shape": "prose",
+    "no_change": false
+   },
+   "instruction_position": "early",
+   "max_new_tokens": 512,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": null,
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "pt-01",
+   "arm": "P3-Ideal",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "[TASK] protected-text revision. authority: fix the middle sentence; the first and last sentences are LOCKED.\n\n[SOURCE]\nShe received the news standing up. The room, honestly, was just so incredibly sad and full of despair. She stayed standing.\n\n[REQUIRED CHANGES]\n- Repair the overwrought middle sentence into something restrained and concrete.\n\n[PROTECTED — reproduce EXACTLY]\n- She received the news standing up.\n- She stayed standing.\n\n[AUTHORIZED SCOPE] the middle sentence only.\n[OUTPUT] revised prose only.",
+   "prompt_sha256": "6697e32e6c67e7a22c6a45eacb01c84138f2c0eef4c5823ecf8470e027dd6e4e",
+   "information_inventory": "arm-specific",
+   "instruction_position": "early",
+   "max_new_tokens": 512,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": "ideal",
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "pt-02",
+   "arm": "P0-Realistic",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "Tone down the purple fog simile. His two lines of dialogue must stay exactly as written.\n\nPASSAGE:\nThe fog came down like the very breath of God Himself descending upon the wicked. \"Row,\" the old man said. \"Row, and don't look back.\"",
+   "prompt_sha256": "eec98369d8a91552273f0cec6c87d9db2dfe8990f03cd6cf5bb611215831f3ca",
+   "information_inventory": "arm-specific",
+   "instruction_position": "late",
+   "max_new_tokens": 512,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": null,
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "pt-02",
+   "arm": "P0-Maximal",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "Complete the writing task below precisely.\n\nPASSAGE:\nThe fog came down like the very breath of God Himself descending upon the wicked. \"Row,\" the old man said. \"Row, and don't look back.\"\n\nMake exactly these changes and no others:\n- de-purple the fog simile\n\nPreserve these exactly, word for word:\n- \"Row,\" the old man said. \"Row, and don't look back.\"\n\nDo NOT do any of the following:\n- dialogue exact\n- keep the fog\n\nReturn only the revised/written prose. No preamble, no commentary.",
+   "prompt_sha256": "fb4473c987506c26387a5956aeb99e7da6618e289b83afa58926743c9b249cdc",
+   "information_inventory": {
+    "required": [
+     "de-purple the fog simile"
+    ],
+    "protected": [
+     "\"Row,\" the old man said. \"Row, and don't look back.\""
+    ],
+    "forbidden": [
+     "dialogue exact",
+     "keep the fog"
+    ],
+    "shape": "prose",
+    "no_change": false
+   },
+   "instruction_position": "late",
+   "max_new_tokens": 512,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": null,
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "pt-02",
+   "arm": "P1-Contract",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "[TASK]\nmode: focused_revision\nauthority: perform every required change; preserve every protected element; change nothing else.\n\n[SOURCE]\nThe fog came down like the very breath of God Himself descending upon the wicked. \"Row,\" the old man said. \"Row, and don't look back.\"\n\n[REQUIRED CHANGES]\n- de-purple the fog simile\n\n[PROTECTED ELEMENTS — reproduce verbatim]\n- \"Row,\" the old man said. \"Row, and don't look back.\"\n\n[FORBIDDEN CHANGES]\n- dialogue exact\n- keep the fog\n\n[AUTHORIZED SCOPE]\nOnly the required changes above. All other material is out of scope and must be preserved.\n\n[OUTPUT CONTRACT]\nReturn only the revised/written prose. No preamble, no commentary.",
+   "prompt_sha256": "3be38bb2a5436e010456fc738437003884639b2c3cb577e4ddc86e645934d5dd",
+   "information_inventory": {
+    "required": [
+     "de-purple the fog simile"
+    ],
+    "protected": [
+     "\"Row,\" the old man said. \"Row, and don't look back.\""
+    ],
+    "forbidden": [
+     "dialogue exact",
+     "keep the fog"
+    ],
+    "shape": "prose",
+    "no_change": false
+   },
+   "instruction_position": "late",
+   "max_new_tokens": 512,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": null,
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "pt-03",
+   "arm": "P0-Realistic",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "1911. Keep the first sentence exactly. There's one anachronism to remove; change nothing else.\n\nPASSAGE:\nThe telegraph office was shut for the night when Bevan arrived. He would send the wire in the morning, or email it if the line stayed down. He turned up his collar against the sleet.",
+   "prompt_sha256": "52e5334de91e1b17b4403c9eac4c163b4fa9d2921370aaa9a60a634fb59117ea",
+   "information_inventory": "arm-specific",
+   "instruction_position": "middle",
+   "max_new_tokens": 512,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": null,
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "pt-03",
+   "arm": "P0-Maximal",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "Complete the writing task below precisely.\n\nPASSAGE:\nThe telegraph office was shut for the night when Bevan arrived. He would send the wire in the morning, or email it if the line stayed down. He turned up his collar against the sleet.\n\nMake exactly these changes and no others:\n- remove the email anachronism\n\nPreserve these exactly, word for word:\n- The telegraph office was shut for the night when Bevan arrived.\n\nDo NOT do any of the following:\n- opening exact\n- keep the collar/sleet ending\n\nReturn only the revised/written prose. No preamble, no commentary.",
+   "prompt_sha256": "21f5800e23353ba49b5b2c1f9ffdaf05383bfc34c2090f518179432ba36ad378",
+   "information_inventory": {
+    "required": [
+     "remove the email anachronism"
+    ],
+    "protected": [
+     "The telegraph office was shut for the night when Bevan arrived."
+    ],
+    "forbidden": [
+     "opening exact",
+     "keep the collar/sleet ending"
+    ],
+    "shape": "prose",
+    "no_change": false
+   },
+   "instruction_position": "middle",
+   "max_new_tokens": 512,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": null,
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "pt-03",
+   "arm": "P1-Contract",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "[TASK]\nmode: focused_revision\nauthority: perform every required change; preserve every protected element; change nothing else.\n\n[SOURCE]\nThe telegraph office was shut for the night when Bevan arrived. He would send the wire in the morning, or email it if the line stayed down. He turned up his collar against the sleet.\n\n[REQUIRED CHANGES]\n- remove the email anachronism\n\n[PROTECTED ELEMENTS — reproduce verbatim]\n- The telegraph office was shut for the night when Bevan arrived.\n\n[FORBIDDEN CHANGES]\n- opening exact\n- keep the collar/sleet ending\n\n[AUTHORIZED SCOPE]\nOnly the required changes above. All other material is out of scope and must be preserved.\n\n[OUTPUT CONTRACT]\nReturn only the revised/written prose. No preamble, no commentary.",
+   "prompt_sha256": "7382791b0fc6aa19f78a38b0d55799202f42db4e999801e91b6cdf37d9fa3c01",
+   "information_inventory": {
+    "required": [
+     "remove the email anachronism"
+    ],
+    "protected": [
+     "The telegraph office was shut for the night when Bevan arrived."
+    ],
+    "forbidden": [
+     "opening exact",
+     "keep the collar/sleet ending"
+    ],
+    "shape": "prose",
+    "no_change": false
+   },
+   "instruction_position": "middle",
+   "max_new_tokens": 512,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": null,
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "pt-04",
+   "arm": "P0-Realistic",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "Cut the stacked clichés in the middle. Keep the first and last sentences word for word.\n\nPASSAGE:\nHe opened the door. At the end of the day, when all was said and done, it was what it was. The hallway smelled of rain.",
+   "prompt_sha256": "38fc07d46177f524f2c134577c614a60d14fe6e3bd4c111d71c93528678c532b",
+   "information_inventory": "arm-specific",
+   "instruction_position": "early",
+   "max_new_tokens": 512,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": null,
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "pt-04",
+   "arm": "P0-Maximal",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "Complete the writing task below precisely.\n\nPASSAGE:\nHe opened the door. At the end of the day, when all was said and done, it was what it was. The hallway smelled of rain.\n\nMake exactly these changes and no others:\n- remove the stacked clichés\n\nPreserve these exactly, word for word:\n- He opened the door.\n- The hallway smelled of rain.\n\nDo NOT do any of the following:\n- first exact\n- last exact\n- no new cliché\n\nReturn only the revised/written prose. No preamble, no commentary.",
+   "prompt_sha256": "7e17720bed5b833612af1263f80370e556f3e072c28de3c70e5aaef389cbdf7a",
+   "information_inventory": {
+    "required": [
+     "remove the stacked clichés"
+    ],
+    "protected": [
+     "He opened the door.",
+     "The hallway smelled of rain."
+    ],
+    "forbidden": [
+     "first exact",
+     "last exact",
+     "no new cliché"
+    ],
+    "shape": "prose",
+    "no_change": false
+   },
+   "instruction_position": "early",
+   "max_new_tokens": 512,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": null,
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "pt-04",
+   "arm": "P1-Contract",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "[TASK]\nmode: focused_revision\nauthority: perform every required change; preserve every protected element; change nothing else.\n\n[SOURCE]\nHe opened the door. At the end of the day, when all was said and done, it was what it was. The hallway smelled of rain.\n\n[REQUIRED CHANGES]\n- remove the stacked clichés\n\n[PROTECTED ELEMENTS — reproduce verbatim]\n- He opened the door.\n- The hallway smelled of rain.\n\n[FORBIDDEN CHANGES]\n- first exact\n- last exact\n- no new cliché\n\n[AUTHORIZED SCOPE]\nOnly the required changes above. All other material is out of scope and must be preserved.\n\n[OUTPUT CONTRACT]\nReturn only the revised/written prose. No preamble, no commentary.",
+   "prompt_sha256": "ae6dad2f47655e276043ac12969ffe94204940b2b477b7902fd96855cc64c8e7",
+   "information_inventory": {
+    "required": [
+     "remove the stacked clichés"
+    ],
+    "protected": [
+     "He opened the door.",
+     "The hallway smelled of rain."
+    ],
+    "forbidden": [
+     "first exact",
+     "last exact",
+     "no new cliché"
+    ],
+    "shape": "prose",
+    "no_change": false
+   },
+   "instruction_position": "early",
+   "max_new_tokens": 512,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": null,
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "pt-05",
+   "arm": "P0-Realistic",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "Present day is fine EXCEPT: keep the sentence about the box that should not have existed exactly as written. Remove the melodramatic 'unbearably and crushingly boring', and there's a small logic issue — he 'did not open it yet' but the passage should end on him NOT opening it, so keep that; instead remove the redundant 'yet'. Two fixes, one protected sentence.\n\nPASSAGE:\nThe archive smelled of dust and old glue and the particular sourness of paper going slowly back to pulp, and Idris moved along the shelves with a torch, reading spines. Most of it was council minutes, decades of them, unbearably and crushingly boring. Then his torch found the box that should not have existed, the one his father swore he had burned in the winter of 1971. He photographed it on his phone. He did not open it yet.",
+   "prompt_sha256": "7fdae5218cdf165e6337a744608093ba66692b17656f8a55b7865ded76b9f9be",
+   "information_inventory": "arm-specific",
+   "instruction_position": "middle",
+   "max_new_tokens": 512,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": null,
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "pt-05",
+   "arm": "P0-Maximal",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "Complete the writing task below precisely.\n\nPASSAGE:\nThe archive smelled of dust and old glue and the particular sourness of paper going slowly back to pulp, and Idris moved along the shelves with a torch, reading spines. Most of it was council minutes, decades of them, unbearably and crushingly boring. Then his torch found the box that should not have existed, the one his father swore he had burned in the winter of 1971. He photographed it on his phone. He did not open it yet.\n\nMake exactly these changes and no others:\n- remove 'unbearably and crushingly boring'\n- remove the redundant 'yet' (end on 'did not open it')\n\nPreserve these exactly, word for word:\n- Then his torch found the box that should not have existed, the one his father swore he had burned in the winter of 1971.\n\nDo NOT do any of the following:\n- box sentence exact\n- he still does not open the box\n\nReturn only the revised/written prose. No preamble, no commentary.",
+   "prompt_sha256": "f3081e7e7029e2348c9d5446a3ebfdb6127c92d93145e4121732e2910a5323c1",
+   "information_inventory": {
+    "required": [
+     "remove 'unbearably and crushingly boring'",
+     "remove the redundant 'yet' (end on 'did not open it')"
+    ],
+    "protected": [
+     "Then his torch found the box that should not have existed, the one his father swore he had burned in the winter of 1971."
+    ],
+    "forbidden": [
+     "box sentence exact",
+     "he still does not open the box"
+    ],
+    "shape": "prose",
+    "no_change": false
+   },
+   "instruction_position": "middle",
+   "max_new_tokens": 512,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": null,
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "pt-05",
+   "arm": "P1-Contract",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "[TASK]\nmode: focused_revision\nauthority: perform every required change; preserve every protected element; change nothing else.\n\n[SOURCE]\nThe archive smelled of dust and old glue and the particular sourness of paper going slowly back to pulp, and Idris moved along the shelves with a torch, reading spines. Most of it was council minutes, decades of them, unbearably and crushingly boring. Then his torch found the box that should not have existed, the one his father swore he had burned in the winter of 1971. He photographed it on his phone. He did not open it yet.\n\n[REQUIRED CHANGES]\n- remove 'unbearably and crushingly boring'\n- remove the redundant 'yet' (end on 'did not open it')\n\n[PROTECTED ELEMENTS — reproduce verbatim]\n- Then his torch found the box that should not have existed, the one his father swore he had burned in the winter of 1971.\n\n[FORBIDDEN CHANGES]\n- box sentence exact\n- he still does not open the box\n\n[AUTHORIZED SCOPE]\nOnly the required changes above. All other material is out of scope and must be preserved.\n\n[OUTPUT CONTRACT]\nReturn only the revised/written prose. No preamble, no commentary.",
+   "prompt_sha256": "f5257aa60a9ae48582000f1d606ae2bc3ed772632fb2c64838469832d82b3cb1",
+   "information_inventory": {
+    "required": [
+     "remove 'unbearably and crushingly boring'",
+     "remove the redundant 'yet' (end on 'did not open it')"
+    ],
+    "protected": [
+     "Then his torch found the box that should not have existed, the one his father swore he had burned in the winter of 1971."
+    ],
+    "forbidden": [
+     "box sentence exact",
+     "he still does not open the box"
+    ],
+    "shape": "prose",
+    "no_change": false
+   },
+   "instruction_position": "middle",
+   "max_new_tokens": 512,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": null,
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "pt-05",
+   "arm": "P3-Ideal",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "[PROJECT] present-day; dry archival voice; ONE sentence is locked.\n[TASK] protected-text revision; two fixes; end on him NOT opening the box.\n\n[SOURCE]\nThe archive smelled of dust and old glue and the particular sourness of paper going slowly back to pulp, and Idris moved along the shelves with a torch, reading spines. Most of it was council minutes, decades of them, unbearably and crushingly boring. Then his torch found the box that should not have existed, the one his father swore he had burned in the winter of 1971. He photographed it on his phone. He did not open it yet.\n\n[REQUIRED CHANGES]\n- Remove 'unbearably and crushingly boring'.\n- Remove the redundant 'yet' (end on 'did not open it').\n\n[PROTECTED — reproduce EXACTLY]\n- Then his torch found the box that should not have existed, the one his father swore he had burned in the winter of 1971.\n\n[AUTHORIZED SCOPE] only the two named spans. He still does not open the box.\n[OUTPUT] revised prose only.",
+   "prompt_sha256": "947c2bf3dab4ab7ad3b4945d5ea23eff584a6ed39bd4214e85e489603d80cb7d",
+   "information_inventory": "arm-specific",
+   "instruction_position": "middle",
+   "max_new_tokens": 512,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": "ideal",
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "nc-01",
+   "arm": "P0-Realistic",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "Revise this for cliché and repetition if any exist; otherwise return it unchanged and say why.\n\nPASSAGE:\nThe lamps came on along the harbour one by one, and the men made the boats fast, and nobody hurried, because the tide would do what the tide did.",
+   "prompt_sha256": "7224f0f5d47804940692067536f411f9fccad91896332e8bc8fda39632219ea3",
+   "information_inventory": "arm-specific",
+   "instruction_position": "early",
+   "max_new_tokens": 512,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": null,
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "nc-01",
+   "arm": "P0-Maximal",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "Revise the passage below (or, if it is already correct for the brief, return it unchanged and say so).\n\nPASSAGE:\nThe lamps came on along the harbour one by one, and the men made the boats fast, and nobody hurried, because the tide would do what the tide did.\n\nMake exactly these changes and no others:\n- return the passage essentially unchanged\n\nPreserve these exactly, word for word:\n- nobody hurried\n\nDo NOT do any of the following:\n- do not add lyricism\n- do not rewrite the clean core\n\nReturn only the revised/written prose. No preamble, no commentary.",
+   "prompt_sha256": "8221a698c11fbe205bf87d690d5e9f43bcbe5e50a13eebd8b7e2dba2eacf9467",
+   "information_inventory": {
+    "required": [
+     "return the passage essentially unchanged"
+    ],
+    "protected": [
+     "nobody hurried"
+    ],
+    "forbidden": [
+     "do not add lyricism",
+     "do not rewrite the clean core"
+    ],
+    "shape": "prose",
+    "no_change": true
+   },
+   "instruction_position": "early",
+   "max_new_tokens": 512,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": null,
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "nc-01",
+   "arm": "P1-Contract",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "[TASK]\nmode: no_change_judgment\nauthority: perform every required change; preserve every protected element; change nothing else.\n\n[SOURCE]\nThe lamps came on along the harbour one by one, and the men made the boats fast, and nobody hurried, because the tide would do what the tide did.\n\n[REQUIRED CHANGES]\n- return the passage essentially unchanged\n\n[PROTECTED ELEMENTS — reproduce verbatim]\n- nobody hurried\n\n[FORBIDDEN CHANGES]\n- do not add lyricism\n- do not rewrite the clean core\n\n[AUTHORIZED SCOPE]\nOnly the required changes above. All other material is out of scope and must be preserved.\n\n[OUTPUT CONTRACT]\nReturn only the revised/written prose. No preamble, no commentary.",
+   "prompt_sha256": "9274fd746077473afacad6f9d27894709d1dd0b131c77691a1c632d4f1f02e7a",
+   "information_inventory": {
+    "required": [
+     "return the passage essentially unchanged"
+    ],
+    "protected": [
+     "nobody hurried"
+    ],
+    "forbidden": [
+     "do not add lyricism",
+     "do not rewrite the clean core"
+    ],
+    "shape": "prose",
+    "no_change": true
+   },
+   "instruction_position": "early",
+   "max_new_tokens": 512,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": null,
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "nc-02",
+   "arm": "P0-Realistic",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "If and only if there is one genuinely weakening word, remove just it; otherwise leave the line alone.\n\nPASSAGE:\nThe ledger was very old and the ink had gone the colour of weak tea, and he turned the pages slowly so they would not crack.",
+   "prompt_sha256": "7c0dd5665780e3aaa4bc57a0c0ac52e05b35ec85d2713b2cd6a1d5ac091970c3",
+   "information_inventory": "arm-specific",
+   "instruction_position": "early",
+   "max_new_tokens": 512,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": null,
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "nc-02",
+   "arm": "P0-Maximal",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "Complete the writing task below precisely.\n\nPASSAGE:\nThe ledger was very old and the ink had gone the colour of weak tea, and he turned the pages slowly so they would not crack.\n\nMake exactly these changes and no others:\n- remove the single weakening 'very'\n\nPreserve these exactly, word for word:\n- the colour of weak tea\n\nDo NOT do any of the following:\n- keep the ledger line otherwise intact\n- no added detail\n\nReturn only the revised/written prose. No preamble, no commentary.",
+   "prompt_sha256": "9521f11a43455334019d6bdc6e129023ad010eda83e78df175c9e03b4f46f8cf",
+   "information_inventory": {
+    "required": [
+     "remove the single weakening 'very'"
+    ],
+    "protected": [
+     "the colour of weak tea"
+    ],
+    "forbidden": [
+     "keep the ledger line otherwise intact",
+     "no added detail"
+    ],
+    "shape": "prose",
+    "no_change": false
+   },
+   "instruction_position": "early",
+   "max_new_tokens": 512,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": null,
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "nc-02",
+   "arm": "P1-Contract",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "[TASK]\nmode: focused_revision\nauthority: perform every required change; preserve every protected element; change nothing else.\n\n[SOURCE]\nThe ledger was very old and the ink had gone the colour of weak tea, and he turned the pages slowly so they would not crack.\n\n[REQUIRED CHANGES]\n- remove the single weakening 'very'\n\n[PROTECTED ELEMENTS — reproduce verbatim]\n- the colour of weak tea\n\n[FORBIDDEN CHANGES]\n- keep the ledger line otherwise intact\n- no added detail\n\n[AUTHORIZED SCOPE]\nOnly the required changes above. All other material is out of scope and must be preserved.\n\n[OUTPUT CONTRACT]\nReturn only the revised/written prose. No preamble, no commentary.",
+   "prompt_sha256": "13eb116d827e0e638628daf63ef78018106e60c513a382db4d1958452c44f955",
+   "information_inventory": {
+    "required": [
+     "remove the single weakening 'very'"
+    ],
+    "protected": [
+     "the colour of weak tea"
+    ],
+    "forbidden": [
+     "keep the ledger line otherwise intact",
+     "no added detail"
+    ],
+    "shape": "prose",
+    "no_change": false
+   },
+   "instruction_position": "early",
+   "max_new_tokens": 512,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": null,
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "nc-03",
+   "arm": "P0-Realistic",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "Return ONLY a JSON object {\"changed\": bool, \"reason\": str}. Decide whether the passage meets the brief; do not rewrite prose.\n\nPASSAGE:\nBrief: under 20 words, past tense, one image. Passage: 'The bridge held. The river did not forgive it that, and rose again by morning.'",
+   "prompt_sha256": "2cb9a359b47bc6618f3173a0fe8f456e0746ac6b952d0ed1e96c149a234b5787",
+   "information_inventory": "arm-specific",
+   "instruction_position": "early",
+   "max_new_tokens": 256,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": null,
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "nc-03",
+   "arm": "P0-Maximal",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "Revise the passage below (or, if it is already correct for the brief, return it unchanged and say so).\n\nPASSAGE:\nBrief: under 20 words, past tense, one image. Passage: 'The bridge held. The river did not forgive it that, and rose again by morning.'\n\nMake exactly these changes and no others:\n- verdict changed:false\n\nDo NOT do any of the following:\n- no prose outside JSON\n\nReturn only a single valid JSON object. No prose outside it.",
+   "prompt_sha256": "53caa3c1f128c61aa3bde1208f90329f192372de68ee1e6ec182dd1af4722366",
+   "information_inventory": {
+    "required": [
+     "verdict changed:false"
+    ],
+    "protected": [],
+    "forbidden": [
+     "no prose outside JSON"
+    ],
+    "shape": "json",
+    "no_change": true
+   },
+   "instruction_position": "early",
+   "max_new_tokens": 256,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": null,
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "nc-03",
+   "arm": "P1-Contract",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "[TASK]\nmode: no_change_judgment\nauthority: perform every required change; preserve every protected element; change nothing else.\n\n[SOURCE]\nBrief: under 20 words, past tense, one image. Passage: 'The bridge held. The river did not forgive it that, and rose again by morning.'\n\n[REQUIRED CHANGES]\n- verdict changed:false\n\n[PROTECTED ELEMENTS — reproduce verbatim]\n- (none)\n\n[FORBIDDEN CHANGES]\n- no prose outside JSON\n\n[AUTHORIZED SCOPE]\nOnly the required changes above. All other material is out of scope and must be preserved.\n\n[OUTPUT CONTRACT]\nReturn only a single valid JSON object. No prose outside it.",
+   "prompt_sha256": "b84752bc833da58c468cde1d92b3cefaa68c43fea847ccd786b2afa297b65dee",
+   "information_inventory": {
+    "required": [
+     "verdict changed:false"
+    ],
+    "protected": [],
+    "forbidden": [
+     "no prose outside JSON"
+    ],
+    "shape": "json",
+    "no_change": true
+   },
+   "instruction_position": "early",
+   "max_new_tokens": 256,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": null,
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "nc-04",
+   "arm": "P0-Realistic",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "Make this more poetic and lyrical.\n\nPASSAGE:\nShe washed the last plate and set it in the rack. The kitchen was cold. She turned off the light and went up.",
+   "prompt_sha256": "9b4918eec3bf08e5aeae0aaf0c532a8f10bcde7d6dec1cc48079422f73993b17",
+   "information_inventory": "arm-specific",
+   "instruction_position": "early",
+   "max_new_tokens": 512,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": null,
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "nc-04",
+   "arm": "P0-Maximal",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "Revise the passage below (or, if it is already correct for the brief, return it unchanged and say so).\n\nPASSAGE:\nShe washed the last plate and set it in the rack. The kitchen was cold. She turned off the light and went up.\n\nMake exactly these changes and no others:\n- preserve the plain voice (return essentially unchanged)\n\nPreserve these exactly, word for word:\n- The kitchen was cold.\n\nDo NOT do any of the following:\n- do not add lyrical similes\n- keep the plain kitchen line\n\nReturn only the revised/written prose. No preamble, no commentary.",
+   "prompt_sha256": "8c861741f5d4f0d0c78e3a95f077e6b491f5e52e8e9344cc408b10e29e363be9",
+   "information_inventory": {
+    "required": [
+     "preserve the plain voice (return essentially unchanged)"
+    ],
+    "protected": [
+     "The kitchen was cold."
+    ],
+    "forbidden": [
+     "do not add lyrical similes",
+     "keep the plain kitchen line"
+    ],
+    "shape": "prose",
+    "no_change": true
+   },
+   "instruction_position": "early",
+   "max_new_tokens": 512,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": null,
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "nc-04",
+   "arm": "P1-Contract",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "[TASK]\nmode: no_change_judgment\nauthority: perform every required change; preserve every protected element; change nothing else.\n\n[SOURCE]\nShe washed the last plate and set it in the rack. The kitchen was cold. She turned off the light and went up.\n\n[REQUIRED CHANGES]\n- preserve the plain voice (return essentially unchanged)\n\n[PROTECTED ELEMENTS — reproduce verbatim]\n- The kitchen was cold.\n\n[FORBIDDEN CHANGES]\n- do not add lyrical similes\n- keep the plain kitchen line\n\n[AUTHORIZED SCOPE]\nOnly the required changes above. All other material is out of scope and must be preserved.\n\n[OUTPUT CONTRACT]\nReturn only the revised/written prose. No preamble, no commentary.",
+   "prompt_sha256": "591aea4ffdaa4bf7be91bbbadc814a01bf8c2ce080fcf58e29481b929d7336b0",
+   "information_inventory": {
+    "required": [
+     "preserve the plain voice (return essentially unchanged)"
+    ],
+    "protected": [
+     "The kitchen was cold."
+    ],
+    "forbidden": [
+     "do not add lyrical similes",
+     "keep the plain kitchen line"
+    ],
+    "shape": "prose",
+    "no_change": true
+   },
+   "instruction_position": "early",
+   "max_new_tokens": 512,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": null,
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "nc-04",
+   "arm": "P3-Ideal",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "[TASK] no-change judgment. authority: the plain voice is DELIBERATE and correct; preserve it.\n[VOICE PACKET] spare, plain, unsentimental; plainness is the craft here.\n\n[SOURCE]\nShe washed the last plate and set it in the rack. The kitchen was cold. She turned off the light and went up.\n\n[USER ASK] 'make this more poetic and lyrical' — but adding lyricism would DAMAGE the voice.\n[REQUIRED] return the passage essentially unchanged and briefly note that lushness would harm it.\n[FORBIDDEN] no similes, no added ornament; keep 'The kitchen was cold.' exactly.\n[OUTPUT] the (unchanged) prose + a one-line reason.",
+   "prompt_sha256": "9eb32d6cdbdc2f1e5079f18a1eb249daa17df61cb8d26bc2cb1ab98be94a8cda",
+   "information_inventory": "arm-specific",
+   "instruction_position": "early",
+   "max_new_tokens": 512,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": "ideal",
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "cn-01",
+   "arm": "P0-Realistic",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "Continue about 60-90 words. She reads Silas's final entry. CANON: it is dated 14 November 1971; it says the Marigold did not return and the light was out at 23:40 and that he did not go down. Do not light the lamp in the present. Do not invent new named characters.\n\nPASSAGE:\nEdith lifted the last oilcloth logbook from the drawer.",
+   "prompt_sha256": "4762c7285ae95647913c0cd90965ddf6a39ed41e6ee09a362dc05a1aecf9a6dc",
+   "information_inventory": "arm-specific",
+   "instruction_position": "early",
+   "max_new_tokens": 384,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": null,
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "cn-01",
+   "arm": "P0-Maximal",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "Complete the writing task below precisely.\n\nPASSAGE:\nEdith lifted the last oilcloth logbook from the drawer.\n\nMake exactly these changes and no others:\n- include the canon date\n- the light was out at 23:40\n\nDo NOT do any of the following:\n- do not light the lamp in present time\n- no new named characters\n\nReturn only the revised/written prose. No preamble, no commentary.",
+   "prompt_sha256": "06b11b10b875895b44eb2b4868196087fe6094b81d74b66a9aef3083c384caee",
+   "information_inventory": {
+    "required": [
+     "include the canon date",
+     "the light was out at 23:40"
+    ],
+    "protected": [],
+    "forbidden": [
+     "do not light the lamp in present time",
+     "no new named characters"
+    ],
+    "shape": "prose",
+    "no_change": false
+   },
+   "instruction_position": "early",
+   "max_new_tokens": 384,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": null,
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "cn-01",
+   "arm": "P1-Contract",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "[TASK]\nmode: focused_revision\nauthority: perform every required change; preserve every protected element; change nothing else.\n\n[SOURCE]\nEdith lifted the last oilcloth logbook from the drawer.\n\n[REQUIRED CHANGES]\n- include the canon date\n- the light was out at 23:40\n\n[PROTECTED ELEMENTS — reproduce verbatim]\n- (none)\n\n[FORBIDDEN CHANGES]\n- do not light the lamp in present time\n- no new named characters\n\n[AUTHORIZED SCOPE]\nOnly the required changes above. All other material is out of scope and must be preserved.\n\n[OUTPUT CONTRACT]\nReturn only the revised/written prose. No preamble, no commentary.",
+   "prompt_sha256": "5f952e65cdd65fe01d59a9ad46c6877b067c8dd15659a9c593e260d12b7a77b8",
+   "information_inventory": {
+    "required": [
+     "include the canon date",
+     "the light was out at 23:40"
+    ],
+    "protected": [],
+    "forbidden": [
+     "do not light the lamp in present time",
+     "no new named characters"
+    ],
+    "shape": "prose",
+    "no_change": false
+   },
+   "instruction_position": "early",
+   "max_new_tokens": 384,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": null,
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "cn-01",
+   "arm": "P3-Ideal",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "[PROJECT] 'Saltford Light' — literary fiction; dry restrained voice; POV Edith, past tense.\n[CANON] Silas's final logbook entry is dated 14 November 1971; it records that the Marigold did not return, the light was out at 23:40, and that he did not go down. The lamp is dark in the present (decommissioned 1971).\n[TASK] canon-sensitive continuation (~60-90 words). authority: honor canon exactly.\n\n[OPENING]\nEdith lifted the last oilcloth logbook from the drawer.\n\n[REQUIRED] include the date 14 November 1971 and the fact that the light was out at 23:40.\n[INVENTION BUDGET] Edith's interiority only. No new named characters. Do NOT light the lamp in the present.\n[OUTPUT] continuation prose only, past tense, in Edith's dry voice.",
+   "prompt_sha256": "5066b66b4fedc067f16f34a4651d10590d2f4ba711aca5aaa80a36b5ca7b6758",
+   "information_inventory": "arm-specific",
+   "instruction_position": "early",
+   "max_new_tokens": 384,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": "ideal",
+   "canon_packet_id": "ideal"
+  },
+  {
+   "task_id": "cn-02",
+   "arm": "P0-Realistic",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "Continue about 50-80 words. CANON: the gate opens ONLY at the new moon, and tonight is a FULL moon. Do not let the gate open tonight. Do not introduce a new named character.\n\nPASSAGE:\nThe gate would open only at the new moon, and Ravel counted the nights on his fingers.",
+   "prompt_sha256": "9a9de9a9287d541ddf4bab6e4a72fe08a6c49fe54b1170eb9ebc328e499dbc17",
+   "information_inventory": "arm-specific",
+   "instruction_position": "early",
+   "max_new_tokens": 384,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": null,
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "cn-02",
+   "arm": "P0-Maximal",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "Complete the writing task below precisely.\n\nPASSAGE:\nThe gate would open only at the new moon, and Ravel counted the nights on his fingers.\n\nMake exactly these changes and no others:\n- honor that tonight the gate stays shut\n\nDo NOT do any of the following:\n- the gate must not open tonight\n- no new named character\n\nReturn only the revised/written prose. No preamble, no commentary.",
+   "prompt_sha256": "7ba62f6f8865f65fd5f8678c71a2170959558dbb125d7af36a366f9cbfb539d4",
+   "information_inventory": {
+    "required": [
+     "honor that tonight the gate stays shut"
+    ],
+    "protected": [],
+    "forbidden": [
+     "the gate must not open tonight",
+     "no new named character"
+    ],
+    "shape": "prose",
+    "no_change": false
+   },
+   "instruction_position": "early",
+   "max_new_tokens": 384,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": null,
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "cn-02",
+   "arm": "P1-Contract",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "[TASK]\nmode: focused_revision\nauthority: perform every required change; preserve every protected element; change nothing else.\n\n[SOURCE]\nThe gate would open only at the new moon, and Ravel counted the nights on his fingers.\n\n[REQUIRED CHANGES]\n- honor that tonight the gate stays shut\n\n[PROTECTED ELEMENTS — reproduce verbatim]\n- (none)\n\n[FORBIDDEN CHANGES]\n- the gate must not open tonight\n- no new named character\n\n[AUTHORIZED SCOPE]\nOnly the required changes above. All other material is out of scope and must be preserved.\n\n[OUTPUT CONTRACT]\nReturn only the revised/written prose. No preamble, no commentary.",
+   "prompt_sha256": "9834c5e29cdae3478dbc46b4ce6ad7b039d54e8c3a40c6d6abd6f1d061f5f7f7",
+   "information_inventory": {
+    "required": [
+     "honor that tonight the gate stays shut"
+    ],
+    "protected": [],
+    "forbidden": [
+     "the gate must not open tonight",
+     "no new named character"
+    ],
+    "shape": "prose",
+    "no_change": false
+   },
+   "instruction_position": "early",
+   "max_new_tokens": 384,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": null,
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "cn-03",
+   "arm": "P0-Realistic",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "Continue about 50-80 words. CANON: no faster-than-light travel or communication exists; messages between stars take years. Do not introduce instant communication or a sudden arrival.\n\nPASSAGE:\nThe reply came at last, four years after she had sent the question.",
+   "prompt_sha256": "06ae9d9e716f580778ec0f181142d56e9710c0480fd2ec41d4113b98c73b328d",
+   "information_inventory": "arm-specific",
+   "instruction_position": "early",
+   "max_new_tokens": 384,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": null,
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "cn-03",
+   "arm": "P0-Maximal",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "Complete the writing task below precisely.\n\nPASSAGE:\nThe reply came at last, four years after she had sent the question.\n\nMake exactly these changes and no others:\n- honor the years-long delay\n\nDo NOT do any of the following:\n- no instant comms\n- no faster-than-light\n\nReturn only the revised/written prose. No preamble, no commentary.",
+   "prompt_sha256": "a80fba7730b4dc12690929194008c7089220b03c5c1019de8718e2b1c2fed01a",
+   "information_inventory": {
+    "required": [
+     "honor the years-long delay"
+    ],
+    "protected": [],
+    "forbidden": [
+     "no instant comms",
+     "no faster-than-light"
+    ],
+    "shape": "prose",
+    "no_change": false
+   },
+   "instruction_position": "early",
+   "max_new_tokens": 384,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": null,
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "cn-03",
+   "arm": "P1-Contract",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "[TASK]\nmode: focused_revision\nauthority: perform every required change; preserve every protected element; change nothing else.\n\n[SOURCE]\nThe reply came at last, four years after she had sent the question.\n\n[REQUIRED CHANGES]\n- honor the years-long delay\n\n[PROTECTED ELEMENTS — reproduce verbatim]\n- (none)\n\n[FORBIDDEN CHANGES]\n- no instant comms\n- no faster-than-light\n\n[AUTHORIZED SCOPE]\nOnly the required changes above. All other material is out of scope and must be preserved.\n\n[OUTPUT CONTRACT]\nReturn only the revised/written prose. No preamble, no commentary.",
+   "prompt_sha256": "58bc0d17ccc5877a0ebbcd6d39a0988291e4d0d3325975de5dd471248f5a392e",
+   "information_inventory": {
+    "required": [
+     "honor the years-long delay"
+    ],
+    "protected": [],
+    "forbidden": [
+     "no instant comms",
+     "no faster-than-light"
+    ],
+    "shape": "prose",
+    "no_change": false
+   },
+   "instruction_position": "early",
+   "max_new_tokens": 384,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": null,
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "vp-01",
+   "arm": "P0-Realistic",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "Keep the flat, terse hard-boiled voice. The last sentence suddenly goes ornate — bring it back to the register of the rest.\n\nPASSAGE:\nThe diner was empty at that hour. He took the stool by the window and ordered coffee and nothing else. The coffee, when it came, was a benediction upon his weary and much-abused soul.",
+   "prompt_sha256": "39a1c3d726db35110f3f4957477ca55f47c1901aeed6bb781aa2e23bfb2eecbd",
+   "information_inventory": "arm-specific",
+   "instruction_position": "late",
+   "max_new_tokens": 512,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": null,
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "vp-01",
+   "arm": "P0-Maximal",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "Complete the writing task below precisely.\n\nPASSAGE:\nThe diner was empty at that hour. He took the stool by the window and ordered coffee and nothing else. The coffee, when it came, was a benediction upon his weary and much-abused soul.\n\nMake exactly these changes and no others:\n- de-ornament the last sentence\n\nPreserve these exactly, word for word:\n- The diner was empty at that hour.\n\nDo NOT do any of the following:\n- keep it terse — no new lyricism\n- keep the coffee\n\nReturn only the revised/written prose. No preamble, no commentary.",
+   "prompt_sha256": "f5bed51a580eb73529442d9bb3e6cb454d0bd868374a5c7ca4e201a58795658b",
+   "information_inventory": {
+    "required": [
+     "de-ornament the last sentence"
+    ],
+    "protected": [
+     "The diner was empty at that hour."
+    ],
+    "forbidden": [
+     "keep it terse — no new lyricism",
+     "keep the coffee"
+    ],
+    "shape": "prose",
+    "no_change": false
+   },
+   "instruction_position": "late",
+   "max_new_tokens": 512,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": null,
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "vp-01",
+   "arm": "P1-Contract",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "[TASK]\nmode: focused_revision\nauthority: perform every required change; preserve every protected element; change nothing else.\n\n[SOURCE]\nThe diner was empty at that hour. He took the stool by the window and ordered coffee and nothing else. The coffee, when it came, was a benediction upon his weary and much-abused soul.\n\n[REQUIRED CHANGES]\n- de-ornament the last sentence\n\n[PROTECTED ELEMENTS — reproduce verbatim]\n- The diner was empty at that hour.\n\n[FORBIDDEN CHANGES]\n- keep it terse — no new lyricism\n- keep the coffee\n\n[AUTHORIZED SCOPE]\nOnly the required changes above. All other material is out of scope and must be preserved.\n\n[OUTPUT CONTRACT]\nReturn only the revised/written prose. No preamble, no commentary.",
+   "prompt_sha256": "dd61b03e0a3d1ebbae40275b6220bf3bd5648c23e57ec270f60972caa99bb70a",
+   "information_inventory": {
+    "required": [
+     "de-ornament the last sentence"
+    ],
+    "protected": [
+     "The diner was empty at that hour."
+    ],
+    "forbidden": [
+     "keep it terse — no new lyricism",
+     "keep the coffee"
+    ],
+    "shape": "prose",
+    "no_change": false
+   },
+   "instruction_position": "late",
+   "max_new_tokens": 512,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": null,
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "vp-02",
+   "arm": "P0-Realistic",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "Keep the long lyrical clause-rich voice exactly in register. Just remove the one dead cliché ('when all is said and done') without clipping the rhythm.\n\nPASSAGE:\nHe walked out to the orchard in the grey before dawn, where the fallen apples were going soft in the wet grass and the whole slope breathed that cidery sweetness of things quietly rotting, and he stood, when all is said and done, and let the cold find him.",
+   "prompt_sha256": "bfdde8ae477c4d31da928f0cfd1b359c2337a75bc2c87d6d1746b839b59c170f",
+   "information_inventory": "arm-specific",
+   "instruction_position": "middle",
+   "max_new_tokens": 512,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": null,
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "vp-02",
+   "arm": "P0-Maximal",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "Complete the writing task below precisely.\n\nPASSAGE:\nHe walked out to the orchard in the grey before dawn, where the fallen apples were going soft in the wet grass and the whole slope breathed that cidery sweetness of things quietly rotting, and he stood, when all is said and done, and let the cold find him.\n\nMake exactly these changes and no others:\n- remove 'when all is said and done'\n\nPreserve these exactly, word for word:\n- the fallen apples were going soft\n\nDo NOT do any of the following:\n- do not clip into terse sentences\n- keep the cidery-sweetness image\n\nReturn only the revised/written prose. No preamble, no commentary.",
+   "prompt_sha256": "3b5d28280a8dcdef8c491b506ffe728b406e8f1cf3402799e8ab39351397b769",
+   "information_inventory": {
+    "required": [
+     "remove 'when all is said and done'"
+    ],
+    "protected": [
+     "the fallen apples were going soft"
+    ],
+    "forbidden": [
+     "do not clip into terse sentences",
+     "keep the cidery-sweetness image"
+    ],
+    "shape": "prose",
+    "no_change": false
+   },
+   "instruction_position": "middle",
+   "max_new_tokens": 512,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": null,
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "vp-02",
+   "arm": "P1-Contract",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "[TASK]\nmode: focused_revision\nauthority: perform every required change; preserve every protected element; change nothing else.\n\n[SOURCE]\nHe walked out to the orchard in the grey before dawn, where the fallen apples were going soft in the wet grass and the whole slope breathed that cidery sweetness of things quietly rotting, and he stood, when all is said and done, and let the cold find him.\n\n[REQUIRED CHANGES]\n- remove 'when all is said and done'\n\n[PROTECTED ELEMENTS — reproduce verbatim]\n- the fallen apples were going soft\n\n[FORBIDDEN CHANGES]\n- do not clip into terse sentences\n- keep the cidery-sweetness image\n\n[AUTHORIZED SCOPE]\nOnly the required changes above. All other material is out of scope and must be preserved.\n\n[OUTPUT CONTRACT]\nReturn only the revised/written prose. No preamble, no commentary.",
+   "prompt_sha256": "304c4472061e184eb498f4d0f78cdef3713459c81950800bf414421e60e18068",
+   "information_inventory": {
+    "required": [
+     "remove 'when all is said and done'"
+    ],
+    "protected": [
+     "the fallen apples were going soft"
+    ],
+    "forbidden": [
+     "do not clip into terse sentences",
+     "keep the cidery-sweetness image"
+    ],
+    "shape": "prose",
+    "no_change": false
+   },
+   "instruction_position": "middle",
+   "max_new_tokens": 512,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": null,
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "vp-02",
+   "arm": "P3-Ideal",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "[TASK] voice-preserving revision. authority: remove ONE cliché; keep the lyrical clause-rich register intact.\n[VOICE PACKET] long breathing sentences, clauses linked by 'and', concrete sensory image, no clipping into terse lines.\n\n[SOURCE]\nHe walked out to the orchard in the grey before dawn, where the fallen apples were going soft in the wet grass and the whole slope breathed that cidery sweetness of things quietly rotting, and he stood, when all is said and done, and let the cold find him.\n\n[REQUIRED CHANGES]\n- Remove the dead cliché 'when all is said and done' without breaking the rhythm.\n\n[PROTECTED] keep 'the fallen apples were going soft' and the cidery-sweetness image.\n[AUTHORIZED SCOPE] the cliché phrase only; preserve register and length.\n[OUTPUT] revised prose only.",
+   "prompt_sha256": "b771ffced3fe5cf70a88c1a90ae165e32937f4ef1a4ece56c54ad41de0733b4a",
+   "information_inventory": "arm-specific",
+   "instruction_position": "middle",
+   "max_new_tokens": 512,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": "ideal",
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "vp-03",
+   "arm": "P0-Realistic",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "Keep uncle Tam's lightly vernacular first-person voice. That last sentence has been 'corrected' into stiff legalese — put it back in the voice (lose 'Notwithstanding the foregoing' and 'maintained a modest current account').\n\nPASSAGE:\nMy uncle Tam never trusted a bank. Money went in a tin under the third floorboard from the window, and there it stopped. Notwithstanding the foregoing, he maintained a modest current account for appearances.",
+   "prompt_sha256": "203a8d0b7d7a9f5140b26457668e2b691efb632088a3bebfc42ece535658a8f9",
+   "information_inventory": "arm-specific",
+   "instruction_position": "late",
+   "max_new_tokens": 512,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": null,
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "vp-03",
+   "arm": "P0-Maximal",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "Complete the writing task below precisely.\n\nPASSAGE:\nMy uncle Tam never trusted a bank. Money went in a tin under the third floorboard from the window, and there it stopped. Notwithstanding the foregoing, he maintained a modest current account for appearances.\n\nMake exactly these changes and no others:\n- remove 'Notwithstanding the foregoing'\n- remove 'maintained a modest current account'\n\nPreserve these exactly, word for word:\n- Money went in a tin under the third floorboard from the window, and there it stopped.\n\nDo NOT do any of the following:\n- keep first person\n- no new financial detail\n\nReturn only the revised/written prose. No preamble, no commentary.",
+   "prompt_sha256": "23d3aca859e3563bc64ef6ed8d7a6b39c57b12a43b66d479d20ab169022ffe5c",
+   "information_inventory": {
+    "required": [
+     "remove 'Notwithstanding the foregoing'",
+     "remove 'maintained a modest current account'"
+    ],
+    "protected": [
+     "Money went in a tin under the third floorboard from the window, and there it stopped."
+    ],
+    "forbidden": [
+     "keep first person",
+     "no new financial detail"
+    ],
+    "shape": "prose",
+    "no_change": false
+   },
+   "instruction_position": "late",
+   "max_new_tokens": 512,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": null,
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "vp-03",
+   "arm": "P1-Contract",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "[TASK]\nmode: focused_revision\nauthority: perform every required change; preserve every protected element; change nothing else.\n\n[SOURCE]\nMy uncle Tam never trusted a bank. Money went in a tin under the third floorboard from the window, and there it stopped. Notwithstanding the foregoing, he maintained a modest current account for appearances.\n\n[REQUIRED CHANGES]\n- remove 'Notwithstanding the foregoing'\n- remove 'maintained a modest current account'\n\n[PROTECTED ELEMENTS — reproduce verbatim]\n- Money went in a tin under the third floorboard from the window, and there it stopped.\n\n[FORBIDDEN CHANGES]\n- keep first person\n- no new financial detail\n\n[AUTHORIZED SCOPE]\nOnly the required changes above. All other material is out of scope and must be preserved.\n\n[OUTPUT CONTRACT]\nReturn only the revised/written prose. No preamble, no commentary.",
+   "prompt_sha256": "945c24dceba3afc24beeb4e4157e37530540ab103247da2f098c09560494f047",
+   "information_inventory": {
+    "required": [
+     "remove 'Notwithstanding the foregoing'",
+     "remove 'maintained a modest current account'"
+    ],
+    "protected": [
+     "Money went in a tin under the third floorboard from the window, and there it stopped."
+    ],
+    "forbidden": [
+     "keep first person",
+     "no new financial detail"
+    ],
+    "shape": "prose",
+    "no_change": false
+   },
+   "instruction_position": "late",
+   "max_new_tokens": 512,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": null,
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "sd-01",
+   "arm": "P0-Realistic",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "Write a short scene (about 90-120 words): a lighthouse keeper, Moll, tells a young relief keeper the supply boat will not come this week, without frightening him. HARD CONSTRAINTS: third person limited to Moll; past tense; end on a concrete physical action, not a reflection; do NOT mention the weather in the first sentence.",
+   "prompt_sha256": "1635908a41f917e3618868cc4ecec9563dee4b31b70ddb1dc8e951085f88d43a",
+   "information_inventory": "arm-specific",
+   "instruction_position": "early",
+   "max_new_tokens": 384,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": null,
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "sd-01",
+   "arm": "P0-Maximal",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "Complete the writing task below precisely.\n\nMake exactly these changes and no others:\n- features Moll and the relief keeper\n- conveys the supply boat won't come\n\nDo NOT do any of the following:\n- no first-person\n- no present-tense drift\n\nReturn only the revised/written prose. No preamble, no commentary.",
+   "prompt_sha256": "40da1aec0bba7cf8228afa5b4e7041c37d8581bbcd567ba876dec772f399f508",
+   "information_inventory": {
+    "required": [
+     "features Moll and the relief keeper",
+     "conveys the supply boat won't come"
+    ],
+    "protected": [],
+    "forbidden": [
+     "no first-person",
+     "no present-tense drift"
+    ],
+    "shape": "prose",
+    "no_change": false
+   },
+   "instruction_position": "early",
+   "max_new_tokens": 384,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": null,
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "sd-01",
+   "arm": "P1-Contract",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "[TASK]\nmode: drafting\nauthority: perform every required change; preserve every protected element; change nothing else.\n\n[REQUIRED CHANGES]\n- features Moll and the relief keeper\n- conveys the supply boat won't come\n\n[PROTECTED ELEMENTS — reproduce verbatim]\n- (none)\n\n[FORBIDDEN CHANGES]\n- no first-person\n- no present-tense drift\n\n[AUTHORIZED SCOPE]\nOnly the required changes above. All other material is out of scope and must be preserved.\n\n[OUTPUT CONTRACT]\nReturn only the revised/written prose. No preamble, no commentary.",
+   "prompt_sha256": "2589638667c45dbe0a497a737189b99772f42387b64b3f4125d7547b59f55540",
+   "information_inventory": {
+    "required": [
+     "features Moll and the relief keeper",
+     "conveys the supply boat won't come"
+    ],
+    "protected": [],
+    "forbidden": [
+     "no first-person",
+     "no present-tense drift"
+    ],
+    "shape": "prose",
+    "no_change": false
+   },
+   "instruction_position": "early",
+   "max_new_tokens": 384,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": null,
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "sd-01",
+   "arm": "P3-Ideal",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "[PROJECT] literary fiction; POV Moll, third person limited, past tense.\n[VOICE PACKET] dry, plain, character-centered; emotion through action; no weather-as-mood opener.\n[TASK] constraint-bound scene drafting (~90-120 words). authority: obey every hard constraint.\n\n[SCENE] A lighthouse keeper, Moll, tells a young relief keeper the supply boat will not come this week, without frightening him.\n[HARD CONSTRAINTS] third person limited to Moll; past tense; end on a concrete physical action, not a reflection; do NOT open on the weather.\n[INVENTION BUDGET] minor sensory detail; no new named characters beyond Moll and the relief keeper.\n[OUTPUT] scene prose only.",
+   "prompt_sha256": "919ca95346e1fab9c52e5290d4ad8a7d07290b111378531c14b61c7c2ac4b3e3",
+   "information_inventory": "arm-specific",
+   "instruction_position": "early",
+   "max_new_tokens": 384,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": "ideal",
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "sd-02",
+   "arm": "P0-Realistic",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "Write a short scene (about 80-110 words): a woman waits in a hospital corridor at night. HARD CONSTRAINTS: spare and plain; do NOT name her emotion directly (no 'she felt afraid/sad/anxious'); end on a small physical detail; third person.",
+   "prompt_sha256": "4c63c0b70f83c3fa5b7462f737e679e4b3b71e66898dfe8c3a40c8f369e43173",
+   "information_inventory": "arm-specific",
+   "instruction_position": "early",
+   "max_new_tokens": 384,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": null,
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "sd-02",
+   "arm": "P0-Maximal",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "Complete the writing task below precisely.\n\nMake exactly these changes and no others:\n- set in the hospital corridor at night\n\nDo NOT do any of the following:\n- do not name the emotion 'afraid'\n- do not name the emotion 'anxious'\n\nReturn only the revised/written prose. No preamble, no commentary.",
+   "prompt_sha256": "7789090c755fe1c1b223b4e3a146aecc307a2932373d7265bcb5c46750ba7987",
+   "information_inventory": {
+    "required": [
+     "set in the hospital corridor at night"
+    ],
+    "protected": [],
+    "forbidden": [
+     "do not name the emotion 'afraid'",
+     "do not name the emotion 'anxious'"
+    ],
+    "shape": "prose",
+    "no_change": false
+   },
+   "instruction_position": "early",
+   "max_new_tokens": 384,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": null,
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "sd-02",
+   "arm": "P1-Contract",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "[TASK]\nmode: drafting\nauthority: perform every required change; preserve every protected element; change nothing else.\n\n[REQUIRED CHANGES]\n- set in the hospital corridor at night\n\n[PROTECTED ELEMENTS — reproduce verbatim]\n- (none)\n\n[FORBIDDEN CHANGES]\n- do not name the emotion 'afraid'\n- do not name the emotion 'anxious'\n\n[AUTHORIZED SCOPE]\nOnly the required changes above. All other material is out of scope and must be preserved.\n\n[OUTPUT CONTRACT]\nReturn only the revised/written prose. No preamble, no commentary.",
+   "prompt_sha256": "6f06fd98f03c415f3818f215ff077f15307b0b0140d26eca869891f7be688179",
+   "information_inventory": {
+    "required": [
+     "set in the hospital corridor at night"
+    ],
+    "protected": [],
+    "forbidden": [
+     "do not name the emotion 'afraid'",
+     "do not name the emotion 'anxious'"
+    ],
+    "shape": "prose",
+    "no_change": false
+   },
+   "instruction_position": "early",
+   "max_new_tokens": 384,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": null,
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "sp-01",
+   "arm": "P0-Realistic",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "Return ONLY a JSON object {\"violation\": bool, \"constraint_ids\": [..], \"evidence\": str}. Judge whether the draft violates canon. No prose outside the object.\n\nPASSAGE:\nCANON: the witness never entered the study. Draft: 'I saw the letters on his desk myself,' she said, 'scattered like leaves.'",
+   "prompt_sha256": "3160f777fec35e9da5f794b85c8a24b16b445412c32f2247806cf89a5844c73c",
+   "information_inventory": "arm-specific",
+   "instruction_position": "early",
+   "max_new_tokens": 256,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": null,
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "sp-01",
+   "arm": "P0-Maximal",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "Complete the writing task below precisely.\n\nPASSAGE:\nCANON: the witness never entered the study. Draft: 'I saw the letters on his desk myself,' she said, 'scattered like leaves.'\n\nMake exactly these changes and no others:\n- violation:true\n- cite the firsthand-knowledge evidence\n\nDo NOT do any of the following:\n- no prose narration outside JSON\n\nReturn only a single valid JSON object. No prose outside it.",
+   "prompt_sha256": "a1500dc4a0a34b9408951e1ff14f31b0c7d5be757153be58802f534aee081663",
+   "information_inventory": {
+    "required": [
+     "violation:true",
+     "cite the firsthand-knowledge evidence"
+    ],
+    "protected": [],
+    "forbidden": [
+     "no prose narration outside JSON"
+    ],
+    "shape": "json",
+    "no_change": false
+   },
+   "instruction_position": "early",
+   "max_new_tokens": 256,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": null,
+   "canon_packet_id": null
+  },
+  {
+   "task_id": "sp-01",
+   "arm": "P1-Contract",
+   "system": "You are a fiction-writing assistant. Do exactly what the request asks and return only the requested output.",
+   "prompt_text": "[TASK]\nmode: focused_revision\nauthority: perform every required change; preserve every protected element; change nothing else.\n\n[SOURCE]\nCANON: the witness never entered the study. Draft: 'I saw the letters on his desk myself,' she said, 'scattered like leaves.'\n\n[REQUIRED CHANGES]\n- violation:true\n- cite the firsthand-knowledge evidence\n\n[PROTECTED ELEMENTS — reproduce verbatim]\n- (none)\n\n[FORBIDDEN CHANGES]\n- no prose narration outside JSON\n\n[AUTHORIZED SCOPE]\nOnly the required changes above. All other material is out of scope and must be preserved.\n\n[OUTPUT CONTRACT]\nReturn only a single valid JSON object. No prose outside it.",
+   "prompt_sha256": "0c344a450df4d0535320988e52f3216d9a57c57043ed9520f377e58b01a5f8b8",
+   "information_inventory": {
+    "required": [
+     "violation:true",
+     "cite the firsthand-knowledge evidence"
+    ],
+    "protected": [],
+    "forbidden": [
+     "no prose narration outside JSON"
+    ],
+    "shape": "json",
+    "no_change": false
+   },
+   "instruction_position": "early",
+   "max_new_tokens": 256,
+   "compiler_version": null,
+   "retrieval_inputs": null,
+   "voice_packet_id": null,
+   "canon_packet_id": null
+  }
+ ]
+}
