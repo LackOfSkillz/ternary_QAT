@@ -1,0 +1,44 @@
+{
+ "dispatch": "30A-R1",
+ "harvest_version": "harvest-v1-round2",
+ "new_candidates": 54,
+ "rejected_during_harvest": 1,
+ "candidates_by_source": {
+  "abercrombe.txt": 5,
+  "sanderson.txt": 4,
+  "gord.txt": 5,
+  "mouser.txt": 5,
+  "wot.txt": 5,
+  "pawn.txt": 5,
+  "streams.txt": 5,
+  "lies.txt": 5,
+  "lor.txt": 5,
+  "HP.txt": 5,
+  "got.txt": 5
+ },
+ "candidates_by_assigned_emphasis": {
+  "dialogue": 11,
+  "action": 11,
+  "discovery": 11,
+  "worldbuilding": 11,
+  "quiet_aftermath": 10
+ },
+ "candidates_by_scene_function": {
+  "dialogue_heavy": 9,
+  "action_heavy": 2,
+  "exposition_or_discovery": 43
+ },
+ "word_count_range": [
+  1803,
+  3538
+ ],
+ "estimated_token_range": [
+  2404,
+  4717
+ ],
+ "narrative_region_distribution": {
+  "early": 22,
+  "late": 22,
+  "middle": 10
+ }
+}

@@ -189,7 +189,7 @@
   {
    "passage_id": "got-c01",
    "source_filename": "got.txt",
-   "target_word_count": 250,
+   "target_word_count": 2386,
    "target_token_count": 3181,
    "compositional_constraints": 8,
    "load_bearing_constraints": 6,
