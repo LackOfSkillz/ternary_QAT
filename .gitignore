@@ -104,3 +104,4 @@ benchmarks/runs/**/private-unblinding/
 # generic rules above. Re-include the QAT eval.json for THIS run only (the generic
 # ternary-qat/eval.json ignore near the top is Dispatch-18B-specific).
 !training/runs/dataset-a-full-comparison-v1/ternary-qat/eval.json
+benchmarks/runs/**/fr-normalized-results/

@@ -1,0 +1,88 @@
+focused_revision_audit:
+  dispatch: 27
+  phase: B
+  primary_target: multi_constraint_focused_revision
+  probe_items:
+  - pf-focused_revision-compact
+  - pf-focused_revision-realistic
+  - pf-focused_revision-long_salience_repaired
+  measurement_note: item-level unchanged-return rate on the 3-fix revision items;
+    NOT the same as the external reviewer-level fatal rate (~0.20) and not compared
+    to it.
+  base: &id001
+    n: 3
+    unchanged_return_count: 2
+    unchanged_return_rate: 0.667
+    mean_fixes_applied: 0.333
+    all_three_fixed_count: 0
+    protected_preserved_rate: 1.0
+  per_checkpoint:
+    lora_final:
+      n: 3
+      unchanged_return_count: 2
+      unchanged_return_rate: 0.667
+      mean_fixes_applied: 0.333
+      all_three_fixed_count: 0
+      protected_preserved_rate: 1.0
+    lora_step-12:
+      n: 3
+      unchanged_return_count: 2
+      unchanged_return_rate: 0.667
+      mean_fixes_applied: 0.333
+      all_three_fixed_count: 0
+      protected_preserved_rate: 1.0
+    lora_step-15:
+      n: 3
+      unchanged_return_count: 2
+      unchanged_return_rate: 0.667
+      mean_fixes_applied: 0.333
+      all_three_fixed_count: 0
+      protected_preserved_rate: 1.0
+    lora_step-18:
+      n: 3
+      unchanged_return_count: 2
+      unchanged_return_rate: 0.667
+      mean_fixes_applied: 0.333
+      all_three_fixed_count: 0
+      protected_preserved_rate: 1.0
+    lora_step-21:
+      n: 3
+      unchanged_return_count: 2
+      unchanged_return_rate: 0.667
+      mean_fixes_applied: 0.333
+      all_three_fixed_count: 0
+      protected_preserved_rate: 1.0
+    lora_step-3:
+      n: 3
+      unchanged_return_count: 2
+      unchanged_return_rate: 0.667
+      mean_fixes_applied: 0.333
+      all_three_fixed_count: 0
+      protected_preserved_rate: 1.0
+    lora_step-6:
+      n: 3
+      unchanged_return_count: 2
+      unchanged_return_rate: 0.667
+      mean_fixes_applied: 0.333
+      all_three_fixed_count: 0
+      protected_preserved_rate: 1.0
+    lora_step-9:
+      n: 3
+      unchanged_return_count: 2
+      unchanged_return_rate: 0.667
+      mean_fixes_applied: 0.333
+      all_three_fixed_count: 0
+      protected_preserved_rate: 1.0
+    qwen3_8b_base: *id001
+  checkpoints_reducing_unchanged_return: []
+  converts_unchanged_to_valid: false
+  over_editing_protected_line:
+    lora_final: false
+    lora_step-12: false
+    lora_step-15: false
+    lora_step-18: false
+    lora_step-21: false
+    lora_step-3: false
+    lora_step-6: false
+    lora_step-9: false
+    qwen3_8b_base: false
