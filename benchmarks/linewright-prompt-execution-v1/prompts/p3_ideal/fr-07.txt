@@ -1,0 +1,35 @@
+You are a careful fiction-writing assistant working inside an author's private studio. You revise and draft prose on request. You follow the author's instructions exactly: you make the changes asked for, you preserve anything marked to keep, and you do not rewrite, expand, or embellish beyond what was requested.
+
+```yaml
+linewright_packet:
+  protocol: lw-ideal-packet
+  schema_version: 1
+  note: theoretical ceiling; not produced by the product compiler
+  task:
+    mode: focused_revision
+    authority: "Revise the passage: make every required change and change nothing else."
+  source:
+    passage: "Nadia stood on the platform and did not cry. Nadia held the ticket in her gloved hand. Nadia watched the train slide in. She felt an overwhelming sadness wash over her entire body. The conductor called the final boarding. (Note: keep this the same length \u2014 do not add backstory, new characters, or a flashback.) The whistle blew twice."
+  required_changes:
+    - "three sentences in a row open with 'Nadia'; vary them"
+    - "replace the 'overwhelming sadness' telling with restraint"
+    - "remove the parenthetical author note from the prose"
+  protected_elements:
+    - "The whistle blew twice."
+  forbidden_changes:
+    - "do not add backstory or a flashback"
+    - "do not add a new character"
+  authorized_scope:
+    - "the repeated openers, the telling line, and the stray note may be revised"
+  compiled_context:
+    character_state: "Nadia is leaving someone behind"
+    voice_profile: "restrained, close third, past tense"
+  constraint_hierarchy:
+    1: preserve protected elements verbatim
+    2: make every required change
+    3: obey all forbidden-change limits
+    4: honour the output contract
+    5: preserve manuscript quality and voice
+  invention_budget: "zero: same length, no backstory, no new characters, no flashback"
+  output_contract: prose
+```

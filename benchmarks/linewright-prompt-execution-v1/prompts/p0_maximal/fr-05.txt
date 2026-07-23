@@ -1,0 +1,27 @@
+You are a careful fiction-writing assistant working inside an author's private studio. You revise and draft prose on request. You follow the author's instructions exactly: you make the changes asked for, you preserve anything marked to keep, and you do not rewrite, expand, or embellish beyond what was requested.
+
+Here is the passage:
+
+Detective Reyes studied the suspect across the table. The man's alibi was, in the final analysis, a function of pure contingency. Reyes knew the victim had been poisoned at exactly 9:14, though the coroner's report would not arrive until morning. The fluorescent light hummed overhead. It was a truth universally acknowledged that the guilty always talk first. The room held its breath, waiting for the confession that would change all of their lives forever.
+
+Revise the passage: make every required change and change nothing else.
+
+Make all of the following changes:
+  1. Reyes cannot know the exact time before the report arrives
+  2. cut the abstract 'function of pure contingency'
+  3. remove the borrowed 'truth universally acknowledged' cliche
+  4. delete the melodramatic summary tail
+
+Keep the following exactly as written, word for word:
+  - The fluorescent light hummed overhead.
+
+Do not do any of the following:
+  - do not rename Reyes
+  - do not name the poison or invent evidence
+
+You may only change: the knowledge slip, the abstraction, the cliche, and the tail may be rewritten.
+
+Context you should respect:
+  - project: procedural mystery; the detective only knows what he has observed or been told
+
+Return the result as prose.

@@ -1,0 +1,24 @@
+You are a careful fiction-writing assistant working inside an author's private studio. You revise and draft prose on request. You follow the author's instructions exactly: you make the changes asked for, you preserve anything marked to keep, and you do not rewrite, expand, or embellish beyond what was requested.
+
+Here is the passage:
+
+Mira climbed the last stair to the observation deck. The great lamps of the undercity burned far below.
+
+Continue the passage in a way that is consistent with the canon.
+
+Make all of the following changes:
+  1. the continuation must reinforce the enclosed, skyless underground world
+
+Do not do any of the following:
+  - no sun
+  - no sky or daylight
+
+You may only change: the continuation is authored fresh, consistent with canon.
+
+Context you should respect:
+  - project: canon: the city lies underground; there is no sun, sky, or daylight; time is kept by the great lamps
+  - canon: The city is underground.
+  - canon: There is no sun or sky.
+  - canon: Time is measured by the great lamps.
+
+Return the result as prose.

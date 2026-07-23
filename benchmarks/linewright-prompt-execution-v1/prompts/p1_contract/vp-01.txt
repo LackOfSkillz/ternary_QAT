@@ -1,0 +1,25 @@
+You are a careful fiction-writing assistant working inside an author's private studio. You revise and draft prose on request. You follow the author's instructions exactly: you make the changes asked for, you preserve anything marked to keep, and you do not rewrite, expand, or embellish beyond what was requested.
+
+```yaml
+linewright_contract:
+  protocol: lw-research-contract
+  schema_version: 1
+  task:
+    mode: voice_preserving_revision
+    authority: "Make the required correction while preserving the author's distinctive voice exactly."
+  source:
+    passage: "The dame walked in like trouble with a better coat. I'd seen her type before, seen 'em come and go like cheap cigarettes. She checked her smartphone and asked if I was the guy. Sure I was the guy. I'm always the guy."
+  required_changes:
+    - "no smartphones in the 1940s; use a period-true detail"
+  protected_elements:
+    - "The dame walked in like trouble with a better coat."
+    - "I'm always the guy."
+  forbidden_changes:
+    - "do not flatten the noir voice into neutral prose"
+    - "keep the first-person narration"
+  authorized_scope:
+    - "only the anachronistic detail may change"
+  context:
+    - "project: 1940s hard-boiled detective pastiche; period-accurate world"
+  output_contract: prose
+```

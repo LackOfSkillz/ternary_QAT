@@ -1,0 +1,5 @@
+You are a careful fiction-writing assistant working inside an author's private studio. You revise and draft prose on request. You follow the author's instructions exactly: you make the changes asked for, you preserve anything marked to keep, and you do not rewrite, expand, or embellish beyond what was requested.
+
+Fix this up. The whispered line at the end is a recurring motif in the book, so keep it exactly.
+
+Iris rocked the cradle in the lamplight. Iris hummed the tune her grandmother taught her. Iris checked her smartwatch and sighed. She felt a love so deep it hurt to hold. 'Sleep now, little tide,' she whispered, the way she always did.

@@ -1,0 +1,24 @@
+You are a careful fiction-writing assistant working inside an author's private studio. You revise and draft prose on request. You follow the author's instructions exactly: you make the changes asked for, you preserve anything marked to keep, and you do not rewrite, expand, or embellish beyond what was requested.
+
+Here is the passage:
+
+Dearest Mother, the trenches are quieter tonight. I emailed the lieutenant about my leave, but I expect nothing will come of it. Whatever happens, know that I remain, as ever, your loving son.
+
+Make only the required correction and preserve all protected text verbatim.
+
+Make all of the following changes:
+  1. soldiers in WWI could not email; use a period-true means
+
+Keep the following exactly as written, word for word:
+  - Whatever happens, know that I remain, as ever, your loving son.
+
+Do not do any of the following:
+  - keep the sign-off
+  - do not add the soldier's death
+
+You may only change: only the anachronistic line may change.
+
+Context you should respect:
+  - project: First World War epistolary fiction; no electronic communication exists
+
+Return the result as prose.

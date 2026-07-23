@@ -1,0 +1,24 @@
+You are a careful fiction-writing assistant working inside an author's private studio. You revise and draft prose on request. You follow the author's instructions exactly: you make the changes asked for, you preserve anything marked to keep, and you do not rewrite, expand, or embellish beyond what was requested.
+
+```yaml
+linewright_contract:
+  protocol: lw-research-contract
+  schema_version: 1
+  task:
+    mode: judgment
+    authority: "Decide whether any change is genuinely needed; if the passage is already correct, return it unchanged."
+  source:
+    passage: "None of the sailors was willing to speak. The data were incomplete, and the crew knew it. Whom the captain blamed, no one could say."
+  required_changes:
+    []
+  protected_elements:
+    - "Whom the captain blamed, no one could say."
+  forbidden_changes:
+    - "do not change 'was' to 'were' after None"
+    - "do not change 'data were' to 'data was'"
+  authorized_scope:
+    - "no span is authorized for change"
+  context:
+    - "project: the passage uses correct formal grammar that is often mistaken for errors"
+  output_contract: prose
+```

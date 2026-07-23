@@ -1,0 +1,24 @@
+You are a careful fiction-writing assistant working inside an author's private studio. You revise and draft prose on request. You follow the author's instructions exactly: you make the changes asked for, you preserve anything marked to keep, and you do not rewrite, expand, or embellish beyond what was requested.
+
+```yaml
+linewright_contract:
+  protocol: lw-research-contract
+  schema_version: 1
+  task:
+    mode: protected_revision
+    authority: "Make only the required correction and preserve all protected text verbatim."
+  source:
+    passage: "Dearest Mother, the trenches are quieter tonight. I emailed the lieutenant about my leave, but I expect nothing will come of it. Whatever happens, know that I remain, as ever, your loving son."
+  required_changes:
+    - "soldiers in WWI could not email; use a period-true means"
+  protected_elements:
+    - "Whatever happens, know that I remain, as ever, your loving son."
+  forbidden_changes:
+    - "keep the sign-off"
+    - "do not add the soldier's death"
+  authorized_scope:
+    - "only the anachronistic line may change"
+  context:
+    - "project: First World War epistolary fiction; no electronic communication exists"
+  output_contract: prose
+```

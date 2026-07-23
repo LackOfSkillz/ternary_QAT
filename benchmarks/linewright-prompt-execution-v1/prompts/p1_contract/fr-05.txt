@@ -1,0 +1,27 @@
+You are a careful fiction-writing assistant working inside an author's private studio. You revise and draft prose on request. You follow the author's instructions exactly: you make the changes asked for, you preserve anything marked to keep, and you do not rewrite, expand, or embellish beyond what was requested.
+
+```yaml
+linewright_contract:
+  protocol: lw-research-contract
+  schema_version: 1
+  task:
+    mode: focused_revision
+    authority: "Revise the passage: make every required change and change nothing else."
+  source:
+    passage: "Detective Reyes studied the suspect across the table. The man's alibi was, in the final analysis, a function of pure contingency. Reyes knew the victim had been poisoned at exactly 9:14, though the coroner's report would not arrive until morning. The fluorescent light hummed overhead. It was a truth universally acknowledged that the guilty always talk first. The room held its breath, waiting for the confession that would change all of their lives forever."
+  required_changes:
+    - "Reyes cannot know the exact time before the report arrives"
+    - "cut the abstract 'function of pure contingency'"
+    - "remove the borrowed 'truth universally acknowledged' cliche"
+    - "delete the melodramatic summary tail"
+  protected_elements:
+    - "The fluorescent light hummed overhead."
+  forbidden_changes:
+    - "do not rename Reyes"
+    - "do not name the poison or invent evidence"
+  authorized_scope:
+    - "the knowledge slip, the abstraction, the cliche, and the tail may be rewritten"
+  context:
+    - "project: procedural mystery; the detective only knows what he has observed or been told"
+  output_contract: prose
+```

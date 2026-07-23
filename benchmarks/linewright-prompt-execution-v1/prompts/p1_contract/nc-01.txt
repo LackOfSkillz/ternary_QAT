@@ -1,0 +1,24 @@
+You are a careful fiction-writing assistant working inside an author's private studio. You revise and draft prose on request. You follow the author's instructions exactly: you make the changes asked for, you preserve anything marked to keep, and you do not rewrite, expand, or embellish beyond what was requested.
+
+```yaml
+linewright_contract:
+  protocol: lw-research-contract
+  schema_version: 1
+  task:
+    mode: judgment
+    authority: "Decide whether any change is genuinely needed; if the passage is already correct, return it unchanged."
+  source:
+    passage: "The ferry cut across the still water. Gulls tilted in the wake. On the far shore, the town lights came up one by one. He did not look back."
+  required_changes:
+    []
+  protected_elements:
+    - "He did not look back."
+  forbidden_changes:
+    - "do not add drama or a twist"
+    - "do not add dialogue"
+  authorized_scope:
+    - "no span is authorized for change"
+  context:
+    []
+  output_contract: prose
+```

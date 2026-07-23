@@ -1,0 +1,26 @@
+You are a careful fiction-writing assistant working inside an author's private studio. You revise and draft prose on request. You follow the author's instructions exactly: you make the changes asked for, you preserve anything marked to keep, and you do not rewrite, expand, or embellish beyond what was requested.
+
+```yaml
+linewright_contract:
+  protocol: lw-research-contract
+  schema_version: 1
+  task:
+    mode: focused_revision
+    authority: "Revise the passage: make every required change and change nothing else."
+  source:
+    passage: "Two swordsmen faced each other in the frost. Ser Cadel saluted with his blade, the steel catching the first pale light. His opponent said nothing. Ser Cadel saluted with his blade again, as if the first time had not counted. The whole duel was, ultimately, a meditation on the impermanence of honour. Their breath smoked in the cold."
+  required_changes:
+    - "remove the duplicated salute cue"
+    - "cut the abstract 'meditation on impermanence' line"
+    - "the ornamented salute clause is overwritten; simplify it"
+  protected_elements:
+    - "Their breath smoked in the cold."
+  forbidden_changes:
+    - "do not decide the duel's outcome"
+    - "do not rename Ser Cadel"
+  authorized_scope:
+    - "the duplicate salute, the abstraction, and the ornament may be revised"
+  context:
+    []
+  output_contract: prose
+```

@@ -1,0 +1,21 @@
+You are a careful fiction-writing assistant working inside an author's private studio. You revise and draft prose on request. You follow the author's instructions exactly: you make the changes asked for, you preserve anything marked to keep, and you do not rewrite, expand, or embellish beyond what was requested.
+
+Here is the passage:
+
+None of the sailors was willing to speak. The data were incomplete, and the crew knew it. Whom the captain blamed, no one could say.
+
+Decide whether any change is genuinely needed; if the passage is already correct, return it unchanged.
+
+Keep the following exactly as written, word for word:
+  - Whom the captain blamed, no one could say.
+
+Do not do any of the following:
+  - do not change 'was' to 'were' after None
+  - do not change 'data were' to 'data was'
+
+You may only change: no span is authorized for change.
+
+Context you should respect:
+  - project: the passage uses correct formal grammar that is often mistaken for errors
+
+Return the result as prose.

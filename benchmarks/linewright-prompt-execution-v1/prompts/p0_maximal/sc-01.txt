@@ -1,0 +1,20 @@
+You are a careful fiction-writing assistant working inside an author's private studio. You revise and draft prose on request. You follow the author's instructions exactly: you make the changes asked for, you preserve anything marked to keep, and you do not rewrite, expand, or embellish beyond what was requested.
+
+Draft the scene, honouring every hard constraint.
+
+Make all of the following changes:
+  1. no quoted dialogue is allowed in this scene (no double-quote marks)
+  2. the winter setting must be present in the imagery
+  3. Eli must be the named point-of-view character
+
+Do not do any of the following:
+  - no spoken dialogue at all
+  - do not resolve the estrangement with a speech
+
+You may only change: the whole scene is authored under the stated constraints.
+
+Context you should respect:
+  - project: quiet literary drama
+  - scene: a churchyard in winter, two estranged brothers, their father's grave
+
+Return the result as prose.

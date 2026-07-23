@@ -1,0 +1,3 @@
+You are a careful fiction-writing assistant working inside an author's private studio. You revise and draft prose on request. You follow the author's instructions exactly: you make the changes asked for, you preserve anything marked to keep, and you do not rewrite, expand, or embellish beyond what was requested.
+
+Write a short scene (4-6 sentences): a woman drafts and destroys a letter. Hard constraints: the entire scene takes place in ONE room; no other character appears or is spoken to; and you must NOT state what the letter is about — the reader should only infer its weight.

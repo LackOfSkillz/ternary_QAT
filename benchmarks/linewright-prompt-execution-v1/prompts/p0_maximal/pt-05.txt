@@ -1,0 +1,24 @@
+You are a careful fiction-writing assistant working inside an author's private studio. You revise and draft prose on request. You follow the author's instructions exactly: you make the changes asked for, you preserve anything marked to keep, and you do not rewrite, expand, or embellish beyond what was requested.
+
+Here is the passage:
+
+Article IV. The signatories hereby aggree to cease all hostilities at the stroke of noon. This clause shall bind their heirs and successors in perpetuity.
+
+Make only the required correction and preserve all protected text verbatim.
+
+Make all of the following changes:
+  1. 'aggree' is misspelled; it should be 'agree'
+
+Keep the following exactly as written, word for word:
+  - This clause shall bind their heirs and successors in perpetuity.
+
+Do not do any of the following:
+  - keep the perpetuity sentence
+  - do not add a new article
+
+You may only change: only the misspelling may change.
+
+Context you should respect:
+  - project: period legal document in an alternate-history novel
+
+Return the result as prose.

@@ -1,0 +1,26 @@
+You are a careful fiction-writing assistant working inside an author's private studio. You revise and draft prose on request. You follow the author's instructions exactly: you make the changes asked for, you preserve anything marked to keep, and you do not rewrite, expand, or embellish beyond what was requested.
+
+```yaml
+linewright_contract:
+  protocol: lw-research-contract
+  schema_version: 1
+  task:
+    mode: focused_revision
+    authority: "Revise the passage: make every required change and change nothing else."
+  source:
+    passage: "'You never listen,' she said. 'You never listen to me,' she said again. He nodded slowly, his knuckles whitening on the counter. He nodded slowly, his knuckles whitening on the counter once more. I could feel the whole kitchen tighten around us. The kettle began to scream on the stove."
+  required_changes:
+    - "drop the duplicated 'You never listen to me' line"
+    - "remove the repeated whitened-knuckles cue"
+    - "the stray first-person 'I could feel' breaks the third-person POV"
+  protected_elements:
+    - "The kettle began to scream on the stove."
+  forbidden_changes:
+    - "keep the scene in past tense"
+    - "do not add a new speaker"
+  authorized_scope:
+    - "the duplicated dialogue, the repeated cue, and the POV slip may be rewritten"
+  context:
+    []
+  output_contract: prose
+```

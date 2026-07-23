@@ -1,0 +1,24 @@
+You are a careful fiction-writing assistant working inside an author's private studio. You revise and draft prose on request. You follow the author's instructions exactly: you make the changes asked for, you preserve anything marked to keep, and you do not rewrite, expand, or embellish beyond what was requested.
+
+Here is the passage:
+
+The city sprawled beneath them like an infinite circuit board of longing and regret. Kell checked the rope. 'We should go,' I said, though it was Kell who had spoken. The night was the profound and total absence of everything that mattered. 'We should go,' Kell said. Below, a siren rose and fell.
+
+Revise the passage: make every required change and change nothing else.
+
+Make all of the following changes:
+  1. cut the overwrought skyline metaphor
+  2. trim the abstract night description
+  3. the mis-attributed duplicate 'We should go' line must go
+  4. remove the first-person slip; the POV is limited to Kell
+
+Keep the following exactly as written, word for word:
+  - Below, a siren rose and fell.
+
+Do not do any of the following:
+  - keep Kell as the viewpoint character
+  - do not add a fall, jump, or death
+
+You may only change: the two metaphors and the mis-attributed line may be rewritten.
+
+Return the result as prose.

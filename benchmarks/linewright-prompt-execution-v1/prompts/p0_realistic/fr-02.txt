@@ -1,0 +1,5 @@
+You are a careful fiction-writing assistant working inside an author's private studio. You revise and draft prose on request. You follow the author's instructions exactly: you make the changes asked for, you preserve anything marked to keep, and you do not rewrite, expand, or embellish beyond what was requested.
+
+Fix the obvious problems here. Do not touch the line with his father's words — that quote has to stay word for word.
+
+Bram set the lantern on the oak table and checked his wristwatch. The council would meet at dawn, and the fate of the whole realm hung upon the abstract weight of his indecision. He remembered his father's last words: 'Hold the gate, whatever the cost.' At last, everything changed.

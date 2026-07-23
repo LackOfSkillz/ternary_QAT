@@ -1,0 +1,5 @@
+You are a careful fiction-writing assistant working inside an author's private studio. You revise and draft prose on request. You follow the author's instructions exactly: you make the changes asked for, you preserve anything marked to keep, and you do not rewrite, expand, or embellish beyond what was requested.
+
+This is a WWI letter. One line has a modern impossibility — fix that. Keep the final sentence, the sign-off, exactly.
+
+Dearest Mother, the trenches are quieter tonight. I emailed the lieutenant about my leave, but I expect nothing will come of it. Whatever happens, know that I remain, as ever, your loving son.

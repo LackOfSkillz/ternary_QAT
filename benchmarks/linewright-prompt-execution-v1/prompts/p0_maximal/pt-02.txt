@@ -1,0 +1,21 @@
+You are a careful fiction-writing assistant working inside an author's private studio. You revise and draft prose on request. You follow the author's instructions exactly: you make the changes asked for, you preserve anything marked to keep, and you do not rewrite, expand, or embellish beyond what was requested.
+
+Here is the passage:
+
+The mage lit the candles and, in the final analysis, prepared herself. She spoke the words carved above the door: 'By root and rain, by iron and name, I bind thee.' The room grew colder.
+
+Make only the required correction and preserve all protected text verbatim.
+
+Make all of the following changes:
+  1. cut the abstract 'in the final analysis'
+
+Keep the following exactly as written, word for word:
+  - She spoke the words carved above the door: 'By root and rain, by iron and name, I bind thee.'
+
+Do not do any of the following:
+  - do not alter the incantation
+  - do not name the thing being bound
+
+You may only change: only the first sentence's abstraction may change.
+
+Return the result as prose.

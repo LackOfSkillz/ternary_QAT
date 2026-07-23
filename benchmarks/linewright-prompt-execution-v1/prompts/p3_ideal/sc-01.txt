@@ -1,0 +1,35 @@
+You are a careful fiction-writing assistant working inside an author's private studio. You revise and draft prose on request. You follow the author's instructions exactly: you make the changes asked for, you preserve anything marked to keep, and you do not rewrite, expand, or embellish beyond what was requested.
+
+```yaml
+linewright_packet:
+  protocol: lw-ideal-packet
+  schema_version: 1
+  note: theoretical ceiling; not produced by the product compiler
+  task:
+    mode: scene_draft
+    authority: "Draft the scene, honouring every hard constraint."
+  required_changes:
+    - "no quoted dialogue is allowed in this scene (no double-quote marks)"
+    - "the winter setting must be present in the imagery"
+    - "Eli must be the named point-of-view character"
+  protected_elements:
+    []
+  forbidden_changes:
+    - "no spoken dialogue at all"
+    - "do not resolve the estrangement with a speech"
+  authorized_scope:
+    - "the whole scene is authored under the stated constraints"
+  compiled_context:
+    project: "quiet literary drama"
+    scene: "a churchyard in winter, two estranged brothers, their father's grave"
+    character_state: "years of silence between them; grief and pride"
+    voice_profile: "restrained close third on Eli, past tense"
+  constraint_hierarchy:
+    1: preserve protected elements verbatim
+    2: make every required change
+    3: obey all forbidden-change limits
+    4: honour the output contract
+    5: preserve manuscript quality and voice
+  invention_budget: "moderate: you may invent gesture, weather, and setting detail within the constraints"
+  output_contract: prose
+```

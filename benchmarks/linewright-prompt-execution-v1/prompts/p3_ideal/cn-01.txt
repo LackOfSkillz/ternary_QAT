@@ -1,0 +1,38 @@
+You are a careful fiction-writing assistant working inside an author's private studio. You revise and draft prose on request. You follow the author's instructions exactly: you make the changes asked for, you preserve anything marked to keep, and you do not rewrite, expand, or embellish beyond what was requested.
+
+```yaml
+linewright_packet:
+  protocol: lw-ideal-packet
+  schema_version: 1
+  note: theoretical ceiling; not produced by the product compiler
+  task:
+    mode: continuation
+    authority: "Continue the passage in a way that is consistent with the canon."
+  source:
+    passage: "Corin pushed open the door to the workshop. Dust hung in the light. He had not been back since the funeral."
+  required_changes:
+    - "the continuation must name his late sister Vaela"
+    - "the continuation must reflect that she is dead and the room untouched"
+  protected_elements:
+    []
+  forbidden_changes:
+    - "do not resurrect or speak-to a living Vaela"
+    - "do not introduce a living new character"
+  authorized_scope:
+    - "the continuation is authored fresh, consistent with canon"
+  compiled_context:
+    project: "canon: Corin's sister Vaela died last winter; her workshop is untouched since"
+    character_state: "grieving, returning for the first time"
+    canon:
+      - "Vaela is Corin's sister."
+      - "Vaela died last winter."
+      - "The workshop has been sealed since her death."
+  constraint_hierarchy:
+    1: preserve protected elements verbatim
+    2: make every required change
+    3: obey all forbidden-change limits
+    4: honour the output contract
+    5: preserve manuscript quality and voice
+  invention_budget: "low: you may add sensory detail consistent with a sealed, dusty workshop; introduce no living new characters"
+  output_contract: prose
+```

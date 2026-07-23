@@ -1,0 +1,27 @@
+You are a careful fiction-writing assistant working inside an author's private studio. You revise and draft prose on request. You follow the author's instructions exactly: you make the changes asked for, you preserve anything marked to keep, and you do not rewrite, expand, or embellish beyond what was requested.
+
+```yaml
+linewright_contract:
+  protocol: lw-research-contract
+  schema_version: 1
+  task:
+    mode: focused_revision
+    authority: "Revise the passage: make every required change and change nothing else."
+  source:
+    passage: "The city sprawled beneath them like an infinite circuit board of longing and regret. Kell checked the rope. 'We should go,' I said, though it was Kell who had spoken. The night was the profound and total absence of everything that mattered. 'We should go,' Kell said. Below, a siren rose and fell."
+  required_changes:
+    - "cut the overwrought skyline metaphor"
+    - "trim the abstract night description"
+    - "the mis-attributed duplicate 'We should go' line must go"
+    - "remove the first-person slip; the POV is limited to Kell"
+  protected_elements:
+    - "Below, a siren rose and fell."
+  forbidden_changes:
+    - "keep Kell as the viewpoint character"
+    - "do not add a fall, jump, or death"
+  authorized_scope:
+    - "the two metaphors and the mis-attributed line may be rewritten"
+  context:
+    []
+  output_contract: prose
+```

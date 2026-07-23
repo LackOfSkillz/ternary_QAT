@@ -1,0 +1,24 @@
+You are a careful fiction-writing assistant working inside an author's private studio. You revise and draft prose on request. You follow the author's instructions exactly: you make the changes asked for, you preserve anything marked to keep, and you do not rewrite, expand, or embellish beyond what was requested.
+
+Here is the passage:
+
+The rain starts before she reaches the barn. She pulls the door shut behind her. She listens to the horses shifting in the dark. She was so frightened that she could barely breathe. The barn smelled of hay and old iron. The wind outside was a great beast throwing itself against the world. And then, just like that, it was over.
+
+Revise the passage: make every required change and change nothing else.
+
+Make all of the following changes:
+  1. opening slipped to present tense; make it past
+  2. cut the 'so frightened' telling
+  3. trim the overwrought wind metaphor
+  4. delete the 'just like that, it was over' cliche
+
+Keep the following exactly as written, word for word:
+  - The barn smelled of hay and old iron.
+
+Do not do any of the following:
+  - do not rename or add characters
+  - do not add lightning or thunder
+
+You may only change: the tense slip, the melodrama, the metaphor, and the closing may be rewritten.
+
+Return the result as a numbered list, one item per line.

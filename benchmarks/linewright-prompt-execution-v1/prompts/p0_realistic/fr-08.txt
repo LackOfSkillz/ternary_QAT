@@ -1,0 +1,5 @@
+You are a careful fiction-writing assistant working inside an author's private studio. You revise and draft prose on request. You follow the author's instructions exactly: you make the changes asked for, you preserve anything marked to keep, and you do not rewrite, expand, or embellish beyond what was requested.
+
+Revise for continuity and register. Return your answer as a JSON object with keys "revision" and "changes".
+
+The rain begins as Aldous rides through the gate. The steward met him with a lantern and a bow. 'Your green eyes are your mother's,' the steward said, and Aldous almost smiled. The hall was cold. And in that moment, he knew he was finally home.

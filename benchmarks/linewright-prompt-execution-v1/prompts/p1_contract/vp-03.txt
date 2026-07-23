@@ -1,0 +1,26 @@
+You are a careful fiction-writing assistant working inside an author's private studio. You revise and draft prose on request. You follow the author's instructions exactly: you make the changes asked for, you preserve anything marked to keep, and you do not rewrite, expand, or embellish beyond what was requested.
+
+```yaml
+linewright_contract:
+  protocol: lw-research-contract
+  schema_version: 1
+  task:
+    mode: voice_preserving_revision
+    authority: "Make the required correction while preserving the author's distinctive voice exactly."
+  source:
+    passage: "Okay so we were running, right, we were running down Fenwick and Jonah had the bag and I had the other bag and my heart was going like a drum solo and then Jonah, who was definitely wearing his red jacket, ducks into the alley and we just lose him. My blue coat snagged on the fence but I didn't care."
+  required_changes:
+    - "canon says Jonah's jacket is green, not red"
+  protected_elements:
+    - "my heart was going like a drum solo"
+    - "My blue coat snagged on the fence but I didn't care."
+  forbidden_changes:
+    - "do not tidy the run-on syntax"
+    - "keep the narrator's own blue coat"
+  authorized_scope:
+    - "only Jonah's jacket colour may change"
+  context:
+    - "project: YA first-person; canon: Jonah's jacket is green"
+    - "canon: Jonah wears a green jacket."
+  output_contract: prose
+```

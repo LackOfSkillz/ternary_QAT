@@ -1,0 +1,160 @@
+{
+ "dispatch": "28A",
+ "instrument": "linewright-prompt-execution-v1",
+ "tasks_checked": 30,
+ "tasks_passed": 30,
+ "tasks_failed": 0,
+ "information_equivalence": true,
+ "per_task": [
+  {
+   "task_id": "cn-01",
+   "passed": true,
+   "problems": []
+  },
+  {
+   "task_id": "cn-02",
+   "passed": true,
+   "problems": []
+  },
+  {
+   "task_id": "cn-03",
+   "passed": true,
+   "problems": []
+  },
+  {
+   "task_id": "fr-01",
+   "passed": true,
+   "problems": []
+  },
+  {
+   "task_id": "fr-02",
+   "passed": true,
+   "problems": []
+  },
+  {
+   "task_id": "fr-03",
+   "passed": true,
+   "problems": []
+  },
+  {
+   "task_id": "fr-04",
+   "passed": true,
+   "problems": []
+  },
+  {
+   "task_id": "fr-05",
+   "passed": true,
+   "problems": []
+  },
+  {
+   "task_id": "fr-06",
+   "passed": true,
+   "problems": []
+  },
+  {
+   "task_id": "fr-07",
+   "passed": true,
+   "problems": []
+  },
+  {
+   "task_id": "fr-08",
+   "passed": true,
+   "problems": []
+  },
+  {
+   "task_id": "fr-09",
+   "passed": true,
+   "problems": []
+  },
+  {
+   "task_id": "fr-10",
+   "passed": true,
+   "problems": []
+  },
+  {
+   "task_id": "fr-11",
+   "passed": true,
+   "problems": []
+  },
+  {
+   "task_id": "fr-12",
+   "passed": true,
+   "problems": []
+  },
+  {
+   "task_id": "nc-01",
+   "passed": true,
+   "problems": []
+  },
+  {
+   "task_id": "nc-02",
+   "passed": true,
+   "problems": []
+  },
+  {
+   "task_id": "nc-03",
+   "passed": true,
+   "problems": []
+  },
+  {
+   "task_id": "nc-04",
+   "passed": true,
+   "problems": []
+  },
+  {
+   "task_id": "pt-01",
+   "passed": true,
+   "problems": []
+  },
+  {
+   "task_id": "pt-02",
+   "passed": true,
+   "problems": []
+  },
+  {
+   "task_id": "pt-03",
+   "passed": true,
+   "problems": []
+  },
+  {
+   "task_id": "pt-04",
+   "passed": true,
+   "problems": []
+  },
+  {
+   "task_id": "pt-05",
+   "passed": true,
+   "problems": []
+  },
+  {
+   "task_id": "sc-01",
+   "passed": true,
+   "problems": []
+  },
+  {
+   "task_id": "sc-02",
+   "passed": true,
+   "problems": []
+  },
+  {
+   "task_id": "sp-01",
+   "passed": true,
+   "problems": []
+  },
+  {
+   "task_id": "vp-01",
+   "passed": true,
+   "problems": []
+  },
+  {
+   "task_id": "vp-02",
+   "passed": true,
+   "problems": []
+  },
+  {
+   "task_id": "vp-03",
+   "passed": true,
+   "problems": []
+  }
+ ]
+}

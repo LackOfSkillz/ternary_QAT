@@ -1,0 +1,175 @@
+{
+ "instrument": "linewright-prompt-execution-v1",
+ "dispatch": "28A",
+ "prompt_counts": {
+  "p0_realistic": 30,
+  "p0_maximal": 30,
+  "p1_contract": 30,
+  "p3_ideal": 10,
+  "p3_compiled": 0,
+  "total": 100
+ },
+ "arms_by_task": {
+  "fr-01": [
+   "P0-Realistic",
+   "P0-Maximal",
+   "P1-Contract",
+   "P3-Ideal"
+  ],
+  "fr-02": [
+   "P0-Realistic",
+   "P0-Maximal",
+   "P1-Contract"
+  ],
+  "fr-03": [
+   "P0-Realistic",
+   "P0-Maximal",
+   "P1-Contract"
+  ],
+  "fr-04": [
+   "P0-Realistic",
+   "P0-Maximal",
+   "P1-Contract",
+   "P3-Ideal"
+  ],
+  "fr-05": [
+   "P0-Realistic",
+   "P0-Maximal",
+   "P1-Contract"
+  ],
+  "fr-06": [
+   "P0-Realistic",
+   "P0-Maximal",
+   "P1-Contract"
+  ],
+  "fr-07": [
+   "P0-Realistic",
+   "P0-Maximal",
+   "P1-Contract",
+   "P3-Ideal"
+  ],
+  "fr-08": [
+   "P0-Realistic",
+   "P0-Maximal",
+   "P1-Contract"
+  ],
+  "fr-09": [
+   "P0-Realistic",
+   "P0-Maximal",
+   "P1-Contract",
+   "P3-Ideal"
+  ],
+  "fr-10": [
+   "P0-Realistic",
+   "P0-Maximal",
+   "P1-Contract"
+  ],
+  "fr-11": [
+   "P0-Realistic",
+   "P0-Maximal",
+   "P1-Contract"
+  ],
+  "fr-12": [
+   "P0-Realistic",
+   "P0-Maximal",
+   "P1-Contract"
+  ],
+  "pt-01": [
+   "P0-Realistic",
+   "P0-Maximal",
+   "P1-Contract",
+   "P3-Ideal"
+  ],
+  "pt-02": [
+   "P0-Realistic",
+   "P0-Maximal",
+   "P1-Contract"
+  ],
+  "pt-03": [
+   "P0-Realistic",
+   "P0-Maximal",
+   "P1-Contract",
+   "P3-Ideal"
+  ],
+  "pt-04": [
+   "P0-Realistic",
+   "P0-Maximal",
+   "P1-Contract"
+  ],
+  "pt-05": [
+   "P0-Realistic",
+   "P0-Maximal",
+   "P1-Contract"
+  ],
+  "nc-01": [
+   "P0-Realistic",
+   "P0-Maximal",
+   "P1-Contract",
+   "P3-Ideal"
+  ],
+  "nc-02": [
+   "P0-Realistic",
+   "P0-Maximal",
+   "P1-Contract"
+  ],
+  "nc-03": [
+   "P0-Realistic",
+   "P0-Maximal",
+   "P1-Contract"
+  ],
+  "nc-04": [
+   "P0-Realistic",
+   "P0-Maximal",
+   "P1-Contract"
+  ],
+  "cn-01": [
+   "P0-Realistic",
+   "P0-Maximal",
+   "P1-Contract",
+   "P3-Ideal"
+  ],
+  "cn-02": [
+   "P0-Realistic",
+   "P0-Maximal",
+   "P1-Contract"
+  ],
+  "cn-03": [
+   "P0-Realistic",
+   "P0-Maximal",
+   "P1-Contract"
+  ],
+  "vp-01": [
+   "P0-Realistic",
+   "P0-Maximal",
+   "P1-Contract"
+  ],
+  "vp-02": [
+   "P0-Realistic",
+   "P0-Maximal",
+   "P1-Contract",
+   "P3-Ideal"
+  ],
+  "vp-03": [
+   "P0-Realistic",
+   "P0-Maximal",
+   "P1-Contract"
+  ],
+  "sc-01": [
+   "P0-Realistic",
+   "P0-Maximal",
+   "P1-Contract",
+   "P3-Ideal"
+  ],
+  "sc-02": [
+   "P0-Realistic",
+   "P0-Maximal",
+   "P1-Contract"
+  ],
+  "sp-01": [
+   "P0-Realistic",
+   "P0-Maximal",
+   "P1-Contract"
+  ]
+ },
+ "generation_authorized": false
+}

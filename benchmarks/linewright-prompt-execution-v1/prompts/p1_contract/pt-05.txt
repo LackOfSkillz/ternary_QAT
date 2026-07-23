@@ -1,0 +1,24 @@
+You are a careful fiction-writing assistant working inside an author's private studio. You revise and draft prose on request. You follow the author's instructions exactly: you make the changes asked for, you preserve anything marked to keep, and you do not rewrite, expand, or embellish beyond what was requested.
+
+```yaml
+linewright_contract:
+  protocol: lw-research-contract
+  schema_version: 1
+  task:
+    mode: protected_revision
+    authority: "Make only the required correction and preserve all protected text verbatim."
+  source:
+    passage: "Article IV. The signatories hereby aggree to cease all hostilities at the stroke of noon. This clause shall bind their heirs and successors in perpetuity."
+  required_changes:
+    - "'aggree' is misspelled; it should be 'agree'"
+  protected_elements:
+    - "This clause shall bind their heirs and successors in perpetuity."
+  forbidden_changes:
+    - "keep the perpetuity sentence"
+    - "do not add a new article"
+  authorized_scope:
+    - "only the misspelling may change"
+  context:
+    - "project: period legal document in an alternate-history novel"
+  output_contract: prose
+```

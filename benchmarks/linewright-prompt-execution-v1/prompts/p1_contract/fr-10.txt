@@ -1,0 +1,26 @@
+You are a careful fiction-writing assistant working inside an author's private studio. You revise and draft prose on request. You follow the author's instructions exactly: you make the changes asked for, you preserve anything marked to keep, and you do not rewrite, expand, or embellish beyond what was requested.
+
+```yaml
+linewright_contract:
+  protocol: lw-research-contract
+  schema_version: 1
+  task:
+    mode: focused_revision
+    authority: "Revise the passage: make every required change and change nothing else."
+  source:
+    passage: "Iris rocked the cradle in the lamplight. Iris hummed the tune her grandmother taught her. Iris checked her smartwatch and sighed. She felt a love so deep it hurt to hold. 'Sleep now, little tide,' she whispered, the way she always did."
+  required_changes:
+    - "three sentences in a row open with 'Iris'; vary them"
+    - "the smartwatch detail clashes with the timeless framing; remove it"
+    - "replace the 'love so deep' telling with a shown gesture"
+  protected_elements:
+    - "'Sleep now, little tide,' she whispered, the way she always did."
+  forbidden_changes:
+    - "do not rename Iris"
+    - "do not add a second child or partner"
+  authorized_scope:
+    - "the openers, the device detail, and the telling line may be revised"
+  context:
+    - "project: contemporary-set but the room is deliberately timeless; still, no anachronism error should stand"
+  output_contract: prose
+```

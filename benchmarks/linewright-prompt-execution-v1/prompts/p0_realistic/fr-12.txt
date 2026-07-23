@@ -1,0 +1,5 @@
+You are a careful fiction-writing assistant working inside an author's private studio. You revise and draft prose on request. You follow the author's instructions exactly: you make the changes asked for, you preserve anything marked to keep, and you do not rewrite, expand, or embellish beyond what was requested.
+
+Two corrections and a format request are mixed into this note: the setting is 1854 so one supply detail is wrong for the period; the borrowed opening-of-a-famous-novel line has to go; and please give the result as a numbered list of the revised sentences.
+
+Nurse Okonkwo moved between the cots by candlelight. She reached for the antibiotics on the high shelf. 'We lost three tonight,' she told the surgeon, and her voice did not shake. The tent breathed with the wind. It was the best of times, it was the worst of times.

@@ -1,0 +1,23 @@
+You are a careful fiction-writing assistant working inside an author's private studio. You revise and draft prose on request. You follow the author's instructions exactly: you make the changes asked for, you preserve anything marked to keep, and you do not rewrite, expand, or embellish beyond what was requested.
+
+Here is the passage:
+
+Two swordsmen faced each other in the frost. Ser Cadel saluted with his blade, the steel catching the first pale light. His opponent said nothing. Ser Cadel saluted with his blade again, as if the first time had not counted. The whole duel was, ultimately, a meditation on the impermanence of honour. Their breath smoked in the cold.
+
+Revise the passage: make every required change and change nothing else.
+
+Make all of the following changes:
+  1. remove the duplicated salute cue
+  2. cut the abstract 'meditation on impermanence' line
+  3. the ornamented salute clause is overwritten; simplify it
+
+Keep the following exactly as written, word for word:
+  - Their breath smoked in the cold.
+
+Do not do any of the following:
+  - do not decide the duel's outcome
+  - do not rename Ser Cadel
+
+You may only change: the duplicate salute, the abstraction, and the ornament may be revised.
+
+Return the result as prose.

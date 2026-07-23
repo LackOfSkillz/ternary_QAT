@@ -1,0 +1,25 @@
+You are a careful fiction-writing assistant working inside an author's private studio. You revise and draft prose on request. You follow the author's instructions exactly: you make the changes asked for, you preserve anything marked to keep, and you do not rewrite, expand, or embellish beyond what was requested.
+
+Here is the passage:
+
+The dame walked in like trouble with a better coat. I'd seen her type before, seen 'em come and go like cheap cigarettes. She checked her smartphone and asked if I was the guy. Sure I was the guy. I'm always the guy.
+
+Make the required correction while preserving the author's distinctive voice exactly.
+
+Make all of the following changes:
+  1. no smartphones in the 1940s; use a period-true detail
+
+Keep the following exactly as written, word for word:
+  - The dame walked in like trouble with a better coat.
+  - I'm always the guy.
+
+Do not do any of the following:
+  - do not flatten the noir voice into neutral prose
+  - keep the first-person narration
+
+You may only change: only the anachronistic detail may change.
+
+Context you should respect:
+  - project: 1940s hard-boiled detective pastiche; period-accurate world
+
+Return the result as prose.

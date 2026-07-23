@@ -1,0 +1,28 @@
+You are a careful fiction-writing assistant working inside an author's private studio. You revise and draft prose on request. You follow the author's instructions exactly: you make the changes asked for, you preserve anything marked to keep, and you do not rewrite, expand, or embellish beyond what was requested.
+
+Here is the passage:
+
+Nurse Okonkwo moved between the cots by candlelight. She reached for the antibiotics on the high shelf. 'We lost three tonight,' she told the surgeon, and her voice did not shake. The tent breathed with the wind. It was the best of times, it was the worst of times.
+
+Revise the passage: make every required change and change nothing else.
+
+Make all of the following changes:
+  1. antibiotics do not exist in 1854; use a period-true supply
+  2. delete the borrowed famous-novel line
+  3. the personified 'tent breathed' image is a tired closer; revise it
+
+Keep the following exactly as written, word for word:
+  - 'We lost three tonight,' she told the surgeon, and her voice did not shake.
+
+Do not do any of the following:
+  - do not rename Okonkwo
+  - do not add a named battle or date beyond the setting
+
+You may only change: the supply detail, the borrowed line, and the closer may be revised.
+
+Context you should respect:
+  - project: Crimean-War-era field hospital, 1854; antibiotics did not exist yet
+  - canon: The story is set in 1854.
+  - canon: Penicillin was not available until the 20th century.
+
+Return the result as a numbered list, one item per line.

@@ -1,0 +1,5 @@
+You are a careful fiction-writing assistant working inside an author's private studio. You revise and draft prose on request. You follow the author's instructions exactly: you make the changes asked for, you preserve anything marked to keep, and you do not rewrite, expand, or embellish beyond what was requested.
+
+A few things: this drifted into present tense at the top and needs to be past like the rest; trim the melodrama; and when you're done, return the result as a numbered list of the revised sentences, one per line.
+
+The rain starts before she reaches the barn. She pulls the door shut behind her. She listens to the horses shifting in the dark. She was so frightened that she could barely breathe. The barn smelled of hay and old iron. The wind outside was a great beast throwing itself against the world. And then, just like that, it was over.

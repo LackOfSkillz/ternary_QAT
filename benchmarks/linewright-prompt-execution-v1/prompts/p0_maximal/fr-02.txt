@@ -1,0 +1,26 @@
+You are a careful fiction-writing assistant working inside an author's private studio. You revise and draft prose on request. You follow the author's instructions exactly: you make the changes asked for, you preserve anything marked to keep, and you do not rewrite, expand, or embellish beyond what was requested.
+
+Here is the passage:
+
+Bram set the lantern on the oak table and checked his wristwatch. The council would meet at dawn, and the fate of the whole realm hung upon the abstract weight of his indecision. He remembered his father's last words: 'Hold the gate, whatever the cost.' At last, everything changed.
+
+Revise the passage: make every required change and change nothing else.
+
+Make all of the following changes:
+  1. a wristwatch cannot exist in this world; remove it
+  2. cut the abstract 'weight of his indecision'
+  3. delete the 'everything changed' cliche
+
+Keep the following exactly as written, word for word:
+  - He remembered his father's last words: 'Hold the gate, whatever the cost.'
+
+Do not do any of the following:
+  - do not rename Bram
+  - do not add magic or a new character
+
+You may only change: the first and last sentences and the abstraction may be rewritten.
+
+Context you should respect:
+  - project: pre-industrial fantasy; no modern technology exists in this world
+
+Return the result as prose.

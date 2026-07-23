@@ -1,0 +1,25 @@
+You are a careful fiction-writing assistant working inside an author's private studio. You revise and draft prose on request. You follow the author's instructions exactly: you make the changes asked for, you preserve anything marked to keep, and you do not rewrite, expand, or embellish beyond what was requested.
+
+```yaml
+linewright_contract:
+  protocol: lw-research-contract
+  schema_version: 1
+  task:
+    mode: voice_preserving_revision
+    authority: "Make the required correction while preserving the author's distinctive voice exactly."
+  source:
+    passage: "The clockmaker kept every hour he had ever wasted in a jar on the high shelf, and on Sundays he let a few of them out to stretch their legs. It was, in a very real sense, a form of temporal stewardship. The smallest hour liked to hide inside the teapot."
+  required_changes:
+    - "cut the dry 'temporal stewardship' sentence"
+  protected_elements:
+    - "The clockmaker kept every hour he had ever wasted in a jar on the high shelf, and on Sundays he let a few of them out to stretch their legs."
+    - "The smallest hour liked to hide inside the teapot."
+  forbidden_changes:
+    - "do not explain or literalise the magic"
+    - "keep the whimsical concrete imagery"
+  authorized_scope:
+    - "only the flat middle sentence may be removed"
+  context:
+    - "project: literary fabulism; whimsical, matter-of-fact-about-the-impossible voice"
+  output_contract: prose
+```

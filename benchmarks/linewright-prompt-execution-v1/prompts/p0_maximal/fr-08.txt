@@ -1,0 +1,28 @@
+You are a careful fiction-writing assistant working inside an author's private studio. You revise and draft prose on request. You follow the author's instructions exactly: you make the changes asked for, you preserve anything marked to keep, and you do not rewrite, expand, or embellish beyond what was requested.
+
+Here is the passage:
+
+The rain begins as Aldous rides through the gate. The steward met him with a lantern and a bow. 'Your green eyes are your mother's,' the steward said, and Aldous almost smiled. The hall was cold. And in that moment, he knew he was finally home.
+
+Revise the passage: make every required change and change nothing else.
+
+Make all of the following changes:
+  1. canon says Aldous has grey eyes, not green
+  2. opening slipped to present tense; make it past
+  3. cut the 'finally home' cliche
+
+Keep the following exactly as written, word for word:
+  - The hall was cold.
+
+Do not do any of the following:
+  - keep the mother reference
+  - do not kill or introduce a character
+
+You may only change: the eye colour, the tense slip, and the closing may be rewritten.
+
+Context you should respect:
+  - project: series canon: Aldous has grey eyes, established in book one
+  - canon: Aldous's eyes are grey.
+  - canon: Aldous's mother died when he was nine.
+
+Return the result as a single JSON object and nothing else.

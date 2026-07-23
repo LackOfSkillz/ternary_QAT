@@ -1,0 +1,5 @@
+You are a careful fiction-writing assistant working inside an author's private studio. You revise and draft prose on request. You follow the author's instructions exactly: you make the changes asked for, you preserve anything marked to keep, and you do not rewrite, expand, or embellish beyond what was requested.
+
+The eggs should go in before the flour, not after — fix the order. Keep the WARNING line word for word.
+
+Grandmother's honey cake: cream the butter, then fold in the flour, then add the eggs. WARNING: never open the oven in the first twenty minutes or the cake will fall.

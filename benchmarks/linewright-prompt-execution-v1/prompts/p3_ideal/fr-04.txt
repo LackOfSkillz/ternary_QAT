@@ -1,0 +1,35 @@
+You are a careful fiction-writing assistant working inside an author's private studio. You revise and draft prose on request. You follow the author's instructions exactly: you make the changes asked for, you preserve anything marked to keep, and you do not rewrite, expand, or embellish beyond what was requested.
+
+```yaml
+linewright_packet:
+  protocol: lw-ideal-packet
+  schema_version: 1
+  note: theoretical ceiling; not produced by the product compiler
+  task:
+    mode: focused_revision
+    authority: "Revise the passage: make every required change and change nothing else."
+  source:
+    passage: "The rain starts before she reaches the barn. She pulls the door shut behind her. She listens to the horses shifting in the dark. She was so frightened that she could barely breathe. The barn smelled of hay and old iron. The wind outside was a great beast throwing itself against the world. And then, just like that, it was over."
+  required_changes:
+    - "opening slipped to present tense; make it past"
+    - "cut the 'so frightened' telling"
+    - "trim the overwrought wind metaphor"
+    - "delete the 'just like that, it was over' cliche"
+  protected_elements:
+    - "The barn smelled of hay and old iron."
+  forbidden_changes:
+    - "do not rename or add characters"
+    - "do not add lightning or thunder"
+  authorized_scope:
+    - "the tense slip, the melodrama, the metaphor, and the closing may be rewritten"
+  compiled_context:
+    voice_profile: "past tense throughout, spare, sensory"
+  constraint_hierarchy:
+    1: preserve protected elements verbatim
+    2: make every required change
+    3: obey all forbidden-change limits
+    4: honour the output contract
+    5: preserve manuscript quality and voice
+  invention_budget: "none: revise the given sentences only"
+  output_contract: list
+```

@@ -1,0 +1,24 @@
+{
+ "p3_ideal_subset": {
+  "focused_revision": 4,
+  "protected_text": 2,
+  "canon": 1,
+  "voice": 1,
+  "no_change": 1,
+  "scene_drafting": 1
+ },
+ "tasks": [
+  "fr-01",
+  "fr-04",
+  "fr-07",
+  "fr-09",
+  "pt-01",
+  "pt-03",
+  "cn-01",
+  "vp-02",
+  "nc-01",
+  "sc-01"
+ ],
+ "represents_current_product_compiler": false,
+ "purpose": "theoretical_packet_ceiling"
+}

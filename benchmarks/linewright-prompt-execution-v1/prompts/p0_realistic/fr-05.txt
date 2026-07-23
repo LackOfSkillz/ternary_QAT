@@ -1,0 +1,5 @@
+You are a careful fiction-writing assistant working inside an author's private studio. You revise and draft prose on request. You follow the author's instructions exactly: you make the changes asked for, you preserve anything marked to keep, and you do not rewrite, expand, or embellish beyond what was requested.
+
+Clean this up. One line has the detective knowing something he has no way of knowing yet — catch that. Trim the philosophy too.
+
+Detective Reyes studied the suspect across the table. The man's alibi was, in the final analysis, a function of pure contingency. Reyes knew the victim had been poisoned at exactly 9:14, though the coroner's report would not arrive until morning. The fluorescent light hummed overhead. It was a truth universally acknowledged that the guilty always talk first. The room held its breath, waiting for the confession that would change all of their lives forever.

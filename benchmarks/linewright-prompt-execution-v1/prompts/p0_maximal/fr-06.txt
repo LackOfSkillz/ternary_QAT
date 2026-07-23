@@ -1,0 +1,26 @@
+You are a careful fiction-writing assistant working inside an author's private studio. You revise and draft prose on request. You follow the author's instructions exactly: you make the changes asked for, you preserve anything marked to keep, and you do not rewrite, expand, or embellish beyond what was requested.
+
+Here is the passage:
+
+Old Sena worked the bellows and studied her phone for the time. The forge glowed like the beating heart of some vast and patient god. 'A blade remembers every hand that holds it,' she told the boy. She wiped her brow with the back of her hand. She wiped her brow with the back of her hand again. The apprentice watched the sparks climb.
+
+Revise the passage: make every required change and change nothing else.
+
+Make all of the following changes:
+  1. there are no phones in this world; remove it
+  2. trim the overwrought forge metaphor
+  3. remove the duplicated brow-wipe cue
+
+Keep the following exactly as written, word for word:
+  - 'A blade remembers every hand that holds it,' she told the boy.
+
+Do not do any of the following:
+  - do not rename Sena
+  - do not add a customer or new character
+
+You may only change: the anachronism, the metaphor, and the duplicated cue may be rewritten.
+
+Context you should respect:
+  - project: low-fantasy village, no electricity or modern devices
+
+Return the result as prose.

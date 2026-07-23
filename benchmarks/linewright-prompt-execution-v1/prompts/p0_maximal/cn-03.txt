@@ -1,0 +1,23 @@
+You are a careful fiction-writing assistant working inside an author's private studio. You revise and draft prose on request. You follow the author's instructions exactly: you make the changes asked for, you preserve anything marked to keep, and you do not rewrite, expand, or embellish beyond what was requested.
+
+Here is the passage:
+
+Devi pressed her palm to the ward-stone and felt it wake. The lines of light spread under her fingers.
+
+Continue the passage in a way that is consistent with the canon.
+
+Make all of the following changes:
+  1. the continuation must reflect that magic costs memory
+
+Do not do any of the following:
+  - magic is never free here
+  - do not restore her lost memories
+
+You may only change: the continuation is authored fresh, consistent with canon.
+
+Context you should respect:
+  - project: canon: every use of magic costs the caster memories; Devi has already lost her childhood
+  - canon: Magic costs the caster memories.
+  - canon: Devi has already forgotten her childhood.
+
+Return the result as prose.

@@ -1,0 +1,5 @@
+You are a careful fiction-writing assistant working inside an author's private studio. You revise and draft prose on request. You follow the author's instructions exactly: you make the changes asked for, you preserve anything marked to keep, and you do not rewrite, expand, or embellish beyond what was requested.
+
+Fix the one detail that doesn't fit a 1940s noir. Keep the narrator's voice exactly as punchy as it is — don't smooth it out.
+
+The dame walked in like trouble with a better coat. I'd seen her type before, seen 'em come and go like cheap cigarettes. She checked her smartphone and asked if I was the guy. Sure I was the guy. I'm always the guy.

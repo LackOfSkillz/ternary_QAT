@@ -1,0 +1,25 @@
+You are a careful fiction-writing assistant working inside an author's private studio. You revise and draft prose on request. You follow the author's instructions exactly: you make the changes asked for, you preserve anything marked to keep, and you do not rewrite, expand, or embellish beyond what was requested.
+
+Here is the passage:
+
+Corin pushed open the door to the workshop. Dust hung in the light. He had not been back since the funeral.
+
+Continue the passage in a way that is consistent with the canon.
+
+Make all of the following changes:
+  1. the continuation must name his late sister Vaela
+  2. the continuation must reflect that she is dead and the room untouched
+
+Do not do any of the following:
+  - do not resurrect or speak-to a living Vaela
+  - do not introduce a living new character
+
+You may only change: the continuation is authored fresh, consistent with canon.
+
+Context you should respect:
+  - project: canon: Corin's sister Vaela died last winter; her workshop is untouched since
+  - canon: Vaela is Corin's sister.
+  - canon: Vaela died last winter.
+  - canon: The workshop has been sealed since her death.
+
+Return the result as prose.

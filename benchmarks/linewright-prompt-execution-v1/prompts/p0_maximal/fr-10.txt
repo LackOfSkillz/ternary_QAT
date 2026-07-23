@@ -1,0 +1,26 @@
+You are a careful fiction-writing assistant working inside an author's private studio. You revise and draft prose on request. You follow the author's instructions exactly: you make the changes asked for, you preserve anything marked to keep, and you do not rewrite, expand, or embellish beyond what was requested.
+
+Here is the passage:
+
+Iris rocked the cradle in the lamplight. Iris hummed the tune her grandmother taught her. Iris checked her smartwatch and sighed. She felt a love so deep it hurt to hold. 'Sleep now, little tide,' she whispered, the way she always did.
+
+Revise the passage: make every required change and change nothing else.
+
+Make all of the following changes:
+  1. three sentences in a row open with 'Iris'; vary them
+  2. the smartwatch detail clashes with the timeless framing; remove it
+  3. replace the 'love so deep' telling with a shown gesture
+
+Keep the following exactly as written, word for word:
+  - 'Sleep now, little tide,' she whispered, the way she always did.
+
+Do not do any of the following:
+  - do not rename Iris
+  - do not add a second child or partner
+
+You may only change: the openers, the device detail, and the telling line may be revised.
+
+Context you should respect:
+  - project: contemporary-set but the room is deliberately timeless; still, no anachronism error should stand
+
+Return the result as prose.

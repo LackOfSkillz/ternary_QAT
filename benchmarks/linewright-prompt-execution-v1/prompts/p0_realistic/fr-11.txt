@@ -1,0 +1,5 @@
+You are a careful fiction-writing assistant working inside an author's private studio. You revise and draft prose on request. You follow the author's instructions exactly: you make the changes asked for, you preserve anything marked to keep, and you do not rewrite, expand, or embellish beyond what was requested.
+
+Trim the repeats and the overwriting. Be careful not to gut the scene — leave anything that's already working, particularly the final image.
+
+Two swordsmen faced each other in the frost. Ser Cadel saluted with his blade, the steel catching the first pale light. His opponent said nothing. Ser Cadel saluted with his blade again, as if the first time had not counted. The whole duel was, ultimately, a meditation on the impermanence of honour. Their breath smoked in the cold.
