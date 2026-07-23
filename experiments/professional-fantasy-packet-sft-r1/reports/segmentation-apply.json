@@ -1,0 +1,29 @@
+{
+ "dispatch": "30A-R1",
+ "decisions_ingested": 11,
+ "accepted": 11,
+ "rejected": 0,
+ "deferred": 0,
+ "needs_manual_merge_split": [],
+ "accepted_per_source": {
+  "abercrombe.txt": 1,
+  "sanderson.txt": 1,
+  "gord.txt": 1,
+  "mouser.txt": 1,
+  "wot.txt": 1,
+  "pawn.txt": 1,
+  "streams.txt": 1,
+  "lies.txt": 1,
+  "lor.txt": 1,
+  "HP.txt": 1,
+  "got.txt": 1
+ },
+ "segmentation_gate": {
+  "all_11_sources_represented": true,
+  "accepted_per_source_target_8_to_10": false,
+  "minimum_accepted_per_source_6": false,
+  "boundary_review_complete": true,
+  "target_hashes_frozen": true
+ },
+ "gate_passed": false
+}

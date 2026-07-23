@@ -1,0 +1,208 @@
+{
+ "dispatch": "30A-R1",
+ "phase": "4-5",
+ "system_prompt_version": "lw-scene-executor-v1",
+ "packet_schema_version": "scene-packet.schema.json@1",
+ "paired_records": 11,
+ "all_valid": true,
+ "records": [
+  {
+   "passage_id": "abercrombe-c01",
+   "source_filename": "abercrombe.txt",
+   "target_word_count": 2394,
+   "target_token_count": 3192,
+   "compositional_constraints": 8,
+   "load_bearing_constraints": 6,
+   "atomic_constraints": 1,
+   "retrieval_risk": "low",
+   "packet_validation": "valid",
+   "issues": {
+    "id_leak": false,
+    "name_leak": [],
+    "compositional_range_ok": true,
+    "atomic_range_ok": true
+   },
+   "recommend_exclusion": false
+  },
+  {
+   "passage_id": "sanderson-c01",
+   "source_filename": "sanderson.txt",
+   "target_word_count": 2826,
+   "target_token_count": 3768,
+   "compositional_constraints": 8,
+   "load_bearing_constraints": 6,
+   "atomic_constraints": 2,
+   "retrieval_risk": "low",
+   "packet_validation": "valid",
+   "issues": {
+    "id_leak": false,
+    "name_leak": [],
+    "compositional_range_ok": true,
+    "atomic_range_ok": true
+   },
+   "recommend_exclusion": false
+  },
+  {
+   "passage_id": "gord-c01",
+   "source_filename": "gord.txt",
+   "target_word_count": 2660,
+   "target_token_count": 3547,
+   "compositional_constraints": 8,
+   "load_bearing_constraints": 6,
+   "atomic_constraints": 1,
+   "retrieval_risk": "low",
+   "packet_validation": "valid",
+   "issues": {
+    "id_leak": false,
+    "name_leak": [],
+    "compositional_range_ok": true,
+    "atomic_range_ok": true
+   },
+   "recommend_exclusion": false
+  },
+  {
+   "passage_id": "mouser-c01",
+   "source_filename": "mouser.txt",
+   "target_word_count": 2396,
+   "target_token_count": 3195,
+   "compositional_constraints": 8,
+   "load_bearing_constraints": 6,
+   "atomic_constraints": 1,
+   "retrieval_risk": "low",
+   "packet_validation": "valid",
+   "issues": {
+    "id_leak": false,
+    "name_leak": [],
+    "compositional_range_ok": true,
+    "atomic_range_ok": true
+   },
+   "recommend_exclusion": false
+  },
+  {
+   "passage_id": "wot-c01",
+   "source_filename": "wot.txt",
+   "target_word_count": 2905,
+   "target_token_count": 3873,
+   "compositional_constraints": 8,
+   "load_bearing_constraints": 6,
+   "atomic_constraints": 1,
+   "retrieval_risk": "low",
+   "packet_validation": "valid",
+   "issues": {
+    "id_leak": false,
+    "name_leak": [],
+    "compositional_range_ok": true,
+    "atomic_range_ok": true
+   },
+   "recommend_exclusion": false
+  },
+  {
+   "passage_id": "pawn-c01",
+   "source_filename": "pawn.txt",
+   "target_word_count": 2397,
+   "target_token_count": 3196,
+   "compositional_constraints": 8,
+   "load_bearing_constraints": 6,
+   "atomic_constraints": 1,
+   "retrieval_risk": "low",
+   "packet_validation": "valid",
+   "issues": {
+    "id_leak": false,
+    "name_leak": [],
+    "compositional_range_ok": true,
+    "atomic_range_ok": true
+   },
+   "recommend_exclusion": false
+  },
+  {
+   "passage_id": "streams-c01",
+   "source_filename": "streams.txt",
+   "target_word_count": 2393,
+   "target_token_count": 3191,
+   "compositional_constraints": 8,
+   "load_bearing_constraints": 6,
+   "atomic_constraints": 1,
+   "retrieval_risk": "low",
+   "packet_validation": "valid",
+   "issues": {
+    "id_leak": false,
+    "name_leak": [],
+    "compositional_range_ok": true,
+    "atomic_range_ok": true
+   },
+   "recommend_exclusion": false
+  },
+  {
+   "passage_id": "lies-c01",
+   "source_filename": "lies.txt",
+   "target_word_count": 2268,
+   "target_token_count": 3024,
+   "compositional_constraints": 8,
+   "load_bearing_constraints": 6,
+   "atomic_constraints": 1,
+   "retrieval_risk": "low",
+   "packet_validation": "valid",
+   "issues": {
+    "id_leak": false,
+    "name_leak": [],
+    "compositional_range_ok": true,
+    "atomic_range_ok": true
+   },
+   "recommend_exclusion": false
+  },
+  {
+   "passage_id": "lor-c01",
+   "source_filename": "lor.txt",
+   "target_word_count": 3713,
+   "target_token_count": 4951,
+   "compositional_constraints": 8,
+   "load_bearing_constraints": 6,
+   "atomic_constraints": 1,
+   "retrieval_risk": "low",
+   "packet_validation": "valid",
+   "issues": {
+    "id_leak": false,
+    "name_leak": [],
+    "compositional_range_ok": true,
+    "atomic_range_ok": true
+   },
+   "recommend_exclusion": false
+  },
+  {
+   "passage_id": "HP-c01",
+   "source_filename": "HP.txt",
+   "target_word_count": 2399,
+   "target_token_count": 3199,
+   "compositional_constraints": 8,
+   "load_bearing_constraints": 6,
+   "atomic_constraints": 1,
+   "retrieval_risk": "low",
+   "packet_validation": "valid",
+   "issues": {
+    "id_leak": false,
+    "name_leak": [],
+    "compositional_range_ok": true,
+    "atomic_range_ok": true
+   },
+   "recommend_exclusion": false
+  },
+  {
+   "passage_id": "got-c01",
+   "source_filename": "got.txt",
+   "target_word_count": 250,
+   "target_token_count": 3181,
+   "compositional_constraints": 8,
+   "load_bearing_constraints": 6,
+   "atomic_constraints": 1,
+   "retrieval_risk": "low",
+   "packet_validation": "valid",
+   "issues": {
+    "id_leak": false,
+    "name_leak": [],
+    "compositional_range_ok": true,
+    "atomic_range_ok": true
+   },
+   "recommend_exclusion": false
+  }
+ ]
+}
