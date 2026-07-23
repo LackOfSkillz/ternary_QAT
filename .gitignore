@@ -27,6 +27,25 @@ experiments/fantasy-compositional-sft-pilot/manifests/compositional-records.json
 experiments/fantasy-compositional-sft-pilot/manifests/replay-records.jsonl
 experiments/fantasy-compositional-sft-pilot/manifests/eval-same-world.jsonl
 
+# --- Dispatch 30A-R1 professional-fantasy-packet-sft-r1: private data-bearing paths ---
+# Verbatim source/target excerpts, offset-bearing passage manifests (offsets into a named book
+# are retrieval keys), model outputs, checkpoints, and reviews NEVER enter git. Committed:
+# schemas/, freeze/, scripts/, reports/ (stats only), the hash-only source manifest, and the
+# ORIGINAL eval sets (original-world + non-fantasy).
+experiments/professional-fantasy-packet-sft-r1/private-data/
+experiments/professional-fantasy-packet-sft-r1/datasets/
+experiments/professional-fantasy-packet-sft-r1/outputs/
+experiments/professional-fantasy-packet-sft-r1/checkpoints/
+experiments/professional-fantasy-packet-sft-r1/reviews/
+experiments/professional-fantasy-packet-sft-r1/manifests/candidate-passages.jsonl
+experiments/professional-fantasy-packet-sft-r1/manifests/accepted-passages.jsonl
+experiments/professional-fantasy-packet-sft-r1/manifests/rejected-passages.jsonl
+experiments/professional-fantasy-packet-sft-r1/manifests/provenance-packets.jsonl
+experiments/professional-fantasy-packet-sft-r1/manifests/atomic-records.jsonl
+experiments/professional-fantasy-packet-sft-r1/manifests/compositional-records.jsonl
+experiments/professional-fantasy-packet-sft-r1/manifests/replay-records.jsonl
+experiments/professional-fantasy-packet-sft-r1/manifests/eval-heldout-professional.jsonl
+
 # --- Model weights / checkpoints (never source-controlled) ---
 *.safetensors
 *.bin

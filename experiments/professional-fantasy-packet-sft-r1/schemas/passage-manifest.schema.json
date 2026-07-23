@@ -1,0 +1,38 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "professional-fantasy-packet-sft-r1/passage-manifest.schema.json",
+  "title": "Professional gold-passage manifest entry (Dispatch 30A-R1)",
+  "description": "One candidate/accepted scene-sized passage. Records offsets + hashes ONLY; the verbatim target text lives in git-ignored private-data/ and is never committed. Because an offset into a named copyrighted file is a retrieval key, candidate/accepted passage manifests are themselves git-ignored.",
+  "type": "object",
+  "required": ["passage_id", "source_filename", "source_sha256", "start_character_offset",
+               "end_character_offset", "target_word_count", "target_sha256", "segmentation_method",
+               "segmentation_confidence", "human_review_status"],
+  "additionalProperties": false,
+  "properties": {
+    "passage_id": {"type": "string"},
+    "source_filename": {"type": "string"},
+    "source_sha256": {"type": "string"},
+    "start_character_offset": {"type": "integer", "minimum": 0},
+    "end_character_offset": {"type": "integer", "minimum": 0},
+    "start_line_if_available": {"type": ["integer", "null"]},
+    "end_line_if_available": {"type": ["integer", "null"]},
+    "target_word_count": {"type": "integer"},
+    "target_token_count": {"type": ["integer", "null"]},
+    "target_sha256": {"type": "string", "description": "hash of the exact target text (text held privately)"},
+    "segmentation_method": {"type": "string"},
+    "segmentation_confidence": {"type": "string", "enum": ["high", "medium", "low"]},
+    "human_review_status": {"type": "string", "enum": ["pending", "accepted", "rejected", "deferred"]},
+    "scene_function": {"type": "string"},
+    "passage_properties": {
+      "type": "object", "additionalProperties": false,
+      "properties": {
+        "viewpoint_distance": {"type": "string"}, "dialogue_ratio": {"type": "number"},
+        "action_density": {"type": "string"}, "exposition_density": {"type": "string"},
+        "interiority_density": {"type": "string"}, "setting_density": {"type": "string"},
+        "emotional_intensity": {"type": "string"}, "number_of_active_characters": {"type": "integer"},
+        "closure_type": {"type": "string"}
+      }
+    },
+    "rejection_reason": {"type": ["string", "null"]}
+  }
+}

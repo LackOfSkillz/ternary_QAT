@@ -1,0 +1,47 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "fantasy-compositional-sft-pilot/review-result.schema.json",
+  "title": "Blind prose review result (Dispatch 30A)",
+  "description": "Blind manuscript-quality review. Absolute 0-4 gate is required for joint success; pairwise comparison is the preferred prose-quality sensitivity measure. Reviewers never see arm, checkpoint, or the manuscript target, and never score by resemblance to Gary's scene.",
+  "type": "object",
+  "required": ["unit_id", "absolute_quality", "quality_pass"],
+  "additionalProperties": false,
+  "properties": {
+    "unit_id": {"type": "string"},
+    "absolute_quality": {"type": "integer", "minimum": 0, "maximum": 4,
+      "description": "0 unusable · 1 major rewrite · 2 usable structure/weak prose · 3 usable draft w/ moderate revision · 4 strong draft w/ light revision"},
+    "quality_pass": {"type": "boolean", "description": "true iff absolute_quality in {3,4}"},
+    "pairwise": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["comparison", "winner"],
+        "additionalProperties": false,
+        "properties": {
+          "comparison": {"type": "string", "enum": ["base_vs_compositional", "atomic_vs_compositional",
+            "compositional_vs_replay"]},
+          "winner": {"type": "string", "enum": ["left", "right", "tie"]},
+          "note": {"type": "string"}
+        }
+      }
+    },
+    "diagnostics": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "signature_stacking_count": {"type": "integer"},
+        "local_cluster_count": {"type": "integer"},
+        "prose_rigidity": {"type": "integer", "minimum": 1, "maximum": 5},
+        "generic_fantasy_language": {"type": "integer", "minimum": 1, "maximum": 5},
+        "scene_momentum": {"type": "integer", "minimum": 1, "maximum": 5},
+        "worldbuilding_integration": {"type": "integer", "minimum": 1, "maximum": 5},
+        "character_distinctiveness": {"type": "integer", "minimum": 1, "maximum": 5},
+        "dialogue_quality": {"type": "integer", "minimum": 1, "maximum": 5},
+        "profile_adherence_diagnostic": {"type": "integer", "minimum": 1, "maximum": 5}
+      }
+    },
+    "fatal_failure": {"type": "boolean"},
+    "fatal_failure_evidence": {"type": "string"},
+    "confidence": {"type": "integer", "minimum": 1, "maximum": 5}
+  }
+}

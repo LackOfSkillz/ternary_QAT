@@ -1,0 +1,101 @@
+experiment_contract:
+  dispatch: 30A-R1
+  name: professional-fantasy-packet-sft-r1
+  owner: Aedan
+  branch: linewright-experiments
+  supersedes: 30A (in full)
+  status: phase_0_frozen
+  frozen_at: "2026-07-23"
+  authorized: true
+  master_untouched_required: true
+
+  primary_question: >
+    Does packet-conditioned SFT using professionally published fantasy scenes as gold completions
+    improve Qwen3-8B's execution of ENTIRELY ORIGINAL LineWright scene packets, without unacceptable
+    memorization, source reconstruction, prose collapse, or loss of generality?
+
+  core_hypothesis: >
+    Full-scene SFT with compositional packets (5-8 load-bearing constraints) improves original-world
+    packet execution more than full-scene SFT with 1-2 explicit constraints, on the SAME professional
+    gold passages. Manipulated variable: explicit constraint density. Both arms: scene packet -> full
+    prose scene. Not micro-edit vs full-scene.
+
+  four_outcomes_to_separate: [transfer, packet_execution_gain, source_attraction, no_useful_movement]
+
+  model:
+    base_model: Qwen/Qwen3-8B
+    exact_revision: b968826d9c46dd6066d109eabc6255188de91218
+    thinking: disabled
+
+  training_recipe:                      # conservative; final config frozen at Phase 10
+    method: LoRA
+    lora_rank: 16
+    lora_alpha: 16
+    lora_dropout: 0.05
+    lora_target_modules: [q_proj, k_proj, v_proj, o_proj, gate_proj, up_proj, down_proj]
+    optimizer: adamw
+    learning_rate: 1.0e-5
+    scheduler: cosine
+    warmup_ratio: 0.03
+    weight_decay: 0.0
+    gradient_clipping: 1.0
+    precision: bf16
+    max_sequence_length: 2048
+    epochs: low (memorization monitored early; final checkpoint not assumed best)
+    seed_policy: single fixed seed 20260723 across arms
+    checkpoint_schedule: [~25-33%, ~50-66%, final]
+
+  arms:
+    A: {id: A, name: frozen_base, training: none}
+    B: {id: B, name: professional_atomic_sft, task: reduced_packet_to_full_professional_scene, load_bearing: 1_to_2}
+    C: {id: C, name: professional_compositional_sft, task: full_packet_to_full_professional_scene, meaningful: 5_to_8}
+    D: {id: D, name: professional_compositional_plus_replay,
+        replay_sources_permitted: [separately_authorized_prose, rights_cleared_fiction, approved_original_fiction, small_instruction_anchor],
+        replay_must_not: repeat more passages from the selected gold scenes,
+        if_no_valid_replay: mark_deferred (do not improvise low-quality replay)}
+
+  single_variable_test:
+    core: Arm_B_vs_Arm_C
+    matched: [source_passage, target_prose, output_length, scene_type, source_distribution, prose_quality, model, optimizer]
+    differs_only: explicit_constraint_density
+    exposure_match_priority: target_token_exposure (atomic input is shorter)
+
+  pilot_scale:
+    professional_sources: 11
+    accepted_passages_per_source: 8_to_10 (min 6)
+    total_unique_passages: 88_to_110 (min 66)
+    passage_words: {preferred: [600, 1400], acceptable: [400, 1800], hard_max: 2200}
+    source_balancing: approximately equal accepted representation per file; NOT proportional to file size
+    max_source_share_of_target_tokens: 0.15
+
+  evaluation:
+    original_world_packets: 30_to_40    # PRIMARY / headline; original worlds, no source canon/names
+    heldout_professional_packets: 11_to_22   # in-distribution secondary; reported separately; never headline
+    non_fantasy_control_packets: 8_to_12
+    structural_novelty_gate: each original-world packet reviewed vs training-packet manifest; distinctive overlap excluded
+    no_similarity_to_gold_scoring: true  # many scenes satisfy one packet; resemblance != quality
+
+  metrics:
+    primary: original_world_joint_success   # all hard constraints pass AND quality in {3,4}
+    co_primary: constraint_level_pass_rate (by type)
+    prose_sensitivity: blind pairwise (base/atomic/compositional/replay)
+    memorization: PRIMARY validity+safety axis (not an appendix)
+
+  headroom_gate:
+    subset: original_world
+    preferred_band: [0.20, 0.65]
+    below_25pct: inspect quality gate / verifiability / near-miss before abandoning (Qwen3-8B is weak); freeze any adjustment before training
+
+  memorization_battery:
+    lexical: [exact_8gram, exact_13gram, exact_20gram, lcs, fraction_covered_by_source_8grams, rare_phrase, proper_name, distinctive_collocation]
+    retrieval_probes: [exact_packet, shortened, paraphrased, names_removed, setting_replaced, beat_removed, beat_order_altered]
+    structural_reconstruction: [same_event_sequence, distinctive_objects, unusual_actions, reveal_order, dialogue_function_sequence, closing_move, recognizable]
+    source_attraction: [leaked_names, repeated_distinctive_phrases, punctuation_extremes, recurrent_architecture, voice_concentration, nearest_source]
+    rule: substantial reproduction or systematic reconstruction FAILS the run even if eval improves
+
+  deferred_not_authorized: [bare_DPO, ORPO, KTO, anchored_preference, QAT, learned_critic, RLHF,
+    public_adapter_release, public_dataset_release, production_replacement, thousands_of_gold_passages,
+    named_author_style_prompts]
+
+  human_gates: [Phase 2 scene-boundary review, Phase 3 acceptance, Phase 7 novelty review,
+    Phase 9 headroom quality review, Phase 14 blind review + adjudication]

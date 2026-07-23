@@ -1,0 +1,125 @@
+{
+ "dispatch": "30A",
+ "phase": 3,
+ "verifier_version": "v1",
+ "verifier_hash": "11e4d9f1bd681ca8d9cc9adc73071ca35ed6b972e981c29a44e44daf68471e3c",
+ "fixtures": 14,
+ "checks_total": 53,
+ "checks_correct": 53,
+ "fixture_check_accuracy": 1.0,
+ "false_positives": 0,
+ "false_negatives": 0,
+ "all_fixtures_pass": true,
+ "categories_covered": [
+  "ambiguous",
+  "clear_fail",
+  "clear_pass",
+  "dialogue_heavy",
+  "long_scene",
+  "present_tense",
+  "protected_false_positive",
+  "real_stack",
+  "short_scene",
+  "varied_punctuation"
+ ],
+ "rows": [
+  {
+   "id": "f01_clear_pass",
+   "cat": "clear_pass",
+   "mismatches": [],
+   "stacks": 0,
+   "hard_all_pass": true
+  },
+  {
+   "id": "f02_fail_pov_first_person",
+   "cat": "clear_fail",
+   "mismatches": [],
+   "stacks": 0,
+   "hard_all_pass": false
+  },
+  {
+   "id": "f03_fail_forbidden",
+   "cat": "clear_fail",
+   "mismatches": [],
+   "stacks": 0,
+   "hard_all_pass": false
+  },
+  {
+   "id": "f04_fail_missing_required",
+   "cat": "clear_fail",
+   "mismatches": [],
+   "stacks": 0,
+   "hard_all_pass": false
+  },
+  {
+   "id": "f05_ambiguous_tense_low_conf",
+   "cat": "ambiguous",
+   "mismatches": [],
+   "stacks": 0,
+   "hard_all_pass": true
+  },
+  {
+   "id": "f06_protected_false_positive",
+   "cat": "protected_false_positive",
+   "mismatches": [],
+   "stacks": 0,
+   "hard_all_pass": true
+  },
+  {
+   "id": "f07_real_stack",
+   "cat": "real_stack",
+   "mismatches": [],
+   "stacks": 1,
+   "hard_all_pass": true
+  },
+  {
+   "id": "f08_dialogue_heavy_first_person_ok",
+   "cat": "dialogue_heavy",
+   "mismatches": [],
+   "stacks": 0,
+   "hard_all_pass": true
+  },
+  {
+   "id": "f09_varied_punctuation_isolated",
+   "cat": "varied_punctuation",
+   "mismatches": [],
+   "stacks": 0,
+   "hard_all_pass": true
+  },
+  {
+   "id": "f10_short_scene",
+   "cat": "short_scene",
+   "mismatches": [],
+   "stacks": 0,
+   "hard_all_pass": true
+  },
+  {
+   "id": "f11_long_scene",
+   "cat": "long_scene",
+   "mismatches": [],
+   "stacks": 0,
+   "hard_all_pass": true
+  },
+  {
+   "id": "f12_present_tense_pass",
+   "cat": "present_tense",
+   "mismatches": [],
+   "stacks": 0,
+   "hard_all_pass": true
+  },
+  {
+   "id": "f13_ending_missing",
+   "cat": "clear_fail",
+   "mismatches": [],
+   "stacks": 0,
+   "hard_all_pass": false
+  },
+  {
+   "id": "f14_knowledge_boundary_violation",
+   "cat": "clear_fail",
+   "mismatches": [],
+   "stacks": 0,
+   "hard_all_pass": false
+  }
+ ]
+}

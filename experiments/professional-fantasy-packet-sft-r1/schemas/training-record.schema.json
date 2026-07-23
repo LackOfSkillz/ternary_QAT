@@ -1,0 +1,64 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "professional-fantasy-packet-sft-r1/training-record.schema.json",
+  "title": "SFT training record — professional gold target (Dispatch 30A-R1)",
+  "description": "One packet-to-scene SFT record. The gold target is an UNCHANGED professional passage (offsets+hash; text held in git-ignored private-data/). Two packet representations: a detailed provenance_packet (verification only) and an abstracted training_packet (model input, retrieval-key-free). Records embed target text only in git-ignored manifests/datasets.",
+  "type": "object",
+  "required": ["record_id", "arm", "training_packet", "target", "retrieval_risk", "validation"],
+  "additionalProperties": false,
+  "properties": {
+    "record_id": {"type": "string"},
+    "arm": {"type": "string", "enum": ["atomic", "compositional", "replay", "instruction_anchor"]},
+    "provenance_packet": {"type": "object", "additionalProperties": true,
+      "description": "detailed internal scene structure used to VERIFY the target satisfies the packet; never shown to the model"},
+    "training_packet": {"$ref": "scene-packet.schema.json"},
+    "abstraction_notes": {"type": "string"},
+    "retrieval_risk": {"type": "string", "enum": ["low", "medium", "high", "approved_medium"]},
+    "target": {
+      "type": "object",
+      "required": ["source_filename", "source_sha256", "start_character_offset", "end_character_offset",
+                   "target_hash", "target_word_count", "target_text_unchanged"],
+      "additionalProperties": false,
+      "properties": {
+        "source_filename": {"type": "string"},
+        "source_sha256": {"type": "string"},
+        "start_character_offset": {"type": "integer"},
+        "end_character_offset": {"type": "integer"},
+        "target_hash": {"type": "string"},
+        "target_word_count": {"type": "integer"},
+        "target_token_count": {"type": ["integer", "null"]},
+        "target_text_unchanged": {"const": true},
+        "normalizations_applied": {"type": "array", "items": {"type": "string",
+          "enum": ["encoding_cleanup", "line_endings", "page_header_removal",
+                   "extraction_artifact_removal", "whitespace"]}}
+      }
+    },
+    "pairing": {"type": "object", "additionalProperties": false,
+      "properties": {"matched_record_id": {"type": "string"}, "same_target_as_matched": {"type": "boolean"}}},
+    "constraint_accounting": {"type": "object", "additionalProperties": false,
+      "properties": {"meaningful_constraints": {"type": "integer"}, "load_bearing_constraints": {"type": "integer"}}},
+    "validation": {
+      "type": "object",
+      "required": ["source_file_in_authorized_list", "source_hash_present", "passage_offsets_present",
+                   "target_hash_present", "target_text_unchanged", "coherent_scene_unit",
+                   "packet_schema_valid", "packet_verified_against_target", "contradicted_required_constraints",
+                   "ambiguous_required_constraints", "evaluation_overlap", "duplicate_target"],
+      "additionalProperties": false,
+      "properties": {
+        "source_file_in_authorized_list": {"const": true},
+        "source_hash_present": {"const": true},
+        "passage_offsets_present": {"const": true},
+        "target_hash_present": {"const": true},
+        "target_text_unchanged": {"const": true},
+        "coherent_scene_unit": {"const": true},
+        "packet_schema_valid": {"const": true},
+        "packet_verified_against_target": {"const": true},
+        "contradicted_required_constraints": {"const": 0},
+        "ambiguous_required_constraints": {"const": 0},
+        "evaluation_overlap": {"const": false},
+        "duplicate_target": {"const": false},
+        "hidden_constraint_bundle": {"type": "boolean", "description": "atomic only; must be false"}
+      }
+    }
+  }
+}

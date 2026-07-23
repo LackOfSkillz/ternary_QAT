@@ -1,0 +1,67 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "professional-fantasy-packet-sft-r1/overlap-result.schema.json",
+  "title": "Source-overlap / memorization result (Dispatch 30A-R1)",
+  "description": "Per-output overlap against the eleven-file corpus. Records COUNTS and match LOCATIONS (source file + offset), never the matched text itself, so results can be summarized without reproducing source prose. Full overlap-result files live under git-ignored outputs/.",
+  "type": "object",
+  "required": ["output_id", "arm", "checkpoint", "lexical", "flags"],
+  "additionalProperties": false,
+  "properties": {
+    "output_id": {"type": "string"},
+    "arm": {"type": "string"},
+    "checkpoint": {"type": "string"},
+    "lexical": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "exact_8gram_matches": {"type": "integer"},
+        "exact_13gram_matches": {"type": "integer"},
+        "exact_20gram_matches": {"type": "integer"},
+        "longest_common_substring_words": {"type": "integer"},
+        "output_fraction_covered_by_source_8grams": {"type": "number"},
+        "rare_phrase_matches": {"type": "integer"},
+        "proper_name_matches": {"type": "integer"},
+        "distinctive_collocation_matches": {"type": "integer"},
+        "matched_source_files": {"type": "array", "items": {"type": "string"}},
+        "match_locations": {"type": "array", "items": {
+          "type": "object", "additionalProperties": false,
+          "properties": {"source_filename": {"type": "string"}, "source_offset": {"type": "integer"},
+                         "output_offset": {"type": "integer"}, "length_words": {"type": "integer"}}}}
+      }
+    },
+    "structural_reconstruction": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "same_event_sequence": {"type": "boolean"},
+        "same_distinctive_objects": {"type": "boolean"},
+        "same_unusual_character_actions": {"type": "boolean"},
+        "same_reveal_order": {"type": "boolean"},
+        "same_dialogue_function_sequence": {"type": "boolean"},
+        "same_closing_move": {"type": "boolean"},
+        "source_scene_recognizable": {"type": "boolean"},
+        "reviewer": {"type": "string"}, "confidence": {"type": "string"}
+      }
+    },
+    "source_attraction": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "nearest_source_file": {"type": "string"},
+        "leaked_proper_names": {"type": "integer"},
+        "repeated_distinctive_phrases": {"type": "integer"},
+        "source_voice_concentration": {"type": "number"}
+      }
+    },
+    "flags": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "substantial_reproduction": {"type": "boolean"},
+        "structural_reconstruction": {"type": "boolean"},
+        "source_name_leakage": {"type": "boolean"},
+        "review_required": {"type": "boolean"}
+      }
+    }
+  }
+}

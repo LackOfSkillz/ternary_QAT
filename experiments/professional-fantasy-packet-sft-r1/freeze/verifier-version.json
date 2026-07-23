@@ -1,0 +1,32 @@
+{
+ "dispatch": "30A-R1",
+ "status": "frozen",
+ "provenance": "verifier.py migrated unchanged from the paused Dispatch-30A pilot (validated 14/14 fixtures there); re-validated in this root at Phase 8.",
+ "freezes_at_phase": 8,
+ "planned_deterministic_checks": [
+  "viewpoint_person",
+  "tense",
+  "required_entities",
+  "forbidden_entities",
+  "explicit_canon_facts",
+  "forbidden_events",
+  "protected_text_if_any",
+  "scene_boundary",
+  "ending_state_markers",
+  "knowledge_leakage_markers",
+  "signature_stacking",
+  "target_length_contract"
+ ],
+ "planned_semantic_checks": [
+  "meaningful_beat_completion",
+  "scene_purpose_fulfillment",
+  "implied_canon",
+  "knowledge_boundary_meaning",
+  "ending_state_interpretation",
+  "unauthorized_invention",
+  "structural_reconstruction"
+ ],
+ "verifier_version": "v1",
+ "verifier_hash": "11e4d9f1bd681ca8d9cc9adc73071ca35ed6b972e981c29a44e44daf68471e3c",
+ "fixture_accuracy": 1.0
+}

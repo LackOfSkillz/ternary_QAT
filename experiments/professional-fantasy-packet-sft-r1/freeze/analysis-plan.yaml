@@ -1,0 +1,61 @@
+analysis_plan:
+  dispatch: 30A-R1
+  frozen_at: "2026-07-23"
+  pre_registered: true
+
+  units: {packet: primary paired unit, constraint: co-primary unit}
+
+  primary_binary_joint_success:
+    subset: original_world
+    method: exact McNemar (or mid-p) on paired packets
+    report_cells: [both_pass, both_fail, compositional_only_pass, base_only_pass, atomic_only_pass]
+    forbidden: relying only on unpaired percentages or a single p-value
+
+  constraint_level:
+    report: [raw_passed, total, rate_by_arm, delta_by_type]
+    intervals: packet-clustered / bootstrap (constraints within a packet not independent)
+
+  arm_comparisons_of_record:
+    - base_vs_atomic
+    - base_vs_compositional        # headline
+    - atomic_vs_compositional      # single-variable causal test
+    - compositional_vs_replay      # if Arm D runs
+
+  memorization_is_primary:
+    reporting: lexical + structural-reconstruction + source-attraction, per source and per checkpoint
+    gate: substantial reproduction or systematic reconstruction invalidates a success regardless of eval gain
+
+  transfer_interpretation:
+    original_world_gain: general packet execution / craft transfer (the claim)
+    heldout_professional_gain_only: in-distribution learning or retrieval -> NOT the headline
+    non_fantasy_equal_gain: general instruction-following rather than fantasy-specific craft
+    source_collapse: outputs concentrate toward one file/author -> not a clean success
+
+  checkpoint_selection:
+    rule: frozen before unblinding prose review; never on training loss alone
+    best_may_precede_final: true
+    track_per_checkpoint: [loss, original_world_joint_success, constraint_pass_rate, quality_pass_rate,
+                           source_overlap_rate, training_target_reconstruction_rate]
+
+  strong_success_requires:
+    - original_world_joint_success improves
+    - paired rescues clearly exceed regressions
+    - constraint-level pass rate improves
+    - beats atomic arm
+    - manuscript quality not degraded
+    - source overlap within acceptable bounds
+    - structural reconstruction not systematic
+    - source-name leakage not systematic
+    - checkpoint curve supports the result
+
+  failure_conditions:
+    - gains only on held-out professional passages
+    - atomic >= compositional
+    - original-world outputs reconstruct training scenes
+    - source names / distinctive phrases leak regularly
+    - adapter collapses toward one source
+    - manuscript quality declines
+    - gains vanish outside training-like structures
+    - benchmark or verifier invalid
+
+  overclaim_guard: pilot is small; interpret coherent movement across metrics, not a single threshold

@@ -1,0 +1,65 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "fantasy-compositional-sft-pilot/verifier-result.schema.json",
+  "title": "Packet-execution verifier result (Dispatch 30A)",
+  "description": "Per-output verification against a scene packet. Deterministic checks return booleans + evidence; semantic checks are advisory and NEVER collapsed into a false-deterministic pass.",
+  "type": "object",
+  "required": ["output_id", "packet_id", "verifier_version", "deterministic", "semantic",
+               "constraint_level", "hard_constraints_all_pass"],
+  "additionalProperties": false,
+  "properties": {
+    "output_id": {"type": "string"},
+    "packet_id": {"type": "string"},
+    "verifier_version": {"type": "string"},
+    "verifier_hash": {"type": "string"},
+    "deterministic": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["check", "passed"],
+        "additionalProperties": false,
+        "properties": {
+          "check": {"type": "string", "enum": ["viewpoint", "tense", "required_name_or_fact",
+            "protected_text", "forbidden_event", "scene_boundary", "ending_state",
+            "required_object_presence", "knowledge_boundary_lexical", "signature_stacking",
+            "profile_surface_metric"]},
+          "target": {"type": "string"},
+          "passed": {"type": "boolean"},
+          "evidence_span": {"type": "string"}
+        }
+      }
+    },
+    "semantic": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["check", "finding", "confidence", "review_required"],
+        "additionalProperties": false,
+        "properties": {
+          "check": {"type": "string", "enum": ["meaningful_beat_completion", "scene_purpose_fulfillment",
+            "reveal_timing", "canon_inference", "knowledge_boundary_meaning", "natural_exposition",
+            "emotional_reversal"]},
+          "finding": {"type": "string", "enum": ["pass", "fail", "ambiguous"]},
+          "evidence_span": {"type": "string"},
+          "confidence": {"type": "string", "enum": ["high", "moderate", "low"]},
+          "review_required": {"type": "boolean"}
+        }
+      }
+    },
+    "constraint_level": {
+      "type": "object",
+      "required": ["passed_required", "total_required", "by_type"],
+      "additionalProperties": false,
+      "properties": {
+        "passed_required": {"type": "integer"},
+        "total_required": {"type": "integer"},
+        "by_type": {"type": "object", "additionalProperties": {
+          "type": "object", "properties": {"passed": {"type": "integer"}, "total": {"type": "integer"}}}}
+      }
+    },
+    "hard_constraints_all_pass": {"type": "boolean",
+      "description": "true only if every deterministic hard constraint passes AND no semantic check is a confirmed fail; ambiguous/low-confidence -> review_required"},
+    "source_overlap": {"type": "object", "additionalProperties": true,
+      "description": "professional + training-target overlap screening summary for this output"}
+  }
+}

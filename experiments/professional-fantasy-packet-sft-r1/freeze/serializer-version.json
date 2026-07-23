@@ -1,0 +1,22 @@
+{
+  "dispatch": "30A-R1",
+  "packet_schema_version": "scene-packet.schema.json@1",
+  "serializer_version": "lw-scene-packet-serializer-v1",
+  "system_prompt_version": "lw-scene-executor-v1",
+  "scene_packet_wrapper": "LineWright production scene-packet serializer (not a simplified NL summary)",
+  "craft_profile_wrapper": "measured/declared attributes only; no named-author style prompts",
+  "output_contract": "prose_scene",
+  "assistant_prefix": "none",
+  "stop_conditions": "model turn end; no thinking block permitted",
+  "model_visible_exclusions": ["source_filename", "author_name", "book_title", "passage_id", "distinctive_source_wording"],
+  "generation_settings": {
+    "thinking_mode": "disabled",
+    "temperature": 0.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": "default",
+    "seed_policy": "fixed 20260723 across all arms and checkpoints",
+    "note": "identical decoding for every arm/checkpoint; no per-adapter tuning. max_output_tokens set per eval scene-length band at Phase 7 freeze; raw outputs stored before validators/review."
+  },
+  "frozen_at": "2026-07-23"
+}

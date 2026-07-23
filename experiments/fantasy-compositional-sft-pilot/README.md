@@ -1,5 +1,9 @@
 # Fantasy Compositional SFT Pilot (Dispatch 30A)
 
+> **⛔ SUPERSEDED (2026-07-23) by Dispatch 30A-R1** (`experiments/professional-fantasy-packet-sft-r1/`).
+> This pilot is retained for provenance only. Its reusable infrastructure (verifier v1, schemas,
+> calibration) was migrated to R1 unchanged. Do not resume work here.
+
 > **⏸ PAUSED (2026-07-23) — source-role change.** The eleven professional files will now supply
 > selected scene-sized **gold targets** (not instrumentation only). A replacement dispatch will
 > redesign the data plan. Do not select scenes, back-translate packets, freeze a corpus, build

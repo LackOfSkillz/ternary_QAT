@@ -1,0 +1,50 @@
+source_policy:
+  dispatch: 30A-R1
+  supersedes: 30A (professional-files-as-instrumentation-only)
+  frozen_at: "2026-07-23"
+
+  authorized_sources:
+    count: 11
+    manifest: manifests/professional-source-files.json   # bound by sha256
+    note: >
+      The eleven professional files are authorized for this PRIVATE, LOCAL research experiment as
+      direct gold-target sources. Selected scene-sized passages become unchanged SFT response targets.
+
+  three_roles:
+    gold_training_target_source: selected coherent scene-sized passages -> unchanged response targets
+    professional_reference_band_source: sentence/punctuation ranges, anti-slop null distribution, craft measurement
+    memorization_comparison_source: every adapter output is screened against the full eleven-file corpus
+
+  target_integrity:
+    target_text: unchanged except mechanical normalization (encoding, line-endings, page-header/artifact removal, whitespace)
+    prohibited: [name_replacement, punctuation_modernization, teacher_rewriting, dialogue_rewriting,
+                 sentence_shortening, paraphrase, stylistic_homogenization, manual_improvement,
+                 adding_content_to_satisfy_packet]
+    rule: if a packet does not match the source, fix the packet or reject the passage — never modify the gold target
+
+  model_visible_prompt:
+    must_not_include: [source_filename, author_name, book_title, passage_id, distinctive_source_wording]
+    named_author_style_prompts: prohibited     # no "write like <author>"
+
+  retrieval_key_control:
+    two_representations: [provenance_packet (verification only), training_packet (model input)]
+    training_packet_must_not_encode: [source_specific_names_when_unnecessary, exact_quoted_dialogue,
+      exact_object_sequences, distinctive_metaphors, uncommon_wording, indexing_choreography,
+      unique_punchlines, exact_final_sentence_content, unique_symbolic_objects]
+    high_retrieval_risk: revise_or_exclude
+
+  privacy_restrictions:            # STOP condition if violated
+    distribution_scope: private_local_research
+    source_text_commit: prohibited
+    dataset_publication: prohibited
+    adapter_publication: prohibited_without_separate_review
+    model_distribution: prohibited_without_separate_review
+    committed_artifacts: [schemas, freeze, scripts, stats-only reports, hash-only source manifest,
+                          original-world + non-fantasy eval sets]
+    git_ignored_artifacts: [private-data/ (verbatim targets + normalized sources), datasets/, outputs/,
+                            checkpoints/, reviews/, offset-bearing passage + record + heldout manifests]
+
+  assistant_output_rule: >
+    Source prose is never reproduced in assistant chat output or any committed file. Verbatim
+    excerpts are handled only in git-ignored local storage by offset+hash; overlap/eval results
+    record counts and locations, not matched text.
