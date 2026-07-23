@@ -7,6 +7,11 @@ build/
 dist/
 *.egg-info/
 
+# --- Raw literary reference corpus (never source-controlled) ---
+# Third-party, in-copyright prose kept locally as a style/gold-standard reference only.
+# Must never enter git history or any redistributable artifact.
+training text/
+
 # --- Model weights / checkpoints (never source-controlled) ---
 *.safetensors
 *.bin
