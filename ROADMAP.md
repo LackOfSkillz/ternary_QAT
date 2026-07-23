@@ -614,7 +614,8 @@ model-training sequence and does **not** displace broader LineWright application
 | 25 | provisional threshold lock, diagnostic validation, branch decision → **test_stronger_base** | done |
 | 26 | controlled stronger-base comparison → **run_one_bounded_confirmation, presumptive foundation Qwen3-8B** | done |
 | 27A | Qwen3-8B prose + Q4 confirmation → **provisional `confirm_Qwen3_8B_foundation`** (Q4 preserves quality; human blind gate open) | done (human gate pending) |
-| 27B | Qwen3-8B LoRA pilot — **A.3 built/audited/frozen + LoRA config + eval subset frozen; training HELD** pending human confirmation | prepped, training held |
+| 27B | Qwen3-8B LoRA pilot — trained + curve + focused-revision audit + blind review → **`revise_Dataset_A3`** (LoRA neutral, non-destructive; QAT denied) | done |
+| 28 | scale + curate Dataset A.3 (focused-revision density, teacher diversity, Gate-3), then retrain under the frozen recipe | next |
 | 25 | fast battery validation & diagnostic engine | planned |
 | 26 | full battery construction | planned |
 | 27 | full battery baseline & certification | planned |

@@ -25,6 +25,31 @@ threshold change, no weights published, `master` untouched.**
   That human gate is open, so **Phase B (Dataset A.3 + LoRA) is BLOCKED** until it passes. 5 tests;
   Gate 0 zero drift.
 
+### Dispatch 27 Phase B — Conservative Qwen3-8B LoRA feasibility pilot (2026-07-22)
+
+Ran the confirmed foundation's first LineWright LoRA pilot end to end and made the advancement
+decision. **No production claim, no weights published, `master` untouched. Dataset A/A.2/A.3, Fast
+Battery v1, and frozen thresholds all unchanged; QAT NOT launched.**
+
+- **Foundation confirmed by Gary** (after the two diverse blind reviews); the ~0.20 base
+  focused-revision fatal rate became the pilot's testable target.
+- **Training (integrity = valid):** Qwen3-8B @ `b968826d` (thinking disabled), LoRA rank16/α16 on
+  the frozen Dataset A.3 (train hash matches), 42 train / 6 val, 21 steps / ~1 epoch, 43.6M trainable
+  params. Val loss monotone-decreases (best step-18); grad norms finite; no NaN; no QAT.
+- **Checkpoint curve (base + 8 checkpoints × 14 frozen items = 126 gens):** the LoRA is
+  **mechanically NEUTRAL** — identical to base on every metric (mechanical 0.786, core-prose 0.857,
+  structured 1.0, canon 1.0) with **zero critical regressions, zero severe slop, zero token-cap,
+  zero reasoning leak.**
+- **Focused-revision audit (primary target, 3-fix probe):** base unchanged-return **0.667**; every
+  checkpoint identical at 0.667 — the LoRA does not touch the target; protected line preserved (1.0).
+- **Blind base-vs-`step-18` review** (2 calibrated blind LM reviewers; human review waived →
+  model-review-only, NOT human-confirmed): base prose **3.455 == LoRA 3.455**, **prose_gain 0.0**,
+  0 new fatal — the frozen effect floor (≥0.25) is not cleared.
+- **Decision: `revise_Dataset_A3`** — the pilot is non-destructive but neutral (42 records too small
+  to move the target); scale + curate A.3 (higher focused-revision density, teacher diversification,
+  Gate-3 review) under the same recipe. **QAT denied** (checkpoint not selected). 10 tests; Gate 0
+  zero drift.
+
 ### Dispatch 27A — Blind prose review kits for external reviewers (2026-07-22)
 
 Packaged the frozen Phase A blind materials into two self-contained reviewer ZIP kits so the human

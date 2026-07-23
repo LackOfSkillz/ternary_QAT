@@ -179,3 +179,18 @@ Battery** (LWDB). Architecture:
   Branch: **`run_one_bounded_confirmation`, presumptive foundation Qwen3-8B** — a bounded
   human/quantized blind prose confirmation precedes any foundation commit. Voice-preservation is
   weak across ALL bases (~2.7–2.9/5) and becomes a fine-tune target once the base is fixed.
+
+### Dispatch 27 Phase B — first Qwen3-8B LoRA feasibility pilot (result: revise Dataset A.3)
+
+- Foundation Qwen3-8B **confirmed** (Gary, after two diverse blind reviews). Ran the conservative
+  LoRA pilot (rank16/α16, LR 1e-5, ~1 epoch) on the frozen 48-record Dataset A.3 (42 train / 6 val),
+  integrity **valid** (base rev + dataset hash match; finite; no QAT).
+- Result is **neutral and non-destructive**: the checkpoint curve is identical to base on every
+  metric with **zero critical regressions**; the focused-revision unchanged-return rate is 0.667 for
+  base AND every checkpoint (the LoRA does not touch the primary target); the blind base-vs-step-18
+  prose gain is **0.0** (< the 0.25 effect floor), 0 new fatal. Decision: **`revise_Dataset_A3`** —
+  42 records is too small/thin to move the behaviour; scale + curate A.3 (focused-revision density,
+  teacher diversification, Gate-3 review) and retrain under the same frozen recipe. **QAT denied.**
+- Lesson reinforced: a LoRA advances only on a blind-confirmed behavioural gain with zero critical
+  regressions — training completing and loss falling is not sufficient. A neutral pilot is a valid,
+  honest outcome that points at the dataset, not the recipe or the base.
