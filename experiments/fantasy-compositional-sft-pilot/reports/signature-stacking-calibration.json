@@ -1,0 +1,94 @@
+{
+ "dispatch": "30A",
+ "phase": 3,
+ "detector": "signature_families v1",
+ "corpus_files": 11,
+ "note": "counts/percentages only; no prose stored",
+ "overall": {
+  "sentences": 201051,
+  "pct_0_families": 84.01,
+  "pct_1_family": 13.94,
+  "pct_2_families": 1.83,
+  "pct_3plus_families": 0.23,
+  "pct_2plus_stacked": 2.06,
+  "family_prevalence_pct": {
+   "filter_word": 4.86,
+   "em_dash_aside": 4.42,
+   "semicolon": 4.34,
+   "adverb_cluster": 2.36,
+   "simile": 1.91,
+   "participial_opener": 0.22,
+   "sensory_of": 0.17,
+   "body_cue": 0.02
+  }
+ },
+ "per_file": {
+  "abercrombe.txt": {
+   "sentences": 17803,
+   "pct_0_families": 91.66,
+   "pct_1_family": 7.85,
+   "pct_2plus_stacked": 0.48
+  },
+  "sanderson.txt": {
+   "sentences": 1291,
+   "pct_0_families": 88.23,
+   "pct_1_family": 10.46,
+   "pct_2plus_stacked": 1.32
+  },
+  "gord.txt": {
+   "sentences": 6649,
+   "pct_0_families": 82.96,
+   "pct_1_family": 15.42,
+   "pct_2plus_stacked": 1.62
+  },
+  "mouser.txt": {
+   "sentences": 4389,
+   "pct_0_families": 78.67,
+   "pct_1_family": 17.79,
+   "pct_2plus_stacked": 3.53
+  },
+  "wot.txt": {
+   "sentences": 8120,
+   "pct_0_families": 89.29,
+   "pct_1_family": 10.06,
+   "pct_2plus_stacked": 0.65
+  },
+  "pawn.txt": {
+   "sentences": 6977,
+   "pct_0_families": 89.52,
+   "pct_1_family": 9.47,
+   "pct_2plus_stacked": 1.0
+  },
+  "streams.txt": {
+   "sentences": 6753,
+   "pct_0_families": 88.63,
+   "pct_1_family": 10.41,
+   "pct_2plus_stacked": 0.96
+  },
+  "lies.txt": {
+   "sentences": 12998,
+   "pct_0_families": 80.93,
+   "pct_1_family": 16.63,
+   "pct_2plus_stacked": 2.44
+  },
+  "lor.txt": {
+   "sentences": 32856,
+   "pct_0_families": 83.06,
+   "pct_1_family": 14.64,
+   "pct_2plus_stacked": 2.3
+  },
+  "HP.txt": {
+   "sentences": 78902,
+   "pct_0_families": 79.85,
+   "pct_1_family": 17.16,
+   "pct_2plus_stacked": 2.99
+  },
+  "got.txt": {
+   "sentences": 24313,
+   "pct_0_families": 91.21,
+   "pct_1_family": 8.17,
+   "pct_2plus_stacked": 0.63
+  }
+ },
+ "interpretation": "Professional prose stacks >=2 signature families in 2.06% of sentences. A low rate supports the anti-slop floor (any stacked sentence in a generated scene is worth inspection); a high rate would mean the detector over-fires and needs loosening before it gates model output."
+}

@@ -1,5 +1,13 @@
 # Fantasy Compositional SFT Pilot (Dispatch 30A)
 
+> **⏸ PAUSED (2026-07-23) — source-role change.** The eleven professional files will now supply
+> selected scene-sized **gold targets** (not instrumentation only). A replacement dispatch will
+> redesign the data plan. Do not select scenes, back-translate packets, freeze a corpus, build
+> atomic/compositional pairing, split train/eval, or run any LoRA. Completed scaffolding, schemas,
+> scripts, verifier, and calibration are preserved and remain valid. The `source_roles` section of
+> `freeze/experiment-contract.yaml` is **superseded**. See
+> [`reports/PAUSE-30A-source-role-change.md`](reports/PAUSE-30A-source-role-change.md).
+
 The first controlled fantasy-fiction LoRA experiment for LineWright. It tests one causal question:
 
 > Does compositional packet-to-scene SFT improve useful fantasy prose on **entirely new worlds**
