@@ -1,0 +1,14 @@
+{
+ "dispatch": "30A-R1",
+ "rejection_audit": [
+  {
+   "passage_id": "lor-p01",
+   "source_filename": "lor.txt",
+   "target_sha256": "a2a484407bc44331fa8da2633b4e4108e2b6c19134522f9cd750ff5b4a06363f",
+   "status": "rejected_and_deleted",
+   "reason": "non_story_intro_or_framing_material",
+   "eligible_for_reuse": false,
+   "note": "seg-v1 grabbed offset~0 (title/ring-verse/contents/framing), not a story scene"
+  }
+ ]
+}

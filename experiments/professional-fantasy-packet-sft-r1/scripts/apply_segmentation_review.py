@@ -34,7 +34,8 @@ def main():
             continue
         r = dict(rows[pid])
         decision = d.get("decision", "")
-        r["review"] = {"decision": decision, "ratings": d.get("ratings", {}),
+        r["review"] = {"decision": decision, "reject_reason": d.get("reject_reason", ""),
+                       "ratings": d.get("ratings", {}),
                        "scene_function": d.get("scene_function", ""), "notes": d.get("notes", ""),
                        "reviewer": d.get("reviewer"), "timestamp": d.get("timestamp")}
         if decision in ("adjust_start", "adjust_end", "accept") and (d.get("adjusted_start") is not None or d.get("adjusted_end") is not None):
@@ -54,8 +55,9 @@ def main():
         elif decision == "reject":
             r["human_review_status"] = "rejected"
             rejected.append(r)
-        elif decision in ("merge_with_previous", "merge_with_next", "split"):
-            needs_manual.append(pid)
+        elif decision == "replace_candidate":
+            r["human_review_status"] = "replace_requested"
+            rejected.append(r); needs_manual.append(pid)
         elif decision == "defer":
             deferred.append(pid)
 

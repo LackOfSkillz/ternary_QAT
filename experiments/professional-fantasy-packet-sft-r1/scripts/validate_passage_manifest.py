@@ -49,8 +49,8 @@ def main():
             errors.append(f"{pid}: target_sha256 does not recover from source offsets")
         if len(seg.split()) != r["target_word_count"]:
             errors.append(f"{pid}: word_count mismatch")
-        if not (400 <= r["target_word_count"] <= 1800):
-            errors.append(f"{pid}: word_count {r['target_word_count']} out of [400,1800]")
+        if not (1400 <= r["target_word_count"] <= 4500):
+            errors.append(f"{pid}: word_count {r['target_word_count']} out of [1400,4500]")
     ok = not errors
     report = {"dispatch": "30A-R1", "candidates": len(rows), "sources": len(per_source),
               "per_source": per_source, "all_11_sources": len(per_source) == 11,

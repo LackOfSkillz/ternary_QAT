@@ -1,0 +1,139 @@
+{
+ "dispatch": "30A-R1",
+ "harvest_version": "harvest-v1",
+ "calibration_batch": [
+  {
+   "source_filename": "abercrombe.txt",
+   "passage_id": "abercrombe-c01",
+   "word_count": 2394,
+   "narrative_region": "early",
+   "approximate_source_percent": 21.5,
+   "chapter_or_section": "body-ch1",
+   "scene_function": "exposition_or_discovery",
+   "boundary_method": "chapter+scene_merge",
+   "confidence": "high",
+   "assigned": "early/dialogue"
+  },
+  {
+   "source_filename": "sanderson.txt",
+   "passage_id": "sanderson-c01",
+   "word_count": 2826,
+   "narrative_region": "middle",
+   "approximate_source_percent": 46.4,
+   "chapter_or_section": "body-ch0",
+   "scene_function": "exposition_or_discovery",
+   "boundary_method": "ornament+scene_merge",
+   "confidence": "high",
+   "assigned": "middle/action"
+  },
+  {
+   "source_filename": "gord.txt",
+   "passage_id": "gord-c01",
+   "word_count": 2660,
+   "narrative_region": "late",
+   "approximate_source_percent": 79.7,
+   "chapter_or_section": "body-ch25",
+   "scene_function": "exposition_or_discovery",
+   "boundary_method": "chapter+scene_merge",
+   "confidence": "high",
+   "assigned": "late/discovery"
+  },
+  {
+   "source_filename": "mouser.txt",
+   "passage_id": "mouser-c01",
+   "word_count": 2396,
+   "narrative_region": "middle",
+   "approximate_source_percent": 52.8,
+   "chapter_or_section": "body-ch9",
+   "scene_function": "exposition_or_discovery",
+   "boundary_method": "length+scene_merge",
+   "confidence": "medium",
+   "assigned": "middle/worldbuilding"
+  },
+  {
+   "source_filename": "wot.txt",
+   "passage_id": "wot-c01",
+   "word_count": 2905,
+   "narrative_region": "late",
+   "approximate_source_percent": 89.8,
+   "chapter_or_section": "body-ch22",
+   "scene_function": "exposition_or_discovery",
+   "boundary_method": "chapter+scene_merge",
+   "confidence": "high",
+   "assigned": "late/character"
+  },
+  {
+   "source_filename": "pawn.txt",
+   "passage_id": "pawn-c01",
+   "word_count": 2397,
+   "narrative_region": "early",
+   "approximate_source_percent": 30.6,
+   "chapter_or_section": "body-ch7",
+   "scene_function": "dialogue_heavy",
+   "boundary_method": "chapter+scene_merge",
+   "confidence": "high",
+   "assigned": "early/aftermath"
+  },
+  {
+   "source_filename": "streams.txt",
+   "passage_id": "streams-c01",
+   "word_count": 2393,
+   "narrative_region": "middle",
+   "approximate_source_percent": 44.2,
+   "chapter_or_section": "body-ch0",
+   "scene_function": "exposition_or_discovery",
+   "boundary_method": "length+scene_merge",
+   "confidence": "medium",
+   "assigned": "middle/tension"
+  },
+  {
+   "source_filename": "lies.txt",
+   "passage_id": "lies-c01",
+   "word_count": 2268,
+   "narrative_region": "late",
+   "approximate_source_percent": 82.5,
+   "chapter_or_section": "body-ch141",
+   "scene_function": "action_heavy",
+   "boundary_method": "chapter+scene_merge",
+   "confidence": "high",
+   "assigned": "late/travel"
+  },
+  {
+   "source_filename": "lor.txt",
+   "passage_id": "lor-c01",
+   "word_count": 3713,
+   "narrative_region": "early",
+   "approximate_source_percent": 20.3,
+   "chapter_or_section": "body-ch20",
+   "scene_function": "exposition_or_discovery",
+   "boundary_method": "ornament+scene_merge",
+   "confidence": "high",
+   "assigned": "early/political"
+  },
+  {
+   "source_filename": "HP.txt",
+   "passage_id": "HP-c01",
+   "word_count": 2399,
+   "narrative_region": "middle",
+   "approximate_source_percent": 41.2,
+   "chapter_or_section": "body-ch95",
+   "scene_function": "dialogue_heavy",
+   "boundary_method": "chapter+scene_merge",
+   "confidence": "high",
+   "assigned": "middle/dialogue"
+  },
+  {
+   "source_filename": "got.txt",
+   "passage_id": "got-c01",
+   "word_count": 2386,
+   "narrative_region": "late",
+   "approximate_source_percent": 66.1,
+   "chapter_or_section": "body-ch1",
+   "scene_function": "action_heavy",
+   "boundary_method": "length+scene_merge",
+   "confidence": "medium",
+   "assigned": "late/action"
+  }
+ ],
+ "count": 11
+}
