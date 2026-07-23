@@ -1,0 +1,12 @@
+{
+ "new_protected_text_corruption": 1,
+ "unauthorized_edit_rate_increase": true,
+ "no_change_accuracy_drop": 0.0,
+ "new_critical_failures_p1_vs_p0max": 1,
+ "forbidden_violations_by_arm": {
+  "P0-Realistic": 0,
+  "P0-Maximal": 0,
+  "P1-Contract": 2,
+  "P3-Ideal": 0
+ }
+}

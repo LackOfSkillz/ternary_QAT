@@ -88,6 +88,9 @@ training/runs/dataset-a-qat-calibration-v1/integrity/repository-*.json
 # bulky/raw model-output dirs stay out of git; small summaries (corpus, run summary,
 # item-level verdicts, report) are committed as durable evidence + hashes.
 benchmarks/runs/**/normalized-results/
+benchmarks/runs/**/raw-results/
+benchmarks/runs/**/comprehension-results/
+benchmarks/runs/**/comprehension-normalized/
 benchmarks/runs/**/mechanical-results/
 benchmarks/runs/**/slop-reports/
 benchmarks/runs/**/reviewer-packets/

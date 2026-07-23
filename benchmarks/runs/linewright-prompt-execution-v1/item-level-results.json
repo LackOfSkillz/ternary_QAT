@@ -1,0 +1,3905 @@
+{
+ "cn-01::P0-Realistic": {
+  "task_id": "cn-01",
+  "task_family": "canon_continuation",
+  "required_total": 2,
+  "completed": 0,
+  "completion_rate": 0.0,
+  "all_required_completed": false,
+  "required_results": [
+   {
+    "id": "rc1",
+    "passed": false
+   },
+   {
+    "id": "rc2",
+    "passed": false
+   }
+  ],
+  "returned_unchanged": false,
+  "valid_no_change": false,
+  "invalid_unchanged": false,
+  "protected_total": 0,
+  "protected_preserved": 0,
+  "protected_ok": true,
+  "protected_corruption": false,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 0,
+  "unaffected_preserved": 0,
+  "unaffected_ok": true,
+  "unauthorized_edit": false,
+  "output_shape_ok": true,
+  "restraint_correct": null,
+  "unnecessary_edit": null,
+  "clean_execution": false,
+  "critical_failure": false,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "cn-02::P0-Realistic": {
+  "task_id": "cn-02",
+  "task_family": "canon_continuation",
+  "required_total": 1,
+  "completed": 0,
+  "completion_rate": 0.0,
+  "all_required_completed": false,
+  "required_results": [
+   {
+    "id": "rc1",
+    "passed": false
+   }
+  ],
+  "returned_unchanged": false,
+  "valid_no_change": false,
+  "invalid_unchanged": false,
+  "protected_total": 0,
+  "protected_preserved": 0,
+  "protected_ok": true,
+  "protected_corruption": false,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 0,
+  "unaffected_preserved": 0,
+  "unaffected_ok": true,
+  "unauthorized_edit": false,
+  "output_shape_ok": true,
+  "restraint_correct": null,
+  "unnecessary_edit": null,
+  "clean_execution": false,
+  "critical_failure": false,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "cn-03::P0-Realistic": {
+  "task_id": "cn-03",
+  "task_family": "canon_continuation",
+  "required_total": 1,
+  "completed": 0,
+  "completion_rate": 0.0,
+  "all_required_completed": false,
+  "required_results": [
+   {
+    "id": "rc1",
+    "passed": false
+   }
+  ],
+  "returned_unchanged": false,
+  "valid_no_change": false,
+  "invalid_unchanged": false,
+  "protected_total": 0,
+  "protected_preserved": 0,
+  "protected_ok": true,
+  "protected_corruption": false,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 0,
+  "unaffected_preserved": 0,
+  "unaffected_ok": true,
+  "unauthorized_edit": false,
+  "output_shape_ok": true,
+  "restraint_correct": null,
+  "unnecessary_edit": null,
+  "clean_execution": false,
+  "critical_failure": false,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "fr-01::P0-Realistic": {
+  "task_id": "fr-01",
+  "task_family": "multi_constraint_focused_revision",
+  "required_total": 4,
+  "completed": 1,
+  "completion_rate": 0.25,
+  "all_required_completed": false,
+  "required_results": [
+   {
+    "id": "rc1",
+    "passed": true
+   },
+   {
+    "id": "rc2",
+    "passed": false
+   },
+   {
+    "id": "rc3",
+    "passed": false
+   },
+   {
+    "id": "rc4",
+    "passed": false
+   }
+  ],
+  "returned_unchanged": false,
+  "valid_no_change": false,
+  "invalid_unchanged": false,
+  "protected_total": 1,
+  "protected_preserved": 0,
+  "protected_ok": false,
+  "protected_corruption": true,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 1,
+  "unaffected_preserved": 1,
+  "unaffected_ok": true,
+  "unauthorized_edit": false,
+  "output_shape_ok": true,
+  "restraint_correct": null,
+  "unnecessary_edit": null,
+  "clean_execution": false,
+  "critical_failure": true,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "fr-02::P0-Realistic": {
+  "task_id": "fr-02",
+  "task_family": "multi_constraint_focused_revision",
+  "required_total": 3,
+  "completed": 0,
+  "completion_rate": 0.0,
+  "all_required_completed": false,
+  "required_results": [
+   {
+    "id": "rc1",
+    "passed": false
+   },
+   {
+    "id": "rc2",
+    "passed": false
+   },
+   {
+    "id": "rc3",
+    "passed": false
+   }
+  ],
+  "returned_unchanged": true,
+  "valid_no_change": false,
+  "invalid_unchanged": true,
+  "protected_total": 1,
+  "protected_preserved": 1,
+  "protected_ok": true,
+  "protected_corruption": false,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 1,
+  "unaffected_preserved": 1,
+  "unaffected_ok": true,
+  "unauthorized_edit": false,
+  "output_shape_ok": true,
+  "restraint_correct": null,
+  "unnecessary_edit": null,
+  "clean_execution": false,
+  "critical_failure": true,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "fr-03::P0-Realistic": {
+  "task_id": "fr-03",
+  "task_family": "multi_constraint_focused_revision",
+  "required_total": 3,
+  "completed": 1,
+  "completion_rate": 0.333,
+  "all_required_completed": false,
+  "required_results": [
+   {
+    "id": "rc1",
+    "passed": false
+   },
+   {
+    "id": "rc2",
+    "passed": true
+   },
+   {
+    "id": "rc3",
+    "passed": false
+   }
+  ],
+  "returned_unchanged": false,
+  "valid_no_change": false,
+  "invalid_unchanged": false,
+  "protected_total": 1,
+  "protected_preserved": 1,
+  "protected_ok": true,
+  "protected_corruption": false,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 1,
+  "unaffected_preserved": 1,
+  "unaffected_ok": true,
+  "unauthorized_edit": false,
+  "output_shape_ok": true,
+  "restraint_correct": null,
+  "unnecessary_edit": null,
+  "clean_execution": false,
+  "critical_failure": false,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "fr-04::P0-Realistic": {
+  "task_id": "fr-04",
+  "task_family": "multi_constraint_focused_revision",
+  "required_total": 4,
+  "completed": 3,
+  "completion_rate": 0.75,
+  "all_required_completed": false,
+  "required_results": [
+   {
+    "id": "rc1",
+    "passed": true
+   },
+   {
+    "id": "rc2",
+    "passed": true
+   },
+   {
+    "id": "rc3",
+    "passed": true
+   },
+   {
+    "id": "rc4",
+    "passed": false
+   }
+  ],
+  "returned_unchanged": false,
+  "valid_no_change": false,
+  "invalid_unchanged": false,
+  "protected_total": 1,
+  "protected_preserved": 1,
+  "protected_ok": true,
+  "protected_corruption": false,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 1,
+  "unaffected_preserved": 0,
+  "unaffected_ok": false,
+  "unauthorized_edit": true,
+  "output_shape_ok": true,
+  "restraint_correct": null,
+  "unnecessary_edit": null,
+  "clean_execution": false,
+  "critical_failure": false,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "fr-05::P0-Realistic": {
+  "task_id": "fr-05",
+  "task_family": "multi_constraint_focused_revision",
+  "required_total": 4,
+  "completed": 1,
+  "completion_rate": 0.25,
+  "all_required_completed": false,
+  "required_results": [
+   {
+    "id": "rc1",
+    "passed": false
+   },
+   {
+    "id": "rc2",
+    "passed": false
+   },
+   {
+    "id": "rc3",
+    "passed": true
+   },
+   {
+    "id": "rc4",
+    "passed": false
+   }
+  ],
+  "returned_unchanged": false,
+  "valid_no_change": false,
+  "invalid_unchanged": false,
+  "protected_total": 1,
+  "protected_preserved": 1,
+  "protected_ok": true,
+  "protected_corruption": false,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 1,
+  "unaffected_preserved": 1,
+  "unaffected_ok": true,
+  "unauthorized_edit": false,
+  "output_shape_ok": true,
+  "restraint_correct": null,
+  "unnecessary_edit": null,
+  "clean_execution": false,
+  "critical_failure": false,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "fr-06::P0-Realistic": {
+  "task_id": "fr-06",
+  "task_family": "multi_constraint_focused_revision",
+  "required_total": 3,
+  "completed": 0,
+  "completion_rate": 0.0,
+  "all_required_completed": false,
+  "required_results": [
+   {
+    "id": "rc1",
+    "passed": false
+   },
+   {
+    "id": "rc2",
+    "passed": false
+   },
+   {
+    "id": "rc3",
+    "passed": false
+   }
+  ],
+  "returned_unchanged": true,
+  "valid_no_change": false,
+  "invalid_unchanged": true,
+  "protected_total": 1,
+  "protected_preserved": 1,
+  "protected_ok": true,
+  "protected_corruption": false,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 1,
+  "unaffected_preserved": 1,
+  "unaffected_ok": true,
+  "unauthorized_edit": false,
+  "output_shape_ok": true,
+  "restraint_correct": null,
+  "unnecessary_edit": null,
+  "clean_execution": false,
+  "critical_failure": true,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "fr-07::P0-Realistic": {
+  "task_id": "fr-07",
+  "task_family": "multi_constraint_focused_revision",
+  "required_total": 3,
+  "completed": 3,
+  "completion_rate": 1.0,
+  "all_required_completed": true,
+  "required_results": [
+   {
+    "id": "rc1",
+    "passed": true
+   },
+   {
+    "id": "rc2",
+    "passed": true
+   },
+   {
+    "id": "rc3",
+    "passed": true
+   }
+  ],
+  "returned_unchanged": false,
+  "valid_no_change": false,
+  "invalid_unchanged": false,
+  "protected_total": 1,
+  "protected_preserved": 1,
+  "protected_ok": true,
+  "protected_corruption": false,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 1,
+  "unaffected_preserved": 1,
+  "unaffected_ok": true,
+  "unauthorized_edit": false,
+  "output_shape_ok": true,
+  "restraint_correct": null,
+  "unnecessary_edit": null,
+  "clean_execution": true,
+  "critical_failure": false,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "fr-08::P0-Realistic": {
+  "task_id": "fr-08",
+  "task_family": "multi_constraint_focused_revision",
+  "required_total": 3,
+  "completed": 0,
+  "completion_rate": 0.0,
+  "all_required_completed": false,
+  "required_results": [
+   {
+    "id": "rc1",
+    "passed": false
+   },
+   {
+    "id": "rc2",
+    "passed": false
+   },
+   {
+    "id": "rc3",
+    "passed": false
+   }
+  ],
+  "returned_unchanged": false,
+  "valid_no_change": false,
+  "invalid_unchanged": false,
+  "protected_total": 1,
+  "protected_preserved": 1,
+  "protected_ok": true,
+  "protected_corruption": false,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 1,
+  "unaffected_preserved": 1,
+  "unaffected_ok": true,
+  "unauthorized_edit": false,
+  "output_shape_ok": true,
+  "restraint_correct": null,
+  "unnecessary_edit": null,
+  "clean_execution": false,
+  "critical_failure": false,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "fr-09::P0-Realistic": {
+  "task_id": "fr-09",
+  "task_family": "multi_constraint_focused_revision",
+  "required_total": 4,
+  "completed": 1,
+  "completion_rate": 0.25,
+  "all_required_completed": false,
+  "required_results": [
+   {
+    "id": "rc1",
+    "passed": false
+   },
+   {
+    "id": "rc2",
+    "passed": false
+   },
+   {
+    "id": "rc3",
+    "passed": true
+   },
+   {
+    "id": "rc4",
+    "passed": false
+   }
+  ],
+  "returned_unchanged": false,
+  "valid_no_change": false,
+  "invalid_unchanged": false,
+  "protected_total": 1,
+  "protected_preserved": 1,
+  "protected_ok": true,
+  "protected_corruption": false,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 1,
+  "unaffected_preserved": 1,
+  "unaffected_ok": true,
+  "unauthorized_edit": false,
+  "output_shape_ok": true,
+  "restraint_correct": null,
+  "unnecessary_edit": null,
+  "clean_execution": false,
+  "critical_failure": false,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "fr-10::P0-Realistic": {
+  "task_id": "fr-10",
+  "task_family": "multi_constraint_focused_revision",
+  "required_total": 3,
+  "completed": 0,
+  "completion_rate": 0.0,
+  "all_required_completed": false,
+  "required_results": [
+   {
+    "id": "rc1",
+    "passed": false
+   },
+   {
+    "id": "rc2",
+    "passed": false
+   },
+   {
+    "id": "rc3",
+    "passed": false
+   }
+  ],
+  "returned_unchanged": false,
+  "valid_no_change": false,
+  "invalid_unchanged": false,
+  "protected_total": 1,
+  "protected_preserved": 0,
+  "protected_ok": false,
+  "protected_corruption": true,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 1,
+  "unaffected_preserved": 1,
+  "unaffected_ok": true,
+  "unauthorized_edit": false,
+  "output_shape_ok": true,
+  "restraint_correct": null,
+  "unnecessary_edit": null,
+  "clean_execution": false,
+  "critical_failure": true,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "fr-11::P0-Realistic": {
+  "task_id": "fr-11",
+  "task_family": "multi_constraint_focused_revision",
+  "required_total": 3,
+  "completed": 1,
+  "completion_rate": 0.333,
+  "all_required_completed": false,
+  "required_results": [
+   {
+    "id": "rc1",
+    "passed": true
+   },
+   {
+    "id": "rc2",
+    "passed": false
+   },
+   {
+    "id": "rc3",
+    "passed": false
+   }
+  ],
+  "returned_unchanged": false,
+  "valid_no_change": false,
+  "invalid_unchanged": false,
+  "protected_total": 1,
+  "protected_preserved": 1,
+  "protected_ok": true,
+  "protected_corruption": false,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 1,
+  "unaffected_preserved": 1,
+  "unaffected_ok": true,
+  "unauthorized_edit": false,
+  "output_shape_ok": true,
+  "restraint_correct": null,
+  "unnecessary_edit": null,
+  "clean_execution": false,
+  "critical_failure": false,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "fr-12::P0-Realistic": {
+  "task_id": "fr-12",
+  "task_family": "multi_constraint_focused_revision",
+  "required_total": 3,
+  "completed": 1,
+  "completion_rate": 0.333,
+  "all_required_completed": false,
+  "required_results": [
+   {
+    "id": "rc1",
+    "passed": false
+   },
+   {
+    "id": "rc2",
+    "passed": true
+   },
+   {
+    "id": "rc3",
+    "passed": false
+   }
+  ],
+  "returned_unchanged": false,
+  "valid_no_change": false,
+  "invalid_unchanged": false,
+  "protected_total": 1,
+  "protected_preserved": 1,
+  "protected_ok": true,
+  "protected_corruption": false,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 1,
+  "unaffected_preserved": 1,
+  "unaffected_ok": true,
+  "unauthorized_edit": false,
+  "output_shape_ok": true,
+  "restraint_correct": null,
+  "unnecessary_edit": null,
+  "clean_execution": false,
+  "critical_failure": false,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "nc-01::P0-Realistic": {
+  "task_id": "nc-01",
+  "task_family": "no_change_judgment",
+  "required_total": 0,
+  "completed": 0,
+  "completion_rate": null,
+  "all_required_completed": true,
+  "required_results": [],
+  "returned_unchanged": true,
+  "valid_no_change": true,
+  "invalid_unchanged": false,
+  "protected_total": 1,
+  "protected_preserved": 1,
+  "protected_ok": true,
+  "protected_corruption": false,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 1,
+  "unaffected_preserved": 1,
+  "unaffected_ok": true,
+  "unauthorized_edit": false,
+  "output_shape_ok": true,
+  "restraint_correct": true,
+  "unnecessary_edit": false,
+  "clean_execution": true,
+  "critical_failure": false,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "nc-02::P0-Realistic": {
+  "task_id": "nc-02",
+  "task_family": "no_change_judgment",
+  "required_total": 0,
+  "completed": 0,
+  "completion_rate": null,
+  "all_required_completed": true,
+  "required_results": [],
+  "returned_unchanged": true,
+  "valid_no_change": true,
+  "invalid_unchanged": false,
+  "protected_total": 1,
+  "protected_preserved": 1,
+  "protected_ok": true,
+  "protected_corruption": false,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 1,
+  "unaffected_preserved": 1,
+  "unaffected_ok": true,
+  "unauthorized_edit": false,
+  "output_shape_ok": true,
+  "restraint_correct": true,
+  "unnecessary_edit": false,
+  "clean_execution": true,
+  "critical_failure": false,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "nc-03::P0-Realistic": {
+  "task_id": "nc-03",
+  "task_family": "no_change_judgment",
+  "required_total": 0,
+  "completed": 0,
+  "completion_rate": null,
+  "all_required_completed": true,
+  "required_results": [],
+  "returned_unchanged": false,
+  "valid_no_change": true,
+  "invalid_unchanged": false,
+  "protected_total": 1,
+  "protected_preserved": 0,
+  "protected_ok": false,
+  "protected_corruption": true,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 1,
+  "unaffected_preserved": 0,
+  "unaffected_ok": false,
+  "unauthorized_edit": true,
+  "output_shape_ok": true,
+  "restraint_correct": false,
+  "unnecessary_edit": true,
+  "clean_execution": false,
+  "critical_failure": true,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "nc-04::P0-Realistic": {
+  "task_id": "nc-04",
+  "task_family": "no_change_judgment",
+  "required_total": 0,
+  "completed": 0,
+  "completion_rate": null,
+  "all_required_completed": true,
+  "required_results": [],
+  "returned_unchanged": true,
+  "valid_no_change": true,
+  "invalid_unchanged": false,
+  "protected_total": 1,
+  "protected_preserved": 1,
+  "protected_ok": true,
+  "protected_corruption": false,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 1,
+  "unaffected_preserved": 1,
+  "unaffected_ok": true,
+  "unauthorized_edit": false,
+  "output_shape_ok": true,
+  "restraint_correct": true,
+  "unnecessary_edit": false,
+  "clean_execution": true,
+  "critical_failure": false,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "pt-01::P0-Realistic": {
+  "task_id": "pt-01",
+  "task_family": "protected_text_revision",
+  "required_total": 1,
+  "completed": 0,
+  "completion_rate": 0.0,
+  "all_required_completed": false,
+  "required_results": [
+   {
+    "id": "rc1",
+    "passed": false
+   }
+  ],
+  "returned_unchanged": false,
+  "valid_no_change": false,
+  "invalid_unchanged": false,
+  "protected_total": 1,
+  "protected_preserved": 1,
+  "protected_ok": true,
+  "protected_corruption": false,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 1,
+  "unaffected_preserved": 1,
+  "unaffected_ok": true,
+  "unauthorized_edit": false,
+  "output_shape_ok": true,
+  "restraint_correct": null,
+  "unnecessary_edit": null,
+  "clean_execution": false,
+  "critical_failure": false,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "pt-02::P0-Realistic": {
+  "task_id": "pt-02",
+  "task_family": "protected_text_revision",
+  "required_total": 1,
+  "completed": 1,
+  "completion_rate": 1.0,
+  "all_required_completed": true,
+  "required_results": [
+   {
+    "id": "rc1",
+    "passed": true
+   }
+  ],
+  "returned_unchanged": false,
+  "valid_no_change": false,
+  "invalid_unchanged": false,
+  "protected_total": 1,
+  "protected_preserved": 1,
+  "protected_ok": true,
+  "protected_corruption": false,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 1,
+  "unaffected_preserved": 1,
+  "unaffected_ok": true,
+  "unauthorized_edit": false,
+  "output_shape_ok": true,
+  "restraint_correct": null,
+  "unnecessary_edit": null,
+  "clean_execution": true,
+  "critical_failure": false,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "pt-03::P0-Realistic": {
+  "task_id": "pt-03",
+  "task_family": "protected_text_revision",
+  "required_total": 1,
+  "completed": 1,
+  "completion_rate": 1.0,
+  "all_required_completed": true,
+  "required_results": [
+   {
+    "id": "rc1",
+    "passed": true
+   }
+  ],
+  "returned_unchanged": false,
+  "valid_no_change": false,
+  "invalid_unchanged": false,
+  "protected_total": 1,
+  "protected_preserved": 1,
+  "protected_ok": true,
+  "protected_corruption": false,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 1,
+  "unaffected_preserved": 1,
+  "unaffected_ok": true,
+  "unauthorized_edit": false,
+  "output_shape_ok": true,
+  "restraint_correct": null,
+  "unnecessary_edit": null,
+  "clean_execution": true,
+  "critical_failure": false,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "pt-04::P0-Realistic": {
+  "task_id": "pt-04",
+  "task_family": "protected_text_revision",
+  "required_total": 1,
+  "completed": 1,
+  "completion_rate": 1.0,
+  "all_required_completed": true,
+  "required_results": [
+   {
+    "id": "rc1",
+    "passed": true
+   }
+  ],
+  "returned_unchanged": false,
+  "valid_no_change": false,
+  "invalid_unchanged": false,
+  "protected_total": 1,
+  "protected_preserved": 1,
+  "protected_ok": true,
+  "protected_corruption": false,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 1,
+  "unaffected_preserved": 1,
+  "unaffected_ok": true,
+  "unauthorized_edit": false,
+  "output_shape_ok": true,
+  "restraint_correct": null,
+  "unnecessary_edit": null,
+  "clean_execution": true,
+  "critical_failure": false,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "pt-05::P0-Realistic": {
+  "task_id": "pt-05",
+  "task_family": "protected_text_revision",
+  "required_total": 1,
+  "completed": 1,
+  "completion_rate": 1.0,
+  "all_required_completed": true,
+  "required_results": [
+   {
+    "id": "rc1",
+    "passed": true
+   }
+  ],
+  "returned_unchanged": false,
+  "valid_no_change": false,
+  "invalid_unchanged": false,
+  "protected_total": 1,
+  "protected_preserved": 1,
+  "protected_ok": true,
+  "protected_corruption": false,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 1,
+  "unaffected_preserved": 1,
+  "unaffected_ok": true,
+  "unauthorized_edit": false,
+  "output_shape_ok": true,
+  "restraint_correct": null,
+  "unnecessary_edit": null,
+  "clean_execution": true,
+  "critical_failure": false,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "sc-01::P0-Realistic": {
+  "task_id": "sc-01",
+  "task_family": "constraint_bound_scene",
+  "required_total": 3,
+  "completed": 3,
+  "completion_rate": 1.0,
+  "all_required_completed": true,
+  "required_results": [
+   {
+    "id": "rc1",
+    "passed": true
+   },
+   {
+    "id": "rc2",
+    "passed": true
+   },
+   {
+    "id": "rc3",
+    "passed": true
+   }
+  ],
+  "returned_unchanged": false,
+  "valid_no_change": false,
+  "invalid_unchanged": false,
+  "protected_total": 0,
+  "protected_preserved": 0,
+  "protected_ok": true,
+  "protected_corruption": false,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 0,
+  "unaffected_preserved": 0,
+  "unaffected_ok": true,
+  "unauthorized_edit": false,
+  "output_shape_ok": true,
+  "restraint_correct": null,
+  "unnecessary_edit": null,
+  "clean_execution": true,
+  "critical_failure": false,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "sc-02::P0-Realistic": {
+  "task_id": "sc-02",
+  "task_family": "constraint_bound_scene",
+  "required_total": 3,
+  "completed": 3,
+  "completion_rate": 1.0,
+  "all_required_completed": true,
+  "required_results": [
+   {
+    "id": "rc1",
+    "passed": true
+   },
+   {
+    "id": "rc2",
+    "passed": true
+   },
+   {
+    "id": "rc3",
+    "passed": true
+   }
+  ],
+  "returned_unchanged": false,
+  "valid_no_change": false,
+  "invalid_unchanged": false,
+  "protected_total": 0,
+  "protected_preserved": 0,
+  "protected_ok": true,
+  "protected_corruption": false,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 0,
+  "unaffected_preserved": 0,
+  "unaffected_ok": true,
+  "unauthorized_edit": false,
+  "output_shape_ok": true,
+  "restraint_correct": null,
+  "unnecessary_edit": null,
+  "clean_execution": true,
+  "critical_failure": false,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "sp-01::P0-Realistic": {
+  "task_id": "sp-01",
+  "task_family": "structured_protocol",
+  "required_total": 2,
+  "completed": 1,
+  "completion_rate": 0.5,
+  "all_required_completed": false,
+  "required_results": [
+   {
+    "id": "rc1",
+    "passed": false
+   },
+   {
+    "id": "rc2",
+    "passed": true
+   }
+  ],
+  "returned_unchanged": false,
+  "valid_no_change": false,
+  "invalid_unchanged": false,
+  "protected_total": 0,
+  "protected_preserved": 0,
+  "protected_ok": true,
+  "protected_corruption": false,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 0,
+  "unaffected_preserved": 0,
+  "unaffected_ok": true,
+  "unauthorized_edit": false,
+  "output_shape_ok": false,
+  "restraint_correct": null,
+  "unnecessary_edit": null,
+  "clean_execution": false,
+  "critical_failure": true,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "vp-01::P0-Realistic": {
+  "task_id": "vp-01",
+  "task_family": "voice_preserving_revision",
+  "required_total": 1,
+  "completed": 0,
+  "completion_rate": 0.0,
+  "all_required_completed": false,
+  "required_results": [
+   {
+    "id": "rc1",
+    "passed": false
+   }
+  ],
+  "returned_unchanged": true,
+  "valid_no_change": false,
+  "invalid_unchanged": true,
+  "protected_total": 2,
+  "protected_preserved": 2,
+  "protected_ok": true,
+  "protected_corruption": false,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 1,
+  "unaffected_preserved": 1,
+  "unaffected_ok": true,
+  "unauthorized_edit": false,
+  "output_shape_ok": true,
+  "restraint_correct": null,
+  "unnecessary_edit": null,
+  "clean_execution": false,
+  "critical_failure": true,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "vp-02::P0-Realistic": {
+  "task_id": "vp-02",
+  "task_family": "voice_preserving_revision",
+  "required_total": 1,
+  "completed": 1,
+  "completion_rate": 1.0,
+  "all_required_completed": true,
+  "required_results": [
+   {
+    "id": "rc1",
+    "passed": true
+   }
+  ],
+  "returned_unchanged": false,
+  "valid_no_change": false,
+  "invalid_unchanged": false,
+  "protected_total": 2,
+  "protected_preserved": 2,
+  "protected_ok": true,
+  "protected_corruption": false,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 1,
+  "unaffected_preserved": 1,
+  "unaffected_ok": true,
+  "unauthorized_edit": false,
+  "output_shape_ok": true,
+  "restraint_correct": null,
+  "unnecessary_edit": null,
+  "clean_execution": true,
+  "critical_failure": false,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "vp-03::P0-Realistic": {
+  "task_id": "vp-03",
+  "task_family": "voice_preserving_revision",
+  "required_total": 1,
+  "completed": 1,
+  "completion_rate": 1.0,
+  "all_required_completed": true,
+  "required_results": [
+   {
+    "id": "rc1",
+    "passed": true
+   }
+  ],
+  "returned_unchanged": false,
+  "valid_no_change": false,
+  "invalid_unchanged": false,
+  "protected_total": 2,
+  "protected_preserved": 2,
+  "protected_ok": true,
+  "protected_corruption": false,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 1,
+  "unaffected_preserved": 1,
+  "unaffected_ok": true,
+  "unauthorized_edit": false,
+  "output_shape_ok": true,
+  "restraint_correct": null,
+  "unnecessary_edit": null,
+  "clean_execution": true,
+  "critical_failure": false,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "cn-01::P0-Maximal": {
+  "task_id": "cn-01",
+  "task_family": "canon_continuation",
+  "required_total": 2,
+  "completed": 2,
+  "completion_rate": 1.0,
+  "all_required_completed": true,
+  "required_results": [
+   {
+    "id": "rc1",
+    "passed": true
+   },
+   {
+    "id": "rc2",
+    "passed": true
+   }
+  ],
+  "returned_unchanged": false,
+  "valid_no_change": false,
+  "invalid_unchanged": false,
+  "protected_total": 0,
+  "protected_preserved": 0,
+  "protected_ok": true,
+  "protected_corruption": false,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 0,
+  "unaffected_preserved": 0,
+  "unaffected_ok": true,
+  "unauthorized_edit": false,
+  "output_shape_ok": true,
+  "restraint_correct": null,
+  "unnecessary_edit": null,
+  "clean_execution": true,
+  "critical_failure": false,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "cn-02::P0-Maximal": {
+  "task_id": "cn-02",
+  "task_family": "canon_continuation",
+  "required_total": 1,
+  "completed": 1,
+  "completion_rate": 1.0,
+  "all_required_completed": true,
+  "required_results": [
+   {
+    "id": "rc1",
+    "passed": true
+   }
+  ],
+  "returned_unchanged": false,
+  "valid_no_change": false,
+  "invalid_unchanged": false,
+  "protected_total": 0,
+  "protected_preserved": 0,
+  "protected_ok": true,
+  "protected_corruption": false,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 0,
+  "unaffected_preserved": 0,
+  "unaffected_ok": true,
+  "unauthorized_edit": false,
+  "output_shape_ok": true,
+  "restraint_correct": null,
+  "unnecessary_edit": null,
+  "clean_execution": true,
+  "critical_failure": false,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "cn-03::P0-Maximal": {
+  "task_id": "cn-03",
+  "task_family": "canon_continuation",
+  "required_total": 1,
+  "completed": 1,
+  "completion_rate": 1.0,
+  "all_required_completed": true,
+  "required_results": [
+   {
+    "id": "rc1",
+    "passed": true
+   }
+  ],
+  "returned_unchanged": false,
+  "valid_no_change": false,
+  "invalid_unchanged": false,
+  "protected_total": 0,
+  "protected_preserved": 0,
+  "protected_ok": true,
+  "protected_corruption": false,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 0,
+  "unaffected_preserved": 0,
+  "unaffected_ok": true,
+  "unauthorized_edit": false,
+  "output_shape_ok": true,
+  "restraint_correct": null,
+  "unnecessary_edit": null,
+  "clean_execution": true,
+  "critical_failure": false,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "fr-01::P0-Maximal": {
+  "task_id": "fr-01",
+  "task_family": "multi_constraint_focused_revision",
+  "required_total": 4,
+  "completed": 2,
+  "completion_rate": 0.5,
+  "all_required_completed": false,
+  "required_results": [
+   {
+    "id": "rc1",
+    "passed": false
+   },
+   {
+    "id": "rc2",
+    "passed": true
+   },
+   {
+    "id": "rc3",
+    "passed": true
+   },
+   {
+    "id": "rc4",
+    "passed": false
+   }
+  ],
+  "returned_unchanged": false,
+  "valid_no_change": false,
+  "invalid_unchanged": false,
+  "protected_total": 1,
+  "protected_preserved": 1,
+  "protected_ok": true,
+  "protected_corruption": false,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 1,
+  "unaffected_preserved": 1,
+  "unaffected_ok": true,
+  "unauthorized_edit": false,
+  "output_shape_ok": true,
+  "restraint_correct": null,
+  "unnecessary_edit": null,
+  "clean_execution": false,
+  "critical_failure": false,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "fr-02::P0-Maximal": {
+  "task_id": "fr-02",
+  "task_family": "multi_constraint_focused_revision",
+  "required_total": 3,
+  "completed": 1,
+  "completion_rate": 0.333,
+  "all_required_completed": false,
+  "required_results": [
+   {
+    "id": "rc1",
+    "passed": false
+   },
+   {
+    "id": "rc2",
+    "passed": false
+   },
+   {
+    "id": "rc3",
+    "passed": true
+   }
+  ],
+  "returned_unchanged": false,
+  "valid_no_change": false,
+  "invalid_unchanged": false,
+  "protected_total": 1,
+  "protected_preserved": 1,
+  "protected_ok": true,
+  "protected_corruption": false,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 1,
+  "unaffected_preserved": 1,
+  "unaffected_ok": true,
+  "unauthorized_edit": false,
+  "output_shape_ok": true,
+  "restraint_correct": null,
+  "unnecessary_edit": null,
+  "clean_execution": false,
+  "critical_failure": false,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "fr-03::P0-Maximal": {
+  "task_id": "fr-03",
+  "task_family": "multi_constraint_focused_revision",
+  "required_total": 3,
+  "completed": 2,
+  "completion_rate": 0.667,
+  "all_required_completed": false,
+  "required_results": [
+   {
+    "id": "rc1",
+    "passed": true
+   },
+   {
+    "id": "rc2",
+    "passed": true
+   },
+   {
+    "id": "rc3",
+    "passed": false
+   }
+  ],
+  "returned_unchanged": false,
+  "valid_no_change": false,
+  "invalid_unchanged": false,
+  "protected_total": 1,
+  "protected_preserved": 1,
+  "protected_ok": true,
+  "protected_corruption": false,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 1,
+  "unaffected_preserved": 1,
+  "unaffected_ok": true,
+  "unauthorized_edit": false,
+  "output_shape_ok": true,
+  "restraint_correct": null,
+  "unnecessary_edit": null,
+  "clean_execution": false,
+  "critical_failure": false,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "fr-04::P0-Maximal": {
+  "task_id": "fr-04",
+  "task_family": "multi_constraint_focused_revision",
+  "required_total": 4,
+  "completed": 3,
+  "completion_rate": 0.75,
+  "all_required_completed": false,
+  "required_results": [
+   {
+    "id": "rc1",
+    "passed": false
+   },
+   {
+    "id": "rc2",
+    "passed": true
+   },
+   {
+    "id": "rc3",
+    "passed": true
+   },
+   {
+    "id": "rc4",
+    "passed": true
+   }
+  ],
+  "returned_unchanged": false,
+  "valid_no_change": false,
+  "invalid_unchanged": false,
+  "protected_total": 1,
+  "protected_preserved": 1,
+  "protected_ok": true,
+  "protected_corruption": false,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 1,
+  "unaffected_preserved": 1,
+  "unaffected_ok": true,
+  "unauthorized_edit": false,
+  "output_shape_ok": false,
+  "restraint_correct": null,
+  "unnecessary_edit": null,
+  "clean_execution": false,
+  "critical_failure": false,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "fr-05::P0-Maximal": {
+  "task_id": "fr-05",
+  "task_family": "multi_constraint_focused_revision",
+  "required_total": 4,
+  "completed": 3,
+  "completion_rate": 0.75,
+  "all_required_completed": false,
+  "required_results": [
+   {
+    "id": "rc1",
+    "passed": true
+   },
+   {
+    "id": "rc2",
+    "passed": true
+   },
+   {
+    "id": "rc3",
+    "passed": true
+   },
+   {
+    "id": "rc4",
+    "passed": false
+   }
+  ],
+  "returned_unchanged": false,
+  "valid_no_change": false,
+  "invalid_unchanged": false,
+  "protected_total": 1,
+  "protected_preserved": 1,
+  "protected_ok": true,
+  "protected_corruption": false,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 1,
+  "unaffected_preserved": 1,
+  "unaffected_ok": true,
+  "unauthorized_edit": false,
+  "output_shape_ok": true,
+  "restraint_correct": null,
+  "unnecessary_edit": null,
+  "clean_execution": false,
+  "critical_failure": false,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "fr-06::P0-Maximal": {
+  "task_id": "fr-06",
+  "task_family": "multi_constraint_focused_revision",
+  "required_total": 3,
+  "completed": 3,
+  "completion_rate": 1.0,
+  "all_required_completed": true,
+  "required_results": [
+   {
+    "id": "rc1",
+    "passed": true
+   },
+   {
+    "id": "rc2",
+    "passed": true
+   },
+   {
+    "id": "rc3",
+    "passed": true
+   }
+  ],
+  "returned_unchanged": false,
+  "valid_no_change": false,
+  "invalid_unchanged": false,
+  "protected_total": 1,
+  "protected_preserved": 1,
+  "protected_ok": true,
+  "protected_corruption": false,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 1,
+  "unaffected_preserved": 1,
+  "unaffected_ok": true,
+  "unauthorized_edit": false,
+  "output_shape_ok": true,
+  "restraint_correct": null,
+  "unnecessary_edit": null,
+  "clean_execution": true,
+  "critical_failure": false,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "fr-07::P0-Maximal": {
+  "task_id": "fr-07",
+  "task_family": "multi_constraint_focused_revision",
+  "required_total": 3,
+  "completed": 2,
+  "completion_rate": 0.667,
+  "all_required_completed": false,
+  "required_results": [
+   {
+    "id": "rc1",
+    "passed": false
+   },
+   {
+    "id": "rc2",
+    "passed": true
+   },
+   {
+    "id": "rc3",
+    "passed": true
+   }
+  ],
+  "returned_unchanged": false,
+  "valid_no_change": false,
+  "invalid_unchanged": false,
+  "protected_total": 1,
+  "protected_preserved": 1,
+  "protected_ok": true,
+  "protected_corruption": false,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 1,
+  "unaffected_preserved": 1,
+  "unaffected_ok": true,
+  "unauthorized_edit": false,
+  "output_shape_ok": true,
+  "restraint_correct": null,
+  "unnecessary_edit": null,
+  "clean_execution": false,
+  "critical_failure": false,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "fr-08::P0-Maximal": {
+  "task_id": "fr-08",
+  "task_family": "multi_constraint_focused_revision",
+  "required_total": 3,
+  "completed": 3,
+  "completion_rate": 1.0,
+  "all_required_completed": true,
+  "required_results": [
+   {
+    "id": "rc1",
+    "passed": true
+   },
+   {
+    "id": "rc2",
+    "passed": true
+   },
+   {
+    "id": "rc3",
+    "passed": true
+   }
+  ],
+  "returned_unchanged": false,
+  "valid_no_change": false,
+  "invalid_unchanged": false,
+  "protected_total": 1,
+  "protected_preserved": 1,
+  "protected_ok": true,
+  "protected_corruption": false,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 1,
+  "unaffected_preserved": 1,
+  "unaffected_ok": true,
+  "unauthorized_edit": false,
+  "output_shape_ok": false,
+  "restraint_correct": null,
+  "unnecessary_edit": null,
+  "clean_execution": false,
+  "critical_failure": false,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "fr-09::P0-Maximal": {
+  "task_id": "fr-09",
+  "task_family": "multi_constraint_focused_revision",
+  "required_total": 4,
+  "completed": 4,
+  "completion_rate": 1.0,
+  "all_required_completed": true,
+  "required_results": [
+   {
+    "id": "rc1",
+    "passed": true
+   },
+   {
+    "id": "rc2",
+    "passed": true
+   },
+   {
+    "id": "rc3",
+    "passed": true
+   },
+   {
+    "id": "rc4",
+    "passed": true
+   }
+  ],
+  "returned_unchanged": false,
+  "valid_no_change": false,
+  "invalid_unchanged": false,
+  "protected_total": 1,
+  "protected_preserved": 1,
+  "protected_ok": true,
+  "protected_corruption": false,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 1,
+  "unaffected_preserved": 1,
+  "unaffected_ok": true,
+  "unauthorized_edit": false,
+  "output_shape_ok": true,
+  "restraint_correct": null,
+  "unnecessary_edit": null,
+  "clean_execution": true,
+  "critical_failure": false,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "fr-10::P0-Maximal": {
+  "task_id": "fr-10",
+  "task_family": "multi_constraint_focused_revision",
+  "required_total": 3,
+  "completed": 1,
+  "completion_rate": 0.333,
+  "all_required_completed": false,
+  "required_results": [
+   {
+    "id": "rc1",
+    "passed": false
+   },
+   {
+    "id": "rc2",
+    "passed": true
+   },
+   {
+    "id": "rc3",
+    "passed": false
+   }
+  ],
+  "returned_unchanged": false,
+  "valid_no_change": false,
+  "invalid_unchanged": false,
+  "protected_total": 1,
+  "protected_preserved": 1,
+  "protected_ok": true,
+  "protected_corruption": false,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 1,
+  "unaffected_preserved": 1,
+  "unaffected_ok": true,
+  "unauthorized_edit": false,
+  "output_shape_ok": true,
+  "restraint_correct": null,
+  "unnecessary_edit": null,
+  "clean_execution": false,
+  "critical_failure": false,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "fr-11::P0-Maximal": {
+  "task_id": "fr-11",
+  "task_family": "multi_constraint_focused_revision",
+  "required_total": 3,
+  "completed": 2,
+  "completion_rate": 0.667,
+  "all_required_completed": false,
+  "required_results": [
+   {
+    "id": "rc1",
+    "passed": true
+   },
+   {
+    "id": "rc2",
+    "passed": true
+   },
+   {
+    "id": "rc3",
+    "passed": false
+   }
+  ],
+  "returned_unchanged": false,
+  "valid_no_change": false,
+  "invalid_unchanged": false,
+  "protected_total": 1,
+  "protected_preserved": 1,
+  "protected_ok": true,
+  "protected_corruption": false,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 1,
+  "unaffected_preserved": 1,
+  "unaffected_ok": true,
+  "unauthorized_edit": false,
+  "output_shape_ok": true,
+  "restraint_correct": null,
+  "unnecessary_edit": null,
+  "clean_execution": false,
+  "critical_failure": false,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "fr-12::P0-Maximal": {
+  "task_id": "fr-12",
+  "task_family": "multi_constraint_focused_revision",
+  "required_total": 3,
+  "completed": 1,
+  "completion_rate": 0.333,
+  "all_required_completed": false,
+  "required_results": [
+   {
+    "id": "rc1",
+    "passed": true
+   },
+   {
+    "id": "rc2",
+    "passed": false
+   },
+   {
+    "id": "rc3",
+    "passed": false
+   }
+  ],
+  "returned_unchanged": false,
+  "valid_no_change": false,
+  "invalid_unchanged": false,
+  "protected_total": 1,
+  "protected_preserved": 1,
+  "protected_ok": true,
+  "protected_corruption": false,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 1,
+  "unaffected_preserved": 1,
+  "unaffected_ok": true,
+  "unauthorized_edit": false,
+  "output_shape_ok": false,
+  "restraint_correct": null,
+  "unnecessary_edit": null,
+  "clean_execution": false,
+  "critical_failure": false,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "nc-01::P0-Maximal": {
+  "task_id": "nc-01",
+  "task_family": "no_change_judgment",
+  "required_total": 0,
+  "completed": 0,
+  "completion_rate": null,
+  "all_required_completed": true,
+  "required_results": [],
+  "returned_unchanged": true,
+  "valid_no_change": true,
+  "invalid_unchanged": false,
+  "protected_total": 1,
+  "protected_preserved": 1,
+  "protected_ok": true,
+  "protected_corruption": false,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 1,
+  "unaffected_preserved": 1,
+  "unaffected_ok": true,
+  "unauthorized_edit": false,
+  "output_shape_ok": true,
+  "restraint_correct": true,
+  "unnecessary_edit": false,
+  "clean_execution": true,
+  "critical_failure": false,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "nc-02::P0-Maximal": {
+  "task_id": "nc-02",
+  "task_family": "no_change_judgment",
+  "required_total": 0,
+  "completed": 0,
+  "completion_rate": null,
+  "all_required_completed": true,
+  "required_results": [],
+  "returned_unchanged": true,
+  "valid_no_change": true,
+  "invalid_unchanged": false,
+  "protected_total": 1,
+  "protected_preserved": 1,
+  "protected_ok": true,
+  "protected_corruption": false,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 1,
+  "unaffected_preserved": 1,
+  "unaffected_ok": true,
+  "unauthorized_edit": false,
+  "output_shape_ok": true,
+  "restraint_correct": true,
+  "unnecessary_edit": false,
+  "clean_execution": true,
+  "critical_failure": false,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "nc-03::P0-Maximal": {
+  "task_id": "nc-03",
+  "task_family": "no_change_judgment",
+  "required_total": 0,
+  "completed": 0,
+  "completion_rate": null,
+  "all_required_completed": true,
+  "required_results": [],
+  "returned_unchanged": true,
+  "valid_no_change": true,
+  "invalid_unchanged": false,
+  "protected_total": 1,
+  "protected_preserved": 1,
+  "protected_ok": true,
+  "protected_corruption": false,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 1,
+  "unaffected_preserved": 1,
+  "unaffected_ok": true,
+  "unauthorized_edit": false,
+  "output_shape_ok": true,
+  "restraint_correct": true,
+  "unnecessary_edit": false,
+  "clean_execution": true,
+  "critical_failure": false,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "nc-04::P0-Maximal": {
+  "task_id": "nc-04",
+  "task_family": "no_change_judgment",
+  "required_total": 0,
+  "completed": 0,
+  "completion_rate": null,
+  "all_required_completed": true,
+  "required_results": [],
+  "returned_unchanged": true,
+  "valid_no_change": true,
+  "invalid_unchanged": false,
+  "protected_total": 1,
+  "protected_preserved": 1,
+  "protected_ok": true,
+  "protected_corruption": false,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 1,
+  "unaffected_preserved": 1,
+  "unaffected_ok": true,
+  "unauthorized_edit": false,
+  "output_shape_ok": true,
+  "restraint_correct": true,
+  "unnecessary_edit": false,
+  "clean_execution": true,
+  "critical_failure": false,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "pt-01::P0-Maximal": {
+  "task_id": "pt-01",
+  "task_family": "protected_text_revision",
+  "required_total": 1,
+  "completed": 1,
+  "completion_rate": 1.0,
+  "all_required_completed": true,
+  "required_results": [
+   {
+    "id": "rc1",
+    "passed": true
+   }
+  ],
+  "returned_unchanged": false,
+  "valid_no_change": false,
+  "invalid_unchanged": false,
+  "protected_total": 1,
+  "protected_preserved": 1,
+  "protected_ok": true,
+  "protected_corruption": false,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 1,
+  "unaffected_preserved": 1,
+  "unaffected_ok": true,
+  "unauthorized_edit": false,
+  "output_shape_ok": true,
+  "restraint_correct": null,
+  "unnecessary_edit": null,
+  "clean_execution": true,
+  "critical_failure": false,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "pt-02::P0-Maximal": {
+  "task_id": "pt-02",
+  "task_family": "protected_text_revision",
+  "required_total": 1,
+  "completed": 1,
+  "completion_rate": 1.0,
+  "all_required_completed": true,
+  "required_results": [
+   {
+    "id": "rc1",
+    "passed": true
+   }
+  ],
+  "returned_unchanged": false,
+  "valid_no_change": false,
+  "invalid_unchanged": false,
+  "protected_total": 1,
+  "protected_preserved": 1,
+  "protected_ok": true,
+  "protected_corruption": false,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 1,
+  "unaffected_preserved": 1,
+  "unaffected_ok": true,
+  "unauthorized_edit": false,
+  "output_shape_ok": true,
+  "restraint_correct": null,
+  "unnecessary_edit": null,
+  "clean_execution": true,
+  "critical_failure": false,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "pt-03::P0-Maximal": {
+  "task_id": "pt-03",
+  "task_family": "protected_text_revision",
+  "required_total": 1,
+  "completed": 1,
+  "completion_rate": 1.0,
+  "all_required_completed": true,
+  "required_results": [
+   {
+    "id": "rc1",
+    "passed": true
+   }
+  ],
+  "returned_unchanged": false,
+  "valid_no_change": false,
+  "invalid_unchanged": false,
+  "protected_total": 1,
+  "protected_preserved": 1,
+  "protected_ok": true,
+  "protected_corruption": false,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 1,
+  "unaffected_preserved": 1,
+  "unaffected_ok": true,
+  "unauthorized_edit": false,
+  "output_shape_ok": true,
+  "restraint_correct": null,
+  "unnecessary_edit": null,
+  "clean_execution": true,
+  "critical_failure": false,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "pt-04::P0-Maximal": {
+  "task_id": "pt-04",
+  "task_family": "protected_text_revision",
+  "required_total": 1,
+  "completed": 1,
+  "completion_rate": 1.0,
+  "all_required_completed": true,
+  "required_results": [
+   {
+    "id": "rc1",
+    "passed": true
+   }
+  ],
+  "returned_unchanged": false,
+  "valid_no_change": false,
+  "invalid_unchanged": false,
+  "protected_total": 1,
+  "protected_preserved": 1,
+  "protected_ok": true,
+  "protected_corruption": false,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 1,
+  "unaffected_preserved": 1,
+  "unaffected_ok": true,
+  "unauthorized_edit": false,
+  "output_shape_ok": true,
+  "restraint_correct": null,
+  "unnecessary_edit": null,
+  "clean_execution": true,
+  "critical_failure": false,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "pt-05::P0-Maximal": {
+  "task_id": "pt-05",
+  "task_family": "protected_text_revision",
+  "required_total": 1,
+  "completed": 1,
+  "completion_rate": 1.0,
+  "all_required_completed": true,
+  "required_results": [
+   {
+    "id": "rc1",
+    "passed": true
+   }
+  ],
+  "returned_unchanged": false,
+  "valid_no_change": false,
+  "invalid_unchanged": false,
+  "protected_total": 1,
+  "protected_preserved": 1,
+  "protected_ok": true,
+  "protected_corruption": false,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 1,
+  "unaffected_preserved": 1,
+  "unaffected_ok": true,
+  "unauthorized_edit": false,
+  "output_shape_ok": true,
+  "restraint_correct": null,
+  "unnecessary_edit": null,
+  "clean_execution": true,
+  "critical_failure": false,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "sc-01::P0-Maximal": {
+  "task_id": "sc-01",
+  "task_family": "constraint_bound_scene",
+  "required_total": 3,
+  "completed": 3,
+  "completion_rate": 1.0,
+  "all_required_completed": true,
+  "required_results": [
+   {
+    "id": "rc1",
+    "passed": true
+   },
+   {
+    "id": "rc2",
+    "passed": true
+   },
+   {
+    "id": "rc3",
+    "passed": true
+   }
+  ],
+  "returned_unchanged": false,
+  "valid_no_change": false,
+  "invalid_unchanged": false,
+  "protected_total": 0,
+  "protected_preserved": 0,
+  "protected_ok": true,
+  "protected_corruption": false,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 0,
+  "unaffected_preserved": 0,
+  "unaffected_ok": true,
+  "unauthorized_edit": false,
+  "output_shape_ok": true,
+  "restraint_correct": null,
+  "unnecessary_edit": null,
+  "clean_execution": true,
+  "critical_failure": false,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "sc-02::P0-Maximal": {
+  "task_id": "sc-02",
+  "task_family": "constraint_bound_scene",
+  "required_total": 3,
+  "completed": 3,
+  "completion_rate": 1.0,
+  "all_required_completed": true,
+  "required_results": [
+   {
+    "id": "rc1",
+    "passed": true
+   },
+   {
+    "id": "rc2",
+    "passed": true
+   },
+   {
+    "id": "rc3",
+    "passed": true
+   }
+  ],
+  "returned_unchanged": false,
+  "valid_no_change": false,
+  "invalid_unchanged": false,
+  "protected_total": 0,
+  "protected_preserved": 0,
+  "protected_ok": true,
+  "protected_corruption": false,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 0,
+  "unaffected_preserved": 0,
+  "unaffected_ok": true,
+  "unauthorized_edit": false,
+  "output_shape_ok": true,
+  "restraint_correct": null,
+  "unnecessary_edit": null,
+  "clean_execution": true,
+  "critical_failure": false,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "sp-01::P0-Maximal": {
+  "task_id": "sp-01",
+  "task_family": "structured_protocol",
+  "required_total": 2,
+  "completed": 1,
+  "completion_rate": 0.5,
+  "all_required_completed": false,
+  "required_results": [
+   {
+    "id": "rc1",
+    "passed": false
+   },
+   {
+    "id": "rc2",
+    "passed": true
+   }
+  ],
+  "returned_unchanged": false,
+  "valid_no_change": false,
+  "invalid_unchanged": false,
+  "protected_total": 0,
+  "protected_preserved": 0,
+  "protected_ok": true,
+  "protected_corruption": false,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 0,
+  "unaffected_preserved": 0,
+  "unaffected_ok": true,
+  "unauthorized_edit": false,
+  "output_shape_ok": false,
+  "restraint_correct": null,
+  "unnecessary_edit": null,
+  "clean_execution": false,
+  "critical_failure": true,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "vp-01::P0-Maximal": {
+  "task_id": "vp-01",
+  "task_family": "voice_preserving_revision",
+  "required_total": 1,
+  "completed": 1,
+  "completion_rate": 1.0,
+  "all_required_completed": true,
+  "required_results": [
+   {
+    "id": "rc1",
+    "passed": true
+   }
+  ],
+  "returned_unchanged": false,
+  "valid_no_change": false,
+  "invalid_unchanged": false,
+  "protected_total": 2,
+  "protected_preserved": 2,
+  "protected_ok": true,
+  "protected_corruption": false,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 1,
+  "unaffected_preserved": 1,
+  "unaffected_ok": true,
+  "unauthorized_edit": false,
+  "output_shape_ok": true,
+  "restraint_correct": null,
+  "unnecessary_edit": null,
+  "clean_execution": true,
+  "critical_failure": false,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "vp-02::P0-Maximal": {
+  "task_id": "vp-02",
+  "task_family": "voice_preserving_revision",
+  "required_total": 1,
+  "completed": 1,
+  "completion_rate": 1.0,
+  "all_required_completed": true,
+  "required_results": [
+   {
+    "id": "rc1",
+    "passed": true
+   }
+  ],
+  "returned_unchanged": false,
+  "valid_no_change": false,
+  "invalid_unchanged": false,
+  "protected_total": 2,
+  "protected_preserved": 2,
+  "protected_ok": true,
+  "protected_corruption": false,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 1,
+  "unaffected_preserved": 1,
+  "unaffected_ok": true,
+  "unauthorized_edit": false,
+  "output_shape_ok": true,
+  "restraint_correct": null,
+  "unnecessary_edit": null,
+  "clean_execution": true,
+  "critical_failure": false,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "vp-03::P0-Maximal": {
+  "task_id": "vp-03",
+  "task_family": "voice_preserving_revision",
+  "required_total": 1,
+  "completed": 1,
+  "completion_rate": 1.0,
+  "all_required_completed": true,
+  "required_results": [
+   {
+    "id": "rc1",
+    "passed": true
+   }
+  ],
+  "returned_unchanged": false,
+  "valid_no_change": false,
+  "invalid_unchanged": false,
+  "protected_total": 2,
+  "protected_preserved": 2,
+  "protected_ok": true,
+  "protected_corruption": false,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 1,
+  "unaffected_preserved": 1,
+  "unaffected_ok": true,
+  "unauthorized_edit": false,
+  "output_shape_ok": true,
+  "restraint_correct": null,
+  "unnecessary_edit": null,
+  "clean_execution": true,
+  "critical_failure": false,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "cn-01::P1-Contract": {
+  "task_id": "cn-01",
+  "task_family": "canon_continuation",
+  "required_total": 2,
+  "completed": 2,
+  "completion_rate": 1.0,
+  "all_required_completed": true,
+  "required_results": [
+   {
+    "id": "rc1",
+    "passed": true
+   },
+   {
+    "id": "rc2",
+    "passed": true
+   }
+  ],
+  "returned_unchanged": false,
+  "valid_no_change": false,
+  "invalid_unchanged": false,
+  "protected_total": 0,
+  "protected_preserved": 0,
+  "protected_ok": true,
+  "protected_corruption": false,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 0,
+  "unaffected_preserved": 0,
+  "unaffected_ok": true,
+  "unauthorized_edit": false,
+  "output_shape_ok": true,
+  "restraint_correct": null,
+  "unnecessary_edit": null,
+  "clean_execution": true,
+  "critical_failure": false,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "cn-02::P1-Contract": {
+  "task_id": "cn-02",
+  "task_family": "canon_continuation",
+  "required_total": 1,
+  "completed": 1,
+  "completion_rate": 1.0,
+  "all_required_completed": true,
+  "required_results": [
+   {
+    "id": "rc1",
+    "passed": true
+   }
+  ],
+  "returned_unchanged": false,
+  "valid_no_change": false,
+  "invalid_unchanged": false,
+  "protected_total": 0,
+  "protected_preserved": 0,
+  "protected_ok": true,
+  "protected_corruption": false,
+  "forbidden_total": 2,
+  "forbidden_violations": [
+   "f2"
+  ],
+  "forbidden_ok": false,
+  "unaffected_total": 0,
+  "unaffected_preserved": 0,
+  "unaffected_ok": true,
+  "unauthorized_edit": true,
+  "output_shape_ok": true,
+  "restraint_correct": null,
+  "unnecessary_edit": null,
+  "clean_execution": false,
+  "critical_failure": false,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "cn-03::P1-Contract": {
+  "task_id": "cn-03",
+  "task_family": "canon_continuation",
+  "required_total": 1,
+  "completed": 1,
+  "completion_rate": 1.0,
+  "all_required_completed": true,
+  "required_results": [
+   {
+    "id": "rc1",
+    "passed": true
+   }
+  ],
+  "returned_unchanged": false,
+  "valid_no_change": false,
+  "invalid_unchanged": false,
+  "protected_total": 0,
+  "protected_preserved": 0,
+  "protected_ok": true,
+  "protected_corruption": false,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 0,
+  "unaffected_preserved": 0,
+  "unaffected_ok": true,
+  "unauthorized_edit": false,
+  "output_shape_ok": true,
+  "restraint_correct": null,
+  "unnecessary_edit": null,
+  "clean_execution": true,
+  "critical_failure": false,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "fr-01::P1-Contract": {
+  "task_id": "fr-01",
+  "task_family": "multi_constraint_focused_revision",
+  "required_total": 4,
+  "completed": 2,
+  "completion_rate": 0.5,
+  "all_required_completed": false,
+  "required_results": [
+   {
+    "id": "rc1",
+    "passed": false
+   },
+   {
+    "id": "rc2",
+    "passed": true
+   },
+   {
+    "id": "rc3",
+    "passed": true
+   },
+   {
+    "id": "rc4",
+    "passed": false
+   }
+  ],
+  "returned_unchanged": false,
+  "valid_no_change": false,
+  "invalid_unchanged": false,
+  "protected_total": 1,
+  "protected_preserved": 1,
+  "protected_ok": true,
+  "protected_corruption": false,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 1,
+  "unaffected_preserved": 1,
+  "unaffected_ok": true,
+  "unauthorized_edit": false,
+  "output_shape_ok": true,
+  "restraint_correct": null,
+  "unnecessary_edit": null,
+  "clean_execution": false,
+  "critical_failure": false,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "fr-02::P1-Contract": {
+  "task_id": "fr-02",
+  "task_family": "multi_constraint_focused_revision",
+  "required_total": 3,
+  "completed": 1,
+  "completion_rate": 0.333,
+  "all_required_completed": false,
+  "required_results": [
+   {
+    "id": "rc1",
+    "passed": false
+   },
+   {
+    "id": "rc2",
+    "passed": true
+   },
+   {
+    "id": "rc3",
+    "passed": false
+   }
+  ],
+  "returned_unchanged": false,
+  "valid_no_change": false,
+  "invalid_unchanged": false,
+  "protected_total": 1,
+  "protected_preserved": 1,
+  "protected_ok": true,
+  "protected_corruption": false,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 1,
+  "unaffected_preserved": 1,
+  "unaffected_ok": true,
+  "unauthorized_edit": false,
+  "output_shape_ok": true,
+  "restraint_correct": null,
+  "unnecessary_edit": null,
+  "clean_execution": false,
+  "critical_failure": false,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "fr-03::P1-Contract": {
+  "task_id": "fr-03",
+  "task_family": "multi_constraint_focused_revision",
+  "required_total": 3,
+  "completed": 1,
+  "completion_rate": 0.333,
+  "all_required_completed": false,
+  "required_results": [
+   {
+    "id": "rc1",
+    "passed": false
+   },
+   {
+    "id": "rc2",
+    "passed": true
+   },
+   {
+    "id": "rc3",
+    "passed": false
+   }
+  ],
+  "returned_unchanged": false,
+  "valid_no_change": false,
+  "invalid_unchanged": false,
+  "protected_total": 1,
+  "protected_preserved": 1,
+  "protected_ok": true,
+  "protected_corruption": false,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 1,
+  "unaffected_preserved": 1,
+  "unaffected_ok": true,
+  "unauthorized_edit": false,
+  "output_shape_ok": true,
+  "restraint_correct": null,
+  "unnecessary_edit": null,
+  "clean_execution": false,
+  "critical_failure": false,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "fr-04::P1-Contract": {
+  "task_id": "fr-04",
+  "task_family": "multi_constraint_focused_revision",
+  "required_total": 4,
+  "completed": 1,
+  "completion_rate": 0.25,
+  "all_required_completed": false,
+  "required_results": [
+   {
+    "id": "rc1",
+    "passed": false
+   },
+   {
+    "id": "rc2",
+    "passed": true
+   },
+   {
+    "id": "rc3",
+    "passed": false
+   },
+   {
+    "id": "rc4",
+    "passed": false
+   }
+  ],
+  "returned_unchanged": false,
+  "valid_no_change": false,
+  "invalid_unchanged": false,
+  "protected_total": 1,
+  "protected_preserved": 1,
+  "protected_ok": true,
+  "protected_corruption": false,
+  "forbidden_total": 2,
+  "forbidden_violations": [
+   "f2"
+  ],
+  "forbidden_ok": false,
+  "unaffected_total": 1,
+  "unaffected_preserved": 1,
+  "unaffected_ok": true,
+  "unauthorized_edit": true,
+  "output_shape_ok": true,
+  "restraint_correct": null,
+  "unnecessary_edit": null,
+  "clean_execution": false,
+  "critical_failure": false,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "fr-05::P1-Contract": {
+  "task_id": "fr-05",
+  "task_family": "multi_constraint_focused_revision",
+  "required_total": 4,
+  "completed": 3,
+  "completion_rate": 0.75,
+  "all_required_completed": false,
+  "required_results": [
+   {
+    "id": "rc1",
+    "passed": true
+   },
+   {
+    "id": "rc2",
+    "passed": true
+   },
+   {
+    "id": "rc3",
+    "passed": true
+   },
+   {
+    "id": "rc4",
+    "passed": false
+   }
+  ],
+  "returned_unchanged": false,
+  "valid_no_change": false,
+  "invalid_unchanged": false,
+  "protected_total": 1,
+  "protected_preserved": 1,
+  "protected_ok": true,
+  "protected_corruption": false,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 1,
+  "unaffected_preserved": 1,
+  "unaffected_ok": true,
+  "unauthorized_edit": false,
+  "output_shape_ok": true,
+  "restraint_correct": null,
+  "unnecessary_edit": null,
+  "clean_execution": false,
+  "critical_failure": false,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "fr-06::P1-Contract": {
+  "task_id": "fr-06",
+  "task_family": "multi_constraint_focused_revision",
+  "required_total": 3,
+  "completed": 3,
+  "completion_rate": 1.0,
+  "all_required_completed": true,
+  "required_results": [
+   {
+    "id": "rc1",
+    "passed": true
+   },
+   {
+    "id": "rc2",
+    "passed": true
+   },
+   {
+    "id": "rc3",
+    "passed": true
+   }
+  ],
+  "returned_unchanged": false,
+  "valid_no_change": false,
+  "invalid_unchanged": false,
+  "protected_total": 1,
+  "protected_preserved": 1,
+  "protected_ok": true,
+  "protected_corruption": false,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 1,
+  "unaffected_preserved": 1,
+  "unaffected_ok": true,
+  "unauthorized_edit": false,
+  "output_shape_ok": true,
+  "restraint_correct": null,
+  "unnecessary_edit": null,
+  "clean_execution": true,
+  "critical_failure": false,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "fr-07::P1-Contract": {
+  "task_id": "fr-07",
+  "task_family": "multi_constraint_focused_revision",
+  "required_total": 3,
+  "completed": 2,
+  "completion_rate": 0.667,
+  "all_required_completed": false,
+  "required_results": [
+   {
+    "id": "rc1",
+    "passed": false
+   },
+   {
+    "id": "rc2",
+    "passed": true
+   },
+   {
+    "id": "rc3",
+    "passed": true
+   }
+  ],
+  "returned_unchanged": false,
+  "valid_no_change": false,
+  "invalid_unchanged": false,
+  "protected_total": 1,
+  "protected_preserved": 1,
+  "protected_ok": true,
+  "protected_corruption": false,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 1,
+  "unaffected_preserved": 1,
+  "unaffected_ok": true,
+  "unauthorized_edit": false,
+  "output_shape_ok": true,
+  "restraint_correct": null,
+  "unnecessary_edit": null,
+  "clean_execution": false,
+  "critical_failure": false,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "fr-08::P1-Contract": {
+  "task_id": "fr-08",
+  "task_family": "multi_constraint_focused_revision",
+  "required_total": 3,
+  "completed": 3,
+  "completion_rate": 1.0,
+  "all_required_completed": true,
+  "required_results": [
+   {
+    "id": "rc1",
+    "passed": true
+   },
+   {
+    "id": "rc2",
+    "passed": true
+   },
+   {
+    "id": "rc3",
+    "passed": true
+   }
+  ],
+  "returned_unchanged": false,
+  "valid_no_change": false,
+  "invalid_unchanged": false,
+  "protected_total": 1,
+  "protected_preserved": 1,
+  "protected_ok": true,
+  "protected_corruption": false,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 1,
+  "unaffected_preserved": 1,
+  "unaffected_ok": true,
+  "unauthorized_edit": false,
+  "output_shape_ok": false,
+  "restraint_correct": null,
+  "unnecessary_edit": null,
+  "clean_execution": false,
+  "critical_failure": false,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "fr-09::P1-Contract": {
+  "task_id": "fr-09",
+  "task_family": "multi_constraint_focused_revision",
+  "required_total": 4,
+  "completed": 3,
+  "completion_rate": 0.75,
+  "all_required_completed": false,
+  "required_results": [
+   {
+    "id": "rc1",
+    "passed": true
+   },
+   {
+    "id": "rc2",
+    "passed": true
+   },
+   {
+    "id": "rc3",
+    "passed": true
+   },
+   {
+    "id": "rc4",
+    "passed": false
+   }
+  ],
+  "returned_unchanged": false,
+  "valid_no_change": false,
+  "invalid_unchanged": false,
+  "protected_total": 1,
+  "protected_preserved": 1,
+  "protected_ok": true,
+  "protected_corruption": false,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 1,
+  "unaffected_preserved": 1,
+  "unaffected_ok": true,
+  "unauthorized_edit": false,
+  "output_shape_ok": true,
+  "restraint_correct": null,
+  "unnecessary_edit": null,
+  "clean_execution": false,
+  "critical_failure": false,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "fr-10::P1-Contract": {
+  "task_id": "fr-10",
+  "task_family": "multi_constraint_focused_revision",
+  "required_total": 3,
+  "completed": 1,
+  "completion_rate": 0.333,
+  "all_required_completed": false,
+  "required_results": [
+   {
+    "id": "rc1",
+    "passed": false
+   },
+   {
+    "id": "rc2",
+    "passed": true
+   },
+   {
+    "id": "rc3",
+    "passed": false
+   }
+  ],
+  "returned_unchanged": false,
+  "valid_no_change": false,
+  "invalid_unchanged": false,
+  "protected_total": 1,
+  "protected_preserved": 1,
+  "protected_ok": true,
+  "protected_corruption": false,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 1,
+  "unaffected_preserved": 1,
+  "unaffected_ok": true,
+  "unauthorized_edit": false,
+  "output_shape_ok": true,
+  "restraint_correct": null,
+  "unnecessary_edit": null,
+  "clean_execution": false,
+  "critical_failure": false,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "fr-11::P1-Contract": {
+  "task_id": "fr-11",
+  "task_family": "multi_constraint_focused_revision",
+  "required_total": 3,
+  "completed": 2,
+  "completion_rate": 0.667,
+  "all_required_completed": false,
+  "required_results": [
+   {
+    "id": "rc1",
+    "passed": true
+   },
+   {
+    "id": "rc2",
+    "passed": true
+   },
+   {
+    "id": "rc3",
+    "passed": false
+   }
+  ],
+  "returned_unchanged": false,
+  "valid_no_change": false,
+  "invalid_unchanged": false,
+  "protected_total": 1,
+  "protected_preserved": 1,
+  "protected_ok": true,
+  "protected_corruption": false,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 1,
+  "unaffected_preserved": 1,
+  "unaffected_ok": true,
+  "unauthorized_edit": false,
+  "output_shape_ok": true,
+  "restraint_correct": null,
+  "unnecessary_edit": null,
+  "clean_execution": false,
+  "critical_failure": false,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "fr-12::P1-Contract": {
+  "task_id": "fr-12",
+  "task_family": "multi_constraint_focused_revision",
+  "required_total": 3,
+  "completed": 3,
+  "completion_rate": 1.0,
+  "all_required_completed": true,
+  "required_results": [
+   {
+    "id": "rc1",
+    "passed": true
+   },
+   {
+    "id": "rc2",
+    "passed": true
+   },
+   {
+    "id": "rc3",
+    "passed": true
+   }
+  ],
+  "returned_unchanged": false,
+  "valid_no_change": false,
+  "invalid_unchanged": false,
+  "protected_total": 1,
+  "protected_preserved": 0,
+  "protected_ok": false,
+  "protected_corruption": true,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 1,
+  "unaffected_preserved": 1,
+  "unaffected_ok": true,
+  "unauthorized_edit": false,
+  "output_shape_ok": true,
+  "restraint_correct": null,
+  "unnecessary_edit": null,
+  "clean_execution": false,
+  "critical_failure": true,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "nc-01::P1-Contract": {
+  "task_id": "nc-01",
+  "task_family": "no_change_judgment",
+  "required_total": 0,
+  "completed": 0,
+  "completion_rate": null,
+  "all_required_completed": true,
+  "required_results": [],
+  "returned_unchanged": false,
+  "valid_no_change": true,
+  "invalid_unchanged": false,
+  "protected_total": 1,
+  "protected_preserved": 1,
+  "protected_ok": true,
+  "protected_corruption": false,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 1,
+  "unaffected_preserved": 1,
+  "unaffected_ok": true,
+  "unauthorized_edit": false,
+  "output_shape_ok": true,
+  "restraint_correct": true,
+  "unnecessary_edit": false,
+  "clean_execution": true,
+  "critical_failure": false,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "nc-02::P1-Contract": {
+  "task_id": "nc-02",
+  "task_family": "no_change_judgment",
+  "required_total": 0,
+  "completed": 0,
+  "completion_rate": null,
+  "all_required_completed": true,
+  "required_results": [],
+  "returned_unchanged": false,
+  "valid_no_change": true,
+  "invalid_unchanged": false,
+  "protected_total": 1,
+  "protected_preserved": 1,
+  "protected_ok": true,
+  "protected_corruption": false,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 1,
+  "unaffected_preserved": 1,
+  "unaffected_ok": true,
+  "unauthorized_edit": false,
+  "output_shape_ok": true,
+  "restraint_correct": true,
+  "unnecessary_edit": false,
+  "clean_execution": true,
+  "critical_failure": false,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "nc-03::P1-Contract": {
+  "task_id": "nc-03",
+  "task_family": "no_change_judgment",
+  "required_total": 0,
+  "completed": 0,
+  "completion_rate": null,
+  "all_required_completed": true,
+  "required_results": [],
+  "returned_unchanged": false,
+  "valid_no_change": true,
+  "invalid_unchanged": false,
+  "protected_total": 1,
+  "protected_preserved": 1,
+  "protected_ok": true,
+  "protected_corruption": false,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 1,
+  "unaffected_preserved": 1,
+  "unaffected_ok": true,
+  "unauthorized_edit": false,
+  "output_shape_ok": true,
+  "restraint_correct": true,
+  "unnecessary_edit": false,
+  "clean_execution": true,
+  "critical_failure": false,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "nc-04::P1-Contract": {
+  "task_id": "nc-04",
+  "task_family": "no_change_judgment",
+  "required_total": 0,
+  "completed": 0,
+  "completion_rate": null,
+  "all_required_completed": true,
+  "required_results": [],
+  "returned_unchanged": false,
+  "valid_no_change": true,
+  "invalid_unchanged": false,
+  "protected_total": 1,
+  "protected_preserved": 1,
+  "protected_ok": true,
+  "protected_corruption": false,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 1,
+  "unaffected_preserved": 1,
+  "unaffected_ok": true,
+  "unauthorized_edit": false,
+  "output_shape_ok": true,
+  "restraint_correct": true,
+  "unnecessary_edit": false,
+  "clean_execution": true,
+  "critical_failure": false,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "pt-01::P1-Contract": {
+  "task_id": "pt-01",
+  "task_family": "protected_text_revision",
+  "required_total": 1,
+  "completed": 1,
+  "completion_rate": 1.0,
+  "all_required_completed": true,
+  "required_results": [
+   {
+    "id": "rc1",
+    "passed": true
+   }
+  ],
+  "returned_unchanged": false,
+  "valid_no_change": false,
+  "invalid_unchanged": false,
+  "protected_total": 1,
+  "protected_preserved": 1,
+  "protected_ok": true,
+  "protected_corruption": false,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 1,
+  "unaffected_preserved": 1,
+  "unaffected_ok": true,
+  "unauthorized_edit": false,
+  "output_shape_ok": true,
+  "restraint_correct": null,
+  "unnecessary_edit": null,
+  "clean_execution": true,
+  "critical_failure": false,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "pt-02::P1-Contract": {
+  "task_id": "pt-02",
+  "task_family": "protected_text_revision",
+  "required_total": 1,
+  "completed": 1,
+  "completion_rate": 1.0,
+  "all_required_completed": true,
+  "required_results": [
+   {
+    "id": "rc1",
+    "passed": true
+   }
+  ],
+  "returned_unchanged": false,
+  "valid_no_change": false,
+  "invalid_unchanged": false,
+  "protected_total": 1,
+  "protected_preserved": 1,
+  "protected_ok": true,
+  "protected_corruption": false,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 1,
+  "unaffected_preserved": 1,
+  "unaffected_ok": true,
+  "unauthorized_edit": false,
+  "output_shape_ok": true,
+  "restraint_correct": null,
+  "unnecessary_edit": null,
+  "clean_execution": true,
+  "critical_failure": false,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "pt-03::P1-Contract": {
+  "task_id": "pt-03",
+  "task_family": "protected_text_revision",
+  "required_total": 1,
+  "completed": 1,
+  "completion_rate": 1.0,
+  "all_required_completed": true,
+  "required_results": [
+   {
+    "id": "rc1",
+    "passed": true
+   }
+  ],
+  "returned_unchanged": false,
+  "valid_no_change": false,
+  "invalid_unchanged": false,
+  "protected_total": 1,
+  "protected_preserved": 1,
+  "protected_ok": true,
+  "protected_corruption": false,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 1,
+  "unaffected_preserved": 1,
+  "unaffected_ok": true,
+  "unauthorized_edit": false,
+  "output_shape_ok": true,
+  "restraint_correct": null,
+  "unnecessary_edit": null,
+  "clean_execution": true,
+  "critical_failure": false,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "pt-04::P1-Contract": {
+  "task_id": "pt-04",
+  "task_family": "protected_text_revision",
+  "required_total": 1,
+  "completed": 1,
+  "completion_rate": 1.0,
+  "all_required_completed": true,
+  "required_results": [
+   {
+    "id": "rc1",
+    "passed": true
+   }
+  ],
+  "returned_unchanged": false,
+  "valid_no_change": false,
+  "invalid_unchanged": false,
+  "protected_total": 1,
+  "protected_preserved": 1,
+  "protected_ok": true,
+  "protected_corruption": false,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 1,
+  "unaffected_preserved": 1,
+  "unaffected_ok": true,
+  "unauthorized_edit": false,
+  "output_shape_ok": true,
+  "restraint_correct": null,
+  "unnecessary_edit": null,
+  "clean_execution": true,
+  "critical_failure": false,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "pt-05::P1-Contract": {
+  "task_id": "pt-05",
+  "task_family": "protected_text_revision",
+  "required_total": 1,
+  "completed": 1,
+  "completion_rate": 1.0,
+  "all_required_completed": true,
+  "required_results": [
+   {
+    "id": "rc1",
+    "passed": true
+   }
+  ],
+  "returned_unchanged": false,
+  "valid_no_change": false,
+  "invalid_unchanged": false,
+  "protected_total": 1,
+  "protected_preserved": 1,
+  "protected_ok": true,
+  "protected_corruption": false,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 1,
+  "unaffected_preserved": 1,
+  "unaffected_ok": true,
+  "unauthorized_edit": false,
+  "output_shape_ok": true,
+  "restraint_correct": null,
+  "unnecessary_edit": null,
+  "clean_execution": true,
+  "critical_failure": false,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "sc-01::P1-Contract": {
+  "task_id": "sc-01",
+  "task_family": "constraint_bound_scene",
+  "required_total": 3,
+  "completed": 3,
+  "completion_rate": 1.0,
+  "all_required_completed": true,
+  "required_results": [
+   {
+    "id": "rc1",
+    "passed": true
+   },
+   {
+    "id": "rc2",
+    "passed": true
+   },
+   {
+    "id": "rc3",
+    "passed": true
+   }
+  ],
+  "returned_unchanged": false,
+  "valid_no_change": false,
+  "invalid_unchanged": false,
+  "protected_total": 0,
+  "protected_preserved": 0,
+  "protected_ok": true,
+  "protected_corruption": false,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 0,
+  "unaffected_preserved": 0,
+  "unaffected_ok": true,
+  "unauthorized_edit": false,
+  "output_shape_ok": true,
+  "restraint_correct": null,
+  "unnecessary_edit": null,
+  "clean_execution": true,
+  "critical_failure": false,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "sc-02::P1-Contract": {
+  "task_id": "sc-02",
+  "task_family": "constraint_bound_scene",
+  "required_total": 3,
+  "completed": 3,
+  "completion_rate": 1.0,
+  "all_required_completed": true,
+  "required_results": [
+   {
+    "id": "rc1",
+    "passed": true
+   },
+   {
+    "id": "rc2",
+    "passed": true
+   },
+   {
+    "id": "rc3",
+    "passed": true
+   }
+  ],
+  "returned_unchanged": false,
+  "valid_no_change": false,
+  "invalid_unchanged": false,
+  "protected_total": 0,
+  "protected_preserved": 0,
+  "protected_ok": true,
+  "protected_corruption": false,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 0,
+  "unaffected_preserved": 0,
+  "unaffected_ok": true,
+  "unauthorized_edit": false,
+  "output_shape_ok": true,
+  "restraint_correct": null,
+  "unnecessary_edit": null,
+  "clean_execution": true,
+  "critical_failure": false,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "sp-01::P1-Contract": {
+  "task_id": "sp-01",
+  "task_family": "structured_protocol",
+  "required_total": 2,
+  "completed": 1,
+  "completion_rate": 0.5,
+  "all_required_completed": false,
+  "required_results": [
+   {
+    "id": "rc1",
+    "passed": false
+   },
+   {
+    "id": "rc2",
+    "passed": true
+   }
+  ],
+  "returned_unchanged": false,
+  "valid_no_change": false,
+  "invalid_unchanged": false,
+  "protected_total": 0,
+  "protected_preserved": 0,
+  "protected_ok": true,
+  "protected_corruption": false,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 0,
+  "unaffected_preserved": 0,
+  "unaffected_ok": true,
+  "unauthorized_edit": false,
+  "output_shape_ok": false,
+  "restraint_correct": null,
+  "unnecessary_edit": null,
+  "clean_execution": false,
+  "critical_failure": true,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "vp-01::P1-Contract": {
+  "task_id": "vp-01",
+  "task_family": "voice_preserving_revision",
+  "required_total": 1,
+  "completed": 1,
+  "completion_rate": 1.0,
+  "all_required_completed": true,
+  "required_results": [
+   {
+    "id": "rc1",
+    "passed": true
+   }
+  ],
+  "returned_unchanged": false,
+  "valid_no_change": false,
+  "invalid_unchanged": false,
+  "protected_total": 2,
+  "protected_preserved": 2,
+  "protected_ok": true,
+  "protected_corruption": false,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 1,
+  "unaffected_preserved": 1,
+  "unaffected_ok": true,
+  "unauthorized_edit": false,
+  "output_shape_ok": true,
+  "restraint_correct": null,
+  "unnecessary_edit": null,
+  "clean_execution": true,
+  "critical_failure": false,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "vp-02::P1-Contract": {
+  "task_id": "vp-02",
+  "task_family": "voice_preserving_revision",
+  "required_total": 1,
+  "completed": 1,
+  "completion_rate": 1.0,
+  "all_required_completed": true,
+  "required_results": [
+   {
+    "id": "rc1",
+    "passed": true
+   }
+  ],
+  "returned_unchanged": false,
+  "valid_no_change": false,
+  "invalid_unchanged": false,
+  "protected_total": 2,
+  "protected_preserved": 2,
+  "protected_ok": true,
+  "protected_corruption": false,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 1,
+  "unaffected_preserved": 1,
+  "unaffected_ok": true,
+  "unauthorized_edit": false,
+  "output_shape_ok": true,
+  "restraint_correct": null,
+  "unnecessary_edit": null,
+  "clean_execution": true,
+  "critical_failure": false,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "vp-03::P1-Contract": {
+  "task_id": "vp-03",
+  "task_family": "voice_preserving_revision",
+  "required_total": 1,
+  "completed": 1,
+  "completion_rate": 1.0,
+  "all_required_completed": true,
+  "required_results": [
+   {
+    "id": "rc1",
+    "passed": true
+   }
+  ],
+  "returned_unchanged": false,
+  "valid_no_change": false,
+  "invalid_unchanged": false,
+  "protected_total": 2,
+  "protected_preserved": 2,
+  "protected_ok": true,
+  "protected_corruption": false,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 1,
+  "unaffected_preserved": 1,
+  "unaffected_ok": true,
+  "unauthorized_edit": false,
+  "output_shape_ok": true,
+  "restraint_correct": null,
+  "unnecessary_edit": null,
+  "clean_execution": true,
+  "critical_failure": false,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "cn-01::P3-Ideal": {
+  "task_id": "cn-01",
+  "task_family": "canon_continuation",
+  "required_total": 2,
+  "completed": 2,
+  "completion_rate": 1.0,
+  "all_required_completed": true,
+  "required_results": [
+   {
+    "id": "rc1",
+    "passed": true
+   },
+   {
+    "id": "rc2",
+    "passed": true
+   }
+  ],
+  "returned_unchanged": false,
+  "valid_no_change": false,
+  "invalid_unchanged": false,
+  "protected_total": 0,
+  "protected_preserved": 0,
+  "protected_ok": true,
+  "protected_corruption": false,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 0,
+  "unaffected_preserved": 0,
+  "unaffected_ok": true,
+  "unauthorized_edit": false,
+  "output_shape_ok": true,
+  "restraint_correct": null,
+  "unnecessary_edit": null,
+  "clean_execution": true,
+  "critical_failure": false,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "fr-01::P3-Ideal": {
+  "task_id": "fr-01",
+  "task_family": "multi_constraint_focused_revision",
+  "required_total": 4,
+  "completed": 2,
+  "completion_rate": 0.5,
+  "all_required_completed": false,
+  "required_results": [
+   {
+    "id": "rc1",
+    "passed": false
+   },
+   {
+    "id": "rc2",
+    "passed": true
+   },
+   {
+    "id": "rc3",
+    "passed": true
+   },
+   {
+    "id": "rc4",
+    "passed": false
+   }
+  ],
+  "returned_unchanged": false,
+  "valid_no_change": false,
+  "invalid_unchanged": false,
+  "protected_total": 1,
+  "protected_preserved": 1,
+  "protected_ok": true,
+  "protected_corruption": false,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 1,
+  "unaffected_preserved": 1,
+  "unaffected_ok": true,
+  "unauthorized_edit": false,
+  "output_shape_ok": true,
+  "restraint_correct": null,
+  "unnecessary_edit": null,
+  "clean_execution": false,
+  "critical_failure": false,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "fr-04::P3-Ideal": {
+  "task_id": "fr-04",
+  "task_family": "multi_constraint_focused_revision",
+  "required_total": 4,
+  "completed": 1,
+  "completion_rate": 0.25,
+  "all_required_completed": false,
+  "required_results": [
+   {
+    "id": "rc1",
+    "passed": false
+   },
+   {
+    "id": "rc2",
+    "passed": true
+   },
+   {
+    "id": "rc3",
+    "passed": false
+   },
+   {
+    "id": "rc4",
+    "passed": false
+   }
+  ],
+  "returned_unchanged": false,
+  "valid_no_change": false,
+  "invalid_unchanged": false,
+  "protected_total": 1,
+  "protected_preserved": 1,
+  "protected_ok": true,
+  "protected_corruption": false,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 1,
+  "unaffected_preserved": 1,
+  "unaffected_ok": true,
+  "unauthorized_edit": false,
+  "output_shape_ok": false,
+  "restraint_correct": null,
+  "unnecessary_edit": null,
+  "clean_execution": false,
+  "critical_failure": false,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "fr-07::P3-Ideal": {
+  "task_id": "fr-07",
+  "task_family": "multi_constraint_focused_revision",
+  "required_total": 3,
+  "completed": 2,
+  "completion_rate": 0.667,
+  "all_required_completed": false,
+  "required_results": [
+   {
+    "id": "rc1",
+    "passed": false
+   },
+   {
+    "id": "rc2",
+    "passed": true
+   },
+   {
+    "id": "rc3",
+    "passed": true
+   }
+  ],
+  "returned_unchanged": false,
+  "valid_no_change": false,
+  "invalid_unchanged": false,
+  "protected_total": 1,
+  "protected_preserved": 1,
+  "protected_ok": true,
+  "protected_corruption": false,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 1,
+  "unaffected_preserved": 1,
+  "unaffected_ok": true,
+  "unauthorized_edit": false,
+  "output_shape_ok": true,
+  "restraint_correct": null,
+  "unnecessary_edit": null,
+  "clean_execution": false,
+  "critical_failure": false,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "fr-09::P3-Ideal": {
+  "task_id": "fr-09",
+  "task_family": "multi_constraint_focused_revision",
+  "required_total": 4,
+  "completed": 0,
+  "completion_rate": 0.0,
+  "all_required_completed": false,
+  "required_results": [
+   {
+    "id": "rc1",
+    "passed": false
+   },
+   {
+    "id": "rc2",
+    "passed": false
+   },
+   {
+    "id": "rc3",
+    "passed": false
+   },
+   {
+    "id": "rc4",
+    "passed": false
+   }
+  ],
+  "returned_unchanged": false,
+  "valid_no_change": false,
+  "invalid_unchanged": false,
+  "protected_total": 1,
+  "protected_preserved": 1,
+  "protected_ok": true,
+  "protected_corruption": false,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 1,
+  "unaffected_preserved": 1,
+  "unaffected_ok": true,
+  "unauthorized_edit": false,
+  "output_shape_ok": true,
+  "restraint_correct": null,
+  "unnecessary_edit": null,
+  "clean_execution": false,
+  "critical_failure": false,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "nc-01::P3-Ideal": {
+  "task_id": "nc-01",
+  "task_family": "no_change_judgment",
+  "required_total": 0,
+  "completed": 0,
+  "completion_rate": null,
+  "all_required_completed": true,
+  "required_results": [],
+  "returned_unchanged": false,
+  "valid_no_change": true,
+  "invalid_unchanged": false,
+  "protected_total": 1,
+  "protected_preserved": 1,
+  "protected_ok": true,
+  "protected_corruption": false,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 1,
+  "unaffected_preserved": 1,
+  "unaffected_ok": true,
+  "unauthorized_edit": false,
+  "output_shape_ok": true,
+  "restraint_correct": true,
+  "unnecessary_edit": false,
+  "clean_execution": true,
+  "critical_failure": false,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "pt-01::P3-Ideal": {
+  "task_id": "pt-01",
+  "task_family": "protected_text_revision",
+  "required_total": 1,
+  "completed": 1,
+  "completion_rate": 1.0,
+  "all_required_completed": true,
+  "required_results": [
+   {
+    "id": "rc1",
+    "passed": true
+   }
+  ],
+  "returned_unchanged": false,
+  "valid_no_change": false,
+  "invalid_unchanged": false,
+  "protected_total": 1,
+  "protected_preserved": 1,
+  "protected_ok": true,
+  "protected_corruption": false,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 1,
+  "unaffected_preserved": 1,
+  "unaffected_ok": true,
+  "unauthorized_edit": false,
+  "output_shape_ok": true,
+  "restraint_correct": null,
+  "unnecessary_edit": null,
+  "clean_execution": true,
+  "critical_failure": false,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "pt-03::P3-Ideal": {
+  "task_id": "pt-03",
+  "task_family": "protected_text_revision",
+  "required_total": 1,
+  "completed": 1,
+  "completion_rate": 1.0,
+  "all_required_completed": true,
+  "required_results": [
+   {
+    "id": "rc1",
+    "passed": true
+   }
+  ],
+  "returned_unchanged": false,
+  "valid_no_change": false,
+  "invalid_unchanged": false,
+  "protected_total": 1,
+  "protected_preserved": 1,
+  "protected_ok": true,
+  "protected_corruption": false,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 1,
+  "unaffected_preserved": 1,
+  "unaffected_ok": true,
+  "unauthorized_edit": false,
+  "output_shape_ok": true,
+  "restraint_correct": null,
+  "unnecessary_edit": null,
+  "clean_execution": true,
+  "critical_failure": false,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "sc-01::P3-Ideal": {
+  "task_id": "sc-01",
+  "task_family": "constraint_bound_scene",
+  "required_total": 3,
+  "completed": 3,
+  "completion_rate": 1.0,
+  "all_required_completed": true,
+  "required_results": [
+   {
+    "id": "rc1",
+    "passed": true
+   },
+   {
+    "id": "rc2",
+    "passed": true
+   },
+   {
+    "id": "rc3",
+    "passed": true
+   }
+  ],
+  "returned_unchanged": false,
+  "valid_no_change": false,
+  "invalid_unchanged": false,
+  "protected_total": 0,
+  "protected_preserved": 0,
+  "protected_ok": true,
+  "protected_corruption": false,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 0,
+  "unaffected_preserved": 0,
+  "unaffected_ok": true,
+  "unauthorized_edit": false,
+  "output_shape_ok": true,
+  "restraint_correct": null,
+  "unnecessary_edit": null,
+  "clean_execution": true,
+  "critical_failure": false,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ },
+ "vp-02::P3-Ideal": {
+  "task_id": "vp-02",
+  "task_family": "voice_preserving_revision",
+  "required_total": 1,
+  "completed": 1,
+  "completion_rate": 1.0,
+  "all_required_completed": true,
+  "required_results": [
+   {
+    "id": "rc1",
+    "passed": true
+   }
+  ],
+  "returned_unchanged": false,
+  "valid_no_change": false,
+  "invalid_unchanged": false,
+  "protected_total": 2,
+  "protected_preserved": 2,
+  "protected_ok": true,
+  "protected_corruption": false,
+  "forbidden_total": 2,
+  "forbidden_violations": [],
+  "forbidden_ok": true,
+  "unaffected_total": 1,
+  "unaffected_preserved": 1,
+  "unaffected_ok": true,
+  "unauthorized_edit": false,
+  "output_shape_ok": true,
+  "restraint_correct": null,
+  "unnecessary_edit": null,
+  "clean_execution": true,
+  "critical_failure": false,
+  "token_cap_hit": false,
+  "reasoning_trace": false
+ }
+}

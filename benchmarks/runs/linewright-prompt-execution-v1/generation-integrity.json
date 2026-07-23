@@ -1,0 +1,34 @@
+{
+ "dispatch": "28B",
+ "expected_outputs": 100,
+ "actual_outputs": 100,
+ "complete_outputs": 100,
+ "comprehension_outputs": 6,
+ "missing_outputs": 0,
+ "missing_list": [],
+ "duplicate_outputs": 0,
+ "malformed_records": 0,
+ "prompt_hash_mismatches": 0,
+ "model_revision_mismatches": 0,
+ "generation_setting_mismatches": 0,
+ "token_cap_hits": 0,
+ "reasoning_trace_count": 0,
+ "technical_retries": 0,
+ "technical_failures": 0,
+ "arm_counts": {
+  "P0-Realistic": 30,
+  "P0-Maximal": 30,
+  "P1-Contract": 30,
+  "P3-Ideal": 10
+ },
+ "environment": {
+  "gpu": "NVIDIA GB10",
+  "torch": "2.10.0a0+b558c986e8.nv25.11",
+  "transformers": "5.14.1",
+  "model_revision": "b968826d9c46dd6066d109eabc6255188de91218",
+  "thinking": "disabled",
+  "decoding": "greedy",
+  "seed": 20260723
+ },
+ "outcome": "valid"
+}

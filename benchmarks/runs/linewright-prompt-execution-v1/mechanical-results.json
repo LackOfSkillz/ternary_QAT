@@ -1,0 +1,689 @@
+{
+ "dispatch": "28B",
+ "instrument": "linewright-prompt-execution-v1",
+ "scored_outputs": 100,
+ "mechanical_by_arm": {
+  "P0-Realistic": {
+   "n": 30,
+   "clean_execution": {
+    "count": 12,
+    "total": 30,
+    "rate": 0.4
+   },
+   "all_required_completed": {
+    "count": 9,
+    "total": 26,
+    "rate": 0.346
+   },
+   "required_change_completion_rate": 0.462,
+   "invalid_unchanged": {
+    "count": 3,
+    "total": 20,
+    "rate": 0.15
+   },
+   "protected_text_accuracy": 0.889,
+   "protected_corruption_count": 3,
+   "unauthorized_edit_rate": {
+    "count": 1,
+    "total": 20,
+    "rate": 0.05
+   },
+   "output_shape_validity": {
+    "count": 3,
+    "total": 4,
+    "rate": 0.75
+   },
+   "no_change_accuracy": {
+    "count": 3,
+    "total": 4,
+    "rate": 0.75
+   },
+   "critical_failure_count": 7,
+   "token_cap_hits": 0,
+   "reasoning_traces": 0
+  },
+  "P0-Maximal": {
+   "n": 30,
+   "clean_execution": {
+    "count": 19,
+    "total": 30,
+    "rate": 0.633
+   },
+   "all_required_completed": {
+    "count": 16,
+    "total": 26,
+    "rate": 0.615
+   },
+   "required_change_completion_rate": 0.827,
+   "invalid_unchanged": {
+    "count": 0,
+    "total": 20,
+    "rate": 0.0
+   },
+   "protected_text_accuracy": 1.0,
+   "protected_corruption_count": 0,
+   "unauthorized_edit_rate": {
+    "count": 0,
+    "total": 20,
+    "rate": 0.0
+   },
+   "output_shape_validity": {
+    "count": 0,
+    "total": 4,
+    "rate": 0.0
+   },
+   "no_change_accuracy": {
+    "count": 4,
+    "total": 4,
+    "rate": 1.0
+   },
+   "critical_failure_count": 1,
+   "token_cap_hits": 0,
+   "reasoning_traces": 0
+  },
+  "P1-Contract": {
+   "n": 30,
+   "clean_execution": {
+    "count": 17,
+    "total": 30,
+    "rate": 0.567
+   },
+   "all_required_completed": {
+    "count": 16,
+    "total": 26,
+    "rate": 0.615
+   },
+   "required_change_completion_rate": 0.811,
+   "invalid_unchanged": {
+    "count": 0,
+    "total": 20,
+    "rate": 0.0
+   },
+   "protected_text_accuracy": 0.963,
+   "protected_corruption_count": 1,
+   "unauthorized_edit_rate": {
+    "count": 1,
+    "total": 20,
+    "rate": 0.05
+   },
+   "output_shape_validity": {
+    "count": 2,
+    "total": 4,
+    "rate": 0.5
+   },
+   "no_change_accuracy": {
+    "count": 4,
+    "total": 4,
+    "rate": 1.0
+   },
+   "critical_failure_count": 2,
+   "token_cap_hits": 0,
+   "reasoning_traces": 0
+  },
+  "P3-Ideal": {
+   "n": 10,
+   "clean_execution": {
+    "count": 6,
+    "total": 10,
+    "rate": 0.6
+   },
+   "all_required_completed": {
+    "count": 5,
+    "total": 9,
+    "rate": 0.556
+   },
+   "required_change_completion_rate": 0.713,
+   "invalid_unchanged": {
+    "count": 0,
+    "total": 7,
+    "rate": 0.0
+   },
+   "protected_text_accuracy": 1.0,
+   "protected_corruption_count": 0,
+   "unauthorized_edit_rate": {
+    "count": 0,
+    "total": 7,
+    "rate": 0.0
+   },
+   "output_shape_validity": {
+    "count": 0,
+    "total": 1,
+    "rate": 0.0
+   },
+   "no_change_accuracy": {
+    "count": 1,
+    "total": 1,
+    "rate": 1.0
+   },
+   "critical_failure_count": 0,
+   "token_cap_hits": 0,
+   "reasoning_traces": 0
+  }
+ },
+ "family_by_arm": {
+  "P0-Realistic": {
+   "canon_continuation": {
+    "n": 3,
+    "clean": {
+     "count": 0,
+     "total": 3,
+     "rate": 0.0
+    },
+    "all_required": {
+     "count": 0,
+     "total": 3,
+     "rate": 0.0
+    }
+   },
+   "constraint_bound_scene": {
+    "n": 2,
+    "clean": {
+     "count": 2,
+     "total": 2,
+     "rate": 1.0
+    },
+    "all_required": {
+     "count": 2,
+     "total": 2,
+     "rate": 1.0
+    }
+   },
+   "no_change_judgment": {
+    "n": 4,
+    "clean": {
+     "count": 3,
+     "total": 4,
+     "rate": 0.75
+    },
+    "all_required": {
+     "count": 0,
+     "total": 0,
+     "rate": null
+    }
+   },
+   "voice_preserving_revision": {
+    "n": 3,
+    "clean": {
+     "count": 2,
+     "total": 3,
+     "rate": 0.667
+    },
+    "all_required": {
+     "count": 2,
+     "total": 3,
+     "rate": 0.667
+    }
+   },
+   "protected_text_revision": {
+    "n": 5,
+    "clean": {
+     "count": 4,
+     "total": 5,
+     "rate": 0.8
+    },
+    "all_required": {
+     "count": 4,
+     "total": 5,
+     "rate": 0.8
+    }
+   },
+   "multi_constraint_focused_revision": {
+    "n": 12,
+    "clean": {
+     "count": 1,
+     "total": 12,
+     "rate": 0.083
+    },
+    "all_required": {
+     "count": 1,
+     "total": 12,
+     "rate": 0.083
+    }
+   },
+   "structured_protocol": {
+    "n": 1,
+    "clean": {
+     "count": 0,
+     "total": 1,
+     "rate": 0.0
+    },
+    "all_required": {
+     "count": 0,
+     "total": 1,
+     "rate": 0.0
+    }
+   }
+  },
+  "P0-Maximal": {
+   "canon_continuation": {
+    "n": 3,
+    "clean": {
+     "count": 3,
+     "total": 3,
+     "rate": 1.0
+    },
+    "all_required": {
+     "count": 3,
+     "total": 3,
+     "rate": 1.0
+    }
+   },
+   "constraint_bound_scene": {
+    "n": 2,
+    "clean": {
+     "count": 2,
+     "total": 2,
+     "rate": 1.0
+    },
+    "all_required": {
+     "count": 2,
+     "total": 2,
+     "rate": 1.0
+    }
+   },
+   "no_change_judgment": {
+    "n": 4,
+    "clean": {
+     "count": 4,
+     "total": 4,
+     "rate": 1.0
+    },
+    "all_required": {
+     "count": 0,
+     "total": 0,
+     "rate": null
+    }
+   },
+   "voice_preserving_revision": {
+    "n": 3,
+    "clean": {
+     "count": 3,
+     "total": 3,
+     "rate": 1.0
+    },
+    "all_required": {
+     "count": 3,
+     "total": 3,
+     "rate": 1.0
+    }
+   },
+   "protected_text_revision": {
+    "n": 5,
+    "clean": {
+     "count": 5,
+     "total": 5,
+     "rate": 1.0
+    },
+    "all_required": {
+     "count": 5,
+     "total": 5,
+     "rate": 1.0
+    }
+   },
+   "multi_constraint_focused_revision": {
+    "n": 12,
+    "clean": {
+     "count": 2,
+     "total": 12,
+     "rate": 0.167
+    },
+    "all_required": {
+     "count": 3,
+     "total": 12,
+     "rate": 0.25
+    }
+   },
+   "structured_protocol": {
+    "n": 1,
+    "clean": {
+     "count": 0,
+     "total": 1,
+     "rate": 0.0
+    },
+    "all_required": {
+     "count": 0,
+     "total": 1,
+     "rate": 0.0
+    }
+   }
+  },
+  "P1-Contract": {
+   "canon_continuation": {
+    "n": 3,
+    "clean": {
+     "count": 2,
+     "total": 3,
+     "rate": 0.667
+    },
+    "all_required": {
+     "count": 3,
+     "total": 3,
+     "rate": 1.0
+    }
+   },
+   "constraint_bound_scene": {
+    "n": 2,
+    "clean": {
+     "count": 2,
+     "total": 2,
+     "rate": 1.0
+    },
+    "all_required": {
+     "count": 2,
+     "total": 2,
+     "rate": 1.0
+    }
+   },
+   "no_change_judgment": {
+    "n": 4,
+    "clean": {
+     "count": 4,
+     "total": 4,
+     "rate": 1.0
+    },
+    "all_required": {
+     "count": 0,
+     "total": 0,
+     "rate": null
+    }
+   },
+   "voice_preserving_revision": {
+    "n": 3,
+    "clean": {
+     "count": 3,
+     "total": 3,
+     "rate": 1.0
+    },
+    "all_required": {
+     "count": 3,
+     "total": 3,
+     "rate": 1.0
+    }
+   },
+   "protected_text_revision": {
+    "n": 5,
+    "clean": {
+     "count": 5,
+     "total": 5,
+     "rate": 1.0
+    },
+    "all_required": {
+     "count": 5,
+     "total": 5,
+     "rate": 1.0
+    }
+   },
+   "multi_constraint_focused_revision": {
+    "n": 12,
+    "clean": {
+     "count": 1,
+     "total": 12,
+     "rate": 0.083
+    },
+    "all_required": {
+     "count": 3,
+     "total": 12,
+     "rate": 0.25
+    }
+   },
+   "structured_protocol": {
+    "n": 1,
+    "clean": {
+     "count": 0,
+     "total": 1,
+     "rate": 0.0
+    },
+    "all_required": {
+     "count": 0,
+     "total": 1,
+     "rate": 0.0
+    }
+   }
+  },
+  "P3-Ideal": {
+   "canon_continuation": {
+    "n": 1,
+    "clean": {
+     "count": 1,
+     "total": 1,
+     "rate": 1.0
+    },
+    "all_required": {
+     "count": 1,
+     "total": 1,
+     "rate": 1.0
+    }
+   },
+   "constraint_bound_scene": {
+    "n": 1,
+    "clean": {
+     "count": 1,
+     "total": 1,
+     "rate": 1.0
+    },
+    "all_required": {
+     "count": 1,
+     "total": 1,
+     "rate": 1.0
+    }
+   },
+   "no_change_judgment": {
+    "n": 1,
+    "clean": {
+     "count": 1,
+     "total": 1,
+     "rate": 1.0
+    },
+    "all_required": {
+     "count": 0,
+     "total": 0,
+     "rate": null
+    }
+   },
+   "voice_preserving_revision": {
+    "n": 1,
+    "clean": {
+     "count": 1,
+     "total": 1,
+     "rate": 1.0
+    },
+    "all_required": {
+     "count": 1,
+     "total": 1,
+     "rate": 1.0
+    }
+   },
+   "protected_text_revision": {
+    "n": 2,
+    "clean": {
+     "count": 2,
+     "total": 2,
+     "rate": 1.0
+    },
+    "all_required": {
+     "count": 2,
+     "total": 2,
+     "rate": 1.0
+    }
+   },
+   "multi_constraint_focused_revision": {
+    "n": 4,
+    "clean": {
+     "count": 0,
+     "total": 4,
+     "rate": 0.0
+    },
+    "all_required": {
+     "count": 0,
+     "total": 4,
+     "rate": 0.0
+    }
+   }
+  }
+ },
+ "focused_revision": {
+  "P0-Realistic": {
+   "n": 12,
+   "all_required_completed": {
+    "count": 1,
+    "total": 12,
+    "rate": 0.083
+   },
+   "invalid_unchanged": {
+    "count": 2,
+    "total": 12,
+    "rate": 0.167
+   },
+   "mean_changes_completed": 1.0,
+   "protected_text_accuracy": 0.833,
+   "unauthorized_edit_rate": {
+    "count": 1,
+    "total": 12,
+    "rate": 0.083
+   },
+   "partial_fix_distribution": {
+    "0": 4,
+    "1": 6,
+    "2": 0,
+    "3": 2,
+    "4": 0,
+    "5": 0
+   }
+  },
+  "P0-Maximal": {
+   "n": 12,
+   "all_required_completed": {
+    "count": 3,
+    "total": 12,
+    "rate": 0.25
+   },
+   "invalid_unchanged": {
+    "count": 0,
+    "total": 12,
+    "rate": 0.0
+   },
+   "mean_changes_completed": 2.25,
+   "protected_text_accuracy": 1.0,
+   "unauthorized_edit_rate": {
+    "count": 0,
+    "total": 12,
+    "rate": 0.0
+   },
+   "partial_fix_distribution": {
+    "0": 0,
+    "1": 3,
+    "2": 4,
+    "3": 4,
+    "4": 1,
+    "5": 0
+   }
+  },
+  "P1-Contract": {
+   "n": 12,
+   "all_required_completed": {
+    "count": 3,
+    "total": 12,
+    "rate": 0.25
+   },
+   "invalid_unchanged": {
+    "count": 0,
+    "total": 12,
+    "rate": 0.0
+   },
+   "mean_changes_completed": 2.083,
+   "protected_text_accuracy": 0.917,
+   "unauthorized_edit_rate": {
+    "count": 1,
+    "total": 12,
+    "rate": 0.083
+   },
+   "partial_fix_distribution": {
+    "0": 0,
+    "1": 4,
+    "2": 3,
+    "3": 5,
+    "4": 0,
+    "5": 0
+   }
+  },
+  "P3-Ideal": {
+   "n": 4,
+   "all_required_completed": {
+    "count": 0,
+    "total": 4,
+    "rate": 0.0
+   },
+   "invalid_unchanged": {
+    "count": 0,
+    "total": 4,
+    "rate": 0.0
+   },
+   "mean_changes_completed": 1.25,
+   "protected_text_accuracy": 1.0,
+   "unauthorized_edit_rate": {
+    "count": 0,
+    "total": 4,
+    "rate": 0.0
+   },
+   "partial_fix_distribution": {
+    "0": 1,
+    "1": 1,
+    "2": 2,
+    "3": 0,
+    "4": 0,
+    "5": 0
+   }
+  }
+ },
+ "effects": {
+  "p1_minus_p0_maximal": {
+   "clean_execution_gain": -0.066,
+   "focused_revision_all_required_gain": 0.0,
+   "invalid_unchanged_reduction": 0.0
+  },
+  "p1_minus_p0_realistic": {
+   "clean_execution_gain": 0.167,
+   "invalid_unchanged_reduction": 0.15
+  },
+  "p3ideal_minus_p1": {
+   "clean_execution_gain": 0.0,
+   "canon_gain": 0.0,
+   "voice_gain": 0.0
+  }
+ },
+ "effect_floors": {
+  "structure_success": {
+   "clean_gain>=0.15": false,
+   "focused_all_required_gain>=0.20": false,
+   "invalid_unchanged_reduction>=0.20": false,
+   "no_new_critical_failures": false,
+   "protected_not_worse": false,
+   "unauthorized_not_worse": false,
+   "PASS": false
+  },
+  "practical_product_success": {
+   "clean_gain>=0.20": false,
+   "invalid_unchanged_reduction>=0.25": false,
+   "no_new_critical_failures": true,
+   "PASS": false
+  },
+  "ideal_packet_signal": {
+   "clean_gain>=0.10": false,
+   "canon_or_voice_gain>=0.15": false,
+   "no_new_critical_failures": true,
+   "PASS": false
+  }
+ },
+ "anti_results": {
+  "new_protected_text_corruption": 1,
+  "unauthorized_edit_rate_increase": true,
+  "no_change_accuracy_drop": 0.0,
+  "new_critical_failures_p1_vs_p0max": 1,
+  "forbidden_violations_by_arm": {
+   "P0-Realistic": 0,
+   "P0-Maximal": 0,
+   "P1-Contract": 2,
+   "P3-Ideal": 0
+  }
+ }
+}

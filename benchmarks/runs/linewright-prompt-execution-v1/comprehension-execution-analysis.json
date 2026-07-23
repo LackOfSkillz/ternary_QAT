@@ -1,0 +1,121 @@
+{
+ "dispatch": "28B",
+ "probes": 6,
+ "grid": {
+  "pass_pass": 2,
+  "fail_fail": 0,
+  "pass_fail": 4,
+  "fail_pass": 0
+ },
+ "interpretation": "4 task(s) understood but not executed -> execution-discipline failure; 2 task(s) understood and executed",
+ "rows": [
+  {
+   "task_id": "cn-01",
+   "comprehension_pass": true,
+   "execution_pass_p1": true,
+   "cell": "pass_pass",
+   "answer": {
+    "required_change_count": 2,
+    "protected_element_count": 0,
+    "forbidden_operation_count": 2,
+    "output_contract": "prose"
+   },
+   "expected": {
+    "required_change_count": 2,
+    "protected_element_count": 0,
+    "forbidden_operation_count": 2,
+    "output_contract": "prose"
+   }
+  },
+  {
+   "task_id": "fr-01",
+   "comprehension_pass": true,
+   "execution_pass_p1": false,
+   "cell": "pass_fail",
+   "answer": {
+    "required_change_count": 4,
+    "protected_element_count": 1,
+    "forbidden_operation_count": 2,
+    "output_contract": "prose"
+   },
+   "expected": {
+    "required_change_count": 4,
+    "protected_element_count": 1,
+    "forbidden_operation_count": 2,
+    "output_contract": "prose"
+   }
+  },
+  {
+   "task_id": "fr-04",
+   "comprehension_pass": true,
+   "execution_pass_p1": false,
+   "cell": "pass_fail",
+   "answer": {
+    "required_change_count": 4,
+    "protected_element_count": 1,
+    "forbidden_operation_count": 2,
+    "output_contract": "list"
+   },
+   "expected": {
+    "required_change_count": 4,
+    "protected_element_count": 1,
+    "forbidden_operation_count": 2,
+    "output_contract": "list"
+   }
+  },
+  {
+   "task_id": "fr-07",
+   "comprehension_pass": true,
+   "execution_pass_p1": false,
+   "cell": "pass_fail",
+   "answer": {
+    "required_change_count": 3,
+    "protected_element_count": 1,
+    "forbidden_operation_count": 2,
+    "output_contract": "prose"
+   },
+   "expected": {
+    "required_change_count": 3,
+    "protected_element_count": 1,
+    "forbidden_operation_count": 2,
+    "output_contract": "prose"
+   }
+  },
+  {
+   "task_id": "pt-01",
+   "comprehension_pass": true,
+   "execution_pass_p1": true,
+   "cell": "pass_pass",
+   "answer": {
+    "required_change_count": 1,
+    "protected_element_count": 1,
+    "forbidden_operation_count": 2,
+    "output_contract": "prose"
+   },
+   "expected": {
+    "required_change_count": 1,
+    "protected_element_count": 1,
+    "forbidden_operation_count": 2,
+    "output_contract": "prose"
+   }
+  },
+  {
+   "task_id": "sp-01",
+   "comprehension_pass": true,
+   "execution_pass_p1": false,
+   "cell": "pass_fail",
+   "answer": {
+    "required_change_count": 2,
+    "protected_element_count": 0,
+    "forbidden_operation_count": 2,
+    "output_contract": "json"
+   },
+   "expected": {
+    "required_change_count": 2,
+    "protected_element_count": 0,
+    "forbidden_operation_count": 2,
+    "output_contract": "json"
+   }
+  }
+ ]
+}

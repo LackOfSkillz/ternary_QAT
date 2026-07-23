@@ -1,0 +1,17 @@
+{
+ "host": "eeafcab03d24",
+ "model_id": "Qwen/Qwen3-8B",
+ "model_revision": "b968826d9c46dd6066d109eabc6255188de91218",
+ "thinking": "disabled",
+ "decoding": "greedy",
+ "seed": 20260723,
+ "python": "3.12.3",
+ "torch": "2.10.0a0+b558c986e8.nv25.11",
+ "transformers": "5.14.1",
+ "cuda": "13.0",
+ "gpu": "NVIDIA GB10",
+ "tokenizer_hash": "06d7ff4224711b24966baeb0e233290c3130928236fc5dd3f57e8f82f40f14ce",
+ "model_config_hash": "9a2fab38c60343efe751dd6dae3d36b56c843bb1bb283ca984c2d1eebcb932bc",
+ "generation_script_hash": "81be747287db5dfeeb4a5ee18c41407d11fa9f843d925c76b09bcc6ed9cd45b2",
+ "prompt_manifest_hash": "13fbbeabad108b0cf33601db086bf0014d2c5961ad512b736f719d10c0ee7316"
+}
