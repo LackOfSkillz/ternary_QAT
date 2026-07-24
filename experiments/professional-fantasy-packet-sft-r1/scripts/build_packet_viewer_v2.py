@@ -91,7 +91,23 @@ label{font-size:13px}select,input{font:13px sans-serif;padding:3px 6px}.saved{co
 const DATA=__DATA__;const KEY="lw-bulk-review-__BATCH__";
 let dec=JSON.parse(localStorage.getItem(KEY)||"{}");
 const DECS=['','accept','accept_with_medium_risk','accept_as_retrieval_sensitive','revise_compositional','revise_atomic','revise_both','revise_provenance','exclude'];
-function cohort(s){const r=(s&&s.structural_reconstruction_risk||{}).rating;return r==='high'?'retrieval-sensitive (high)':'primary ('+(r||'?')+')';}
+function rateOf(s){return (s&&s.structural_reconstruction_risk||{}).rating||'?';}
+// authoritative cohort assignment from (preserved rating, human decision) + contradiction check
+function assign(rating,decision){
+ if(!decision) return {cohort:'(undecided)',invalid:false,msg:''};
+ if(decision==='exclude') return {cohort:'excluded',invalid:false,msg:''};
+ if(decision.indexOf('revise_')===0) return {cohort:'pending_revision',invalid:false,msg:''};
+ if(decision==='accept') return rating==='low'
+   ? {cohort:'primary_instruction_learning',invalid:false,msg:''}
+   : {cohort:'INVALID',invalid:true,msg:'accept is only valid for a low rating'};
+ if(decision==='accept_with_medium_risk') return rating==='medium'
+   ? {cohort:'primary_instruction_learning',invalid:false,msg:''}
+   : {cohort:'INVALID',invalid:true,msg:'accept_with_medium_risk requires a medium rating (never for high)'};
+ if(decision==='accept_as_retrieval_sensitive') return rating==='high'
+   ? {cohort:'retrieval_sensitive',invalid:false,msg:''}
+   : {cohort:'INVALID',invalid:true,msg:'accept_as_retrieval_sensitive requires a high rating'};
+ return {cohort:'(undecided)',invalid:false,msg:''};
+}
 const RATES=['packet_matches_target','constraint_accuracy','load_bearing_quality','production_realism','abstraction_quality','structural_retrieval_safety','atomic_purity'];
 function save(){localStorage.setItem(KEY,JSON.stringify(dec));document.getElementById('msg').textContent="saved "+new Date().toLocaleTimeString();}
 function g(id){return dec[id]||(dec[id]={decision:"",ratings:{},notes:"",edited_compositional:"",edited_atomic:""});}
@@ -108,8 +124,7 @@ function render(){
    ' <span class="badge">atom in '+t.atom_input+' / total '+t.atom_total+'</span> <span class="badge">fits8192 '+t.fits+'</span></div>'+
    '<div class="row"><span class="badge">meaningful '+d.meaningful+' ('+d.load_bearing+' LB)</span> <span class="badge">atomic '+d.atomic_meaningful+'</span>'+
    ' lexical '+'<span class="badge risk-'+d.lexical_risk+'">'+d.lexical_risk+'</span> structural '+
-   (d.orig_structural&&d.orig_structural.rating?badge(d.orig_structural)+' &rarr; ':'')+badge(s.structural_reconstruction_risk)+
-   ' <span class="badge">cohort: '+cohort(s)+'</span>'+
+   (d.orig_structural&&d.orig_structural.rating?'orig '+badge(d.orig_structural)+' &rarr; revised ':'')+badge(s.structural_reconstruction_risk)+
    (s.recommendation?' <span class="badge">'+s.recommendation+'</span>':'')+' <span class="badge">distinctive: '+distinct(s)+'</span>'+
    (d.categories_generalized&&d.categories_generalized.length?' <span class="badge">generalized: '+d.categories_generalized.join(', ')+'</span>':'')+'</div>'+
    '<div class="grid"><div><h3>Source passage (private)</h3><div class="src">'+esc(d.source_text)+'</div>'+
@@ -121,8 +136,13 @@ function render(){
  document.getElementById('prog').textContent=" — "+done+"/"+DATA.length+" decided";
 }
 function controls(d,c){
+ const rating=rateOf(d.structural);const asg=assign(rating,c.decision);
  let r='<div class="row"><label>decision <select onchange="setF(\''+d.passage_id+'\',\'decision\',this.value)">'+
   DECS.map(x=>'<option '+(c.decision===x?'selected':'')+'>'+x+'</option>').join('')+'</select></label>';
+ r+='<span class="badge">independent rating: '+rating+'</span>'+
+    '<span class="badge">disposition: '+(c.decision||'(none)')+'</span>'+
+    '<span class="badge" style="'+(asg.invalid?'background:#fbe2e2;color:#900;font-weight:700':'background:#e7f0ff')+'">assigned cohort: '+asg.cohort+'</span>'+
+    (asg.invalid?'<span class="badge" style="background:#900;color:#fff">INVALID: '+asg.msg+'</span>':'');
  RATES.forEach(k=>{r+='<label>'+k+' <select onchange="setR(\''+d.passage_id+'\',\''+k+'\',this.value)"><option value=""></option>';
   for(let i=1;i<=3;i++)r+='<option '+(c.ratings[k]==i?'selected':'')+'>'+i+'</option>';r+='</select></label>';});
  r+='<label>notes <input size="40" value="'+esc(c.notes).replace(/"/g,'&quot;')+'" onchange="setF(\''+d.passage_id+'\',\'notes\',this.value)"></label></div>';return r;

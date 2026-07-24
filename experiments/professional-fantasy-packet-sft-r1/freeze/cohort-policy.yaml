@@ -47,8 +47,49 @@ cohort_policy:
     pre_review: by independent structural rating (low->primary_low, medium->primary_medium,
       high->retrieval_sensitive_high candidate pending explicit accept_as_retrieval_sensitive)
     post_review: by human decision
-      accept: primary (by rating)
-      accept_with_medium_risk: primary_medium
-      accept_as_retrieval_sensitive: retrieval_sensitive_high (rating stays high, human_override=true)
+      accept: primary_low (VALID ONLY when rating==low)
+      accept_with_medium_risk: primary_medium (VALID ONLY when rating==medium; NEVER for high)
+      accept_as_retrieval_sensitive: retrieval_sensitive_high (VALID ONLY when rating==high; rating stays high, human_override=true)
       exclude: excluded
-      revise_*: returns to a human-directed revision cycle (not auto)
+      revise_*: unresolved:pending_revision (human-directed revision cycle, not auto)
+
+  # Contradictory (rating, decision) pairs are REFUSED — never silently assigned to a valid cohort.
+  contradiction_rules:
+    invalid_combinations:
+      - {rating: high, decision: accept}
+      - {rating: high, decision: accept_with_medium_risk}
+      - {rating: medium, decision: accept}
+      - {rating: medium, decision: accept_as_retrieval_sensitive}
+      - {rating: low, decision: accept_with_medium_risk}
+      - {rating: low, decision: accept_as_retrieval_sensitive}
+    handling: flag INVALID in the viewer; counted as contradictory_decisions; excluded from any cohort until resolved
+
+  # Never collapse before/after audits into one field.
+  risk_provenance_fields:
+    - original_independent_rating        # recal audit on original packets (same calibration)
+    - post_revision_independent_rating   # audit on revised packets
+    - auditor_calibration
+    - human_disposition
+    - final_cohort
+
+  reporting:
+    cohort_assignment: [primary_low, primary_medium, retrieval_sensitive_high, excluded, unresolved]
+    risk_disposition: [medium_accepted, high_explicitly_accepted, high_revised, high_excluded, contradictory_decisions]
+
+  experiment_reporting_policy:
+    primary_analysis: {cohort: primary_instruction_learning, includes: [low, medium], main_claims_allowed: true}
+    retrieval_sensitive_analysis: {cohort: retrieval_sensitive, includes: [high], main_claims_allowed: false, reporting_role: secondary_diagnostic}
+    rule: never combine both cohorts into a single headline metric without also reporting each separately; a combined total is supplemental only
+
+  future_batches_2_5:
+    - produce packets
+    - independent structural-risk scoring
+    - one targeted abstraction pass where warranted
+    - re-audit under comparable calibration
+    - stop further automatic abstraction after one pass
+    - low+medium -> primary review path
+    - all high require explicit human disposition
+    - approved high preserved in retrieval-sensitive cohort
+    guardrails:
+      - do NOT systematically exclude high-risk passages to improve primary proportions
+      - do NOT weaken packets until they no longer supervise the target meaningfully
