@@ -1,0 +1,37 @@
+{
+ "dispatch": "30A-R1",
+ "batch_1": {
+  "status": "final",
+  "accepted_pairs": 11,
+  "primary_medium": 6,
+  "retrieval_sensitive_high": 5,
+  "excluded": 0,
+  "unresolved": 0,
+  "contradictory": 0,
+  "schema_valid": 11,
+  "target_hash_match": 11,
+  "context_fit_8192": 22
+ },
+ "freeze_checks": {
+  "provenance_packets": 11,
+  "compositional_packets": 11,
+  "atomic_packets": 11,
+  "matched_pairs": 11,
+  "schema_errors": 0,
+  "target_hash_mismatches": 0,
+  "context_overflows": 0,
+  "unresolved_reviews": 0
+ },
+ "token_ranges": {
+  "compositional_total": [
+   3160,
+   4921
+  ],
+  "atomic_total": [
+   2922,
+   4685
+  ]
+ },
+ "serializer_version": "lw-scene-packet-serializer-v1",
+ "model_revision": "b968826d9c46dd6066d109eabc6255188de91218"
+}
