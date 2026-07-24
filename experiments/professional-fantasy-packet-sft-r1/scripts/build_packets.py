@@ -39,7 +39,13 @@ COMMON_CAP = {"Will", "Win", "Hope", "Grace", "Rose", "Mark", "May", "Art", "Rus
               # controlled craft-profile / packet vocabulary (values, not source names)
               "High", "Low", "Moderate", "Medium", "Close", "Distant", "Middle", "Near", "Far",
               "Past", "Present", "Third", "First", "Second", "Visible", "Hidden", "Sparse", "Dense",
-              "Direct", "Plain", "Restrained", "Muted", "Lyrical", "Terse", "Clipped", "Spare", "Ornate"}
+              "Direct", "Plain", "Restrained", "Muted", "Lyrical", "Terse", "Clipped", "Spare", "Ornate",
+              # common capitalized-at-sentence-start / function words (not source-identifying names)
+              "After", "Before", "From", "Both", "Only", "When", "Then", "They", "This", "That",
+              "With", "Now", "Here", "There", "Their", "Them", "These", "Those", "What", "Which",
+              "While", "Where", "Because", "During", "Through", "Into", "Over", "Under", "About",
+              "Against", "Between", "Among", "Toward", "Within", "Without", "Across", "Each", "Every",
+              "Some", "Such", "Later", "Their", "Having", "Being", "Unable", "Despite", "Though"}
 
 
 def source_proper_names(text, k=12):

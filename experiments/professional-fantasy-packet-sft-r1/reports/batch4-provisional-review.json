@@ -1,0 +1,78 @@
+{
+ "dispatch": "30C",
+ "batch": "batch4 (c05)",
+ "status": "provisional_pending_review",
+ "passages_processed": 11,
+ "matched_pairs": 11,
+ "schema_valid": 11,
+ "target_hash_match": true,
+ "lexical_risk": {
+  "low": 11
+ },
+ "id_leaks": 0,
+ "name_leaks": 0,
+ "target_5gram_overlap_max": 0,
+ "atomic_purity": {
+  "records_checked": 11,
+  "clean": 11,
+  "hidden_compound_flags": 0,
+  "revised": 0
+ },
+ "structural_risk_before_revision": {
+  "low": 3,
+  "medium": 3,
+  "high": 5
+ },
+ "structural_risk_after_revision": {
+  "low": 4,
+  "medium": 2,
+  "high": 5
+ },
+ "targeted_reabstraction_passes": 1,
+ "reabstraction_scope": "6 flagged (5 high + wot medium); after 1 pass wot medium->low, the 5 high remained high",
+ "auditor_note": "auditor: abercrombe/got/mouser could drop further with one more targeted move (a different element); lor/HP are distributed-identifiability (would gut supervision, rec exclude). Held per one-pass policy for Gary's revise/accept/exclude decision. mouser had a leaked identifier in character_goals which was scrubbed (model-visible cleanup, not a rating pass).",
+ "provisional_cohorts": {
+  "primary_low": 4,
+  "primary_medium": 2,
+  "retrieval_sensitive_high": 5,
+  "excluded": 0
+ },
+ "constraint_distribution": {
+  "meaningful_range": [
+   7,
+   9
+  ],
+  "meaningful_counts": {
+   "7": 1,
+   "8": 8,
+   "9": 2
+  },
+  "load_bearing_range": [
+   5,
+   7
+  ],
+  "load_bearing_counts": {
+   "5": 3,
+   "6": 7,
+   "7": 1
+  },
+  "identical_across_all_11": false,
+  "meaningful_9_count": 2,
+  "note": "spine-first authoring fixed Batch 3 drift: meaningful now spans 7-9 with mode at 8 (only 2 at the cap, well under the >7 stop threshold); 9 packets were initially over-cap and revised explicitly (no silent clamp)"
+ },
+ "context_fit_8192": 22,
+ "token_totals": {
+  "compositional": [
+   3295,
+   4692
+  ],
+  "atomic": [
+   2809,
+   4321
+  ]
+ },
+ "viewer_path": "private-data/packet-review-batch4rev/index.html",
+ "batch_5_started": false,
+ "serialization_started": false,
+ "training_started": false
+}
