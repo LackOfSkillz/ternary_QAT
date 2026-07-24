@@ -90,7 +90,8 @@ label{font-size:13px}select,input{font:13px sans-serif;padding:3px 6px}.saved{co
 <script>
 const DATA=__DATA__;const KEY="lw-bulk-review-__BATCH__";
 let dec=JSON.parse(localStorage.getItem(KEY)||"{}");
-const DECS=['','accept','accept_with_medium_risk','revise_compositional','revise_atomic','revise_both','revise_provenance','exclude'];
+const DECS=['','accept','accept_with_medium_risk','accept_as_retrieval_sensitive','revise_compositional','revise_atomic','revise_both','revise_provenance','exclude'];
+function cohort(s){const r=(s&&s.structural_reconstruction_risk||{}).rating;return r==='high'?'retrieval-sensitive (high)':'primary ('+(r||'?')+')';}
 const RATES=['packet_matches_target','constraint_accuracy','load_bearing_quality','production_realism','abstraction_quality','structural_retrieval_safety','atomic_purity'];
 function save(){localStorage.setItem(KEY,JSON.stringify(dec));document.getElementById('msg').textContent="saved "+new Date().toLocaleTimeString();}
 function g(id){return dec[id]||(dec[id]={decision:"",ratings:{},notes:"",edited_compositional:"",edited_atomic:""});}
@@ -108,6 +109,7 @@ function render(){
    '<div class="row"><span class="badge">meaningful '+d.meaningful+' ('+d.load_bearing+' LB)</span> <span class="badge">atomic '+d.atomic_meaningful+'</span>'+
    ' lexical '+'<span class="badge risk-'+d.lexical_risk+'">'+d.lexical_risk+'</span> structural '+
    (d.orig_structural&&d.orig_structural.rating?badge(d.orig_structural)+' &rarr; ':'')+badge(s.structural_reconstruction_risk)+
+   ' <span class="badge">cohort: '+cohort(s)+'</span>'+
    (s.recommendation?' <span class="badge">'+s.recommendation+'</span>':'')+' <span class="badge">distinctive: '+distinct(s)+'</span>'+
    (d.categories_generalized&&d.categories_generalized.length?' <span class="badge">generalized: '+d.categories_generalized.join(', ')+'</span>':'')+'</div>'+
    '<div class="grid"><div><h3>Source passage (private)</h3><div class="src">'+esc(d.source_text)+'</div>'+

@@ -1,0 +1,54 @@
+cohort_policy:
+  version: cohort-policy-v1
+  dispatch: 30A-R1
+  frozen_at: "2026-07-24"
+  rationale: >
+    Structural retrieval risk cannot be fully removed by wording changes for every passage; some
+    professional scenes are inherently distinctive, so a faithful supervision packet still fingerprints
+    the source. Splitting into two analytical cohorts protects the primary conclusion while keeping the
+    iconic scenes as a separate, honestly-reported sub-experiment.
+
+  two_cohorts:
+    primary_instruction_learning_cohort:
+      allowed_structural_risk: [low, medium]
+      purpose: measure whether richer scene packets improve execution (constraint-density difference)
+    retrieval_sensitive_cohort:
+      allowed_structural_risk: [high]
+      purpose: measure behavior on distinctive/iconic scene structures
+      reporting: SEPARATE from the primary result
+      question: >
+        When a scene specification is inherently distinctive, does additional structure improve
+        execution, trigger source reconstruction, or both?
+
+  invariants:
+    - high-risk packets are NEVER silently included in the primary result
+    - the independent structural rating is PRESERVED even after human acceptance (no relabel high->medium)
+    - an accepted high-risk record carries an explicit human_override flag + timestamp/reviewer
+
+  viewer_decisions_by_rating:
+    low: accept
+    medium: accept_with_medium_risk   # usual
+    high: [accept_as_retrieval_sensitive, revise_compositional, revise_atomic, revise_both, exclude]
+
+  high_risk_disposition:
+    accept_as_retrieval_sensitive: packet accurately represents the target and further abstraction would gut supervision
+    revise: one clearly unnecessary identifying detail remains
+    exclude: packet is effectively a compressed synopsis / recognizable reconstruction key
+
+  no_further_auto_reabstraction: true
+  reason: >
+    One pass already showed diminishing returns (high 7->5). A second/third wording pass would remove
+    increasingly load-bearing mechanics, turning the Compositional arm into generic prompts and
+    undermining the intended constraint-density difference. Further abstraction is human-directed only.
+
+  cohort_assignment_reporting: [primary_low, primary_medium, retrieval_sensitive_high, excluded]
+
+  assignment_rule:
+    pre_review: by independent structural rating (low->primary_low, medium->primary_medium,
+      high->retrieval_sensitive_high candidate pending explicit accept_as_retrieval_sensitive)
+    post_review: by human decision
+      accept: primary (by rating)
+      accept_with_medium_risk: primary_medium
+      accept_as_retrieval_sensitive: retrieval_sensitive_high (rating stays high, human_override=true)
+      exclude: excluded
+      revise_*: returns to a human-directed revision cycle (not auto)

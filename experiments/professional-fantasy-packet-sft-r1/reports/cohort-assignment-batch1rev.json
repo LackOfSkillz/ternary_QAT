@@ -1,0 +1,16 @@
+{
+ "dispatch": "30A-R1",
+ "batch": "batch1rev",
+ "reviewed": false,
+ "cohort_assignment": {
+  "primary_low": 0,
+  "primary_medium": 6,
+  "retrieval_sensitive_high": 5,
+  "excluded": 0,
+  "pending_revision": 0,
+  "undecided": 0
+ },
+ "structural_rating_preserved": true,
+ "human_overrides": 0,
+ "note": "primary = low+medium; retrieval-sensitive = explicitly-approved high; high never silently in primary; rating preserved after acceptance."
+}
