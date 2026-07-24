@@ -1,0 +1,72 @@
+{
+ "dispatch": "30B",
+ "batch": "batch3 (c04)",
+ "status": "provisional_pending_review",
+ "passages_processed": 11,
+ "matched_pairs": 11,
+ "schema_valid": 11,
+ "target_hash_match": true,
+ "lexical_risk": {
+  "low": 11
+ },
+ "id_leaks": 0,
+ "name_leaks": 0,
+ "target_5gram_overlap_max": 0,
+ "structural_risk_before_revision": {
+  "low": 1,
+  "medium": 4,
+  "high": 6
+ },
+ "structural_risk_after_revision": {
+  "low": 1,
+  "medium": 7,
+  "high": 3
+ },
+ "targeted_reabstraction_passes": 1,
+ "reabstraction_scope": "6 high (HP,got,lies,lor,mouser,sanderson); after 1 pass HP/lor/mouser high->medium, got/lies/sanderson remain high",
+ "auditor_note_lies": "auditor believes lies-c04 could be further reduced by re-targeting an untouched beat element; held per one-pass policy for Gary's revise/accept decision",
+ "provisional_cohorts": {
+  "primary_low": 1,
+  "primary_medium": 7,
+  "retrieval_sensitive_high": 3,
+  "excluded": 0
+ },
+ "constraint_distribution": {
+  "meaningful_range": [
+   7,
+   9
+  ],
+  "meaningful_counts": {
+   "7": 1,
+   "8": 1,
+   "9": 9
+  },
+  "load_bearing_range": [
+   5,
+   8
+  ],
+  "load_bearing_counts": {
+   "5": 1,
+   "6": 1,
+   "7": 6,
+   "8": 3
+  },
+  "identical_across_all_11": false,
+  "note": "varied but meaningful clusters high (dense c04 climax/reveal chapters); LB varies 5-8; 3 packets initially over-cap were revised explicitly (no silent clamp)"
+ },
+ "context_fit_8192": 22,
+ "token_totals": {
+  "compositional": [
+   3600,
+   5766
+  ],
+  "atomic": [
+   3099,
+   5265
+  ]
+ },
+ "viewer_path": "private-data/packet-review-batch3rev/index.html",
+ "batch_4_started": false,
+ "serialization_started": false,
+ "training_started": false
+}

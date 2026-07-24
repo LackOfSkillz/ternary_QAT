@@ -1,0 +1,22 @@
+{
+ "dispatch": "30A-R1",
+ "batch": "batch3rev",
+ "reviewed": false,
+ "cohort_assignment": {
+  "primary_low": 1,
+  "primary_medium": 7,
+  "retrieval_sensitive_high": 3,
+  "excluded": 0,
+  "unresolved": 0
+ },
+ "risk_disposition": {
+  "medium_accepted": 0,
+  "high_explicitly_accepted": 0,
+  "high_revised": 0,
+  "high_excluded": 0,
+  "contradictory_decisions": 0
+ },
+ "structural_rating_preserved": true,
+ "human_overrides": 0,
+ "note": "primary = low+medium; retrieval-sensitive = explicitly-approved high; high never silently in primary; independent rating preserved after acceptance; contradictory (rating, decision) pairs refused, not assigned."
+}

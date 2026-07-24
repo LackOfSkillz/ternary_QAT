@@ -18,6 +18,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 EXP = os.path.dirname(HERE)
 sys.path.insert(0, HERE)
 from build_packets import source_proper_names, name_hits  # noqa: E402
+from serialize_packet import render_user  # noqa: E402  (model-visible serialization)
 
 ACCEPTED = os.path.join(EXP, "manifests", "accepted-passages.jsonl")
 TARGETS = os.path.join(EXP, "private-data", "targets")
@@ -110,8 +111,10 @@ def main():
                 comp["retrieval_risk"]["structural_reconstruction_risk"] = s["structural_reconstruction_risk"]
             comp["retrieval_risk"]["distinctive_elements"] = s.get("distinctive_elements", {})
             comp["retrieval_risk"]["recommendation"] = s.get("recommendation", "accept")
-        # lexical risk + leakage on model-visible packets
-        vis = json.dumps({"c": comp, "a": atom}, ensure_ascii=False)
+        # lexical risk + leakage on MODEL-VISIBLE content only (what render_user serializes into the
+        # training prompt) — NOT the retrieval_risk/constraint_accounting metadata, which carries the
+        # auditor's reason text and legitimately discusses the source but never reaches the model.
+        vis = render_user(comp) + "\n" + render_user(atom)
         nleak = name_hits({"blob": vis}, names)
         lex = "high" if len(nleak) >= 3 else "medium" if nleak else "low"
         comp["retrieval_risk"]["lexical_identifier_risk"]["rating"] = lex
@@ -131,7 +134,11 @@ def main():
         for obj, sch, tag in ((comp, COMP_SCHEMA, "compositional"), (atom, ATOM_SCHEMA, "atomic"),
                               (prov, PROV_SCHEMA, "provenance")):
             for e in jsonschema.Draft7Validator(sch).iter_errors(obj):
-                errs.append(f"{tag}: {e.message}")
+                # SANITIZED: record only path + failing keyword (never e.message / the offending
+                # instance, which for provenance can contain source-specific prose/names). The
+                # report is metadata-only and must never carry source-bearing text.
+                path = "/".join(str(p) for p in e.absolute_path) or "(root)"
+                errs.append(f"{tag}: {path} failed '{e.validator}'")
         ca = comp["constraint_accounting"]
         target = {"source_filename": a["source_filename"], "target_sha256": a["target_sha256"],
                   "start_character_offset": a["start_character_offset"], "end_character_offset": a["end_character_offset"],
