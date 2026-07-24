@@ -35,7 +35,11 @@ PACKET_SCHEMA_V = "scene-packet.schema.json@1"
 COMMON_CAP = {"Will", "Win", "Hope", "Grace", "Rose", "Mark", "May", "Art", "Rush", "Wren", "Ser",
               "Lord", "Lady", "King", "Queen", "Sun", "Moon", "North", "South", "East", "West",
               "Good", "Well", "Even", "Still", "Once", "Long", "Cold", "Dark", "Wood", "Stone",
-              "River", "Hill", "Gate", "Hall", "House", "Bell", "Rain", "Storm", "Winter"}
+              "River", "Hill", "Gate", "Hall", "House", "Bell", "Rain", "Storm", "Winter",
+              # controlled craft-profile / packet vocabulary (values, not source names)
+              "High", "Low", "Moderate", "Medium", "Close", "Distant", "Middle", "Near", "Far",
+              "Past", "Present", "Third", "First", "Second", "Visible", "Hidden", "Sparse", "Dense",
+              "Direct", "Plain", "Restrained", "Muted", "Lyrical", "Terse", "Clipped", "Spare", "Ornate"}
 
 
 def source_proper_names(text, k=12):

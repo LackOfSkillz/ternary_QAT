@@ -13,9 +13,16 @@ sys.path.insert(0, HERE)
 from serialize_packet import SYSTEM, render_user  # noqa: E402
 
 TARGETS = os.path.join(EXP, "private-data", "targets")
-COMPO = os.path.join(EXP, "manifests", "compositional-records.jsonl")
-ATOMIC = os.path.join(EXP, "manifests", "atomic-records.jsonl")
-OUT = os.path.join(EXP, "private-data", "tokcount-input.jsonl")
+BATCH = sys.argv[1] if len(sys.argv) > 1 else None
+if BATCH:  # v2 batch records under private-data/training-packets/{BATCH}-{arm}.jsonl
+    TP = os.path.join(EXP, "private-data", "training-packets")
+    COMPO = os.path.join(TP, f"{BATCH}-compositional.jsonl")
+    ATOMIC = os.path.join(TP, f"{BATCH}-atomic.jsonl")
+    OUT = os.path.join(EXP, "private-data", f"tokcount-input-{BATCH}.jsonl")
+else:  # legacy Batch-1-era manifests
+    COMPO = os.path.join(EXP, "manifests", "compositional-records.jsonl")
+    ATOMIC = os.path.join(EXP, "manifests", "atomic-records.jsonl")
+    OUT = os.path.join(EXP, "private-data", "tokcount-input.jsonl")
 
 
 def load(path):

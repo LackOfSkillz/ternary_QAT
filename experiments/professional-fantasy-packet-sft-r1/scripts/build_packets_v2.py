@@ -27,6 +27,9 @@ BATCH = sys.argv[1] if len(sys.argv) > 1 else "batch1"
 AUTHORED = os.path.join(EXP, "private-data", f"authored-packets-{BATCH}.json")
 STRUCT = os.path.join(EXP, "private-data", f"structural-risk-{BATCH}.json")
 
+# source-filename stems that are ordinary English words -> skip the bare-stem word-boundary id check
+COMMON_WORD_STEMS = {"lies", "streams", "pawn", "got"}
+
 
 def load_schema(name):
     return json.load(open(os.path.join(SCHEMAS, name), encoding="utf-8"))
@@ -48,19 +51,14 @@ def build_compositional(pid, c):
     kl = list(c.get("knowledge_limits", []))
     fd = list(c.get("forbidden_developments", []))
     pc = list(c.get("physical_continuity", []))
-    # meaningful = beats + viewpoint + ending + canon + kl + fd + pc ; cap 9 by trimming soft extras
+    # meaningful = beats + viewpoint + ending + (authored hard-gate soft constraints).
+    # No silent trim-to-cap: the compositional packet must carry only genuinely gating soft
+    # constraints (supporting detail lives in provenance). If meaningful exceeds the schema max (9),
+    # the packet is over-specified and the schema validation below FLAGS it (schema_error) rather
+    # than the assembler silently padding every packet to 9. This keeps the count honest per scene.
     fixed = len(beats) + 2  # viewpoint + ending_state (both load-bearing)
-    extras = []
-    for kind, lst in (("canon", canon), ("kl", kl), ("fd", fd), ("pc", pc)):
-        for x in lst:
-            extras.append((kind, x))
-    while fixed + len(extras) > 9:
-        extras.pop()  # drop least-critical soft constraints last-added
-    canon = [x for k, x in extras if k == "canon"]
-    kl = [x for k, x in extras if k == "kl"]
-    fd = [x for k, x in extras if k == "fd"]
-    pc = [x for k, x in extras if k == "pc"]
-    meaningful = fixed + len(extras)
+    soft = len(canon) + len(kl) + len(fd) + len(pc)
+    meaningful = fixed + soft
     load_bearing = len(beats) + 2
     tp = {
         "packet_version": "scene-packet-v2", "task": "write_scene",
@@ -122,8 +120,11 @@ def main():
                                            [comp["opening_state"], comp["scene_purpose"], comp["ending_state"]]) +
                                   " " + " ".join(atom["required_beats"])) & tg)
         stem = os.path.splitext(a["source_filename"])[0]
+        # filename + pid as substrings are specific enough to flag directly; the bare-stem word
+        # check catches distinctive stems used as words, but is SKIPPED for stems that are ordinary
+        # English words (e.g. "lies", "streams", "pawn", "got") which produce false positives.
         idleak = [t for t in (a["source_filename"], pid) if t.lower() in vis.lower()]
-        if re.search(r"\b" + re.escape(stem) + r"\b", vis, re.I):
+        if stem.lower() not in COMMON_WORD_STEMS and re.search(r"\b" + re.escape(stem) + r"\b", vis, re.I):
             idleak.append(stem)
         # schema validation (after risk fields populated)
         errs = []

@@ -1,0 +1,70 @@
+{
+ "dispatch": "30A-R1",
+ "batch": "batch2 (c03)",
+ "status": "provisional_pending_review",
+ "passages_processed": 11,
+ "matched_pairs": 11,
+ "schema_valid": 11,
+ "target_hash_match": true,
+ "lexical_risk": {
+  "low": 11
+ },
+ "id_leaks": 0,
+ "name_leaks": 0,
+ "target_5gram_overlap_max": 0,
+ "structural_risk_before_revision": {
+  "low": 3,
+  "medium": 5,
+  "high": 3
+ },
+ "structural_risk_after_revision": {
+  "low": 3,
+  "medium": 6,
+  "high": 2
+ },
+ "targeted_reabstraction_passes": 1,
+ "reabstraction_scope": "3 high (lor,HP,got); HP high->medium, lor+got remain high (further abstraction would gut supervision)",
+ "provisional_cohorts": {
+  "primary_low": 3,
+  "primary_medium": 6,
+  "retrieval_sensitive_high": 2,
+  "excluded": 0
+ },
+ "constraint_distribution": {
+  "compositional_meaningful_range": [
+   7,
+   9
+  ],
+  "compositional_meaningful_dist": {
+   "7": 3,
+   "8": 7,
+   "9": 1
+  },
+  "compositional_load_bearing_range": [
+   5,
+   8
+  ],
+  "compositional_load_bearing_dist": {
+   "5": 3,
+   "6": 7,
+   "8": 1
+  },
+  "identical_counts_across_all_11": false,
+  "note": "varied — not padded to cap (Batch 1 was uniform 9/7; Batch 2 meaningful spans 7-9, LB 5-8)"
+ },
+ "context_fit_8192": 22,
+ "token_totals": {
+  "compositional": [
+   4051,
+   5257
+  ],
+  "atomic": [
+   3564,
+   4765
+  ]
+ },
+ "viewer_path": "private-data/packet-review-batch2rev/index.html",
+ "batch_3_started": false,
+ "serialization_started": false,
+ "training_started": false
+}

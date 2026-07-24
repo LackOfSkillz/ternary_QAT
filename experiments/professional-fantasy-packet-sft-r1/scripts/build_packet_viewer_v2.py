@@ -34,8 +34,9 @@ def main():
     risk = json.load(open(RISK, encoding="utf-8")) if os.path.exists(RISK) else {}
     val = {r["passage_id"]: r for r in json.load(open(VAL, encoding="utf-8"))["records"]} if os.path.exists(VAL) else {}
     # optional before/after: same-calibration original ratings + reviser's generalized categories
-    orig_p = os.path.join(EXP, "private-data", "structural-risk-batch1-recal.json")
-    notes_p = os.path.join(EXP, "private-data", "revision-notes-batch1.json")
+    base = BATCH.replace("rev", "")  # batch1rev -> batch1, batch2rev -> batch2
+    orig_p = os.path.join(EXP, "private-data", f"structural-risk-{base}-recal.json")
+    notes_p = os.path.join(EXP, "private-data", f"revision-notes-{base}.json")
     orig = json.load(open(orig_p, encoding="utf-8")) if os.path.exists(orig_p) else {}
     notes = json.load(open(notes_p, encoding="utf-8")) if os.path.exists(notes_p) else {}
     data = []
