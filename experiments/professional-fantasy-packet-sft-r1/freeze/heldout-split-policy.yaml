@@ -1,0 +1,41 @@
+heldout_split_policy:
+  version: heldout-split-v1
+  dispatch: 30F
+  frozen_at: "2026-07-24"
+  rationale: >
+    The 11 c01 records are a permanent HELD-OUT evaluation + retrieval-safety set. They must never
+    enter SFT training output. This policy + the accompanying serialization guard make contamination
+    a loud, hard failure rather than a silent leak.
+
+  set_id: heldout-c01
+  records: 11    # every source's c01, incl. sanderson-c01
+
+  record_flags:            # every held-out record + manifest entry carries these
+    split: heldout_eval
+    training_eligible: false
+    evaluation_eligible: true
+    retrieval_safety_probe: true
+    decision_authority: Dispatch 30F
+
+  # Evaluation dispositions — NOT training dispositions. These must never imply training eligibility.
+  evaluation_dispositions_by_rating:
+    low: include_in_heldout_eval
+    medium: include_in_heldout_eval_with_medium_risk
+    high: include_in_heldout_retrieval_probe
+
+  evaluation_cohorts_by_rating:
+    low: heldout_low
+    medium: heldout_medium
+    high: heldout_retrieval_sensitive
+
+  # Contract that ANY future full-dataset / SFT serializer MUST honor (see scripts/serialization_guard.py).
+  training_serialization_guard:
+    reject_split: [heldout_eval]
+    reject_training_eligible_false: true
+    on_violation: raise   # fail loudly; never silently drop or silently include
+    applies_to: [SFT training serialization, full cross-batch dataset serialization]
+
+  never:
+    - include any heldout-c01 record in SFT training output
+    - relabel a heldout record as training-eligible
+    - add later (c02-c06) scenes into the held-out set to "correct" opening bias

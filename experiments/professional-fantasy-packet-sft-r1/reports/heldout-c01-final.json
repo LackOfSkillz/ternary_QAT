@@ -1,0 +1,79 @@
+{
+ "dispatch": "30F",
+ "set_id": "heldout-c01",
+ "decision_authority": "Dispatch 30F",
+ "heldout_c01": {
+  "status": "frozen_heldout_eval",
+  "records": 11,
+  "training_eligible": 0,
+  "evaluation_eligible": 11,
+  "schema_valid": 11,
+  "target_hash_match": true,
+  "lexical_risk": {
+   "low": 11
+  },
+  "id_leaks": 0,
+  "name_leaks": 0,
+  "target_5gram_overlap_max": 0,
+  "atomic_purity": {
+   "records_checked": 11,
+   "clean": 11,
+   "hidden_compound_flags": 0,
+   "revised": 0,
+   "unresolved": 0
+  },
+  "structural_risk_before_revision": {
+   "low": 2,
+   "medium": 5,
+   "high": 4
+  },
+  "structural_risk_after_revision": {
+   "low": 2,
+   "medium": 6,
+   "high": 3
+  },
+  "evaluation_cohorts": {
+   "heldout_low": 2,
+   "heldout_medium": 6,
+   "heldout_retrieval_sensitive": 3
+  },
+  "constraint_distribution": {
+   "meaningful": {
+    "7": 6,
+    "8": 3,
+    "9": 2
+   },
+   "load_bearing": {
+    "5": 5,
+    "6": 5,
+    "7": 1
+   },
+   "meaningful_range": [
+    7,
+    9
+   ],
+   "load_bearing_range": [
+    5,
+    7
+   ],
+   "identical_across_all_11": false,
+   "note": "natural variation restored (loosened brief) — meaningful spans 7-9, not the prior uniform 8"
+  },
+  "context_fit_8192": 22,
+  "opening_scene_bias_noted": true,
+  "reabstraction": "1 targeted pass on 4 high; lor high->medium; sanderson/HP/got remain high (retained as retrieval-safety probes, NOT excluded)",
+  "token_totals": {
+   "compositional": [
+    3801,
+    5784
+   ],
+   "atomic": [
+    3322,
+    5370
+   ]
+  },
+  "serializer_version": "lw-scene-packet-serializer-v1",
+  "model_revision": "b968826d9c46dd6066d109eabc6255188de91218",
+  "training_serializer_guard": "scripts/serialization_guard.py rejects split=heldout_eval / training_eligible=false"
+ }
+}
