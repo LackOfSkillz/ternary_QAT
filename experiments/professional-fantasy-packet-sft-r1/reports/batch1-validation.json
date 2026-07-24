@@ -1,0 +1,202 @@
+{
+ "dispatch": "30A-R1",
+ "batch": "batch1",
+ "passages": 11,
+ "all_schema_valid": true,
+ "constraint_distribution": {
+  "compositional_meaningful": [
+   9,
+   9
+  ],
+  "compositional_load_bearing": [
+   7,
+   7
+  ],
+  "atomic_meaningful": [
+   1,
+   2
+  ]
+ },
+ "lexical_risk": {
+  "low": 11
+ },
+ "id_leaks": 0,
+ "name_leaks": 0,
+ "target_5gram_overlap_max": 1,
+ "target_hash_match": true,
+ "records": [
+  {
+   "passage_id": "abercrombe-c02",
+   "source_filename": "abercrombe.txt",
+   "schema_valid": true,
+   "compositional_meaningful": 9,
+   "compositional_load_bearing": 7,
+   "atomic_meaningful": 2,
+   "lexical_risk": "low",
+   "name_leak": 0,
+   "id_leak": false,
+   "target_5gram_overlap": 0,
+   "target_hash_match": true
+  },
+  {
+   "passage_id": "sanderson-c02",
+   "source_filename": "sanderson.txt",
+   "schema_valid": true,
+   "compositional_meaningful": 9,
+   "compositional_load_bearing": 7,
+   "atomic_meaningful": 1,
+   "lexical_risk": "low",
+   "name_leak": 0,
+   "id_leak": false,
+   "target_5gram_overlap": 0,
+   "target_hash_match": true
+  },
+  {
+   "passage_id": "gord-c02",
+   "source_filename": "gord.txt",
+   "schema_valid": true,
+   "compositional_meaningful": 9,
+   "compositional_load_bearing": 7,
+   "atomic_meaningful": 1,
+   "lexical_risk": "low",
+   "name_leak": 0,
+   "id_leak": false,
+   "target_5gram_overlap": 0,
+   "target_hash_match": true
+  },
+  {
+   "passage_id": "mouser-c02",
+   "source_filename": "mouser.txt",
+   "schema_valid": true,
+   "compositional_meaningful": 9,
+   "compositional_load_bearing": 7,
+   "atomic_meaningful": 1,
+   "lexical_risk": "low",
+   "name_leak": 0,
+   "id_leak": false,
+   "target_5gram_overlap": 0,
+   "target_hash_match": true
+  },
+  {
+   "passage_id": "wot-c02",
+   "source_filename": "wot.txt",
+   "schema_valid": true,
+   "compositional_meaningful": 9,
+   "compositional_load_bearing": 7,
+   "atomic_meaningful": 1,
+   "lexical_risk": "low",
+   "name_leak": 0,
+   "id_leak": false,
+   "target_5gram_overlap": 1,
+   "target_hash_match": true
+  },
+  {
+   "passage_id": "pawn-c02",
+   "source_filename": "pawn.txt",
+   "schema_valid": true,
+   "compositional_meaningful": 9,
+   "compositional_load_bearing": 7,
+   "atomic_meaningful": 1,
+   "lexical_risk": "low",
+   "name_leak": 0,
+   "id_leak": false,
+   "target_5gram_overlap": 0,
+   "target_hash_match": true
+  },
+  {
+   "passage_id": "streams-c02",
+   "source_filename": "streams.txt",
+   "schema_valid": true,
+   "compositional_meaningful": 9,
+   "compositional_load_bearing": 7,
+   "atomic_meaningful": 1,
+   "lexical_risk": "low",
+   "name_leak": 0,
+   "id_leak": false,
+   "target_5gram_overlap": 0,
+   "target_hash_match": true
+  },
+  {
+   "passage_id": "lies-c02",
+   "source_filename": "lies.txt",
+   "schema_valid": true,
+   "compositional_meaningful": 9,
+   "compositional_load_bearing": 7,
+   "atomic_meaningful": 1,
+   "lexical_risk": "low",
+   "name_leak": 0,
+   "id_leak": false,
+   "target_5gram_overlap": 0,
+   "target_hash_match": true
+  },
+  {
+   "passage_id": "lor-c02",
+   "source_filename": "lor.txt",
+   "schema_valid": true,
+   "compositional_meaningful": 9,
+   "compositional_load_bearing": 7,
+   "atomic_meaningful": 1,
+   "lexical_risk": "low",
+   "name_leak": 0,
+   "id_leak": false,
+   "target_5gram_overlap": 0,
+   "target_hash_match": true
+  },
+  {
+   "passage_id": "HP-c02",
+   "source_filename": "HP.txt",
+   "schema_valid": true,
+   "compositional_meaningful": 9,
+   "compositional_load_bearing": 7,
+   "atomic_meaningful": 1,
+   "lexical_risk": "low",
+   "name_leak": 0,
+   "id_leak": false,
+   "target_5gram_overlap": 0,
+   "target_hash_match": true
+  },
+  {
+   "passage_id": "got-c02",
+   "source_filename": "got.txt",
+   "schema_valid": true,
+   "compositional_meaningful": 9,
+   "compositional_load_bearing": 7,
+   "atomic_meaningful": 1,
+   "lexical_risk": "low",
+   "name_leak": 0,
+   "id_leak": false,
+   "target_5gram_overlap": 0,
+   "target_hash_match": true
+  }
+ ],
+ "token_ranges": {
+  "atomic_input": [
+   221,
+   250
+  ],
+  "atomic_total": [
+   2922,
+   4685
+  ],
+  "compositional_input": [
+   449,
+   495
+  ],
+  "compositional_total": [
+   3160,
+   4918
+  ]
+ },
+ "context_fit_8192": "22/22",
+ "structural_risk": {
+  "medium": 7,
+  "low": 1,
+  "high": 3
+ },
+ "recommendations": {
+  "abstract_further": 9,
+  "remove_constraint": 1,
+  "accept": 1
+ },
+ "review_viewer_path": "private-data/packet-review-batch1/index.html"
+}
