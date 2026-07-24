@@ -1,0 +1,128 @@
+{
+ "dispatch": "30A-R1",
+ "phase": "full-accepted-set-freeze",
+ "accepted_total": 65,
+ "accepted_by_source": {
+  "HP.txt": 6,
+  "abercrombe.txt": 6,
+  "gord.txt": 6,
+  "got.txt": 6,
+  "lies.txt": 6,
+  "lor.txt": 6,
+  "mouser.txt": 6,
+  "pawn.txt": 6,
+  "sanderson.txt": 5,
+  "streams.txt": 6,
+  "wot.txt": 6
+ },
+ "word_count_range": [
+  1284,
+  3713
+ ],
+ "target_token_range": [
+  1828,
+  5041
+ ],
+ "conservative_packet_allowance": 609,
+ "estimated_total_compositional_range": [
+  2437,
+  5650
+ ],
+ "context_fit": {
+  "fits_8192": 65,
+  "total": 65,
+  "overflow_8192": 0,
+  "overflow_passage_ids": []
+ },
+ "boundary_adjustments": {
+  "valid_applied": [
+   "mouser-c06",
+   "pawn-c06",
+   "got-c06"
+  ],
+  "accidental_ignored": [
+   "got-c01 (1057247)",
+   "sanderson-c02 (30428 -> 17 words; kept original 3107w, PENDING confirmation)"
+  ]
+ },
+ "integrity": {
+  "all_hashes_recover": true,
+  "word_counts_match": true,
+  "duplicate_targets": 0,
+  "overlapping_pairs": 0,
+  "material_overlaps": 0
+ },
+ "source_minimum_gate": {
+  "sources_at_or_above_6": 10,
+  "sources_below_6": {
+   "sanderson.txt": 5
+  }
+ },
+ "target_sha256_prefixes": {
+  "HP-c01": "2cdffa2f0e27",
+  "HP-c02": "a42ad4e41421",
+  "HP-c03": "d22159dd4ad5",
+  "HP-c04": "0731588331a3",
+  "HP-c05": "04506a7be017",
+  "HP-c06": "9f8fc6147457",
+  "abercrombe-c01": "4f00adcb6305",
+  "abercrombe-c02": "cbbf51ce8406",
+  "abercrombe-c03": "9c698bbacb58",
+  "abercrombe-c04": "b73ccfa26293",
+  "abercrombe-c05": "895dca0508e2",
+  "abercrombe-c06": "53eaffeedb1f",
+  "gord-c01": "41fe8f78e674",
+  "gord-c02": "e1d123ee0dda",
+  "gord-c03": "2b2c2936e893",
+  "gord-c04": "4ad6ba62610c",
+  "gord-c05": "c112db7d1828",
+  "gord-c06": "c0bf3f0c752a",
+  "got-c01": "f2f78af86d91",
+  "got-c02": "121ec2a7e261",
+  "got-c03": "abce8b24f92a",
+  "got-c04": "1f70ab66c03c",
+  "got-c05": "304bbcda7f3c",
+  "got-c06": "46c1ed952937",
+  "lies-c01": "2644560bd4cb",
+  "lies-c02": "bc6b5f4da895",
+  "lies-c03": "978a262fb512",
+  "lies-c04": "d1d82ce82fcf",
+  "lies-c05": "9f2f6839e7d0",
+  "lies-c06": "9e7a08ae0b0c",
+  "lor-c01": "6adc3c7329ba",
+  "lor-c02": "ce4be179c487",
+  "lor-c03": "d5a17a4df3b8",
+  "lor-c04": "f76175527fd0",
+  "lor-c05": "2a9d8bf8a12e",
+  "lor-c06": "95bca9e99c6a",
+  "mouser-c01": "fc79fa3bef60",
+  "mouser-c02": "0cead8623ea0",
+  "mouser-c03": "dd5b8b62e40a",
+  "mouser-c04": "77f884608691",
+  "mouser-c05": "38625e34bc84",
+  "mouser-c06": "c0f4dbb7372d",
+  "pawn-c01": "f35231240605",
+  "pawn-c02": "490743bf7a07",
+  "pawn-c03": "69398735680a",
+  "pawn-c04": "dc20aa0b2bd3",
+  "pawn-c05": "22fca327985b",
+  "pawn-c06": "acbe8f80e474",
+  "sanderson-c01": "fc6af017cb5b",
+  "sanderson-c02": "bb49dc4045c5",
+  "sanderson-c03": "eed6208051f8",
+  "sanderson-c04": "ab2b5752b79b",
+  "sanderson-c05": "45621982be1c",
+  "streams-c01": "38ee81dab595",
+  "streams-c02": "0f8502fd0ba2",
+  "streams-c03": "0a5528bbfba6",
+  "streams-c04": "33d80d4d3026",
+  "streams-c05": "5c637bfc828b",
+  "streams-c06": "365199f41827",
+  "wot-c01": "0a5f77dc90fc",
+  "wot-c02": "41dc6da8f32b",
+  "wot-c03": "49abb2da82ed",
+  "wot-c04": "89c684c243a5",
+  "wot-c05": "19f6131bbd52",
+  "wot-c06": "7273090f0f3b"
+ }
+}
