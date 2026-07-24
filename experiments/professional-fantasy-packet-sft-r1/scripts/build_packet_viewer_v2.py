@@ -152,8 +152,22 @@ function stamp(c){c.timestamp=new Date().toISOString();c.reviewer=document.getEl
 function setF(id,k,v){const c=g(id);c[k]=v;stamp(c);save();if(k==='decision')render();}
 function setR(id,k,v){const c=g(id);c.ratings[k]=v?+v:null;stamp(c);save();}
 function edit(id,k,v){const c=g(id);c[k]=v;stamp(c);save();}
-function exportD(){const out={reviewer:document.getElementById('rev').value,batch:"__BATCH__",generated_at:new Date().toISOString(),decisions:dec};
- const b=new Blob([JSON.stringify(out,null,1)],{type:"application/json"});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download="packet-decisions-__BATCH__.json";a.click();}
+function exportD(){
+ const batch="__BATCH__";
+ // rebuild payload from the CURRENTLY DISPLAYED records only (never raw cross-batch localStorage)
+ const expectedIds=DATA.map(r=>r.passage_id);
+ const decisions={};expectedIds.forEach(id=>{if(dec[id])decisions[id]=dec[id];});
+ const ids=Object.keys(decisions);
+ const stale=Object.keys(dec).filter(id=>!expectedIds.includes(id));
+ const missing=expectedIds.filter(id=>!(decisions[id]&&decisions[id].decision));
+ const suffix=[...new Set(expectedIds.map(id=>id.split('-').pop()))].join(',');
+ const summary="batch: "+batch+"\nstorage_key: "+KEY+"\ndecision_count: "+ids.length+"/"+expectedIds.length+
+   "\nrecord_suffix: "+suffix+"\nfirst_record_id: "+expectedIds[0]+"\nlast_record_id: "+expectedIds[expectedIds.length-1]+
+   (missing.length?"\nUNDECIDED: "+missing.join(", "):"")+
+   (stale.length?"\n(ignored "+stale.length+" record(s) from another batch in storage)":"");
+ if(!confirm("Export summary — verify before download:\n\n"+summary+"\n\nDownload packet-decisions-"+batch+".json?"))return;
+ const out={reviewer:document.getElementById('rev').value,batch:batch,generated_at:new Date().toISOString(),decisions:decisions};
+ const b=new Blob([JSON.stringify(out,null,1)],{type:"application/json"});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download="packet-decisions-"+batch+".json";a.click();}
 document.getElementById('rev').onchange=save;render();
 </script></body></html>"""
 
