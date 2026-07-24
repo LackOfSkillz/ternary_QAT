@@ -1,0 +1,66 @@
+bulk_packet_production_contract:
+  dispatch: 30A-R1
+  phase: bulk-packet-production
+  starting_commit: 00392f5
+  frozen_at: "2026-07-24"
+  master_untouched_required: true
+
+  corpus:
+    total_passages: 65
+    context_length: 8192
+    target_text_policy: unchanged
+    target_truncation: prohibited
+    do_not_alter: [accepted_offsets, target_hashes, target_prose, target_punctuation,
+                   accepted_boundaries, source_assignment, passage_ids]
+
+  production:
+    passage_count: 65
+    provenance_packets_required: 65
+    compositional_packets_required: 65
+    atomic_packets_required: 65
+    paired_targets_required: true
+    unchanged_gold_targets: true
+    source_text_in_committed_artifacts: prohibited
+    human_review_required: true
+
+  versions:
+    provenance_packet_schema: provenance-packet-v2
+    compositional_packet_schema: scene-packet-v2
+    atomic_packet_schema: atomic-scene-packet-v2
+    abstraction_policy: abstraction-policy-v2
+    system_prompt: lw-scene-executor-v1
+    serializer: lw-scene-packet-serializer-v1
+  schema_change_rule: any schema change after production begins requires version increment +
+    migration of all existing packets + complete revalidation. No silent mid-production changes.
+
+  pairing:
+    same_passage_id: true
+    same_target_sha256: true
+    same_target_text: true
+    same_system_prompt: true
+    same_serializer_version: true
+    only_intended_difference: constraint_density
+
+  batching:
+    batch_size: 11_to_13
+    total_batches: 5
+    strategy: one new passage per source per batch (source-balanced), remainder in the last batch
+    gate: do not proceed to the next batch until the current batch passes human review
+    existing_packet_pairs: 11   # the c01 batch
+    new_packet_pairs: 54
+    final_packet_pairs: 65
+
+  final_packet_gate:
+    provenance_packets: 65
+    compositional_packets: 65
+    atomic_packets: 65
+    matched_pairs: 65
+    accepted_or_explicitly_approved_medium_risk: 65
+    unresolved_high_risk: 0
+    unresolved_schema_errors: 0
+    target_hash_mismatches: 0
+    context_overflows: 0
+  high_risk_rule: high structural-risk packets accepted only by explicit human decision; do not
+    auto-downgrade a high-risk packet after minor wording edits.
+
+  do_not_in_this_dispatch: [serialize_lora_dataset, training, checkpoint_generation]

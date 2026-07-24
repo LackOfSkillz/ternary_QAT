@@ -1,0 +1,74 @@
+constraint_accounting_policy:
+  version: constraint-accounting-v2
+  dispatch: 30A-R1
+
+  meaningful_constraints_that_count:
+    - required_event
+    - ending_state
+    - knowledge_limit
+    - canon_rule
+    - forbidden_development
+    - viewpoint_obligation
+    - physical_continuity_obligation
+    - reveal_order_obligation
+  do_not_count:
+    - "write polished prose"
+    - "make it immersive"
+    - "use good pacing"
+    - "avoid cliches"
+    - output_format_labels
+    - schema_keys
+
+  compositional:
+    minimum: 5
+    preferred: 6_to_8
+    maximum: 9
+    load_bearing_minimum: 4
+  atomic:
+    minimum: 1
+    maximum: 2
+    hidden_compound_forbidden: true   # one sentence may hold several obligations; count semantics
+  provenance_required_beats:
+    preferred: 4_to_7
+    acceptable: 3_to_9
+
+  support_to_required_eligibility:
+    may_become_required: [explicitly_supported, strongly_implied_after_review]
+    may_not_become_required: [weakly_inferred, unverifiable, contradicted]
+
+  reported_accounting:
+    - atomic_meaningful_constraints
+    - compositional_meaningful_constraints
+    - compositional_load_bearing_constraints
+    - hidden_compound_constraints
+    - boilerplate_constraints
+
+  schema_validation_rejects:
+    - missing_target_hash
+    - missing_pairing_id
+    - zero_required_constraints
+    - atomic_constraint_count_above_two
+    - compositional_constraint_count_below_five
+    - fewer_than_four_load_bearing_compositional
+    - mismatched_target_hashes_across_pair
+    - unknown_schema_version
+    - missing_source_authorization_reference
+
+  token_accounting:
+    tokenizer: Qwen/Qwen3-8B @ b968826d9c46dd6066d109eabc6255188de91218 (thinking disabled)
+    fields: [system_tokens, packet_tokens, template_tokens, target_tokens, total_tokens, fits_8192]
+    overflow_procedure: [remove_nonessential_packet_wording, preserve_all_load_bearing_obligations,
+                         re_tokenize, report_if_still_overflow]
+    target_truncation: prohibited
+
+  leakage_checks_on_model_visible:
+    - source_filename
+    - author_name
+    - title
+    - proper_names_from_target
+    - unusual_capitalized_terms
+    - exact_5gram_overlap_with_target
+    - exact_quoted_dialogue_fragments
+    - target_final_sentence_fragments
+    - target_specific_invented_terms
+  note: a small generic overlap is expected; report distinctive overlap.

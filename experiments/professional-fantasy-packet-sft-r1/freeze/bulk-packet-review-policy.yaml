@@ -1,0 +1,72 @@
+bulk_packet_review_policy:
+  version: bulk-packet-review-v2
+  dispatch: 30A-R1
+
+  viewer_shows_per_record:
+    - target_passage
+    - provenance_packet
+    - compositional_packet
+    - atomic_packet
+    - target_sha256_prefix
+    - target_word_count
+    - exact_target_tokens
+    - atomic_input_and_total_tokens
+    - compositional_input_and_total_tokens
+    - meaningful_constraint_counts
+    - load_bearing_constraint_counts
+    - lexical_retrieval_risk
+    - structural_retrieval_risk
+    - distinctive_element_categories
+
+  editable: [compositional_packet, atomic_packet, risk_disposition, reviewer_notes]
+  provenance: read_only_during_model_visible_review   # use revise_provenance decision if wrong
+
+  decisions:
+    - accept
+    - accept_with_medium_risk
+    - revise_compositional
+    - revise_atomic
+    - revise_both
+    - revise_provenance
+    - exclude
+
+  ratings_1_to_3:
+    - packet_matches_target
+    - constraint_accuracy
+    - load_bearing_quality
+    - production_realism
+    - abstraction_quality
+    - structural_retrieval_safety
+    - atomic_purity
+
+  provenance_sampling:
+    batch_1: inspect_every_packet
+    later_batches_minimum: at_least_50_percent
+    always_flag_for_full_inspection_when:
+      - structural_risk_high
+      - ambiguity_exists
+      - viewpoint_detection_uncertain
+      - multiple_scene_movements
+      - context_dependency_medium_or_high
+      - required_beats_exceed_seven
+
+  cross_source_consistency_audit_every_two_batches:
+    - identical_phrasing_across_sources
+    - forcing_same_schema_pattern
+    - overproducing_five_beat_structures
+    - overusing_same_craft_labels
+    - collapsing_prose_modes_to_generic_close_third
+    - repetitive_forbidden_development_language
+    - padding_compositional_to_hit_counts
+
+  batch_per_record_pipeline:
+    - generate_provenance
+    - generate_compositional
+    - generate_atomic
+    - schema_validation
+    - lexical_risk
+    - structural_risk
+    - constraint_accounting
+    - exact_tokens
+    - build_private_review_queue
+    - stop_for_human_review

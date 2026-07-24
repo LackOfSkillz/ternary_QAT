@@ -1,0 +1,52 @@
+packet_abstraction_policy:
+  version: abstraction-policy-v2
+  dispatch: 30A-R1
+  goal: >
+    A model-visible packet must preserve enough transferable scene MECHANICS to require real scene
+    execution, while avoiding a near-lossless compressed reconstruction of the source passage.
+
+  remove_from_model_visible_packets:
+    - author_names
+    - titles
+    - source_filenames
+    - source_passage_ids
+    - exact_dialogue
+    - distinctive_sentences
+    - source_specific_names
+    - named_factions
+    - named_magic_systems
+    - exact_geographic_names
+    - unique_terminology
+    - quoted_sayings
+    - recognizable_final_lines
+    - exact_choreography_that_functions_as_a_synopsis
+
+  generalize_entities:
+    named_magical_order: secret magical institution
+    specific_noble_house: politically vulnerable ruling family
+    named_artifact: personally significant weapon
+    named_supernatural_enemy: relentless supernatural pursuer
+
+  preserve_transferable_mechanics_example: >
+    "The viewpoint character must misunderstand the threat until physical evidence forces a revised
+    interpretation."
+  avoid_compressed_reconstruction_example: >
+    "The protagonist finds the three exact objects, crosses the named courtyard, hears the mentor's
+    repeated phrase, then kills the specific servant with the hidden blade."
+
+  retrieval_risk:
+    two_separate_ratings:
+      lexical_identifier_risk: {rating: [low, medium, high], reason: required}
+      structural_reconstruction_risk: {rating: [low, medium, high], reason: required}
+    distinctive_elements_tracked: [unusual_character_relation, unusual_object, unusual_event_sequence,
+      distinctive_reveal, distinctive_ending_move, source_specific_world_rule]
+    recommendation: [accept, accept_with_medium_risk, abstract_further, remove_constraint, exclude]
+    rule: >
+      Do NOT equate "no proper nouns" with low risk. A structurally distinctive event sequence may
+      be medium or high even when lexical risk is low. Prefer abstract_further/remove_constraint on
+      the single most-identifying element rather than gutting the packet.
+
+  atomic_abstraction:
+    obligations: 1_to_2 clean, independently interpretable, transferable
+    task: packet -> full professional scene (never micro-edit/summary/snippet)
+    count_semantic_obligations_not_sentences: true

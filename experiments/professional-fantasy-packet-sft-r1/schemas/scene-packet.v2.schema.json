@@ -1,0 +1,45 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "professional-fantasy-packet-sft-r1/scene-packet.v2.schema.json",
+  "title": "Compositional scene packet v2 (Dispatch 30A-R1)",
+  "description": "Abstracted, model-visible compositional packet. 5-9 meaningful constraints (>=4 load-bearing). No source identifiers/names/wording. Points to an unchanged gold target by hash.",
+  "type": "object",
+  "required": ["packet_version", "task", "viewpoint", "tense", "scene_purpose", "required_beats",
+               "scene_boundary", "ending_state", "output_contract", "constraint_accounting", "retrieval_risk"],
+  "additionalProperties": false,
+  "properties": {
+    "packet_version": {"const": "scene-packet-v2"},
+    "task": {"const": "write_scene"},
+    "viewpoint": {"type": "string"},
+    "tense": {"type": "string", "enum": ["past", "present"]},
+    "narrative_distance": {"type": ["string", "null"]},
+    "opening_state": {"type": "string"},
+    "scene_purpose": {"type": "string"},
+    "required_beats": {"type": "array", "items": {"type": "string"}},
+    "canon_facts": {"type": "array", "items": {"type": "string"}},
+    "character_goals": {"type": "array", "items": {"type": "string"}},
+    "knowledge_limits": {"type": "array", "items": {"type": "string"}},
+    "forbidden_developments": {"type": "array", "items": {"type": "string"}},
+    "physical_continuity": {"type": "array", "items": {"type": "string"}},
+    "scene_boundary": {"type": "string"},
+    "ending_state": {"type": "string"},
+    "craft_profile": {"type": ["object", "null"], "additionalProperties": true},
+    "output_contract": {"const": "prose_scene"},
+    "constraint_accounting": {
+      "type": "object", "required": ["meaningful_constraints", "load_bearing_constraints"],
+      "additionalProperties": false,
+      "properties": {"meaningful_constraints": {"type": "integer", "minimum": 5, "maximum": 9},
+        "load_bearing_constraints": {"type": "integer", "minimum": 4},
+        "boilerplate_constraints": {"type": "integer"}}},
+    "retrieval_risk": {
+      "type": "object", "required": ["lexical_identifier_risk", "structural_reconstruction_risk"],
+      "additionalProperties": false,
+      "properties": {
+        "lexical_identifier_risk": {"type": "object", "required": ["rating"], "additionalProperties": true,
+          "properties": {"rating": {"enum": ["low", "medium", "high"]}, "reason": {"type": "string"}}},
+        "structural_reconstruction_risk": {"type": "object", "required": ["rating"], "additionalProperties": true,
+          "properties": {"rating": {"enum": ["low", "medium", "high"]}, "reason": {"type": "string"}}},
+        "distinctive_elements": {"type": "object", "additionalProperties": true},
+        "recommendation": {"enum": ["accept", "accept_with_medium_risk", "abstract_further", "remove_constraint", "exclude"]}}}
+  }
+}
