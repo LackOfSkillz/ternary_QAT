@@ -1,0 +1,169 @@
+{
+ "dispatch": "30A-R1",
+ "batch": "batch5",
+ "passages": 10,
+ "all_schema_valid": true,
+ "constraint_distribution": {
+  "compositional_meaningful": [
+   8,
+   8
+  ],
+  "compositional_load_bearing": [
+   5,
+   6
+  ],
+  "atomic_meaningful": [
+   1,
+   2
+  ]
+ },
+ "lexical_risk": {
+  "low": 10
+ },
+ "id_leaks": 0,
+ "name_leaks": 0,
+ "target_5gram_overlap_max": 0,
+ "target_hash_match": true,
+ "records": [
+  {
+   "passage_id": "HP-c06",
+   "source_filename": "HP.txt",
+   "schema_valid": true,
+   "schema_errors": [],
+   "compositional_meaningful": 8,
+   "compositional_load_bearing": 6,
+   "atomic_meaningful": 1,
+   "lexical_risk": "low",
+   "name_leak": 0,
+   "id_leak": false,
+   "target_5gram_overlap": 0,
+   "target_hash_match": true
+  },
+  {
+   "passage_id": "abercrombe-c06",
+   "source_filename": "abercrombe.txt",
+   "schema_valid": true,
+   "schema_errors": [],
+   "compositional_meaningful": 8,
+   "compositional_load_bearing": 5,
+   "atomic_meaningful": 2,
+   "lexical_risk": "low",
+   "name_leak": 0,
+   "id_leak": false,
+   "target_5gram_overlap": 0,
+   "target_hash_match": true
+  },
+  {
+   "passage_id": "gord-c06",
+   "source_filename": "gord.txt",
+   "schema_valid": true,
+   "schema_errors": [],
+   "compositional_meaningful": 8,
+   "compositional_load_bearing": 6,
+   "atomic_meaningful": 1,
+   "lexical_risk": "low",
+   "name_leak": 0,
+   "id_leak": false,
+   "target_5gram_overlap": 0,
+   "target_hash_match": true
+  },
+  {
+   "passage_id": "got-c06",
+   "source_filename": "got.txt",
+   "schema_valid": true,
+   "schema_errors": [],
+   "compositional_meaningful": 8,
+   "compositional_load_bearing": 6,
+   "atomic_meaningful": 1,
+   "lexical_risk": "low",
+   "name_leak": 0,
+   "id_leak": false,
+   "target_5gram_overlap": 0,
+   "target_hash_match": true
+  },
+  {
+   "passage_id": "lies-c06",
+   "source_filename": "lies.txt",
+   "schema_valid": true,
+   "schema_errors": [],
+   "compositional_meaningful": 8,
+   "compositional_load_bearing": 6,
+   "atomic_meaningful": 1,
+   "lexical_risk": "low",
+   "name_leak": 0,
+   "id_leak": false,
+   "target_5gram_overlap": 0,
+   "target_hash_match": true
+  },
+  {
+   "passage_id": "lor-c06",
+   "source_filename": "lor.txt",
+   "schema_valid": true,
+   "schema_errors": [],
+   "compositional_meaningful": 8,
+   "compositional_load_bearing": 5,
+   "atomic_meaningful": 1,
+   "lexical_risk": "low",
+   "name_leak": 0,
+   "id_leak": false,
+   "target_5gram_overlap": 0,
+   "target_hash_match": true
+  },
+  {
+   "passage_id": "mouser-c06",
+   "source_filename": "mouser.txt",
+   "schema_valid": true,
+   "schema_errors": [],
+   "compositional_meaningful": 8,
+   "compositional_load_bearing": 5,
+   "atomic_meaningful": 1,
+   "lexical_risk": "low",
+   "name_leak": 0,
+   "id_leak": false,
+   "target_5gram_overlap": 0,
+   "target_hash_match": true
+  },
+  {
+   "passage_id": "pawn-c06",
+   "source_filename": "pawn.txt",
+   "schema_valid": true,
+   "schema_errors": [],
+   "compositional_meaningful": 8,
+   "compositional_load_bearing": 5,
+   "atomic_meaningful": 1,
+   "lexical_risk": "low",
+   "name_leak": 0,
+   "id_leak": false,
+   "target_5gram_overlap": 0,
+   "target_hash_match": true
+  },
+  {
+   "passage_id": "streams-c06",
+   "source_filename": "streams.txt",
+   "schema_valid": true,
+   "schema_errors": [],
+   "compositional_meaningful": 8,
+   "compositional_load_bearing": 6,
+   "atomic_meaningful": 2,
+   "lexical_risk": "low",
+   "name_leak": 0,
+   "id_leak": false,
+   "target_5gram_overlap": 0,
+   "target_hash_match": true
+  },
+  {
+   "passage_id": "wot-c06",
+   "source_filename": "wot.txt",
+   "schema_valid": true,
+   "schema_errors": [],
+   "compositional_meaningful": 8,
+   "compositional_load_bearing": 5,
+   "atomic_meaningful": 1,
+   "lexical_risk": "low",
+   "name_leak": 0,
+   "id_leak": false,
+   "target_5gram_overlap": 0,
+   "target_hash_match": true
+  }
+ ]
+}

@@ -1,0 +1,74 @@
+{
+ "dispatch": "30E",
+ "decision_authority": "Dispatch 30E",
+ "batch_5": {
+  "status": "final_preapproved",
+  "passages_processed": 10,
+  "accepted_pairs": 10,
+  "primary_low": 1,
+  "primary_medium": 6,
+  "retrieval_sensitive_high": 3,
+  "excluded": 0,
+  "unresolved": 0,
+  "contradictory": 0,
+  "schema_valid": 10,
+  "target_hash_match": true,
+  "lexical_risk": {
+   "low": 10
+  },
+  "id_leaks": 0,
+  "name_leaks": 0,
+  "target_5gram_overlap_max": 0,
+  "atomic_purity": {
+   "records_checked": 10,
+   "clean": 10,
+   "hidden_compound_flags": 0,
+   "revised": 0,
+   "unresolved": 0
+  },
+  "structural_risk_before_revision": {
+   "low": 1,
+   "medium": 5,
+   "high": 4
+  },
+  "structural_risk_after_revision": {
+   "low": 1,
+   "medium": 6,
+   "high": 3
+  },
+  "constraint_distribution": {
+   "meaningful": {
+    "8": 10
+   },
+   "load_bearing": {
+    "5": 5,
+    "6": 5
+   },
+   "meaningful_range": [
+    8,
+    8
+   ],
+   "load_bearing_range": [
+    5,
+    6
+   ],
+   "identical_meaningful_across_all_10": true,
+   "note": "all 10 land at meaningful 8 — genuinely derived (3 beats+3 soft or 4 beats+2 soft), within 5-9, none padded to 9, no silent clamp; LB varies 5-6. Flagged for transparency; not a §5 stop condition."
+  },
+  "context_fit_8192": 20,
+  "decision_authority": "Dispatch 30E",
+  "reabstraction": "1 targeted pass on 4 high (wot,lor,HP,got); HP high->medium, wot/lor/got remain high (distributed identifiability; further abstraction would gut supervision per auditor)",
+  "token_totals": {
+   "compositional": [
+    2476,
+    4150
+   ],
+   "atomic": [
+    2068,
+    3702
+   ]
+  },
+  "serializer_version": "lw-scene-packet-serializer-v1",
+  "model_revision": "b968826d9c46dd6066d109eabc6255188de91218"
+ }
+}
