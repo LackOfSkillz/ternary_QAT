@@ -1,0 +1,61 @@
+{
+ "dispatch": "30A-R1",
+ "phase": "batch1-structural-re-abstraction",
+ "packets_revised": 10,
+ "unchanged_accept": 1,
+ "provenance_changed": 0,
+ "target_changed": 0,
+ "schema_valid": true,
+ "target_hash_match": true,
+ "context_fit_8192": "22/22",
+ "lexical_risk": {
+  "low": 11
+ },
+ "structural_risk_before_same_calibration": {
+  "high": 7,
+  "medium": 4
+ },
+ "structural_risk_after": {
+  "high": 5,
+  "medium": 6
+ },
+ "high_resolved_by_revision": 2,
+ "unresolved_high_count": 5,
+ "recommendations_after": {
+  "abstract_further": 5,
+  "accept_with_medium_risk": 6
+ },
+ "constraint_range": {
+  "compositional_meaningful": [
+   9,
+   9
+  ],
+  "compositional_load_bearing": [
+   7,
+   7
+  ],
+  "atomic_meaningful": [
+   1,
+   2
+  ]
+ },
+ "token_ranges": {
+  "atomic_total": [
+   2922,
+   4685
+  ],
+  "compositional_total": [
+   3160,
+   4921
+  ]
+ },
+ "categories_generalized_counts": {
+  "source_specific_world_rule": 7,
+  "unusual_character_relation": 1,
+  "distinctive_reveal": 2,
+  "unusual_object": 2,
+  "distinctive_ending_move": 1
+ },
+ "review_viewer_path": "private-data/packet-review-batch1rev/index.html",
+ "note": "5 packets remain HIGH structural risk after one targeted pass; their distinctive core is inherent to supervising the specific scene. Per protocol these require individual Gary review. Per-passage reasons kept private."
+}

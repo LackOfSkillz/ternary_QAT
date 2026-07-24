@@ -33,6 +33,11 @@ def main():
     tok = json.load(open(TOK, encoding="utf-8")) if os.path.exists(TOK) else {}
     risk = json.load(open(RISK, encoding="utf-8")) if os.path.exists(RISK) else {}
     val = {r["passage_id"]: r for r in json.load(open(VAL, encoding="utf-8"))["records"]} if os.path.exists(VAL) else {}
+    # optional before/after: same-calibration original ratings + reviser's generalized categories
+    orig_p = os.path.join(EXP, "private-data", "structural-risk-batch1-recal.json")
+    notes_p = os.path.join(EXP, "private-data", "revision-notes-batch1.json")
+    orig = json.load(open(orig_p, encoding="utf-8")) if os.path.exists(orig_p) else {}
+    notes = json.load(open(notes_p, encoding="utf-8")) if os.path.exists(notes_p) else {}
     data = []
     for pid in comp:
         seg = json.load(open(os.path.join(TARGETS, pid + ".json"), encoding="utf-8"))
@@ -53,6 +58,8 @@ def main():
                        "fits": (tok.get(pid + "-C", {}) or {}).get("fits_8192")},
             "lexical_risk": (val.get(pid, {}) or {}).get("lexical_risk", "low"),
             "structural": risk.get(pid, {}),
+            "orig_structural": (orig.get(pid, {}) or {}).get("structural_reconstruction_risk", {}),
+            "categories_generalized": (notes.get(pid, {}) or {}).get("categories_generalized", []),
         })
     os.makedirs(APP, exist_ok=True)
     html = TEMPLATE.replace("__DATA__", json.dumps(data, ensure_ascii=False)).replace("__BATCH__", BATCH)
@@ -99,8 +106,10 @@ function render(){
    ' <span class="badge">tgt '+t.target+' tok</span> <span class="badge">comp in '+t.comp_input+' / total '+t.comp_total+'</span>'+
    ' <span class="badge">atom in '+t.atom_input+' / total '+t.atom_total+'</span> <span class="badge">fits8192 '+t.fits+'</span></div>'+
    '<div class="row"><span class="badge">meaningful '+d.meaningful+' ('+d.load_bearing+' LB)</span> <span class="badge">atomic '+d.atomic_meaningful+'</span>'+
-   ' lexical '+'<span class="badge risk-'+d.lexical_risk+'">'+d.lexical_risk+'</span> structural '+badge(s.structural_reconstruction_risk)+
-   (s.recommendation?' <span class="badge">'+s.recommendation+'</span>':'')+' <span class="badge">distinctive: '+distinct(s)+'</span></div>'+
+   ' lexical '+'<span class="badge risk-'+d.lexical_risk+'">'+d.lexical_risk+'</span> structural '+
+   (d.orig_structural&&d.orig_structural.rating?badge(d.orig_structural)+' &rarr; ':'')+badge(s.structural_reconstruction_risk)+
+   (s.recommendation?' <span class="badge">'+s.recommendation+'</span>':'')+' <span class="badge">distinctive: '+distinct(s)+'</span>'+
+   (d.categories_generalized&&d.categories_generalized.length?' <span class="badge">generalized: '+d.categories_generalized.join(', ')+'</span>':'')+'</div>'+
    '<div class="grid"><div><h3>Source passage (private)</h3><div class="src">'+esc(d.source_text)+'</div>'+
    '<h3>Provenance packet (read-only)</h3><pre>'+esc(JSON.stringify(d.provenance,null,1))+'</pre></div>'+
    '<div><h3>Compositional packet (editable)</h3><textarea style="height:250px" onchange="edit(\''+d.passage_id+'\',\'edited_compositional\',this.value)">'+esc(c.edited_compositional||JSON.stringify(d.compositional_packet,null,1))+'</textarea>'+
