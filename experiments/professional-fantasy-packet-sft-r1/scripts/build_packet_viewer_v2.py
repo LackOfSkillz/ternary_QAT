@@ -163,8 +163,10 @@ function exportD(){
  const suffix=[...new Set(expectedIds.map(id=>id.split('-').pop()))].join(',');
  const summary="batch: "+batch+"\nstorage_key: "+KEY+"\ndecision_count: "+ids.length+"/"+expectedIds.length+
    "\nrecord_suffix: "+suffix+"\nfirst_record_id: "+expectedIds[0]+"\nlast_record_id: "+expectedIds[expectedIds.length-1]+
-   (missing.length?"\nUNDECIDED: "+missing.join(", "):"")+
-   (stale.length?"\n(ignored "+stale.length+" record(s) from another batch in storage)":"");
+   (missing.length?"\nundecided: "+missing.join(", "):"\nundecided: none");
+ // hard REJECT (not warn): batch mismatch / stale cross-batch record / undecided or missing displayed record
+ if(stale.length){alert("Export REJECTED: storage holds "+stale.length+" record(s) from another batch: "+stale.join(", ")+"\n(These are not in the displayed batch "+batch+".)");return;}
+ if(missing.length){alert("Export REJECTED: "+missing.length+" displayed record(s) undecided/missing:\n"+missing.join(", ")+"\n\nDecide all "+expectedIds.length+" records before exporting.");return;}
  if(!confirm("Export summary — verify before download:\n\n"+summary+"\n\nDownload packet-decisions-"+batch+".json?"))return;
  const out={reviewer:document.getElementById('rev').value,batch:batch,generated_at:new Date().toISOString(),decisions:decisions};
  const b=new Blob([JSON.stringify(out,null,1)],{type:"application/json"});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download="packet-decisions-"+batch+".json";a.click();}

@@ -80,14 +80,23 @@ def main():
     at = [tok[f"{p['passage_id']}-A"]["total_tokens"] for p in pairs]
     schema_valid = sum(1 for p in pairs if p["schema_version"]["compositional"] == "scene-packet-v2"
                        and p["schema_version"]["atomic"] == "atomic-scene-packet-v2")
+    num = BASE.replace("batch", "")          # "batch2" -> "2"
+    key = f"batch_{num}"                       # -> "batch_2"
+    mean = Counter(p["compositional_packet"]["constraint_accounting"]["meaningful_constraints"] for p in pairs)
+    lb = Counter(p["compositional_packet"]["constraint_accounting"]["load_bearing_constraints"] for p in pairs)
     report = {
-        "dispatch": "30A-R1", "batch_1": {
+        "dispatch": "30A-R1", key: {
             "status": "final", "accepted_pairs": len(pairs),
+            "primary_low": cohorts.get("primary_low", 0),
             "primary_medium": cohorts.get("primary_medium", 0),
             "retrieval_sensitive_high": cohorts.get("retrieval_sensitive_high", 0),
             "excluded": cohorts.get("excluded", 0), "unresolved": 0, "contradictory": 0,
             "schema_valid": schema_valid, "target_hash_match": checks["matched_pairs"],
             "context_fit_8192": 2 * len(pairs) - checks["context_overflows"]},
+        "constraint_distribution": {
+            "meaningful": {str(k): v for k, v in sorted(mean.items())},
+            "load_bearing": {str(k): v for k, v in sorted(lb.items())},
+            "identical_across_all_11": len(mean) == 1},
         "freeze_checks": {
             "provenance_packets": checks["provenance_packets"], "compositional_packets": checks["compositional_packets"],
             "atomic_packets": checks["atomic_packets"], "matched_pairs": checks["matched_pairs"],
@@ -96,12 +105,13 @@ def main():
         "token_ranges": {"compositional_total": [min(ct), max(ct)], "atomic_total": [min(at), max(at)]},
         "serializer_version": serial["serializer_version"], "model_revision": model["exact_revision"],
     }
-    json.dump(report, open(os.path.join(EXP, "reports", "batch1-final-review.json"), "w", encoding="utf-8"),
+    json.dump(report, open(os.path.join(EXP, "reports", f"{BASE}-final-review.json"), "w", encoding="utf-8"),
               ensure_ascii=False, indent=1)
 
-    b1 = report["batch_1"]
+    b1 = report[key]
+    cd = report["constraint_distribution"]
     fc = report["freeze_checks"]
-    md = f"""# Batch 1 — Final Review (Dispatch 30A-R1)
+    md = f"""# Batch {num} — Final Review (Dispatch 30A-R1)
 
 **Status:** {b1['status']}  ·  **Serializer:** `{serial['serializer_version']}`  ·  **Model rev:** `{model['exact_revision'][:12]}…`
 
@@ -110,6 +120,7 @@ Metadata only — no packet text, source prose, offsets, full hashes, or reviewe
 ## Cohort outcome
 | cohort | pairs |
 |---|---|
+| primary_low | {b1['primary_low']} |
 | primary_medium | {b1['primary_medium']} |
 | retrieval_sensitive_high | {b1['retrieval_sensitive_high']} |
 | excluded | {b1['excluded']} |
@@ -117,8 +128,13 @@ Metadata only — no packet text, source prose, offsets, full hashes, or reviewe
 | contradictory | {b1['contradictory']} |
 | **accepted total** | **{b1['accepted_pairs']}** |
 
-The 5 retrieval-sensitive pairs retain their independent **high** rating with an explicit human override
-(`accept_as_retrieval_sensitive`); acceptance is a disposition, not a risk downgrade.
+The {b1['retrieval_sensitive_high']} retrieval-sensitive pair(s) retain their independent **high** rating with an
+explicit human override (`accept_as_retrieval_sensitive`); acceptance is a disposition, not a risk downgrade.
+
+## Constraint distribution (final)
+- meaningful: {cd['meaningful']}
+- load-bearing: {cd['load_bearing']}
+- identical across all {b1['accepted_pairs']}: **{cd['identical_across_all_11']}**
 
 ## Integrity checks
 | check | value |
@@ -137,7 +153,7 @@ The 5 retrieval-sensitive pairs retain their independent **high** rating with an
 - Compositional total: {report['token_ranges']['compositional_total'][0]}–{report['token_ranges']['compositional_total'][1]}
 - Atomic total: {report['token_ranges']['atomic_total'][0]}–{report['token_ranges']['atomic_total'][1]}
 """
-    open(os.path.join(EXP, "reports", "batch1-final-review.md"), "w", encoding="utf-8", newline="\n").write(md)
+    open(os.path.join(EXP, "reports", f"{BASE}-final-review.md"), "w", encoding="utf-8", newline="\n").write(md)
     print(json.dumps(report, indent=1))
 
 
