@@ -1,0 +1,91 @@
+{
+ "experiment_id": "caracal-gemma4-writing-test-r1",
+ "phase": "environment_preparation",
+ "frozen_at": "2026-07-25",
+ "verification_note": "Gemma 4 postdates the assistant's Jan-2026 training cutoff. Model existence, revisions, architecture, sizes, and gated status were confirmed LIVE via the Hugging Face API (a genuinely-fake repo returns 401; these return real model_info JSON with sha + siblings). Not taken from memory.",
+ "models": {
+  "dense": {
+   "model": "Gryphe/Gemma-4-31B-StyleTune",
+   "resolved_revision": "5a46842fc6c9f694683d985a275a3adc2973a213",
+   "arch_class": "Gemma4ForConditionalGeneration",
+   "architecture": "dense",
+   "base_model": "google/gemma-4-31B-it",
+   "gated": false,
+   "repo_total_gb": 65.4,
+   "safetensors_shards": 2,
+   "chat_template_jinja_present": true,
+   "assigned_box": "gx10-9141",
+   "download_status": "in_progress",
+   "loadable": "pending_download",
+   "chat_template_verified": "pending",
+   "smoke_test_passed": "pending"
+  },
+  "moe": {
+   "model": "Gryphe/Gemma-4-26B-A4B-StyleTune-V2",
+   "resolved_revision": "f34ba405740e0933f9b859c746de559ce1036958",
+   "arch_class": "Gemma4ForConditionalGeneration",
+   "architecture": "mixture_of_experts",
+   "base_model": "google/gemma-4-26B-A4B-it",
+   "gated": false,
+   "repo_total_gb": 53.1,
+   "safetensors_shards": 2,
+   "chat_template_jinja_present": true,
+   "assigned_box": "gx10-5611",
+   "download_status": "blocked_box_address_unknown",
+   "loadable": "pending",
+   "chat_template_verified": "pending",
+   "smoke_test_passed": "pending"
+  }
+ },
+ "runtime": {
+  "container": "linewright-ternary-train:d26",
+  "transformers_version": "5.14.1",
+  "torch_version": "2.10.0a0+nv25.11",
+  "gemma4_supported_in_transformers": true,
+  "trust_remote_code": false,
+  "precision": {
+   "weights": "bfloat16",
+   "kv_cache": "bfloat16",
+   "quantization": "none"
+  },
+  "max_model_len": 16384,
+  "engine_preference": [
+   "vLLM",
+   "transformers",
+   "minimal_shared_transformers_service"
+  ]
+ },
+ "prerequisites": {
+  "gx10_9141_disk_free_tb": 2.0,
+  "hf_token_required": false,
+  "hf_token_present": false,
+  "hf_token_committed": false
+ },
+ "blockers": [
+  "gx10-5611 (second GX10) Tailscale address is unknown to Aedan — required to download/load/serve the MoE model on its assigned box. gxssh currently reaches only gx10-9141 (100.92.130.112)."
+ ],
+ "caracal_prompt": {
+  "private_path": "private-data/prompts/caracal-original.txt",
+  "sha256": "9964e2161cef3480c4c82fda4dce4cab65d94bb78288231d372136ab3058e3ba",
+  "bytes": 441,
+  "frozen_verbatim": true
+ },
+ "linewright_packet": {
+  "status": "awaiting_gary_approval",
+  "generation_allowed": false
+ },
+ "matrix": {
+  "models": 2,
+  "prompt_conditions": 2,
+  "generations_per_cell": 1,
+  "total_outputs": 4,
+  "real_generation_started": false
+ },
+ "safety": {
+  "prompts_committed": false,
+  "generated_prose_committed": false,
+  "mappings_committed": false,
+  "passwords_committed": false,
+  "master_untouched": true
+ }
+}

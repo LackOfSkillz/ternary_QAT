@@ -1,0 +1,63 @@
+model_plan:
+  experiment_id: caracal-gemma4-writing-test-r1
+  frozen_at: "2026-07-25"
+  note: >
+    Model existence, revisions, architecture, sizes, and gated status were VERIFIED against the
+    Hugging Face API during execution (not from memory). Gemma 4 was released after the assistant's
+    training cutoff; the repositories are real and public.
+
+  hardware:
+    boxes:
+      - host: gx10-9141           # Tailscale 100.92.130.112 (reachable)
+        role: dense_writer
+      - host: gx10-5611           # address NOT yet known to Aedan — REQUIRED for MoE deployment
+        role: moe_writer
+    unified_memory_gb_each: ~128
+    rule: one model per box; NO cross-box tensor parallelism
+
+  models:
+    dense:
+      huggingface_id: Gryphe/Gemma-4-31B-StyleTune
+      resolved_revision: 5a46842fc6c9f694683d985a275a3adc2973a213   # HF API sha, lastModified 2026-06-14
+      architecture: dense
+      arch_class: Gemma4ForConditionalGeneration
+      model_type: gemma4
+      base_model: google/gemma-4-31B-it
+      gated: false
+      target_precision: bfloat16
+      repo_total_gb: 65.4
+      safetensors_shards: 2
+      chat_template_jinja_present: true
+      assigned_box: gx10-9141
+    moe:
+      huggingface_id: Gryphe/Gemma-4-26B-A4B-StyleTune-V2
+      resolved_revision: f34ba405740e0933f9b859c746de559ce1036958   # HF API sha
+      architecture: mixture_of_experts     # ~4B active of ~26B per token (A4B)
+      arch_class: Gemma4ForConditionalGeneration
+      model_type: gemma4
+      base_model: google/gemma-4-26B-A4B-it
+      gated: false
+      target_precision: bfloat16
+      repo_total_gb: 53.1
+      safetensors_shards: 2
+      chat_template_jinja_present: true
+      assigned_box: gx10-5611
+
+  precision:
+    weights: bfloat16
+    kv_cache: bfloat16
+    quantization: none      # NO GGUF / Q4 / Q6 / NVFP4 / community quant for the primary experiment
+    max_model_len: 16384    # conservative; the writing test does not need the full context window
+
+  runtime:
+    engine_preference: [vLLM, transformers, minimal_shared_transformers_service]
+    container: linewright-ternary-train:d26
+    transformers_version: 5.14.1     # natively supports model_type gemma4 (verified)
+    torch_version: 2.10.0a0+nv25.11
+    trust_remote_code: false          # gemma4 is in-library; no remote code expected
+    note: patches (if any) must be documented in reports/environment-validation.md
+
+  prerequisites_verified:
+    disk_free_tb_on_gx10_9141: 2.0
+    hf_token_required: false          # models are ungated/public
+    hf_token_present: false

@@ -1,0 +1,37 @@
+evaluation_plan:
+  experiment_id: caracal-gemma4-writing-test-r1
+  matrix:
+    models: 2                 # dense 31B StyleTune, MoE 26B-A4B StyleTune V2
+    prompt_conditions: 2      # caracal_original, linewright_scene_packet
+    generations_per_cell: 1
+    total_outputs: 4
+  hidden_cell_ids: [dense_caracal, dense_linewright, moe_caracal, moe_linewright]
+  prompts:
+    caracal_original:
+      private_path: private-data/prompts/caracal-original.txt
+      sha256: 9964e2161cef3480c4c82fda4dce4cab65d94bb78288231d372136ab3058e3ba
+      frozen_verbatim: true
+    linewright_scene_packet:
+      status: awaiting_gary_approval
+      generation_allowed: false
+      constraint: >
+        same assignment + premise (isekai romantasy litrpg; reincarnated side-character Valenia;
+        life/raising-sim litrpg twist; casual first-person translated-webnovel voice) with LineWright
+        scene structure added; must NOT change plot, ending, character concept, or genre objective.
+  real_generation_started: false
+  each_generation_record:
+    - internal_cell_id
+    - model_id
+    - resolved_revision
+    - architecture
+    - prompt_condition
+    - prompt_sha256
+    - decoding
+    - seed
+    - input_tokens
+    - output_tokens
+    - finish_reason
+    - elapsed_seconds
+    - decode_tokens_per_second
+    - raw_text
+  private_output_dir: private-data/generations/

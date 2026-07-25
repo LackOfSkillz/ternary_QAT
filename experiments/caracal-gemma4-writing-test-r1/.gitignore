@@ -1,0 +1,4 @@
+# Dispatch: caracal-gemma4-writing-test-r1 — everything private stays out of git.
+# Prompts, generated prose, candidate mappings, blind keys, shares, passwords, populated
+# review pages, and recovery material are NEVER committed. Only safe configs/scripts/reports are.
+private-data/

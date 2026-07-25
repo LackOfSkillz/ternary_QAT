@@ -1,0 +1,18 @@
+decoding_plan:
+  experiment_id: caracal-gemma4-writing-test-r1
+  status: proposed_pending_final_approval
+  rule: the FINAL approved config must be IDENTICAL across all four cells; no selective regeneration.
+
+  proposed:
+    do_sample: true
+    temperature: 0.8
+    top_p: 0.95
+    top_k: 50
+    repetition_penalty: 1.0
+    max_new_tokens: 3000
+    seed: 20260726
+
+  before_final_run:
+    - read and record the native generation_config defaults from BOTH checkpoints
+    - report whether the proposed values override the native defaults
+    - Gary approves the final identical config

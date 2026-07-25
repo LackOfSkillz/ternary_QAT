@@ -1,0 +1,70 @@
+blind_review_plan:
+  experiment_id: caracal-gemma4-writing-test-r1
+
+  reviewer_pages:                # built ONLY after the 4 outputs exist (deferred)
+    - private-data/review-packages/gary-gemma-writing-review.html
+    - private-data/review-packages/caracal-gemma-writing-review.html
+    candidate_labels: [Candidate A, Candidate B, Candidate C, Candidate D]
+    same_four_candidates_same_order: true
+    differ_only_in: [reviewer_identity, embedded_secret_share, expected_xml_filename]
+    features: [neutral assignment, all 4 raw outputs, rating controls, notes, ranking controls,
+               localStorage, XML export, XML import/recovery, final-answer validation,
+               submit-and-lock, no network]
+
+  per_candidate_controls:
+    scores_1_5: [overall_quality, opening_hook, prose_quality, voice_fit, concept_execution,
+                 character_engagement, scene_coherence, pacing, litrpg_integration, romantasy_potential]
+    slop_level: [none, low, medium, high]
+    disposition: [strongest, good, acceptable, weak, failed]
+    notes: free_text
+  per_scene_final:
+    best_candidate: [A, B, C, D, no_clear_winner]
+    second_best_candidate: [A, B, C, D, none]
+    best_opening_hook: [A, B, C, D]
+    best_prose: [A, B, C, D]
+    best_voice_fit: [A, B, C, D]
+    best_concept_execution: [A, B, C, D]
+    most_ai_sounding: [A, B, C, D, none]
+    overall_notes: free_text
+
+  xml_export:
+    gary_filename: aetos-gemma4-writing-review.xml
+    caracal_filename: caracal-gemma4-writing-review.xml
+    contains: [reviewer_name, experiment_id, completion_timestamp, ratings, notes, rankings,
+               completion_status, validation_status, reviewer_completion_receipt_share]
+    must_not_contain: [model_identities, prompt_identities, candidate_mapping, archive_password,
+                       other_reviewers_share]
+
+  two_person_reveal:
+    archive: caracal-gemma4-writing-test-r1-blind-key.7z
+    encryption: {format: 7z, cipher: AES-256, header_encryption: true}  # NO legacy ZIP encryption
+    password_entropy_bits_min: 256
+    password_not_derived_from: [reviewer_names, experiment_id, candidate_order, seed, timestamps, model_hashes]
+    sharing: 2-of-2   # share_1 = random 32 bytes; share_2 = password_bytes XOR share_1
+    share_encoding: base32_grouped_with_checksums
+    gary_gets: share_1
+    caracal_gets: share_2
+    share_revealed_only_after: submit_final_answers + all-required-fields validation
+    obfuscation_note: >
+      shares are split/obfuscated across unrelated constants and the page is minified — this protects
+      against casual discovery, NOT determined source inspection. Documented as a limitation.
+    combine_utility: combine-reveal-shares.html   # offline; reconstructs password from both shares
+
+  reveal_archive_contents: [READ-ME-FIRST.txt, candidate-reveal.html, candidate-reveal.csv,
+                            blind-key.json, generation-manifest.json, candidate-hashes.txt]
+
+  blind_commitment:            # recorded publicly in the safe report BEFORE reviewers get pages
+    encrypted_archive_sha256: pending
+    candidate_text_hashes_committed: pending
+    candidate_order_frozen: pending
+    review_started: false
+
+  emergency_recovery:
+    private_password_file: private-data/recovery/full-archive-password.txt
+    private_manifest: private-data/recovery/recovery-manifest.json
+    second_copy_outside_repo: "C:\Users\gary\.linewright-secrets\caracal-gemma4-writing-test-r1\\"
+    both_copies_identical_sha256: true
+    full_password_never_in: [git, html_pages, xml_exports, encrypted_archive, logs, reports, commit_messages]
+    reveal_allowed_only_when: [both_completed_xml_returned, OR gary_explicitly_authorizes_recovery]
+
+  all_deferred_until: [linewright_packet_approved, final_decoding_approved, four_outputs_generated]
