@@ -15,9 +15,10 @@ evaluation_plan:
       status: awaiting_gary_approval
       generation_allowed: false
       constraint: >
-        same assignment + premise (isekai romantasy litrpg; reincarnated side-character Valenia;
-        life/raising-sim litrpg twist; casual first-person translated-webnovel voice) with LineWright
-        scene structure added; must NOT change plot, ending, character concept, or genre objective.
+        must express the SAME assignment and premise as the private Caracal prompt
+        (private-data/prompts/caracal-original.txt, sha256 9964e216…) with LineWright scene structure
+        added; must NOT change the plot, ending, character concept, or genre objective.
+        (Premise specifics are intentionally kept out of git — see the private prompt file.)
   real_generation_started: false
   each_generation_record:
     - internal_cell_id
