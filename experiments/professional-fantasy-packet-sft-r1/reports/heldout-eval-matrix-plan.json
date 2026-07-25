@@ -1,0 +1,37 @@
+{
+ "dispatch": "30G",
+ "evaluation": {
+  "set_id": "heldout-c01",
+  "model_arms": [
+   "frozen_base",
+   "atomic_packet_sft",
+   "compositional_packet_sft"
+  ],
+  "prompt_conditions": [
+   "atomic_packet",
+   "compositional_packet"
+  ],
+  "heldout_scenes": 11,
+  "generations_per_cell_per_scene": 1,
+  "planned_primary_generations": 66,
+  "decoding": {
+   "do_sample": false,
+   "temperature": 0.0,
+   "top_p": 1.0,
+   "top_k": 0,
+   "max_new_tokens": 6144,
+   "seed": 20260722,
+   "enable_thinking": false,
+   "repetition_penalty": 1.0
+  },
+  "prompt_contract": {
+   "contains_target_text": false,
+   "contains_provenance": false,
+   "contains_source_names": false,
+   "contains_training_metadata": false,
+   "prompt = system + packet_only": true
+  },
+  "key_interaction": "model_arm x prompt_condition (every trained model evaluated under BOTH packet types)",
+  "inference_started": false
+ }
+}

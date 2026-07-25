@@ -1,0 +1,56 @@
+{
+ "dispatch": "30G",
+ "base_model": "Qwen/Qwen3-8B",
+ "base_revision": "b968826d9c46dd6066d109eabc6255188de91218",
+ "max_sequence_length": 8192,
+ "thinking_enabled": false,
+ "arms": [
+  "frozen_base",
+  "atomic_packet_sft",
+  "compositional_packet_sft"
+ ],
+ "training_pairs": 54,
+ "heldout_pairs": 11,
+ "heldout_in_training": 0,
+ "recipe": {
+  "method": "lora",
+  "rank": 16,
+  "alpha": 16,
+  "dropout": 0.05,
+  "target_modules": [
+   "q_proj",
+   "k_proj",
+   "v_proj",
+   "o_proj",
+   "gate_proj",
+   "up_proj",
+   "down_proj"
+  ],
+  "epochs": 1,
+  "per_device_batch": 2,
+  "grad_accum": 1,
+  "effective_batch": 2,
+  "lr": 1e-05,
+  "scheduler": "cosine",
+  "warmup_ratio": 0.03,
+  "weight_decay": 0.0,
+  "max_grad_norm": 1.0,
+  "bf16": true,
+  "seed": 20260722,
+  "gradient_checkpointing": true,
+  "completion_only_loss": true,
+  "basis": "repo-validated qwen3-8b-lora-pilot-v1 (Dispatch 27B)",
+  "deviation": "MAXLEN 2048->8192 (gold targets require it; truncation forbidden) + gradient_checkpointing on for long-seq memory"
+ },
+ "controls": {
+  "same_targets": true,
+  "same_record_order": true,
+  "same_seed": true,
+  "same_optimizer": true,
+  "same_scheduler": true,
+  "same_batch_geometry": true,
+  "same_training_steps": true,
+  "same_checkpoint_policy": true
+ },
+ "checkpoint_selection": "final_checkpoint_after_equal_training_exposure (fixed before held-out inference)"
+}

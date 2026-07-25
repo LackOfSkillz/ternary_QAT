@@ -1,0 +1,48 @@
+sft_training_recipe:
+  version: packet-sft-recipe-v1
+  dispatch: 30G
+  basis: repo-validated qwen3-8b-lora-pilot-v1 (Dispatch 27B, benchmarks/active-core/packet-family-v1)
+  applies_to_arms: [atomic_packet_sft, compositional_packet_sft]   # IDENTICAL across arms
+  identical_across_arms: true   # only the input packet representation differs
+
+  base_model: Qwen/Qwen3-8B
+  base_revision: b968826d9c46dd6066d109eabc6255188de91218
+  thinking: disabled
+  max_sequence_length: 8192
+  completion_only_loss: true
+
+  adapter:
+    method: lora
+    rank: 16
+    alpha: 16
+    dropout: 0.05
+    bias: none
+    task_type: CAUSAL_LM
+    target_modules: [q_proj, k_proj, v_proj, o_proj, gate_proj, up_proj, down_proj]
+
+  optimization:
+    epochs: 1
+    per_device_train_batch_size: 2
+    gradient_accumulation_steps: 1
+    effective_batch_size: 2
+    learning_rate: 1.0e-5
+    lr_scheduler_type: cosine
+    warmup_ratio: 0.03
+    weight_decay: 0.0
+    max_grad_norm: 1.0
+    bf16: true
+    seed: 20260722
+    gradient_checkpointing: true   # enabled for 8192-token sequences
+
+  deviations_from_validated_recipe:
+    - "MAXLEN 2048 -> 8192: gold targets require up to ~5.0k completion tokens; truncation is forbidden"
+    - "gradient_checkpointing enabled: keeps long-sequence activation memory bounded (peak ~40GB on GB10)"
+
+  checkpoint_selection:
+    rule: final_checkpoint_after_equal_training_exposure
+    fixed_before_heldout_inference: true
+    forbidden: selecting a checkpoint by held-out (c01) results
+
+  guardrails:
+    heldout_used_for_tuning: false
+    contamination_guard: scripts/serialization_guard.py (assert_training_safe on every serialized arm)

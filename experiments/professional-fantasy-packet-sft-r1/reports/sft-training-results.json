@@ -1,0 +1,67 @@
+{
+ "dispatch": "30G",
+ "training": {
+  "base_model": "Qwen/Qwen3-8B",
+  "base_revision": "b968826d9c46dd6066d109eabc6255188de91218",
+  "shared_recipe": true,
+  "recipe_identical_across_arms": true,
+  "smoke_tests": {
+   "atomic": {
+    "finite_loss": true,
+    "finite_gradients": true,
+    "oom": false,
+    "peak_gb": 36.96
+   },
+   "compositional": {
+    "finite_loss": true,
+    "finite_gradients": true,
+    "oom": false,
+    "peak_gb": 39.07
+   }
+  },
+  "atomic": {
+   "status": "complete",
+   "steps": 27,
+   "epochs": 1,
+   "train_loss_start": 2.5349,
+   "train_loss_end": 2.6602,
+   "min_loss": 2.5349,
+   "peak_gpu_gb": 39.46,
+   "train_seconds": 479.8,
+   "n_checkpoints": 9,
+   "finite_throughout": true,
+   "final_adapter_hash_prefix": "810461f6f60a",
+   "nan_or_inf_events": 0,
+   "interruptions": 0
+  },
+  "compositional": {
+   "status": "complete",
+   "steps": 27,
+   "epochs": 1,
+   "train_loss_start": 2.546,
+   "train_loss_end": 2.6489,
+   "min_loss": 2.5124,
+   "peak_gpu_gb": 41.61,
+   "train_seconds": 538.3,
+   "n_checkpoints": 9,
+   "finite_throughout": true,
+   "final_adapter_hash_prefix": "232ee7e7103d",
+   "nan_or_inf_events": 0,
+   "interruptions": 0
+  },
+  "adapter_load_checks": {
+   "atomic": {
+    "loadable": true,
+    "base_revision_match": true,
+    "generation_test": "successful"
+   },
+   "compositional": {
+    "loadable": true,
+    "base_revision_match": true,
+    "generation_test": "successful"
+   }
+  },
+  "heldout_used_for_tuning": false,
+  "loss_divergence_between_arms": "none (both ~2.5->2.65)"
+ }
+}

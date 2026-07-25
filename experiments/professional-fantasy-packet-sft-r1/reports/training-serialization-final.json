@@ -1,0 +1,47 @@
+{
+ "dispatch": "30G",
+ "serialization": {
+  "atomic_records": 54,
+  "compositional_records": 54,
+  "unique_targets": 54,
+  "duplicate_record_ids": 0,
+  "duplicate_targets": 0,
+  "heldout_contamination": {
+   "atomic": 0,
+   "compositional": 0,
+   "c01_record_ids_present": 0,
+   "heldout_target_hashes_present": 0,
+   "negative_self_test": "HeldoutContaminationError raised (not persisted)"
+  },
+  "hash_match": true,
+  "context_fit_8192": "108/108",
+  "completion_only_loss": true,
+  "thinking_tokens_present": 0,
+  "records_over_8192": 0,
+  "gold_targets_truncated": 0,
+  "token_ranges": {
+   "atomic": {
+    "prompt_tokens_min": 219,
+    "prompt_tokens_max": 405,
+    "completion_tokens_min": 1828,
+    "completion_tokens_max": 4973,
+    "total_tokens_min": 2068,
+    "total_tokens_max": 5265
+   },
+   "compositional": {
+    "prompt_tokens_min": 453,
+    "prompt_tokens_max": 1073,
+    "completion_tokens_min": 1828,
+    "completion_tokens_max": 4973,
+    "total_tokens_min": 2476,
+    "total_tokens_max": 5766
+   }
+  },
+  "dataset_hash_prefixes": {
+   "atomic_dataset": "bd68b06105a5",
+   "compositional_dataset": "065165049c6d",
+   "frozen_production_manifest_batch5": "cec977657b50",
+   "model_revision": "b968826d9c46"
+  }
+ }
+}
