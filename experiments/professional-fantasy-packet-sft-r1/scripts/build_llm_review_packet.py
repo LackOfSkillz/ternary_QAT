@@ -16,13 +16,13 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 EXP = os.path.dirname(HERE)
 sys.path.insert(0, HERE)
 from build_blind_review import brief  # identical brief() used by the HTML reviewer  # noqa: E402
+from build_packets import source_proper_names  # runtime proper-name extraction (no hardcoded source names)  # noqa: E402
 
 RUN = os.path.join(EXP, "private-data", "eval", "runs", "dispatch30h")
 OUT = os.path.join(RUN, "llm-blind-review")
 COMP = os.path.join(EXP, "private-data", "eval", "heldout-c01-compositional.jsonl")
+TARGETS = os.path.join(EXP, "private-data", "targets")
 LABELS = ["A", "B", "C", "D", "E", "F"]
-SRC_NAMES = ["Frodo", "Aragorn", "Rohan", "Potter", "Hogwarts", "Sansa", "Arya", "Fafhrd",
-             "Lannister", "Glorfindel", "Rivendell", "Gandalf", "Strider"]
 
 
 def html_candidate_texts():
@@ -54,6 +54,9 @@ def main():
     for sid in scene_ids:
         pid = key["scenes"][sid]["passage_id"]
         sbrief = brief(comp[pid]["training_packet"])
+        # source proper names derived from THIS passage's target at runtime (nothing hardcoded)
+        src_names = source_proper_names(json.load(open(os.path.join(TARGETS, pid + ".json"),
+                                                       encoding="utf-8"))["text"])
         body = [f"# Scene {sid}", "", "## Scene brief", "", sbrief, ""]
         for lbl in LABELS:
             gid = key["scenes"][sid]["candidates"][lbl]["generation_id"]
@@ -72,7 +75,7 @@ def main():
                     "frozen_base", "atomic_packet_sft", "compositional_packet_sft"]:
             if bad in scene_md:
                 checks["identity_leaks"] += 1
-        for n in SRC_NAMES:
+        for n in src_names:
             if re.search(r"\b" + re.escape(n) + r"\b", scene_md):
                 checks["source_leaks"] += 1
         # fully-expanded template entry
