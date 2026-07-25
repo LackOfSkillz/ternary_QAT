@@ -1,0 +1,56 @@
+{
+ "dispatch": "30H",
+ "human_recognizability_pending": true,
+ "lexical_overlap_summary": {
+  "exact_target_overlap_total": 0,
+  "max_8gram_overlap": 0,
+  "max_13gram_overlap": 0,
+  "note": "no lexical reproduction: 0 exact overlaps, 8-gram and 13-gram overlap 0 across all 66"
+ },
+ "provisional_structural_reconstruction_summary": {
+  "overall": {
+   "medium": 27,
+   "low": 13,
+   "high": 23,
+   "none": 3
+  },
+  "by_prompt_condition": {
+   "atomic_packet": {
+    "medium": 18,
+    "low": 9,
+    "none": 3,
+    "high": 3
+   },
+   "compositional_packet": {
+    "medium": 9,
+    "low": 4,
+    "high": 20
+   }
+  },
+  "by_cohort": {
+   "heldout_low": {
+    "none": 3,
+    "low": 5,
+    "medium": 4
+   },
+   "heldout_medium": {
+    "medium": 17,
+    "low": 5,
+    "high": 14
+   },
+   "heldout_retrieval_sensitive": {
+    "low": 3,
+    "high": 9,
+    "medium": 6
+   }
+  }
+ },
+ "heldout_low": 2,
+ "heldout_medium": 6,
+ "heldout_retrieval_sensitive": 3,
+ "critical_flags": {
+  "lexical": 0,
+  "provisional_structural_high": 23
+ },
+ "key_finding_provisional": "compositional prompts drive substantially more provisional structural reconstruction than atomic prompts; no lexical reproduction in any arm."
+}

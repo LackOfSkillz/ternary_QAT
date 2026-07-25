@@ -1,0 +1,32 @@
+{
+ "dispatch": "30H",
+ "generation": {
+  "expected": 66,
+  "successful": 66,
+  "failed": 0,
+  "duplicate_ids": 0,
+  "missing_cells": 0,
+  "unexpected_cells": 0,
+  "max_token_finishes": 0,
+  "thinking_markers": 0,
+  "target_text_in_prompt": 0,
+  "source_names_in_prompt": 0,
+  "cells_per_arm": 22,
+  "cells_per_condition": 33,
+  "decoding": "greedy (do_sample=false, temp0, top_p1), max_new_tokens 6144, seed 20260722, thinking disabled",
+  "output_token_range": {
+   "frozen_base": [
+    516,
+    1241
+   ],
+   "atomic_packet_sft": [
+    583,
+    1324
+   ],
+   "compositional_packet_sft": [
+    480,
+    1478
+   ]
+  }
+ }
+}

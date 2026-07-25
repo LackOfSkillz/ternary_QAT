@@ -1,0 +1,33 @@
+{
+ "dispatch": "30H",
+ "blind_review": {
+  "html_generated": true,
+  "scenes": 11,
+  "candidates": 66,
+  "candidates_per_scene": 6,
+  "candidate_labels": [
+   "A",
+   "B",
+   "C",
+   "D",
+   "E",
+   "F"
+  ],
+  "randomized_per_scene": true,
+  "blind_seed": 20260725,
+  "dropdowns_present": true,
+  "notes_boxes_present": true,
+  "scene_comparison_controls_present": true,
+  "local_storage_present": true,
+  "export_json_present": true,
+  "import_json_present": true,
+  "clear_saved_present": true,
+  "progress_backup_present": true,
+  "identity_leaks_in_ui": 0,
+  "identity_leaks_in_html_source": 0,
+  "outputs_blinded": true,
+  "identity_key_private": true,
+  "human_review_started": false,
+  "export_filename": "heldout-eval-blind-review-dispatch30h.json"
+ }
+}

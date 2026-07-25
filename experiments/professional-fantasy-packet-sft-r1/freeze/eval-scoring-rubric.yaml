@@ -1,0 +1,58 @@
+eval_scoring_rubric:
+  version: heldout-eval-rubric-v1
+  dispatch: 30H
+  applied_identically_across_all_arms: true
+  frozen_before_comparative_results: true
+
+  scale: {1: absent_or_broken, 2: weak, 3: partial, 4: solid, 5: excellent}
+
+  packet_adherence:
+    overall: 1-5
+    atomic_prompt_detail:
+      obligation_satisfaction: 1-5
+      scene_coherence: 1-5
+      hidden_extra_contracts: integer_count   # unrequested independent scene contracts bundled in
+      ending_alignment: 1-5
+    compositional_prompt_detail:   # each 1-5; 3 = not-clearly-applicable/neutral if field absent
+      - viewpoint_and_tense
+      - opening_state
+      - required_beats
+      - canon_facts
+      - knowledge_limits
+      - forbidden_developments
+      - physical_continuity
+      - character_goals
+      - ending_state
+      - craft_profile
+
+  prose_quality:   # each 1-5
+    - narrative_coherence
+    - causal_continuity
+    - prose_readability
+    - scene_completeness
+    - emotional_progression
+    - character_consistency
+    - dialogue_function
+    - pacing
+    - ending_effectiveness
+
+  retrieval_safety:
+    lexical:   # deterministic (scripts/score_retrieval_safety.py)
+      - exact_target_overlap
+      - longest_common_substring_chars
+      - longest_common_substring_tokens
+      - target_5gram_overlap
+      - target_8gram_overlap
+      - target_13gram_overlap
+      - suspicious_matching_passages
+    structural:   # provisional automated flag; separate from lexical
+      provisional_flag: [none, low, medium, high]
+      reconstructed_elements: [event_sequence, source_specific_world_rule, distinctive_object,
+                               distinctive_reveal, distinctive_ending, named_entity]
+      human_recognizability_rating: LEFT BLANK until the human blind review completes
+
+  rules:
+    - lexical cleanliness is NOT proof of structural safety; measure both separately
+    - do not reward length
+    - human_recognizability + final blind-review judgments remain blank until Gary completes the HTML review
+    - no post-hoc tuning: decoding, checkpoints, packets, and cell membership are frozen
