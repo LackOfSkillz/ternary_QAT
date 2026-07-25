@@ -69,7 +69,10 @@ def main():
 
     json.dump(key, open(os.path.join(RUN, "blind-key.json"), "w", encoding="utf-8"),
               ensure_ascii=False, indent=1)
-    html_out = TEMPLATE.replace("__DATA__", json.dumps(scenes_data, ensure_ascii=False))
+    # Embed as JSON, neutralizing any "</script>" (or "<!--") that a generation might contain so it
+    # cannot terminate the <script> element early and blank the page. "<\/" in a JS string is just "</".
+    data_js = json.dumps(scenes_data, ensure_ascii=False).replace("</", "<\\/")
+    html_out = TEMPLATE.replace("__DATA__", data_js)
     open(os.path.join(RUN, "blind-review.html"), "w", encoding="utf-8", newline="\n").write(html_out)
     # integrity for the caller (no identities)
     print(json.dumps({"scenes": len(scenes_data), "candidates_per_scene": 6,
@@ -111,43 +114,53 @@ textarea{width:100%;font:13px sans-serif;border:1px solid #ccd;border-radius:6px
 const DATA=__DATA__;const KEY="lw-heldout-blind-dispatch30h";
 const Q5=["","1","2","3","4","5"];const RC=["","none","low","medium","high"];
 const DISP=["","strongest","acceptable","weak","failed","suspicious_reconstruction"];
-const LB=["A","B","C","D","E","F"];const BEST=["","A","B","C","D","E","F","no_clear_winner"];
+const BEST=["","A","B","C","D","E","F","no_clear_winner"];
 const SECOND=["","A","B","C","D","E","F","none"];const RETC=["","A","B","C","D","E","F","none"];
 let store=JSON.parse(localStorage.getItem(KEY)||"{}");let cur=0;
 function s(sid){return store[sid]||(store[sid]={cand:{},scene:{}});}
 function save(){localStorage.setItem(KEY,JSON.stringify(store));document.getElementById('msg').textContent="saved "+new Date().toLocaleTimeString();render();}
-function esc(t){return (t||"").replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
+function esc(t){return (t||"").replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
 function candDone(o){return o&&o.overall_quality&&o.packet_adherence&&o.scene_coherence&&o.prose_quality&&o.retrieval_concern&&o.disposition;}
-function sceneDone(sid){const st=s(sid);return DATA.find(x=>x.scene_id==sid).candidates.every(c=>candDone(st.cand[c.label]))&&st.scene.best_candidate;}
-function sel(opts,val,onch){let h='<select onchange="'+onch+'">';opts.forEach(o=>h+='<option '+(val==o?'selected':'')+' value="'+o+'">'+(o||'—')+'</option>');return h+'</select>';}
+function sceneDone(sid){const st=s(sid);const sc=DATA.find(x=>x.scene_id==sid);return !!(sc&&sc.candidates.every(c=>candDone(st.cand[c.label]))&&st.scene.best_candidate);}
 function setC(sid,lb,k,v){const c=s(sid).cand;(c[lb]||(c[lb]={}))[k]=v;save();}
 function setS(sid,k,v){s(sid).scene[k]=v;save();}
 function go(d){cur=Math.max(0,Math.min(DATA.length-1,cur+d));render();window.scrollTo(0,0);}
 function jump(i){cur=i;render();window.scrollTo(0,0);}
+// build a <select> with data-attributes (no inline JS); listeners bound after innerHTML
+function sel(opts,val,scene,field,cand){
+ let a='data-scene="'+scene+'" data-field="'+field+'"'+(cand?' data-candidate="'+cand+'"':'');
+ let h='<select '+a+'>';opts.forEach(o=>h+='<option '+(val==o?'selected':'')+' value="'+esc(o)+'">'+(o||'—')+'</option>');return h+'</select>';}
+function bind(wrap){
+ wrap.querySelectorAll('select[data-scene],textarea[data-scene]').forEach(el=>{
+  el.addEventListener('change',()=>{const d=el.dataset;
+   if(d.candidate){setC(d.scene,d.candidate,d.field,el.value);}else{setS(d.scene,d.field,el.value);}});});
+ wrap.querySelectorAll('.pill[data-index]').forEach(el=>{
+  el.addEventListener('click',()=>jump(parseInt(el.dataset.index,10)));});
+}
 function render(){
  const sc=DATA[cur];const st=s(sc.scene_id);const wrap=document.getElementById('wrap');
  let done=DATA.filter(x=>sceneDone(x.scene_id)).length;
  document.getElementById('prog').textContent=" — "+done+"/"+DATA.length+" scenes complete";
  document.getElementById('idx').textContent=(cur+1)+" / "+DATA.length;
- let nav='<div class="row">';DATA.forEach((x,i)=>nav+='<span class="pill '+(sceneDone(x.scene_id)?'on':'')+'" style="cursor:pointer" onclick="jump('+i+')">'+x.scene_id+'</span>');nav+='</div>';
- let h=nav+'<h2>Scene '+sc.scene_id+'</h2><h3>Scene brief (for judging adherence)</h3><div class="brief">'+esc(sc.brief)+'</div>';
- sc.candidates.forEach(c=>{const o=st.cand[c.label]||{};const dc=candDone(o)?'done':'todo';
-  h+='<div class="cand '+dc+'"><div class="row"><b>Candidate '+c.label+'</b> <span class="badge">'+c.output_tokens+' tok</span> <span class="badge">'+c.finish+'</span> <span class="badge">'+(candDone(o)?'reviewed':'unreviewed')+'</span></div>'+
+ let nav='<div class="row">';DATA.forEach((x,i)=>nav+='<span class="pill '+(sceneDone(x.scene_id)?'on':'')+'" data-index="'+i+'" style="cursor:pointer">'+esc(x.scene_id)+'</span>');nav+='</div>';
+ let h=nav+'<h2>Scene '+esc(sc.scene_id)+'</h2><h3>Scene brief (for judging adherence)</h3><div class="brief">'+esc(sc.brief)+'</div>';
+ sc.candidates.forEach(c=>{const o=st.cand[c.label]||{};const dc=candDone(o)?'done':'todo';const SI=sc.scene_id;
+  h+='<div class="cand '+dc+'"><div class="row"><b>Candidate '+esc(c.label)+'</b> <span class="badge">'+c.output_tokens+' tok</span> <span class="badge">'+esc(c.finish)+'</span> <span class="badge">'+(candDone(o)?'reviewed':'unreviewed')+'</span></div>'+
    '<div class="out">'+esc(c.text)+'</div>'+
-   '<div class="row"><label>overall '+sel(Q5,o.overall_quality,"setC('"+sc.scene_id+"','"+c.label+"','overall_quality',this.value)")+'</label>'+
-   '<label>adherence '+sel(Q5,o.packet_adherence,"setC('"+sc.scene_id+"','"+c.label+"','packet_adherence',this.value)")+'</label>'+
-   '<label>coherence '+sel(Q5,o.scene_coherence,"setC('"+sc.scene_id+"','"+c.label+"','scene_coherence',this.value)")+'</label>'+
-   '<label>prose '+sel(Q5,o.prose_quality,"setC('"+sc.scene_id+"','"+c.label+"','prose_quality',this.value)")+'</label>'+
-   '<label>retrieval '+sel(RC,o.retrieval_concern,"setC('"+sc.scene_id+"','"+c.label+"','retrieval_concern',this.value)")+'</label>'+
-   '<label>disposition '+sel(DISP,o.disposition,"setC('"+sc.scene_id+"','"+c.label+"','disposition',this.value)")+'</label></div>'+
-   '<textarea placeholder="notes on Candidate '+c.label+'" onchange="setC('"+"'"+sc.scene_id+"','"+c.label+"','notes',this.value)">'+esc(o.notes||'')+'</textarea></div>';});
- const ss=st.scene;
+   '<div class="row"><label>overall '+sel(Q5,o.overall_quality,SI,'overall_quality',c.label)+'</label>'+
+   '<label>adherence '+sel(Q5,o.packet_adherence,SI,'packet_adherence',c.label)+'</label>'+
+   '<label>coherence '+sel(Q5,o.scene_coherence,SI,'scene_coherence',c.label)+'</label>'+
+   '<label>prose '+sel(Q5,o.prose_quality,SI,'prose_quality',c.label)+'</label>'+
+   '<label>retrieval '+sel(RC,o.retrieval_concern,SI,'retrieval_concern',c.label)+'</label>'+
+   '<label>disposition '+sel(DISP,o.disposition,SI,'disposition',c.label)+'</label></div>'+
+   '<textarea data-scene="'+SI+'" data-candidate="'+c.label+'" data-field="notes" placeholder="notes on Candidate '+esc(c.label)+'">'+esc(o.notes||'')+'</textarea></div>';});
+ const ss=st.scene;const SI=sc.scene_id;
  h+='<div class="scenebox"><h3>Scene-level comparison</h3><div class="row">'+
-  '<label>best '+sel(BEST,ss.best_candidate,"setS('"+sc.scene_id+"','best_candidate',this.value)")+'</label>'+
-  '<label>second '+sel(SECOND,ss.second_best_candidate,"setS('"+sc.scene_id+"','second_best_candidate',this.value)")+'</label>'+
-  '<label>most retrieval-concerning '+sel(RETC,ss.most_retrieval_concerning,"setS('"+sc.scene_id+"','most_retrieval_concerning',this.value)")+'</label></div>'+
-  '<textarea placeholder="scene notes" onchange="setS('"+"'"+sc.scene_id+"','scene_notes',this.value)">'+esc(ss.scene_notes||'')+'</textarea></div>';
- wrap.innerHTML=h;
+  '<label>best '+sel(BEST,ss.best_candidate,SI,'best_candidate')+'</label>'+
+  '<label>second '+sel(SECOND,ss.second_best_candidate,SI,'second_best_candidate')+'</label>'+
+  '<label>most retrieval-concerning '+sel(RETC,ss.most_retrieval_concerning,SI,'most_retrieval_concerning')+'</label></div>'+
+  '<textarea data-scene="'+SI+'" data-field="scene_notes" placeholder="scene notes">'+esc(ss.scene_notes||'')+'</textarea></div>';
+ wrap.innerHTML=h;bind(wrap);
 }
 function exportReview(){
  const out={reviewer:document.getElementById('rev').value||"gary",evaluation_id:"dispatch30h",set_id:"heldout-c01",
@@ -172,7 +185,9 @@ function importReview(ev){const f=ev.target.files[0];if(!f)return;const r=new Fi
  r.readAsText(f);ev.target.value="";}
 function clearAll(){if(confirm("Clear ALL saved review work? This cannot be undone (export a backup first).")){localStorage.removeItem(KEY);store={};save();}}
 function dl(txt,name){const b=new Blob([txt],{type:"application/json"});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=name;a.click();}
-document.getElementById('rev').onchange=save;render();
+document.getElementById('rev').onchange=save;
+try{render();}catch(err){console.error(err);
+ document.getElementById('wrap').innerHTML='<pre style="color:#b00020;padding:20px;white-space:pre-wrap">Review UI error: '+esc(String(err&&err.stack||err))+'</pre>';}
 </script></body></html>"""
 
 
